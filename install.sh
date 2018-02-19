@@ -5,9 +5,6 @@ fi
 
 set -o verbose
 
-swapoff /dev/mapper/vg1-swap
-umount -R /mnt
-
 mkfs.ext4 /dev/mapper/vg1-$1
 
 swapon /dev/mapper/vg1-swap
@@ -39,4 +36,7 @@ genfstab -U /mnt > /mnt/etc/fstab
 cp -r `dirname $0`/../Arch /mnt/root
 arch-chroot /mnt ~/Arch/config.sh
 rm -rf /mnt/root/Arch 
+
+swapoff /dev/mapper/vg1-swap
+umount -R /mnt
 
