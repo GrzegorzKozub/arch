@@ -14,9 +14,17 @@ cp `dirname $0`/etc/hosts /etc
 cp `dirname $0`/etc/mkinitcpio.conf /etc
 mkinitcpio -p linux
 
-passwd
+export $?=1
+while [[ ! $? == 0 ]]
+do
+  passwd
+done
 
 useradd -m -g users -G wheel -s /bin/zsh greg
-passwd greg
+export $?=1
+while [[ ! $? == 0 ]]
+do
+  passwd greg
+done
 EDITOR=nano visudo
 
