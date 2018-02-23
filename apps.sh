@@ -57,3 +57,9 @@ sudo pacman -S --noconfirm docker
 sudo systemctl enable docker.service
 sudo systemctl start docker.service 
 
+# Visual Studio Code
+cd ~/AUR
+git clone https://aur.archlinux.org/visual-studio-code-bin.git
+cd visual-studio-code-bin.git
+makepkg -si --noconfirm
+
