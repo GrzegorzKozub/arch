@@ -190,7 +190,7 @@ mkdir AUR
 cd AUR
 git clone https://aur.archlinux.org/preloader-signed.git
 cd preloader-signed
-makepkg -si
+makepkg -si --noconfirm
 exit
 cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
 cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
