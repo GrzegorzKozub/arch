@@ -251,6 +251,7 @@ systemctl enable NetworkManager.service
 * Enable automatic suspend
 * Enable tap to click
 * Enable night light
+* Disable sound effects
 * Setup Terminal
 
 ## Things to consider
