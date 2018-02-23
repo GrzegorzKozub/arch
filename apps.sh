@@ -32,5 +32,19 @@ yarn global add \
   typescript-formatter \
   yo
 
+# .NET Core
+sudo pacman -S --noconfirm dotnet-sdk
+
+# Go
+sudo pacman -S --noconfirm go
+
+# Ruby
+sudo pacman -S --noconfirm ruby
+
+# Docker
+sudo pacman -S --noconfirm docker
+sudo systemctl enable docker.service
+sudo systemctl start docker.service 
+
 popd
 
