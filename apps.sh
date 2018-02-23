@@ -7,6 +7,7 @@ sudo pacman -S --noconfirm zsh
 # oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
 cp `dirname $0`/home/greg/.zshrc ~
+rm ~/.zshrc.pre-oh-my-zsh
 
 # Chrome
 cd ~/AUR
