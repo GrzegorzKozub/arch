@@ -233,7 +233,7 @@ wifi-menu
 2. Install GNOME:
 
 ```
-pacman -S xf86-video-intel xorg-server gnome networkmanager ttf-fira-mono
+pacman -S xf86-video-intel xorg-server gnome networkmanager ttf-freefont ttf-fira-mono
 ```
 
 3. Make GNOME load on startup:
