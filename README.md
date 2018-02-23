@@ -254,8 +254,7 @@ systemctl enable NetworkManager.service
 * Disable sound effects
 * Setup Terminal
 
-## Things to consider
+## Install apps
 
-* https://wiki.archlinux.org/index.php/general_recommendations#Console_improvements
-* https://wiki.archlinux.org/index.php/List_of_applications
+Automated via `apps.sh`.
 
