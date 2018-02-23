@@ -14,5 +14,23 @@ makepkg -si --noconfirm
 sudo pacman -S --noconfirm git
 cp `dirname $0`/home/greg/.gitconfig ~
 
+# Node.js and Yarn
+sudo pacman -S --noconfirm nodejs ttf-freefont yarn
+yarn global add \
+  @angular/cli \
+  babel-cli \
+  create-react-app \
+  eslint \
+  express-generator \
+  gulp-cli \
+  js-beautify \
+  karma-cli \
+  pm2 \
+  rimraf \
+  tslint \
+  typescript \
+  typescript-formatter \
+  yo
+
 popd
 
