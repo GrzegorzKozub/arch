@@ -46,6 +46,12 @@ sudo pacman -S --noconfirm go
 # Ruby
 sudo pacman -S --noconfirm ruby
 
+# Perl
+sudo pacman -S --noconfirm perl
+
+# Python
+sudo pacman -S --noconfirm python
+
 # Docker
 sudo pacman -S --noconfirm docker
 sudo systemctl enable docker.service
