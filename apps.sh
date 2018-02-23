@@ -16,7 +16,7 @@ cd google-chrome.git
 makepkg -si --noconfirm
 
 # Git
-sudo pacman -S --noconfirm git
+sudo pacman -S --noconfirm git openssh
 cp `dirname $0`/home/greg/.gitconfig ~
 
 # Node.js and Yarn
