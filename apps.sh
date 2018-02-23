@@ -1,4 +1,5 @@
-pushd
+# fonts
+sudo pacman -S --noconfirm ttf-fira-mono ttf-freefont
 
 # zsh
 sudo pacman -S --noconfirm zsh
@@ -18,7 +19,7 @@ sudo pacman -S --noconfirm git
 cp `dirname $0`/home/greg/.gitconfig ~
 
 # Node.js and Yarn
-sudo pacman -S --noconfirm nodejs ttf-freefont yarn
+sudo pacman -S --noconfirm nodejs yarn
 yarn global add \
   @angular/cli \
   babel-cli \
@@ -48,6 +49,4 @@ sudo pacman -S --noconfirm ruby
 sudo pacman -S --noconfirm docker
 sudo systemctl enable docker.service
 sudo systemctl start docker.service 
-
-popd
 
