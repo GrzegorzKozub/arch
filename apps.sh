@@ -1,5 +1,9 @@
 # fonts
 sudo pacman -S --noconfirm ttf-fira-mono ttf-freefont
+cd ~/AUR
+git clone https://aur.archlinux.org/otf-fira-code.git
+cd otf-fira-code
+makepkg -si --noconfirm
 
 # zsh
 sudo pacman -S --noconfirm zsh
@@ -12,7 +16,7 @@ rm ~/.zshrc.pre-oh-my-zsh
 # Chrome
 cd ~/AUR
 git clone https://aur.archlinux.org/google-chrome.git
-cd google-chrome.git
+cd google-chrome
 makepkg -si --noconfirm
 
 # Git
@@ -60,6 +64,5 @@ sudo systemctl start docker.service
 # Visual Studio Code
 cd ~/AUR
 git clone https://aur.archlinux.org/visual-studio-code-bin.git
-cd visual-studio-code-bin.git
+cd visual-studio-code-bin
 makepkg -si --noconfirm
-
