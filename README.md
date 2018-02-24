@@ -39,7 +39,7 @@ reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist
 
 ## Prepare disk
 
-1. If not done previously on this machine, create a partition, encrypt it with Luks, create LVM volumes and create filesystems: 
+1. If not done previously on this machine, create a partition, encrypt it with Luks, create LVM volumes and create filesystems:
 
 ```
 cfdisk /dev/nvme0n1
@@ -61,7 +61,7 @@ mkfs.ext4 /dev/mapper/vg1-backup
 cryptsetup luksOpen /dev/nvme0n1p6 lvm
 ```
 
-## Install main operating system 
+## Install main operating system
 
 1. Mount the volumes:
 
@@ -82,7 +82,7 @@ rm /mnt/boot/vmlinuz-linux
 3. Install base system and generate `fstab`:
 
 ```
-pacstrap /mnt base base-devel dialog git intel-ucode reflector sudo wpa_supplicant zsh
+pacstrap /mnt base base-devel sudo reflector dialog wpa_supplicant zsh intel-ucode
 genfstab -U /mnt > /mnt/etc/fstab
 ```
 
@@ -197,7 +197,7 @@ cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
 efibootmgr --disk /dev/nvme0n1 --part 2 --create --label "Linux Boot Manager" --loader /EFI/systemd/PreLoader.efi
 efibootmgr --delete-bootnum --bootnum <previous Linux Boot Manager number>
 efibootmgr --bootorder <preferred boot order>
-``` 
+```
 
 13. Return to archiso and unmount:
 
@@ -218,7 +218,8 @@ timedatectl set-ntp true
 Prepare archiso session and prepare disk following the steps above. Then go through the same steps as for installing main operating system, with these exceptions:
 
 * When mounting the volumes, instead of `/dev/mapper/vg1-root` use `/dev/mapper/vg1-backup`.
-* When doing `pacstrap`, install `base dialog fsarchiver intel-ucode reflector wpa_supplicant zsh`.
+* When doing `pacstrap`, install `base reflector intel-ucode fsarchiver`.
+* Don't create a regular user.
 * Don't install the boot manager again. Just add `/boot/loader/entries/fsarchiver.conf`, give this entry `FSArchiver` title and instead of `/dev/mapper/vg1-root` use `/dev/mapper/vg1-backup`.
 * Don't add Secure Boot support again.
 
@@ -233,7 +234,7 @@ wifi-menu
 2. Install GNOME:
 
 ```
-pacman -S xf86-video-intel xorg-server gnome networkmanager ttf-freefont ttf-fira-mono
+pacman -S xf86-video-intel xorg-server gnome networkmanager
 ```
 
 3. Make GNOME load on startup:
@@ -244,7 +245,7 @@ systemctl enable NetworkManager.service
 ```
 
 4. Reboot.
-5. Configure the user interface: 
+5. Configure the user interface:
 
 * Connect to Internet
 * Change language formats and input source to Polish
