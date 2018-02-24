@@ -48,20 +48,8 @@ yarn global add \
   typescript-formatter \
   yo
 
-# .NET Core
-sudo pacman -S --noconfirm dotnet-sdk
-
-# Go
-sudo pacman -S --noconfirm go
-
-# Ruby
-sudo pacman -S --noconfirm ruby
-
-# Perl
-sudo pacman -S --noconfirm perl
-
-# Python
-sudo pacman -S --noconfirm python
+# .NET Core, Go, Perl, Python and Ruby
+sudo pacman -S --noconfirm dotnet-sdk go perl python ruby
 
 # Docker
 sudo pacman -S --noconfirm docker
