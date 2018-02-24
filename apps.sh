@@ -1,3 +1,8 @@
+sudo mount /dev/sda2 /mnt
+if [[ ! $? == 0 ]]; then
+  exit 1
+fi
+
 # fonts
 sudo pacman -S --noconfirm ttf-fira-mono ttf-freefont
 cd ~/AUR
@@ -9,7 +14,7 @@ makepkg -si --noconfirm
 sudo pacman -S --noconfirm zsh
 
 # oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 cp `dirname $0`/home/greg/.zshrc ~
 rm ~/.zshrc.pre-oh-my-zsh
 
@@ -22,6 +27,8 @@ makepkg -si --noconfirm
 # Git
 sudo pacman -S --noconfirm git openssh
 cp `dirname $0`/home/greg/.gitconfig ~
+mkdir ~/.ssh
+cp /mnt/id_rsa* ~/.ssh
 
 # Node.js and Yarn
 sudo pacman -S --noconfirm nodejs yarn
@@ -59,7 +66,7 @@ sudo pacman -S --noconfirm python
 # Docker
 sudo pacman -S --noconfirm docker
 sudo systemctl enable docker.service
-sudo systemctl start docker.service 
+sudo systemctl start docker.service
 
 # Visual Studio Code
 cd ~/AUR
