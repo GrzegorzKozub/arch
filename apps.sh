@@ -61,6 +61,6 @@ cd visual-studio-code-bin
 makepkg -si --noconfirm
 
 # Vim
-sudo pacman -S --noconfirm gvim
+sudo pacman -S --noconfirm vim
 git clone git@github.com:GrzegorzKozub/Vim.git ~/.vim
 
