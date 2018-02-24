@@ -3,6 +3,12 @@ if [[ ! $? == 0 ]]; then
   exit 1
 fi
 
+# git
+sudo pacman -S --noconfirm git openssh
+cp `dirname $0`/home/greg/.gitconfig ~
+mkdir ~/.ssh
+cp /mnt/id_rsa* ~/.ssh
+
 # fonts
 sudo pacman -S --noconfirm ttf-fira-mono ttf-freefont
 cd ~/AUR
@@ -10,10 +16,8 @@ git clone https://aur.archlinux.org/otf-fira-code.git
 cd otf-fira-code
 makepkg -si --noconfirm
 
-# zsh
+# zsh and oh my zsh
 sudo pacman -S --noconfirm zsh
-
-# oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 cp `dirname $0`/home/greg/.zshrc ~
 rm ~/.zshrc.pre-oh-my-zsh
@@ -23,12 +27,6 @@ cd ~/AUR
 git clone https://aur.archlinux.org/google-chrome.git
 cd google-chrome
 makepkg -si --noconfirm
-
-# Git
-sudo pacman -S --noconfirm git openssh
-cp `dirname $0`/home/greg/.gitconfig ~
-mkdir ~/.ssh
-cp /mnt/id_rsa* ~/.ssh
 
 # Node.js and Yarn
 sudo pacman -S --noconfirm nodejs yarn
