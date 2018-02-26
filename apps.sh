@@ -1,3 +1,5 @@
+set -o verbose
+
 sudo mount /dev/sda2 /mnt
 if [[ ! $? == 0 ]]; then
   exit 1
