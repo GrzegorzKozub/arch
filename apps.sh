@@ -70,3 +70,7 @@ cd ../..
 sudo pacman -S --noconfirm vim
 git clone git@github.com:GrzegorzKozub/Vim.git ~/.vim
 
+# Arch
+mkdir ~/Code
+git clone git@github.com:GrzegorzKozub/Arch.git ~/Code/Arch
+
