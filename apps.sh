@@ -17,6 +17,7 @@ cd ~/AUR
 git clone https://aur.archlinux.org/otf-fira-code.git
 cd otf-fira-code
 makepkg -si --noconfirm
+cd ../..
 
 # zsh and oh my zsh
 sudo pacman -S --noconfirm zsh
@@ -29,6 +30,7 @@ cd ~/AUR
 git clone https://aur.archlinux.org/google-chrome.git
 cd google-chrome
 makepkg -si --noconfirm
+cd ../..
 
 # Node.js and Yarn
 sudo pacman -S --noconfirm nodejs yarn
@@ -62,6 +64,7 @@ cd ~/AUR
 git clone https://aur.archlinux.org/visual-studio-code-bin.git
 cd visual-studio-code-bin
 makepkg -si --noconfirm
+cd ../..
 
 # Vim
 sudo pacman -S --noconfirm vim
