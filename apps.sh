@@ -59,7 +59,6 @@ sudo systemctl enable docker.service
 sudo systemctl start docker.service
 
 # Visual Studio Code
-# Settings Sync: token 46b4cdf4db2d54f46b87ba905402f4235f8eb995, gist fbb6cd936802653b1f799de28d70d68a
 cd ~/AUR
 git clone https://aur.archlinux.org/visual-studio-code-bin.git
 cd visual-studio-code-bin
