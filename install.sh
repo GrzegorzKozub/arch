@@ -19,7 +19,7 @@ if [[ "$1" = "root" ]]; then
     base base-devel \
     sudo reflector dialog wpa_supplicant zsh \
     intel-ucode \
-    xf86-video-intel xorg-server gnome networkmanager \
+    xf86-video-intel xorg-server gnome gnome-tweak-tool networkmanager \
     git
 else
   pacstrap /mnt \

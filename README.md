@@ -234,7 +234,7 @@ wifi-menu
 2. Install GNOME:
 
 ```
-pacman -S xf86-video-intel xorg-server gnome networkmanager
+pacman -S xf86-video-intel xorg-server gnome gnome-tweak-tool networkmanager
 ```
 
 3. Make GNOME load on startup:
@@ -253,6 +253,7 @@ systemctl enable NetworkManager.service
 * Enable tap to click
 * Enable night light
 * Disable sound effects
+* Change font scaling to 1.25 in Tweaks
 * Setup Terminal
 
 ## Install apps
