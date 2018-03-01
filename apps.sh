@@ -66,7 +66,7 @@ makepkg -si --noconfirm
 cd ../..
 
 # Vim
-sudo pacman -S --noconfirm vim
+sudo pacman -S --noconfirm astyle ctags editorconfig-core-c fzf ripgrep tidy vim
 git clone git@github.com:GrzegorzKozub/Vim.git ~/.vim
 
 # Arch
