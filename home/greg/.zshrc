@@ -8,7 +8,11 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME=''
 
 plugins=(
-  git
+  docker,
+  git,
+  ng,
+  npm,
+  yarn
 )
 
 source $ZSH/oh-my-zsh.sh
