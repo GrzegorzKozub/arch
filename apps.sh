@@ -32,6 +32,9 @@ cd google-chrome
 makepkg -si --noconfirm
 cd ../..
 
+# KeePassXC
+sudo pacman -S --noconfirm keepassxc
+
 # Node.js and Yarn
 sudo pacman -S --noconfirm nodejs yarn
 yarn global add \
