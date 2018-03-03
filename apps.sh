@@ -20,7 +20,7 @@ makepkg -si --noconfirm
 cd ../..
 
 # zsh and oh my zsh
-sudo pacman -S --noconfirm zsh
+sudo pacman -S --noconfirm wget zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 cp `dirname $0`/home/greg/.zshrc ~
 rm ~/.zshrc.pre-oh-my-zsh
@@ -71,9 +71,6 @@ cd ../..
 # Vim
 sudo pacman -S --noconfirm astyle ctags editorconfig-core-c fzf ripgrep tidy vim
 git clone git@github.com:GrzegorzKozub/Vim.git ~/.vim
-
-# Other
-sudo pacman -S --noconfirm wget
 
 # Arch
 mkdir ~/Code
