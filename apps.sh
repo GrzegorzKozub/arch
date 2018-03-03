@@ -32,8 +32,9 @@ cd google-chrome
 makepkg -si --noconfirm
 cd ../..
 
-# KeePassXC
-sudo pacman -S --noconfirm keepassxc
+# KeePass
+sudo pacman -S --noconfirm keepass
+cp `dirname $0`/home/greg/.config/KeePass ~/.config
 
 # Node.js and Yarn
 sudo pacman -S --noconfirm nodejs yarn
