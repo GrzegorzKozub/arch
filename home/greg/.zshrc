@@ -5,7 +5,7 @@ export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
 export EDITOR='vim'
 export ZSH=~/.oh-my-zsh
 
-ZSH_THEME=''
+ZSH_THEME='greg'
 
 plugins=(
   docker,
