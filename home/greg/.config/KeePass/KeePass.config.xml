@@ -7,7 +7,7 @@
 		<DpiFactorY>1</DpiFactorY>
 	</Meta>
 	<Application>
-		<LastUpdateCheck>2018-03-03T12:31:25Z</LastUpdateCheck>
+		<LastUpdateCheck>2018-03-04T09:02:40Z</LastUpdateCheck>
 		<LastUsedFile>
 			<Path>../../../home/greg/Documents/Grzegorz.kdbx</Path>
 			<CredProtMode>Obf</CredProtMode>
@@ -24,7 +24,6 @@
 			</Items>
 		</MostRecentlyUsed>
 		<WorkingDirectories>
-			<Item>Attachments@C:/Users/Grzegorz/Documents</Item>
 			<Item>Database@../../../home/greg/Documents</Item>
 			<Item>KeyFile@../../../home/greg/Documents</Item>
 		</WorkingDirectories>
@@ -44,7 +43,7 @@
 		<Y>294</Y>
 		<Width>1528</Width>
 		<Height>1186</Height>
-		<SplitterHorizontalFrac>0.0779816513761468</SplitterHorizontalFrac>
+		<SplitterHorizontalFrac>0.070642201834862389</SplitterHorizontalFrac>
 		<SplitterVerticalFrac>0.23552631578947367</SplitterVerticalFrac>
 		<Layout>Default</Layout>
 		<MinimizeAfterClipboardCopy>true</MinimizeAfterClipboardCopy>
@@ -60,15 +59,15 @@
 		<EntryListColumnCollection>
 			<Column>
 				<Type>Title</Type>
-				<Width>386</Width>
+				<Width>380</Width>
 			</Column>
 			<Column>
 				<Type>UserName</Type>
-				<Width>384</Width>
+				<Width>379</Width>
 			</Column>
 			<Column>
 				<Type>Url</Type>
-				<Width>384</Width>
+				<Width>379</Width>
 			</Column>
 		</EntryListColumnCollection>
 		<EntryListColumnDisplayOrder>0 1 2</EntryListColumnDisplayOrder>
@@ -95,8 +94,8 @@
 			<OverrideUIDefault>true</OverrideUIDefault>
 		</StandardFont>
 		<PasswordFont>
-			<Family>Segoe UI</Family>
-			<Size>9</Size>
+			<Family>Cantarell</Family>
+			<Size>11</Size>
 			<GraphicsUnit>Point</GraphicsUnit>
 			<Style>Regular</Style>
 			<OverrideUIDefault>true</OverrideUIDefault>
@@ -104,11 +103,11 @@
 		<ForceSystemFontUnix>false</ForceSystemFontUnix>
 		<BannerStyle>WinVistaBlack</BannerStyle>
 		<DataEditorFont>
-			<Family>Microsoft Sans Serif</Family>
-			<Size>8</Size>
+			<Family>Cantarell</Family>
+			<Size>11</Size>
 			<GraphicsUnit>Point</GraphicsUnit>
 			<Style>Regular</Style>
-			<OverrideUIDefault>false</OverrideUIDefault>
+			<OverrideUIDefault>true</OverrideUIDefault>
 		</DataEditorFont>
 		<UIFlags>0</UIFlags>
 		<KeyCreationFlags>0</KeyCreationFlags>
@@ -146,11 +145,6 @@
 			<ComparisonMode>InvariantCultureIgnoreCase</ComparisonMode>
 		</SearchParameters>
 		<KeySources>
-			<Association>
-				<DatabasePath>../../Dropbox/KeePass/Grzegorz.kdbx</DatabasePath>
-				<Password>true</Password>
-				<KeyFilePath>C:/Users/Grzegorz/Grzegorz.key</KeyFilePath>
-			</Association>
 			<Association>
 				<DatabasePath>../../../home/greg/Documents/Grzegorz.kdbx</DatabasePath>
 				<Password>true</Password>
