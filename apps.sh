@@ -74,6 +74,9 @@ cd ../..
 sudo pacman -S --noconfirm astyle ctags editorconfig-core-c fzf ripgrep tidy vim
 git clone git@github.com:GrzegorzKozub/Vim.git ~/.vim
 
+# Midnight Commander
+sudo pacman -S --noconfirm mc
+
 # Arch
 mkdir ~/Code
 git clone git@github.com:GrzegorzKozub/Arch.git ~/Code/Arch
