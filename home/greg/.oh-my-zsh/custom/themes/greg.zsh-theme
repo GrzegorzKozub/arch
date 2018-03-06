@@ -18,9 +18,5 @@ local function git_prompt() {
   fi
 }
 
-local function delimiter() {
-  echo "> "
-}
-
-PROMPT='$(current_dir)$(git_prompt)$(delimiter)'
+PROMPT='$(current_dir)$(git_prompt)'
 
