@@ -17,6 +17,7 @@ cd ~/AUR
 git clone https://aur.archlinux.org/otf-fira-code.git
 cd otf-fira-code
 makepkg -si --noconfirm
+git clean -fdx
 cd ../..
 
 # zsh and oh-my-zsh
@@ -31,6 +32,7 @@ cd ~/AUR
 git clone https://aur.archlinux.org/google-chrome.git
 cd google-chrome
 makepkg -si --noconfirm
+git clean -fdx
 cd ../..
 
 # KeePass
@@ -68,6 +70,7 @@ cd ~/AUR
 git clone https://aur.archlinux.org/visual-studio-code-bin.git
 cd visual-studio-code-bin
 makepkg -si --noconfirm
+git clean -fdx
 cd ../..
 
 # Vim
