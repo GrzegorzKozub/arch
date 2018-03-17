@@ -12,7 +12,7 @@ mkdir ~/.ssh
 cp /mnt/id_rsa* ~/.ssh
 
 # fonts
-sudo pacman -S --noconfirm ttf-fira-mono ttf-freefont
+sudo pacman -S --noconfirm ttf-fira-mono ttf-freefont noto-fonts-emoji
 cd ~/AUR
 git clone https://aur.archlinux.org/otf-fira-code.git
 cd otf-fira-code
