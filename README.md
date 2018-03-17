@@ -256,6 +256,7 @@ systemctl enable NetworkManager.service
 * Set Super+D as keyboard shortcut for Hide all normal windows
 * Change font scaling to 1.25 in Tweaks
 * Setup Terminal
+* Install Dim On Battery Power extension
 
 ## Install apps
 
