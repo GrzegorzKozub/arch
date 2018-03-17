@@ -218,7 +218,7 @@ timedatectl set-ntp true
 Prepare archiso session and prepare disk following the steps above. Then go through the same steps as for installing main operating system, with these exceptions:
 
 * When mounting the volumes, instead of `/dev/mapper/vg1-root` use `/dev/mapper/vg1-backup`.
-* When doing `pacstrap`, install `base reflector intel-ucode fsarchiver`.
+* When doing `pacstrap`, install `base dialog reflector intel-ucode fsarchiver wpa_supplicant`.
 * Don't create a regular user.
 * Don't install the boot manager again. Just add `/boot/loader/entries/fsarchiver.conf`, give this entry `FSArchiver` title and instead of `/dev/mapper/vg1-root` use `/dev/mapper/vg1-backup`.
 * Don't add Secure Boot support again.
@@ -253,6 +253,7 @@ systemctl enable NetworkManager.service
 * Enable tap to click
 * Enable night light
 * Disable sound effects
+* Set Super+D as keyboard shortcut for Hide all normal windows
 * Change font scaling to 1.25 in Tweaks
 * Setup Terminal
 
