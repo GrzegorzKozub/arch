@@ -6,16 +6,53 @@ ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE="%{$fg[yellow]%}"
 ZSH_THEME_GIT_COMMITS_BEHIND_PREFIX=" %{$fg[red]%}↓"
 ZSH_THEME_GIT_COMMITS_AHEAD_PREFIX=" %{$fg[green]%}↑"
 
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg_bold[red]%}✗"
-
 local function current_dir() {
   echo %{$fg[cyan]%}%3~%{$reset_color%}" "
 }
 
 local function git_prompt() {
   if [ -d .git ]; then
-    echo $(git_remote_status)$(git_current_branch)$(git_commits_behind)$(git_commits_ahead)$(parse_git_dirty)%{$reset_color%}" "
+    echo $(git_remote_status)$(git_current_branch)$(git_commits_behind)$(git_commits_ahead)$(git_changes)%{$reset_color%}" "
   fi
+}
+
+local function git_changes() {
+  IFS=''
+
+  stagedAdded=0
+  stagedModified=0
+  stagedDeleted=0
+
+  unstagedAdded=0
+  unstagedModified=0
+  unstagedDeleted=0
+
+  git -c color.status=false status --short | while read line
+  do
+    if [[ $line =~ '^(\w|\?|\s)(\w|\?|\s).+$' ]]; then
+
+      [[ $match[1] == 'A' ]] && stagedAdded=$((stagedAdded + 1))
+      [[ $match[1] == 'M' || $match[1] == 'R' || $match[1] == 'C' ]] && stagedModified=$((stagedModified + 1))
+      [[ $match[1] == 'D' ]] && stagedDeleted=$((stagedDeleted + 1))
+
+      [[ $match[2] == 'A' || $match[2] == '?' ]] && unstagedAdded=$((unstagedAdded + 1))
+      [[ $match[2] == 'M' ]] && unstagedModified=$((unstagedModified + 1))
+      [[ $match[2] == 'D' ]] && unstagedDeleted=$((unstagedDeleted + 1))
+
+    fi
+  done
+
+  changes=""
+
+  if [[ $stagedAdded != 0 || $stagedModified != 0 || $stagedDeleted != 0 ]]; then
+    changes=" %{$fg[green]%}+$stagedAdded ~$stagedModified -$stagedDeleted"
+  fi
+
+  if [[ $unstagedAdded != 0 || $unstagedModified != 0 || $unstagedDeleted != 0 ]]; then
+    changes="$changes %{$fg[red]%}+$unstagedAdded ~$unstagedModified -$unstagedDeleted"
+  fi
+
+  echo $changes
 }
 
 PROMPT='$(current_dir)$(git_prompt)'
