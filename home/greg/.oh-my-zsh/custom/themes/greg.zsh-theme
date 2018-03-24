@@ -12,7 +12,18 @@ local function current_dir() {
 
 local function git_prompt() {
   if [ -d .git ]; then
-    echo $(git_remote_status)$(git_current_branch)$(git_commits_behind)$(git_commits_ahead)$(git_changes)%{$reset_color%}" "
+    echo $(git_branch)$(git_commits)$(git_changes)%{$reset_color%}" "
+  fi
+}
+
+local function git_branch() {
+  echo %{$fg[blue]%}$(git_remote_status)$(git_current_branch)
+}
+
+local function git_commits() {
+  remote=${$(command git rev-parse --verify ${hook_com[branch]}@{upstream} --symbolic-full-name 2>/dev/null)/refs\/remotes\/}
+  if [[ -n ${remote} ]]; then
+    echo " "$(git_commits_behind)$(git_commits_ahead)
   fi
 }
 
