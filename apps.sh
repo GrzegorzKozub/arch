@@ -10,6 +10,7 @@ sudo pacman -S --noconfirm git openssh
 cp `dirname $0`/home/greg/.gitconfig ~
 mkdir ~/.ssh
 cp /mnt/id_rsa* ~/.ssh
+chmod 600 ~/.ssh/id_rsa
 
 # fonts
 sudo pacman -S --noconfirm ttf-fira-mono ttf-freefont noto-fonts-emoji
