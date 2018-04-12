@@ -23,7 +23,7 @@ local function git_branch() {
 local function git_commits() {
   remote=${$(command git rev-parse --verify ${hook_com[branch]}@{upstream} --symbolic-full-name 2>/dev/null)/refs\/remotes\/}
   if [[ -n ${remote} ]]; then
-    echo " "$(git_commits_behind)$(git_commits_ahead)
+    echo ""$(git_commits_behind)$(git_commits_ahead)
   fi
 }
 
