@@ -11,9 +11,10 @@ Installing Arch Linux on Dell XPS 13 9360.
 ## Create archiso USB
 
 1. Download the ISO from [here](https://www.archlinux.org/download/).
-2. Create the USB following [this guide](https://wiki.archlinux.org/index.php/USB_flash_installation_media#Using_Rufus).
+2. Create the USB following [this guide](https://wiki.archlinux.org/index.php/USB_flash_installation_media#Using_Rufus) but use ISO mode and not DD mode.
 3. Add `video=1280x720` to `options` in `loader\entries\archiso-x86_64.conf`.
 4. Make the USB compatible with Secure Boot following [this answer](https://unix.stackexchange.com/questions/320078/how-to-boot-arch-linux-installation-medium-with-secure-boot-enabled).
+5. When booting from the USB for the first time, enroll hash for `arch/boot/x86_64/vmlinuz`.
 
 ## Prepare archiso session
 
