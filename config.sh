@@ -1,7 +1,3 @@
-if [[ "$1" != "root" && "$1" != "backup" ]]; then
-  exit 1
-fi
-
 set -o verbose
 
 ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
@@ -23,12 +19,10 @@ while [[ ! $? == 0 ]]; do
   passwd
 done
 
-if [[ "$1" = "root" ]]; then
-  useradd -m -g users -G wheel -s /bin/zsh greg
-  export $?=1
-  while [[ ! $? == 0 ]]; do
-    passwd greg
-  done
-  EDITOR=nano visudo
-fi
+useradd -m -g users -G wheel -s /bin/zsh greg
+export $?=1
+while [[ ! $? == 0 ]]; do
+  passwd greg
+done
+EDITOR=nano visudo
 

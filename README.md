@@ -62,7 +62,7 @@ mkfs.ext4 /dev/mapper/vg1-backup
 cryptsetup luksOpen /dev/nvme0n1p6 lvm
 ```
 
-## Install main operating system
+## Install operating system
 
 1. Mount the volumes:
 
@@ -213,16 +213,6 @@ umount -R /mnt
 ```
 timedatectl set-ntp true
 ```
-
-## Install backup operating system
-
-Prepare archiso session and prepare disk following the steps above. Then go through the same steps as for installing main operating system, with these exceptions:
-
-* When mounting the volumes, instead of `/dev/mapper/vg1-root` use `/dev/mapper/vg1-backup`.
-* When doing `pacstrap`, install `base dialog reflector intel-ucode fsarchiver wpa_supplicant`.
-* Don't create a regular user.
-* Don't install the boot manager again. Just add `/boot/loader/entries/fsarchiver.conf`, give this entry `FSArchiver` title and instead of `/dev/mapper/vg1-root` use `/dev/mapper/vg1-backup`.
-* Don't add Secure Boot support again.
 
 ## Install GNOME
 

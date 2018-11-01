@@ -1,7 +1,3 @@
-if [[ "$1" != "root" && "$1" != "backup" ]]; then
-  exit 1
-fi
-
 set -o verbose
 
 mkfs.ext4 /dev/mapper/vg1-$1
@@ -14,20 +10,12 @@ mount /dev/nvme0n1p2 /mnt/boot
 rm /mnt/boot/*.img
 rm /mnt/boot/vmlinuz-linux
 
-if [[ "$1" = "root" ]]; then
-  pacstrap /mnt \
-    base base-devel \
-    sudo reflector dialog wpa_supplicant zsh \
-    intel-ucode \
-    xf86-video-intel xorg-server gnome gnome-tweak-tool networkmanager \
-    git
-else
-  pacstrap /mnt \
-    base \
-    reflector \
-    intel-ucode \
-    fsarchiver
-fi
+pacstrap /mnt \
+  base base-devel \
+  sudo reflector dialog wpa_supplicant zsh \
+  intel-ucode \
+  xf86-video-intel xorg-server gnome gnome-tweak-tool networkmanager \
+  git
 
 genfstab -U /mnt > /mnt/etc/fstab
 
