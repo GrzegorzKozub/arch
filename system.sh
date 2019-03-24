@@ -1,9 +1,9 @@
 set -o verbose
 
-mkfs.ext4 /dev/mapper/vg1-$1
+mkfs.ext4 /dev/mapper/vg1-root
 
 swapon /dev/mapper/vg1-swap
-mount /dev/mapper/vg1-$1 /mnt
+mount /dev/mapper/vg1-root /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p2 /mnt/boot
 
@@ -15,12 +15,13 @@ pacstrap /mnt \
   sudo reflector dialog wpa_supplicant zsh \
   intel-ucode \
   xf86-video-intel xorg-server gnome gnome-tweak-tool networkmanager \
-  git
+  git \
+  efibootmgr
 
 genfstab -U /mnt > /mnt/etc/fstab
 
 cp -r `dirname $0`/../Arch /mnt/root
-arch-chroot /mnt ~/Arch/config.sh
+arch-chroot /mnt ~/Arch/system2.sh
 rm -rf /mnt/root/Arch
 
 swapoff /dev/mapper/vg1-swap

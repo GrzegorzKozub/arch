@@ -1,5 +1,12 @@
 set -o verbose
 
+timedatectl set-ntp true
+
+systemctl enable gdm.service
+systemctl enable NetworkManager.service
+
+grpck
+
 sudo mount /dev/sda2 /mnt
 if [[ ! $? == 0 ]]; then
   exit 1
@@ -9,7 +16,7 @@ fi
 sudo pacman -S --noconfirm git openssh
 cp `dirname $0`/home/greg/.gitconfig ~
 mkdir ~/.ssh
-cp /mnt/id_rsa* ~/.ssh
+cp /mnt/.greg/id_rsa* ~/.ssh
 chmod 600 ~/.ssh/id_rsa
 
 # fonts
@@ -82,6 +89,7 @@ git clone git@github.com:GrzegorzKozub/Vim.git ~/.vim
 sudo pacman -S --noconfirm mc
 
 # Arch
+rm -rf ~/Code
 mkdir ~/Code
 git clone git@github.com:GrzegorzKozub/Arch.git ~/Code/Arch
 
