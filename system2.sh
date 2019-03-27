@@ -36,12 +36,13 @@ done
 # normal user
 
 useradd -m -g users -G wheel -s /bin/zsh greg
+
 (exit 1)
 while [[ ! $? == 0 ]]; do
   passwd greg
 done
-read -p "Copy root settings for the normal user and exit writing the file"
-EDITOR=nano visudo
+
+echo "greg ALL=(ALL:ALL) ALL" | sudo EDITOR="tee -a" visudo
 
 # initial zsh profile
 
