@@ -1,4 +1,4 @@
-set -o verbose
+set -e -o verbose
 
 timedatectl set-ntp true
 
