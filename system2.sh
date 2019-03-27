@@ -43,8 +43,7 @@ done
 read -p "Copy root settings for the normal user and exit writing the file"
 EDITOR=nano visudo
 
-# TODO: make part of boot.sh and fix permissions for normal user
+# scripts
 
-mkdir /home/greg/Code
-cp -r /root/Arch /home/greg/Code
+su greg --command "mkdir ~/Code; git clone https://github.com/GrzegorzKozub/Arch.git ~/Code/Arch"
 
