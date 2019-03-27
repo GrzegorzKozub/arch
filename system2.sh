@@ -22,6 +22,10 @@ cp `dirname $0`/etc/hosts /etc
 cp `dirname $0`/etc/mkinitcpio.conf /etc
 mkinitcpio -p linux
 
+# pacman mirror list
+
+reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist
+
 # root password
 
 (exit 1)

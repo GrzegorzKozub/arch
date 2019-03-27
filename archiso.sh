@@ -12,7 +12,6 @@ sleep 10
 
 # pacman mirror list
 
-cp `dirname $0`/etc/pacman.d/mirrorlist /etc/pacman.d
 pacman -Sy --noconfirm reflector
 reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist
 
