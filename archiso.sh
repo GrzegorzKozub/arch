@@ -15,7 +15,12 @@ sleep 10
 pacman -Sy --noconfirm reflector
 reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist
 
-# backup tool
+# tools
 
-pacman -Sy --noconfirm fsarchiver
+pacman -Sy --noconfirm fsarchiver git
+
+# scripts
+
+if [ -d Arch ]; then rm -rf Arch; fi
+git clone https://github.com/GrzegorzKozub/Arch.git
 
