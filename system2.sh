@@ -43,6 +43,11 @@ done
 read -p "Copy root settings for the normal user and exit writing the file"
 EDITOR=nano visudo
 
+# initial zsh profile
+
+touch /home/greg/.zshrc
+chown greg:users /home/greg/.zshrc
+
 # scripts
 
 su greg --command "mkdir ~/Code; git clone https://github.com/GrzegorzKozub/Arch.git ~/Code/Arch"
