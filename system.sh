@@ -8,13 +8,13 @@ mkfs.ext4 /dev/mapper/vg1-root
 
 swapon /dev/mapper/vg1-swap
 mount /dev/mapper/vg1-root /mnt
-mkdir /mnt/boot
+if [ ! -d /mnt/boot ]; then mkdir /mnt/boot; fi
 mount /dev/nvme0n1p2 /mnt/boot
 
 # previous linux kernels
 
-rm /mnt/boot/*.img
-rm /mnt/boot/vmlinuz-linux
+if [ -f /mnt/boot/*.img ]; then rm /mnt/boot/*.img; fi
+if [ -f /mnt/boot/vmlinuz-linux ]; then rm /mnt/boot/vmlinuz-linux; fi
 
 # operating system
 
