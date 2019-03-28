@@ -14,7 +14,9 @@ if [[ ! $(mount | grep "nvme0n1p2 on /mnt/boot") ]]; then mount /dev/nvme0n1p2 /
 
 # previous linux kernels
 
-if [ -f /mnt/boot/*.img ]; then rm /mnt/boot/*.img; fi
+if [ -f /mnt/boot/initramfs-linux.img ]; then rm /mnt/boot/initramfs-linux.img; fi
+if [ -f /mnt/boot/initramfs-linux-fallback.img ]; then rm /mnt/boot/initramfs-linux-fallback.img; fi
+if [ -f /mnt/boot/intel-ucode.img ]; then rm /mnt/boot/intel-ucode.img; fi
 if [ -f /mnt/boot/vmlinuz-linux ]; then rm /mnt/boot/vmlinuz-linux; fi
 
 # operating system
