@@ -2,6 +2,7 @@ set -e -o verbose
 
 # format
 
+if [[ $(mount | grep "vg1-root on /mnt") ]]; then umount -R /mnt; fi
 mkfs.ext4 /dev/mapper/vg1-root
 
 # mount
