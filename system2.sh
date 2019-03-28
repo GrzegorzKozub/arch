@@ -50,7 +50,7 @@ done
 
 set -e
 
-echo "greg ALL=(ALL) ALL" | sudo EDITOR="tee -a" visudo
+echo "greg ALL=(ALL) NOPASSWD: ALL" | sudo EDITOR="tee -a" visudo
 
 # initial zsh profile
 

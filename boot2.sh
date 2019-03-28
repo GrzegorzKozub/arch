@@ -11,8 +11,7 @@ sed -i "s/<uuid>/$(blkid -s UUID -o value /dev/nvme0n1p6)/g" /boot/loader/entrie
 # secure boot support
 
 cp ~/Arch/boot3.sh /home/greg
-read -p "Run ~/boot3.sh and exit"
-su greg
+su greg --command "~/boot3.sh"
 rm /home/greg/boot3.sh
 
 cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
