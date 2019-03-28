@@ -28,21 +28,29 @@ reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist
 
 # root password
 
+set +e
+
 (exit 1)
 while [[ ! $? == 0 ]]; do
   passwd
 done
 
+set -e
+
 # normal user
 
 useradd -m -g users -G wheel -s /bin/zsh greg
+
+set +e
 
 (exit 1)
 while [[ ! $? == 0 ]]; do
   passwd greg
 done
 
-echo "greg ALL=(ALL:ALL) ALL" | sudo EDITOR="tee -a" visudo
+set -e
+
+echo "greg ALL=(ALL) ALL" | sudo EDITOR="tee -a" visudo
 
 # initial zsh profile
 
