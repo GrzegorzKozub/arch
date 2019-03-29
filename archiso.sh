@@ -18,7 +18,7 @@ reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist
 
 # tools
 
-pacman -S --noconfirm git mc
+pacman -S --noconfirm git
 
 # scripts
 
