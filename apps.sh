@@ -7,7 +7,7 @@ systemctl enable NetworkManager.service
 
 grpck
 
-sudo mount /dev/sda2 /mnt
+if [[ ! $(mount | grep "sda1 on /mnt") ]]; then mount /dev/sda1 /mnt; fi
 
 # git
 sudo pacman -S --noconfirm git openssh
