@@ -22,8 +22,13 @@ cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
 for BOOTNUM in $(efibootmgr | grep "Linux Boot Manager" | sed -E 's/^Boot(.+)\* Linux.*$/\1/g'); do
   efibootmgr --delete-bootnum --bootnum $BOOTNUM
 done
+
 efibootmgr --disk /dev/nvme0n1 --part 2 --create --label "Linux Boot Manager" --loader /EFI/systemd/PreLoader.efi
-efibootmgr --bootorder \
-  $(efibootmgr | grep "Windows Boot Manager" | head -n1 | sed -E 's/^Boot(.+)\* Windows Boot Manager$/\1/g'),\
-  $(efibootmgr | grep "Linux Boot Manager" | sed -E 's/^Boot(.+)\* Linux Boot Manager$/\1/g')
+
+WINDOWS=$(efibootmgr | grep "Windows Boot Manager" | head -n1 | sed -E 's/^Boot(.+)\* Windows Boot Manager$/\1/g')
+LINUX=$(efibootmgr | grep "Linux Boot Manager" | sed -E 's/^Boot(.+)\* Linux Boot Manager$/\1/g')
+
+efibootmgr --bootorder $WINDOWS,$LINUX
+
+unset WINDOWS LINUX
 
