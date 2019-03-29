@@ -8,9 +8,6 @@ systemctl enable NetworkManager.service
 grpck
 
 sudo mount /dev/sda2 /mnt
-if [[ ! $? == 0 ]]; then
-  exit 1
-fi
 
 # git
 sudo pacman -S --noconfirm git openssh
