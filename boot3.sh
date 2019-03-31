@@ -10,6 +10,7 @@ git clone https://aur.archlinux.org/preloader-signed.git
 cd preloader-signed
 
 makepkg -si --noconfirm
+git clean -fdx
 
 cd ~
 
