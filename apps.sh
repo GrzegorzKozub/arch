@@ -1,51 +1,69 @@
 set -e -o verbose
 
-timedatectl set-ntp true
+# internet
 
-systemctl enable gdm.service
-systemctl enable NetworkManager.service
+wifi-menu
+sleep 10
+#elinks google.com
 
-grpck
+# mount
 
 if [[ ! $(mount | grep "sda1 on /mnt") ]]; then mount /dev/sda1 /mnt; fi
 
 # git
+
 sudo pacman -S --noconfirm git openssh
+
 cp `dirname $0`/home/greg/.gitconfig ~
 mkdir ~/.ssh
 cp /mnt/.greg/id_rsa* ~/.ssh
 chmod 600 ~/.ssh/id_rsa
 
 # fonts
+
 sudo pacman -S --noconfirm ttf-fira-mono ttf-freefont noto-fonts-emoji
+
 cd ~/AUR
 git clone https://aur.archlinux.org/otf-fira-code.git
 cd otf-fira-code
+
 makepkg -si --noconfirm
 git clean -fdx
-cd ../..
+
+cd ~
 
 # zsh and oh-my-zsh
+
 sudo pacman -S --noconfirm wget zsh
+
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 cp -r `dirname $0`/home/greg/.oh-my-zsh/custom/themes ~/.oh-my-zsh/custom
 cp `dirname $0`/home/greg/.zshrc ~
+
 rm ~/.zshrc.pre-oh-my-zsh
 
-# Chrome
+# chrome
+
 cd ~/AUR
 git clone https://aur.archlinux.org/google-chrome.git
 cd google-chrome
+
 makepkg -si --noconfirm
 git clean -fdx
-cd ../..
 
-# KeePass
+cd ~
+
+# keepass
+
 sudo pacman -S --noconfirm keepass
+
 cp `dirname $0`/home/greg/.config/KeePass ~/.config
 
-# Node.js and Yarn
+# nodejs and yarn
+
 sudo pacman -S --noconfirm nodejs yarn
+
 yarn global add \
   @angular/cli \
   babel-cli \
@@ -62,31 +80,45 @@ yarn global add \
   typescript-formatter \
   yo
 
-# .NET Core, Go, Perl, Python and Ruby
+# dotnet, go, perl, python and ruby
+
 sudo pacman -S --noconfirm dotnet-sdk go perl python ruby
 
-# Docker
+# docker
+
 sudo pacman -S --noconfirm docker
+
 sudo systemctl enable docker.service
 sudo systemctl start docker.service
 
-# Visual Studio Code
+# vscode
+
 cd ~/AUR
 git clone https://aur.archlinux.org/visual-studio-code-bin.git
 cd visual-studio-code-bin
+
 makepkg -si --noconfirm
 git clean -fdx
-cd ../..
 
-# Vim
+cd ~
+
+# vim
+
 sudo pacman -S --noconfirm astyle ctags editorconfig-core-c fzf ripgrep tidy vim
+
 git clone git@github.com:GrzegorzKozub/Vim.git ~/.vim
 
-# Midnight Commander
+# mc
+
 sudo pacman -S --noconfirm mc
 
-# Arch
-rm -rf ~/Code
-mkdir ~/Code
+# scripts
+
+if [ ! -d ~/Code ]; then mkdir ~/Code; fi
+if [ ! -d ~/Code/Arch ]; then rm -rf ~/Code/Arch; fi
 git clone git@github.com:GrzegorzKozub/Arch.git ~/Code/Arch
+
+# unmount
+
+umount -R /mnt
 
