@@ -58,7 +58,7 @@ cd ~
 
 sudo pacman -S --noconfirm keepass
 
-cp `dirname $0`/home/greg/.config/KeePass ~/.config
+cp -r `dirname $0`/home/greg/.config/KeePass ~/.config
 
 # nodejs and yarn
 
@@ -115,7 +115,7 @@ sudo pacman -S --noconfirm mc
 # scripts
 
 if [ ! -d ~/Code ]; then mkdir ~/Code; fi
-if [ ! -d ~/Code/Arch ]; then rm -rf ~/Code/Arch; fi
+if [ -d ~/Code/Arch ]; then rm -rf ~/Code/Arch; fi
 git clone git@github.com:GrzegorzKozub/Arch.git ~/Code/Arch
 
 # unmount
