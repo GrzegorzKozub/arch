@@ -10,6 +10,10 @@ sleep 10
 
 if [[ ! $(sudo mount | grep "sda1 on /mnt") ]]; then sudo mount /dev/sda1 /mnt; fi
 
+# pacman db sync
+
+pacman -Syu --noconfirm
+
 # git
 
 sudo pacman -S --noconfirm git openssh
