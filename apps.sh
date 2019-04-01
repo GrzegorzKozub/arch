@@ -2,13 +2,13 @@ set -e -o verbose
 
 # internet
 
-wifi-menu
+sudo wifi-menu
 sleep 10
 #elinks google.com
 
 # mount
 
-if [[ ! $(mount | grep "sda1 on /mnt") ]]; then mount /dev/sda1 /mnt; fi
+if [[ ! $(sudo mount | grep "sda1 on /mnt") ]]; then sudo mount /dev/sda1 /mnt; fi
 
 # git
 
@@ -120,5 +120,5 @@ git clone git@github.com:GrzegorzKozub/Arch.git ~/Code/Arch
 
 # unmount
 
-umount -R /mnt
+sudo umount -R /mnt
 
