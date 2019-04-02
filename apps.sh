@@ -125,6 +125,7 @@ cd ~
 
 sudo pacman -S --noconfirm astyle ctags editorconfig-core-c fzf ripgrep tidy vim
 
+if [ -d ~/.vim ]; then rm -rf ~/.vim; fi
 git clone git@github.com:GrzegorzKozub/Vim.git ~/.vim
 
 vim -c "PlugInstall | exit"
