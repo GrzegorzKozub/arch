@@ -104,6 +104,21 @@ cd visual-studio-code-bin
 makepkg -si --noconfirm
 git clean -fdx
 
+for extension in \
+  ms-vscode.azure-account \
+  msjsdiag.debugger-for-chrome \
+  peterjausovec.vscode-docker \
+  editorconfig.editorconfig \
+  dbaeumer.vscode-eslint \
+  ms-vscode.go \
+  pkief.material-icon-theme \
+  equinusocio.vsc-material-theme \
+  shan.code-settings-sync \
+  ms-vscode.vscode-typescript-tslint-plugin
+do
+  code --install-extension $extension --force
+done
+
 cd ~
 
 # vim
