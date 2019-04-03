@@ -113,7 +113,6 @@ for extension in \
   ms-vscode.go \
   pkief.material-icon-theme \
   equinusocio.vsc-material-theme \
-  shan.code-settings-sync \
   ms-vscode.vscode-typescript-tslint-plugin
 do
   code --install-extension $extension --force
