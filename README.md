@@ -31,16 +31,3 @@ Installing Arch Linux on Dell XPS 13 9360
 2. Run `~/Code/Arch/config.sh` to finish configuring Arch and Gnome
 3. Run `~/Code/Arch/apps.sh` to install and configure the apps
 
-## Manual config
-
-* Connect to Internet
-* Change language formats and input source to Polish
-* Enable automatic suspend
-* Enable tap to click
-* Enable night light
-* Disable sound effects
-* Set Super+D as keyboard shortcut for Hide all normal windows
-* Change font scaling to 1.25 in Tweaks
-* Setup Terminal
-* Install Dim On Battery Power extension
-
