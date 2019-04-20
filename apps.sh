@@ -105,15 +105,16 @@ makepkg -si --noconfirm
 git clean -fdx
 
 for extension in \
+  dbaeumer.vscode-eslint \
+  editorconfig.editorconfig \
+  equinusocio.vsc-material-theme \
   ms-vscode.azure-account \
+  ms-vscode.go \
+  ms-vscode.vscode-typescript-tslint-plugin \
   msjsdiag.debugger-for-chrome \
   peterjausovec.vscode-docker \
-  editorconfig.editorconfig \
-  dbaeumer.vscode-eslint \
-  ms-vscode.go \
   pkief.material-icon-theme \
-  equinusocio.vsc-material-theme \
-  ms-vscode.vscode-typescript-tslint-plugin
+  vscode-elixir
 do
   code --install-extension $extension --force
 done
