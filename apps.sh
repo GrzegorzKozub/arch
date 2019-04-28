@@ -107,14 +107,18 @@ git clean -fdx
 for extension in \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
+  esbenp.prettier-vscode \
   equinusocio.vsc-material-theme \
   ms-vscode.azure-account \
+  ms-vscode.csharp \
   ms-vscode.go \
+  ms-vscode.PowerShell \
   ms-vscode.vscode-typescript-tslint-plugin \
   msjsdiag.debugger-for-chrome \
   peterjausovec.vscode-docker \
   pkief.material-icon-theme \
-  vscode-elixir
+  vscode-elixir \
+  vscode-elixir-formatter
 do
   code --install-extension $extension --force
 done
