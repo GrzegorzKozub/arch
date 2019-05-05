@@ -109,6 +109,7 @@ for extension in \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
   equinusocio.vsc-material-theme \
+  JakeBecker.elixir-ls \
   ms-vscode.azure-account \
   ms-vscode.csharp \
   ms-vscode.go \
@@ -116,9 +117,7 @@ for extension in \
   ms-vscode.vscode-typescript-tslint-plugin \
   msjsdiag.debugger-for-chrome \
   peterjausovec.vscode-docker \
-  pkief.material-icon-theme \
-  vscode-elixir \
-  vscode-elixir-formatter
+  pkief.material-icon-theme
 do
   code --install-extension $extension --force
 done
