@@ -1,5 +1,5 @@
 typeset -U path
-path=(~/.yarn/bin $path[@])
+path=(~/go/bin ~/.yarn/bin $path[@])
 
 export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
 export EDITOR='vim'
