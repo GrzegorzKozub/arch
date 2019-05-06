@@ -131,6 +131,27 @@ done
 
 gometalinter --install
 
+# erlang, elixir and elixir-ls
+
+sudo pacman -S --noconfirm elixir
+
+mix local.hex --force
+mix local.rebar --force
+mix archive.install hex phx_new --force
+
+cp `dirname $0`/home/greg/.iex.exs ~
+
+if [ ! -d ~/Code ]; then mkdir ~/Code; fi
+if [ -d ~/Code/elixir-ls ]; then rm -rf ~/Code/elixir-ls; fi
+git clone https://github.com/JakeBecker/elixir-ls.git ~/Code/elixir-ls
+cd ~/Code/elixir-ls
+
+mix deps.get
+mix compile
+mix elixir_ls.release -o release
+
+cd ~
+
 # docker
 
 sudo pacman -S --noconfirm docker
