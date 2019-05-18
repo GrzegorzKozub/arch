@@ -77,6 +77,7 @@ yarn global add \
   gulp-cli \
   js-beautify \
   karma-cli \
+  neovim \
   pm2 \
   rimraf \
   tslint \
