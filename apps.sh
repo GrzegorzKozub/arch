@@ -84,14 +84,19 @@ yarn global add \
   typescript-formatter \
   yo
 
-# dotnet, perl and ruby
+# dotnet and perl
 
-sudo pacman -S --noconfirm dotnet-sdk perl ruby
+sudo pacman -S --noconfirm dotnet-sdk perl
 
 # python
 
 sudo pacman -S --noconfirm python
 pip install httpie pynvim --user
+
+# ruby
+
+sudo pacman -S --noconfirm ruby
+gem install neovim --user-install
 
 # go
 
