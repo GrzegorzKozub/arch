@@ -92,7 +92,9 @@ sudo pacman -S --noconfirm dotnet-sdk perl
 # python
 
 sudo pacman -S --noconfirm python
+
 pip install httpie pynvim --user
+pip install vim-vint --user --pre
 
 # ruby
 
