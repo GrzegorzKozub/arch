@@ -66,7 +66,7 @@ cp -r `dirname $0`/home/greg/.config/KeePass ~/.config
 
 # nodejs and yarn
 
-sudo pacman -S --noconfirm nodejs yarn
+sudo pacman -S --noconfirm nodejs npm yarn
 
 yarn global add \
   @angular/cli \
@@ -91,7 +91,7 @@ sudo pacman -S --noconfirm dotnet-sdk perl
 
 # python
 
-sudo pacman -S --noconfirm python
+sudo pacman -S --noconfirm python python-pip
 
 pip install httpie pynvim --user
 pip install vim-vint --user --pre
@@ -193,9 +193,10 @@ git clone git@github.com:GrzegorzKozub/VisualStudioCode.git ~/.config/Code
 
 cd ~
 
-# vim
+# vim and neovim
 
 sudo pacman -S --noconfirm astyle ctags editorconfig-core-c fzf ripgrep tidy vim
+sudo pacman -S --noconfirm glibc neovim
 
 if [ -d ~/.vim ]; then rm -rf ~/.vim; fi
 git clone git@github.com:GrzegorzKozub/Vim.git ~/.vim
