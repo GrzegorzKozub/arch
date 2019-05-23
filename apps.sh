@@ -203,6 +203,8 @@ git clone git@github.com:GrzegorzKozub/Vim.git ~/.vim
 
 vim -c "PlugInstall | exit"
 
+ln -s ~/.vim  ~/.config/nvim
+
 # mc
 
 sudo pacman -S --noconfirm mc
