@@ -12,7 +12,11 @@ if [[ ! $(sudo mount | grep "sda1 on /mnt") ]]; then sudo mount /dev/sda1 /mnt; 
 
 # pacman db sync
 
-pacman -Syu --noconfirm
+sudo pacman -Syu --noconfirm
+
+# AUR
+
+if [ ! -d ~/AUR ]; then mkdir ~/AUR; fi
 
 # git
 
@@ -25,7 +29,7 @@ chmod 600 ~/.ssh/id_rsa
 
 # fonts
 
-sudo pacman -S --noconfirm ttf-fira-mono ttf-freefont noto-fonts-emoji
+sudo pacman -S --noconfirm gnu-free-fonts noto-fonts-emoji ttf-fira-mono
 
 cd ~/AUR
 git clone https://aur.archlinux.org/otf-fira-code.git
