@@ -146,7 +146,7 @@ do
   go get -u $package
 done
 
-gometalinter --install
+~/go/bin/gometalinter --install
 
 # erlang and elixir
 
@@ -186,7 +186,7 @@ for extension in \
   ms-vscode.PowerShell \
   ms-vscode.vscode-typescript-tslint-plugin \
   msjsdiag.debugger-for-chrome \
-  peterjausovec.vscode-docker \
+  ms-azuretools.vscode-docker \
   pkief.material-icon-theme
 do
   code --install-extension $extension --force

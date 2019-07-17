@@ -9,7 +9,7 @@
 	<Application>
 		<LastUpdateCheck>2018-03-04T09:02:40Z</LastUpdateCheck>
 		<LastUsedFile>
-			<Path>../../../home/greg/Documents/Greg.kdbx</Path>
+			<Path>../../../home/greg/Documents/greg.kdbx</Path>
 			<CredProtMode>Obf</CredProtMode>
 			<CredSaveMode>NoSave</CredSaveMode>
 		</LastUsedFile>
@@ -17,7 +17,7 @@
 			<MaxItemCount>12</MaxItemCount>
 			<Items>
 				<ConnectionInfo>
-					<Path>../../../home/greg/Documents/Greg.kdbx</Path>
+					<Path>../../../home/greg/Documents/greg.kdbx</Path>
 					<CredProtMode>Obf</CredProtMode>
 					<CredSaveMode>NoSave</CredSaveMode>
 				</ConnectionInfo>
@@ -146,9 +146,9 @@
 		</SearchParameters>
 		<KeySources>
 			<Association>
-				<DatabasePath>../../../home/greg/Documents/Greg.kdbx</DatabasePath>
+				<DatabasePath>../../../home/greg/Documents/greg.kdbx</DatabasePath>
 				<Password>true</Password>
-				<KeyFilePath>../../../home/greg/Documents/Greg.key</KeyFilePath>
+				<KeyFilePath>../../../home/greg/Documents/greg.key</KeyFilePath>
 			</Association>
 		</KeySources>
 	</Defaults>
