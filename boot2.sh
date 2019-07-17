@@ -6,7 +6,7 @@ bootctl --path=/boot install
 
 cp `dirname $0`/boot/loader/loader.conf /boot/loader
 cp `dirname $0`/boot/loader/entries/arch.conf /boot/loader/entries
-sed -i "s/<uuid>/$(blkid -s UUID -o value /dev/nvme0n1p6)/g" /boot/loader/entries/arch.conf
+sed -i "s/<uuid>/$(blkid -s UUID -o value /dev/nvme0n1p7)/g" /boot/loader/entries/arch.conf
 
 # secure boot support
 

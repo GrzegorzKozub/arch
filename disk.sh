@@ -7,8 +7,8 @@ cfdisk /dev/nvme0n1
 
 # encryption
 
-cryptsetup luksFormat --type luks2 /dev/nvme0n1p6
-cryptsetup luksOpen /dev/nvme0n1p6 lvm
+cryptsetup luksFormat --type luks2 /dev/nvme0n1p7
+cryptsetup luksOpen /dev/nvme0n1p7 lvm
 
 # logical volumes
 
