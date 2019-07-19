@@ -62,11 +62,11 @@ git clean -fdx
 
 cd ~
 
-# keepass
+# keepassxc
 
-sudo pacman -S --noconfirm keepass
+sudo pacman -S --noconfirm keepassxc
 
-cp -r `dirname $0`/home/greg/.config/KeePass ~/.config
+cp -r `dirname $0`/home/greg/.config/keepassxc ~/.config
 
 # nodejs and yarn
 
