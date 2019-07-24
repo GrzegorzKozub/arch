@@ -19,7 +19,7 @@ Installing Arch Linux on Dell XPS 13 9360
 
 ## Installation
 
-1. Boot from archiso and remain in `~`
+1. Boot from archiso
 2. Run `/run/archiso/bootmnt/.Arch/archiso.sh` to setup the session and clone these scripts to `~`
 3. Change directory to `~/Arch`
 4. Once per machine, run `disk.sh` to create the encrypted partition and logical volumes on it. Otherwise run `unlock.sh` to open the partition
