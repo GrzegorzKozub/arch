@@ -53,12 +53,15 @@
     trustExitCode = true
 [pack]
     packSizeLimit = 2g
+[pull]
+    rebase = true
 [push]
     default = simple
 [rebase]
     autosquash = true
+    autostash = true
 [rerere]
     enabled = true
 [user]
     email = grzegorz.kozub@gmail.com
-    name = Grzegorz Kozub
+    name = greg
