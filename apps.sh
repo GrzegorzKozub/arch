@@ -89,9 +89,13 @@ yarn global add \
   typescript-formatter \
   yo
 
-# dotnet and perl
+# dotnet
 
-sudo pacman -S --noconfirm dotnet-sdk perl
+sudo pacman -S --noconfirm dotnet-sdk
+
+# perl
+
+sudo pacman -S --noconfirm perl
 
 # python
 
