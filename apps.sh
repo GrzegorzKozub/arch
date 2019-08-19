@@ -18,13 +18,14 @@ sudo pacman -Syu --noconfirm
 
 if [ ! -d ~/AUR ]; then mkdir ~/AUR; fi
 
-# git
+# git and openssh
 
 sudo pacman -S --noconfirm git openssh
 
 cp `dirname $0`/home/greg/.gitconfig ~
 mkdir ~/.ssh
-cp /mnt/.Arch/id_rsa* ~/.ssh
+cp /mnt/.Arch/.ssh/config ~/.ssh
+cp -r /mnt/.Arch/.ssh/github.com ~/.ssh
 chmod 600 ~/.ssh/id_rsa
 
 # fonts
