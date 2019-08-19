@@ -15,4 +15,3 @@ source $ZSH/oh-my-zsh.sh
 setopt nobeep
 
 alias ls='ls --color=auto --group-directories-first --human-readable'
-alias gogh='wget -O gogh https://git.io/vQgMr && chmod +x gogh && ./gogh && rm gogh'
