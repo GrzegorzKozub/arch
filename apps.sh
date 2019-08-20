@@ -184,11 +184,13 @@ for extension in \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
   equinusocio.vsc-material-theme \
+  humao.rest-client \
   JakeBecker.elixir-ls \
   ms-vscode.azure-account \
   ms-vscode.csharp \
   ms-vscode.go \
   ms-vscode.PowerShell \
+  ms-vscode-remote.remote-wsl \
   ms-vscode.vscode-typescript-tslint-plugin \
   msjsdiag.debugger-for-chrome \
   ms-azuretools.vscode-docker \
