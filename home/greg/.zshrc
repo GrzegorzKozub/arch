@@ -6,7 +6,7 @@ export EDITOR='vim'
 export ENABLE_CORRECTION=true
 export ZSH=~/.oh-my-zsh
 
-ZSH_THEME='greg-dir-git'
+ZSH_THEME='greg'
 
 plugins=(docker yarn)
 

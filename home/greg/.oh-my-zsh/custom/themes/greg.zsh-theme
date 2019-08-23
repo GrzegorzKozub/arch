@@ -6,13 +6,16 @@ ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE="%{$fg[yellow]%}"
 ZSH_THEME_GIT_COMMITS_BEHIND_PREFIX=" %{$fg[red]%}↓"
 ZSH_THEME_GIT_COMMITS_AHEAD_PREFIX=" %{$fg[green]%}↑"
 
-local function current_dir() {
-  echo %{$fg[cyan]%}%3~%{$reset_color%}" "
-}
+user=%{%(!.$fg[red].$fg[green])%}%n%{$reset_color%}
+host=%{$fg[yellow]%}%m%{$reset_color%}
+dir=%{$fg[cyan]%}%3~%{$reset_color%}
+
+at=%{$terminfo[bold]$fg[grey]%}@%{$reset_color%}
+input=%{$terminfo[bold]$fg[grey]%}\>%{$reset_color%}
 
 local function git_prompt() {
   if git rev-parse --git-dir > /dev/null 2>&1; then
-    echo $(git_branch)$(git_commits)$(git_changes)%{$reset_color%}" "
+    echo $(git_branch)$(git_commits)$(git_changes)%{$reset_color%}
   fi
 }
 
@@ -66,5 +69,8 @@ local function git_changes() {
   echo $changes
 }
 
-PROMPT='$(current_dir)$(git_prompt)'
+PROMPT='${user}${at}${host} ${dir}'
+if [[ ! "$(< /proc/version)" == *@(Microsoft|WSL)* ]]; then PROMPT="${PROMPT} $(git_prompt)"; fi
+PROMPT="${PROMPT}
+${input} "
 
