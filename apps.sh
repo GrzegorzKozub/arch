@@ -26,7 +26,8 @@ cp `dirname $0`/home/greg/.gitconfig ~
 mkdir ~/.ssh
 cp /mnt/.Arch/.ssh/config ~/.ssh
 cp -r /mnt/.Arch/.ssh/github.com ~/.ssh
-chmod 600 ~/.ssh/id_rsa
+chmod 600 ~/.ssh/config
+chmod 600 ~/.ssh/github.com/id_rsa
 
 # fonts
 
