@@ -1,5 +1,5 @@
 typeset -U path
-path=(~/.gem/ruby/2.6.0/bin ~/.local/bin ~/.yarn/bin ~/go/bin $path[@])
+path=(~/.gem/ruby/2.6.0/bin ~/.local/bin ~/go/bin ~/.npm/bin $path[@])
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export EDITOR='vim'
@@ -9,7 +9,7 @@ export ZSH=~/.oh-my-zsh
 
 ZSH_THEME='greg'
 
-plugins=(docker docker-compose docker-machine golang httpie mix npm yarn zsh-syntax-highlighting)
+plugins=(docker docker-compose docker-machine golang httpie mix npm zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 

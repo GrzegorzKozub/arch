@@ -72,26 +72,24 @@ sudo pacman -S --noconfirm keepassxc
 
 cp -r `dirname $0`/home/greg/.config/keepassxc ~/.config
 
-# nodejs and yarn
+# nodejs
 
-sudo pacman -S --noconfirm nodejs npm yarn
+sudo pacman -S --noconfirm nodejs npm
 
-yarn global add \
+npm install --global \
   @angular/cli \
-  babel-cli \
   create-react-app \
   eslint \
   express-generator \
-  gulp-cli \
   js-beautify \
-  karma-cli \
   neovim \
-  pm2 \
   rimraf \
   tslint \
   typescript \
-  typescript-formatter \
-  yo
+  typescript-formatter
+
+cp `dirname $0`/home/greg/.angular-config.json ~
+cp `dirname $0`/home/greg/.npmrc ~
 
 # dotnet
 
