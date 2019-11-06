@@ -83,6 +83,7 @@ npm install --global \
   express-generator \
   js-beautify \
   neovim \
+  pm2 \
   rimraf \
   tslint \
   typescript \
