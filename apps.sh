@@ -110,7 +110,7 @@ sudo pacman -S --noconfirm perl
 
 sudo pacman -S --noconfirm python python-pip
 
-pip install httpie pynvim --user
+pip install pynvim --user
 pip install vim-vint --user --pre
 
 # ruby
