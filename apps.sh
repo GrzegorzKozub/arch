@@ -74,6 +74,9 @@ cp -r `dirname $0`/home/greg/.config/keepassxc ~/.config
 
 # nodejs
 
+cp `dirname $0`/home/greg/.angular-config.json ~
+cp `dirname $0`/home/greg/.npmrc ~
+
 sudo pacman -S --noconfirm nodejs npm
 
 npm install --global \
@@ -88,9 +91,6 @@ npm install --global \
   tslint \
   typescript \
   typescript-formatter
-
-cp `dirname $0`/home/greg/.angular-config.json ~
-cp `dirname $0`/home/greg/.npmrc ~
 
 # dotnet
 
