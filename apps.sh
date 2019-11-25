@@ -18,16 +18,11 @@ sudo pacman -Syu --noconfirm
 
 if [ ! -d ~/AUR ]; then mkdir ~/AUR; fi
 
-# git and openssh
+# git
 
-sudo pacman -S --noconfirm git openssh
+sudo pacman -S --noconfirm git
 
 cp `dirname $0`/home/greg/.gitconfig ~
-mkdir ~/.ssh
-cp /mnt/.Arch/.ssh/config ~/.ssh
-cp -r /mnt/.Arch/.ssh/github.com ~/.ssh
-chmod 600 ~/.ssh/config
-chmod 600 ~/.ssh/github.com/id_rsa
 
 # fonts
 
@@ -227,6 +222,26 @@ ln -s ~/.vim  ~/.config/nvim
 # mc
 
 sudo pacman -S --noconfirm mc
+
+# aws
+
+mkdir ~/.aws
+cp -r /mnt/c/Users/Greg/.aws/* ~/.aws
+
+# openssh
+
+sudo pacman -S --noconfirm openssh
+
+mkdir ~/.ssh
+
+cp /mnt/.Arch/.ssh/config ~/.ssh
+chmod 600 ~/.ssh/config
+
+cp -r /mnt/.Arch/.ssh/github.com ~/.ssh
+chmod 600 ~/.ssh/github.com/id_rsa
+
+cp -r /mnt/.Arch/.ssh/amazonaws.com ~/.ssh
+chmod 600 ~/.ssh/amazonaws.com/*
 
 # scripts
 
