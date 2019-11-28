@@ -105,7 +105,7 @@ sudo pacman -S --noconfirm perl
 
 sudo pacman -S --noconfirm python python-pip
 
-pip install awscli aws-shell pynvim --user
+pip install awscli aws-shell lastversion pynvim --user
 pip install vim-vint --user --pre
 
 # ruby
