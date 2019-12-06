@@ -16,10 +16,10 @@ sudo grpck
 # gnome
 
 if [ ! -d ~/Pictures ]; then mkdir ~/Pictures; fi
-cp `dirname $0`/home/greg/Pictures/Small\ River.png ~/Pictures
+cp `dirname $0`/home/greg/Pictures/Among\ Trees.png ~/Pictures
 
-gsettings set org.gnome.desktop.background picture-uri 'file:///home/greg/Pictures/Small%20River.png'
-gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictures/Small%20River.png'
+gsettings set org.gnome.desktop.background picture-uri 'file:///home/greg/Pictures/Among%20Trees.png'
+gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictures/Among%20Trees.png'
 
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
 gsettings set org.gnome.system.locale region "pl_PL.UTF-8"
