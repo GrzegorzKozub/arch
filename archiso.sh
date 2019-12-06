@@ -13,7 +13,7 @@ sleep 10
 # pacman mirror list
 
 echo 'Server = http://arch.midov.pl/arch/$repo/os/$arch' > /etc/pacman.d/mirrorlist
-pacman -Sy --noconfirm reflector
+pacman -Sy --noconfirm python reflector
 reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist
 
 # tools
