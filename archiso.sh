@@ -24,5 +24,4 @@ pacman -S --noconfirm git
 
 if [ -d ~/Arch ]; then rm -rf ~/Arch; fi
 git clone https://github.com/GrzegorzKozub/Arch.git ~/Arch
-cd ~/Arch
 

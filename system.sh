@@ -23,11 +23,12 @@ if [ -f /mnt/boot/vmlinuz-linux ]; then rm /mnt/boot/vmlinuz-linux; fi
 
 pacstrap /mnt \
   base base-devel \
-  sudo reflector dialog wpa_supplicant zsh \
+  linux linux-firmware \
   intel-ucode \
+  efibootmgr \
+  sudo reflector dialog wpa_supplicant zsh \
   xf86-video-intel xorg-server gnome gnome-tweak-tool networkmanager \
-  git \
-  efibootmgr
+  git
 
 # fstab file
 
