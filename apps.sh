@@ -227,7 +227,7 @@ sudo pacman -S --noconfirm mc
 # aws
 
 mkdir ~/.aws
-cp -r /mnt/c/Users/Greg/.aws/* ~/.aws
+cp -r /mnt/.Arch/.aws/* ~/.aws
 
 # openssh
 
