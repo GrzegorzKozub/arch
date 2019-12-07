@@ -14,6 +14,7 @@ at=%{$terminfo[bold]$fg[grey]%}@%{$reset_color%}
 input=%{$terminfo[bold]$fg[grey]%}\>%{$reset_color%}
 
 local function git_prompt() {
+  if [[ "$(< /proc/version)" == *@(Microsoft|WSL)* ]]; then return; fi
   if git rev-parse --git-dir > /dev/null 2>&1; then
     echo $(git_branch)$(git_commits)$(git_changes)%{$reset_color%}
   fi
@@ -69,8 +70,6 @@ local function git_changes() {
   echo $changes
 }
 
-PROMPT='${user}${at}${host} ${dir}'
-if [[ ! "$(< /proc/version)" == *@(Microsoft|WSL)* ]]; then PROMPT="${PROMPT} $(git_prompt)"; fi
-PROMPT="${PROMPT}
-${input} "
+PROMPT='${user}${at}${host} ${dir} $(git_prompt)
+${input} '
 
