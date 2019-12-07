@@ -8,7 +8,8 @@ sleep 10
 
 # mount
 
-if [[ ! $(sudo mount | grep "sda1 on /mnt") ]]; then sudo mount /dev/sda1 /mnt; fi
+if [[ $(sudo mount | grep "/dev/sda1") ]]; then sudo umount /dev/sda1; fi
+sudo mount /dev/sda1 /mnt
 
 # pacman db sync
 
@@ -18,11 +19,38 @@ sudo pacman -Syu --noconfirm
 
 if [ ! -d ~/AUR ]; then mkdir ~/AUR; fi
 
+# openssh
+
+sudo pacman -S --noconfirm openssh
+
+if [ ! -d ~/.ssh ]; then mkdir ~/.ssh; fi
+
+cp /mnt/.Arch/.ssh/config ~/.ssh
+chmod 600 ~/.ssh/config
+
+cp -r /mnt/.Arch/.ssh/github.com ~/.ssh
+chmod 600 ~/.ssh/github.com/id_rsa
+
+cp -r /mnt/.Arch/.ssh/amazonaws.com ~/.ssh
+chmod 600 ~/.ssh/amazonaws.com/*
+
+# aws
+
+if [ ! -d ~/.aws ]; then mkdir ~/.aws; fi
+
+cp -r /mnt/.Arch/.aws/* ~/.aws
+
 # git
 
 sudo pacman -S --noconfirm git
 
 cp `dirname $0`/home/greg/.gitconfig ~
+
+# scripts
+
+if [ ! -d ~/Code ]; then mkdir ~/Code; fi
+if [ -d ~/Code/Arch ]; then rm -rf ~/Code/Arch; fi
+git clone git@github.com:GrzegorzKozub/Arch.git ~/Code/Arch
 
 # fonts
 
@@ -221,36 +249,6 @@ git clone git@github.com:GrzegorzKozub/Vim.git ~/.vim
 vim -c "PlugInstall | exit"
 
 ln -s ~/.vim  ~/.config/nvim
-
-# mc
-
-sudo pacman -S --noconfirm mc
-
-# aws
-
-mkdir ~/.aws
-cp -r /mnt/.Arch/.aws/* ~/.aws
-
-# openssh
-
-sudo pacman -S --noconfirm openssh
-
-mkdir ~/.ssh
-
-cp /mnt/.Arch/.ssh/config ~/.ssh
-chmod 600 ~/.ssh/config
-
-cp -r /mnt/.Arch/.ssh/github.com ~/.ssh
-chmod 600 ~/.ssh/github.com/id_rsa
-
-cp -r /mnt/.Arch/.ssh/amazonaws.com ~/.ssh
-chmod 600 ~/.ssh/amazonaws.com/*
-
-# scripts
-
-if [ ! -d ~/Code ]; then mkdir ~/Code; fi
-if [ -d ~/Code/Arch ]; then rm -rf ~/Code/Arch; fi
-git clone git@github.com:GrzegorzKozub/Arch.git ~/Code/Arch
 
 # unmount
 
