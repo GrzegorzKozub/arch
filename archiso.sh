@@ -8,7 +8,6 @@ timedatectl set-ntp true
 
 wifi-menu
 sleep 10
-#elinks google.com
 
 # pacman mirror list
 
