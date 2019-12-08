@@ -19,19 +19,19 @@
     tag = yellow ; bold yellow
 [core]
     commentchar = $
-    editor = gvim
+    editor = vim
     fscache = true
     symlinks = true
     whitespace = blank-at-eol,tab-in-indent
 [diff]
     algorithm = histogram
-    guitool = gvim
+    guitool = vim
     renames = copies
-    tool = gvim
+    tool = vim
 [difftool]
     prompt = false
-[difftool "gvim"]
-    cmd = gvim -d -c "VimDiff" "$LOCAL" "$REMOTE"
+[difftool "vim"]
+    cmd = vim -d -c "VimDiff" "$LOCAL" "$REMOTE"
 [difftool "code"]
     cmd = code --wait --diff "$LOCAL" "$REMOTE"
 [gc]
@@ -39,14 +39,14 @@
 [github]
     user = GrzegorzKozub
 [merge]
-    guitool = gvim
+    guitool = vim
     renormalize = true
-    tool = gvim
+    tool = vim
 [mergetool]
     keepBackup = false
     prompt = false
-[mergetool "gvim"]
-    cmd = gvim -d -c "VimMerge" "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
+[mergetool "vim"]
+    cmd = vim -d -c "VimMerge" "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
     trustExitCode = false
 [mergetool "code"]
     cmd = code --wait "$MERGED"
