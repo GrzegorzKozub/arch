@@ -38,7 +38,8 @@ chmod 600 ~/.ssh/amazonaws.com/*
 
 if [ ! -d ~/.aws ]; then mkdir ~/.aws; fi
 
-cp -r /mnt/.Arch/.aws/* ~/.aws
+cp `dirname $0`/home/greg/.aws/config ~/.aws
+cp -r /mnt/.Arch/.aws/credentials ~/.aws
 
 # git
 
