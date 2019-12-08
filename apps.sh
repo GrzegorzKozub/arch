@@ -39,6 +39,7 @@ if [ ! -d ~/Code ]; then mkdir ~/Code; fi
 . ./docker.sh
 . ./chrome.sh
 . ./keepass.sh
+#. ./dropbox.sh
 
 # usb unmount
 
