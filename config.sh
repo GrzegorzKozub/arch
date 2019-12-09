@@ -31,6 +31,8 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'visual-studio-code.desktop', 'google-chrome.desktop', 'org.keepassxc.KeePassXC.desktop']"
+
 UUID=$(gsettings get org.gnome.Terminal.ProfilesList default)
 UUID=${UUID:1:-1}
 
