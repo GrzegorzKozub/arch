@@ -33,6 +33,11 @@ gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-autom
 
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'visual-studio-code.desktop', 'google-chrome.desktop', 'org.keepassxc.KeePassXC.desktop']"
 
+gsettings set org.gnome.nautilus.preferences default-folder-viewer "list-view"
+
+dconf write /org/gtk/settings/file-chooser/show-hidden true
+dconf write /org/gtk/settings/file-chooser/sort-directories-first true
+
 UUID=$(gsettings get org.gnome.Terminal.ProfilesList default)
 UUID=${UUID:1:-1}
 
