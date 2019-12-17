@@ -24,6 +24,7 @@ if [ ! -d ~/Code ]; then mkdir ~/Code; fi
 . ./git.sh
 . ./openssh.sh
 . ./aws.sh
+. ./common.sh
 . ./code.sh
 . ./fonts.sh
 . ./zsh.sh

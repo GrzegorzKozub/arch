@@ -12,6 +12,7 @@ git clean -fdx
 for extension in \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
+  EFanZh.graphviz-preview \
   esbenp.prettier-vscode \
   equinusocio.vsc-material-theme \
   humao.rest-client \
@@ -24,7 +25,8 @@ for extension in \
   ms-vscode.vscode-typescript-tslint-plugin \
   msjsdiag.debugger-for-chrome \
   ms-azuretools.vscode-docker \
-  pkief.material-icon-theme
+  pkief.material-icon-theme \
+  Stephanvs.dot
 do
   code --install-extension $extension --force
 done
