@@ -10,23 +10,26 @@ makepkg -si --noconfirm
 git clean -fdx
 
 for extension in \
+  EFanZh.graphviz-preview \
+  JakeBecker.elixir-ls \
+  Stephanvs.dot \
+  alexkrechik.cucumberautocomplete \
+  aws-scripting-guy.cform \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
-  EFanZh.graphviz-preview \
-  esbenp.prettier-vscode \
   equinusocio.vsc-material-theme \
+  esbenp.prettier-vscode \
   humao.rest-client \
-  JakeBecker.elixir-ls \
+  mikestead.dotenv \
+  ms-azuretools.vscode-docker \
+  ms-vscode-remote.remote-wsl \
+  ms-vscode.PowerShell \
   ms-vscode.azure-account \
   ms-vscode.csharp \
   ms-vscode.go \
-  ms-vscode.PowerShell \
-  ms-vscode-remote.remote-wsl \
   ms-vscode.vscode-typescript-tslint-plugin \
   msjsdiag.debugger-for-chrome \
-  ms-azuretools.vscode-docker \
-  pkief.material-icon-theme \
-  Stephanvs.dot
+  pkief.material-icon-theme
 do
   code --install-extension $extension --force
 done
