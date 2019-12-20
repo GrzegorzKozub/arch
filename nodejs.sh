@@ -15,7 +15,6 @@ npm install --global \
   js-beautify \
   neovim \
   pm2 \
-  rdme \
   rimraf \
   serverless \
   tslint \
