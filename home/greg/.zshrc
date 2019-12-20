@@ -9,7 +9,7 @@ export ZSH=~/.oh-my-zsh
 
 ZSH_THEME='greg'
 
-plugins=(aws docker docker-compose docker-machine golang httpie mix npm zsh-syntax-highlighting)
+plugins=(aws docker docker-compose docker-machine golang mix npm zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
