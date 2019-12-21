@@ -20,7 +20,6 @@ for extension in \
   equinusocio.vsc-material-theme \
   esbenp.prettier-vscode \
   humao.rest-client \
-  mikestead.dotenv \
   ms-azuretools.vscode-docker \
   ms-vscode-remote.remote-wsl \
   ms-vscode.PowerShell \
