@@ -2,7 +2,7 @@ set -e -o verbose
 
 # vim and neovim
 
-sudo pacman -S --noconfirm astyle ctags editorconfig-core-c ripgrep tidy vim
+sudo pacman -S --noconfirm astyle ctags editorconfig-core-c tidy vim
 sudo pacman -S --noconfirm glibc neovim
 
 if [ -d ~/.vim ]; then rm -rf ~/.vim; fi
