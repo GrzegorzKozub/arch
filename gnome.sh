@@ -33,3 +33,5 @@ gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gn
 amixer sset Master 50%
 amixer sset Capture 50%
 
+#gsettings set org.gnome.desktop.sound event-sounds false
+
