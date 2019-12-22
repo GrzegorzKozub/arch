@@ -26,9 +26,9 @@ Installing Arch Linux on Dell XPS 13
 5. Run `system.sh` to install Arch with Gnome and perform basic config
 6. Once per machine, run `boot.sh` to install boot manager with secure boot support
 7. Reboot to Arch and login as normal user
-8. While remaining in `~`, run `~/Code/Arch/config.sh` to finish configuring Arch and Gnome
+8. While remaining in `~`, run `~/Code/Arch/config.sh` to finish configuring Arch and setup terminal
 9. Reboot to Gnome, login as normal user and connect to WiFi
-10. With the USB plugged in and while remaining in `~`, run `~/Code/Arch/apps.sh` to install and configure the apps
+10. With the USB plugged in and while remaining in `~`, run `~/Code/Arch/apps.sh` to setup Gnome as well as install and configure the apps
 11. Reboot for some settings to take effect
 
 ## Maual configuration

@@ -16,11 +16,10 @@ if [ ! -d ~/Code ]; then mkdir ~/Code; fi
 
 # apps
 
+. `dirname $0`/gnome.sh
 . `dirname $0`/openssh.sh
 . `dirname $0`/aws.sh
 . `dirname $0`/common.sh
-. `dirname $0`/fonts.sh
-. `dirname $0`/zsh.sh
 . `dirname $0`/nodejs.sh
 . `dirname $0`/dotnet.sh
 . `dirname $0`/perl.sh
