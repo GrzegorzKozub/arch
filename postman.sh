@@ -9,3 +9,5 @@ cd postman
 makepkg -si --noconfirm
 git clean -fdx
 
+cd ~
+
