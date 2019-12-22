@@ -8,6 +8,7 @@ pip install --user \
   awscli \
   awsebcli \
   aws-shell \
+  docker-compose \
   lastversion \
   pynvim
 
