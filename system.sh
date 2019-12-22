@@ -27,7 +27,7 @@ pacstrap /mnt \
   intel-ucode \
   efibootmgr \
   sudo reflector dialog wpa_supplicant zsh \
-  xf86-video-intel xorg-server gnome gnome-tweak-tool networkmanager gnome-vfs \
+  xf86-video-intel xorg-server gnome gnome-tweak-tool networkmanager gvfs-smb \
   git
 
 # fstab file
