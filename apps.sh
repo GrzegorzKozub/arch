@@ -1,10 +1,5 @@
 set -e -o verbose
 
-# internet
-
-sudo wifi-menu
-sleep 10
-
 # usb mount
 
 if [[ $(sudo mount | grep "/dev/sda1") ]]; then sudo umount /dev/sda1; fi

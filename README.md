@@ -1,6 +1,6 @@
 # Arch
 
-Installing Arch Linux on Dell XPS 13 9360
+Installing Arch Linux on Dell XPS 13
 
 ## Prerequisites
 
@@ -26,12 +26,13 @@ Installing Arch Linux on Dell XPS 13 9360
 5. Run `system.sh` to install Arch with Gnome and perform basic config
 6. Once per machine, run `boot.sh` to install boot manager with secure boot support
 7. Reboot to Arch and login as normal user
-8. Run `~/Code/Arch/config.sh` to finish configuring Arch and Gnome
-9. With the USB plugged in, run `~/Code/Arch/apps.sh` to install and configure the apps
+8. While remaining in `~`, run `~/Code/Arch/config.sh` to finish configuring Arch and Gnome
+9. Reboot to Gnome, login as normal user and connect to WiFi
+10. With the USB plugged in and while remaining in `~`, run `~/Code/Arch/apps.sh` to install and configure the apps
+11. Reboot for some settings to take effect
 
 ## Maual configuration
 
-1. Connect to WiFi from Gnome
-2. Install Dim On Battery Power shell extension for Gnome
-3. Setup Chrome
+1. Install Dim On Battery Power shell extension for Gnome
+2. Setup desktop apps
 
