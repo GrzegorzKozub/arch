@@ -40,6 +40,9 @@ if [ ! -d ~/Code ]; then mkdir ~/Code; fi
 . ./docker.sh
 . ./chrome.sh
 . ./keepass.sh
+. ./postman.sh
+. ./slack.sh
+. ./openconnect.sh
 #. ./dropbox.sh
 
 # usb unmount
