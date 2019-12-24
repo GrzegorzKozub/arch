@@ -30,7 +30,8 @@ if [ ! -d ~/Code ]; then mkdir ~/Code; fi
 . `dirname $0`/vim.sh
 . `dirname $0`/vscode.sh
 . `dirname $0`/docker.sh
-. `dirname $0`/chrome.sh
+. `dirname $0`/chromium.sh
+#. `dirname $0`/chrome.sh
 . `dirname $0`/keepass.sh
 . `dirname $0`/postman.sh
 . `dirname $0`/slack.sh

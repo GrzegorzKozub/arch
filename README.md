@@ -34,6 +34,7 @@ Installing Arch Linux on Dell XPS 13
 ## Maual configuration
 
 1. Install Dim On Battery Power shell extension for Gnome
-2. Disable running Chrome in the background
-3. Install uBlock for Chrome
+3. Setup Chrome/Chromium:
+  - Disable continuing in the background
+  - Install uBlock
 
