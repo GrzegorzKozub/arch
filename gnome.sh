@@ -14,6 +14,7 @@ gsettings set org.gnome.system.locale region "pl_PL.UTF-8"
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
 
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
