@@ -19,7 +19,7 @@ gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'google-chrome.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'chromium.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
 
 gsettings set org.gnome.nautilus.preferences default-folder-viewer "list-view"
 
