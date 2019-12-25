@@ -2,7 +2,12 @@ set -e -o verbose
 
 # fonts
 
-sudo pacman -S --noconfirm gnu-free-fonts noto-fonts-emoji ttf-fira-mono
+sudo pacman -S --noconfirm \
+  gnu-free-fonts \
+  noto-fonts \
+  noto-fonts-emoji \
+  ttf-dejavu \
+  ttf-liberation
 
 cd ~/AUR
 git clone https://aur.archlinux.org/otf-fira-code.git
