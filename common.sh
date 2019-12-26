@@ -4,6 +4,7 @@ set -e -o verbose
 
 sudo pacman -S --noconfirm \
   graphviz \
+  htop \
   ripgrep \
   tree
 
