@@ -13,13 +13,3 @@ sudo systemctl enable NetworkManager.service
 
 sudo grpck
 
-# dirs
-
-if [ ! -d ~/AUR ]; then mkdir ~/AUR; fi
-
-# terminal
-
-. `dirname $0`/fonts.sh
-. `dirname $0`/terminal.sh
-. `dirname $0`/zsh.sh
-
