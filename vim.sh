@@ -2,7 +2,6 @@ set -e -o verbose
 
 # vim and neovim
 
-sudo pacman -R --noconfirm vim
 sudo pacman -S --noconfirm astyle ctags editorconfig-core-c tidy gvim
 sudo pacman -S --noconfirm glibc neovim
 
