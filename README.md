@@ -35,8 +35,10 @@ Installing Arch Linux on Dell XPS 13
 
 1. Setup Gnome
   - Mute system sounds
-  - Install Dim On Battery Power shell extension
+  - Install Dim On Battery Power and Tray Icons shell extensions
 2. Setup Chromium
   - Disable continuing in the background
   - Install uBlock
+3. Setup Dropbox
+  - Exclude unwanted dirs from sync
 

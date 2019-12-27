@@ -38,7 +38,7 @@ if [ ! -d ~/Code ]; then mkdir ~/Code; fi
 
 . `dirname $0`/chromium.sh
 . `dirname $0`/docker.sh
-#. `dirname $0`/dropbox.sh
+. `dirname $0`/dropbox.sh
 . `dirname $0`/keepass.sh
 . `dirname $0`/openconnect.sh
 . `dirname $0`/postman.sh
