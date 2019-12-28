@@ -25,7 +25,7 @@ if [ ! -d ~/Code ]; then mkdir ~/Code; fi
 
 . `dirname $0`/openssh.sh
 . `dirname $0`/aws.sh
-. `dirname $0`/code.sh
+. `dirname $0`/scripts.sh
 
 . `dirname $0`/common.sh
 . `dirname $0`/git.sh
