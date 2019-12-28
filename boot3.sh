@@ -4,16 +4,16 @@ set -e -o verbose
 
 if [ ! -d ~/AUR ]; then mkdir ~/AUR; fi
 
-# preloader-signed
+# secure boot support
 
-if [ -d ~/AUR/preloader-signed ]; then rm -rf ~/AUR/preloader-signed; fi
+pushd ~/AUR
 
-cd ~/AUR
+if [ -d preloader-signed ]; then rm -rf preloader-signed; fi
 git clone https://aur.archlinux.org/preloader-signed.git
 cd preloader-signed
-
 makepkg -si --noconfirm
 git clean -fdx
+cd ..
 
-cd ~
+popd
 

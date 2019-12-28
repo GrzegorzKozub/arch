@@ -17,16 +17,6 @@ cp `dirname $0`/etc/vconsole.conf /etc
 cp `dirname $0`/etc/hostname /etc
 cp `dirname $0`/etc/hosts /etc
 
-# new initramfs
-
-cp `dirname $0`/etc/mkinitcpio.conf /etc
-mkinitcpio -p linux
-
-# pacman
-
-reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist
-sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
-
 # root password
 
 set +e
@@ -52,6 +42,20 @@ done
 set -e
 
 echo "greg ALL=(ALL) NOPASSWD: ALL" | sudo EDITOR="tee -a" visudo
+
+# firmware
+
+su greg --command ". `dirname $0`/system3.sh"
+
+# new initramfs
+
+cp `dirname $0`/etc/mkinitcpio.conf /etc
+mkinitcpio -p linux
+
+# pacman
+
+reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist
+sed -i 's/#Color/Color/g' /etc/pacman.conf
 
 # initial zsh profile
 
