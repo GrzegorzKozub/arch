@@ -4,7 +4,7 @@ set -e -o verbose
 
 sudo pacman -S --noconfirm go
 
-for package in \
+for PACKAGE in \
   `# https://github.com/Microsoft/vscode-go` \
   github.com/acroca/go-symbols \
   github.com/cweill/gotests/... \
@@ -46,7 +46,7 @@ for package in \
   `#golang.org/x/tools/gopls` \
   honnef.co/go/tools/cmd/keyify
 do
-  echo $package
-  go get -u $package
+  echo $PACKAGE
+  go get -u $PACKAGE
 done
 
