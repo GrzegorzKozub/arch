@@ -22,9 +22,10 @@ cp `dirname $0`/etc/hosts /etc
 cp `dirname $0`/etc/mkinitcpio.conf /etc
 mkinitcpio -p linux
 
-# pacman mirror list
+# pacman
 
 reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist
+sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
 
 # root password
 
