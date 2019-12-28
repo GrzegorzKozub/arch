@@ -1,11 +1,14 @@
 set -e -o verbose
 
-cd ~
+# dirs
 
-if [ ! -d AUR ]; then mkdir AUR; fi
-cd AUR
+if [ ! -d ~/AUR ]; then mkdir ~/AUR; fi
 
-if [ -d preloader-signed ]; then rm -rf preloader-signed; fi
+# preloader-signed
+
+if [ -d ~/AUR/preloader-signed ]; then rm -rf ~/AUR/preloader-signed; fi
+
+cd ~/AUR
 git clone https://aur.archlinux.org/preloader-signed.git
 cd preloader-signed
 
