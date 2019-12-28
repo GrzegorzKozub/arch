@@ -9,7 +9,7 @@ cd visual-studio-code-bin
 makepkg -si --noconfirm
 git clean -fdx
 
-for extension in \
+for EXTENSION in \
   EFanZh.graphviz-preview \
   JakeBecker.elixir-ls \
   Stephanvs.dot \
@@ -30,7 +30,7 @@ for extension in \
   msjsdiag.debugger-for-chrome \
   pkief.material-icon-theme
 do
-  code --install-extension $extension --force
+  code --install-extension $EXTENSION --force
 done
 
 if [ -d ~/.config/Code ]; then rm -rf ~/.config/Code; fi

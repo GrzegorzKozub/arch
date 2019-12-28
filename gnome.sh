@@ -21,8 +21,6 @@ gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-autom
 
 gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
 
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'chromium.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
-
 gsettings set org.gnome.nautilus.preferences default-folder-viewer "list-view"
 
 dconf write /org/gtk/settings/file-chooser/show-hidden true
@@ -37,4 +35,32 @@ amixer sset Master 50%
 amixer sset Capture 50%
 
 #gsettings set org.gnome.desktop.sound event-sounds false
+
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'chromium.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
+
+for APP in \
+  avahi-discover \
+  bssh \
+  bvnc \
+  electron4 \
+  gvim \
+  org.gnome.Cheese \
+  org.gnome.Documents \
+  org.gnome.Maps \
+  org.gnome.Music \
+  org.gnome.Photos \
+  org.gnome.Software \
+  org.gnome.Todo \
+  org.gnome.Totem \
+  org.gnome.Weather \
+  org.gnome.font-viewer \
+  qv4l2 \
+  qvidcap \
+  simple-scan \
+  stoken-gui \
+  stoken-gui-small \
+  vim
+do
+  printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
+done
 
