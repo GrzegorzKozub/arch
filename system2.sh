@@ -57,11 +57,6 @@ mkinitcpio -p linux
 reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist
 sed -i 's/#Color/Color/g' /etc/pacman.conf
 
-# initial zsh profile
-
-touch /home/greg/.zshrc
-chown greg:users /home/greg/.zshrc
-
 # scripts
 
 su greg --command "mkdir ~/Code; git clone https://github.com/GrzegorzKozub/Arch.git ~/Code/Arch"

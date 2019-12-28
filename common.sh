@@ -8,5 +8,6 @@ sudo pacman -S --noconfirm \
   man-db \
   man-pages \
   ripgrep \
-  tree
+  tree \
+  wget
 
