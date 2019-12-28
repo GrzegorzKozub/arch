@@ -16,6 +16,8 @@ if [ ! -d ~/Code ]; then mkdir ~/Code; fi
 
 # apps
 
+. `dirname $0`/yay.sh
+
 . `dirname $0`/fonts.sh
 
 . `dirname $0`/gnome.sh

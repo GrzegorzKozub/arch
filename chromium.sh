@@ -3,12 +3,5 @@ set -e -o verbose
 # chromium
 
 sudo pacman -S --noconfirm chromium
+yay -S --aur --noconfirm chromium-widevine
 
-cd ~/AUR
-git clone https://aur.archlinux.org/chromium-widevine.git
-cd chromium-widevine
-
-makepkg -si --noconfirm
-git clean -fdx
-
-cd ~

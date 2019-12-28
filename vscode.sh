@@ -2,12 +2,7 @@ set -e -o verbose
 
 # vscode
 
-cd ~/AUR
-git clone https://aur.archlinux.org/visual-studio-code-bin.git
-cd visual-studio-code-bin
-
-makepkg -si --noconfirm
-git clean -fdx
+yay -S --aur --noconfirm visual-studio-code-bin
 
 for EXTENSION in \
   EFanZh.graphviz-preview \
@@ -35,6 +30,4 @@ done
 
 if [ -d ~/.config/Code ]; then rm -rf ~/.config/Code; fi
 git clone git@github.com:GrzegorzKozub/VisualStudioCode.git ~/.config/Code
-
-cd ~
 
