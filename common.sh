@@ -5,6 +5,8 @@ set -e -o verbose
 sudo pacman -S --noconfirm \
   graphviz \
   htop \
+  man-db \
+  man-pages \
   ripgrep \
   tree
 
