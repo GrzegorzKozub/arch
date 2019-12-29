@@ -9,11 +9,6 @@ sudo mount /dev/sda1 /mnt
 
 sudo pacman -Syu --noconfirm
 
-# dirs
-
-if [ ! -d ~/AUR ]; then mkdir ~/AUR; fi
-if [ ! -d ~/Code ]; then mkdir ~/Code; fi
-
 # apps
 
 . `dirname $0`/yay.sh

@@ -20,16 +20,15 @@ Installing Arch Linux on Dell XPS 13
 ## Installation
 
 1. Boot from archiso
-2. Run `/run/archiso/bootmnt/.Arch/Arch/archiso.sh` to setup the session and clone the latest version of these scripts to `~`
-3. Change directory to `~/Arch`
-4. Once per machine, run `disk.sh` to create the encrypted partition and logical volumes on it. Otherwise run `unlock.sh` to open the partition
-5. Run `system.sh` to install Arch with Gnome and perform basic config
-6. Once per machine, run `boot.sh` to install boot manager with secure boot support
-7. Reboot to Arch and login as normal user
-8. While remaining in `~`, run `~/Code/Arch/config.sh` to finish basic Arch config
-9. Reboot to Gnome, login as normal user and connect to WiFi
-10. With the USB plugged in and while remaining in `~`, run `~/Code/Arch/apps.sh` to setup Gnome as well as install and configure the apps
-11. Reboot for some settings to take effect
+2. Run `/run/archiso/bootmnt/.Arch/Arch/archiso.sh`. Puts these scripts into root's `~/Arch`
+3. Once per machine run `~/Arch/disk.sh`, otherwise run `~/Arch/unlock.sh`
+4. Run `~/Arch/system.sh`. Puts these scripts into normal user's `~/Arch`
+5. Once per machine run `~/Arch/boot.sh`
+6. Reboot to Arch and login as normal user
+7. Run `~/Arch/config.sh`
+8. Reboot to Gnome, login as normal user and connect to WiFi
+9. With archiso plugged in, run `~/Arch/apps.sh`
+10. Reboot for some settings to take effect
 
 ## Maual configuration
 
