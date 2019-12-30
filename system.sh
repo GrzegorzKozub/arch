@@ -26,6 +26,7 @@ pacstrap /mnt \
   linux linux-firmware \
   intel-ucode xf86-video-intel \
   efibootmgr \
+  tlp \
   sudo git reflector \
   xorg-server gnome gnome-tweak-tool alsa-utils
 

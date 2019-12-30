@@ -8,6 +8,7 @@ sudo timedatectl set-ntp true
 
 sudo systemctl enable gdm.service
 sudo systemctl enable NetworkManager.service
+sudo systemctl enable tlp.service
 
 # group check
 
