@@ -14,3 +14,7 @@ sudo systemctl enable tlp.service
 
 sudo grpck
 
+# tlp
+
+sudo sed -i 's/CPU_HWP_ON_BAT=balance_power/CPU_HWP_ON_BAT=default/g' /etc/default/tlp
+
