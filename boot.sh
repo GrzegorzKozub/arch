@@ -9,9 +9,9 @@ if [[ ! $(mount | grep "nvme0n1p2 on /mnt/boot") ]]; then mount /dev/nvme0n1p2 /
 
 # boot manager with secure boot support
 
-cp -r `dirname $0`/../Arch /mnt/root
-arch-chroot /mnt ~/Arch/boot2.sh
-rm -rf /mnt/root/Arch
+cp -r `dirname $0`/../arch /mnt/root
+arch-chroot /mnt ~/arch/boot2.sh
+rm -rf /mnt/root/arch
 
 # unmount
 

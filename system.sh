@@ -36,9 +36,9 @@ genfstab -U /mnt > /mnt/etc/fstab
 
 # config
 
-cp -r `dirname $0`/../Arch /mnt/root
-arch-chroot /mnt ~/Arch/system2.sh
-rm -rf /mnt/root/Arch
+cp -r `dirname $0`/../arch /mnt/root
+arch-chroot /mnt ~/arch/system2.sh
+rm -rf /mnt/root/arch
 
 # unmount
 

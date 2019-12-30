@@ -21,6 +21,6 @@ pacman -S --noconfirm git
 
 # scripts
 
-if [ -d ~/Arch ]; then rm -rf ~/Arch; fi
-git clone https://github.com/GrzegorzKozub/Arch.git ~/Arch
+if [ -d ~/arch ]; then rm -rf ~/arch; fi
+git clone https://github.com/GrzegorzKozub/arch.git ~/arch
 

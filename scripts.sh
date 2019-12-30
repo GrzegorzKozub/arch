@@ -6,6 +6,6 @@ if [ ! -d ~/Code ]; then mkdir ~/Code; fi
 
 # scripts
 
-if [ -d ~/Code/Arch ]; then rm -rf ~/Code/Arch; fi
-git clone git@github.com:GrzegorzKozub/Arch.git ~/Code/Arch
+if [ -d ~/Code/arch ]; then rm -rf ~/Code/arch; fi
+git clone git@github.com:GrzegorzKozub/arch.git ~/Code/arch
 
