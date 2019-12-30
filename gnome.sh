@@ -48,8 +48,6 @@ for APP in \
   org.gnome.Documents \
   org.gnome.Maps \
   org.gnome.Music \
-  org.gnome.Photos \
-  org.gnome.Software \
   org.gnome.Todo \
   org.gnome.Totem \
   org.gnome.Weather \
@@ -59,7 +57,8 @@ for APP in \
   simple-scan \
   stoken-gui \
   stoken-gui-small \
-  vim
+  vim \
+  yelp
 do
   printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
 done
