@@ -11,7 +11,11 @@ sudo pacman -S --noconfirm \
   man-db \
   man-pages \
   p7zip \
+  pdftk \
   ripgrep \
   tree \
-  wget
+  wget \
+  wkhtmltopdf
 
+yay -S --aur --noconfirm \
+  pandoc-bin
