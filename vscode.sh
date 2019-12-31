@@ -29,5 +29,5 @@ do
 done
 
 if [ -d ~/.config/Code ]; then rm -rf ~/.config/Code; fi
-git clone git@github.com:GrzegorzKozub/VisualStudioCode.git ~/.config/Code
+git clone git@github.com:GrzegorzKozub/vscode.git ~/.config/Code
 
