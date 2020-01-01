@@ -26,6 +26,7 @@ pacstrap /mnt \
   linux linux-firmware \
   intel-ucode xf86-video-intel \
   efibootmgr lvm2 \
+  dialog dhcpcd netctl wpa_supplicant \
   tlp \
   sudo git reflector zsh \
   xorg-server gnome gnome-tweak-tool alsa-utils
