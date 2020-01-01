@@ -21,7 +21,7 @@ Installing Arch Linux on Dell XPS 13
 
 1. Boot from archiso
 2. Run `/run/archiso/bootmnt/.arch/arch/archiso.sh`. Puts these scripts into root's `~/arch`
-3. Once per machine run `~/arch/disk.sh`, otherwise run `~/arch/unlock.sh`
+3. Once per machine run `~/arch/disk.sh`
 4. Run `~/arch/system.sh`. Puts these scripts into normal user's `~/arch`
 5. Once per machine run `~/arch/boot.sh`
 6. Reboot to Arch and login as normal user
