@@ -3,7 +3,6 @@ set -e -o verbose
 # common
 
 sudo pacman -S --noconfirm \
-  drive \
   flameshot \
   graphviz \
   jq \
@@ -11,11 +10,10 @@ sudo pacman -S --noconfirm \
   man-db \
   man-pages \
   p7zip \
-  pdftk \
   ripgrep \
   tree \
   wget \
   wkhtmltopdf
 
 yay -S --aur --noconfirm \
-  pandoc-bin
+  drive-bin
