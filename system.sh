@@ -24,12 +24,15 @@ if [ -f /mnt/boot/vmlinuz-linux ]; then rm /mnt/boot/vmlinuz-linux; fi
 pacstrap /mnt \
   base base-devel \
   linux linux-firmware \
-  intel-ucode xf86-video-intel \
-  efibootmgr lvm2 \
+  intel-ucode xf86-video-intel alsa-utils \
+  efibootmgr \
+  lvm2 \
   dialog dhcpcd netctl wpa_supplicant \
   tlp \
   sudo git reflector zsh \
-  xorg-server gnome gnome-tweak-tool alsa-utils
+  xorg-server \
+  gdm gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb networkmanager xdg-user-dirs-gtk \
+  eog evince gnome-control-center gnome-software gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus
 
 # fstab file
 

@@ -49,20 +49,11 @@ for APP in \
   electron4 \
   gvim \
   org.gnome.Cheese \
-  org.gnome.Documents \
-  org.gnome.Maps \
-  org.gnome.Music \
-  org.gnome.Todo \
-  org.gnome.Totem \
-  org.gnome.Weather \
-  org.gnome.font-viewer \
   qv4l2 \
   qvidcap \
-  simple-scan \
   stoken-gui \
   stoken-gui-small \
-  vim \
-  yelp
+  vim
 do
   printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
 done
