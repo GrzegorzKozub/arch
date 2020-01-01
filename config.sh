@@ -1,9 +1,18 @@
 set -e -o verbose
 
+# validation
+
+if [[ . == `dirname $0` ]]; then exit 1; fi
+
 # usb mount
 
-if [[ $(sudo mount | grep "/dev/sda1") ]]; then sudo umount /dev/sda1; fi
-sudo mount /dev/sda1 /mnt
+ARCHISO=$(lsblk -r -o NAME,LABEL | grep ARCH | sed -e 's/\s.*$//')
+if [[ ! $ARCHISO ]]; then exit 1; fi
+
+if [[ $(sudo mount | grep "/dev/$ARCHISO") ]]; then sudo umount /dev/$ARCHISO; fi
+sudo mount /dev/$ARCHISO /mnt
+
+unset $ARCHISO
 
 # pacman db sync
 
