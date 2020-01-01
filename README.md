@@ -25,10 +25,11 @@ Installing Arch Linux on Dell XPS 13
 4. Run `~/arch/system.sh`. Puts these scripts into normal user's `~/arch`
 5. Once per machine run `~/arch/boot.sh`
 6. Reboot to Arch and login as normal user
-7. Run `~/arch/config.sh`
-8. Reboot to Gnome, login as normal user and connect to WiFi
-9. With archiso plugged in, run `~/arch/apps.sh`
-10. Reboot for some settings to take effect
+7. Run `~/arch/services.sh`
+8. Reboot to Gnome, login as normal user, connect to WiFi and ensure archiso is mounted
+9. Run `~/arch/config.sh` and close the terminal
+10. Run `~/arch/apps.sh`
+11. Reboot for some settings to take effect
 
 ## Maual configuration
 

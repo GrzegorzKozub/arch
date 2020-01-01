@@ -15,7 +15,7 @@ echo 'Server = http://arch.midov.pl/arch/$repo/os/$arch' > /etc/pacman.d/mirrorl
 
 # tools
 
-pacman -S --noconfirm git
+pacman -Sy --noconfirm git
 
 # scripts
 

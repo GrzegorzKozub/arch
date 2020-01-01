@@ -1,20 +1,31 @@
 set -e -o verbose
 
-# time sync
+# usb mount
 
-sudo timedatectl set-ntp true
+if [[ $(sudo mount | grep "/dev/sda1") ]]; then sudo umount /dev/sda1; fi
+sudo mount /dev/sda1 /mnt
 
-# service autostart
+# pacman db sync
 
-sudo systemctl enable gdm.service
-sudo systemctl enable NetworkManager.service
-sudo systemctl enable tlp.service
+sudo pacman -Syu --noconfirm
 
-# group check
+# config
 
-sudo grpck
+. `dirname $0`/gnome.sh
 
-# tlp
+. `dirname $0`/git.sh
+. `dirname $0`/yay.sh
 
-sudo sed -i 's/CPU_HWP_ON_BAT=balance_power/CPU_HWP_ON_BAT=performance/g' /etc/default/tlp
+. `dirname $0`/openssh.sh
+. `dirname $0`/aws.sh
+. `dirname $0`/scripts.sh
+
+. `dirname $0`/fonts.sh
+. `dirname $0`/terminal.sh
+
+. `dirname $0`/zsh.sh
+
+# usb unmount
+
+sudo umount -R /mnt
 
