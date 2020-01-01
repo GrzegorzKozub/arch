@@ -25,7 +25,7 @@ pacstrap /mnt \
   base base-devel \
   linux linux-firmware \
   intel-ucode xf86-video-intel \
-  efibootmgr \
+  efibootmgr lvm2 \
   tlp \
   sudo git reflector zsh \
   xorg-server gnome gnome-tweak-tool alsa-utils
