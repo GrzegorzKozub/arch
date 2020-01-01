@@ -2,8 +2,6 @@ set -e -o verbose
 
 # zsh and oh-my-zsh
 
-touch ~/.zshrc
-
 sudo pacman -S --noconfirm zsh
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

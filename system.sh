@@ -27,7 +27,7 @@ pacstrap /mnt \
   intel-ucode xf86-video-intel \
   efibootmgr \
   tlp \
-  sudo git reflector \
+  sudo git reflector zsh \
   xorg-server gnome gnome-tweak-tool alsa-utils
 
 # fstab file

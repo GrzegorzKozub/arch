@@ -43,6 +43,11 @@ set -e
 
 echo "greg ALL=(ALL) NOPASSWD: ALL" | sudo EDITOR="tee -a" visudo
 
+# temp zsh profile
+
+touch /home/greg/.zshrc
+chown greg:users /home/greg/.zshrc
+
 # firmware
 
 su greg --command ". `dirname $0`/system3.sh"
