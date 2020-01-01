@@ -10,7 +10,9 @@ sed -i "s/<uuid>/$(blkid -s UUID -o value /dev/nvme0n1p7)/g" /boot/loader/entrie
 
 # secure boot support
 
-su greg --command ". `dirname $0`/boot3.sh"
+cp `dirname $0`/boot3.sh /home/greg
+su greg --command "~/boot3.sh"
+rm /home/greg/boot3.sh
 
 cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
 cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi

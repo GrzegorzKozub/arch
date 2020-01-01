@@ -50,7 +50,9 @@ chown greg:users /home/greg/.zshrc
 
 # firmware
 
-su greg --command ". `dirname $0`/system3.sh"
+cp `dirname $0`/system3.sh /home/greg
+su greg --command "~/system3.sh"
+rm /home/greg/system3.sh
 
 # new initramfs
 
