@@ -28,7 +28,7 @@ pacstrap /mnt \
   efibootmgr \
   lvm2 \
   dialog dhcpcd netctl wpa_supplicant \
-  sudo git reflector zsh \
+  git go reflector sudo zsh \
   xorg-server \
   gdm gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb networkmanager xdg-user-dirs-gtk \
   eog evince gnome-control-center gnome-software gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus
