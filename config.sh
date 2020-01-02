@@ -23,7 +23,6 @@ sudo pacman -Syu --noconfirm
 . `dirname $0`/gnome.sh
 
 . `dirname $0`/git.sh
-. `dirname $0`/yay.sh
 
 . `dirname $0`/openssh.sh
 . `dirname $0`/aws.sh

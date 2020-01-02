@@ -4,23 +4,22 @@ set -e -o verbose
 
 if [ ! -d ~/AUR ]; then mkdir ~/AUR; fi
 
-# firmware
+# yay
 
 pushd ~/AUR
 
-if [ -d aic94xx-firmware ]; then rm -rf aic94xx-firmware; fi
-git clone https://aur.archlinux.org/aic94xx-firmware.git
-cd aic94xx-firmware
-makepkg -si --noconfirm
-git clean -fdx
-cd ..
-
-if [ -d wd719x-firmware ]; then rm -rf wd719x-firmware; fi
-git clone https://aur.archlinux.org/wd719x-firmware.git
-cd wd719x-firmware
+if [ -d yay ]; then rm -rf yay; fi
+git clone https://aur.archlinux.org/yay.git
+cd yay
 makepkg -si --noconfirm
 git clean -fdx
 cd ..
 
 popd
+
+# firmware
+
+yay -S --aur --noconfirm \
+  aic94xx-firmware \
+  wd719x-firmware
 
