@@ -8,13 +8,8 @@ sudo timedatectl set-ntp true
 
 sudo systemctl enable gdm.service
 sudo systemctl enable NetworkManager.service
-sudo systemctl enable tlp.service
 
 # group check
 
 sudo grpck
-
-# tlp
-
-sudo sed -i 's/CPU_HWP_ON_BAT=balance_power/CPU_HWP_ON_BAT=performance/g' /etc/default/tlp
 
