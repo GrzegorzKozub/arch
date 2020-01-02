@@ -17,9 +17,9 @@ cd ..
 
 popd
 
-# firmware
+# firmware and power saving
 
 yay -S --aur --noconfirm \
-  aic94xx-firmware \
-  wd719x-firmware
+  aic94xx-firmware wd719x-firmware \
+  laptop-mode-tools
 
