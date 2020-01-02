@@ -48,6 +48,7 @@ for APP in \
   bvnc \
   electron4 \
   gvim \
+  laptop-mode-tools \
   org.gnome.Cheese \
   qv4l2 \
   qvidcap \
