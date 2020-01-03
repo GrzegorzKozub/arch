@@ -17,4 +17,5 @@ sudo pacman -S --noconfirm \
   xclip
 
 yay -S --aur --noconfirm \
-  drive-bin
+  drive-bin \
+  git-extras
