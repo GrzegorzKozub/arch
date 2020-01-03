@@ -20,8 +20,19 @@ plugins=(
   extract
   git-extras
   golang
+  history
+  kubectl
+  last-working-dir
   mix
+  ng
   npm
+  pip
+  python
+  sudo
+  systemd
+  urltools
+  vscode
+  web-search
   zsh-syntax-highlighting
 )
 
