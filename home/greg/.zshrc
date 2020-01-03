@@ -12,6 +12,7 @@ ZSH_THEME='greg'
 plugins=(
   aws
   copyfile
+  dirhistory
   docker
   docker-compose
   docker-machine
