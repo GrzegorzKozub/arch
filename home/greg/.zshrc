@@ -15,8 +15,6 @@ source $ZSH/oh-my-zsh.sh
 
 setopt nobeep
 
-alias ls='ls --color=auto --group-directories-first --human-readable'
-
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^e' edit-command-line
