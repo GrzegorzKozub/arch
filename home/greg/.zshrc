@@ -16,6 +16,8 @@ plugins=(
   docker
   docker-compose
   docker-machine
+  encode64
+  extract
   golang
   mix
   npm
