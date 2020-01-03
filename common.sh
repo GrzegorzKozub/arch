@@ -13,7 +13,8 @@ sudo pacman -S --noconfirm \
   ripgrep \
   tree \
   wget \
-  wkhtmltopdf
+  wkhtmltopdf \
+  xclip
 
 yay -S --aur --noconfirm \
   drive-bin
