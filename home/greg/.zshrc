@@ -11,6 +11,7 @@ ZSH_THEME='greg'
 
 plugins=(
   aws
+  copydir
   copyfile
   dirhistory
   docker
@@ -29,6 +30,7 @@ plugins=(
   npm
   pip
   python
+  ripgrep
   sudo
   systemd
   urltools
