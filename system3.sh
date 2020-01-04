@@ -1,21 +1,14 @@
 set -e -o verbose
 
-# dirs
-
-if [ ! -d ~/AUR ]; then mkdir ~/AUR; fi
-
 # yay
 
-pushd ~/AUR
-
-if [ -d yay ]; then rm -rf yay; fi
+if [ -d ~/yay ]; then rm -rf ~/yay; fi
+pushd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
-git clean -fdx
-cd ..
-
 popd
+rm -rf ~/yay
 
 # firmware and power saving
 
