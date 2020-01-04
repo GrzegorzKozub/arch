@@ -34,6 +34,7 @@ plugins=(
   urltools
   vscode
   web-search
+  zsh-autosuggestions
   zsh-syntax-highlighting
 )
 
