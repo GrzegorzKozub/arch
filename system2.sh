@@ -68,9 +68,9 @@ cp `dirname $0`/system3.sh /home/greg
 su greg --command "~/system3.sh"
 rm /home/greg/system3.sh
 
-# new initramfs
+# kernel hooks: encrypt, lvm2 and resume
 
-cp `dirname $0`/etc/mkinitcpio.conf /etc
+sed -Ei "s/^HOOKS=.+$/HOOKS=(base udev autodetect modconf block encrypt lvm2 resume filesystems keyboard fsck)/" /etc/mkinitcpio.conf
 mkinitcpio -p linux
 
 # pacman
