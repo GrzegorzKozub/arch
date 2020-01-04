@@ -80,5 +80,5 @@ sed -i 's/#Color/Color/g' /etc/pacman.conf
 
 # scripts
 
-su greg --command "mkdir ~/Code; git clone https://github.com/GrzegorzKozub/arch.git ~/Code/arch"
+su greg --command "mkdir ~/code; git clone https://github.com/GrzegorzKozub/arch.git ~/code/arch"
 

@@ -2,10 +2,10 @@ set -e -o verbose
 
 # dirs
 
-if [ ! -d ~/Code ]; then mkdir ~/Code; fi
+if [ ! -d ~/code ]; then mkdir ~/code; fi
 
 # scripts
 
-if [ -d ~/Code/arch ]; then rm -rf ~/Code/arch; fi
-git clone git@github.com:GrzegorzKozub/arch.git ~/Code/arch
+if [ -d ~/code/arch ]; then rm -rf ~/code/arch; fi
+git clone git@github.com:GrzegorzKozub/arch.git ~/code/arch
 
