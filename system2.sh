@@ -9,10 +9,19 @@ hwclock --systohc
 
 sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/" /etc/locale.gen
 sed -i "s/#pl_PL.UTF-8 UTF-8/pl_PL.UTF-8 UTF-8/" /etc/locale.gen
+
 locale-gen
 
-cp `dirname $0`/etc/locale.conf /etc
-cp `dirname $0`/etc/vconsole.conf /etc
+echo "LANG=en_US.UTF-8" > /etc/locale.conf 
+echo "LC_MEASUREMENT=pl_PL.UTF-8" >> /etc/locale.conf 
+echo "LC_MONETARY=pl_PL.UTF-8" >> /etc/locale.conf 
+echo "LC_NUMERIC=pl_PL.UTF-8" >> /etc/locale.conf 
+echo "LC_PAPER=pl_PL.UTF-8" >> /etc/locale.conf 
+echo "LC_TIME=pl_PL.UTF-8" >> /etc/locale.conf 
+
+echo "KEYMAP=pl2" > /etc/vconsole.conf 
+echo "FONT=Lat2-Terminus16.psfu.gz" >> /etc/vconsole.conf 
+echo "FONT_MAP=8859-2" >> /etc/vconsole.conf 
 
 # network
 
