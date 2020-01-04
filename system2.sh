@@ -16,8 +16,11 @@ cp `dirname $0`/etc/vconsole.conf /etc
 
 # network
 
-cp `dirname $0`/etc/hostname /etc
-cp `dirname $0`/etc/hosts /etc
+echo "drifter" > /etc/hostname
+
+echo "127.0.0.1 localhost" >> /etc/hosts
+echo "::1       localhost" >> /etc/hosts
+echo "127.0.1.1 drifter.localdomain drifter" >> /etc/hosts
 
 # root password
 
