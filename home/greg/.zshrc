@@ -20,6 +20,7 @@ plugins=(
   extract
   git-extras
   golang
+  fzf
   history
   kubectl
   last-working-dir
@@ -44,6 +45,11 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+# https://github.com/junegunn/fzf/wiki/Color-schemes
+export FZF_DEFAULT_OPTS='
+  --color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254
+  --color info:254,prompt:37,spinner:108,pointer:235,marker:235
+'
 # https://github.com/zsh-users/zsh-syntax-highlighting/tree/master/highlighters/main
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green'

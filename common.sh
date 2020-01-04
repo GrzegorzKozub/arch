@@ -4,6 +4,7 @@ set -e -o verbose
 
 sudo pacman -S --noconfirm \
   flameshot \
+  fzf \
   graphviz \
   jq \
   htop \
@@ -14,7 +15,8 @@ sudo pacman -S --noconfirm \
   tree \
   wget \
   wkhtmltopdf \
-  xclip
+  xclip \
+  xorg-xrandr
 
 yay -S --aur --noconfirm \
   drive-bin \
