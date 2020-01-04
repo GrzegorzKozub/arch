@@ -17,24 +17,20 @@ plugins=(
   docker
   docker-compose
   docker-machine
-  encode64
-  extract
+  dotnet
+  fzf
+  git
   git-extras
   golang
-  fzf
-  history
   kubectl
   last-working-dir
   mix
-  ng
   npm
   pip
   python
   ripgrep
   sudo
   systemd
-  urltools
-  vscode
   web-search
   zsh-autosuggestions
   zsh-syntax-highlighting
@@ -53,6 +49,7 @@ export FZF_DEFAULT_OPTS='
   --color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254
   --color info:254,prompt:37,spinner:108,pointer:235,marker:235
 '
+
 # https://github.com/zsh-users/zsh-syntax-highlighting/tree/master/highlighters/main
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green'
