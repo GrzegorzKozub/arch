@@ -7,8 +7,10 @@ hwclock --systohc
 
 # localization
 
-cp `dirname $0`/etc/locale.gen /etc
+sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/" /etc/locale.gen
+sed -i "s/#pl_PL.UTF-8 UTF-8/pl_PL.UTF-8 UTF-8/" /etc/locale.gen
 locale-gen
+
 cp `dirname $0`/etc/locale.conf /etc
 cp `dirname $0`/etc/vconsole.conf /etc
 
