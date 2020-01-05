@@ -9,7 +9,7 @@ yay -S --aur --noconfirm hadolint-bin
 if [ -d ~/.vim ]; then rm -rf ~/.vim; fi
 git clone git@github.com:GrzegorzKozub/vim.git ~/.vim
 
-vim -c "PlugInstall | exit"
+vim -c 'PlugInstall | exit'
 
 ln -s ~/.vim  ~/.config/nvim
 

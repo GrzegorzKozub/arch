@@ -2,15 +2,15 @@ set -e -o verbose
 
 # format
 
-if [[ $(mount | grep "vg1-root on /mnt") ]]; then umount -R /mnt; fi
+if [[ $(mount | grep 'vg1-root on /mnt') ]]; then umount -R /mnt; fi
 mkfs.ext4 /dev/mapper/vg1-root
 
 # mount
 
 if [[ ! $(swapon) ]]; then swapon /dev/mapper/vg1-swap; fi
-if [[ ! $(mount | grep "vg1-root on /mnt") ]]; then mount /dev/mapper/vg1-root /mnt; fi
+if [[ ! $(mount | grep 'vg1-root on /mnt') ]]; then mount /dev/mapper/vg1-root /mnt; fi
 if [[ ! -d /mnt/boot ]]; then mkdir /mnt/boot; fi
-if [[ ! $(mount | grep "nvme0n1p2 on /mnt/boot") ]]; then mount /dev/nvme0n1p2 /mnt/boot; fi
+if [[ ! $(mount | grep 'nvme0n1p2 on /mnt/boot') ]]; then mount /dev/nvme0n1p2 /mnt/boot; fi
 
 # previous linux kernels
 

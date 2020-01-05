@@ -9,7 +9,7 @@ gsettings set org.gnome.desktop.background picture-uri 'file:///home/greg/Pictur
 gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictures/Among%20Trees.png'
 
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
-gsettings set org.gnome.system.locale region "pl_PL.UTF-8"
+gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
 
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 
@@ -21,7 +21,7 @@ gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-autom
 
 gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
 
-gsettings set org.gnome.nautilus.preferences default-folder-viewer "list-view"
+gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 
 dconf write /org/gtk/settings/file-chooser/show-hidden true
 dconf write /org/gtk/settings/file-chooser/sort-directories-first true
@@ -29,7 +29,7 @@ dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Super>Tab']"
 dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 
-gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness "<int32 50>"
+gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 50>'
 
 amixer sset Master 50%
 amixer sset Capture 50%

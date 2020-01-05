@@ -2,7 +2,7 @@ set -e -o verbose
 
 # linux partition
 
-read -p "Create linux partition and exit"
+read -p 'Create linux partition and exit'
 cfdisk /dev/nvme0n1
 
 # encryption
