@@ -53,6 +53,10 @@ ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
 ZSH_HIGHLIGHT_STYLES[path]='none'
 
+# https://github.com/zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+
 # https://github.com/softmoth/zsh-vim-mode
 MODE_CURSOR_VICMD="blinking block"
 MODE_CURSOR_VIINS="blinking bar"
