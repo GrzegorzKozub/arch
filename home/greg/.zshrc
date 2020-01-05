@@ -10,31 +10,15 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME='greg'
 
 plugins=(
-  aws
-  copydir
-  copyfile
-  dirhistory
-  docker
-  docker-compose
-  docker-machine
-  dotnet
-  fzf
-  git
-  git-extras
-  golang
-  kubectl
   last-working-dir
-  mix
-  npm
-  pip
-  python
-  ripgrep
-  sudo
-  systemd
-  web-search
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  zsh-vim-mode
+  zsh-autosuggestions zsh-syntax-highlighting
+  copydir copyfile web-search
+  ripgrep sudo systemd
+  git git-extras
+  dotnet golang mix npm pip python dotnet
+  aws docker docker-compose docker-machine kubectl
+  zsh-vim-mode # after aws for compatibility
+  dirhistory fzf # after zsh-vim-mode for compatibility
 )
 
 source $ZSH/oh-my-zsh.sh
