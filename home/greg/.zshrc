@@ -34,15 +34,12 @@ plugins=(
   web-search
   zsh-autosuggestions
   zsh-syntax-highlighting
+  zsh-vim-mode
 )
 
 source $ZSH/oh-my-zsh.sh
 
 setopt nobeep
-
-autoload edit-command-line
-zle -N edit-command-line
-bindkey '^e' edit-command-line
 
 # https://github.com/junegunn/fzf/wiki/Color-schemes
 export FZF_DEFAULT_OPTS='
@@ -56,3 +53,7 @@ ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
 ZSH_HIGHLIGHT_STYLES[path]='none'
 
+# https://github.com/softmoth/zsh-vim-mode
+MODE_CURSOR_VICMD="blinking block"
+MODE_CURSOR_VIINS="blinking bar"
+MODE_CURSOR_SEARCH="steady block"

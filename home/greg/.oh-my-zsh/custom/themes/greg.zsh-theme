@@ -6,6 +6,14 @@ ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE="%{$fg[yellow]%}"
 ZSH_THEME_GIT_COMMITS_BEHIND_PREFIX=" %{$fg[red]%}↓"
 ZSH_THEME_GIT_COMMITS_AHEAD_PREFIX=" %{$fg[green]%}↑"
 
+# https://github.com/softmoth/zsh-vim-mode
+MODE_INDICATOR_VIINS="%F{4}INSERT%{$reset_color%}"
+MODE_INDICATOR_VICMD="%F{10}NORMAL%{$reset_color%}"
+MODE_INDICATOR_REPLACE="%F{9}REPLACE%{$reset_color%}"
+MODE_INDICATOR_SEARCH="%F{13}SEARCH%{$reset_color%}"
+MODE_INDICATOR_VISUAL="%F{2}VISUAL%{$reset_color%}"
+MODE_INDICATOR_VLINE="%F{2}VSUAL LINE%{$reset_color%}"
+
 user=%{%(!.$fg[red].$fg[green])%}%n%{$reset_color%}
 host=%{$fg[yellow]%}%m%{$reset_color%}
 dir=%{$fg[cyan]%}%3~%{$reset_color%}
