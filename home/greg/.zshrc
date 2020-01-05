@@ -25,21 +25,21 @@ source $ZSH/oh-my-zsh.sh
 
 setopt nobeep
 
-# https://github.com/junegunn/fzf/wiki/Color-schemes
+# https://github.com/junegunn/fzf
 export FZF_DEFAULT_OPTS='
-  --color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254
-  --color info:254,prompt:37,spinner:108,pointer:235,marker:235
+  --color dark,bg+:-1,fg:10,fg+:14,hl:13,hl+:13
+  --color spinner:8,info:8,prompt:10,pointer:14,marker:14
 '
-
-# https://github.com/zsh-users/zsh-syntax-highlighting/tree/master/highlighters/main
-typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green'
-ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
-ZSH_HIGHLIGHT_STYLES[path]='none'
 
 # https://github.com/zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+# https://github.com/zsh-users/zsh-syntax-highlighting
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
+ZSH_HIGHLIGHT_STYLES[path]='none'
 
 # https://github.com/softmoth/zsh-vim-mode
 MODE_CURSOR_VICMD="blinking block"
