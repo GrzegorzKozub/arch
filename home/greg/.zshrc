@@ -1,5 +1,5 @@
 typeset -U path
-path=(~/.gem/ruby/2.6.0/bin ~/.local/bin ~/go/bin ~/.npm/bin $path[@])
+path=(~/scripts ~/.local/bin ~/.npm/bin ~/go/bin ~/.gem/ruby/2.6.0/bin $path[@])
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export EDITOR='vim'
@@ -56,8 +56,3 @@ ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
 ZSH_HIGHLIGHT_STYLES[path]='none'
 
-function screen {
-  if [[ $(xrandr | grep connected | grep 3840x2160) ]]; then FACTOR=1.75; else FACTOR=1.25; fi
-  gsettings set org.gnome.desktop.interface text-scaling-factor $FACTOR
-  unset FACTOR
-}
