@@ -23,6 +23,8 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
 
 gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 
+gsettings set org.gnome.eog.ui sidebar false
+
 dconf write /org/gtk/settings/file-chooser/show-hidden true
 dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 
