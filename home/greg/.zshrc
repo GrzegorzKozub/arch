@@ -45,3 +45,15 @@ ZSH_HIGHLIGHT_STYLES[path]='none'
 MODE_CURSOR_VICMD="blinking block"
 MODE_CURSOR_VIINS="blinking bar"
 MODE_CURSOR_SEARCH="steady block"
+
+# https://github.com/ranger/ranger
+function ranger-cd {
+  TEMPFILE="$(mktemp -t tmp.XXXXXX)"
+  /usr/bin/ranger --choosedir="$TEMPFILE" "${@:-$(pwd)}"
+  test -f "$TEMPFILE" &&
+  if [ "$(cat -- "$TEMPFILE")" != "$(echo -n `pwd`)" ]; then
+    cd -- "$(cat "$TEMPFILE")"
+  fi
+  rm -f -- "$TEMPFILE"
+  unset TEMPFILE
+}

@@ -54,6 +54,7 @@ for APP in \
   org.gnome.Cheese \
   qv4l2 \
   qvidcap \
+  ranger \
   stoken-gui \
   stoken-gui-small \
   vim
