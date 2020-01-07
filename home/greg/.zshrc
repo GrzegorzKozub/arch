@@ -32,7 +32,7 @@ export FZF_DEFAULT_OPTS='
 '
 
 # https://github.com/zsh-users/zsh-autosuggestions
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
@@ -42,9 +42,9 @@ ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
 ZSH_HIGHLIGHT_STYLES[path]='none'
 
 # https://github.com/softmoth/zsh-vim-mode
-MODE_CURSOR_VICMD="blinking block"
-MODE_CURSOR_VIINS="blinking bar"
-MODE_CURSOR_SEARCH="steady block"
+MODE_CURSOR_VICMD='blinking block'
+MODE_CURSOR_VIINS='blinking bar'
+MODE_CURSOR_SEARCH='steady block'
 
 # https://github.com/ranger/ranger
 function ranger-cd {
@@ -53,7 +53,7 @@ function ranger-cd {
   test -f "$TEMPFILE" &&
   if [ "$(cat -- "$TEMPFILE")" != "$(echo -n `pwd`)" ]; then
     cd -- "$(cat "$TEMPFILE")"
-  fi
+  fi  
   rm -f -- "$TEMPFILE"
   unset TEMPFILE
 }
