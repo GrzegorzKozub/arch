@@ -11,7 +11,7 @@ ZSH_THEME='greg'
 
 plugins=(
   last-working-dir
-  zsh-autosuggestions zsh-syntax-highlighting
+  zsh-syntax-highlighting
   copydir copyfile web-search
   ripgrep systemd
   git git-extras
@@ -30,10 +30,6 @@ export FZF_DEFAULT_OPTS='
   --color dark,bg+:-1,fg:10,fg+:14,hl:13,hl+:13
   --color spinner:8,info:8,prompt:10,pointer:14,marker:14
 '
-
-# https://github.com/zsh-users/zsh-autosuggestions
-ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(end-of-line vi-end-of-line)
-ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
 typeset -A ZSH_HIGHLIGHT_STYLES
@@ -57,3 +53,4 @@ function ranger-cd {
   rm -f -- "$TEMPFILE"
   unset TEMPFILE
 }
+
