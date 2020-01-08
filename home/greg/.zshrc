@@ -1,7 +1,7 @@
 # zsh 
 
 typeset -U path
-path=(~/scripts ~/.local/bin ~/.npm/bin ~/go/bin ~/.gem/ruby/2.6.0/bin $path[@])
+path=(~/.local/bin ~/.npm/bin ~/go/bin ~/.gem/ruby/2.6.0/bin $path[@])
 
 export EDITOR='vim'
 setopt nobeep
@@ -45,6 +45,14 @@ zle -N ranger-cd
 
 bindkey -M vicmd '\er' ranger-cd
 bindkey -M viins '\er' ranger-cd
+
+# screen
+
+function screen {
+  if [[ $(xrandr | grep connected | grep 3840x2160) ]]; then FACTOR=1.75; else FACTOR=1.25; fi
+  gsettings set org.gnome.desktop.interface text-scaling-factor $FACTOR
+  unset FACTOR
+}
 
 # oh-my-zsh
 
