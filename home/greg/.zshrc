@@ -9,20 +9,6 @@ export ZSH=~/.oh-my-zsh
 
 ZSH_THEME='greg'
 
-plugins=(
-  last-working-dir
-  zsh-syntax-highlighting
-  copydir copyfile web-search
-  ripgrep systemd
-  git git-extras
-  dotnet golang mix npm pip python dotnet
-  aws docker docker-compose docker-machine kubectl
-  zsh-vim-mode # after aws for compatibility
-  dirhistory fzf # after zsh-vim-mode for compatibility
-)
-
-source $ZSH/oh-my-zsh.sh
-
 setopt nobeep
 
 # https://github.com/junegunn/fzf
@@ -53,4 +39,18 @@ function ranger-cd {
   rm -f -- "$TEMPFILE"
   unset TEMPFILE
 }
+
+plugins=(
+  last-working-dir
+  copydir copyfile web-search
+  ripgrep systemd
+  git git-extras
+  dotnet golang mix npm pip python dotnet
+  aws docker docker-compose docker-machine kubectl
+  zsh-vim-mode # after aws
+  dirhistory fzf # after zsh-vim-mode
+  zsh-syntax-highlighting # last
+)
+
+source $ZSH/oh-my-zsh.sh
 
