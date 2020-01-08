@@ -13,7 +13,7 @@ plugins=(
   last-working-dir
   zsh-autosuggestions zsh-syntax-highlighting
   copydir copyfile web-search
-  ripgrep sudo systemd
+  ripgrep systemd
   git git-extras
   dotnet golang mix npm pip python dotnet
   aws docker docker-compose docker-machine kubectl
