@@ -32,7 +32,7 @@ export FZF_DEFAULT_OPTS='
 '
 
 # https://github.com/zsh-users/zsh-autosuggestions
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(end-of-line vi-end-of-line)
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
