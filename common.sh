@@ -11,6 +11,7 @@ sudo pacman -S --noconfirm \
   man-db \
   man-pages \
   p7zip \
+  peek \
   ripgrep \
   tree \
   wget \
