@@ -5,9 +5,7 @@ set -e -o verbose
 yay -S --aur --noconfirm visual-studio-code-bin
 
 for EXTENSION in \
-  EFanZh.graphviz-preview \
   JakeBecker.elixir-ls \
-  Stephanvs.dot \
   alexkrechik.cucumberautocomplete \
   aws-scripting-guy.cform \
   dbaeumer.vscode-eslint \
