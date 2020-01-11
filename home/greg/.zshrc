@@ -24,7 +24,7 @@ zplugin snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
 zplugin snippet OMZ::lib/git.zsh
 zplugin snippet https://github.com/GrzegorzKozub/zsh-themes/blob/master/greg.zsh-theme # after zsh-vim-mode
 
-zplugin light zsh-users/zsh-syntax-highlighting # last
+zplugin light zdharma/fast-syntax-highlighting
 
 zplugin ice as'completion'
 zplugin snippet OMZ::plugins/docker/_docker
@@ -85,12 +85,6 @@ setopt share_history # share history between terminals
 alias grep="grep --color=auto --exclude-dir={.git}"
 alias ls="ls --color=auto"
 alias la='ls -lAh'
-
-# zsh-syntax-highlighting
-typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[path]='none'
-ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
-ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green'
 
 # zsh-vim-mode
 MODE_CURSOR_SEARCH='steady block'
