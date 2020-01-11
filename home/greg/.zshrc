@@ -6,6 +6,8 @@ path=(~/.local/bin ~/.npm/bin ~/go/bin ~/.gem/ruby/2.6.0/bin $path[@])
 export EDITOR='vim'
 setopt nobeep
 
+stty -ixon
+
 # fzf
 
 export FZF_DEFAULT_OPTS='
