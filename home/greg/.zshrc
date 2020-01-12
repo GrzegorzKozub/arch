@@ -77,7 +77,6 @@ setopt complete_aliases
 setopt complete_in_word
 
 zstyle ':completion:*' menu select
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # history
 
