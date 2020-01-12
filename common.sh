@@ -3,6 +3,7 @@ set -e -o verbose
 # common
 
 sudo pacman -S --noconfirm \
+  exa \
   flameshot \
   fzf \
   graphviz \
@@ -13,7 +14,6 @@ sudo pacman -S --noconfirm \
   p7zip \
   peek \
   ripgrep \
-  tree \
   wget \
   wkhtmltopdf \
   xclip \
