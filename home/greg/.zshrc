@@ -3,8 +3,17 @@ typeset -U path
 path=(~/.local/bin ~/.npm/bin ~/go/bin ~/.gem/ruby/2.6.0/bin $path[@])
 
 # colors
+
 autoload -U colors && colors
-if [[ -z "$LS_COLORS" ]]; then (( $+commands[dircolors] )) && eval "$(dircolors -b)"; fi
+
+if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
+  CMD=/tmp/ls_colors.zsh
+  if [[ ! -x $CMD ]]; then
+    dircolors -b > $CMD && chmod a+x $CMD
+  fi
+  $CMD
+  unset CMD 
+fi
 
 # plugins
 
