@@ -25,23 +25,26 @@ zplugin snippet OMZ::lib/termsupport.zsh
 
 zplugin light softmoth/zsh-vim-mode
 
+zplugin ice wait lucid
 zplugin snippet OMZ::plugins/fzf/fzf.plugin.zsh # after zsh-vim-mode
 
-zplugin snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after zsh-vim-mode
 zplugin snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
+zplugin ice wait lucid
+zplugin snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after zsh-vim-mode
 
 zplugin snippet OMZ::lib/git.zsh
 zplugin snippet https://github.com/GrzegorzKozub/zsh-themes/blob/master/greg.zsh-theme # after zsh-vim-mode
 
+zplugin ice wait lucid
 zplugin light zdharma/fast-syntax-highlighting
 
-zplugin ice as'completion'
+zplugin ice wait lucid as'completion'
 zplugin snippet OMZ::plugins/docker/_docker
-zplugin ice as'completion'
+zplugin ice wait lucid as'completion'
 zplugin snippet OMZ::plugins/docker-compose/_docker-compose
-zplugin ice as'completion'
+zplugin ice wait lucid as'completion'
 zplugin snippet OMZ::plugins/docker-machine/_docker-machine
-zplugin ice as'completion'
+zplugin ice wait lucid as'completion'
 zplugin snippet OMZ::plugins/pip/_pip
 
 # options
