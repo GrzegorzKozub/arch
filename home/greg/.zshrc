@@ -96,9 +96,31 @@ setopt inc_append_history # add commands in the order of execution
 setopt share_history # share history between terminals
 
 # aliases
-alias grep="grep --color=auto --exclude-dir={.git}"
-alias ls="ls --color=auto"
+alias grep='grep --color=auto --exclude-dir={.git}'
+alias ls='ls --color=auto'
 alias la='ls -lAh'
+
+# dirhistory
+
+bindkey -M vicmd '^[^[[A' dirhistory_zle_dirhistory_up
+bindkey -M vicmd '^[O3A' dirhistory_zle_dirhistory_up
+bindkey -M vicmd '^[[1;3A' dirhistory_zle_dirhistory_up
+bindkey -M vicmd '^[[3A' dirhistory_zle_dirhistory_up
+
+bindkey -M vicmd '^[^[[B' dirhistory_zle_dirhistory_down
+bindkey -M vicmd '^[O3B' dirhistory_zle_dirhistory_down
+bindkey -M vicmd '^[[1;3B' dirhistory_zle_dirhistory_down
+bindkey -M vicmd '^[[3B' dirhistory_zle_dirhistory_down
+
+bindkey -M vicmd '^[^[[D' dirhistory_zle_dirhistory_back
+bindkey -M vicmd '^[O3D' dirhistory_zle_dirhistory_back
+bindkey -M vicmd '^[[1;3D' dirhistory_zle_dirhistory_back
+bindkey -M vicmd '^[[3D' dirhistory_zle_dirhistory_back
+
+bindkey -M vicmd '^[^[[C' dirhistory_zle_dirhistory_future
+bindkey -M vicmd '^[O3C' dirhistory_zle_dirhistory_future
+bindkey -M vicmd '^[[1;3C' dirhistory_zle_dirhistory_future
+bindkey -M vicmd '^[[3C' dirhistory_zle_dirhistory_future
 
 # zsh-vim-mode
 MODE_CURSOR_SEARCH='steady block'
@@ -116,6 +138,9 @@ export FZF_DEFAULT_OPTS='
   --color dark,bg+:-1,fg:10,fg+:14,hl:13,hl+:13
   --color spinner:8,info:8,prompt:10,pointer:14,marker:14
 '
+bindkey -M vicmd '^[c' fzf-cd-widget
+bindkey -M vicmd '^r' fzf-history-widget
+bindkey -M vicmd '^t' fzf-file-widget
 
 # esc+r activates ranger which changes current dir upon exit
 function ranger-cd {
