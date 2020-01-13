@@ -100,26 +100,10 @@ alias ls='ls --color=auto'
 alias la='ls -lAh'
 
 # dirhistory
-
-bindkey -M vicmd '^[^[[A' dirhistory_zle_dirhistory_up
-bindkey -M vicmd '^[O3A' dirhistory_zle_dirhistory_up
-bindkey -M vicmd '^[[1;3A' dirhistory_zle_dirhistory_up
-bindkey -M vicmd '^[[3A' dirhistory_zle_dirhistory_up
-
-bindkey -M vicmd '^[^[[B' dirhistory_zle_dirhistory_down
-bindkey -M vicmd '^[O3B' dirhistory_zle_dirhistory_down
-bindkey -M vicmd '^[[1;3B' dirhistory_zle_dirhistory_down
-bindkey -M vicmd '^[[3B' dirhistory_zle_dirhistory_down
-
-bindkey -M vicmd '^[^[[D' dirhistory_zle_dirhistory_back
-bindkey -M vicmd '^[O3D' dirhistory_zle_dirhistory_back
 bindkey -M vicmd '^[[1;3D' dirhistory_zle_dirhistory_back
-bindkey -M vicmd '^[[3D' dirhistory_zle_dirhistory_back
-
-bindkey -M vicmd '^[^[[C' dirhistory_zle_dirhistory_future
-bindkey -M vicmd '^[O3C' dirhistory_zle_dirhistory_future
 bindkey -M vicmd '^[[1;3C' dirhistory_zle_dirhistory_future
-bindkey -M vicmd '^[[3C' dirhistory_zle_dirhistory_future
+bindkey -M vicmd '^[[1;3A' dirhistory_zle_dirhistory_up
+bindkey -M vicmd '^[[1;3B' dirhistory_zle_dirhistory_down
 
 # zsh-vim-mode
 MODE_CURSOR_SEARCH='steady block'
@@ -133,10 +117,6 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export ERL_AFLAGS='-kernel shell_history enabled'
 
 # fzf
-export FZF_DEFAULT_OPTS='
-  --color dark,bg+:-1,fg:10,fg+:14,hl:13,hl+:13
-  --color spinner:8,info:8,prompt:10,pointer:14,marker:14
-'
 bindkey -M vicmd '^[c' fzf-cd-widget
 bindkey -M vicmd '^r' fzf-history-widget
 bindkey -M vicmd '^t' fzf-file-widget
