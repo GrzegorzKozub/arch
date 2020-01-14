@@ -26,7 +26,8 @@ unset $ARCHISO
 . `dirname $0`/python.sh
 . `dirname $0`/ruby.sh
 
-. `dirname $0`/chromium.sh
+#. `dirname $0`/chromium.sh
+. `dirname $0`/chrome.sh
 . `dirname $0`/docker.sh
 . `dirname $0`/dropbox.sh
 . `dirname $0`/keepass.sh

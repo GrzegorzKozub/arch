@@ -42,7 +42,7 @@ amixer sset Capture 50%
 # blurry
 # gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'chromium.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'chromium.desktop', 'google-chrome.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
 
 for APP in \
   avahi-discover \
