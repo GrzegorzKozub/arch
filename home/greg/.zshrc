@@ -15,13 +15,14 @@ if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
   unset CMD 
 fi
 
+# terminal
+zstyle ':prezto:module:terminal' auto-title 'yes'
+
 # plugins
 
 source ~/.zplugin/bin/zplugin.zsh
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
-
-zplugin snippet OMZ::lib/termsupport.zsh
 
 zplugin light softmoth/zsh-vim-mode
 
@@ -39,6 +40,8 @@ zplugin ice wait lucid
 zplugin light zdharma/fast-syntax-highlighting
 zplugin ice wait cloneonly nocompile atclone'fast-theme ./solarized-dark.ini --quiet' atpull'%atclone' lucid
 zplugin snippet https://github.com/GrzegorzKozub/themes/blob/master/fast-syntax-highlighting/solarized-dark.ini # after fast-syntax-highlighting
+
+zplugin snippet PZT::modules/terminal/init.zsh
 
 zplugin ice wait lucid as'completion'
 zplugin snippet OMZ::plugins/docker/_docker
