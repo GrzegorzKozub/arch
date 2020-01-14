@@ -77,9 +77,20 @@ autoload -Uz compinit && compinit
 setopt always_to_end # put cursor at the end of completed word
 setopt auto_menu # show completion menu on 2nd tab
 setopt complete_aliases
-setopt complete_in_word
+setopt complete_in_word # complete from both words ends
+setopt extended_glob
+setopt path_dirs # search for paths on commands with slashes
 
 zstyle ':completion:*' menu select
+zstyle ':completion:*:warnings' format '%F{red}no matches found%f'
+
+# complete environment variables
+zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
+
+# correct single char typos
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # history
 
