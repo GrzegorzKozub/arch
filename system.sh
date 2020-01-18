@@ -24,7 +24,7 @@ if [ -f /mnt/boot/vmlinuz-linux ]; then rm /mnt/boot/vmlinuz-linux; fi
 pacstrap /mnt \
   base base-devel \
   linux linux-firmware \
-  intel-ucode xf86-video-intel alsa-utils \
+  intel-ucode alsa-utils \
   efibootmgr \
   lvm2 \
   dialog dhcpcd netctl wpa_supplicant \
