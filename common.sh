@@ -3,7 +3,6 @@ set -e -o verbose
 # common
 
 sudo pacman -S --noconfirm \
-  exa \
   flameshot \
   fzf \
   graphviz \
@@ -20,5 +19,4 @@ sudo pacman -S --noconfirm \
   xorg-xrandr
 
 yay -S --aur --noconfirm \
-  drive-bin \
   git-extras
