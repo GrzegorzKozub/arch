@@ -35,6 +35,7 @@ unset $ARCHISO
 . `dirname $0`/postman.sh
 . `dirname $0`/ranger.sh
 . `dirname $0`/slack.sh
+. `dirname $0`/tmux.sh
 . `dirname $0`/vim.sh
 . `dirname $0`/vscode.sh
 
