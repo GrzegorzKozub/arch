@@ -8,5 +8,5 @@ mix local.hex --force
 mix local.rebar --force
 mix archive.install hex phx_new --force
 
-cp `dirname $0`/home/greg/.iex.exs ~
+#cp `dirname $0`/home/greg/.iex.exs ~
 

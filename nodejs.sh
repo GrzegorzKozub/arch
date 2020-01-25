@@ -2,8 +2,8 @@ set -e -o verbose
 
 # nodejs
 
-cp `dirname $0`/home/greg/.angular-config.json ~
-cp `dirname $0`/home/greg/.npmrc ~
+#cp `dirname $0`/home/greg/.angular-config.json ~
+#cp `dirname $0`/home/greg/.npmrc ~
 
 sudo pacman -S --noconfirm nodejs npm
 
