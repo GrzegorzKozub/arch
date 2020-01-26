@@ -27,6 +27,10 @@ sudo pacman -Syu --noconfirm
 
 . `dirname $0`/dotfiles.zsh
 
+# scripts
+
+. `dirname $0`/scripts.sh
+
 # apps
 
 . `dirname $0`/gnome.sh

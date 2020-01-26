@@ -14,10 +14,6 @@ sudo mount /dev/$ARCHISO /mnt
 
 unset $ARCHISO
 
-# scripts
-
-. `dirname $0`/scripts.sh
-
 # apps
 
 . `dirname $0`/common.sh
