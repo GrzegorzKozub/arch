@@ -20,37 +20,37 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # plugins
 
-source ~/.zplugin/bin/zplugin.zsh
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+source ~/.zinit/bin/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-zplugin light softmoth/zsh-vim-mode
+zinit light softmoth/zsh-vim-mode
 
-zplugin ice wait lucid
-zplugin snippet OMZ::plugins/fzf/fzf.plugin.zsh # after zsh-vim-mode
+zinit ice wait lucid
+zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh # after zsh-vim-mode
 
-zplugin snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
-zplugin ice wait lucid
-zplugin snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after zsh-vim-mode
+zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after zsh-vim-mode
 
-zplugin snippet OMZ::lib/git.zsh
-zplugin snippet https://github.com/GrzegorzKozub/themes/blob/master/zsh/solarized-dark.zsh-theme # after zsh-vim-mode
+zinit snippet OMZ::lib/git.zsh
+zinit snippet https://github.com/GrzegorzKozub/themes/blob/master/zsh/solarized-dark.zsh-theme # after zsh-vim-mode
 
-zplugin ice wait lucid
-zplugin light zdharma/fast-syntax-highlighting
-zplugin ice wait cloneonly nocompile atclone'fast-theme ./solarized-dark.ini --quiet' atpull'%atclone' lucid
-zplugin snippet https://github.com/GrzegorzKozub/themes/blob/master/fast-syntax-highlighting/solarized-dark.ini # after fast-syntax-highlighting
+zinit ice wait lucid
+zinit light zdharma/fast-syntax-highlighting
+zinit ice wait cloneonly nocompile atclone'fast-theme ./solarized-dark.ini --quiet' atpull'%atclone' lucid
+zinit snippet https://github.com/GrzegorzKozub/themes/blob/master/fast-syntax-highlighting/solarized-dark.ini # after fast-syntax-highlighting
 
-zplugin snippet PZT::modules/terminal/init.zsh
+zinit snippet PZT::modules/terminal/init.zsh
 
-zplugin ice wait lucid as'completion'
-zplugin snippet OMZ::plugins/docker/_docker
-zplugin ice wait lucid as'completion'
-zplugin snippet OMZ::plugins/docker-compose/_docker-compose
-zplugin ice wait lucid as'completion'
-zplugin snippet OMZ::plugins/docker-machine/_docker-machine
-zplugin ice wait lucid as'completion'
-zplugin snippet OMZ::plugins/pip/_pip
+zinit ice wait lucid as'completion'
+zinit snippet OMZ::plugins/docker/_docker
+zinit ice wait lucid as'completion'
+zinit snippet OMZ::plugins/docker-compose/_docker-compose
+zinit ice wait lucid as'completion'
+zinit snippet OMZ::plugins/docker-machine/_docker-machine
+zinit ice wait lucid as'completion'
+zinit snippet OMZ::plugins/pip/_pip
 
 # options
 
