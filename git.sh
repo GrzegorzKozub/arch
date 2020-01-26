@@ -4,5 +4,3 @@ set -e -o verbose
 
 sudo pacman -S --noconfirm git diff-so-fancy
 
-#cp `dirname $0`/home/greg/.gitconfig ~
-

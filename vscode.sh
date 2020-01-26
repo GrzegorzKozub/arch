@@ -26,6 +26,3 @@ do
   code --install-extension $EXTENSION --force
 done
 
-#if [ -d ~/.config/Code ]; then rm -rf ~/.config/Code; fi
-#git clone git@github.com:GrzegorzKozub/vscode.git ~/.config/Code
-

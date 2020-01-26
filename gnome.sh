@@ -2,8 +2,8 @@ set -e -o verbose
 
 # gnome
 
-#if [ ! -d ~/Pictures ]; then mkdir ~/Pictures; fi
-#cp `dirname $0`/home/greg/Pictures/Among\ Trees.png ~/Pictures
+if [ ! -d ~/Pictures ]; then mkdir ~/Pictures; fi
+cp `dirname $0`/home/greg/Pictures/Among\ Trees.png ~/Pictures
 
 gsettings set org.gnome.desktop.background picture-uri 'file:///home/greg/Pictures/Among%20Trees.png'
 gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictures/Among%20Trees.png'
