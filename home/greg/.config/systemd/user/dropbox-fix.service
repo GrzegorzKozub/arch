@@ -1,0 +1,9 @@
+[Unit]
+Description=dropbox-fix
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sh ~/code/arch/dropbox-fix.sh
+
+[Install]
+WantedBy=multi-user.target

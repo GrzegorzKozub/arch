@@ -41,5 +41,4 @@ Installing Arch Linux on Dell XPS 13
   - Install uBlock
 3. Setup Dropbox
   - Exclude unwanted dirs from sync
-  - Fix tray icon by running `~/code/arch/dropbox2.sh`
 
