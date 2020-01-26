@@ -32,6 +32,7 @@ sudo pacman -Syu --noconfirm
 . `dirname $0`/terminal.sh
 
 . `dirname $0`/zsh.sh
+. `dirname $0`/tmux.sh
 
 # usb unmount
 
