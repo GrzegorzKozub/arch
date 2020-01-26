@@ -14,10 +14,15 @@ sudo mount /dev/$ARCHISO /mnt
 
 unset $ARCHISO
 
+# scripts
+
+. `dirname $0`/scripts.sh
+
 # apps
 
 . `dirname $0`/common.sh
 
+. `dirname $0`/aws.sh
 . `dirname $0`/dotnet.sh
 . `dirname $0`/elixir.sh
 . `dirname $0`/go.sh
@@ -26,8 +31,8 @@ unset $ARCHISO
 . `dirname $0`/python.sh
 . `dirname $0`/ruby.sh
 
-#. `dirname $0`/chromium.sh
 . `dirname $0`/chrome.sh
+#. `dirname $0`/chromium.sh
 . `dirname $0`/docker.sh
 . `dirname $0`/dropbox.sh
 . `dirname $0`/keepass.sh
@@ -37,6 +42,10 @@ unset $ARCHISO
 . `dirname $0`/slack.sh
 . `dirname $0`/vim.sh
 . `dirname $0`/vscode.sh
+
+# dotfiles
+
+. ~/.dotfiles.sh
 
 # usb unmount
 

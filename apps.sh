@@ -18,15 +18,18 @@ unset $ARCHISO
 
 sudo pacman -Syu --noconfirm
 
-# config
-
-. `dirname $0`/gnome.sh
+# git
 
 . `dirname $0`/git.sh
-
 . `dirname $0`/openssh.sh
-. `dirname $0`/aws.sh
-. `dirname $0`/scripts.sh
+
+# dotfiles
+
+. `dirname $0`/dotfiles.zsh
+
+# apps
+
+. `dirname $0`/gnome.sh
 
 . `dirname $0`/fonts.sh
 . `dirname $0`/terminal.sh
