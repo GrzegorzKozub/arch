@@ -14,29 +14,25 @@ sudo mount /dev/$ARCHISO /mnt
 
 unset $ARCHISO
 
-# apps
+# pacman db sync
 
-. `dirname $0`/common.sh
+sudo pacman -Syu --noconfirm
 
-. `dirname $0`/dotnet.sh
-. `dirname $0`/elixir.sh
-. `dirname $0`/go.sh
-. `dirname $0`/nodejs.sh
-. `dirname $0`/perl.sh
-. `dirname $0`/python.sh
-. `dirname $0`/ruby.sh
+# config
 
-#. `dirname $0`/chromium.sh
-. `dirname $0`/chrome.sh
-. `dirname $0`/docker.sh
-. `dirname $0`/dropbox.sh
-. `dirname $0`/keepass.sh
-. `dirname $0`/openconnect.sh
-. `dirname $0`/postman.sh
-. `dirname $0`/ranger.sh
-. `dirname $0`/slack.sh
-. `dirname $0`/vim.sh
-. `dirname $0`/vscode.sh
+. `dirname $0`/gnome.sh
+
+. `dirname $0`/git.sh
+
+. `dirname $0`/openssh.sh
+. `dirname $0`/aws.sh
+. `dirname $0`/scripts.sh
+
+. `dirname $0`/fonts.sh
+. `dirname $0`/terminal.sh
+
+. `dirname $0`/zsh.sh
+. `dirname $0`/tmux.sh
 
 # usb unmount
 
