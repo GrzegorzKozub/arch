@@ -12,7 +12,7 @@ if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
     dircolors -b > $CMD && chmod a+x $CMD
   fi
   $CMD
-  unset CMD 
+  unset CMD
 fi
 
 # terminal
@@ -110,6 +110,8 @@ setopt hist_save_no_dups
 setopt hist_verify # don't run command immediately
 setopt inc_append_history # add commands in the order of execution
 setopt share_history # share history between terminals
+
+cp ~/.zshhist ~/Dropbox/Backup
 
 # aliases
 alias grep='grep --color=auto --exclude-dir={.git}'
