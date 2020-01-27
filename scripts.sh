@@ -9,9 +9,6 @@ if [ ! -d ~/code ]; then mkdir ~/code; fi
 if [ -d ~/code/arch ]; then rm -rf ~/code/arch; fi
 git clone git@github.com:GrzegorzKozub/arch.git ~/code/arch
 
-if [ -d ~/code/dotfiles ]; then rm -rf ~/code/dotfiles; fi
-git clone git@github.com:GrzegorzKozub/dotfiles.git ~/code/dotfiles
-
 if [ -d ~/code/keys ]; then rm -rf ~/code/keys; fi
 git clone git@github.com:GrzegorzKozub/keys.git ~/code/keys
 

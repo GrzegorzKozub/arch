@@ -2,17 +2,20 @@
 
 set -e -o verbose
 
+# dirs
+
+if [ ! -d ~/code ]; then mkdir ~/code; fi
+
 # dotfiles
 
-if [ -d ~/dotfiles ]; then rm -rf ~/dotfiles; fi
+if [ -d ~/code/dotfiles ]; then rm -rf ~/code/dotfiles; fi
+git clone --recursive git@github.com:GrzegorzKozub/dotfiles.git ~/code/dotfiles
 
 pushd ~
-git clone --recursive git@github.com:GrzegorzKozub/dotfiles.git ~/dotfiles
-cd ~/dotfiles
+cd ~/code/dotfiles
 git submodule update --init
 git submodule foreach --recursive git checkout master
 popd
 
 cp -rf ~/dotfiles/*(DN) ~/
-rm -rf ~/dotfiles
 
