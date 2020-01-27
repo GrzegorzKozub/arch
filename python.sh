@@ -12,6 +12,6 @@ pip install --user \
   lastversion \
   pynvim
 
-pip install --user --pre \
-  vim-vint
+#pip install --user --pre \
+#  vim-vint
 
