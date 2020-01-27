@@ -17,5 +17,5 @@ git submodule update --init
 git submodule foreach --recursive git checkout master
 popd
 
-cp -rf ~/dotfiles/*(DN) ~/
+cp -rf ~/code/dotfiles/*(DN) ~/
 
