@@ -19,4 +19,4 @@ git update-index --assume-unchanged .aws/config .config/keepassxc/keepassxc.ini
 popd
 
 cp -rf ~/code/dotfiles/*(DN) ~/
-
+rm -rf ~/code/dotfiles
