@@ -19,6 +19,7 @@ for EXTENSION in \
   ms-vscode.azure-account \
   ms-vscode.csharp \
   ms-vscode.go \
+  ms-vscode.vscode-typescript-tslint-plugin \
   msjsdiag.debugger-for-chrome \
   pkief.material-icon-theme
 do
