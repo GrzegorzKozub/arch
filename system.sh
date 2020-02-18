@@ -31,6 +31,7 @@ pacstrap /mnt \
   git go reflector sudo zsh \
   xorg-server xorg-xrandr \
   gdm gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb networkmanager xdg-user-dirs-gtk \
+  pipewire xdg-desktop-portal \
   eog evince gnome-calculator gnome-control-center gnome-software gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus
 
 # fstab file
