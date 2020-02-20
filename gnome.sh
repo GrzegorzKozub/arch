@@ -25,6 +25,11 @@ gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 
 gsettings set org.gnome.eog.ui sidebar false
 
+gsettings set org.gnome.desktop.interface enable-animations false
+
+gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Software.desktop']"
+gsettings set org.gnome.desktop.search-providers disable-external true
+
 dconf write /org/gtk/settings/file-chooser/show-hidden true
 dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 
