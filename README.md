@@ -34,7 +34,6 @@ Installing Arch Linux on Dell XPS 13
 ## Maual configuration
 
 1. Setup Gnome
-  - Mute system sounds
   - Install Dim On Battery Power and Tray Icons shell extensions
 2. Setup Chrome
   - Disable continuing in the background

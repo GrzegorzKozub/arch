@@ -30,6 +30,9 @@ gsettings set org.gnome.desktop.interface enable-animations false
 gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Software.desktop']"
 gsettings set org.gnome.desktop.search-providers disable-external true
 
+gsettings set org.gnome.desktop.notifications show-banners false
+gsettings set org.gnome.desktop.notifications show-in-lock-screen false
+
 dconf write /org/gtk/settings/file-chooser/show-hidden true
 dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 
@@ -39,13 +42,9 @@ dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 50>'
 
 amixer sset Master 50%
-amixer sset Capture 50%
+amixer sset Capture 25%
 
-# no ui equivalent
-# gsettings set org.gnome.desktop.sound event-sounds false
-
-# blurry
-# gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+gsettings set org.gnome.desktop.sound event-sounds false
 
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'chromium.desktop', 'google-chrome.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
 
