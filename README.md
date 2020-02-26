@@ -34,7 +34,7 @@ Installing Arch Linux on Dell XPS 13
 ## Maual configuration
 
 1. Setup Gnome
-  - Install Dim On Battery Power and Tray Icons shell extensions
+  - Install Dynamic Panel Transparency shell extension
 2. Setup Chrome
   - Disable continuing in the background
   - Enable chrome://flags/#enable-webrtc-pipewire-capturer

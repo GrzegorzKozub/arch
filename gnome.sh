@@ -11,8 +11,6 @@ gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictu
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
 gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
 
-gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
 
@@ -25,7 +23,12 @@ gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 
 gsettings set org.gnome.eog.ui sidebar false
 
-gsettings set org.gnome.desktop.interface enable-animations false
+# gsettings set org.gnome.desktop.interface enable-animations false
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+gsettings set org.gnome.desktop.interface gtk-theme 'Arc-solid'
+gsettings set org.gnome.desktop.interface icon-theme 'Arc'
+# gsettings set org.gnome.desktop.interface icon-theme 'Elementary'
+gsettings set org.gnome.shell.extensions.user-theme name 'Arc-Dark-solid'
 
 gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Software.desktop']"
 gsettings set org.gnome.desktop.search-providers disable-external true
@@ -45,6 +48,8 @@ amixer sset Master 50%
 amixer sset Capture 25%
 
 gsettings set org.gnome.desktop.sound event-sounds false
+
+gsettings set org.gnome.shell enabled-extensions "['dim-on-battery@nailfarmer.nailfarmer.com', 'tray-icons@zhangkaizhao.com', 'dynamic-panel-transparency@rockon999.github.io', 'user-theme@gnome-shell-extensions.gcampax.github.com']"
 
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'chromium.desktop', 'google-chrome.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
 
