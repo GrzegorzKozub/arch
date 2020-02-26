@@ -72,3 +72,7 @@ do
   printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
 done
 
+# gdm
+
+sudo machinectl shell gdm@ /bin/bash -c "gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'"
+
