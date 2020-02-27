@@ -3,10 +3,10 @@ set -e -o verbose
 # gnome
 
 if [ ! -d ~/Pictures ]; then mkdir ~/Pictures; fi
-cp `dirname $0`/home/greg/Pictures/Among\ Trees.png ~/Pictures
+cp `dirname $0`/home/greg/Pictures/among-trees.png ~/Pictures
 
-gsettings set org.gnome.desktop.background picture-uri 'file:///home/greg/Pictures/Among%20Trees.png'
-gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictures/Among%20Trees.png'
+gsettings set org.gnome.desktop.background picture-uri 'file:///home/greg/Pictures/among-trees.png'
+gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictures/among-trees.png'
 
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
 gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
@@ -71,8 +71,4 @@ for APP in \
 do
   printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
 done
-
-# gdm
-
-sudo machinectl shell gdm@ /bin/bash -c "gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'"
 

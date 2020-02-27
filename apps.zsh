@@ -34,6 +34,7 @@ sudo pacman -Syu --noconfirm
 
 . `dirname $0`/fonts.sh
 
+. `dirname $0`/gdm.sh
 . `dirname $0`/gnome.sh
 . `dirname $0`/terminal.sh
 
