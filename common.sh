@@ -4,9 +4,9 @@ set -e -o verbose
 
 sudo pacman -S --noconfirm \
   fzf \
+  glances \
   graphviz \
   jq \
-  htop \
   man-db \
   man-pages \
   p7zip \
