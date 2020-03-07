@@ -14,6 +14,9 @@ for EXTENSION in \
   esbenp.prettier-vscode \
   `# humao.rest-client` \
   ms-azuretools.vscode-docker \
+  `# ms-kubernetes-tools.vscode-kubernetes-tools` \
+  `# ms-vscode-remote.remote-containers` \
+  `# ms-vscode-remote.remote-ssh` \
   `# ms-vscode-remote.remote-wsl` \
   `# ms-vscode.PowerShell` \
   `# ms-vscode.azure-account` \
@@ -21,7 +24,8 @@ for EXTENSION in \
   ms-vscode.go \
   ms-vscode.vscode-typescript-tslint-plugin \
   `# msjsdiag.debugger-for-chrome` \
-  pkief.material-icon-theme
+  pkief.material-icon-theme \
+  redhat.vscode-yaml
 do
   code --install-extension $EXTENSION --force
 done
