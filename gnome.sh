@@ -72,6 +72,3 @@ do
   printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
 done
 
-if [ ! -d ~/.config/autostart ]; then mkdir -p ~/.config/autostart; fi
-cp /etc/xdg/autostart/gnome-software-service.desktop ~/.config/autostart
-printf "X-GNOME-Autostart-enabled=false" >> ~/.config/autostart/gnome-software-service.desktop
