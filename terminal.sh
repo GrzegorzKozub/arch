@@ -10,7 +10,6 @@ dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/default-size-rows" 25
 
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/font" "'Fira Code weight=453 12'" # Retina
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/use-system-font" false
-dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/allow-bold" false
 
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/audible-bell" false
 
