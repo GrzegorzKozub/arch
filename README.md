@@ -42,3 +42,12 @@ Installing Arch Linux on Dell XPS 13
 3. Setup Dropbox
   - Exclude unwanted dirs from sync
 
+## Troubleshooting
+
+To skip Gnome when upgrading system put this into `/etc/pacman.conf`:
+
+```
+IgnorePkg   = adwaita* clutter cogl desktop-file* gcr geoclue gjs *glib* gnome* *gobject* gsettings* *gtk* js68 lib* nm-connection-editor pipewire polkit poppler *spi2* *totem* *vte* wayland* xcb* xdg*
+IgnoreGroup = gnome*
+
+```
