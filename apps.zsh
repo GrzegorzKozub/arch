@@ -62,6 +62,7 @@ sudo pacman -Syu --noconfirm
 . `dirname $0`/dropbox.sh
 . `dirname $0`/flameshot.sh
 . `dirname $0`/keepass.sh
+. `dirname $0`/mpv.sh
 . `dirname $0`/openconnect.sh
 . `dirname $0`/peek.sh
 . `dirname $0`/postman.sh
