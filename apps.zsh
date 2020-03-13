@@ -38,7 +38,7 @@ sudo pacman -Syu --noconfirm
 . `dirname $0`/gnome.sh
 . `dirname $0`/terminal.sh
 
-# terminal
+# apps
 
 . `dirname $0`/common.sh
 
