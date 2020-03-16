@@ -6,15 +6,15 @@ set -e -o verbose
 
 if [[ . == `dirname $0` ]]; then exit 1; fi
 
-# usb mount
+# pendrive
 
-ARCHISO=$(lsblk -r -o NAME,LABEL | grep ARCH | sed -e 's/\s.*$//')
-if [[ ! $ARCHISO ]]; then exit 1; fi
+PENDRIVE=$(lsblk -r -o NAME,LABEL | grep ARCH | sed -e 's/\s.*$//')
+if [[ ! $PENDRIVE ]]; then exit 1; fi
 
-if [[ $(sudo mount | grep "/dev/$ARCHISO") ]]; then sudo umount /dev/$ARCHISO; fi
-sudo mount /dev/$ARCHISO /mnt
+if [[ $(sudo mount | grep "/dev/$PENDRIVE") ]]; then sudo umount /dev/$PENDRIVE; fi
+sudo mount /dev/$PENDRIVE /mnt
 
-unset $ARCHISO
+unset $PENDRIVE
 
 # pacman db sync
 
@@ -73,7 +73,7 @@ sudo pacman -Syu --noconfirm
 
 . ~/.dotfiles.sh
 
-# usb unmount
+# cleanup
 
 sudo umount -R /mnt
 
