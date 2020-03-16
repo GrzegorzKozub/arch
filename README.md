@@ -31,14 +31,14 @@ Installing Arch Linux on Dell XPS 13
 10. Open the terminal again for some installations to complete
 11. Reboot for some settings to take effect
 
-## Maual configuration
+## Maual config
 
 1. Setup Gnome
   - Install Dynamic Panel Transparency shell extension
 2. Setup Chrome
   - Disable continuing in the background
+  - Enable enhanced spell check
   - Enable chrome://flags/#enable-webrtc-pipewire-capturer
-  - Install uBlock
 3. Setup Dropbox
   - Exclude unwanted dirs from sync
 
