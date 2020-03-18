@@ -1,6 +1,6 @@
 set -e -o verbose
 
-# nodejs
+# node
 
 sudo pacman -S --noconfirm nodejs npm
 
