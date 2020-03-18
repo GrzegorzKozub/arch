@@ -11,6 +11,7 @@ sudo pacman -S --noconfirm \
   man-pages \
   p7zip \
   ripgrep \
+  stow \
   wget \
   wkhtmltopdf \
   xclip \
