@@ -5,7 +5,5 @@ set -e -o verbose
 sudo pacman -S --noconfirm \
   keepassxc qt5-styleplugins
 
-cp -r /mnt/.arch/keys/keepass/.greg.key ~
-
 if [ ! -d ~/.config/environment.d ]; then mkdir -p ~/.config/environment.d; fi
 cp `dirname $0`/home/greg/.config/environment.d/environment.conf ~/.config/environment.d/

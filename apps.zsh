@@ -1,20 +1,10 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 set -e -o verbose
 
 # validation
 
 if [[ . == `dirname $0` ]]; then exit 1; fi
-
-# pendrive
-
-PENDRIVE=$(lsblk -r -o NAME,LABEL | grep ARCH | sed -e 's/\s.*$//')
-if [[ ! $PENDRIVE ]]; then exit 1; fi
-
-if [[ $(sudo mount | grep "/dev/$PENDRIVE") ]]; then sudo umount /dev/$PENDRIVE; fi
-sudo mount /dev/$PENDRIVE /mnt
-
-unset $PENDRIVE
 
 # pacman db sync
 
@@ -25,10 +15,12 @@ sudo pacman -Syu --noconfirm
 . `dirname $0`/git.sh
 . `dirname $0`/openssh.sh
 
-# config
+# dotfiles
 
 . `dirname $0`/dotfiles.zsh
-. `dirname $0`/scripts.sh
+
+. ~/code/dotfiles/init.sh
+. ~/code/keys/init.sh
 
 # gnome
 
@@ -69,11 +61,7 @@ sudo pacman -Syu --noconfirm
 . `dirname $0`/slack.sh
 . `dirname $0`/vscode.sh
 
-# dotfiles init
+# plugins
 
-. ~/.dotfiles.sh
-
-# cleanup
-
-sudo umount -R /mnt
+. ~/code/dotfiles/plugins.sh
 
