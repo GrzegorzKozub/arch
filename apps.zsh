@@ -51,7 +51,6 @@ sudo pacman -Syu --noconfirm
 . `dirname $0`/ruby.sh
 
 . `dirname $0`/chrome.sh
-. `dirname $0`/dropbox.sh
 . `dirname $0`/flameshot.sh
 . `dirname $0`/keepass.sh
 . `dirname $0`/mpv.sh
