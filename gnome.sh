@@ -24,7 +24,7 @@ gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 gsettings set org.gnome.eog.ui sidebar false
 
 # gsettings set org.gnome.desktop.interface enable-animations false
-gsettings set org.gnome.desktop.interface text-scaling-factor 1
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 gsettings set org.gnome.desktop.interface gtk-theme 'Arc-solid'
 gsettings set org.gnome.desktop.interface icon-theme 'Arc'
 # gsettings set org.gnome.desktop.interface icon-theme 'Elementary'
