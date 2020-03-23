@@ -30,3 +30,6 @@ do
   code --install-extension $EXTENSION --force
 done
 
+code --uninstall-extension equinusocio.vsc-community-material-theme
+code --uninstall-extension equinusocio.vsc-material-theme-icons
+
