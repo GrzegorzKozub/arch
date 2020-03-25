@@ -8,7 +8,7 @@ UUID=${UUID:1:-1}
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/default-size-columns" 100
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/default-size-rows" 25
 
-dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/font" "'Fira Code weight=453 12'" # Retina
+dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/font" "'Fira Code weight=450 12'" # Fira Code Retina
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/use-system-font" false
 
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/audible-bell" false
