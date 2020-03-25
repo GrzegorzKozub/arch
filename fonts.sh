@@ -10,5 +10,5 @@ sudo pacman -S --noconfirm \
   ttf-dejavu \
   ttf-liberation
 
-yay -S --aur --noconfirm \
-  nerd-fonts-fira-code
+# yay -S --aur --noconfirm \
+#   nerd-fonts-fira-code
