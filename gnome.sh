@@ -2,6 +2,14 @@ set -e -o verbose
 
 # gnome
 
+sudo pacman -S --noconfirm \
+  arc-gtk-theme \
+  arc-icon-theme \
+  arc-solid-gtk-theme \
+  elementary-icon-theme \
+  materia-gtk-theme \
+  papirus-icon-theme
+
 if [ ! -d ~/Pictures ]; then mkdir ~/Pictures; fi
 cp `dirname $0`/home/greg/Pictures/among-trees.png ~/Pictures
 
@@ -26,8 +34,7 @@ gsettings set org.gnome.eog.ui sidebar false
 # gsettings set org.gnome.desktop.interface enable-animations false
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 gsettings set org.gnome.desktop.interface gtk-theme 'Arc-solid'
-gsettings set org.gnome.desktop.interface icon-theme 'Arc'
-# gsettings set org.gnome.desktop.interface icon-theme 'Elementary'
+gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 gsettings set org.gnome.shell.extensions.user-theme name 'Arc-Dark-solid'
 
 gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Software.desktop']"
