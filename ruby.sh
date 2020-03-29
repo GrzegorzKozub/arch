@@ -4,5 +4,3 @@ set -e -o verbose
 
 sudo pacman -S --noconfirm ruby
 
-gem install neovim --user-install
-

@@ -4,15 +4,3 @@ set -e -o verbose
 
 sudo pacman -S --noconfirm nodejs npm
 
-npm install --global \
-  @angular/cli \
-  create-react-app \
-  eslint \
-  express-generator \
-  js-beautify \
-  neovim \
-  pm2 \
-  rimraf \
-  typescript \
-  typescript-formatter
-
