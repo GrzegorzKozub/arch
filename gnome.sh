@@ -61,6 +61,7 @@ for APP in \
   gvim \
   laptop-mode-tools \
   lstopo \
+  org.freedesktop.MalcontentControl \
   org.gnome.Cheese \
   qv4l2 \
   qvidcap \
