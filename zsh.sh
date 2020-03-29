@@ -4,3 +4,5 @@ set -e -o verbose
 
 sudo pacman -S --noconfirm zsh zsh-completions
 
+rm -rf ~/.bash*
+
