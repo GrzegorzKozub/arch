@@ -8,12 +8,16 @@ if [[ . == `dirname $0` ]]; then exit 1; fi
 
 # pacman db sync
 
-sudo pacman -Syu --noconfirm
+sudo pacman -Sy --noconfirm
 
-# git
+# git and openssh
 
-. `dirname $0`/git.sh
-. `dirname $0`/openssh.sh
+sudo pacman -S --noconfirm \
+  git \
+  openssh
+
+yay -S --aur --noconfirm \
+  git-extras
 
 # dotfiles
 
@@ -22,43 +26,99 @@ sudo pacman -Syu --noconfirm
 . ~/code/dotfiles/init.sh
 . ~/code/keys/init.sh
 
-# gnome
+# fonts
 
-. `dirname $0`/fonts.sh
+sudo pacman -S --noconfirm \
+  gnu-free-fonts \
+  noto-fonts \
+  noto-fonts-emoji \
+  otf-fira-code \
+  ttf-dejavu \
+  ttf-liberation
+
+# yay -S --aur --noconfirm \
+#   nerd-fonts-fira-code
+
+# gnome
 
 . `dirname $0`/gdm.sh
 . `dirname $0`/gnome.sh
 . `dirname $0`/terminal.sh
 
+# common
+
+sudo pacman -S --noconfirm \
+  fzf \
+  glances \
+  graphviz \
+  jq \
+  man-db man-pages \
+  p7zip \
+  ripgrep \
+  stow \
+  wget \
+  wkhtmltopdf \
+  xclip \
+  xorg-xrandr
+
+# zsh, tmux and ranger
+
+sudo pacman -S --noconfirm \
+  ranger \
+  tmux \
+  zsh zsh-completions
+
+rm -rf ~/.bash*
+
+# vim and neovim
+
+sudo pacman -S --noconfirm \
+  astyle ctags editorconfig-core-c gvim tidy \
+  glibc neovim
+
+yay -S --aur --noconfirm \
+  hadolint-bin
+
+# docker
+
+sudo pacman -S --noconfirm \
+  docker docker-machine
+
+sudo usermod -aG docker $USER
+
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
+
+# aws
+
+sudo curl -o /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
+sudo chmod +x /usr/local/bin/ecs-cli
+
+# dev
+
+sudo pacman -S --noconfirm \
+  dotnet-sdk \
+  elixir \
+  go \
+  nodejs npm \
+  perl \
+  python python-pip \
+  ruby
+
 # apps
 
-. `dirname $0`/common.sh
+sudo pacman -S --noconfirm \
+  flameshot \
+  keepassxc qt5-styleplugins \
+  mpv \
+  openconnect \
+  peek
 
-. `dirname $0`/zsh.sh
-. `dirname $0`/tmux.sh
-. `dirname $0`/ranger.sh
-. `dirname $0`/vim.sh
-
-. `dirname $0`/aws.sh
-. `dirname $0`/docker.sh
-
-. `dirname $0`/dotnet.sh
-. `dirname $0`/elixir.sh
-. `dirname $0`/go.sh
-. `dirname $0`/node.sh
-. `dirname $0`/perl.sh
-. `dirname $0`/python.sh
-. `dirname $0`/ruby.sh
-
-. `dirname $0`/chrome.sh
-. `dirname $0`/flameshot.sh
-. `dirname $0`/keepass.sh
-. `dirname $0`/mpv.sh
-. `dirname $0`/openconnect.sh
-. `dirname $0`/peek.sh
-. `dirname $0`/postman.sh
-. `dirname $0`/slack.sh
-. `dirname $0`/vscode.sh
+yay -S --aur --noconfirm \
+  google-chrome \
+  postman \
+  slack-desktop \
+  visual-studio-code-bin
 
 # plugins
 
