@@ -45,6 +45,11 @@ sudo pacman -S --noconfirm \
 . `dirname $0`/gnome.sh
 . `dirname $0`/terminal.sh
 
+# terminal
+
+sudo pacman -S --noconfirm \
+  alacritty
+
 # common
 
 sudo pacman -S --noconfirm \
