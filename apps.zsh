@@ -116,7 +116,7 @@ sudo pacman -S --noconfirm \
   flameshot \
   keepassxc qt5-styleplugins \
   mpv \
-  openconnect \
+  openconnect networkmanager-openconnect \
   peek
 
 yay -S --aur --noconfirm \
