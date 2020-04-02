@@ -53,6 +53,7 @@ sudo pacman -S --noconfirm \
 # common
 
 sudo pacman -S --noconfirm \
+  fd \
   fzf \
   glances \
   graphviz \
