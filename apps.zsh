@@ -57,6 +57,7 @@ sudo pacman -S --noconfirm \
   fzf \
   glances \
   graphviz \
+  imwheel \
   jq \
   man-db man-pages \
   p7zip \
