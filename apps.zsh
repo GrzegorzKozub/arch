@@ -18,6 +18,8 @@ sudo pacman -S --noconfirm \
 
 yay -S --aur --noconfirm \
   git-extras
+  gitflow-avh
+  gitflow-zshcompletion-avh
 
 # dotfiles
 
