@@ -3,8 +3,8 @@ set -e -o verbose
 # validation
 
 [[ ! $MY_EFI_PART || ! $MY_ARCH_PART ]] && exit 1
-[[ ! `lsblk -lno PATH,PARTTYPE | grep -i 'C12A7328-F81F-11D2-BA4B-00A0C93EC93B' | cut -d' ' -f1` == $MY_EFI_PART ]] && exit 1
-[[ ! `lsblk -lno PATH,PARTTYPE | grep -i '0FC63DAF-8483-4772-8E79-3D69D8477DE4' | cut -d' ' -f1` == $MY_ARCH_PART ]] && exit 1
+[[ $(lsblk -lno PATH,PARTTYPE | grep -i 'C12A7328-F81F-11D2-BA4B-00A0C93EC93B' | cut -d' ' -f1) == $MY_EFI_PART ]] || exit 1
+[[ $(lsblk -lno PATH,PARTTYPE | grep -i '0FC63DAF-8483-4772-8E79-3D69D8477DE4' | cut -d' ' -f1) == $MY_ARCH_PART ]] || exit 1
 
 # unlock
 
