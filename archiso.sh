@@ -6,8 +6,7 @@ timedatectl set-ntp true
 
 # internet
 
-wifi-menu
-sleep 10
+ping -c 1 8.8.8.8 || ( wifi-menu && sleep 10 )
 
 # pacman mirror list
 
