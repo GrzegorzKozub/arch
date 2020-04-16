@@ -40,6 +40,9 @@ Installing Arch Linux on Dell XPS 13
   - Enable chrome://flags/#enable-webrtc-pipewire-capturer
 3. Setup networkmanager-openconnect
   - Work around missing `--no-dtls` support as per [this issue](https://gitlab.gnome.org/GNOME/NetworkManager-openconnect/issues/7) by executing `iptables -I OUTPUT -d <VPN server> -p udp --dport 443 -j REJECT`
+4. Setup printer
+  - Run `printer.sh`
+  - Add your printer using Printer Settings app
 
 ## Troubleshooting
 
@@ -48,5 +51,4 @@ To skip Gnome when upgrading system put this into `/etc/pacman.conf`:
 ```
 IgnorePkg   = adwaita* clutter cogl desktop-file* gcr geoclue gjs *glib* gnome* *gobject* gsettings* *gtk* js68 lib* nm-connection-editor pipewire polkit poppler *spi2* *totem* *vte* wayland* xcb* xdg*
 IgnoreGroup = gnome*
-
 ```
