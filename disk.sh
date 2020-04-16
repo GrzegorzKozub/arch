@@ -1,14 +1,20 @@
 set -e -o verbose
 
+# validation
+
+[[ ! $MY_DISK || ! $MY_ARCH_PART ]] && exit 1
+
 # linux partition
 
-read -p 'Create linux partition and exit'
-cfdisk /dev/nvme0n1
+read -p 'Ensure a partition of type Linux filesystem is created'
+cfdisk $MY_DISK
+
+[[ ! `lsblk -lno PATH,PARTTYPE | grep -i '0FC63DAF-8483-4772-8E79-3D69D8477DE4' | cut -d' ' -f1` == $MY_ARCH_PART ]] && exit 1
 
 # encryption
 
-cryptsetup luksFormat --type luks2 /dev/nvme0n1p7
-cryptsetup luksOpen /dev/nvme0n1p7 lvm
+cryptsetup luksFormat --type luks2 $MY_ARCH_PART
+cryptsetup luksOpen $MY_ARCH_PART lvm
 
 # logical volumes
 

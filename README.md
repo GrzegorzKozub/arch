@@ -4,8 +4,8 @@ Automated Arch Linux installation
 
 ## Prerequisites
 
-* Windows, along with the EFI partition are already installed. EFI partition size is increased to 512 MB. EFI partition is `dev/nvme0n1p2`
-* There's at least 80 GB unassigned space on the disk for Arch. It's going to become `dev/nvme0n1p7`
+* Windows, along with the EFI partition are already installed. EFI partition size is increased to 512 MB
+* There's at least 80 GB unassigned space on the disk for Arch
 * In Windows, real time is set to UTC following [this guide](https://wiki.archlinux.org/index.php/Time#UTC_in_Windows)
 
 ## Archiso
@@ -21,14 +21,15 @@ Automated Arch Linux installation
 
 1. Boot from archiso
 2. Run `/run/archiso/bootmnt/.bootstrap/arch/archiso.sh`. Puts these scripts into root's `~/arch`
-3. Once per machine run `~/arch/disk.sh`
-4. Run `~/arch/system.sh`. Puts these scripts into normal user's `~/code/arch`
-5. Once per machine run `~/arch/boot.sh`
-6. Reboot to Arch and login as normal user
-7. Run `~/code/arch/services.sh`
-8. Reboot to Gnome, login as normal user, connect to WiFi and ensure archiso is mounted
-9. Run `~/code/arch/apps.zsh`
-10. Reboot for some settings to take effect
+3. Run `~/arch/drifter.sh` or `~/arch/turing.sh`
+4. Once per machine run `~/arch/disk.sh`
+5. Run `~/arch/system.sh`. Puts these scripts into normal user's `~/code/arch`
+6. Once per machine run `~/arch/boot.sh`
+7. Reboot to Arch and login as normal user
+8. Run `~/code/arch/services.sh`
+9. Reboot to Gnome, login as normal user, connect to WiFi and ensure archiso is mounted
+10. Run `~/code/arch/apps.zsh`
+11. Reboot for some settings to take effect
 
 ## Maual config
 
