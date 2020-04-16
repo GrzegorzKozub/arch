@@ -1,11 +1,11 @@
 # Arch
 
-Installing Arch Linux on Dell XPS 13
+Automated Arch Linux installation
 
 ## Prerequisites
 
-* Windows, along with the EFI partition are already installed. EFI partition is `dev/nvme0n1p2`
-* There's enough unassigned space on the disk for Arch. It's going to become `dev/nvme0n1p7`
+* Windows, along with the EFI partition are already installed. EFI partition size is increased to 512 MB. EFI partition is `dev/nvme0n1p2`
+* There's at least 80 GB unassigned space on the disk for Arch. It's going to become `dev/nvme0n1p7`
 * In Windows, real time is set to UTC following [this guide](https://wiki.archlinux.org/index.php/Time#UTC_in_Windows)
 
 ## Archiso
