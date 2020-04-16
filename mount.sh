@@ -1,7 +1,7 @@
 set -e -o verbose
 
 cryptsetup luksOpen /dev/nvme0n1p7 lvm
-sleep 3
+sleep 1
 
 if [[ ! $(mount | grep 'vg1-backup on /mnt') ]]; then mount /dev/mapper/vg1-backup /mnt; fi
 if [[ ! -d /mnt/boot ]]; then mkdir /mnt/boot; fi

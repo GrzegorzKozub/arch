@@ -22,7 +22,3 @@ pacman -Sy --noconfirm git
 if [ -d ~/arch ]; then rm -rf ~/arch; fi
 git clone https://github.com/GrzegorzKozub/arch.git ~/arch
 
-# unlock
-
-cryptsetup luksOpen /dev/nvme0n1p7 lvm
-
