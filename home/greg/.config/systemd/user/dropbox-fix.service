@@ -1,9 +1,0 @@
-[Unit]
-Description=dropbox-fix
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/sh /home/greg/code/arch/dropbox-fix.sh
-
-[Install]
-WantedBy=default.target
