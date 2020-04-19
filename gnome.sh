@@ -20,8 +20,13 @@ gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
 gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
 
 gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
-gsettings set org.gnome.desktop.peripherals.touchpad speed 0.5
-gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
+if [[ $HOST == 'drifter' ]]; then
+
+  gsettings set org.gnome.desktop.peripherals.touchpad speed 0.5
+  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
+fi
 
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
@@ -50,7 +55,11 @@ dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Super>Tab']"
 dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 
-gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 50>'
+if [[ $HOST == 'drifter' ]]; then
+
+  gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 50>'
+
+fi
 
 amixer sset Master 50%
 amixer sset Capture 25%
