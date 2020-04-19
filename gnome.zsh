@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 set -e -o verbose
 
 # gnome
@@ -20,12 +22,9 @@ gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
 gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
 
 gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
-
-if [[ $HOST == 'drifter' ]]; then
-
+if [ $HOST = 'drifter' ]; then
   gsettings set org.gnome.desktop.peripherals.touchpad speed 0.5
   gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-
 fi
 
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
@@ -37,8 +36,9 @@ gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 
 gsettings set org.gnome.eog.ui sidebar false
 
-# gsettings set org.gnome.desktop.interface enable-animations false
-gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+[ $HOST = 'drifter' ] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+[ $HOST = 'turing' ] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+
 gsettings set org.gnome.desktop.interface gtk-theme 'Arc-solid'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 gsettings set org.gnome.shell.extensions.user-theme name 'Arc-Dark-solid'
@@ -55,9 +55,13 @@ dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Super>Tab']"
 dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 
-if [[ $HOST == 'drifter' ]]; then
+if [ $HOST = 'drifter' ]; then
 
-  gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 50>'
+  gdbus call \
+    --session \
+    --dest org.gnome.SettingsDaemon.Power \
+    --object-path /org/gnome/SettingsDaemon/Power \
+    --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 50>'
 
 fi
 

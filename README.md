@@ -26,7 +26,7 @@ Automated Arch Linux installation
 5. Run `~/arch/system.sh`. Puts these scripts into normal user's `~/code/arch`
 6. Once per machine run `~/arch/boot.sh`
 7. Reboot to Arch and login as normal user
-8. Run `~/code/arch/services.sh`
+8. Run `~/code/arch/services.zsh`
 9. Reboot to Gnome, login as normal user, connect to WiFi and ensure archiso is mounted
 10. Run `~/code/arch/apps.zsh`
 11. Reboot for some settings to take effect

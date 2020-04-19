@@ -48,7 +48,7 @@ sudo pacman -S --noconfirm \
 # gnome
 
 . `dirname $0`/gdm.sh
-. `dirname $0`/gnome.sh
+. `dirname $0`/gnome.zsh
 . `dirname $0`/terminal.sh
 
 # terminal
