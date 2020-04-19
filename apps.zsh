@@ -23,6 +23,9 @@ yay -S --aur --noconfirm \
 
 # dotfiles
 
+sudo pacman -S --noconfirm \
+  stow
+
 . `dirname $0`/dotfiles.zsh
 
 . ~/code/dotfiles/init.sh
@@ -64,7 +67,6 @@ sudo pacman -S --noconfirm \
   man-db man-pages \
   p7zip \
   ripgrep \
-  stow \
   wget \
   wkhtmltopdf \
   xclip \
