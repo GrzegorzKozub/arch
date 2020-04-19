@@ -22,7 +22,7 @@ Automated Arch Linux installation
 1. Boot from archiso
 2. Run `/run/archiso/bootmnt/.bootstrap/arch/archiso.sh`. Puts these scripts into root's `~/arch`
 3. Run `source ~/arch/drifter.sh` or `source ~/arch/turing.sh`
-4. Once per machine run `~/arch/disk.sh`, otherwise run `~/arch/mount.sh`
+4. Once per machine run `~/arch/disk.sh`, otherwise run `~/arch/unlock.sh`
 5. Run `~/arch/system.sh`. Puts these scripts into normal user's `~/code/arch`
 6. Once per machine run `~/arch/boot.sh`
 7. Reboot to Arch and login as normal user
