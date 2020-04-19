@@ -2,7 +2,7 @@ set -e -o verbose
 
 # operating system continued
 
-if [[ $MY_HOSTNAME == 'drifter' ]]
+if [[ $MY_HOSTNAME == 'drifter' ]]; then
 
   sudo pacman -S --noconfirm \
     dialog dhcpcd netctl wpa_supplicant

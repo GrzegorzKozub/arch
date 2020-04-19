@@ -18,7 +18,7 @@ if [[ ! $(mount | grep "$MY_EFI_PART on /mnt/boot") ]]; then mount $MY_EFI_PART 
 
 # previous linux kernels
 
-for APP in \
+for FILE in \
   /mnt/boot/initramfs-linux.img \
   /mnt/boot/initramfs-linux-fallback.img \
   /mnt/boot/intel-ucode.img \

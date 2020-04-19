@@ -15,7 +15,7 @@ rm -rf ~/yay
 yay -S --aur --noconfirm \
   gnome-shell-extension-tray-icons
 
-if [[ $MY_HOSTNAME == 'drifter' ]]
+if [[ $MY_HOSTNAME == 'drifter' ]]; then
 
   yay -S --aur --noconfirm \
     aic94xx-firmware wd719x-firmware \
