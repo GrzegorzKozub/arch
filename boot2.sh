@@ -6,7 +6,7 @@ bootctl --path=/boot install
 
 cp `dirname $0`/boot/loader/loader.conf /boot/loader
 cp `dirname $0`/boot/loader/entries/arch.conf /boot/loader/entries
-sed -i "s/<uuid>/$(blkid -s UUID -o value /dev/nvme0n1p7)/g" /boot/loader/entries/arch.conf
+sed -i "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" /boot/loader/entries/arch.conf
 
 # secure boot support
 
@@ -23,7 +23,7 @@ for BOOTNUM in $(efibootmgr | grep 'Linux Boot Manager' | sed -E 's/^Boot(.+)\* 
   efibootmgr --delete-bootnum --bootnum $BOOTNUM
 done
 
-efibootmgr --disk /dev/nvme0n1 --part 2 --create --label 'Linux Boot Manager' --loader /EFI/systemd/PreLoader.efi
+efibootmgr --disk $MY_DISK --part $MY_EFI_PART_NBR --create --label 'Linux Boot Manager' --loader /EFI/systemd/PreLoader.efi
 
 WINDOWS=$(efibootmgr | grep 'Windows Boot Manager' | head -n1 | sed -E 's/^Boot(.+)\* Windows Boot Manager$/\1/')
 LINUX=$(efibootmgr | grep 'Linux Boot Manager' | sed -E 's/^Boot(.+)\* Linux Boot Manager$/\1/')

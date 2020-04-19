@@ -71,7 +71,7 @@ echo 'greg ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
 touch /home/greg/.zshrc
 chown greg:users /home/greg/.zshrc
 
-# firmware
+# operating system continued
 
 cp `dirname $0`/system3.sh /home/greg
 su greg --command '~/system3.sh'
