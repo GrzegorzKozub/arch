@@ -18,10 +18,14 @@ if [[ ! $(mount | grep "$MY_EFI_PART on /mnt/boot") ]]; then mount $MY_EFI_PART 
 
 # previous linux kernels
 
-if [ -f /mnt/boot/initramfs-linux.img ]; then rm /mnt/boot/initramfs-linux.img; fi
-if [ -f /mnt/boot/initramfs-linux-fallback.img ]; then rm /mnt/boot/initramfs-linux-fallback.img; fi
-if [ -f /mnt/boot/intel-ucode.img ]; then rm /mnt/boot/intel-ucode.img; fi
-if [ -f /mnt/boot/vmlinuz-linux ]; then rm /mnt/boot/vmlinuz-linux; fi
+for APP in \
+  /mnt/boot/initramfs-linux.img \
+  /mnt/boot/initramfs-linux-fallback.img \
+  /mnt/boot/intel-ucode.img \
+  /mnt/boot/vmlinuz-linux
+do
+  if [ -f $FILE ]; then rm $FILE; fi
+done
 
 # operating system
 
