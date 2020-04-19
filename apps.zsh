@@ -6,9 +6,10 @@ set -e -o verbose
 
 if [[ . == `dirname $0` ]]; then exit 1; fi
 
-# pacman db sync
+# pacman refresh
 
 sudo pacman -Sy --noconfirm
+sudo pacman-key --refresh-keys
 
 # git and openssh
 
