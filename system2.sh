@@ -1,5 +1,14 @@
 set -e -o verbose
 
+# operating system continued
+
+if [[ $MY_HOSTNAME == 'drifter' ]]
+
+  sudo pacman -S --noconfirm \
+    dialog dhcpcd netctl wpa_supplicant
+
+fi
+
 # timezone
 
 ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
@@ -25,11 +34,11 @@ echo 'FONT_MAP=8859-2' >> /etc/vconsole.conf
 
 # network
 
-echo 'drifter' > /etc/hostname
+echo $MY_HOSTNAME > /etc/hostname
 
 echo '127.0.0.1 localhost' >> /etc/hosts
 echo '::1       localhost' >> /etc/hosts
-echo '127.0.1.1 drifter.localdomain drifter' >> /etc/hosts
+echo "127.0.1.1 $MY_HOSTNAME.localdomain $MY_HOSTNAME" >> /etc/hosts
 
 # root password
 

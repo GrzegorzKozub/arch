@@ -13,7 +13,14 @@ rm -rf ~/yay
 # operating system continued
 
 yay -S --aur --noconfirm \
-  aic94xx-firmware wd719x-firmware \
-  laptop-mode-tools \
-  gnome-shell-extension-dim-on-battery-git gnome-shell-extension-tray-icons
+  gnome-shell-extension-tray-icons
+
+if [[ $MY_HOSTNAME == 'drifter' ]]
+
+  yay -S --aur --noconfirm \
+    aic94xx-firmware wd719x-firmware \
+    laptop-mode-tools \
+    gnome-shell-extension-dim-on-battery-git
+
+fi
 
