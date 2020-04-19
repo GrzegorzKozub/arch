@@ -17,8 +17,8 @@ sudo pacman -S --noconfirm \
   openssh
 
 yay -S --aur --noconfirm \
-  git-extras
-  gitflow-avh
+  git-extras \
+  gitflow-avh \
   gitflow-zshcompletion-avh
 
 # dotfiles
