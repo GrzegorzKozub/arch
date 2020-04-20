@@ -20,11 +20,11 @@ Automated Arch Linux installation
 ## Installation
 
 1. Boot from archiso
-2. Run `/run/archiso/bootmnt/.bootstrap/arch/archiso.sh`. Puts these scripts into root's `~/arch`
-3. Run `source ~/arch/drifter.sh` or `source ~/arch/turing.sh`
-4. Once per machine run `~/arch/disk.sh`, otherwise run `~/arch/unlock.sh`
-5. Run `~/arch/system.sh`. Puts these scripts into normal user's `~/code/arch`
-6. Once per machine run `~/arch/boot.sh`
+2. Run `/run/archiso/bootmnt/.bootstrap/arch/archiso.zsh`. Puts these scripts into root's `~/arch`
+3. Run `source ~/arch/drifter.zsh` or `source ~/arch/turing.zsh`
+4. Once per machine run `~/arch/disk.zsh`, otherwise run `~/arch/unlock.zsh`
+5. Run `~/arch/system.zsh`. Puts these scripts into normal user's `~/code/arch`
+6. Once per machine run `~/arch/boot.zsh`
 7. Reboot to Arch and login as normal user
 8. Run `~/code/arch/services.zsh`
 9. Reboot to Gnome, login as normal user, connect to WiFi and ensure archiso is mounted
@@ -42,7 +42,7 @@ Automated Arch Linux installation
 3. Setup networkmanager-openconnect
   - Work around missing `--no-dtls` support as per [this issue](https://gitlab.gnome.org/GNOME/NetworkManager-openconnect/issues/7) by executing `iptables -I OUTPUT -d <VPN server> -p udp --dport 443 -j REJECT`
 4. Setup printer
-  - Run `printer.sh`
+  - Run `printer.zsh`
   - Add your printer using Printer Settings app
 
 ## Troubleshooting

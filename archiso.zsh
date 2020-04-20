@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 set -e -o verbose
 
 # time sync
@@ -18,6 +20,6 @@ pacman -Sy --noconfirm git
 
 # scripts
 
-if [ -d ~/arch ]; then rm -rf ~/arch; fi
+[[ -d ~/arch ]] && rm -rf ~/arch
 git clone https://github.com/GrzegorzKozub/arch.git ~/arch
 

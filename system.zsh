@@ -1,21 +1,23 @@
+#!/usr/bin/env zsh
+
 set -e -o verbose
 
 # validation
 
 [[ $MY_HOSTNAME ]] || exit 1
-[[ $MY_EFI_PART && $(lsblk -lno PATH,PARTTYPE | grep -i 'C12A7328-F81F-11D2-BA4B-00A0C93EC93B' | cut -d' ' -f1) == $MY_EFI_PART ]] || exit 1
+[[ $MY_EFI_PART && $(lsblk -lno PATH,PARTTYPE | grep -i 'C12A7328-F81F-11D2-BA4B-00A0C93EC93B' | cut -d' ' -f1) = $MY_EFI_PART ]] || exit 1
 
 # format
 
-if [[ $(mount | grep 'vg1-root on /mnt') ]]; then umount -R /mnt; fi
+[[ $(mount | grep 'vg1-root on /mnt') ]] && umount -R /mnt
 mkfs.ext4 /dev/mapper/vg1-root
 
 # mount
 
-if [[ ! $(swapon) ]]; then swapon /dev/mapper/vg1-swap; fi
-if [[ ! $(mount | grep 'vg1-root on /mnt') ]]; then mount /dev/mapper/vg1-root /mnt; fi
-if [[ ! -d /mnt/boot ]]; then mkdir /mnt/boot; fi
-if [[ ! $(mount | grep "$MY_EFI_PART on /mnt/boot") ]]; then mount $MY_EFI_PART /mnt/boot; fi
+[[ $(swapon) ]] || swapon /dev/mapper/vg1-swap
+[[ $(mount | grep 'vg1-root on /mnt') ]] || mount /dev/mapper/vg1-root /mnt
+[[ -d /mnt/boot ]] || mkdir /mnt/boot
+[[ $(mount | grep "$MY_EFI_PART on /mnt/boot") ]] || mount $MY_EFI_PART /mnt/boot
 
 # previous linux kernels
 
@@ -25,7 +27,7 @@ for FILE in \
   /mnt/boot/intel-ucode.img \
   /mnt/boot/vmlinuz-linux
 do
-  if [ -f $FILE ]; then rm $FILE; fi
+  [[ -f $FILE ]] && rm $FILE
 done
 
 # operating system

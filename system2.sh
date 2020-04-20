@@ -1,8 +1,10 @@
+#!/usr/bin/env bash
+
 set -e -o verbose
 
 # operating system continued
 
-if [ $MY_HOSTNAME = 'drifter' ]; then
+if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
   sudo pacman -S --noconfirm \
     dialog dhcpcd netctl wpa_supplicant
@@ -45,7 +47,7 @@ echo "127.0.1.1 $MY_HOSTNAME.localdomain $MY_HOSTNAME" >> /etc/hosts
 set +e
 
 (exit 1)
-while [[ ! $? == 0 ]]; do
+while [[ ! $? = 0 ]]; do
   passwd
 done
 
@@ -58,7 +60,7 @@ useradd -m -g users -G wheel -s /bin/zsh greg
 set +e
 
 (exit 1)
-while [[ ! $? == 0 ]]; do
+while [[ ! $? = 0 ]]; do
   passwd greg
 done
 
@@ -73,9 +75,9 @@ chown greg:users /home/greg/.zshrc
 
 # operating system continued
 
-cp `dirname $0`/system3.sh /home/greg
-su greg --command '~/system3.sh'
-rm /home/greg/system3.sh
+cp `dirname $0`/system3.zsh /home/greg
+su greg --command '~/system3.zsh'
+rm /home/greg/system3.zsh
 
 # kernel hooks: encrypt, lvm2 and resume
 

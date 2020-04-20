@@ -12,7 +12,7 @@ sudo pacman -S --noconfirm \
   materia-gtk-theme \
   papirus-icon-theme
 
-if [ ! -d ~/Pictures ]; then mkdir ~/Pictures; fi
+[[ -d ~/Pictures ]] || mkdir ~/Pictures
 cp `dirname $0`/home/greg/Pictures/among-trees.png ~/Pictures
 
 gsettings set org.gnome.desktop.background picture-uri 'file:///home/greg/Pictures/among-trees.png'
@@ -22,7 +22,7 @@ gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
 gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
 
 gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
-if [ $HOST = 'drifter' ]; then
+if [[ $HOST = 'drifter' ]]; then
   gsettings set org.gnome.desktop.peripherals.touchpad speed 0.5
   gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 fi
@@ -36,8 +36,8 @@ gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 
 gsettings set org.gnome.eog.ui sidebar false
 
-[ $HOST = 'drifter' ] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-[ $HOST = 'turing' ] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+[[ $HOST = 'drifter' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+[[ $HOST = 'turing' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
 
 gsettings set org.gnome.desktop.interface gtk-theme 'Arc-solid'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
@@ -55,7 +55,7 @@ dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Super>Tab']"
 dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 
-if [ $HOST = 'drifter' ]; then
+if [[ $HOST = 'drifter' ]]; then
 
   gdbus call \
     --session \

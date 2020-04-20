@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -e -o verbose
 
 # boot manager
@@ -10,9 +12,9 @@ sed -i "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" /boot/loader/entries
 
 # secure boot support
 
-cp `dirname $0`/boot3.sh /home/greg
-su greg --command '~/boot3.sh'
-rm /home/greg/boot3.sh
+cp `dirname $0`/boot3.zsh /home/greg
+su greg --command '~/boot3.zsh'
+rm /home/greg/boot3.zsh
 
 cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
 cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi

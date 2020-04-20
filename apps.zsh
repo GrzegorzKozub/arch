@@ -4,7 +4,7 @@ set -e -o verbose
 
 # validation
 
-if [[ . == `dirname $0` ]]; then exit 1; fi
+[[ . = `dirname $0` ]] && exit 1
 
 # pacman refresh
 
@@ -29,8 +29,8 @@ sudo pacman -S --noconfirm \
 
 . `dirname $0`/dotfiles.zsh
 
-. ~/code/dotfiles/init.sh
-. ~/code/keys/init.sh
+. ~/code/dotfiles/init.zsh
+. ~/code/keys/init.zsh
 
 # fonts
 
@@ -47,9 +47,9 @@ sudo pacman -S --noconfirm \
 
 # gnome
 
-. `dirname $0`/gdm.sh
+. `dirname $0`/gdm.zsh
 . `dirname $0`/gnome.zsh
-. `dirname $0`/terminal.sh
+. `dirname $0`/terminal.zsh
 
 # terminal
 
@@ -134,5 +134,5 @@ yay -S --aur --noconfirm \
 
 # plugins
 
-. ~/code/dotfiles/plugins.sh
+. ~/code/dotfiles/plugins.zsh
 

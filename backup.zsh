@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 set -e -o verbose
 
 DIR=/mnt/$(date +%Y%m%d%H%M)
