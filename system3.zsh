@@ -20,9 +20,19 @@ yay -S --aur --noconfirm \
 
 if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
+  sudo pacman -S --noconfirm \
+    dialog dhcpcd netctl wpa_supplicant
+
   yay -S --aur --noconfirm \
     laptop-mode-tools \
     gnome-shell-extension-dim-on-battery-git
+
+fi
+
+if [[ $MY_HOSTNAME = 'turing' ]]; then
+
+  sudo pacman -S --noconfirm \
+    nvidia
 
 fi
 

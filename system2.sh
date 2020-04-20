@@ -2,15 +2,6 @@
 
 set -e -o verbose
 
-# operating system continued
-
-if [[ $MY_HOSTNAME = 'drifter' ]]; then
-
-  sudo pacman -S --noconfirm \
-    dialog dhcpcd netctl wpa_supplicant
-
-fi
-
 # timezone
 
 ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
