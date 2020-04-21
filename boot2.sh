@@ -16,7 +16,8 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
 fi
 
 if [[ $MY_HOSTNAME = 'turing' ]]; then
-  sed -i "s/<kernel_params>/nvidia-drm.modeset=1/g" /boot/loader/entries/arch.conf
+  # wayland crashes with nvidia so skip nvidia-drm.modeset=1
+  sed -i "s/<kernel_params>//g" /boot/loader/entries/arch.conf
 fi
 
 # secure boot support
