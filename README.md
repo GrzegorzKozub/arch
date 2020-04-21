@@ -35,7 +35,6 @@ Automated Arch Linux installation
 
 1. Setup Gnome
   - Install Dynamic Panel Transparency shell extension
-  - Disable system sounds
 2. Setup Chrome
   - Disable continuing in the background
   - Enable enhanced spell check
