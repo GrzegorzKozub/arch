@@ -89,6 +89,7 @@ for APP in \
   ranger \
   stoken-gui \
   stoken-gui-small \
+  unison \
   vim
 do
   printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop

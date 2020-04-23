@@ -68,6 +68,7 @@ sudo pacman -S --noconfirm \
   man-db man-pages \
   p7zip \
   ripgrep \
+  unison \
   wget \
   wkhtmltopdf \
   xclip \
