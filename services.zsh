@@ -8,6 +8,7 @@ sudo timedatectl set-ntp true
 
 # service autostart
 
+sudo systemctl enable avahi-daemon.service
 sudo systemctl enable gdm.service
 sudo systemctl enable NetworkManager.service
 if [[ $HOST = 'drifter' ]]; then
