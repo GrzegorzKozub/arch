@@ -39,6 +39,7 @@ pacstrap /mnt \
   efibootmgr \
   lvm2 \
   nss-mdns \
+  v4l-utils \
   git go reflector sudo zsh \
   xorg-server xorg-xrandr \
   gdm gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb networkmanager xdg-user-dirs-gtk \
