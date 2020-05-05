@@ -68,18 +68,22 @@ sudo pacman -S --noconfirm \
   man-db man-pages \
   p7zip \
   ripgrep \
+  trash-cli \
   unison \
   wget \
   wkhtmltopdf \
   xclip \
   xorg-xrandr
 
-# zsh, tmux and ranger
+# zsh, tmux, lf and ranger
 
 sudo pacman -S --noconfirm \
   ranger \
   tmux \
   zsh zsh-completions
+
+yay -S --aur --noconfirm \
+  lf-bin
 
 rm -rf ~/.bash*
 
