@@ -1,0 +1,15 @@
+; systemctl --all --full -t device
+
+[Unit]
+Description=4k
+After=dev-serial-by\x2did-usb\x2dLG_Electronics_Inc._USB_Controls_904NTTQFK521\x2dif01.device
+BindsTo=dev-serial-by\x2did-usb\x2dLG_Electronics_Inc._USB_Controls_904NTTQFK521\x2dif01.device
+Requisite=dev-serial-by\x2did-usb\x2dLG_Electronics_Inc._USB_Controls_904NTTQFK521\x2dif01.device
+
+[Service]
+Type=simple
+ExecStart=%h/code/arch/4k.sh
+
+[Install]
+WantedBy=dev-serial-by\x2did-usb\x2dLG_Electronics_Inc._USB_Controls_904NTTQFK521\x2dif01.device
+
