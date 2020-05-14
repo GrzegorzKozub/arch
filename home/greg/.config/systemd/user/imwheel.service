@@ -1,14 +1,11 @@
 [Unit]
-Description=IMWheel
-Wants=display-manager.service
-After=display-manager.service
+Description=imwheel
+PartOf=graphical-session.target
 
 [Service]
 Type=simple
-Environment=XAUTHORITY=%h/.Xauthority
 ExecStart=/usr/bin/imwheel -d
-ExecStop=/usr/bin/pkill imwheel
-RemainAfterExit=yes
 
 [Install]
-WantedBy=graphical.target
+WantedBy=graphical-session.target
+
