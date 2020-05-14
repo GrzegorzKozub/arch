@@ -1,15 +1,17 @@
 ; systemctl --all --full -t device
+; home: dev-serial-by\x2did-usb\x2dLG_Electronics_Inc._USB_Controls_904NTTQFK521\x2dif01.device
+; office: dev-serial-by\x2did-usb\x2dTexas_Instruments_TUSB3410_EECode_Ser_00034018\x2dif00\x2dport0.device
 
 [Unit]
 Description=4k
-After=dev-serial-by\x2did-usb\x2dLG_Electronics_Inc._USB_Controls_904NTTQFK521\x2dif01.device
-BindsTo=dev-serial-by\x2did-usb\x2dLG_Electronics_Inc._USB_Controls_904NTTQFK521\x2dif01.device
-Requisite=dev-serial-by\x2did-usb\x2dLG_Electronics_Inc._USB_Controls_904NTTQFK521\x2dif01.device
+After=dev-serial-by\x2did-usb\x2dTexas_Instruments_TUSB3410_EECode_Ser_00034018\x2dif00\x2dport0.device
+BindsTo=dev-serial-by\x2did-usb\x2dTexas_Instruments_TUSB3410_EECode_Ser_00034018\x2dif00\x2dport0.device
+Requisite=dev-serial-by\x2did-usb\x2dTexas_Instruments_TUSB3410_EECode_Ser_00034018\x2dif00\x2dport0.device
 
 [Service]
 Type=simple
 ExecStart=%h/code/arch/4k.sh
 
 [Install]
-WantedBy=dev-serial-by\x2did-usb\x2dLG_Electronics_Inc._USB_Controls_904NTTQFK521\x2dif01.device
+WantedBy=dev-serial-by\x2did-usb\x2dTexas_Instruments_TUSB3410_EECode_Ser_00034018\x2dif00\x2dport0.device
 
