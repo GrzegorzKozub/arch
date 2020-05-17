@@ -32,6 +32,9 @@ git clone git@github.com:GrzegorzKozub/arch.git ~/code/arch
 [[ -d ~/code/dotfiles ]] && rm -rf ~/code/dotfiles
 git clone --recursive git@github.com:GrzegorzKozub/dotfiles.git ~/code/dotfiles
 
+[[ -d ~/code/history ]] && rm -rf ~/code/history
+git clone git@github.com:GrzegorzKozub/history.git ~/code/history
+
 [[ -d ~/code/keys ]] && rm -rf ~/code/keys
 git clone git@github.com:GrzegorzKozub/keys.git ~/code/keys
 

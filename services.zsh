@@ -14,6 +14,10 @@ sudo systemctl enable NetworkManager.service
 
 [[ -d ~/.config/systemd/user ]] || mkdir -p ~/.config/systemd/user
 
+cp `dirname $0`/home/greg/.config/systemd/user/history.* ~/.config/systemd/user
+systemctl --user enable history.timer
+systemctl --user start history.timer
+
 if [[ $HOST = 'drifter' ]]; then
 
   sudo systemctl enable laptop-mode.service
