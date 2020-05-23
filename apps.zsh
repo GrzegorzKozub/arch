@@ -69,6 +69,7 @@ sudo pacman -S --noconfirm \
   man-db man-pages \
   p7zip \
   ripgrep \
+  rsync \
   trash-cli \
   unison \
   wget \

@@ -18,6 +18,10 @@ cp `dirname $0`/home/greg/.config/systemd/user/history.* ~/.config/systemd/user
 systemctl --user enable history.timer
 systemctl --user start history.timer
 
+cp `dirname $0`/home/greg/.config/systemd/user/code.* ~/.config/systemd/user
+systemctl --user enable code.timer
+systemctl --user start code.timer
+
 if [[ $HOST = 'drifter' ]]; then
 
   sudo systemctl enable laptop-mode.service
