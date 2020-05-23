@@ -71,7 +71,6 @@ sudo pacman -S --noconfirm \
   ripgrep \
   rsync \
   trash-cli \
-  unison \
   wget \
   wkhtmltopdf \
   xclip \
