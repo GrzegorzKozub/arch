@@ -6,7 +6,7 @@ set -e -o verbose
 
 sudo timedatectl set-ntp true
 
-# service autostart
+# services
 
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable gdm.service
