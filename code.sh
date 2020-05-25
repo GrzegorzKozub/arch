@@ -7,6 +7,6 @@ sudo rsync \
   --delete \
   --include '.gitkeep' \
   --exclude 'node_modules/*' \
-  ~/code /mnt/code
+  ~/code /mnt
 
 sudo umount -R /mnt
