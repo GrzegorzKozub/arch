@@ -14,13 +14,17 @@ sudo systemctl enable NetworkManager.service
 
 [[ -d ~/.config/systemd/user ]] || mkdir -p ~/.config/systemd/user
 
+cp `dirname $0`/home/greg/.config/systemd/user/code.* ~/.config/systemd/user
+systemctl --user enable code.timer
+systemctl --user start code.timer
+
 cp `dirname $0`/home/greg/.config/systemd/user/history.* ~/.config/systemd/user
 systemctl --user enable history.timer
 systemctl --user start history.timer
 
-cp `dirname $0`/home/greg/.config/systemd/user/code.* ~/.config/systemd/user
-systemctl --user enable code.timer
-systemctl --user start code.timer
+cp `dirname $0`/home/greg/.config/systemd/user/passwords.* ~/.config/systemd/user
+systemctl --user enable passwords.timer
+systemctl --user start passwords.timer
 
 if [[ $HOST = 'drifter' ]]; then
 
