@@ -36,8 +36,9 @@ Automated Arch Linux installation
 1. Setup Gnome
   - Install Dynamic Panel Transparency shell extension
 2. Setup Chrome
+  - For Chromium, add Polish language and enable it for spell check
+  - For Google Chrome, enable enhanced spell check
   - Disable continuing in the background
-  - Enable enhanced spell check
   - Enable chrome://flags/#enable-webrtc-pipewire-capturer
 3. Setup networkmanager-openconnect
   - Work around missing `--no-dtls` support as per [this issue](https://gitlab.gnome.org/GNOME/NetworkManager-openconnect/issues/7) by executing `iptables -I OUTPUT -d <VPN server> -p udp --dport 443 -j REJECT`
@@ -45,11 +46,3 @@ Automated Arch Linux installation
   - Run `printer.zsh`
   - Add your printer using Printer Settings app
 
-## Troubleshooting
-
-To skip Gnome when upgrading system put this into `/etc/pacman.conf`:
-
-```
-IgnorePkg   = adwaita* clutter cogl desktop-file* gcr geoclue gjs *glib* gnome* *gobject* gsettings* *gtk* js68 lib* nm-connection-editor pipewire polkit poppler *spi2* *totem* *vte* wayland* xcb* xdg*
-IgnoreGroup = gnome*
-```

@@ -126,6 +126,7 @@ sudo pacman -S --noconfirm \
 # apps
 
 sudo pacman -S --noconfirm \
+  chromium \
   flameshot \
   keepassxc qt5-styleplugins \
   mpv \
@@ -133,7 +134,6 @@ sudo pacman -S --noconfirm \
   peek
 
 yay -S --aur --noconfirm \
-  google-chrome \
   postman \
   slack-desktop \
   visual-studio-code-bin
