@@ -1,0 +1,11 @@
+[Unit]
+Description=dnd
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/code/arch/dnd.sh
+
+[Install]
+WantedBy=graphical-session.target
+
