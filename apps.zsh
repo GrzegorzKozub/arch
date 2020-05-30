@@ -109,7 +109,8 @@ sudo systemctl start docker.service
 
 # aws
 
-sudo curl -o /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
+sudo curl -o /usr/local/bin/ecs-cli \
+  https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
 sudo chmod +x /usr/local/bin/ecs-cli
 
 # dev
@@ -137,6 +138,15 @@ yay -S --aur --noconfirm \
   postman \
   slack-desktop \
   visual-studio-code-bin
+
+for APP in \
+  flameshot \
+  org.keepassxc.KeePassXC
+do
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i 's/^Exec=/Exec=\/home\/greg\/code\/arch\/qt.sh /' \
+    ~/.local/share/applications/$APP.desktop
+done
 
 # plugins
 
