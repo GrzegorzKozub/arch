@@ -38,6 +38,7 @@ pacstrap /mnt \
   intel-ucode alsa-utils \
   efibootmgr \
   lvm2 \
+  ntfs-3g \
   nss-mdns \
   v4l-utils \
   git go reflector sudo zsh \
