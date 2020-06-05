@@ -27,6 +27,8 @@ if [[ $HOST = 'drifter' ]]; then
   gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 fi
 
+gsettings set org.gnome.mutter center-new-windows true
+
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
