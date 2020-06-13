@@ -36,6 +36,9 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
 
 gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 
+gsettings set org.gnome.Evince.Default show-sidebar false
+gsettings set org.gnome.Evince.Default sizing-mode 'fit-width'
+
 gsettings set org.gnome.eog.ui sidebar false
 
 [[ $HOST = 'drifter' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
