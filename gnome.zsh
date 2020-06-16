@@ -77,6 +77,8 @@ gsettings set org.gnome.desktop.sound event-sounds false
 
 gsettings set org.gnome.shell enabled-extensions "['dim-on-battery@nailfarmer.nailfarmer.com', 'tray-icons@zhangkaizhao.com', 'dynamic-panel-transparency@rockon999.github.io', 'user-theme@gnome-shell-extensions.gcampax.github.com']"
 
+dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/transition-windows-touch false
+
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'Alacritty.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'chromium.desktop', 'google-chrome.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
 
 for APP in \
