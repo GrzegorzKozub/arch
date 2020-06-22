@@ -130,10 +130,12 @@ sudo pacman -S --noconfirm \
   chromium \
   flameshot \
   keepassxc qt5-styleplugins \
-  lm_sensors psensor \
   mpv \
   openconnect networkmanager-openconnect \
   peek
+
+# sudo pacman -s --noconfirm \
+  # lm_sensors psensor
 
 yay -S --aur --noconfirm \
   postman \
