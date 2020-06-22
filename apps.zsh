@@ -130,6 +130,7 @@ sudo pacman -S --noconfirm \
   chromium \
   flameshot \
   keepassxc qt5-styleplugins \
+  lm_sensors psensor \
   mpv \
   openconnect networkmanager-openconnect \
   peek
