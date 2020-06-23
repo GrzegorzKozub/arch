@@ -4,7 +4,7 @@ set -e -o verbose
 
 # gnome
 
-sudo pacman -S --noconfirm \
+sudo pacman -S --needed --noconfirm \
   arc-gtk-theme \
   arc-icon-theme \
   arc-solid-gtk-theme \
@@ -86,6 +86,7 @@ for APP in \
   bssh \
   bvnc \
   electron4 \
+  electron7 \
   gvim \
   laptop-mode-tools \
   lstopo \
