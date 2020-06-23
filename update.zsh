@@ -16,6 +16,3 @@ sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
 sudo pacman --noconfirm -Sc
 yay --aur --noconfirm -Sc
 
-# restore settings
-
-. `dirname $0`/gnome.zsh
