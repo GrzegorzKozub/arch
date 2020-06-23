@@ -90,6 +90,7 @@ for APP in \
   gvim \
   laptop-mode-tools \
   lstopo \
+  nvim \
   org.freedesktop.MalcontentControl \
   org.gnome.Cheese \
   qv4l2 \
