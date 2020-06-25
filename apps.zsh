@@ -132,7 +132,7 @@ sudo pacman -S --noconfirm \
   keepassxc qt5-styleplugins \
   mpv \
   openconnect networkmanager-openconnect \
-  peek
+  peek gifski gst-plugins-good gst-plugins-ugly
 
 # sudo pacman -s --noconfirm \
   # lm_sensors psensor
