@@ -74,7 +74,8 @@ sudo pacman -S --noconfirm \
   wget \
   wkhtmltopdf \
   xclip \
-  xorg-xrandr
+  xorg-xrandr \
+  youtube-dl ffmpeg
 
 # zsh, tmux, lf and ranger
 
