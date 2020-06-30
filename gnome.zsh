@@ -39,6 +39,8 @@ gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 gsettings set org.gnome.Evince.Default show-sidebar false
 gsettings set org.gnome.Evince.Default sizing-mode 'fit-width'
 
+xdg-mime default org.gnome.Evince.desktop application/pdf
+
 gsettings set org.gnome.eog.ui sidebar false
 
 [[ $HOST = 'drifter' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1
