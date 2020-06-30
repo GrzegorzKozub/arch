@@ -41,7 +41,7 @@ gsettings set org.gnome.Evince.Default sizing-mode 'fit-width'
 
 gsettings set org.gnome.eog.ui sidebar false
 
-[[ $HOST = 'drifter' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+[[ $HOST = 'drifter' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1
 [[ $HOST = 'turing' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
 
 gsettings set org.gnome.desktop.interface gtk-theme 'Arc-solid'

@@ -5,7 +5,7 @@ fonts() {
 }
 
 on_term() {
-  fonts 1.25
+  fonts 1
   trap - SIGTERM
   exit 0
 }
