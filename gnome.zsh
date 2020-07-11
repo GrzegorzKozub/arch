@@ -65,6 +65,9 @@ dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Super>Tab']"
 dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 3600
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 1200
+
 if [[ $HOST = 'drifter' ]]; then
 
   gdbus call \
