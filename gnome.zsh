@@ -43,6 +43,9 @@ xdg-mime default org.gnome.Evince.desktop application/pdf
 
 gsettings set org.gnome.eog.ui sidebar false
 
+xdg-mime default org.gnome.eog.desktop image/jpeg
+xdg-mime default org.gnome.eog.desktop image/png
+
 [[ $HOST = 'drifter' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1
 [[ $HOST = 'turing' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
 
