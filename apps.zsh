@@ -22,7 +22,7 @@ yay -S --aur --noconfirm \
   gitflow-avh \
   gitflow-zshcompletion-avh
 
-# dotfiles
+# dotfiles init
 
 sudo pacman -S --noconfirm \
   stow
@@ -152,7 +152,7 @@ do
     ~/.local/share/applications/$APP.desktop
 done
 
-# plugins
+# dotfiles install
 
-. ~/code/dotfiles/plugins.zsh
+. ~/code/dotfiles/install.zsh
 
