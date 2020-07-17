@@ -143,14 +143,14 @@ yay -S --aur --noconfirm \
   slack-desktop \
   visual-studio-code-bin
 
-for APP in \
-  flameshot \
-  org.keepassxc.KeePassXC
-do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i 's/^Exec=/Exec=\/home\/greg\/code\/arch\/qt.sh /' \
-    ~/.local/share/applications/$APP.desktop
-done
+# for APP in \
+  # flameshot \
+  # org.keepassxc.KeePassXC
+# do
+  # cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  # sed -i 's/^Exec=/Exec=\/home\/greg\/code\/arch\/qt.sh /' \
+    # ~/.local/share/applications/$APP.desktop
+# done
 
 # dotfiles install
 
