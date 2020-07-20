@@ -77,6 +77,9 @@ sudo pacman -S --noconfirm \
   xorg-xrandr \
   youtube-dl ffmpeg
 
+yay -S --aur --noconfirm \
+  wrk
+
 # zsh, tmux, lf and ranger
 
 sudo pacman -S --noconfirm \
