@@ -33,16 +33,14 @@ Automated Arch Linux installation
 
 ## Maual config
 
-1. Setup Gnome
-  - Install Dynamic Panel Transparency shell extension
-2. Setup Chrome
+1. Setup Chrome
   - For Chromium, add Polish language and enable it for spell check
   - For Google Chrome, enable enhanced spell check
   - Disable continuing in the background
   - Enable chrome://flags/#enable-webrtc-pipewire-capturer
-3. Setup networkmanager-openconnect
+2. Setup networkmanager-openconnect
   - Work around missing `--no-dtls` support as per [this issue](https://gitlab.gnome.org/GNOME/NetworkManager-openconnect/issues/7) by executing `iptables -I OUTPUT -d <VPN server> -p udp --dport 443 -j REJECT`
-4. Setup printer
+3. Setup printer
   - Run `printer.zsh`
   - Add your printer using Printer Settings app
 
