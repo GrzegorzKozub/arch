@@ -78,7 +78,7 @@ sudo pacman -S --noconfirm \
   youtube-dl ffmpeg
 
 yay -S --aur --noconfirm \
-  wrk
+  wrk2-git
 
 # zsh, tmux, lf and ranger
 
