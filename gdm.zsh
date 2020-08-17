@@ -13,7 +13,8 @@ GST=gnome-shell-theme.gresource
 TMP="$(mktemp -d)"
 
 sudo cp -n $GS/$GST $GS/$GST.backup
-mkdir -p $TMP/theme/icons
+mkdir -p $TMP/theme/icons/scalable/actions
+mkdir -p $TMP/theme/icons/scalable/status
 cp `dirname $0`/home/greg/Pictures/among-trees.png $TMP/theme/
 
 for RES in `gresource list $GS/$GST`; do
