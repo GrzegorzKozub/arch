@@ -80,10 +80,9 @@ sudo pacman -S --noconfirm \
 yay -S --aur --noconfirm \
   wrk2-git
 
-# zsh, tmux, lf and ranger
+# zsh, tmux and lf
 
 sudo pacman -S --noconfirm \
-  ranger \
   tmux \
   zsh zsh-completions
 
