@@ -62,6 +62,13 @@ gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 dconf write /org/gtk/settings/file-chooser/show-hidden true
 dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 
+dconf write /org/gnome/desktop/wm/keybindings/move-to-center "['<Super><Control>C']"
+
+dconf write /org/gnome/desktop/wm/keybindings/move-to-side-e "['<Super><Control>Right']"
+dconf write /org/gnome/desktop/wm/keybindings/move-to-side-n "['<Super><Control>Up']"
+dconf write /org/gnome/desktop/wm/keybindings/move-to-side-s "['<Super><Control>Down']"
+dconf write /org/gnome/desktop/wm/keybindings/move-to-side-w "['<Super><Control>Left']"
+
 dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Super>Tab']"
 dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 
