@@ -127,7 +127,7 @@ sudo pacman -S --noconfirm \
 # apps
 
 sudo pacman -S --noconfirm \
-  chromium \
+  chromium chrome-gnome-shell \
   flameshot \
   keepassxc qt5-styleplugins \
   mpv \
