@@ -72,6 +72,8 @@ dconf write /org/gnome/desktop/wm/keybindings/move-to-side-w "['<Super><Control>
 dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Super>Tab']"
 dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 
+gsettings set org.gnome.desktop.session idle-delay 600
+
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 3600
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 1200
 
