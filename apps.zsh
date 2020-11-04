@@ -72,7 +72,8 @@ sudo pacman -S --noconfirm \
   wkhtmltopdf \
   xclip \
   xorg-xrandr \
-  youtube-dl ffmpeg
+  youtube-dl ffmpeg \
+  zip
 
 yay -S --aur --noconfirm \
   wrk2-git
