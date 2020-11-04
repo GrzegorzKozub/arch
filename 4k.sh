@@ -15,7 +15,3 @@ trap on_term SIGTERM
 fonts 1.5
 imwheel -d
 
-# https://gitlab.gnome.org/GNOME/gnome-control-center/-/issues/918
-# https://gitlab.gnome.org/GNOME/gnome-control-center/-/issues/1125
-gsettings set org.gnome.desktop.input-sources xkb-options "['lv3:ralt_switch']"
-gsettings set org.gnome.desktop.input-sources xkb-options "[]"
