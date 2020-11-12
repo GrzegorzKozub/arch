@@ -139,6 +139,7 @@ sudo pacman -S --noconfirm \
   # lm_sensors psensor
 
 yay -S --aur --noconfirm \
+  azuredatastudio-bin \
   postman-bin \
   slack-desktop \
   visual-studio-code-bin
