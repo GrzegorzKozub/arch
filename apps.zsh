@@ -58,6 +58,7 @@ sudo pacman -S --noconfirm \
 
 sudo pacman -S --noconfirm \
   fd \
+  freerdp \
   fzf \
   glances \
   graphviz \
