@@ -13,10 +13,10 @@ sudo pacman -S --needed --noconfirm \
   papirus-icon-theme
 
 [[ -d ~/Pictures ]] || mkdir ~/Pictures
-cp `dirname $0`/home/greg/Pictures/among-trees.png ~/Pictures
+cp `dirname $0`/home/greg/Pictures/* ~/Pictures
 
-gsettings set org.gnome.desktop.background picture-uri 'file:///home/greg/Pictures/among-trees.png'
-gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictures/among-trees.png'
+gsettings set org.gnome.desktop.background picture-uri 'file:///home/greg/Pictures/women.jpg'
+gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictures/women.jpg'
 
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
 gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'

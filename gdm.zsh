@@ -15,7 +15,7 @@ TMP="$(mktemp -d)"
 sudo cp -n $GS/$GST $GS/$GST.backup
 mkdir -p $TMP/theme/icons/scalable/actions
 mkdir -p $TMP/theme/icons/scalable/status
-cp `dirname $0`/home/greg/Pictures/among-trees.png $TMP/theme/
+cp `dirname $0`/home/greg/Pictures/women.jpg $TMP/theme/
 
 for RES in `gresource list $GS/$GST`; do
   gresource extract $GS/$GST $RES > $TMP/${RES#\/org\/gnome\/shell/}
@@ -38,7 +38,7 @@ EOF
 
 cat <<EOF >> $TMP/theme/gnome-shell.css
 #lockDialogGroup {
-  background: url(resource:///org/gnome/shell/theme/among-trees.png);
+  background: url(resource:///org/gnome/shell/theme/women.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
