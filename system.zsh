@@ -40,6 +40,7 @@ pacstrap /mnt \
   lvm2 \
   ntfs-3g \
   nss-mdns \
+  lm_sensors \
   v4l-utils \
   git go reflector sudo zsh \
   xorg-server xorg-xrandr \

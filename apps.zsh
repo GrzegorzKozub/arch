@@ -136,7 +136,7 @@ sudo pacman -S --noconfirm \
   peek gifski gst-plugins-good gst-plugins-ugly
 
 # sudo pacman -s --noconfirm \
-  # lm_sensors psensor
+  # psensor
 
 yay -S --aur --noconfirm \
   azuredatastudio-bin \
