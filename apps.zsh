@@ -60,7 +60,6 @@ sudo pacman -S --noconfirm \
   fd \
   freerdp \
   fzf \
-  glances \
   graphviz \
   imwheel \
   jq \
