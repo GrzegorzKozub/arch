@@ -123,7 +123,8 @@ sudo pacman -S --noconfirm \
   nodejs npm \
   perl \
   python python-pip \
-  ruby
+  ruby \
+  rust
 
 # apps
 
