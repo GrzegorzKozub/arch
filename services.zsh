@@ -12,6 +12,9 @@ sudo systemctl enable avahi-daemon.service
 sudo systemctl enable gdm.service
 sudo systemctl enable NetworkManager.service
 
+sudo cp `dirname $0`/etc/iptables/iptables.rules /etc/iptables/iptables.rules
+sudo systemctl enable iptables.service
+
 [[ -d ~/.config/systemd/user ]] || mkdir -p ~/.config/systemd/user
 
 cp `dirname $0`/home/greg/.config/systemd/user/dnd.service ~/.config/systemd/user
