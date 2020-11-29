@@ -79,6 +79,13 @@ sudo pacman -S --noconfirm \
 yay -S --aur --noconfirm \
   wrk2-git
 
+if [[ $HOST = 'turing' ]]; then
+
+  sudo pacman -S --noconfirm \
+    nvtop
+
+fi
+
 # zsh, tmux and lf
 
 sudo pacman -S --noconfirm \
