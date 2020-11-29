@@ -103,6 +103,7 @@ for APP in \
   electron4 \
   electron7 \
   gvim \
+  htop \
   laptop-mode-tools \
   lstopo \
   nvim \
