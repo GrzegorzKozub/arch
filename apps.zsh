@@ -61,6 +61,7 @@ sudo pacman -S --noconfirm \
   freerdp \
   fzf \
   graphviz \
+  htop \
   imwheel \
   jq \
   man-db man-pages \
