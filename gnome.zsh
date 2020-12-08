@@ -43,6 +43,7 @@ xdg-mime default org.gnome.Evince.desktop application/pdf
 
 gsettings set org.gnome.eog.ui sidebar false
 
+xdg-mime default nvim.desktop text/plain
 xdg-mime default org.gnome.eog.desktop image/jpeg
 xdg-mime default org.gnome.eog.desktop image/png
 
@@ -106,7 +107,6 @@ for APP in \
   htop \
   laptop-mode-tools \
   lstopo \
-  nvim \
   org.freedesktop.MalcontentControl \
   org.gnome.Cheese \
   qv4l2 \

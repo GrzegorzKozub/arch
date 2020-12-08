@@ -178,6 +178,17 @@ do
     ~/.local/share/applications/$APP.desktop
 done
 
+for APP in \
+  nvim
+do
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i \
+    -e 's/^Exec=nvim %F$/Exec=env WAYLAND_DISPLAY= alacritty --command nvim %F/' \
+    -e 's/^Terminal=true$/Terminal=false/' \
+    ~/.local/share/applications/$APP.desktop
+  echo 'NoDisplay=true' >> ~/.local/share/applications/$APP.desktop
+done
+
 # dotfiles install
 
 . ~/code/dotfiles/install.zsh
