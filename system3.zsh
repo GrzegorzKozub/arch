@@ -12,6 +12,9 @@ makepkg -si --noconfirm
 popd
 rm -rf ~/yay
 
+[[ -d ~/.local/share/gupng ]] || mkdir -p ~/.local/share/gnupg
+chmod 700 ~/.local/share/gupng
+
 # operating system continued
 
 yay -S --aur --noconfirm \
