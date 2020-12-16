@@ -16,3 +16,7 @@ sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
 sudo pacman --noconfirm -Sc
 yay --aur --noconfirm -Sc
 
+# clean system logs
+
+sudo journalctl --vacuum-time=3months
+
