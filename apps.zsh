@@ -72,6 +72,7 @@ sudo pacman -S --noconfirm \
   wget \
   wkhtmltopdf \
   xclip \
+  xdotool \
   xorg-xrandr \
   youtube-dl ffmpeg \
   zip
