@@ -13,11 +13,24 @@ function fix() {
 }
 
 [[ $WIDTH = 3200 ]] && [[ $HEIGHT = 1800 ]] && {
-  fix ".?Chromium" $(( $WIDTH - 400 )) $(( $HEIGHT - 250 )) 200 $(( 125 + 32 ))
-  fix ".?Visual Studio Code" $(( $WIDTH - 400 )) $(( $HEIGHT - 250 )) 200 $(( 125 + 32 ))
-  fix ".?Azure Data Studio" $(( $WIDTH - 400 )) $(( $HEIGHT - 250 )) 200 $(( 125 + 32 ))
-  fix ".?Slack" $(( $WIDTH - 400 )) $(( $HEIGHT - 250 - 57 )) 200 $(( 125 + 32 ))
-  fix ".?Postman" $(( $WIDTH - 400 )) $(( $HEIGHT - 250 - 57 )) 200 $(( 125 + 32 ))
+
+  PANEL=64; ELECTRON=57
+
+  function center() {
+    fix "$1" \
+      $(( ( $WIDTH / 8 ) * 7 )) \
+      $(( ( ( $HEIGHT - $PANEL ) / 8 ) * 7 - ${2:-0} )) \
+      $(( $WIDTH / ( 8 * 2 ) )) \
+      $(( ( $HEIGHT - $PANEL ) / ( 8 * 2 ) + $PANEL ))
+  }
+
+  center ".?Chromium"
+  center ".?Visual Studio Code"
+  center ".?Azure Data Studio"
+
+  center ".?Slack" $ELECTRON
+  center ".?Postman" $ELECTRON
+
   fix ".? - KeePassXC" 1600 1284 800 318
 }
 
@@ -37,23 +50,22 @@ function fix() {
     $(( $WIDTH / 2 - $MARGIN * 2 )) \
     $(( $MARGIN * 2 + $PANEL ))
 
-  fix ".?Visual Studio Code" \
-    $(( ( $WIDTH / 4 ) * 3 )) \
-    $(( ( ( $HEIGHT - $PANEL ) / 8 ) * 7 )) \
-    $(( $WIDTH / ( 4 * 2 ) )) \
-    $(( ( $HEIGHT - $PANEL ) / ( 8 * 2 ) + $PANEL ))
+  function center() {
+    fix "$1" \
+      $(( ( $WIDTH / 4 ) * 3 )) \
+      $(( ( ( $HEIGHT - $PANEL ) / 8 ) * 7 )) \
+      $(( $WIDTH / ( 4 * 2 ) )) \
+      $(( ( $HEIGHT - $PANEL ) / ( 8 * 2 ) + $PANEL ))
+  }
 
-  fix ".?Azure Data Studio" \
-    $(( ( $WIDTH / 4 ) * 3 )) \
-    $(( ( ( $HEIGHT - $PANEL ) / 8 ) * 7 )) \
-    $(( $WIDTH / ( 4 * 2 ) )) \
-    $(( ( $HEIGHT - $PANEL ) / ( 8 * 2 ) + $PANEL ))
+  center ".?Visual Studio Code"
+  center ".?Azure Data Studio"
 
   fix ".?Postman" \
     $(( ( $WIDTH / 5 ) * 3 )) \
     $(( ( ( $HEIGHT - $PANEL ) / 8 ) * 6 - $ELECTRON )) \
     $(( $WIDTH / 5 )) \
-    $(( ( $HEIGHT - $PANEL) / 8 + $PANEL ))
+    $(( ( $HEIGHT - $PANEL ) / 8 + $PANEL ))
 
   fix ".? - KeePassXC" 1200 964 1320 635
 }
