@@ -19,7 +19,10 @@ chmod 700 ~/.local/share/gnupg
 
 yay -S --aur --noconfirm \
   aic94xx-firmware wd719x-firmware upd72020x-fw \
-  gnome-shell-extension-tray-icons gnome-shell-extension-pop-shell
+  gnome-shell-extension-tray-icons
+
+# yay -S --aur --noconfirm \
+  # gnome-shell-extension-pop-shell
 
 if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
