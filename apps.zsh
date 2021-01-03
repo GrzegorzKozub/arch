@@ -149,7 +149,6 @@ sudo pacman -S --noconfirm \
   # psensor
 
 yay -S --aur --noconfirm \
-  azuredatastudio-bin \
   postman-bin \
   slack-desktop \
   visual-studio-code-bin
