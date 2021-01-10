@@ -144,9 +144,6 @@ sudo pacman -S --noconfirm \
   openconnect networkmanager-openconnect \
   peek gifski gst-plugins-good gst-plugins-ugly
 
-# sudo pacman -s --noconfirm \
-  # psensor
-
 yay -S --aur --noconfirm \
   postman-bin \
   slack-desktop \
