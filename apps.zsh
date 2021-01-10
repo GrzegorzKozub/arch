@@ -120,8 +120,7 @@ sudo systemctl start docker.service
 # aws
 
 yay -S --aur --noconfirm \
-  aws-cli-v2-bin \
-  aws-ecs-cli
+  aws-cli-v2-bin
 
 # dev
 
