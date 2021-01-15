@@ -9,8 +9,8 @@ sudo pacman -Sy --noconfirm \
   hplip \
   system-config-printer
 
-sudo systemctl enable org.cups.cupsd.service
-sudo systemctl start org.cups.cupsd.service
+sudo systemctl enable cups
+sudo systemctl start cups
 
 for APP in \
   cups \
