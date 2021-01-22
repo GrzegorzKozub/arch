@@ -6,9 +6,7 @@ set -e -o verbose
 
 sudo pacman -S --needed --noconfirm \
   arc-gtk-theme \
-  arc-icon-theme \
   arc-solid-gtk-theme \
-  elementary-icon-theme \
   materia-gtk-theme \
   papirus-icon-theme
 
