@@ -48,9 +48,9 @@ xdg-mime default org.gnome.eog.desktop image/png
 [[ $HOST = 'drifter' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1
 [[ $HOST = 'turing' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
 
-gsettings set org.gnome.desktop.interface gtk-theme 'Arc-solid'
+gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Lighter-solid'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
-gsettings set org.gnome.shell.extensions.user-theme name 'Arc-Dark-solid'
+gsettings set org.gnome.shell.extensions.user-theme name 'Arc-solid'
 
 gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Software.desktop']"
 gsettings set org.gnome.desktop.search-providers disable-external true
