@@ -140,7 +140,7 @@ sudo pacman -S --noconfirm \
   chromium chrome-gnome-shell \
   flameshot \
   keepassxc qt5-styleplugins \
-  mpv \
+  mpv celluloid \
   openconnect networkmanager-openconnect \
   peek gifski gst-plugins-good gst-plugins-ugly
 
@@ -184,6 +184,12 @@ do
     ~/.local/share/applications/$APP.desktop
   echo 'NoDisplay=true' >> ~/.local/share/applications/$APP.desktop
 done
+
+gsettings set io.github.celluloid-player.Celluloid always-use-floating-controls true
+gsettings set io.github.celluloid-player.Celluloid dark-theme-enable false
+gsettings set io.github.celluloid-player.Celluloid mpv-config-enable true
+gsettings set io.github.celluloid-player.Celluloid mpv-config-file '/home/greg/.config/mpv/mpv.conf'
+gsettings set io.github.celluloid-player.Celluloid mpv-options '--hwdec=auto'
 
 # dotfiles install
 

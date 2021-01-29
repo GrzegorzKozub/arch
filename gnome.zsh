@@ -92,8 +92,6 @@ amixer sset Capture 25%
 gsettings set org.gnome.desktop.sound event-sounds false
 
 gsettings set org.gnome.shell enabled-extensions "['dim-on-battery@nailfarmer.nailfarmer.com', 'tray-icons@zhangkaizhao.com', 'user-theme@gnome-shell-extensions.gcampax.github.com']"
-# 'pop-shell@system76.com'
-
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'Alacritty.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'chromium.desktop', 'google-chrome.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
 
 for APP in \
@@ -106,6 +104,7 @@ for APP in \
   htop \
   laptop-mode-tools \
   lstopo \
+  mpv \
   org.freedesktop.MalcontentControl \
   org.gnome.Cheese \
   qv4l2 \
