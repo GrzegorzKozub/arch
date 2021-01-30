@@ -2,22 +2,19 @@
 
 set -e -o verbose
 
-# yay
+# paru
 
-[[ -d ~/yay ]] && rm -rf ~/yay
+[[ -d ~/paru ]] && rm -rf ~/paru
 pushd ~
-git clone https://aur.archlinux.org/yay.git
-cd yay
+git clone https://aur.archlinux.org/paru.git
+cd paru
 makepkg -si --noconfirm
 popd
-rm -rf ~/yay
-
-[[ -d ~/.local/share/gnupg ]] || mkdir -p ~/.local/share/gnupg
-chmod 700 ~/.local/share/gnupg
+rm -rf ~/paru
 
 # operating system continued
 
-yay -S --aur --noconfirm \
+paru -S --aur --noconfirm \
   aic94xx-firmware wd719x-firmware upd72020x-fw \
   gnome-shell-extension-tray-icons
 
@@ -28,7 +25,7 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
     intel-media-driver \
     bluez bluez-utils
 
-  yay -S --aur --noconfirm \
+  paru -S --aur --noconfirm \
     laptop-mode-tools \
     gnome-shell-extension-dim-on-battery-git
 

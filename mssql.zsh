@@ -4,6 +4,6 @@ set -e -o verbose
 
 # mssql
 
-yay -S --aur --noconfirm \
-  azuredatastudio-bin \
+paru -S --aur --noconfirm \
+  azuredatastudio-bin
 

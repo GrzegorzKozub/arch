@@ -4,7 +4,7 @@ set -e -o verbose
 
 # tablet
 
-yay -S --aur --noconfirm \
+paru -S --aur --noconfirm \
   xp-pen-tablet
 
 sudo pacman -S --noconfirm \

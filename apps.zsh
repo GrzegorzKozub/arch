@@ -17,7 +17,7 @@ sudo pacman -S --noconfirm \
   git \
   openssh
 
-yay -S --aur --noconfirm \
+paru -S --aur --noconfirm \
   git-extras \
   gitflow-avh \
   gitflow-zshcompletion-avh
@@ -77,7 +77,7 @@ sudo pacman -S --noconfirm \
   youtube-dl ffmpeg \
   zip
 
-yay -S --aur --noconfirm \
+paru -S --aur --noconfirm \
   wrk2-git
 
 if [[ $HOST = 'turing' ]]; then
@@ -93,7 +93,7 @@ sudo pacman -S --noconfirm \
   tmux \
   zsh zsh-completions
 
-yay -S --aur --noconfirm \
+paru -S --aur --noconfirm \
   lf-bin
 
 rm -rf ~/.bash*
@@ -104,7 +104,7 @@ sudo pacman -S --noconfirm \
   astyle ctags editorconfig-core-c gvim tidy \
   glibc neovim
 
-yay -S --aur --noconfirm \
+paru -S --aur --noconfirm \
   hadolint-bin
 
 # docker
@@ -119,7 +119,7 @@ sudo systemctl start docker.service
 
 # aws
 
-yay -S --aur --noconfirm \
+paru -S --aur --noconfirm \
   aws-cli-v2-bin
 
 # dev
@@ -144,7 +144,7 @@ sudo pacman -S --noconfirm \
   openconnect networkmanager-openconnect \
   peek gifski gst-plugins-good gst-plugins-ugly
 
-yay -S --aur --noconfirm \
+paru -S --aur --noconfirm \
   postman-bin \
   slack-desktop \
   visual-studio-code-bin

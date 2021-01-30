@@ -4,6 +4,6 @@ set -e -o verbose
 
 # secure boot support
 
-yay -S --aur --noconfirm \
+paru -S --aur --noconfirm \
   preloader-signed
 

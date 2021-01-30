@@ -5,7 +5,7 @@ set -o verbose
 # update all packages
 
 sudo pacman --noconfirm -Syu
-yay --aur --noconfirm -Syu
+paru --aur --noconfirm -Syu
 
 # remove unused packages
 
@@ -14,7 +14,7 @@ sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
 # clean package caches
 
 sudo pacman --noconfirm -Sc
-yay --aur --noconfirm -Sc
+paru --aur --noconfirm -Sc
 
 # clean system logs
 
