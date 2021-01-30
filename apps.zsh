@@ -94,7 +94,7 @@ sudo pacman -S --noconfirm \
   zsh zsh-completions
 
 paru -S --aur --noconfirm \
-  lf-bin
+  lf
 
 rm -rf ~/.bash*
 
