@@ -38,9 +38,6 @@ git clone git@github.com:GrzegorzKozub/history.git ~/code/history
 [[ -d ~/code/keys ]] && rm -rf ~/code/keys
 git clone git@github.com:GrzegorzKozub/keys.git ~/code/keys
 
-[[ -d ~/code/mac ]] && rm -rf ~/code/mac
-git clone git@github.com:GrzegorzKozub/mac.git ~/code/mac
-
 [[ -d ~/code/passwords ]] && rm -rf ~/code/passwords
 git clone git@github.com:GrzegorzKozub/passwords.git ~/code/passwords
 
