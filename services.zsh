@@ -20,9 +20,9 @@ sudo systemctl enable iptables.service
 cp `dirname $0`/home/greg/.config/systemd/user/dnd.service ~/.config/systemd/user
 systemctl --user enable dnd.service
 
-cp `dirname $0`/home/greg/.config/systemd/user/code.* ~/.config/systemd/user
-systemctl --user enable code.timer
-systemctl --user start code.timer
+# cp `dirname $0`/home/greg/.config/systemd/user/code.* ~/.config/systemd/user
+# systemctl --user enable code.timer
+# systemctl --user start code.timer
 
 cp `dirname $0`/home/greg/.config/systemd/user/history.* ~/.config/systemd/user
 systemctl --user enable history.timer
