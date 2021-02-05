@@ -103,6 +103,7 @@ for APP in \
   gvim \
   htop \
   laptop-mode-tools \
+  lf \
   lstopo \
   mpv \
   org.freedesktop.MalcontentControl \
