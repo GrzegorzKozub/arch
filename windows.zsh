@@ -25,7 +25,7 @@ function fix() {
       $(( ( $HEIGHT - $PANEL ) / ( 8 * 2 ) + $PANEL ))
   }
 
-  center ".?Chromium"
+  center ".?Chrom"
   center ".?Visual Studio Code"
   center ".?Azure Data Studio"
 
@@ -43,7 +43,7 @@ function fix() {
 
   MARGIN=25
 
-  fix ".?Chromium" \
+  fix ".?Chrom" \
     $(( ( $WIDTH / 5 ) * 3 )) \
     $(( $HEIGHT - $MARGIN * 2 - $PANEL )) \
     $MARGIN \

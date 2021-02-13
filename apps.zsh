@@ -145,6 +145,7 @@ sudo pacman -S --noconfirm \
   peek gifski gst-plugins-good gst-plugins-ugly
 
 paru -S --aur --noconfirm \
+  google-chrome
   postman-bin \
   slack-desktop \
   visual-studio-code-bin
