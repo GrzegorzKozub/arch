@@ -1,8 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 RESOLUTION=$(xrandr | grep "*" | sed -n -e "s/^   //p" | sed -n -e "s/     .*$//p")
 WIDTH=$(echo $RESOLUTION | cut -dx -f1)
 HEIGHT=$(echo $RESOLUTION | cut -dx -f2)
+THEME=$(gsettings get org.gnome.desktop.interface gtk-theme)
 
 function fix() {
   local windows=$(xdotool search --name --class "$1")
@@ -36,7 +37,11 @@ function fix() {
 
 [[ $WIDTH = 3840 ]] && [[ $HEIGHT = 2160 ]] && {
 
-  MARGIN=25; PANEL=47; ELECTRON=28
+  if [[ $THEME =~ "Arc" ]]; then PANEL=47; ELECTRON=28
+  elif [[ $THEME =~ "Materia" ]]; then PANEL=38; ELECTRON=42
+  else exit 1; fi
+
+  MARGIN=25
 
   fix ".?Chromium" \
     $(( ( $WIDTH / 5 ) * 3 )) \
@@ -70,4 +75,4 @@ function fix() {
   fix ".? - KeePassXC" 1200 964 1320 635
 }
 
-unset RESOLUTION WIDTH HEIGHT MARGIN PANEL ELECTRON
+unset RESOLUTION WIDTH HEIGHT THEME MARGIN PANEL ELECTRON
