@@ -15,7 +15,9 @@ function fix() {
 
 [[ $WIDTH = 3200 ]] && [[ $HEIGHT = 1800 ]] && {
 
-  PANEL=64; ELECTRON=57
+  if [[ $THEME =~ "Arc" ]]; then PANEL=64; ELECTRON=57
+  elif [[ $THEME =~ "Materia" ]]; then PANEL=68; ELECTRON=71
+  else exit 1; fi
 
   function center() {
     fix "$1" \
