@@ -30,6 +30,7 @@ function fix() {
   center ".?Chrom"
   center ".?Visual Studio Code"
   center ".?Azure Data Studio"
+  center "OBS.*Profile.*Scenes.?"
 
   center ".?Slack" $ELECTRON
   center ".?Postman" $ELECTRON
@@ -67,6 +68,7 @@ function fix() {
 
   center ".?Visual Studio Code"
   center ".?Azure Data Studio"
+  center "OBS.*Profile.*Scenes.?"
 
   fix ".?Postman" \
     $(( ( $WIDTH / 5 ) * 3 )) \
