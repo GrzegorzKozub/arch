@@ -142,8 +142,7 @@ sudo pacman -S --noconfirm \
   keepassxc qt5-styleplugins \
   mpv celluloid \
   openconnect networkmanager-openconnect \
-  peek gifski gst-plugins-good gst-plugins-ugly \
-  obs-studio shotcut
+  peek gifski gst-plugins-good gst-plugins-ugly
 
 paru -S --aur --noconfirm \
   google-chrome
