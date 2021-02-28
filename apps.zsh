@@ -143,7 +143,7 @@ sudo pacman -S --noconfirm \
   mpv celluloid \
   openconnect networkmanager-openconnect \
   peek gifski gst-plugins-good gst-plugins-ugly \
-  obs-studio
+  obs-studio shotcut
 
 paru -S --aur --noconfirm \
   google-chrome
