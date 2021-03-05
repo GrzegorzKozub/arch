@@ -16,7 +16,7 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
   sed -i "s/<kernel_params>/video=1280x720/g" /boot/loader/entries/arch.conf
 fi
 
-if [[ $MY_HOSTNAME = 'turing' ]]; then
+if [[ $MY_HOSTNAME = 'turing' || $MY_HOSTNAME = 'pascal' ]]; then
   # wayland crashes with nvidia-drm.modeset=1
   sed -i "s/<kernel_params>//g" /boot/loader/entries/arch.conf
 fi

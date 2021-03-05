@@ -46,7 +46,7 @@ xdg-mime default org.gnome.eog.desktop image/jpeg
 xdg-mime default org.gnome.eog.desktop image/png
 
 [[ $HOST = 'drifter' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1
-[[ $HOST = 'turing' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+[[ $HOST = 'turing' || $HOST = 'pascal' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
 
 gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Lighter-solid'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'

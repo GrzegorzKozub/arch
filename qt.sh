@@ -4,7 +4,7 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0
 # export QT_QPA_PLATFORMTHEME=gtk2
 
 if
-  [[ $HOSTNAME = 'turing' ]] ||
+  [[ $HOSTNAME = 'turing' || $HOSTNAME = 'pascal' ]] ||
   [[ $(systemctl --user is-active 4k.service) = 'active' ]]
 then
   export QT_SCREEN_SCALE_FACTORS=1

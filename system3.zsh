@@ -31,7 +31,7 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
 fi
 
-if [[ $MY_HOSTNAME = 'turing' ]]; then
+if [[ $MY_HOSTNAME = 'turing' || $MY_HOSTNAME = 'pascal' ]]; then
 
   sudo pacman -S --noconfirm \
     nvidia

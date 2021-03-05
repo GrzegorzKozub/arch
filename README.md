@@ -21,7 +21,7 @@ Automated Arch Linux installation
 
 1. Boot from archiso
 2. Run `/run/archiso/bootmnt/.bootstrap/arch/archiso.zsh`. Puts these scripts into root's `~/arch`
-3. Run `source ~/arch/drifter.zsh` or `source ~/arch/turing.zsh`
+3. Run `source ~/arch/drifter.zsh` or `source ~/arch/turing.zsh` or `source ~/arch/pascal.zsh`
 4. Once per machine run `~/arch/disk.zsh`, otherwise run `~/arch/unlock.zsh`
 5. Run `~/arch/system.zsh`. Puts these scripts into normal user's `~/code/arch`
 6. Once per machine run `~/arch/boot.zsh`

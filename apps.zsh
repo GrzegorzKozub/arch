@@ -80,7 +80,7 @@ sudo pacman -S --noconfirm \
 paru -S --aur --noconfirm \
   wrk2-git
 
-if [[ $HOST = 'turing' ]]; then
+if [[ $HOST = 'turing' || $HOST = 'pascal' ]]; then
 
   sudo pacman -S --noconfirm \
     nvtop
