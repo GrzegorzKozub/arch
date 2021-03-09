@@ -87,7 +87,7 @@ if [[ $HOST = 'drifter' ]]; then
 fi
 
 amixer sset Master 50%
-amixer sset Capture 25%
+amixer sset Capture 50%
 
 gsettings set org.gnome.desktop.sound event-sounds false
 

@@ -34,11 +34,16 @@ systemctl --user start passwords.timer
 
 if [[ $HOST = 'drifter' ]]; then
 
-  # sudo systemctl enable bluetooth.service
   sudo systemctl enable laptop-mode.service
 
   cp `dirname $0`/home/greg/.config/systemd/user/4k.service ~/.config/systemd/user
   systemctl --user enable 4k.service
+
+fi
+
+if [[ $HOST = 'pascal' ]]; then
+
+  sudo systemctl enable bluetooth.service
 
 fi
 
