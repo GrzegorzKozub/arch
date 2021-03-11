@@ -66,6 +66,7 @@ sudo pacman -S --noconfirm \
   jq \
   man-db man-pages \
   p7zip \
+  pass \
   ripgrep \
   rsync \
   trash-cli \
@@ -116,6 +117,9 @@ sudo usermod -aG docker $USER
 
 sudo systemctl enable docker.service
 sudo systemctl start docker.service
+
+paru -S --aur --noconfirm \
+  docker-credential-pass-bin
 
 # aws
 
