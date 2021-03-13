@@ -45,4 +45,6 @@ Automated Arch Linux installation
   - Add your printer using Printer Settings app
 4. Setup drawing tablet
   - Run `tablet.zsh`
+5. Setup video recording and editing
+  - Run `video.zsh`
 
