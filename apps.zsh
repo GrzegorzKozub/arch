@@ -154,47 +154,15 @@ paru -S --aur --noconfirm \
   slack-desktop \
   visual-studio-code-bin
 
-# for APP in \
-  # flameshot \
-  # org.keepassxc.KeePassXC
-# do
-  # cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  # sed -i 's/^Exec=/Exec=\/home\/greg\/code\/arch\/qt.sh /' \
-    # ~/.local/share/applications/$APP.desktop
-# done
-
-for APP in \
-  org.keepassxc.KeePassXC
-do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' \
-    ~/.local/share/applications/$APP.desktop
-done
-
-for APP in \
-  Alacritty
-do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i 's/^Exec=/Exec=env WAYLAND_DISPLAY= /' \
-    ~/.local/share/applications/$APP.desktop
-done
-
-for APP in \
-  nvim
-do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i \
-    -e 's/^Exec=nvim %F$/Exec=env WAYLAND_DISPLAY= alacritty --command nvim %F/' \
-    -e 's/^Terminal=true$/Terminal=false/' \
-    ~/.local/share/applications/$APP.desktop
-  echo 'NoDisplay=true' >> ~/.local/share/applications/$APP.desktop
-done
-
 gsettings set io.github.celluloid-player.Celluloid always-use-floating-controls true
 gsettings set io.github.celluloid-player.Celluloid dark-theme-enable false
 gsettings set io.github.celluloid-player.Celluloid mpv-config-enable true
 gsettings set io.github.celluloid-player.Celluloid mpv-config-file '/home/greg/.config/mpv/mpv.conf'
 gsettings set io.github.celluloid-player.Celluloid mpv-options '--hwdec=auto'
+
+# links
+
+. `dirname $0`/links.zsh
 
 # dotfiles install
 

@@ -94,27 +94,3 @@ gsettings set org.gnome.desktop.sound event-sounds false
 gsettings set org.gnome.shell enabled-extensions "['dim-on-battery@nailfarmer.nailfarmer.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl']"
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'Alacritty.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'chromium.desktop', 'google-chrome.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
 
-for APP in \
-  avahi-discover \
-  bssh \
-  bvnc \
-  electron4 \
-  electron7 \
-  gvim \
-  htop \
-  laptop-mode-tools \
-  lf \
-  lstopo \
-  mpv \
-  org.freedesktop.MalcontentControl \
-  org.gnome.Cheese \
-  qv4l2 \
-  qvidcap \
-  stoken-gui \
-  stoken-gui-small \
-  unison \
-  vim
-do
-  printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
-done
-
