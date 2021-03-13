@@ -28,16 +28,8 @@ do
   printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
 done
 
-# for APP in \
-  # flameshot \
-  # org.keepassxc.KeePassXC
-# do
-  # cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  # sed -i 's/^Exec=/Exec=\/home\/greg\/code\/arch\/qt.sh /' \
-    # ~/.local/share/applications/$APP.desktop
-# done
-
 for APP in \
+  org.flameshot.Flameshot \
   org.keepassxc.KeePassXC
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
@@ -63,3 +55,4 @@ do
     ~/.local/share/applications/$APP.desktop
   echo 'NoDisplay=true' >> ~/.local/share/applications/$APP.desktop
 done
+
