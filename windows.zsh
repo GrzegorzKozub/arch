@@ -6,7 +6,7 @@ HEIGHT=$(echo $RESOLUTION | cut -dx -f2)
 THEME=$(gsettings get org.gnome.desktop.interface gtk-theme)
 
 function fix() {
-  local windows=$(xdotool search --name --class "$1")
+  local windows=$(xdotool search --onlyvisible --maxdepth 2 --name --class "$1")
   [[ -z $windows ]] || while IFS= read -r window; do
     xdotool windowsize $window $2 $3
     xdotool windowmove $window $4 $5
