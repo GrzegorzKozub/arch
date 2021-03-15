@@ -67,8 +67,3 @@ done
 
 xdg-mime default slack.desktop x-scheme-handler/slack
 
-#MIMEINFO=~/.local/share/applications/mimeinfo.cache
-#SLACK='x-scheme-handler/slack=slack.desktop;'
-#[[ $(cat $MIMEINFO | grep $SLACK) ]] || echo $SLACK >> $MIMEINFO
-#unset MIMEINFO SLACK
-
