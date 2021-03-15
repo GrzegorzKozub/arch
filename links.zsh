@@ -56,3 +56,19 @@ do
   echo 'NoDisplay=true' >> ~/.local/share/applications/$APP.desktop
 done
 
+for APP in \
+  slack
+do
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i \
+    -e 's/^Exec=\(.*\)$/Exec=\/home\/greg\/code\/arch\/place.sh "\1" slack/' \
+    ~/.local/share/applications/$APP.desktop
+done
+
+xdg-mime default slack.desktop x-scheme-handler/slack
+
+#MIMEINFO=~/.local/share/applications/mimeinfo.cache
+#SLACK='x-scheme-handler/slack=slack.desktop;'
+#[[ $(cat $MIMEINFO | grep $SLACK) ]] || echo $SLACK >> $MIMEINFO
+#unset MIMEINFO SLACK
+
