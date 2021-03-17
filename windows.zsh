@@ -3,7 +3,17 @@
 RESOLUTION=$(xrandr | grep "*" | sed -n -e "s/^   //p" | sed -n -e "s/     .*$//p")
 WIDTH=$(echo $RESOLUTION | cut -dx -f1)
 HEIGHT=$(echo $RESOLUTION | cut -dx -f2)
+
 THEME=$(gsettings get org.gnome.desktop.interface gtk-theme)
+
+CHROME=".?Chrom(e|ium)$"
+VSCODE=".?Visual Studio Code$"
+DATASTUDIO=".?Azure Data Studio$"
+OBS="^OBS.*Profile.*Scenes.?"
+SHOTCUT=".?Shotcut$"
+SLACK=".?Slack$"
+POSTMAN="^Postman$"
+KEEPASS=".? - KeePassXC$"
 
 function fix() {
   local windows=$(xdotool search --onlyvisible --maxdepth 2 --name --class "$1")
@@ -27,18 +37,18 @@ function fix() {
       $(( ( $HEIGHT - $PANEL ) / ( 8 * 2 ) + $PANEL ))
   }
 
-  center ".?Chrom"
+  center $CHROME
 
-  center ".?Visual Studio Code"
-  center ".?Azure Data Studio"
+  center $VSCODE
+  center $DATASTUDIO
 
-  center "OBS.*Profile.*Scenes.?"
-  center ".?Shotcut"
+  center $OBS
+  center $SHOTCUT
 
-  center ".?Slack" $ELECTRON
-  center ".?Postman" $ELECTRON
+  center $SLACK $ELECTRON
+  center $POSTMAN $ELECTRON
 
-  fix ".? - KeePassXC" 1600 1284 800 318
+  fix $KEEPASS 1600 1284 800 318
 }
 
 [[ $WIDTH = 3840 ]] && [[ $HEIGHT = 2160 ]] && {
@@ -49,13 +59,13 @@ function fix() {
 
   MARGIN=25
 
-  fix ".?Chrom" \
+  fix $CHROME \
     $(( ( $WIDTH / 5 ) * 3 )) \
     $(( $HEIGHT - $MARGIN * 2 - $PANEL )) \
     $MARGIN \
     $(( $MARGIN + $PANEL ))
 
-  fix ".?Slack" \
+  fix $SLACK \
     $(( $WIDTH / 2 )) \
     $(( $HEIGHT - $MARGIN * 4 - $PANEL - $ELECTRON )) \
     $(( $WIDTH / 2 - $MARGIN * 2 )) \
@@ -69,19 +79,22 @@ function fix() {
       $(( ( $HEIGHT - $PANEL ) / ( 8 * 2 ) + $PANEL ))
   }
 
-  center ".?Visual Studio Code"
-  center ".?Azure Data Studio"
+  center $VSCODE
+  center $DATASTUDIO
 
-  center "OBS.*Profile.*Scenes.?"
-  center ".?Shotcut"
+  center $OBS
+  center $SHOTCUT
 
-  fix ".?Postman" \
+  fix $POSTMAN \
     $(( ( $WIDTH / 5 ) * 3 )) \
     $(( ( ( $HEIGHT - $PANEL ) / 8 ) * 6 - $ELECTRON )) \
     $(( $WIDTH / 5 )) \
     $(( ( $HEIGHT - $PANEL ) / 8 + $PANEL ))
 
-  fix ".? - KeePassXC" 1200 964 1320 635
+  fix $KEEPASS 1200 964 1320 635
 }
 
-unset RESOLUTION WIDTH HEIGHT THEME MARGIN PANEL ELECTRON
+unset RESOLUTION WIDTH HEIGHT \
+  THEME \
+  CHROME VSCODE DATASTUDIO OBS SHOTCUT POSTMAN KEEPASS \
+  MARGIN PANEL ELECTRON
