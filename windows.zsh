@@ -1,100 +1,100 @@
 #!/usr/bin/env zsh
 
-RESOLUTION=$(xrandr | grep "*" | sed -n -e "s/^   //p" | sed -n -e "s/     .*$//p")
-WIDTH=$(echo $RESOLUTION | cut -dx -f1)
-HEIGHT=$(echo $RESOLUTION | cut -dx -f2)
+function windows {
+  local res=$(xrandr | grep "*" | sed -n -e "s/^   //p" | sed -n -e "s/     .*$//p")
+  local width=$(echo $res | cut -dx -f1)
+  local height=$(echo $res | cut -dx -f2)
 
-THEME=$(gsettings get org.gnome.desktop.interface gtk-theme)
+  local theme=$(gsettings get org.gnome.desktop.interface gtk-theme)
 
-CHROME=".?Chrom(e|ium)$"
-VSCODE=".?Visual Studio Code$"
-DATASTUDIO=".?Azure Data Studio$"
-OBS="^OBS.*Profile.*Scenes.?"
-SHOTCUT=".?Shotcut$"
-SLACK=".?Slack$"
-POSTMAN="^Postman$"
-KEEPASS=".? - KeePassXC$"
+  local chrome=".?Chrom(e|ium)$"
+  local vscode=".?Visual Studio Code$"
+  local data_studio=".?Azure Data Studio$"
+  local obs="^OBS.*Profile.*Scenes.?"
+  local shotcut=".?Shotcut$"
+  local slack=".?Slack$"
+  local postman="^Postman$"
+  local keepass=".? - KeePassXC$"
 
-function fix() {
-  local windows=$(xdotool search --onlyvisible --maxdepth 2 --name --class "$1")
-  [[ -z $windows ]] || while IFS= read -r window; do
-    xdotool windowsize $window $2 $3
-    xdotool windowmove $window $4 $5
-  done <<< $windows
-}
-
-[[ $WIDTH = 3200 ]] && [[ $HEIGHT = 1800 ]] && {
-
-  if [[ $THEME =~ "Arc" ]]; then TOP_BAR=64; TITLE_BAR=57
-  elif [[ $THEME =~ "Materia" ]]; then TOP_BAR=68; TITLE_BAR=71
-  else exit 1; fi
-
-  function center() {
-    fix "$1" \
-      $(( ( $WIDTH / 8 ) * 7 )) \
-      $(( ( ( $HEIGHT - $TOP_BAR ) / 8 ) * 7 - ${2:-0} - ${3:-0} )) \
-      $(( $WIDTH / ( 8 * 2 ) )) \
-      $(( ( $HEIGHT - $TOP_BAR ) / ( 8 * 2 ) + $TOP_BAR + ${3:-0} ))
+  function fix {
+    local windows=$(xdotool search --onlyvisible --maxdepth 2 --name --class "$1")
+    [[ -z $windows ]] || while IFS= read -r window; do
+      xdotool windowsize $window $2 $3
+      xdotool windowmove $window $4 $5
+    done <<< $windows
   }
 
-  center $CHROME
+  [[ $width = 3200 ]] && [[ $height = 1800 ]] && {
 
-  center $VSCODE
-  center $DATASTUDIO
+    if [[ $theme =~ "Arc" ]]; then local top_bar=64; local title_bar=57
+    elif [[ $theme =~ "Materia" ]]; then local top_bar=68; local title_bar=71
+    else exit 1; fi
 
-  center $OBS 0 $TITLE_BAR
-  center $SHOTCUT 0 $TITLE_BAR
+    function center {
+      fix "$1" \
+        $(( ( $width / 8 ) * 7 )) \
+        $(( ( ( $height - $top_bar ) / 8 ) * 7 - ${2:-0} - ${3:-0} )) \
+        $(( $width / ( 8 * 2 ) )) \
+        $(( ( $height - $top_bar ) / ( 8 * 2 ) + $top_bar + ${3:-0} ))
+    }
 
-  center $SLACK $TITLE_BAR
-  center $POSTMAN $TITLE_BAR
+    center $chrome
 
-  fix $KEEPASS 1600 1284 800 318
-}
+    center $vscode
+    center $data_studio
 
-[[ $WIDTH = 3840 ]] && [[ $HEIGHT = 2160 ]] && {
+    center $obs 0 $title_bar
+    center $shotcut 0 $title_bar
 
-  if [[ $THEME =~ "Arc" ]]; then TOP_BAR=47; TITLE_BAR=28
-  elif [[ $THEME =~ "Materia" ]]; then TOP_BAR=38; TITLE_BAR=42
-  else exit 1; fi
+    center $slack $title_bar
+    center $postman $title_bar
 
-  MARGIN=25
-
-  fix $CHROME \
-    $(( ( $WIDTH / 5 ) * 3 )) \
-    $(( $HEIGHT - $MARGIN * 2 - $TOP_BAR )) \
-    $MARGIN \
-    $(( $MARGIN + $TOP_BAR ))
-
-  fix $SLACK \
-    $(( $WIDTH / 2 )) \
-    $(( $HEIGHT - $MARGIN * 4 - $TOP_BAR - $TITLE_BAR )) \
-    $(( $WIDTH / 2 - $MARGIN * 2 )) \
-    $(( $MARGIN * 2 + $TOP_BAR ))
-
-  function center() {
-    fix "$1" \
-      $(( ( $WIDTH / 4 ) * 3 )) \
-      $(( ( ( $HEIGHT - $TOP_BAR ) / 8 ) * 7 )) \
-      $(( $WIDTH / ( 4 * 2 ) )) \
-      $(( ( $HEIGHT - $TOP_BAR ) / ( 8 * 2 ) + $TOP_BAR ))
+    fix $keepass 1600 1284 800 318
   }
 
-  center $VSCODE
-  center $DATASTUDIO
+  [[ $width = 3840 ]] && [[ $height = 2160 ]] && {
 
-  center $OBS
-  center $SHOTCUT
+    if [[ $theme =~ "Arc" ]]; then local top_bar=47; local title_bar=28
+    elif [[ $theme =~ "Materia" ]]; then local top_bar=38; local title_bar=42
+    else exit 1; fi
 
-  fix $POSTMAN \
-    $(( ( $WIDTH / 5 ) * 3 )) \
-    $(( ( ( $HEIGHT - $TOP_BAR ) / 8 ) * 6 - $TITLE_BAR )) \
-    $(( $WIDTH / 5 )) \
-    $(( ( $HEIGHT - $TOP_BAR ) / 8 + $TOP_BAR ))
+    MARGIN=25
 
-  fix $KEEPASS 1200 964 1320 635
+    fix $chrome \
+      $(( ( $width / 5 ) * 3 )) \
+      $(( $height - $MARGIN * 2 - $top_bar )) \
+      $MARGIN \
+      $(( $MARGIN + $top_bar ))
+
+    fix $slack \
+      $(( $width / 2 )) \
+      $(( $height - $MARGIN * 4 - $top_bar - $title_bar )) \
+      $(( $width / 2 - $MARGIN * 2 )) \
+      $(( $MARGIN * 2 + $top_bar ))
+
+    function center {
+      fix "$1" \
+        $(( ( $width / 4 ) * 3 )) \
+        $(( ( ( $height - $top_bar ) / 8 ) * 7 )) \
+        $(( $width / ( 4 * 2 ) )) \
+        $(( ( $height - $top_bar ) / ( 8 * 2 ) + $top_bar ))
+    }
+
+    center $vscode
+    center $data_studio
+
+    center $obs
+    center $shotcut
+
+    fix $postman \
+      $(( ( $width / 5 ) * 3 )) \
+      $(( ( ( $height - $top_bar ) / 8 ) * 6 - $title_bar )) \
+      $(( $width / 5 )) \
+      $(( ( $height - $top_bar ) / 8 + $top_bar ))
+
+    fix $keepass 1200 964 1320 635
+  }
 }
 
-unset RESOLUTION WIDTH HEIGHT \
-  THEME \
-  CHROME VSCODE DATASTUDIO OBS SHOTCUT POSTMAN KEEPASS \
-  MARGIN TOP_BAR TITLE_BAR
+windows
+
