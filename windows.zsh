@@ -25,16 +25,16 @@ function fix() {
 
 [[ $WIDTH = 3200 ]] && [[ $HEIGHT = 1800 ]] && {
 
-  if [[ $THEME =~ "Arc" ]]; then PANEL=64; ELECTRON=57
-  elif [[ $THEME =~ "Materia" ]]; then PANEL=68; ELECTRON=71
+  if [[ $THEME =~ "Arc" ]]; then TOP_BAR=64; TITLE_BAR=57
+  elif [[ $THEME =~ "Materia" ]]; then TOP_BAR=68; TITLE_BAR=71
   else exit 1; fi
 
   function center() {
     fix "$1" \
       $(( ( $WIDTH / 8 ) * 7 )) \
-      $(( ( ( $HEIGHT - $PANEL ) / 8 ) * 7 - ${2:-0} )) \
+      $(( ( ( $HEIGHT - $TOP_BAR ) / 8 ) * 7 - ${2:-0} - ${3:-0} )) \
       $(( $WIDTH / ( 8 * 2 ) )) \
-      $(( ( $HEIGHT - $PANEL ) / ( 8 * 2 ) + $PANEL ))
+      $(( ( $HEIGHT - $TOP_BAR ) / ( 8 * 2 ) + $TOP_BAR + ${3:-0} ))
   }
 
   center $CHROME
@@ -42,41 +42,41 @@ function fix() {
   center $VSCODE
   center $DATASTUDIO
 
-  center $OBS
-  center $SHOTCUT
+  center $OBS 0 $TITLE_BAR
+  center $SHOTCUT 0 $TITLE_BAR
 
-  center $SLACK $ELECTRON
-  center $POSTMAN $ELECTRON
+  center $SLACK $TITLE_BAR
+  center $POSTMAN $TITLE_BAR
 
   fix $KEEPASS 1600 1284 800 318
 }
 
 [[ $WIDTH = 3840 ]] && [[ $HEIGHT = 2160 ]] && {
 
-  if [[ $THEME =~ "Arc" ]]; then PANEL=47; ELECTRON=28
-  elif [[ $THEME =~ "Materia" ]]; then PANEL=38; ELECTRON=42
+  if [[ $THEME =~ "Arc" ]]; then TOP_BAR=47; TITLE_BAR=28
+  elif [[ $THEME =~ "Materia" ]]; then TOP_BAR=38; TITLE_BAR=42
   else exit 1; fi
 
   MARGIN=25
 
   fix $CHROME \
     $(( ( $WIDTH / 5 ) * 3 )) \
-    $(( $HEIGHT - $MARGIN * 2 - $PANEL )) \
+    $(( $HEIGHT - $MARGIN * 2 - $TOP_BAR )) \
     $MARGIN \
-    $(( $MARGIN + $PANEL ))
+    $(( $MARGIN + $TOP_BAR ))
 
   fix $SLACK \
     $(( $WIDTH / 2 )) \
-    $(( $HEIGHT - $MARGIN * 4 - $PANEL - $ELECTRON )) \
+    $(( $HEIGHT - $MARGIN * 4 - $TOP_BAR - $TITLE_BAR )) \
     $(( $WIDTH / 2 - $MARGIN * 2 )) \
-    $(( $MARGIN * 2 + $PANEL ))
+    $(( $MARGIN * 2 + $TOP_BAR ))
 
   function center() {
     fix "$1" \
       $(( ( $WIDTH / 4 ) * 3 )) \
-      $(( ( ( $HEIGHT - $PANEL ) / 8 ) * 7 )) \
+      $(( ( ( $HEIGHT - $TOP_BAR ) / 8 ) * 7 )) \
       $(( $WIDTH / ( 4 * 2 ) )) \
-      $(( ( $HEIGHT - $PANEL ) / ( 8 * 2 ) + $PANEL ))
+      $(( ( $HEIGHT - $TOP_BAR ) / ( 8 * 2 ) + $TOP_BAR ))
   }
 
   center $VSCODE
@@ -87,9 +87,9 @@ function fix() {
 
   fix $POSTMAN \
     $(( ( $WIDTH / 5 ) * 3 )) \
-    $(( ( ( $HEIGHT - $PANEL ) / 8 ) * 6 - $ELECTRON )) \
+    $(( ( ( $HEIGHT - $TOP_BAR ) / 8 ) * 6 - $TITLE_BAR )) \
     $(( $WIDTH / 5 )) \
-    $(( ( $HEIGHT - $PANEL ) / 8 + $PANEL ))
+    $(( ( $HEIGHT - $TOP_BAR ) / 8 + $TOP_BAR ))
 
   fix $KEEPASS 1200 964 1320 635
 }
@@ -97,4 +97,4 @@ function fix() {
 unset RESOLUTION WIDTH HEIGHT \
   THEME \
   CHROME VSCODE DATASTUDIO OBS SHOTCUT POSTMAN KEEPASS \
-  MARGIN PANEL ELECTRON
+  MARGIN TOP_BAR TITLE_BAR
