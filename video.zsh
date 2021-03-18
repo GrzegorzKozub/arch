@@ -7,11 +7,3 @@ set -e -o verbose
 sudo pacman -S --noconfirm \
   obs-studio shotcut
 
-for APP in \
-  com.obsproject.Studio \
-  org.shotcut.Shotcut
-do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' \
-    ~/.local/share/applications/$APP.desktop
-done

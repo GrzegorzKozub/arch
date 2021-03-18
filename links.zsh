@@ -29,7 +29,6 @@ do
 done
 
 for APP in \
-  org.flameshot.Flameshot \
   org.keepassxc.KeePassXC
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
