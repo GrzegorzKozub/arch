@@ -17,6 +17,7 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
 fi
 
 if [[ $MY_HOSTNAME = 'turing' || $MY_HOSTNAME = 'pascal' ]]; then
+  # printer does not work with ipv6.disable=1
   # wayland crashes with nvidia-drm.modeset=1
   sed -i "s/<kernel_params>//g" /boot/loader/entries/arch.conf
 fi
