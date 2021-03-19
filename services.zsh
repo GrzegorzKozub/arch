@@ -11,6 +11,7 @@ sudo timedatectl set-ntp true
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable gdm.service
 sudo systemctl enable NetworkManager.service
+# sudo systemctl enable bluetooth.service
 
 sudo cp `dirname $0`/etc/iptables/iptables.rules /etc/iptables/iptables.rules
 sudo systemctl enable iptables.service
@@ -38,12 +39,6 @@ if [[ $HOST = 'drifter' ]]; then
 
   cp `dirname $0`/home/greg/.config/systemd/user/4k.service ~/.config/systemd/user
   systemctl --user enable 4k.service
-
-fi
-
-if [[ $HOST = 'pascal' ]]; then
-
-  sudo systemctl enable bluetooth.service
 
 fi
 
