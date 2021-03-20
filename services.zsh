@@ -9,9 +9,9 @@ sudo timedatectl set-ntp true
 # services
 
 sudo systemctl enable avahi-daemon.service
+sudo systemctl enable bluetooth.service
 sudo systemctl enable gdm.service
 sudo systemctl enable NetworkManager.service
-# sudo systemctl enable bluetooth.service
 
 sudo cp `dirname $0`/etc/iptables/iptables.rules /etc/iptables/iptables.rules
 sudo systemctl enable iptables.service
@@ -43,10 +43,8 @@ if [[ $HOST = 'drifter' ]]; then
 fi
 
 if [[ $HOST = 'turing' || $HOST = 'pascal' ]]; then
-
   cp `dirname $0`/home/greg/.config/systemd/user/imwheel.service ~/.config/systemd/user
   systemctl --user enable imwheel.service
-
 fi
 
 # group check
