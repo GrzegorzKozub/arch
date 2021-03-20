@@ -141,9 +141,9 @@ sudo pacman -S --noconfirm \
 # apps
 
 sudo pacman -S --noconfirm \
-  chromium chrome-gnome-shell \
+  chrome-gnome-shell \
   flameshot \
-  keepassxc qt5-styleplugins \
+  keepassxc \
   mpv celluloid \
   openconnect networkmanager-openconnect \
   peek gifski gst-plugins-good gst-plugins-ugly
