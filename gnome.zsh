@@ -91,6 +91,11 @@ amixer sset Capture 50%
 
 gsettings set org.gnome.desktop.sound event-sounds false
 
-gsettings set org.gnome.shell enabled-extensions "['dim-on-battery@nailfarmer.nailfarmer.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl']"
+if [[ $HOST = 'drifter' ]]; then
+  gsettings set org.gnome.shell enabled-extensions "['dim-on-battery@nailfarmer.nailfarmer.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl']"
+else
+  gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl']"
+fi
+
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'Alacritty.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'chromium.desktop', 'google-chrome.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
 
