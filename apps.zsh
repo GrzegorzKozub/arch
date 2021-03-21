@@ -161,6 +161,11 @@ gsettings set io.github.celluloid-player.Celluloid mpv-config-enable true
 gsettings set io.github.celluloid-player.Celluloid mpv-config-file '/home/greg/.config/mpv/mpv.conf'
 gsettings set io.github.celluloid-player.Celluloid mpv-options '--hwdec=auto'
 
+# archiso
+
+sudo pacman -S --noconfirm \
+  archiso
+
 # links
 
 . `dirname $0`/links.zsh
