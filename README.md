@@ -37,8 +37,8 @@ Automated Arch Linux installation
   - For Chromium, add Polish language and enable it for spell check
   - For Google Chrome, enable enhanced spell check
   - Disable continuing in the background
-  - Enable chrome://flags/#enable-webrtc-pipewire-capturer
-2. Setup networkmanager-openconnect
+  - Enable `chrome://flags/#enable-webrtc-pipewire-capturer`
+2. Setup `networkmanager-openconnect`
   - Work around missing `--no-dtls` support as per [this issue](https://gitlab.gnome.org/GNOME/NetworkManager-openconnect/issues/7) by executing `iptables -I OUTPUT -d <VPN server> -p udp --dport 443 -j REJECT`
 3. Setup printer
   - Run `printer.zsh`
