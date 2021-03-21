@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-function windows {
+() {
 
   local res=$(xrandr | grep "*" | sed -n -e "s/^   //p" | sed -n -e "s/     .*$//p")
   local width=$(echo $res | cut -dx -f1)
@@ -110,7 +110,6 @@ function windows {
     slack
     vscode
   } || eval $1
-}
 
-windows $1
+} $1
 
