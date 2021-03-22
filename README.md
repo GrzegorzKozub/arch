@@ -14,13 +14,13 @@ Automated Arch Linux installation
 2. Create the USB following [this guide](https://wiki.archlinux.org/index.php/USB_flash_installation_media#Using_Rufus) using ISO mode and not DD mode
 3. Add `video=1280x720` to `options` in all `loader\entries\archiso-x86_64-*.conf` files
 4. Make the USB compatible with Secure Boot following [this answer](https://unix.stackexchange.com/questions/320078/how-to-boot-arch-linux-installation-medium-with-secure-boot-enabled)
-5. Copy this `arch` directory to `.bootstrap` folder on the USB. When booted from archiso it will be mounted at `/run/archiso/bootmnt/.bootstrap`
+5. Copy this `arch` directory to `.arch` folder on the USB. When booted from archiso it will be mounted at `/run/archiso/bootmnt/.arch`
 6. When booting from the USB for the first time, enrol hash for `arch/boot/x86_64/vmlinuz` and `EFI/boot/loader.efi`
 
 ## Installation
 
 1. Boot from archiso
-2. Run `/run/archiso/bootmnt/.bootstrap/arch/archiso.zsh`. Puts these scripts into root's `~/arch`
+2. Run `/run/archiso/bootmnt/.arch/arch/archiso.zsh`. Puts these scripts into root's `~/arch`
 3. Run `source ~/arch/drifter.zsh` or `source ~/arch/turing.zsh` or `source ~/arch/pascal.zsh`
 4. Once per machine run `~/arch/disk.zsh`, otherwise run `~/arch/unlock.zsh`
 5. Run `~/arch/system.zsh`. Puts these scripts into normal user's `~/code/arch`

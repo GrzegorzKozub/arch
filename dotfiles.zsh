@@ -14,10 +14,10 @@ unset $PENDRIVE
 
 [ -d ~/.ssh ] || mkdir ~/.ssh
 
-cp /mnt/.bootstrap/keys/openssh/.ssh/config ~/.ssh
+cp /mnt/.arch/keys/openssh/.ssh/config ~/.ssh
 chmod 600 ~/.ssh/config
 
-cp -r /mnt/.bootstrap/keys/openssh/.ssh/github.com ~/.ssh
+cp -r /mnt/.arch/keys/openssh/.ssh/github.com ~/.ssh
 chmod 600 ~/.ssh/github.com/*
 
 sudo umount -R /mnt
