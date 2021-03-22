@@ -20,18 +20,17 @@ Automated Arch Linux installation
 ## Installation
 
 1. Boot from archiso
-2. Run `/run/archiso/bootmnt/.arch/arch/archiso.zsh`. Puts these scripts into root's `~/arch`
-3. Run `source ~/arch/drifter.zsh` or `source ~/arch/turing.zsh` or `source ~/arch/pascal.zsh`
-4. Once per machine run `~/arch/disk.zsh`, otherwise run `~/arch/unlock.zsh`
-5. Run `~/arch/system.zsh`. Puts these scripts into normal user's `~/code/arch`
-6. Once per machine run `~/arch/boot.zsh`
-7. Reboot to Arch and login as normal user
-8. Run `~/code/arch/services.zsh`
-9. Reboot to Gnome, login as normal user, connect to WiFi and ensure archiso is mounted
-10. Run `~/code/arch/apps.zsh`
-11. Reboot for some settings to take effect
+2. Run `source ~/arch/drifter.zsh`, `source ~/arch/pascal.zsh` or `source ~/arch/turing.zsh`
+3. Once per machine run `~/arch/disk.zsh`, otherwise run `~/arch/unlock.zsh`
+4. Run `~/arch/system.zsh`
+5. Once per machine run `~/arch/boot.zsh`
+6. Reboot to Arch and login as normal user
+7. Run `~/code/arch/services.zsh`
+8. Reboot to Gnome, login as normal user, connect to internet and mount archiso
+9. Run `~/code/arch/apps.zsh`
+10. Reboot
 
-## Maual config
+## Manual config
 
 1. Setup Chrome
   - For Chromium, add Polish language and enable it for spell check
@@ -40,11 +39,4 @@ Automated Arch Linux installation
   - Enable `chrome://flags/#enable-webrtc-pipewire-capturer`
 2. Setup `networkmanager-openconnect`
   - Work around missing `--no-dtls` support as per [this issue](https://gitlab.gnome.org/GNOME/NetworkManager-openconnect/issues/7) by executing `iptables -I OUTPUT -d <VPN server> -p udp --dport 443 -j REJECT`
-3. Setup printer
-  - Run `printer.zsh`
-  - Add your printer using Printer Settings app
-4. Setup drawing tablet
-  - Run `tablet.zsh`
-5. Setup video recording and editing
-  - Run `video.zsh`
 

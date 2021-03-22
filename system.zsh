@@ -7,6 +7,18 @@ set -e -o verbose
 [[ $MY_HOSTNAME ]] || exit 1
 [[ $MY_EFI_PART && $(lsblk -lno PATH,PARTTYPE | grep -i 'C12A7328-F81F-11D2-BA4B-00A0C93EC93B' | cut -d' ' -f1) = $MY_EFI_PART ]] || exit 1
 
+# time sync
+
+timedatectl set-ntp true
+
+# internet
+
+ping -c 1 8.8.8.8 || ( wifi-menu && sleep 10 )
+
+# pacman mirror
+
+echo 'Server = http://arch.midov.pl/arch/$repo/os/$arch' > /etc/pacman.d/mirrorlist
+
 # format
 
 [[ $(mount | grep 'vg1-root on /mnt') ]] && umount -R /mnt

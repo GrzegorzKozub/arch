@@ -2,24 +2,54 @@
 
 set -e -o verbose
 
-# time sync
+# config
 
-timedatectl set-ntp true
+DIR=`dirname $0`/archiso
+WORK=/tmp/archiso
 
-# internet
+# previous runs
 
-ping -c 1 8.8.8.8 || ( wifi-menu && sleep 10 )
+sudo rm -rf $DIR
+sudo rm -rf $WORK
 
-# pacman mirror list
+# profile
 
-echo 'Server = http://arch.midov.pl/arch/$repo/os/$arch' > /etc/pacman.d/mirrorlist
+cp -r /usr/share/archiso/configs/releng $DIR
 
-# tools
+# packages
 
-pacman -Sy --noconfirm git
+echo git >> $DIR/packages.x86_64
+
+# loader
+
+sed -i \
+  -e 's/^\(options.*\)$/\1 video=1280x720/' \
+  $DIR/efiboot/loader/entries/archiso-x86_64-linux.conf
 
 # scripts
 
-[[ -d ~/arch ]] && rm -rf ~/arch
-git clone https://github.com/GrzegorzKozub/arch.git ~/arch
+git clone https://github.com/GrzegorzKozub/arch.git $DIR/airootfs/root/arch
+
+sed -i -e "/^)$/d" $DIR/profiledef.sh
+
+for script in $(ls $DIR/airootfs/root/arch/*.*sh); do
+  echo "  ['$script']='0:0:755'" | sed -n -e "s/\.\/archiso\/airootfs//p" >> $DIR/profiledef.sh
+done
+
+echo ')' >> $DIR/profiledef.sh
+
+# profile
+
+cat << 'EOF' > $DIR/airootfs/root/.zshrc
+typeset -U path && path=(~/arch $path[@])
+unlock.zsh && mount.zsh
+EOF
+
+# build
+
+sudo mkarchiso -v -w $WORK -o $DIR $DIR
+
+# cleanup
+
+unset DIR WORK
 
