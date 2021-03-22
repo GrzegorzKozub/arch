@@ -2,54 +2,57 @@
 
 set -e -o verbose
 
+# build tools
+
+sudo pacman -S --noconfirm \
+  archiso
+
 # config
 
-DIR=`dirname $0`/archiso
+PROFILE=`dirname $0`/archiso/profile
+OUT=`dirname $0`/archiso/out
 WORK=/tmp/archiso
 
 # previous runs
 
-sudo rm -rf $DIR
+sudo rm -rf $PROFILE
+sudo rm -rf $OUT
 sudo rm -rf $WORK
 
 # profile
 
-cp -r /usr/share/archiso/configs/releng $DIR
-
-# packages
-
-echo git >> $DIR/packages.x86_64
+cp -r /usr/share/archiso/configs/releng $PROFILE
 
 # loader
 
 sed -i \
   -e 's/^\(options.*\)$/\1 video=1280x720/' \
-  $DIR/efiboot/loader/entries/archiso-x86_64-linux.conf
+  $PROFILE/efiboot/loader/entries/archiso-x86_64-linux.conf
 
 # scripts
 
-git clone https://github.com/GrzegorzKozub/arch.git $DIR/airootfs/root/arch
+git clone https://github.com/GrzegorzKozub/arch.git $PROFILE/airootfs/root/arch
 
-sed -i -e "/^)$/d" $DIR/profiledef.sh
+sed -i -e "/^)$/d" $PROFILE/profiledef.sh
 
-for script in $(ls $DIR/airootfs/root/arch/*.*sh); do
-  echo "  ['$script']='0:0:755'" | sed -n -e "s/\.\/archiso\/airootfs//p" >> $DIR/profiledef.sh
+for script in $(ls $PROFILE/airootfs/root/arch/*.*sh); do
+  echo $script | sed -n -e "s/.*\/arch\(.*\)/  ['\/root\/arch\1']='0:0:755'/p" >> $PROFILE/profiledef.sh
 done
 
-echo ')' >> $DIR/profiledef.sh
+echo ')' >> $PROFILE/profiledef.sh
 
-# profile
+# shell
 
-cat << 'EOF' > $DIR/airootfs/root/.zshrc
+cat << 'EOF' > $PROFILE/airootfs/root/.zshrc
 typeset -U path && path=(~/arch $path[@])
 unlock.zsh && mount.zsh
 EOF
 
 # build
 
-sudo mkarchiso -v -w $WORK -o $DIR $DIR
+sudo mkarchiso -v -w $WORK -o $OUT $PROFILE
 
 # cleanup
 
-unset DIR WORK
+unset PROFILE OUT WORK
 
