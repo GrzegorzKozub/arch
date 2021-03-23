@@ -9,11 +9,14 @@ sudo pacman -S --noconfirm \
 
 # config
 
-PROFILE=`dirname $0`/archiso/profile
-OUT=`dirname $0`/archiso/out
+BASE=`dirname $0`/archiso
+PROFILE=$BASE/profile
+OUT=$BASE/out
 WORK=/tmp/archiso
 
 # previous runs
+
+[[ -d $BASE ]] || mkdir -p $BASE
 
 sudo rm -rf $PROFILE
 sudo rm -rf $OUT
