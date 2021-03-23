@@ -143,7 +143,6 @@ sudo pacman -S --noconfirm \
 sudo pacman -S --noconfirm \
   chrome-gnome-shell \
   flameshot \
-  hardinfo \
   keepassxc \
   mpv celluloid \
   openconnect networkmanager-openconnect \
