@@ -2,10 +2,13 @@
 
 set -e -o verbose
 
-# build tools
+# dependencies
 
 sudo pacman -S --noconfirm \
   archiso
+
+paru -S --aur --noconfirm \
+  preloader-signed
 
 # config
 
@@ -54,6 +57,20 @@ EOF
 # build
 
 sudo mkarchiso -v -w $WORK -o $OUT $PROFILE
+
+# extract
+
+sudo mount --read-only $(ls $OUT/*.iso) /mnt
+
+sudo chown -R greg:users $BASE
+cp -r /mnt/* $OUT
+
+sudo umount /mnt
+
+# secure boot support
+
+sudo chmod --recursive 750 $OUT
+cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi $OUT/EFI/BOOT
 
 # cleanup
 
