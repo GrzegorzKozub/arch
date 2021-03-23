@@ -4,7 +4,7 @@ set -e -o verbose
 
 # temporary keys
 
-PENDRIVE=$(lsblk -r -o NAME,LABEL | grep ARCH | sed -e 's/\s.*$//')
+PENDRIVE=$(lsblk -r -o NAME,LABEL | grep ARCHISO | sed -e 's/\s.*$//')
 [[ $PENDRIVE ]] || exit 1
 
 [[ $(sudo mount | grep "/dev/$PENDRIVE") ]] && sudo umount /dev/$PENDRIVE

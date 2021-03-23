@@ -12,18 +12,19 @@ paru -S --aur --noconfirm \
 
 # config
 
-BASE=`dirname $0`/archiso
-PROFILE=$BASE/profile
-OUT=$BASE/out
+ARCHISO=`dirname $0`/archiso
+PROFILE=$ARCHISO/profile
+ISO=$ARCHISO/iso
+USB=$ARCHISO/usb
 WORK=/tmp/archiso
 
-# previous runs
+# dirs
 
-[[ -d $BASE ]] || mkdir -p $BASE
-
-sudo rm -rf $PROFILE
-sudo rm -rf $OUT
+sudo rm -rf $ARCHISO
 sudo rm -rf $WORK
+
+mkdir -p $ARCHISO
+mkdir -p $USB
 
 # profile
 
@@ -56,23 +57,28 @@ EOF
 
 # build
 
-sudo mkarchiso -v -w $WORK -o $OUT $PROFILE
+sudo mkarchiso -v -L archiso -w $WORK -o $ISO $PROFILE
 
 # extract
 
-sudo mount --read-only $(ls $OUT/*.iso) /mnt
-
-sudo chown -R greg:users $BASE
-cp -r /mnt/* $OUT
-
+sudo mount --read-only $(ls $ISO/*.iso) /mnt
+cp -r /mnt/* $USB
 sudo umount /mnt
 
 # secure boot support
 
-sudo chmod --recursive 750 $OUT
-cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi $OUT/EFI/BOOT
+sudo chmod --recursive u+w $USB/EFI/BOOT
+cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi $USB/EFI/BOOT
+mv $USB/EFI/BOOT/BOOTx64.EFI $USB/EFI/BOOT/loader.efi
+mv $USB/EFI/BOOT/PreLoader.efi $USB/EFI/BOOT/BOOTx64.EFI
 
 # cleanup
 
-unset PROFILE OUT WORK
+sudo pacman -Rs --noconfirm \
+  archiso
+
+paru -Rs --aur --noconfirm \
+  preloader-signed
+
+unset ARCHISO PROFILE ISO USB WORK
 

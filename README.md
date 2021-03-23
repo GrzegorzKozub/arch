@@ -10,9 +10,11 @@ Automated Arch Linux installation
 
 ## Archiso
 
-1. Build ISO with `archiso.zsh`
-2. Once per pendrive, make USB bootable using Rufus, otherwise just copy the files from ISO
-3. Make compatible with Secure Boot following [this answer](https://unix.stackexchange.com/questions/320078/how-to-boot-arch-linux-installation-medium-with-secure-boot-enabled)
+1. Create a DOS partition table on the pendrive
+2. Add a FAT32 partition with the boot flag
+3. Label the partition with `sudo mlabel -i /dev/sda1 ::archiso`
+4. Build with `~/code/arch/archiso.zsh`
+5. Copy with `cp -r ~/code/arch/archiso/usb/* /run/media/$USER/ARCHISO`
 
 ## Installation
 
