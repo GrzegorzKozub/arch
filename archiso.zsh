@@ -57,7 +57,7 @@ EOF
 
 # build
 
-sudo mkarchiso -v -L archiso -w $WORK -o $ISO $PROFILE
+sudo mkarchiso -v -L ARCHISO -w $WORK -o $ISO $PROFILE
 
 # extract
 
