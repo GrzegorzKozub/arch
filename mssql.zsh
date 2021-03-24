@@ -7,3 +7,5 @@ set -e -o verbose
 paru -S --aur --noconfirm \
   azuredatastudio-bin
 
+. ~/code/dotfiles/mssql.zsh
+

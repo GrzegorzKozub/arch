@@ -7,3 +7,5 @@ set -e -o verbose
 sudo pacman -S --noconfirm \
   obs-studio shotcut
 
+. ~/code/dotfiles/video.zsh
+
