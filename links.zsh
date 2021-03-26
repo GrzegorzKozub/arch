@@ -56,11 +56,12 @@ do
 done
 
 for APP in \
+  postman \
   slack
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
   sed -i \
-    -e 's/^Exec=\(.*\)$/Exec=\/home\/greg\/code\/arch\/window.sh "\1" slack/' \
+    -e 's/^Exec=\(.*\)$/Exec=\/home\/greg\/code\/arch\/window.sh "\1" '$APP'/' \
     ~/.local/share/applications/$APP.desktop
 done
 
