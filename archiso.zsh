@@ -61,28 +61,28 @@ EOF
 
 # build
 
-#sudo mkarchiso -v -L ARCHISO -w $WORK -o $ISO $PROFILE
+sudo mkarchiso -v -L ARCHISO -w $WORK -o $ISO $PROFILE
 
-## extract
+# extract
 
-#sudo mount --read-only $(ls $ISO/*.iso) /mnt
-#cp -r /mnt/* $USB
-#sudo umount /mnt
+sudo mount --read-only $(ls $ISO/*.iso) /mnt
+cp -r /mnt/* $USB
+sudo umount /mnt
 
-## secure boot support
+# secure boot support
 
-#sudo chmod --recursive u+w $USB/EFI/BOOT
-#cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi $USB/EFI/BOOT
-#mv $USB/EFI/BOOT/BOOTx64.EFI $USB/EFI/BOOT/loader.efi
-#mv $USB/EFI/BOOT/PreLoader.efi $USB/EFI/BOOT/BOOTx64.EFI
+sudo chmod --recursive u+w $USB/EFI/BOOT
+cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi $USB/EFI/BOOT
+mv $USB/EFI/BOOT/BOOTx64.EFI $USB/EFI/BOOT/loader.efi
+mv $USB/EFI/BOOT/PreLoader.efi $USB/EFI/BOOT/BOOTx64.EFI
 
-## cleanup
+# cleanup
 
-#sudo pacman -Rs --noconfirm \
-  #archiso
+sudo pacman -Rs --noconfirm \
+  archiso
 
-#paru -Rs --aur --noconfirm \
-  #preloader-signed
+paru -Rs --aur --noconfirm \
+  preloader-signed
 
-#unset ARCHISO PROFILE ISO USB WORK
+unset ARCHISO PROFILE ISO USB WORK
 
