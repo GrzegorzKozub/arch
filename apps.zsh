@@ -30,7 +30,6 @@ sudo pacman -S --noconfirm \
 . `dirname $0`/dotfiles.zsh
 
 . ~/code/dotfiles/init.zsh
-. ~/code/history/init.zsh
 . ~/code/keys/init.zsh
 
 # fonts
