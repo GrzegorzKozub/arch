@@ -53,7 +53,7 @@ pacstrap /mnt \
   v4l-utils \
   git go reflector sudo zsh \
   xorg-server xorg-xrandr \
-  gdm gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb networkmanager xdg-user-dirs-gtk \
+  gdm gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb networkmanager xdg-user-dirs-gtk xdg-utils \
   pipewire xdg-desktop-portal \
   baobab dconf-editor eog evince gnome-calculator gnome-control-center gnome-software gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus
 
