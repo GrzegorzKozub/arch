@@ -86,8 +86,3 @@ paru -Rs --aur --noconfirm \
 
 unset ARCHISO PROFILE ISO USB WORK
 
-# copy
-
-# rm -rf /run/media/$USER/ARCHISO/(arch|EFI|loader|syslinux|shellx64.efi)
-# cp -r ~/code/arch/archiso/usb/* /run/media/$USER/ARCHISO
-

@@ -14,7 +14,11 @@ Automated Arch Linux installation
 2. Add a FAT32 partition with the boot flag
 3. Label the partition with `sudo mlabel -i /dev/sda1 ::archiso`
 4. Build with `~/code/arch/archiso.zsh`
-5. Copy with `cp -r ~/code/arch/archiso/usb/* /run/media/$USER/ARCHISO`
+5. Copy with
+```
+rm -rf /run/media/$USER/ARCHISO/(arch|EFI|loader|syslinux|shellx64.efi)
+cp -r ~/code/arch/archiso/usb/* /run/media/$USER/ARCHISO
+```
 
 ## Installation
 
@@ -25,7 +29,7 @@ Automated Arch Linux installation
 5. Once per machine, run `~/arch/boot.zsh`
 6. Reboot to Arch and login as normal user
 7. Run `~/code/arch/services.zsh`
-8. Reboot to Gnome, login as normal user, connect to internet and mount archiso
+8. Reboot to Gnome, login as normal user and connect to internet
 9. Run `~/code/arch/apps.zsh`
 10. Reboot
 
