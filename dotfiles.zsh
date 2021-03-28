@@ -12,7 +12,8 @@ sudo mount /dev/$PENDRIVE /mnt
 
 unset $PENDRIVE
 
-[[ -d ~/.ssh ]] || mkdir ~/.ssh
+[[ -d ~/.ssh || -n ~/.ssh ]] && rm -rf ~/.ssh
+mkdir ~/.ssh
 
 cp /mnt/.arch/keys/openssh/.ssh/config ~/.ssh
 chmod 600 ~/.ssh/config
