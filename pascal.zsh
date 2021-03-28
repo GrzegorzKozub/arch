@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-set -e -o verbose
-
 # pascal
 
 export MY_DISK=/dev/nvme0n1
