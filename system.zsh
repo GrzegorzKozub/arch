@@ -32,6 +32,7 @@ mkfs.ext4 /dev/mapper/vg1-root
 for FILE in \
   /mnt/boot/initramfs-linux.img \
   /mnt/boot/initramfs-linux-fallback.img \
+  /mnt/boot/amd-ucode.img \
   /mnt/boot/intel-ucode.img \
   /mnt/boot/vmlinuz-linux
 do
