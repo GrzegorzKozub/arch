@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+set -e -o verbose
+
 # turing
 
 export MY_DISK=/dev/nvme0n1

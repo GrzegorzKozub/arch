@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# https://wiki.archlinux.org/index.php/Simple_stateful_firewall
+set -e -o verbose
 
 # reset
 
