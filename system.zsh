@@ -15,10 +15,6 @@ timedatectl set-ntp true
 
 ping -c 1 8.8.8.8 || ( wifi-menu && sleep 10 )
 
-# pacman mirror
-
-echo 'Server = http://arch.midov.pl/arch/$repo/os/$arch' > /etc/pacman.d/mirrorlist
-
 # format
 
 [[ $(mount | grep 'vg1-root on /mnt') ]] && umount -R /mnt
