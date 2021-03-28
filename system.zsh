@@ -43,7 +43,7 @@ done
 pacstrap /mnt \
   base base-devel \
   linux linux-firmware \
-  intel-ucode alsa-utils \
+  alsa-utils \
   efibootmgr \
   lvm2 \
   ntfs-3g \
