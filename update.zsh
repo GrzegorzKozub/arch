@@ -23,5 +23,4 @@ sudo journalctl --vacuum-time=3months
 # remove obsolete dirs
 
 [[ -d ~/.gnome ]] && rm -rf ~/.gnome
-[[ -d ~/.nv ]] && rm -rf ~/.nv
 
