@@ -4,6 +4,8 @@ set -e -o verbose
 
 # paru
 
+export CARGO_HOME=${XDG_DATA_HOME:-~/.local/share}/cargo
+
 [[ -d ~/paru ]] && rm -rf ~/paru
 pushd ~
 git clone https://aur.archlinux.org/paru.git
