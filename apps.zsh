@@ -167,3 +167,8 @@ gsettings set io.github.celluloid-player.Celluloid mpv-options '--hwdec=auto'
 
 . ~/code/dotfiles/install.zsh
 
+# remove obsolete dirs
+
+[[ -d ~/.gnome ]] && rm -rf ~/.gnome
+[[ -d ~/.nv ]] && rm -rf ~/.nv
+
