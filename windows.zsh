@@ -17,7 +17,8 @@
 
   [[ $width = 3200 ]] && [[ $height = 1800 ]] && {
 
-    if [[ $theme =~ "Arc" ]]; then local top_bar=64; local title_bar=57
+    if [[ $theme =~ "Adwaita" ]]; then local top_bar=59; local title_bar=73
+    elif [[ $theme =~ "Arc" ]]; then local top_bar=64; local title_bar=57
     elif [[ $theme =~ "Materia" ]]; then local top_bar=68; local title_bar=71
     else exit 1; fi
 
