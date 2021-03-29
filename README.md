@@ -15,10 +15,10 @@ Automated Arch Linux installation
 3. Label the partition with `sudo mlabel -i /dev/sda1 ::archiso`
 4. Build with `~/code/arch/archiso.zsh`
 5. Copy with
-```
-rm -rf /run/media/$USER/ARCHISO/(arch|EFI|loader|syslinux|shellx64.efi)
-cp -r ~/code/arch/archiso/usb/* /run/media/$USER/ARCHISO
-```
+  ```
+  rm -rf /run/media/$USER/ARCHISO/(arch|EFI|loader|syslinux|shellx64.efi)
+  cp -r ~/code/arch/archiso/usb/* /run/media/$USER/ARCHISO
+  ```
 
 ## Installation
 
@@ -35,14 +35,15 @@ cp -r ~/code/arch/archiso/usb/* /run/media/$USER/ARCHISO
 
 ## Manual config
 
-1. Disable wifi on `turing`
-2. Setup `networkmanager-openconnect`
-  - Work around missing `--no-dtls` support as per [this issue](https://gitlab.gnome.org/GNOME/NetworkManager-openconnect/issues/7) by executing `iptables -I OUTPUT -d <VPN server> -p udp --dport 443 -j REJECT`
-3. Setup Chrome
+1. Work around missing `--no-dtls` support in `networkmanager-openconnect` as per [this issue](https://gitlab.gnome.org/GNOME/NetworkManager-openconnect/issues/7) by executing
+  ```
+  iptables -I OUTPUT -d <VPN server> -p udp --dport 443 -j REJECT`
+  ```
+2. Setup Chrome
   - For Chromium, add Polish language and enable it for spell check
   - For Google Chrome, enable enhanced spell check
   - Disable continuing in the background
   - Enable `chrome://flags/#enable-webrtc-pipewire-capturer`
-4. Setup Postman, Slack and KeePassXC
-5. Run `windows.zsh`
+3. Setup KeePassXC, Postman and Slack
+4. Run `windows.zsh`
 

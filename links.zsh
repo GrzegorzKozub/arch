@@ -65,5 +65,3 @@ do
     ~/.local/share/applications/$APP.desktop
 done
 
-xdg-mime default slack.desktop x-scheme-handler/slack
-

@@ -107,6 +107,8 @@ sudo pacman -S --noconfirm \
 paru -S --aur --noconfirm \
   hadolint-bin
 
+xdg-mime default nvim.desktop text/plain
+
 # docker
 
 sudo pacman -S --noconfirm \
@@ -158,6 +160,8 @@ gsettings set io.github.celluloid-player.Celluloid dark-theme-enable false
 gsettings set io.github.celluloid-player.Celluloid mpv-config-enable true
 gsettings set io.github.celluloid-player.Celluloid mpv-config-file '/home/greg/.config/mpv/mpv.conf'
 gsettings set io.github.celluloid-player.Celluloid mpv-options '--hwdec=auto'
+
+xdg-mime default slack.desktop x-scheme-handler/slack
 
 # links
 
