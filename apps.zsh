@@ -80,7 +80,7 @@ sudo pacman -S --noconfirm \
 paru -S --aur --noconfirm \
   wrk2-git
 
-if [[ $HOST = 'turing' || $HOST = 'pascal' ]]; then
+if [[ $HOST = 'pascal' || $HOST = 'turing' ]]; then
 
   sudo pacman -S --noconfirm \
     nvtop
@@ -92,6 +92,8 @@ fi
 sudo pacman -S --noconfirm \
   tmux \
   zsh zsh-completions
+
+export GOPATH=${XDG_DATA_HOME:-~/.local/share}/go
 
 paru -S --aur --noconfirm \
   lf
@@ -171,7 +173,8 @@ xdg-mime default slack.desktop x-scheme-handler/slack
 
 . ~/code/dotfiles/install.zsh
 
-# remove obsolete dirs
+# remove obsolete dirs and files
 
 [[ -d ~/.gnome ]] && rm -rf ~/.gnome
+[[ -f ~/.zshrc ]] && rm -f ~/.zshrc
 
