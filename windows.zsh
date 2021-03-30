@@ -33,7 +33,8 @@
 
   [[ $width = 3840 ]] && [[ $height = 2160 ]] && {
 
-    if [[ $theme =~ "Arc" ]]; then local top_bar=47; local title_bar=28
+    if [[ $theme =~ "Adwaita" ]]; then local top_bar=44; local title_bar=37
+    elif [[ $theme =~ "Arc" ]]; then local top_bar=47; local title_bar=28
     elif [[ $theme =~ "Materia" ]]; then local top_bar=38; local title_bar=42
     else exit 1; fi
 
@@ -57,7 +58,7 @@
         $(( $height - $margin * 2 - $top_bar )) \
         $margin \
         $(( $margin + $top_bar ))
-    } || center $title
+     } || center $title
   }
 
   function data_studio { center ".?Azure Data Studio$" }
