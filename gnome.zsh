@@ -67,9 +67,10 @@ sudo pacman -S --needed --noconfirm \
   materia-gtk-theme \
   papirus-icon-theme
 
-gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Lighter-solid'
+# gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Lighter-solid'
+# gsettings set org.gnome.shell.extensions.user-theme name 'Arc-solid'
+
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
-gsettings set org.gnome.shell.extensions.user-theme name 'Arc-solid'
 
 # wallpapers
 
