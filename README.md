@@ -35,15 +35,22 @@ Automated Arch Linux installation
 
 ## Manual config
 
+0. Add VPN
 1. Work around missing `--no-dtls` support in `networkmanager-openconnect` as per [this issue](https://gitlab.gnome.org/GNOME/NetworkManager-openconnect/issues/7) by executing
   ```
   iptables -I OUTPUT -d <VPN server> -p udp --dport 443 -j REJECT`
   ```
 2. Setup Chrome
-  - For Chromium, add Polish language and enable it for spell check
-  - For Google Chrome, enable enhanced spell check
+  - Ensure English and Polish languages
+  - Enable enhanced spell check and all languages
   - Disable continuing in the background
   - Enable `chrome://flags/#enable-webrtc-pipewire-capturer`
+  - Disable Hangouts and remove shortcut
+  - Remove `~/.gnome` dir
 3. Setup KeePassXC, Postman and Slack
-4. Run `windows.zsh`
+4. Setup Visual Studio Code
+  - Disable Tweet feedback icon
+  - Hide recommended extensions
+5. Run `windows.zsh`
+6. Clone code repos
 
