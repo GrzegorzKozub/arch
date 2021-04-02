@@ -56,7 +56,6 @@ echo ')' >> $PROFILE/profiledef.sh
 
 cat << 'EOF' > $PROFILE/airootfs/root/.zshrc
 typeset -U path && path=(~/arch $path[@])
-unlock.zsh && mount.zsh
 EOF
 
 # build
