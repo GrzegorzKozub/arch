@@ -51,6 +51,7 @@ gsettings set org.gnome.desktop.sound event-sounds false
 # network
 
 [[ $HOST = 'turing' ]] && nmcli radio wifi off
+[[ $HOST = 'turing' ]] && rfkill block bluetooth
 
 # sleep
 
