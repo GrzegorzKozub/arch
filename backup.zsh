@@ -6,8 +6,8 @@ set -e
 
 () {
 
-. `dirname $0`/unlock.zsh
-. `dirname $0`/mount.zsh
+. $1/unlock.zsh
+. $1/mount.zsh
 
 [[ $(df /dev/mapper/vg1-backup --output=avail | grep -v Avail) -lt 10000000 ]] && {
   local oldest="/mnt/$(ls -t /mnt | grep '^[0-9]*$' | tail -n1)"
@@ -22,4 +22,4 @@ mkdir $dir
 fsarchiver savefs $dir/root.fsa /dev/mapper/vg1-root
 cp /mnt/boot/*.img /mnt/boot/vmlinuz-linux $dir/
 
-}
+} `dirname $0`
