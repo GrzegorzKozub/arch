@@ -24,3 +24,7 @@ sudo journalctl --vacuum-time=3months
 
 [[ -d ~/.gnome ]] && rm -rf ~/.gnome
 
+# merge *.pacnew and *.pacsave files
+
+sudo pacdiff
+

@@ -51,6 +51,7 @@ pacstrap /mnt \
   nss-mdns \
   lm_sensors \
   v4l-utils \
+  pacman-contrib \
   git go reflector sudo zsh \
   xorg-server xorg-xrandr \
   gdm gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb networkmanager xdg-user-dirs-gtk xdg-utils \
