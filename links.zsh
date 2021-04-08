@@ -18,6 +18,11 @@ for APP in \
   mpv \
   org.freedesktop.MalcontentControl \
   org.gnome.Cheese \
+  org.gnome.Software \
+  org.gtk.Demo4 \
+  org.gtk.IconBrowser4 \
+  org.gtk.PrintEditor4 \
+  org.gtk.WidgetFactory4 \
   qv4l2 \
   qvidcap \
   stoken-gui \
