@@ -6,6 +6,12 @@ set -e -o verbose
 
 sudo machinectl shell gdm@ /bin/bash -c "gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'"
 
+# fonts
+
+if [[ $HOST = 'pascal' || $HOST = 'turing' ]]; then
+  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.5'
+fi
+
 # background image
 
 GS=/usr/share/gnome-shell
