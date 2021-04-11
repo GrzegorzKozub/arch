@@ -66,6 +66,12 @@ echo 'greg ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
 touch /home/greg/.zshrc
 chown greg:users /home/greg/.zshrc
 
+# turing sleep fix
+
+if [[ $MY_HOSTNAME = 'turing' ]]; then
+  echo 'w /proc/acpi/wakeup - - - - GPP0' > /usr/lib/tmpfiles.d/turing.conf
+fi
+
 # operating system continued
 
 cp `dirname $0`/system3.zsh /home/greg
