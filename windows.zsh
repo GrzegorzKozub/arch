@@ -17,7 +17,7 @@
 
   [[ $width = 3200 ]] && [[ $height = 1800 ]] && {
 
-    if [[ $theme =~ "Adwaita" ]]; then local top_bar=59; local title_bar=73
+    if [[ $theme =~ "Adwaita" ]]; then local top_bar=64; local title_bar=73
     elif [[ $theme =~ "Arc" ]]; then local top_bar=64; local title_bar=57
     elif [[ $theme =~ "Materia" ]]; then local top_bar=68; local title_bar=71
     else exit 1; fi
@@ -65,7 +65,7 @@
 
   function keepass {
     local title=".? - KeePassXC$"
-    [[ -v _4k ]] && fix $title 1200 964 1320 640 || fix $title 1600 1284 800 318
+    [[ -v _4k ]] && fix $title 1200 964 1320 640 || fix $title 1600 1284 800 324
   }
 
   function obs {
