@@ -9,3 +9,13 @@ sudo pacman -S --noconfirm \
 
 . ~/code/dotfiles/video.zsh
 
+# links
+
+for APP in \
+  org.shotcut.Shotcut
+do
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' \
+    ~/.local/share/applications/$APP.desktop
+done
+
