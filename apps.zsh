@@ -165,6 +165,11 @@ gsettings set io.github.celluloid-player.Celluloid mpv-options '--hwdec=auto'
 
 xdg-mime default slack.desktop x-scheme-handler/slack
 
+# clean package caches
+
+sudo pacman --noconfirm -Sc
+paru --aur --noconfirm -Sccd
+
 # links
 
 . `dirname $0`/links.zsh
