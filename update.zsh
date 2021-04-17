@@ -14,7 +14,7 @@ sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
 # clean package caches
 
 sudo pacman --noconfirm -Sc
-paru --aur --noconfirm -Scc
+paru --aur --noconfirm -Sccd
 
 # clean system logs
 
