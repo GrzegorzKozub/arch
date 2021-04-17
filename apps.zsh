@@ -168,7 +168,7 @@ xdg-mime default slack.desktop x-scheme-handler/slack
 # clean package caches
 
 sudo pacman --noconfirm -Sc
-paru --aur --noconfirm -Sccd
+paru --aur -Sccd
 
 # links
 
