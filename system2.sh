@@ -66,10 +66,10 @@ echo 'greg ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
 touch /home/greg/.zshrc
 chown greg:users /home/greg/.zshrc
 
-# turing sleep fix
+# ampere sleep fix
 
-if [[ $MY_HOSTNAME = 'turing' ]]; then
-  echo 'w /proc/acpi/wakeup - - - - GPP0' > /usr/lib/tmpfiles.d/turing.conf
+if [[ $MY_HOSTNAME = 'ampere' ]]; then
+  echo 'w /proc/acpi/wakeup - - - - GPP0' > /usr/lib/tmpfiles.d/ampere.conf
 fi
 
 # operating system continued

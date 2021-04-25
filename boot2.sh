@@ -11,6 +11,11 @@ cp `dirname $0`/boot/loader/entries/arch.conf /boot/loader/entries
 
 sed -i "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" /boot/loader/entries/arch.conf
 
+if [[ $MY_HOSTNAME = 'ampere' ]]; then
+  sed -i "s/<ucode>/amd-ucode/g" /boot/loader/entries/arch.conf
+  sed -i "s/<kernel_params>//g" /boot/loader/entries/arch.conf
+fi
+
 if [[ $MY_HOSTNAME = 'drifter' ]]; then
   sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/arch.conf
   sed -i "s/<kernel_params>/video=1280x720 /g" /boot/loader/entries/arch.conf
@@ -18,11 +23,6 @@ fi
 
 if [[ $MY_HOSTNAME = 'pascal' ]]; then
   sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/arch.conf
-  sed -i "s/<kernel_params>//g" /boot/loader/entries/arch.conf
-fi
-
-if [[ $MY_HOSTNAME = 'turing' ]]; then
-  sed -i "s/<ucode>/amd-ucode/g" /boot/loader/entries/arch.conf
   sed -i "s/<kernel_params>//g" /boot/loader/entries/arch.conf
 fi
 

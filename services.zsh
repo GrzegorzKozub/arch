@@ -42,7 +42,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-if [[ $HOST = 'turing' || $HOST = 'pascal' ]]; then
+if [[ $HOST = 'ampere' || $HOST = 'pascal' ]]; then
   cp `dirname $0`/home/greg/.config/systemd/user/imwheel.service ~/.config/systemd/user
   systemctl --user enable imwheel.service
 fi

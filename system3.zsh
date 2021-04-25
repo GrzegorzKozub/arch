@@ -20,6 +20,14 @@ paru -S --aur --noconfirm \
   aic94xx-firmware wd719x-firmware upd72020x-fw \
   gnome-shell-extension-tray-icons-reloaded-git
 
+if [[ $MY_HOSTNAME = 'ampere' ]]; then
+
+  sudo pacman -S --noconfirm \
+    amd-ucode \
+    nvidia
+
+fi
+
 if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
   sudo pacman -S --noconfirm \
@@ -36,14 +44,6 @@ if [[ $MY_HOSTNAME = 'pascal' ]]; then
 
   sudo pacman -S --noconfirm \
     intel-ucode
-    nvidia
-
-fi
-
-if [[ $MY_HOSTNAME = 'turing' ]]; then
-
-  sudo pacman -S --noconfirm \
-    amd-ucode \
     nvidia
 
 fi
