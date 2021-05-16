@@ -78,6 +78,7 @@ sudo pacman -S --noconfirm \
   zip
 
 paru -S --aur --noconfirm \
+  termpalette-git \
   wrk2-git
 
 if [[ $HOST = 'ampere' || $HOST = 'pascal' ]]; then
