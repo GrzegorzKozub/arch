@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# update self
+
+git pull
+
 # update all packages
 
 sudo pacman --noconfirm -Syu
