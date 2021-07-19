@@ -19,6 +19,7 @@ for APP in \
   org.freedesktop.MalcontentControl \
   org.gnome.Cheese \
   org.gnome.Software \
+  org.gnome.Terminal \
   org.gtk.Demo4 \
   org.gtk.IconBrowser4 \
   org.gtk.PrintEditor4 \
