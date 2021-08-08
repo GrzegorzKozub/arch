@@ -13,7 +13,7 @@ timedatectl set-ntp true
 
 # internet
 
-ping -c 1 8.8.8.8 || ( wifi-menu && sleep 10 )
+ping -c 1 8.8.8.8 || exit 1
 
 # format
 

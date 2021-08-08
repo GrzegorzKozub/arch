@@ -31,8 +31,10 @@ fi
 if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
   sudo pacman -S --noconfirm \
-    dialog dhcpcd netctl wpa_supplicant \
-    intel-ucode intel-media-driver
+    iwd \
+    intel-ucode \
+    intel-media-driver \
+    alsa-firmware alsa-ucm-conf sof-firmware
 
   paru -S --aur --noconfirm \
     laptop-mode-tools \

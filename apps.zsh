@@ -9,7 +9,7 @@ set -e -o verbose
 # pacman refresh
 
 sudo pacman -Sy --noconfirm
-sudo pacman-key --refresh-keys
+# sudo pacman-key --refresh-keys
 
 # git and openssh
 
@@ -144,7 +144,6 @@ sudo pacman -S --noconfirm \
 # apps
 
 sudo pacman -S --noconfirm \
-  chrome-gnome-shell \
   flameshot \
   keepassxc \
   mpv celluloid \

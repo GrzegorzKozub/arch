@@ -83,6 +83,10 @@ rm /home/greg/system3.zsh
 sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev autodetect modconf block encrypt lvm2 resume filesystems keyboard fsck)/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
 
+# disable wayland
+
+sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
+
 # pacman
 
 reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist

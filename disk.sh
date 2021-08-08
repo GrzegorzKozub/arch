@@ -24,7 +24,7 @@ pvcreate /dev/mapper/lvm
 vgcreate vg1 /dev/mapper/lvm
 
 lvcreate --size 8G vg1 --name swap
-lvcreate -l 50%FREE vg1 -n root
+lvcreate -l 67%FREE vg1 -n root
 lvcreate -l 100%FREE vg1 -n backup
 
 # format

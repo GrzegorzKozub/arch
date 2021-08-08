@@ -34,7 +34,7 @@ cp -r /usr/share/archiso/configs/releng $PROFILE
 
 sed -i \
   -e 's/^\(options.*\)$/\1 video=1280x720/' \
-  $PROFILE/efiboot/loader/entries/archiso-x86_64-linux.conf
+  $PROFILE/efiboot/loader/entries/01-archiso-x86_64-linux.conf
 
 sed -i \
   -e 's/^timeout 15$/timeout 1/' \

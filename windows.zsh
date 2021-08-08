@@ -2,7 +2,7 @@
 
 () {
 
-  local res=$(xrandr | grep "*" | sed -n -e "s/^   //p" | sed -n -e "s/     .*$//p")
+  local res=$(xrandr | grep "*" | sed -n -e "s/^ *//p" | sed -n -e "s/ .*$//p")
   local width=$(echo $res | cut -dx -f1)
   local height=$(echo $res | cut -dx -f2)
   local theme=$(gsettings get org.gnome.desktop.interface gtk-theme)
