@@ -15,19 +15,19 @@
     done <<< $windows
   }
 
-  [[ $width = 3200 ]] && [[ $height = 1800 ]] && {
+  [[ $width = 3840 ]] && [[ $height = 2400 ]] && {
 
-    if [[ $theme =~ "Adwaita" ]]; then local top_bar=64; local title_bar=73
-    elif [[ $theme =~ "Arc" ]]; then local top_bar=64; local title_bar=57
+    if [[ $theme =~ "Adwaita" ]]; then local top_bar=67; local title_bar=73
+    elif [[ $theme =~ "Arc" ]]; then local top_bar=67; local title_bar=57
     elif [[ $theme =~ "Materia" ]]; then local top_bar=68; local title_bar=71
     else exit 1; fi
 
     function center {
       fix "$1" \
-        $(( ( $width / 8 ) * 7 )) \
-        $(( ( ( $height - $top_bar ) / 8 ) * 7 - ${2:-0} - ${3:-0} )) \
-        $(( $width / ( 8 * 2 ) )) \
-        $(( ( $height - $top_bar ) / ( 8 * 2 ) + $top_bar + ${3:-0} ))
+        $(( ( $width / 10 ) * 9 )) \
+        $(( ( ( $height - $top_bar ) / 10 ) * 9 - ${2:-0} - ${3:-0} )) \
+        $(( $width / ( 10 * 2 ) )) \
+        $(( ( $height - $top_bar ) / ( 10 * 2 ) + $top_bar + ${3:-0} ))
     }
   }
 
@@ -44,9 +44,9 @@
     function center {
       fix "$1" \
         $(( ( $width / 4 ) * 3 )) \
-        $(( ( ( $height - $top_bar ) / 8 ) * 7 )) \
+        $(( ( ( $height - $top_bar ) / 8 ) * 7 - ${2:-0} - ${3:-0} )) \
         $(( $width / ( 4 * 2 ) )) \
-        $(( ( $height - $top_bar ) / ( 8 * 2 ) + $top_bar ))
+        $(( ( $height - $top_bar ) / ( 8 * 2 ) + $top_bar + ${3:-0} ))
     }
   }
 
@@ -65,29 +65,14 @@
 
   function keepass {
     local title=".? - KeePassXC$"
-    [[ -v _4k ]] && fix $title 1200 964 1320 640 || fix $title 1600 1284 800 324
+    [[ -v _4k ]] && fix $title 1400 1200 1220 523 || fix $title 1800 1550 1020 494
   }
 
-  function obs {
-    local title="^OBS.*Profile.*Scenes.?"
-    [[ -v _4k ]] && center $title || center $title 0 $title_bar
-  }
+  function obs { center "^OBS.*Profile.*Scenes.?" $title 0 $title_bar }
 
-  function postman {
-    local title="^Postman$"
-    [[ -v _4k ]] && {
-      fix $title \
-        $(( ( $width / 5 ) * 3 )) \
-        $(( ( ( $height - $top_bar ) / 8 ) * 6 - $title_bar )) \
-        $(( $width / 5 )) \
-        $(( ( $height - $top_bar ) / 8 + $top_bar ))
-    } || center $title $title_bar
-  }
+  function postman { center "^Postman$" $title_bar }
 
-  function shotcut {
-    local title=".?Shotcut$"
-    [[ -v _4k ]] && center $title || center $title 0 $title_bar
-  }
+  function shotcut { center ".?Shotcut$" $title 0 $title_bar }
 
   function slack {
     local title=".?Slack$"
