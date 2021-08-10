@@ -23,7 +23,7 @@ Automated Arch Linux installation
 ## Installation
 
 1. Boot from archiso
-2. Run `source ~/arch/ampere.zsh`, `source ~/arch/drifter.zsh` or `source ~/arch/pascal.zsh`
+2. Run `source ~/arch/ampere.zsh`, `source ~/arch/drifter.zsh` or `source ~/arch/turing.zsh`
 3. Once per machine, run `~/arch/disk.sh`, otherwise run `~/arch/unlock.zsh`
 4. Run `~/arch/system.zsh`
 5. Once per machine, run `~/arch/boot.zsh`

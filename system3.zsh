@@ -42,7 +42,7 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
 fi
 
-if [[ $MY_HOSTNAME = 'pascal' ]]; then
+if [[ $MY_HOSTNAME = 'turing' ]]; then
 
   sudo pacman -S --noconfirm \
     intel-ucode

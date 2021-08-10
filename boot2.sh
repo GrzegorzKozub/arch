@@ -21,7 +21,7 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
   sed -i "s/<kernel_params>/video=1280x720 /g" /boot/loader/entries/arch.conf
 fi
 
-if [[ $MY_HOSTNAME = 'pascal' ]]; then
+if [[ $MY_HOSTNAME = 'turing' ]]; then
   sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/arch.conf
   sed -i "s/<kernel_params>//g" /boot/loader/entries/arch.conf
 fi
