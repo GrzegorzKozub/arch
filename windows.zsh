@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+# xdotool selectwindow getwindowgeometry
+
 () {
 
   local res=$(xrandr | grep "*" | sed -n -e "s/^ *//p" | sed -n -e "s/ .*$//p")
@@ -41,13 +43,38 @@
     local _4k=true
     local margin=25
 
-    function center {
+    function big {
       fix "$1" \
-        $(( ( $width / 4 ) * 3 )) \
-        $(( ( ( $height - $top_bar ) / 8 ) * 7 - ${2:-0} - ${3:-0} )) \
-        $(( $width / ( 4 * 2 ) )) \
-        $(( ( $height - $top_bar ) / ( 8 * 2 ) + $top_bar + ${3:-0} ))
+        $(( ( $width / 8 ) * 6 )) \
+        $(( ( ( $height - $top_bar ) / 16 ) * 14 - ${2:-0} )) \
+        $(( ( $width / 8 ) * 1 )) \
+        $(( ( ( $height - $top_bar ) / 16 ) * 1 + $top_bar + ${3:-0} ))
     }
+
+    function big_electron { big $1 $title_bar }
+    function big_qt { big $1 $title_bar $title_bar }
+
+    function medium {
+      fix "$1" \
+        $(( ( $width / 8 ) * 4.5 )) \
+        $(( ( ( $height - $top_bar ) / 16 ) * 12 - ${2:-0} )) \
+        $(( ( $width / 8 ) * 1.75 )) \
+        $(( ( ( $height - $top_bar ) / 16 ) * 2  + $top_bar + ${3:-0} ))
+    }
+
+    function medium_electron { medium $1 $title_bar }
+    function medium_qt { medium $1 $title_bar $title_bar }
+
+    function small {
+      fix "$1" \
+        $(( ( $width / 8 ) * 3 )) \
+        $(( ( ( $height - $top_bar ) / 16 ) * 10 - ${2:-0} )) \
+        $(( ( $width / 8 ) * 2.5 )) \
+        $(( ( ( $height - $top_bar ) / 16 ) * 3  + $top_bar + ${3:-0} ))
+    }
+
+    function small_electron { small $1 $title_bar }
+    function small_qt { small $1 $title_bar $title_bar }
   }
 
   function chrome {
@@ -61,19 +88,6 @@
      } || center $title
   }
 
-  function data_studio { center ".?Azure Data Studio$" }
-
-  function keepass {
-    local title=".? - KeePassXC$"
-    [[ -v _4k ]] && fix $title 1400 1200 1220 523 || fix $title 1800 1550 1020 494
-  }
-
-  function obs { center "^OBS.*Profile.*Scenes.?" $title 0 $title_bar }
-
-  function postman { center "^Postman$" $title_bar }
-
-  function shotcut { center ".?Shotcut$" $title 0 $title_bar }
-
   function slack {
     local title=".?Slack$"
     [[ -v _4k ]] && {
@@ -85,17 +99,27 @@
     } || center $title $title_bar
   }
 
-  function vscode { center ".?Visual Studio Code$" }
+  function vscode { big ".?Visual Studio Code$" }
+  function postman { big_electron "^Postman$" }
+
+  function data_studio { big ".?Azure Data Studio$" }
+  function obs { big_qt "^OBS.*Profile.*Scenes.?" }
+  function shotcut { big_qt ".?Shotcut$" }
+
+  function keepass {
+    local title=".? - KeePassXC$"
+    [[ -v _4k ]] && small_qt $title || fix $title 1800 1550 1020 494
+  }
 
   [[ -z "$1" ]] && {
     chrome
-    data_studio
-    keepass
-    obs
-    postman
-    shotcut
     slack
+    keepass
     vscode
+    postman
+    data_studio
+    obs
+    shotcut
   } || eval $1
 
 } $1
