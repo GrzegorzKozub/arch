@@ -19,6 +19,15 @@
     done <<< $windows
   }
 
+  function center {
+    local width_step=8; local height_step=16
+    fix "$1" \
+      $(( ( $width / $width_step ) * $2 )) \
+      $(( ( ( $height - $top_bar ) / $height_step ) * $3 - ${4:-0} )) \
+      $(( ( $width / $width_step ) * ( ( $width_step - $2 ) / 2 ) )) \
+      $(( ( ( $height - $top_bar ) / $height_step ) * ( ( $height_step - $3 ) / 2 ) + $top_bar + ${5:-0} ))
+  }
+
   [[ $width = 3840 ]] && [[ $height = 2400 ]] && {
 
     if [[ $theme =~ "Adwaita" ]]; then local top_bar=80; local title_bar=73
@@ -26,26 +35,9 @@
     elif [[ $theme =~ "Materia" ]]; then local top_bar=64; local title_bar=71
     else exit 1; fi
 
-    function center {
-      local width_step=8; local height_step=16
-      fix "$1" \
-        $(( ( $width / $width_step ) * $2 )) \
-        $(( ( ( $height - $top_bar ) / $height_step ) * $3 - ${4:-0} )) \
-        $(( ( $width / $width_step ) * ( ( $width_step - $2 ) / 2 ) )) \
-        $(( ( ( $height - $top_bar ) / $height_step ) * ( ( $height_step - $3 ) / 2 ) + $top_bar + ${5:-0} ))
-    }
-
     function big { center $1 7.0 14.5 $2 $3 }
-    function big_electron { big $1 $title_bar }
-    function big_qt { big $1 $title_bar $title_bar }
-
     function medium { center $1 6 12.5 $2 $3 }
-    function medium_electron { medium $1 $title_bar }
-    function medium_qt { medium $1 $title_bar $title_bar }
-
     function small { center $1 5.0 10.5 $2 $3 }
-    function small_electron { small $1 $title_bar }
-    function small_qt { small $1 $title_bar $title_bar }
   }
 
   [[ $width = 3840 ]] && [[ $height = 2160 ]] && {
@@ -58,27 +50,19 @@
     local _4k=true
     local margin=25
 
-    function center {
-      local width_step=8; local height_step=16
-      fix "$1" \
-        $(( ( $width / $width_step ) * $2 )) \
-        $(( ( ( $height - $top_bar ) / $height_step ) * $3 - ${4:-0} )) \
-        $(( ( $width / $width_step ) * ( ( $width_step - $2 ) / 2 ) )) \
-        $(( ( ( $height - $top_bar ) / $height_step ) * ( ( $height_step - $3 ) / 2 ) + $top_bar + ${5:-0} ))
-    }
-
     function big { center $1 6 14 $2 $3 }
-    function big_electron { big $1 $title_bar }
-    function big_qt { big $1 $title_bar $title_bar }
-
     function medium { center $1 4.5 12 $2 $3 }
-    function medium_electron { medium $1 $title_bar }
-    function medium_qt { medium $1 $title_bar $title_bar }
-
     function small { center $1 3.0 10 $2 $3 }
-    function small_electron { small $1 $title_bar }
-    function small_qt { small $1 $title_bar $title_bar }
   }
+
+  function big_electron { big $1 $title_bar }
+  function big_qt { big $1 $title_bar $title_bar }
+
+  function medium_electron { medium $1 $title_bar }
+  function medium_qt { medium $1 $title_bar $title_bar }
+
+  function small_electron { small $1 $title_bar }
+  function small_qt { small $1 $title_bar $title_bar }
 
   function chrome {
     local title=".?Chrom(e|ium)$"
