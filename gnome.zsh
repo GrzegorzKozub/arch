@@ -85,7 +85,7 @@ gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictu
 
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
-[[ $HOST = 'drifter' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1
+[[ $HOST = 'drifter' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 [[ $HOST = 'ampere' || $HOST = 'turing' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
 
 # shell
