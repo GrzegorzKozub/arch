@@ -66,10 +66,18 @@ echo 'greg ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
 touch /home/greg/.zshrc
 chown greg:users /home/greg/.zshrc
 
-# ampere sleep fix
+# ampere sleep fixes
 
 if [[ $MY_HOSTNAME = 'ampere' ]]; then
+
+  # don't wake up immediately after going to sleep
   echo 'w /proc/acpi/wakeup - - - - GPP0' > /usr/lib/tmpfiles.d/ampere.conf
+
+  # don't wake up with usb keyboard or mouse
+  # echo 'w /proc/acpi/wakeup - - - - XHC0' > /usr/lib/tmpfiles.d/ampere.conf
+
+  # don't wake up with usb mouse
+  cp `dirname $0`/etc/udev/rules.d/10-ampere.rules /etc/udev/rules.d/10-ampere.rules
 fi
 
 # operating system continued
