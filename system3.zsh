@@ -45,7 +45,7 @@ fi
 if [[ $MY_HOSTNAME = 'turing' ]]; then
 
   sudo pacman -S --noconfirm \
-    intel-ucode
+    intel-ucode \
     nvidia
 
 fi

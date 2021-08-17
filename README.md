@@ -36,15 +36,24 @@ Automated Arch Linux installation
 ## Manual config
 
 1. Chrome
+  - Sync your Google accounts
   - See that English and Polish languages are enabled
   - Enable enhanced spell check for all lanuages
   - Disable continuing in the background
+  - Sign in to your sites and setup Hangouts
   - Enable `chrome://flags/#enable-webrtc-pipewire-capturer`
-  - Disable launching Hangouts with Chrome and delete the link
+  - Remove the Hangouts link from `~/.local/share/applications`
+2. KeePassXC
+  - Open your databases
+  - Only show attachment, title and username columns
+  - Fit columns to window
+3. Hide the menu in Slack
+4. Change the font to `Fira Code Retina` and tab size to `2` in Postman
+5. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
+6. Gnome
+  - Reorder the icons
+  - Add VPN server
   - Remove the `~/.gnome` dir
-2. Visual Studio Code
-  - Hide recommended extensions
-  - Disable tweet feedback icon
-3. KeePassXC, Postman and Slack
-4. Run `windows.zsh`
+7. Clone the work repo, run `update.zsh` and setup `.env` files
+8. Run `windows.zsh`
 
