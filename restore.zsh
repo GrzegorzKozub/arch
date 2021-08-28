@@ -15,7 +15,7 @@ set -e
 
 echo "restoring from $dir"
 
-fsarchiver restfs $dir/root.fsa id=0,dest=/dev/mapper/vg1-root
+fsarchiver restfs -c - $dir/root.fsa id=0,dest=/dev/mapper/vg1-root
 cp $dir/*.img $dir/vmlinuz-linux /mnt/boot/
 
 } `dirname $0` $1
