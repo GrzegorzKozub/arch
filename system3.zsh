@@ -37,7 +37,6 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
     alsa-firmware alsa-ucm-conf sof-firmware
 
   paru -S --aur --noconfirm \
-    laptop-mode-tools \
     gnome-shell-extension-dim-on-battery-git
 
 fi

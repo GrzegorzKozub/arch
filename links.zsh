@@ -12,7 +12,6 @@ for APP in \
   electron7 \
   gvim \
   htop \
-  laptop-mode-tools \
   lf \
   lstopo \
   mpv \
