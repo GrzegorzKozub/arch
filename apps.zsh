@@ -56,6 +56,7 @@ sudo pacman -S --noconfirm \
 # common
 
 sudo pacman -S --noconfirm \
+  cpupower \
   fd \
   freerdp \
   fzf \
@@ -68,6 +69,7 @@ sudo pacman -S --noconfirm \
   pass \
   ripgrep \
   rsync \
+  stress \
   trash-cli \
   wget \
   wkhtmltopdf \
