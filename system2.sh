@@ -80,6 +80,10 @@ if [[ $MY_HOSTNAME = 'ampere' ]]; then
   cp `dirname $0`/etc/udev/rules.d/10-ampere.rules /etc/udev/rules.d/10-ampere.rules
 fi
 
+# drifter power saving
+
+[[ $MY_HOSTNAME = 'drifter' ]] && . `dirname $0`/power.zsh
+
 # operating system continued
 
 cp `dirname $0`/system3.zsh /home/greg
