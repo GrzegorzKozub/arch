@@ -16,6 +16,8 @@ sudo systemctl enable NetworkManager.service
 
 sudo systemctl enable gdm.service
 
+sudo systemctl enable reflector.timer
+
 sudo cp `dirname $0`/etc/iptables/iptables.rules /etc/iptables/iptables.rules
 sudo systemctl enable iptables.service
 

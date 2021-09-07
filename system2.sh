@@ -101,7 +101,7 @@ sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
 
 # pacman
 
-reflector --country Poland --sort rate --save /etc/pacman.d/mirrorlist
+reflector --save /etc/pacman.d/mirrorlist --protocol https --country Poland,Germany --latest 10 --sort rate
 sed -i 's/#Color/Color/' /etc/pacman.conf
 
 # scripts
