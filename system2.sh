@@ -99,9 +99,16 @@ mkinitcpio -p linux
 
 sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
 
-# pacman
+# reflector
+
+sed -Ei 's/^\# --country.+$/--country Poland,Germany/' /etc/xdg/reflector/reflector.conf
+sed -Ei 's/^\--latest.+$/--latest 10/' /etc/xdg/reflector/reflector.conf
+sed -Ei 's/^\--sort.+$/--sort rate/' /etc/xdg/reflector/reflector.conf
 
 reflector --save /etc/pacman.d/mirrorlist --protocol https --country Poland,Germany --latest 10 --sort rate
+
+# pacman
+
 sed -i 's/#Color/Color/' /etc/pacman.conf
 
 # scripts
