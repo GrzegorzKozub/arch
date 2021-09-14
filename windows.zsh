@@ -64,6 +64,17 @@
   function small_electron { small $1 $title_bar }
   function small_qt { small $1 $title_bar $title_bar }
 
+  function brave {
+    local title=".?Brave$"
+    [[ -v _4k ]] && {
+      fix $title \
+        $(( ( $width / 5 ) * 3 )) \
+        $(( $height - $margin * 2 - $top_bar )) \
+        $margin \
+        $(( $margin + $top_bar ))
+     } || big $title
+  }
+
   function chrome {
     local title=".?Chrom(e|ium)$"
     [[ -v _4k ]] && {
@@ -96,6 +107,7 @@
   function keepass { small_qt "KeePassXC$" }
 
   [[ -z "$1" ]] && {
+    brave
     chrome
     slack
     keepass

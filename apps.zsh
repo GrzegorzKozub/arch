@@ -153,6 +153,7 @@ sudo pacman -S --noconfirm \
   peek gifski gst-plugins-good gst-plugins-ugly
 
 paru -S --aur --noconfirm \
+  brave-bin \
   google-chrome \
   postman-bin \
   slack-desktop \
