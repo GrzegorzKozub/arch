@@ -35,25 +35,44 @@ Automated Arch Linux installation
 
 ## Manual config
 
-1. Chrome
-  - Sync your Google accounts
+1. Brave
+  - Setup your profiles
+  - Set as default browser
+  - Hide bookmarks
+  - Enable wide address bar
+  - Hide Brave Rewards button
+  - Disable everything except background images on the dashboard
+  - Enable search and URL autocompletion
+  - Join the Sync Chain and sync everything
+  - Install your extensions
+  - Don't offer to save passwords and don't sign in automatically
+  - Add Polish and enable spell check for it
+  - Don't offer to translate pages
+  - Don't ask where to save downloaded files
+  - Don't show Wayback Machine prompts on 404 pages
+  - Don't continue running background apps
+  - Sign in to your sites and allow notifications, camera and microphone where needed (including Hangouts)
+  - Enable `brave://flags/#enable-webrtc-pipewire-capturer`
+2. Chrome
+  - Setup your profiles and sync your Google accounts
+  - Set as default browser
   - See that English and Polish languages are enabled
   - Enable enhanced spell check for all lanuages
   - Disable continuing in the background
-  - Sign in to your sites and setup Hangouts
+  - Sign in to your sites and allow notifications, camera and microphone where needed (including Hangouts)
   - Enable `chrome://flags/#enable-webrtc-pipewire-capturer`
   - Remove the Hangouts link from `~/.local/share/applications`
-2. KeePassXC
+3. KeePassXC
   - Open your databases
   - Only show attachment, title and username columns
   - Fit columns to window
-3. Hide the menu in Slack
-4. Change the font to `Fira Code Retina` and tab size to `2` in Postman
-5. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
-6. Gnome
+4. Hide the menu in Slack
+5. Change the font to `Fira Code Retina` and tab size to `2` in Postman
+6. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
+7. Gnome
   - Reorder the icons
   - Add VPN server
   - Remove the `~/.gnome` dir
-7. Clone the work repo, run `update.zsh` and setup `.env` files
-8. Run `windows.zsh`
+8. Clone the work repo, run `update.zsh` and setup `.env` files
+9. Run `windows.zsh`
 
