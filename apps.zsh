@@ -89,6 +89,13 @@ if [[ $HOST = 'ampere' || $HOST = 'turing' ]]; then
 
 fi
 
+if [[ $HOST = 'drifter' ]]; then
+
+  sudo pacman -S --noconfirm \
+    intel-gpu-tools
+
+fi
+
 # zsh, tmux and lf
 
 sudo pacman -S --noconfirm \
