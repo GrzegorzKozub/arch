@@ -80,6 +80,7 @@ sudo pacman -S --noconfirm \
   zip
 
 paru -S --aur --noconfirm \
+  btop \
   wrk2-git
 
 if [[ $HOST = 'ampere' || $HOST = 'turing' ]]; then
