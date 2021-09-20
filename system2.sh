@@ -93,7 +93,9 @@ rm /home/greg/system3.zsh
 # kernel hooks: encrypt, lvm2 and resume
 
 sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev autodetect modconf block encrypt lvm2 resume filesystems keyboard fsck)/' /etc/mkinitcpio.conf
+
 mkinitcpio -p linux
+mkinitcpio -p linux-lts
 
 # disable wayland
 
