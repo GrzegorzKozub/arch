@@ -7,23 +7,23 @@ set -e -o verbose
 bootctl --path=/boot install
 
 cp `dirname $0`/boot/loader/loader.conf /boot/loader
-cp `dirname $0`/boot/loader/entries/arch.conf /boot/loader/entries
+cp `dirname $0`/boot/loader/entries/*.conf /boot/loader/entries
 
-sed -i "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" /boot/loader/entries/arch.conf
+sed -i "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" /boot/loader/entries/*.conf
 
 if [[ $MY_HOSTNAME = 'ampere' ]]; then
-  sed -i "s/<ucode>/amd-ucode/g" /boot/loader/entries/arch.conf
-  sed -i "s/<kernel_params>//g" /boot/loader/entries/arch.conf
+  sed -i "s/<ucode>/amd-ucode/g" /boot/loader/entries/*.conf
+  sed -i "s/<kernel_params>//g" /boot/loader/entries/*.conf
 fi
 
 if [[ $MY_HOSTNAME = 'drifter' ]]; then
-  sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/arch.conf
-  sed -i "s/<kernel_params>/video=1280x800 /g" /boot/loader/entries/arch.conf
+  sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/*.conf
+  sed -i "s/<kernel_params>/video=1280x800 /g" /boot/loader/entries/*.conf
 fi
 
 if [[ $MY_HOSTNAME = 'turing' ]]; then
-  sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/arch.conf
-  sed -i "s/<kernel_params>//g" /boot/loader/entries/arch.conf
+  sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/*.conf
+  sed -i "s/<kernel_params>//g" /boot/loader/entries/*.conf
 fi
 
 # secure boot support

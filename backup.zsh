@@ -20,6 +20,6 @@ echo "backing up to $dir"
 mkdir $dir
 
 fsarchiver savefs -c - $dir/root.fsa /dev/mapper/vg1-root
-cp /mnt/boot/*.img /mnt/boot/vmlinuz-linux $dir/
+cp /mnt/boot/*.img /mnt/boot/vmlinuz-linux* $dir/
 
 } `dirname $0`
