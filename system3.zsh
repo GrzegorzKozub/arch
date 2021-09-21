@@ -24,7 +24,7 @@ if [[ $MY_HOSTNAME = 'ampere' ]]; then
 
   sudo pacman -S --noconfirm \
     amd-ucode \
-    nvidia
+    nvidia nvidia-lts
 
 fi
 
@@ -45,7 +45,7 @@ if [[ $MY_HOSTNAME = 'turing' ]]; then
 
   sudo pacman -S --noconfirm \
     intel-ucode \
-    nvidia
+    nvidia nvidia-lts
 
 fi
 
