@@ -30,9 +30,15 @@ mkdir -p $USB
 
 cp -r /usr/share/archiso/configs/releng $PROFILE
 
+# packages
+
+[[ $(grep 'linux-lts' $PROFILE/packages.x86_64) ]] || echo 'linux-lts' >> $PROFILE/packages.x86_64
+
 # loader
 
 sed -i \
+  -e 's/vmlinuz-linux/vmlinuz-linux-lts/' \
+  -e 's/initramfs-linux/initramfs-linux-lts/' \
   -e 's/^\(options.*\)$/\1 video=1280x720/' \
   $PROFILE/efiboot/loader/entries/01-archiso-x86_64-linux.conf
 
