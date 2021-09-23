@@ -36,14 +36,29 @@ cp -r /usr/share/archiso/configs/releng $PROFILE
 
 # loader
 
+cp $PROFILE/efiboot/loader/entries/01-archiso-x86_64-linux.conf \
+  $PROFILE/efiboot/loader/entries/01-archiso.conf
+
+cp $PROFILE/efiboot/loader/entries/01-archiso-x86_64-linux.conf \
+  $PROFILE/efiboot/loader/entries/02-archiso-lts.conf
+
+rm $PROFILE/efiboot/loader/entries/*archiso-x86_64*.conf
+
 sed -i \
+  -e 's/^title   .*$/title   Archiso/' \
+  -e 's/^\(options.*\)$/\1 video=1280x720/' \
+  $PROFILE/efiboot/loader/entries/01-archiso.conf
+
+sed -i \
+  -e 's/^title   .*$/title   Archiso LTS/' \
   -e 's/vmlinuz-linux/vmlinuz-linux-lts/' \
   -e 's/initramfs-linux/initramfs-linux-lts/' \
   -e 's/^\(options.*\)$/\1 video=1280x720/' \
-  $PROFILE/efiboot/loader/entries/01-archiso-x86_64-linux.conf
+  $PROFILE/efiboot/loader/entries/02-archiso-lts.conf
 
 sed -i \
   -e 's/^timeout 15$/timeout 1/' \
+  -e 's/^default.*$/default 01-archiso.conf/' \
   $PROFILE/efiboot/loader/loader.conf
 
 # scripts
