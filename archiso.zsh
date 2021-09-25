@@ -46,14 +46,12 @@ rm $PROFILE/efiboot/loader/entries/*archiso-x86_64*.conf
 
 sed -i \
   -e 's/^title   .*$/title   Archiso/' \
-  -e 's/^\(options.*\)$/\1 video=1280x720/' \
   $PROFILE/efiboot/loader/entries/01-archiso.conf
 
 sed -i \
   -e 's/^title   .*$/title   Archiso LTS/' \
   -e 's/vmlinuz-linux/vmlinuz-linux-lts/' \
   -e 's/initramfs-linux/initramfs-linux-lts/' \
-  -e 's/^\(options.*\)$/\1 video=1280x720/' \
   $PROFILE/efiboot/loader/entries/02-archiso-lts.conf
 
 sed -i \
