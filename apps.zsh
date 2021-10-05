@@ -162,7 +162,7 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   brave-bin \
-  google-chrome \
+  chrome-gnome-shell \
   postman-bin \
   slack-desktop \
   visual-studio-code-bin
