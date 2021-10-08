@@ -8,6 +8,7 @@ for APP in \
   avahi-discover \
   bssh \
   bvnc \
+  cmake-gui \
   electron4 \
   electron7 \
   gvim \
