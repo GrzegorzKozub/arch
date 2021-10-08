@@ -50,8 +50,8 @@ gsettings set org.gnome.desktop.sound event-sounds false
 
 # network
 
-[[ $HOST = 'ampere' ]] && nmcli radio wifi off
-[[ $HOST = 'ampere' ]] && rfkill block bluetooth
+[[ $HOST = 'gamer' ]] && nmcli radio wifi off
+[[ $HOST = 'gamer' ]] && rfkill block bluetooth
 
 # sleep
 
@@ -86,7 +86,7 @@ gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictu
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
 [[ $HOST = 'drifter' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-[[ $HOST = 'ampere' || $HOST = 'turing' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+[[ $HOST = 'gamer' || $HOST = 'worker' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
 
 # shell
 
@@ -101,7 +101,7 @@ gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'Alacritty.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'brave-browser.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
 
 [[ $HOST = 'drifter' ]] && gsettings set org.gnome.shell enabled-extensions "['dim-on-battery@nailfarmer.nailfarmer.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl']"
-[[ $HOST = 'ampere' || $HOST = 'turing' ]] && gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl']"
+[[ $HOST = 'gamer' || $HOST = 'worker' ]] && gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl']"
 
 # nautilus
 

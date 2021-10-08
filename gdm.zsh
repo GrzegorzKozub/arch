@@ -9,7 +9,7 @@ sudo machinectl shell gdm@ /bin/bash -c "gsettings set org.gnome.desktop.periphe
 # fonts
 
 [[ $HOST = 'drifter' ]] && sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.25'
-[[ $HOST = 'ampere' || $HOST = 'turing' ]] &&  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.5'
+[[ $HOST = 'gamer' || $HOST = 'worker' ]] &&  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.5'
 
 # background image
 

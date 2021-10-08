@@ -66,18 +66,18 @@ echo 'greg ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
 touch /home/greg/.zshrc
 chown greg:users /home/greg/.zshrc
 
-# ampere sleep fixes
+# gamer sleep fixes
 
-if [[ $MY_HOSTNAME = 'ampere' ]]; then
+if [[ $MY_HOSTNAME = 'gamer' ]]; then
 
   # don't wake up immediately after going to sleep
-  echo 'w /proc/acpi/wakeup - - - - GPP0' > /usr/lib/tmpfiles.d/ampere.conf
+  echo 'w /proc/acpi/wakeup - - - - GPP0' > /usr/lib/tmpfiles.d/gamer.conf
 
   # don't wake up with usb keyboard or mouse
-  # echo 'w /proc/acpi/wakeup - - - - XHC0' > /usr/lib/tmpfiles.d/ampere.conf
+  # echo 'w /proc/acpi/wakeup - - - - XHC0' > /usr/lib/tmpfiles.d/gamer.conf
 
   # don't wake up with usb mouse
-  cp `dirname $0`/etc/udev/rules.d/10-ampere.rules /etc/udev/rules.d/10-ampere.rules
+  cp `dirname $0`/etc/udev/rules.d/10-gamer.rules /etc/udev/rules.d/10-gamer.rules
 fi
 
 # drifter power saving

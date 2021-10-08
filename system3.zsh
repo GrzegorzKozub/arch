@@ -20,7 +20,7 @@ paru -S --aur --noconfirm \
   aic94xx-firmware wd719x-firmware upd72020x-fw \
   gnome-shell-extension-tray-icons-reloaded-git
 
-if [[ $MY_HOSTNAME = 'ampere' ]]; then
+if [[ $MY_HOSTNAME = 'gamer' ]]; then
 
   sudo pacman -S --noconfirm \
     amd-ucode \
@@ -41,7 +41,7 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
 fi
 
-if [[ $MY_HOSTNAME = 'turing' ]]; then
+if [[ $MY_HOSTNAME = 'worker' ]]; then
 
   sudo pacman -S --noconfirm \
     intel-ucode \
