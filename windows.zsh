@@ -12,8 +12,8 @@
   function fix {
     local windows=$(xdotool search --onlyvisible --maxdepth 2 --name --class "$1")
     [[ -z $windows ]] || while IFS= read -r window; do
-      xdotool windowstate --remove MAXIMIZED_HORZ $window
-      xdotool windowstate --remove MAXIMIZED_VERT $window
+      # xdotool windowstate --remove MAXIMIZED_HORZ $window
+      # xdotool windowstate --remove MAXIMIZED_VERT $window
       xdotool windowsize $window $2 $3
       xdotool windowmove $window $4 $5
     done <<< $windows
@@ -68,8 +68,8 @@
     local title=".?Brave$"
     [[ -v _4k ]] && {
       fix $title \
-        $(( ( $width / 5 ) * 3 )) \
-        $(( $height - $margin * 2 - $top_bar )) \
+        $(( ( $width / 3 ) * 2 )) \
+        $(( $height - $margin - $top_bar )) \
         $margin \
         $(( $margin + $top_bar ))
      } || big $title
@@ -79,8 +79,8 @@
     local title=".?Chrom(e|ium)$"
     [[ -v _4k ]] && {
       fix $title \
-        $(( ( $width / 5 ) * 3 )) \
-        $(( $height - $margin * 2 - $top_bar )) \
+        $(( ( $width / 3 ) * 2 )) \
+        $(( $height - $margin - $top_bar )) \
         $margin \
         $(( $margin + $top_bar ))
      } || big $title
@@ -90,10 +90,10 @@
     local title=".?Slack$"
     [[ -v _4k ]] && {
       fix $title \
-        $(( $width / 2 )) \
-        $(( $height - $margin * 4 - $top_bar - $title_bar )) \
-        $(( $width / 2 - $margin * 2 )) \
-        $(( $margin * 2 + $top_bar ))
+        $(( ( $width / 7 ) * 3 )) \
+        $(( $height - $margin * 6 - $top_bar - $title_bar )) \
+        $(( ( $width / 7 ) * 4 - $margin * 3 )) \
+        $(( $margin * 3 + $top_bar ))
     } || medium $title $title_bar
   }
 
