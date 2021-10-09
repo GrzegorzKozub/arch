@@ -83,7 +83,7 @@ paru -S --aur --noconfirm \
   btop \
   wrk2-git
 
-if [[ $HOST = 'gamer' || $HOST = 'worker' ]]; then
+if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
   sudo pacman -S --noconfirm \
     nvtop

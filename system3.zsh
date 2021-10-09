@@ -20,7 +20,7 @@ paru -S --aur --noconfirm \
   aic94xx-firmware wd719x-firmware upd72020x-fw \
   gnome-shell-extension-tray-icons-reloaded-git
 
-if [[ $MY_HOSTNAME = 'gamer' ]]; then
+if [[ $MY_HOSTNAME = 'player' ]]; then
 
   sudo pacman -S --noconfirm \
     amd-ucode \

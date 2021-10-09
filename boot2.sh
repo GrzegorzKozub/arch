@@ -11,7 +11,7 @@ cp `dirname $0`/boot/loader/entries/*.conf /boot/loader/entries
 
 sed -i "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" /boot/loader/entries/*.conf
 
-if [[ $MY_HOSTNAME = 'gamer' ]]; then
+if [[ $MY_HOSTNAME = 'player' ]]; then
   sed -i "s/<ucode>/amd-ucode/g" /boot/loader/entries/*.conf
   sed -i "s/<kernel_params>//g" /boot/loader/entries/*.conf
 fi

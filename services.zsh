@@ -45,7 +45,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-if [[ $HOST = 'gamer' || $HOST = 'worker' ]]; then
+if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
   cp `dirname $0`/home/greg/.config/systemd/user/imwheel.service ~/.config/systemd/user
   systemctl --user enable imwheel.service
 fi
