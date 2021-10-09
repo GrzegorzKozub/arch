@@ -22,9 +22,9 @@
   function center {
     local width_step=8; local height_step=16
     fix "$1" \
-      $(( ( $width / $width_step ) * $2 )) \
-      $(( ( ( $height - $top_bar ) / $height_step ) * $3 - ${4:-0} )) \
-      $(( ( $width / $width_step ) * ( ( $width_step - $2 ) / 2 ) )) \
+      $(( ( $width / $width_step ) * $2 + ${6:-0} )) \
+      $(( ( ( $height - $top_bar ) / $height_step ) * $3 + ${4:-0} )) \
+      $(( ( $width / $width_step ) * ( ( $width_step - $2 ) / 2 ) + ${7:-0} )) \
       $(( ( ( $height - $top_bar ) / $height_step ) * ( ( $height_step - $3 ) / 2 ) + $top_bar + ${5:-0} ))
   }
 
@@ -35,9 +35,9 @@
     elif [[ $theme =~ "Materia" ]]; then local top_bar=64; local title_bar=71
     else exit 1; fi
 
-    function big { center $1 7.0 14.5 $2 $3 }
-    function medium { center $1 6 12.5 $2 $3 }
-    function small { center $1 5.0 10.5 $2 $3 }
+    function big { center $1 7.0 14.5 $2 $3 $4 $5 }
+    function medium { center $1 6 12.5 $2 $3 $4 $5 }
+    function small { center $1 5.0 10.5 $2 $3 $4 $5 }
   }
 
   [[ $width = 3840 ]] && [[ $height = 2160 ]] && {
@@ -50,40 +50,36 @@
     local _4k=true
     local margin=25
 
-    function big { center $1 6 14 $2 $3 }
-    function medium { center $1 4.5 12 $2 $3 }
-    function small { center $1 3.0 10 $2 $3 }
+    function big { center $1 6 14 $2 $3 $4 $5 }
+    function medium { center $1 4.5 12 $2 $3 $4 $5 }
+    function small { center $1 3.0 10 $2 $3 $4 $5 }
   }
 
-  function big_electron { big $1 $title_bar }
-  function big_qt { big $1 $title_bar $title_bar }
+  function big_electron { big $1 $(( - $title_bar )) }
+  function big_qt { big $1 $(( - $title_bar )) $title_bar }
 
-  function medium_electron { medium $1 $title_bar }
-  function medium_qt { medium $1 $title_bar $title_bar }
+  function medium_electron { medium $1 $(( - $title_bar )) }
+  function medium_qt { medium $1 $(( - $title_bar )) $title_bar }
 
-  function small_electron { small $1 $title_bar }
-  function small_qt { small $1 $title_bar $title_bar }
+  function small_electron { small $1 $(( - $title_bar )) }
+  function small_qt { small $1 $(( - $title_bar )) $title_bar }
 
-  function brave {
-    local title=".?Brave$"
+  function chromium {
     [[ -v _4k ]] && {
-      fix $title \
+      fix $1 \
         $(( ( $width / 3 ) * 2 )) \
         $(( $height - $margin - $top_bar )) \
         $margin \
         $(( $margin + $top_bar ))
-     } || big $title
+     } || big $1 104 -24 76 -38
+  }
+
+  function brave {
+    chromium ".?Brave$"
   }
 
   function chrome {
-    local title=".?Chrom(e|ium)$"
-    [[ -v _4k ]] && {
-      fix $title \
-        $(( ( $width / 3 ) * 2 )) \
-        $(( $height - $margin - $top_bar )) \
-        $margin \
-        $(( $margin + $top_bar ))
-     } || big $title
+    chromium =".?Chrom(e|ium)$"
   }
 
   function slack {
@@ -94,7 +90,7 @@
         $(( $height - $margin * 6 - $top_bar - $title_bar )) \
         $(( ( $width / 7 ) * 4 - $margin * 3 )) \
         $(( $margin * 3 + $top_bar ))
-    } || medium $title $title_bar
+      } || medium $title $(( - $title_bar ))
   }
 
   function vscode { big ".?Visual Studio Code$" }
@@ -108,7 +104,7 @@
 
   [[ -z "$1" ]] && {
     brave
-    chrome
+    # chrome
     slack
     keepass
     vscode
