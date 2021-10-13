@@ -76,7 +76,7 @@ sudo pacman -S --noconfirm \
   xclip \
   xdotool \
   xorg-xrandr \
-  youtube-dl ffmpeg \
+  youtube-dlp-bin ffmpeg \
   zip
 
 paru -S --aur --noconfirm \
