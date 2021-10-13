@@ -50,6 +50,9 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
   systemctl --user enable imwheel.service
 fi
 
+systemctl --user enable play-with-mpv.service
+systemctl --user start play-with-mpv.service
+
 # group check
 
 sudo grpck
