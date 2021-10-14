@@ -81,7 +81,6 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   btop \
-  play-with-mpv-git \
   wrk2-git
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
