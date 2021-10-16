@@ -58,6 +58,7 @@ sudo pacman -S --noconfirm \
 sudo pacman -S --noconfirm \
   cpupower \
   fd \
+  ffmpeg \
   freerdp \
   fzf \
   graphviz \
@@ -76,12 +77,12 @@ sudo pacman -S --noconfirm \
   xclip \
   xdotool \
   xorg-xrandr \
-  youtube-dlp-bin ffmpeg \
   zip
 
 paru -S --aur --noconfirm \
   btop \
-  wrk2-git
+  wrk2-git \
+  youtube-dlp-bin
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
