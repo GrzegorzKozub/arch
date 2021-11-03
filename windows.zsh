@@ -93,6 +93,17 @@
       } || medium $title $(( - $title_bar ))
   }
 
+  function teams {
+    local title="^Microsoft Teams.?"
+    [[ -v _4k ]] && {
+      fix $title \
+        $(( ( $width / 7 ) * 3 )) \
+        $(( $height - $margin * 6 - $top_bar - $title_bar )) \
+        $(( ( $width / 7 ) * 4 - $margin * 3 )) \
+        $(( $margin * 3 + $top_bar ))
+      } || medium $title
+  }
+
   function vscode { big ".?Visual Studio Code$" }
   function postman { big_electron "^Postman$" }
 
@@ -106,12 +117,13 @@
     brave
     # chrome
     slack
-    keepass
+    teams
     vscode
     postman
     data_studio
     obs
     shotcut
+    keepass
   } || eval $1
 
 } $1
