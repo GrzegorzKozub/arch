@@ -168,6 +168,9 @@ paru -S --aur --noconfirm \
   slack-desktop \
   visual-studio-code-bin
 
+# paru -S --aur --noconfirm \
+#   teams
+
 gsettings set io.github.celluloid-player.Celluloid always-use-floating-controls true
 gsettings set io.github.celluloid-player.Celluloid dark-theme-enable false
 gsettings set io.github.celluloid-player.Celluloid mpv-config-enable true
