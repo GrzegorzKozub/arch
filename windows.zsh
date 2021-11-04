@@ -98,7 +98,7 @@
     [[ -v _4k ]] && {
       fix $title \
         $(( ( $width / 7 ) * 3 )) \
-        $(( $height - $margin * 6 - $top_bar - $title_bar )) \
+        $(( $height - $margin * 6 - $top_bar )) \
         $(( ( $width / 7 ) * 4 - $margin * 3 )) \
         $(( $margin * 3 + $top_bar ))
       } || medium $title
