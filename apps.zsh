@@ -156,6 +156,7 @@ sudo pacman -S --noconfirm \
 
 sudo pacman -S --noconfirm \
   flameshot \
+  foliate \
   keepassxc \
   mpv celluloid \
   openconnect networkmanager-openconnect \
