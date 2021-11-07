@@ -17,6 +17,22 @@ dconf write /org/gnome/desktop/wm/keybindings/move-to-side-w "['<Super><Control>
 dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Super>Tab']"
 dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
+  "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
+  name 'windows.zsh'
+
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
+  command '~/code/arch/windows.zsh'
+
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
+  binding '<Primary><Super>w'
+
 # mouse and touchpad
 
 gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
