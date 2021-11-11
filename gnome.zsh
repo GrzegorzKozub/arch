@@ -74,11 +74,18 @@ fi
 # power
 
 if [[ $HOST = 'drifter' ]]; then
+
   powerprofilesctl set power-saver
+
   gsettings set org.gnome.desktop.session idle-delay 300
+  gsettings set org.gnome.settings-daemon.plugins.power ampient-enabled false
+
 else
+
   powerprofilesctl set balanced
+
   gsettings set org.gnome.desktop.session idle-delay 600
+
 fi
 
 gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 25

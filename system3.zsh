@@ -34,10 +34,8 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
     iwd \
     intel-ucode \
     intel-media-driver \
-    alsa-firmware alsa-ucm-conf sof-firmware
-
-  # sudo pacman -S --noconfirm \
-    # iio-sensor-proxy
+    alsa-firmware alsa-ucm-conf sof-firmware \
+    iio-sensor-proxy
 
 fi
 
