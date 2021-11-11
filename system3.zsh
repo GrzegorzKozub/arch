@@ -36,8 +36,8 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
     intel-media-driver \
     alsa-firmware alsa-ucm-conf sof-firmware
 
-  paru -S --aur --noconfirm \
-    gnome-shell-extension-dim-on-battery-git
+  # sudo pacman -S --noconfirm \
+    # iio-sensor-proxy
 
 fi
 

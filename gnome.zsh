@@ -66,15 +66,25 @@ gsettings set org.gnome.desktop.sound event-sounds false
 
 # network
 
-[[ $HOST = 'player' ]] && nmcli radio wifi off
-[[ $HOST = 'player' ]] && rfkill block bluetooth
+if [[ $HOST = 'player' ]]; then
+  nmcli radio wifi off
+  rfkill block bluetooth
+fi
 
-# sleep
+# power
 
-gsettings set org.gnome.desktop.session idle-delay 600
+if [[ $HOST = 'drifter' ]]; then
+  powerprofilesctl set power-saver
+  gsettings set org.gnome.desktop.session idle-delay 300
+else
+  powerprofilesctl set balanced
+  gsettings set org.gnome.desktop.session idle-delay 600
+fi
+
+gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 25
 
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 3600
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 1200
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 600
 
 # themes
 
@@ -101,8 +111,11 @@ gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictu
 
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
-[[ $HOST = 'drifter' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-[[ $HOST = 'player' || $HOST = 'worker' ]] && gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+if [[ $HOST = 'drifter' ]]; then
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+else
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+fi
 
 # shell
 
@@ -116,8 +129,9 @@ gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'Alacritty.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'brave-browser.desktop', 'slack.desktop', 'org.keepassxc.KeePassXC.desktop']"
 
-[[ $HOST = 'drifter' ]] && gsettings set org.gnome.shell enabled-extensions "['dim-on-battery@nailfarmer.nailfarmer.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl']"
-[[ $HOST = 'player' || $HOST = 'worker' ]] && gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl']"
+gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl']"
+
+gsettings set org.gnome.desktop.interface enable-hot-corners false
 
 # nautilus
 
