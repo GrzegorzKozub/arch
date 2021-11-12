@@ -77,12 +77,12 @@ sudo pacman -S --noconfirm \
   xclip \
   xdotool \
   xorg-xrandr \
+  yt-dlp \
   zip
 
 paru -S --aur --noconfirm \
   btop \
-  wrk2-git \
-  youtube-dlp-bin
+  wrk2-git
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
