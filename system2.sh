@@ -22,7 +22,7 @@ echo 'LC_PAPER=pl_PL.UTF-8' >> /etc/locale.conf
 echo 'LC_TIME=pl_PL.UTF-8' >> /etc/locale.conf
 
 echo 'KEYMAP=pl2' > /etc/vconsole.conf
-echo 'FONT=Lat2-Terminus16.psfu.gz' >> /etc/vconsole.conf
+echo 'FONT=ter-232b' >> /etc/vconsole.conf
 echo 'FONT_MAP=8859-2' >> /etc/vconsole.conf
 
 # network
@@ -92,7 +92,9 @@ rm /home/greg/system3.zsh
 
 # kernel hooks: encrypt, lvm2 and resume
 
-sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev autodetect modconf block encrypt lvm2 resume filesystems keyboard fsck)/' /etc/mkinitcpio.conf
+[[ $MY_HOSTNAME = 'drifter' ]] && sed -Ei 's/^MODULES=.+$/MODULES=(i915)/' /etc/mkinitcpio.conf
+
+sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev consolefont autodetect modconf block encrypt lvm2 resume filesystems keyboard fsck)/' /etc/mkinitcpio.conf
 
 mkinitcpio -p linux
 mkinitcpio -p linux-lts

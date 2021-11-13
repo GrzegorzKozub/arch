@@ -47,6 +47,7 @@ done
 pacstrap /mnt \
   base base-devel \
   linux linux-lts linux-firmware \
+  terminus-font \
   alsa-utils \
   efibootmgr \
   lvm2 \
