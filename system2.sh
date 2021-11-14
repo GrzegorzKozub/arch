@@ -21,9 +21,14 @@ echo 'LC_NUMERIC=pl_PL.UTF-8' >> /etc/locale.conf
 echo 'LC_PAPER=pl_PL.UTF-8' >> /etc/locale.conf
 echo 'LC_TIME=pl_PL.UTF-8' >> /etc/locale.conf
 
-echo 'KEYMAP=pl2' > /etc/vconsole.conf
-echo 'FONT=ter-232b' >> /etc/vconsole.conf
+if [[ $MY_HOSTNAME = 'drifter' ]]; then
+  echo 'FONT=ter-232b' >> /etc/vconsole.conf
+else
+  echo 'FONT=ter-216b' >> /etc/vconsole.conf
+fi
+
 echo 'FONT_MAP=8859-2' >> /etc/vconsole.conf
+echo 'KEYMAP=pl2' > /etc/vconsole.conf
 
 # network
 
