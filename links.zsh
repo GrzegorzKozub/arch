@@ -71,3 +71,11 @@ do
     ~/.local/share/applications/$APP.desktop
 done
 
+for APP in \
+  teams
+do
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i \
+    -e 's/^Name=Microsoft Teams - Preview$/Name=Teams/' \
+    ~/.local/share/applications/$APP.desktop
+done
