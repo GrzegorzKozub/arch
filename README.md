@@ -45,6 +45,7 @@ Automated Arch Linux installation
   - Enable search and URL autocompletion
   - Join the Sync Chain and sync everything
   - Install your extensions
+  - Hide Brave Wallet button
   - Don't offer to save passwords and don't sign in automatically
   - Add Polish and enable spell check for it
   - Don't offer to translate pages
