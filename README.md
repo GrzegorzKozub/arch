@@ -68,7 +68,7 @@ Automated Arch Linux installation
   - Only show attachment, title and username columns
   - Fit columns to window
 4. Hide the menu in Slack
-5. Disable Teams autostart
+5. Disable Teams autostart and logging
 6. Change the font to `Fira Code Retina` and tab size to `2` in Postman
 7. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
 8. Gnome
