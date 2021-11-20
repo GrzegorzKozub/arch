@@ -167,10 +167,8 @@ paru -S --aur --noconfirm \
   chrome-gnome-shell \
   postman-bin \
   slack-desktop \
+  teams \
   visual-studio-code-bin
-
-# paru -S --aur --noconfirm \
-#   teams
 
 gsettings set io.github.celluloid-player.Celluloid always-use-floating-controls true
 gsettings set io.github.celluloid-player.Celluloid dark-theme-enable false
