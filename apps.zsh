@@ -152,6 +152,9 @@ sudo pacman -S --noconfirm \
   ruby \
   rust
 
+paru -S --aur --noconfirm \
+  nvm
+
 # apps
 
 sudo pacman -S --noconfirm \
