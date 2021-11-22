@@ -155,6 +155,8 @@ sudo pacman -S --noconfirm \
 paru -S --aur --noconfirm \
   nvm
 
+NVM_DIR=${XDG_DATA_HOME:-~/.local/share}/nvm source /usr/share/nvm/init-nvm.sh
+
 # apps
 
 sudo pacman -S --noconfirm \
