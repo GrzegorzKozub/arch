@@ -74,8 +74,17 @@ done
 for APP in \
   teams
 do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  cp /usr/share/applications/teams.desktop ~/.local/share/applications
   sed -i \
     -e 's/^Name=Microsoft Teams - Preview$/Name=Teams/' \
+    ~/.local/share/applications/teams.desktop
+done
+
+for APP in \
+  gimp
+do
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i \
+    -e 's/^Name=GNU Image Manipulation Program$/Name=GIMP/' \
     ~/.local/share/applications/$APP.desktop
 done

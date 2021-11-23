@@ -111,6 +111,11 @@
   function obs { big_qt "^OBS.*Profile.*Scenes.?" }
   function shotcut { big_qt ".?Shotcut$" }
 
+  function gimp {
+    medium "GNU Image Manipulation Program"
+    medium ".?GIMP$"
+  }
+
   function keepass { small_qt "KeePassXC$" }
 
   [[ -z "$1" ]] && {
@@ -123,6 +128,7 @@
     data_studio
     obs
     shotcut
+    gimp
     keepass
   } || eval $1
 
