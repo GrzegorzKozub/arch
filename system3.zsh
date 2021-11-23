@@ -18,6 +18,7 @@ rm -rf ~/paru
 
 paru -S --aur --noconfirm \
   aic94xx-firmware wd719x-firmware upd72020x-fw \
+  gnome-shell-extension-hide-activities-git \
   gnome-shell-extension-tray-icons-reloaded-git
 
 if [[ $MY_HOSTNAME = 'player' ]]; then
