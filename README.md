@@ -70,7 +70,6 @@ Automated Arch Linux installation
 4. Hide the menu in Slack
 5. Teams
   - Disable autostart
-  - Disable GPU hardware acceleration
   - Disable logging
   - Turn off animations
   - Don't participate in surveys
