@@ -45,7 +45,7 @@ Automated Arch Linux installation
   - Enable search and URL autocompletion
   - Join the Sync Chain and sync everything
   - Install your extensions
-  - Hide Brave Wallet button
+  - Disable Brave Wallet and hide the button
   - Don't offer to save passwords and don't sign in automatically
   - Add Polish and enable spell check for it
   - Don't offer to translate pages
@@ -68,13 +68,22 @@ Automated Arch Linux installation
   - Only show attachment, title and username columns
   - Fit columns to window
 4. Hide the menu in Slack
-5. Disable Teams autostart and logging
-6. Change the font to `Fira Code Retina` and tab size to `2` in Postman
-7. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
-8. Gnome
+5. Teams
+  - Disable autostart
+  - Disable GPU hardware acceleration
+  - Disable logging
+  - Turn off animations
+  - Don't participate in surveys
+  - Disable missed activity emails
+  - Don't play sound for incoming calls and notifications
+  - Open files in the browser
+6. Disable Teams autostart and logging
+7. Change the font to `Fira Code Retina` and tab size to `2` in Postman
+8. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
+9. Gnome
   - Reorder the icons
   - Add VPN server
   - Remove the `~/.gnome` dir
-9. Clone the work repo, run `update.zsh` and setup `.env` files
-10. Run `windows.zsh`
+10. Clone the work repo, run `update.zsh` and setup `.env` files
+11. Run `windows.zsh`
 
