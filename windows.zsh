@@ -111,6 +111,8 @@
   function obs { big_qt "^OBS.*Profile.*Scenes.?" }
   function shotcut { big_qt ".?Shotcut$" }
 
+  function foliate { medium "Foliate" }
+
   function gimp {
     medium "GNU Image Manipulation Program"
     medium ".?GIMP$"
@@ -130,6 +132,7 @@
     shotcut
     gimp
     keepass
+    foliate
   } || eval $1
 
 } $1
