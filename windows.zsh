@@ -79,7 +79,7 @@
   }
 
   function chrome {
-    chromium =".?Chrom(e|ium)$"
+    chromium ".?Chrom(e|ium)$"
   }
 
   function slack {
@@ -112,6 +112,7 @@
   function shotcut { big_qt ".?Shotcut$" }
 
   function foliate { medium "Foliate" }
+  function drawing { medium "^Drawing$" }
 
   function gimp {
     medium "GNU Image Manipulation Program"
@@ -122,7 +123,7 @@
 
   [[ -z "$1" ]] && {
     brave
-    # chrome
+    chrome
     slack
     teams
     vscode
@@ -130,6 +131,7 @@
     data_studio
     obs
     shotcut
+    drawing
     gimp
     keepass
     foliate

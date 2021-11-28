@@ -160,13 +160,16 @@ NVM_DIR=${XDG_DATA_HOME:-~/.local/share}/nvm source /usr/share/nvm/init-nvm.sh
 # apps
 
 sudo pacman -S --noconfirm \
+  drawing \
   flameshot \
   foliate \
-  gimp \
   keepassxc \
   mpv celluloid \
   openconnect networkmanager-openconnect \
   peek gifski gst-plugins-good gst-plugins-ugly
+
+# sudo pacman -S --noconfirm \
+  # gimp
 
 paru -S --aur --noconfirm \
   brave-bin \
