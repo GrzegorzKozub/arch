@@ -80,11 +80,3 @@ do
     ~/.local/share/applications/teams.desktop
 done
 
-# for APP in \
-  # gimp
-# do
-  # cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  # sed -i \
-    # -e 's/^Name=GNU Image Manipulation Program$/Name=GIMP/' \
-    # ~/.local/share/applications/$APP.desktop
-# done
