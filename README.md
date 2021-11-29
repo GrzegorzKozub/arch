@@ -72,17 +72,17 @@ Automated Arch Linux installation
   - Disable autostart
   - Disable logging
   - Turn off animations
-  - Don't participate in surveys
+  - Disable surveys
+  - Disable optional connected experiences
   - Disable missed activity emails
   - Don't play sound for incoming calls and notifications
   - Open files in the browser
-6. Disable Teams autostart and logging
-7. Change the font to `Fira Code Retina` and tab size to `2` in Postman
-8. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
+6. Change the font to `Fira Code Retina` and tab size to `2` in Postman
+7. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
 9. Gnome
   - Reorder the icons
   - Add VPN server
   - Remove the `~/.gnome` dir
-10. Clone the work repo, run `update.zsh` and setup `.env` files
-11. Run `windows.zsh`
+9. Clone the work repo, run `update.zsh` and setup `.env` files
+10. Run `windows.zsh`
 
