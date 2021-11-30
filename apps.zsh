@@ -161,7 +161,6 @@ NVM_DIR=${XDG_DATA_HOME:-~/.local/share}/nvm source /usr/share/nvm/init-nvm.sh
 
 sudo pacman -S --noconfirm \
   flameshot \
-  foliate \
   keepassxc \
   mpv celluloid \
   openconnect networkmanager-openconnect \

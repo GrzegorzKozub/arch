@@ -2,13 +2,10 @@
 
 set -e -o verbose
 
-# drawing
+# picture
 
 sudo pacman -S --noconfirm \
   gimp
-
-# sudo pacman -S --noconfirm \
-  # drawing
 
 # links
 
