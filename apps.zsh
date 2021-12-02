@@ -138,7 +138,8 @@ paru -S --aur --noconfirm \
 # aws
 
 paru -S --aur --noconfirm \
-  aws-cli-v2-bin
+  aws-cli-v2-bin \
+  aws-sam-cli-bin
 
 # dev
 
