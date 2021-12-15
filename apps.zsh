@@ -171,16 +171,18 @@ paru -S --aur --noconfirm \
   brave-bin \
   chrome-gnome-shell \
   postman-bin \
-  slack-desktop \
   teams \
   visual-studio-code-bin
+
+# paru -S --aur --noconfirm \
+  # slack-desktop
 
 gsettings set io.github.celluloid-player.Celluloid always-use-floating-controls true
 gsettings set io.github.celluloid-player.Celluloid dark-theme-enable false
 gsettings set io.github.celluloid-player.Celluloid mpv-config-enable true
 gsettings set io.github.celluloid-player.Celluloid mpv-config-file '/home/greg/.config/mpv/mpv.conf'
 
-xdg-mime default slack.desktop x-scheme-handler/slack
+# xdg-mime default slack.desktop x-scheme-handler/slack
 
 # clean package caches
 

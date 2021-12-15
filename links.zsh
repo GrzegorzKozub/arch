@@ -62,8 +62,7 @@ do
 done
 
 for APP in \
-  postman \
-  slack
+  postman # slack
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
   sed -i \
