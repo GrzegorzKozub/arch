@@ -5,7 +5,8 @@ set -e -o verbose
 # picture
 
 sudo pacman -S --noconfirm \
-  gimp
+  gimp \
+  pinta
 
 # links
 
