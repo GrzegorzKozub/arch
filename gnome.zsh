@@ -79,6 +79,7 @@ if [[ $HOST = 'drifter' ]]; then
 
   gsettings set org.gnome.desktop.session idle-delay 300
   gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
+  gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
 
 else
 
