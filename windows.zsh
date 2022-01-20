@@ -97,9 +97,9 @@
     local title="^Microsoft Teams.?"
     [[ -v _4k ]] && {
       fix $title \
-        $(( ( $width / 7 ) * 3 )) \
+        $(( ( $width / 2 ) * 1 )) \
         $(( $height - $margin * 6 - $top_bar )) \
-        $(( ( $width / 7 ) * 4 - $margin * 3 )) \
+        $(( ( $width / 2) * 1 - $margin * 3 )) \
         $(( $margin * 3 + $top_bar ))
       } || medium $title
   }
