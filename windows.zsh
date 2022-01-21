@@ -4,6 +4,8 @@
 
 () {
 
+  [[ $(xrandr | grep "*" | wc -l) = 2 ]] && local dual=true
+
   local res=$(xrandr | grep "*" | head -n 1 | sed -n -e "s/^ *//p" | sed -n -e "s/ .*$//p")
   local width=$(echo $res | cut -dx -f1)
   local height=$(echo $res | cut -dx -f2)
@@ -26,6 +28,15 @@
       $(( ( ( $height - $top_bar ) / $height_step ) * $3 + ${4:-0} )) \
       $(( ( $width / $width_step ) * ( ( $width_step - $2 ) / 2 ) + ${7:-0} )) \
       $(( ( ( $height - $top_bar ) / $height_step ) * ( ( $height_step - $3 ) / 2 ) + $top_bar + ${5:-0} ))
+  }
+
+  function push {
+    local windows=$(xdotool search --onlyvisible --maxdepth 2 --name --class "$1")
+    [[ -z $windows ]] || while IFS= read -r window; do
+      local left=$(xdotool getwindowgeometry --shell $window | grep "X=" | cut -d= -f2)
+      local top=$(xdotool getwindowgeometry --shell $window | grep "Y=" | cut -d= -f2)
+      xdotool windowmove $window $(( $left + $width )) $top
+    done <<< $windows
   }
 
   [[ $width = 3840 ]] && [[ $height = 2400 ]] && {
@@ -91,6 +102,7 @@
         $(( ( $width / 7 ) * 4 - $margin * 3 )) \
         $(( $margin * 3 + $top_bar ))
       } || medium $title $(( - $title_bar ))
+    # [[ -v dual ]] && push $title
   }
 
   function teams {
@@ -102,6 +114,7 @@
         $(( ( $width / 2) * 1 - $margin * 3 )) \
         $(( $margin * 3 + $top_bar ))
       } || medium $title
+    # [[ -v dual ]] && push $title
   }
 
   function vscode { big ".?Visual Studio Code$" }
@@ -112,7 +125,6 @@
   function shotcut { big_qt ".?Shotcut$" }
 
   function foliate { medium "Foliate" }
-  function drawing { medium "^Drawing$" }
 
   function gimp {
     medium "GNU Image Manipulation Program"
@@ -120,6 +132,7 @@
   }
 
   function keepass { small_qt "KeePassXC$" }
+  function pinta { small ".?Pinta$" }
 
   [[ -z "$1" ]] && {
     brave
@@ -131,10 +144,10 @@
     data_studio
     obs
     shotcut
-    drawing
+    foliate
     gimp
     keepass
-    foliate
+    pinta
   } || eval $1
 
 } $1
