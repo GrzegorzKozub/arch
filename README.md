@@ -83,6 +83,7 @@ Automated Arch Linux installation
 9. Gnome
   - Reorder the icons
   - Add VPN server
+  - Select the sound device and set volume to 50%
   - Remove the `~/.gnome` dir
 9. Clone the work repo, run `update.zsh` and setup `.env` files
 10. Run `windows.zsh`
