@@ -68,6 +68,7 @@ sudo pacman -S --noconfirm \
   man-db man-pages \
   p7zip \
   pass \
+  qemu \
   ripgrep \
   rsync \
   stress \
