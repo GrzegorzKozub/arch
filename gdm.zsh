@@ -41,11 +41,20 @@ cat <<EOF >> $TMP/theme/$GST.xml
 </gresources>
 EOF
 
-cat <<EOF >> $TMP/theme/gnome-shell.css
+[[ $HOST = 'drifter' || host = 'player' ]] && cat <<EOF >> $TMP/theme/gnome-shell.css
 #lockDialogGroup {
   background: url(resource:///org/gnome/shell/theme/women.jpg);
-  background-size: cover;
   background-repeat: no-repeat;
+  background-size: cover;
+}
+EOF
+
+[[ $HOST = 'worker' ]] && cat <<EOF >> $TMP/theme/gnome-shell.css
+#lockDialogGroup {
+  background: url(resource:///org/gnome/shell/theme/women.jpg);
+  background-position: 0 180px;
+  background-repeat: repeat-x;
+  background-size: 3840px 2525px;
 }
 EOF
 
