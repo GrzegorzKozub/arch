@@ -95,7 +95,7 @@ cp `dirname $0`/system3.zsh /home/greg
 su greg --command '~/system3.zsh'
 rm /home/greg/system3.zsh
 
-# kernel hooks: encrypt, lvm2 and resume
+# kernel hooks: consolefont, encrypt, lvm2 and resume
 
 [[ $MY_HOSTNAME = 'drifter' ]] && sed -Ei 's/^MODULES=.+$/MODULES=(i915)/' /etc/mkinitcpio.conf
 
@@ -119,6 +119,13 @@ reflector --save /etc/pacman.d/mirrorlist --protocol https --country Poland,Germ
 # pacman
 
 sed -i 's/#Color/Color/' /etc/pacman.conf
+
+# always mount backup
+
+[[ -d /run/media/greg/backup ]] || mkdir /run/media/greg/backup
+
+echo '' >> /etc/fstab
+echo '/dev/mapper/vg1-backup	/run/media/greg/backup			ext4		defaults	0 1' >> /etc/fstab
 
 # scripts
 
