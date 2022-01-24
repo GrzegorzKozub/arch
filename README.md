@@ -69,7 +69,6 @@ Automated Arch Linux installation
   - Fit columns to window
 4. Hide the menu in Slack
 5. Teams
-  - Zoom to 120%
   - Disable autostart
   - Disable logging
   - Turn off animations

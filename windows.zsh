@@ -109,9 +109,9 @@ function teams {
   local title="^Microsoft Teams.?"
   [[ -v _4k ]] && {
     fix $title \
-      $(( ( $width / 2 ) * 1 )) \
+      $(( ( $width / 11 ) * 5 )) \
       $(( $height - $margin * 6 - $top_bar )) \
-      $(( ( $width / 2) * 1 - $margin * 3 )) \
+      $(( ( $width / 11 ) * 6 - $margin * 3 )) \
       $(( $margin * 3 + $top_bar ))
     } || medium $title
   # [[ -v dual ]] && push $title
