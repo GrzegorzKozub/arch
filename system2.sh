@@ -122,10 +122,11 @@ sed -i 's/#Color/Color/' /etc/pacman.conf
 
 # always mount backup
 
-[[ -d /run/media/greg/backup ]] || mkdir /run/media/greg/backup
+[[ -d /run/media/greg/backup ]] || mkdir -p /run/media/greg/backup
 
+echo '# /dev/mapper/vg1-backup' >> /etc/fstab
+echo '/dev/mapper/vg1-backup	/run/media/greg/backup	ext4	defaults	0 1' >> /etc/fstab
 echo '' >> /etc/fstab
-echo '/dev/mapper/vg1-backup	/run/media/greg/backup			ext4		defaults	0 1' >> /etc/fstab
 
 # scripts
 
