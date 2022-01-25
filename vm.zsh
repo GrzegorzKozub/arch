@@ -40,6 +40,8 @@ fi
 
 # vm
 
+# map \\10.0.2.4\qemu
+
 qemu-system-x86_64 \
   -name windows \
   -enable-kvm \
