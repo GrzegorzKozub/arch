@@ -121,6 +121,7 @@ function vscode { big ".?Visual Studio Code$" }
 function postman { big_electron "^Postman$" }
 
 function data_studio { big ".?Azure Data Studio$" }
+function mysql_workbench { big ".?MySQL Workbench$" }
 function obs { big_qt "^OBS.*Profile.*Scenes.?" }
 function shotcut { big_qt ".?Shotcut$" }
 
@@ -142,6 +143,7 @@ function pinta { small ".?Pinta$" }
   vscode
   postman
   data_studio
+  mysql_workbench
   obs
   shotcut
   foliate
