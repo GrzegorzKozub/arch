@@ -8,11 +8,12 @@ set -e
 
 # config
 
-local mount=/run/media/greg/backup
-local dir=/run/media/greg/backup/vm
+local mount=/run/media/$USER/backup
+local dir=/run/media/$USER/backup/vm
 local disk=windows.cow
 local windows=windows.iso
 local virtio=virtio-win-0.1.215.iso
+local share=$HOME/Downloads
 
 # mount
 
@@ -21,7 +22,7 @@ local virtio=virtio-win-0.1.215.iso
 
 # dirs
 
-[[ -d $dir ]] || (sudo mkdir $dir && sudo chown greg $dir && sudo chgrp users $dir)
+[[ -d $dir ]] || (sudo mkdir $dir && sudo chown $USER $dir && sudo chgrp users $dir)
 
 # dependencies
 
@@ -46,7 +47,7 @@ qemu-system-x86_64 \
   -smp 4,sockets=1,cores=2,threads=2 \
   -m 8G \
   -vga std \
-  -nic user,model=virtio-net-pci \
+  -nic user,model=virtio-net-pci,smb=$share \
   -drive file=$dir/$disk,if=virtio,aio=native,cache.direct=on \
   -drive file=$dir/$windows,media=cdrom \
   -drive file=$dir/$virtio,media=cdrom \
