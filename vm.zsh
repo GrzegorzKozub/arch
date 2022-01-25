@@ -42,20 +42,16 @@ fi
 
 # map \\10.0.2.4\qemu
 
-# this works fine with virt-viewer
-# but we'll provide it as option
-# we should understand these and also enable folder sharing via spice
-#-device virtio-serial-pci \
-#-spice port=5930,disable-ticketing=on \
-#-device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0 \
-#-chardev spicevmc,id=spicechannel0,name=vdagent \
+# https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe
+
+# sudo pacman -S virt-viewer
 
 qemu-system-x86_64 \
   -name windows \
   -enable-kvm \
   -cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,topoext \
   -smp 4,sockets=1,cores=2,threads=2 \
-  -m 8G \ewyyffwesss
+  -m 8G \
   -vga std \
   -device ich9-intel-hda \
   -device hda-output \
@@ -63,8 +59,15 @@ qemu-system-x86_64 \
   -drive file=$dir/$disk,if=virtio,aio=native,cache.direct=on \
   -drive file=$dir/$windows,media=cdrom \
   -drive file=$dir/$virtio,media=cdrom \
+-device virtio-serial-pci \
+-spice port=5930,disable-ticketing=on \
+-device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0 \
+-chardev spicevmc,id=spicechannel0,name=vdagent \
+-device virtserialport,chardev=spicechannel1,name=org.spice-space.webdav.0 \
+-chardev spiceport,name=org.spice-space.webdav.0,id=spicechannel1
   -boot menu=on \
-  -monitor stdio
+  -monitor stdio \
+-display spice-app
 
 }
 
