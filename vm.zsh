@@ -6,25 +6,41 @@ set -e
 
 () {
 
+# config
+
+local mount=/run/media/greg/backup
 local dir=/run/media/greg/backup/vm
-local disk=win.cow
-local win=win.iso
+local disk=windows.cow
+local windows=windows.iso
 local virtio=virtio-win-0.1.215.iso
+
+# mount
+
+[[ -d $mount ]] || sudo mkdir -p $mount
+[[ $(mount | grep "vg1-backup on $mount") ]] || sudo mount /dev/mapper/vg1-backup $mount
+
+# dirs
 
 [[ -d $dir ]] || (sudo mkdir $dir && sudo chown greg $dir && sudo chgrp users $dir)
 
-if [[ ! -f $dir/$win || ! -f $dir/$virtio ]]; then
+# dependencies
+
+if [[ ! -f $dir/$windows || ! -f $dir/$virtio ]]; then
   echo "put windows and virtio-win iso from https://github.com/virtio-win/virtio-win-pkg-scripts in $dir"
   exit 1
 fi
+
+# disk
 
 if [[ ! -f $dir/$disk ]]; then
   qemu-img create -f qcow2 $dir/$disk 128G > /dev/null
   echo 'use disk (viostor dir), vga and nic drivers from virtio-win and disable fast startup'
 fi
 
+# vm
+
 qemu-system-x86_64 \
-  -name win \
+  -name windows \
   -enable-kvm \
   -cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,topoext \
   -smp 4,sockets=1,cores=2,threads=2 \
@@ -32,7 +48,7 @@ qemu-system-x86_64 \
   -vga std \
   -nic user,model=virtio-net-pci \
   -drive file=$dir/$disk,if=virtio,aio=native,cache.direct=on \
-  -drive file=$dir/$win,media=cdrom \
+  -drive file=$dir/$windows,media=cdrom \
   -drive file=$dir/$virtio,media=cdrom \
   -boot menu=on \
   -monitor stdio
