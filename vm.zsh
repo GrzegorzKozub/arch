@@ -42,13 +42,23 @@ fi
 
 # map \\10.0.2.4\qemu
 
+# this works fine with virt-viewer
+# but we'll provide it as option
+# we should understand these and also enable folder sharing via spice
+#-device virtio-serial-pci \
+#-spice port=5930,disable-ticketing=on \
+#-device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0 \
+#-chardev spicevmc,id=spicechannel0,name=vdagent \
+
 qemu-system-x86_64 \
   -name windows \
   -enable-kvm \
   -cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,topoext \
   -smp 4,sockets=1,cores=2,threads=2 \
-  -m 8G \
+  -m 8G \ewyyffwesss
   -vga std \
+  -device ich9-intel-hda \
+  -device hda-output \
   -nic user,model=virtio-net-pci,smb=$share \
   -drive file=$dir/$disk,if=virtio,aio=native,cache.direct=on \
   -drive file=$dir/$windows,media=cdrom \
