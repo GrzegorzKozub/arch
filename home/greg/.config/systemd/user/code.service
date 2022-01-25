@@ -1,7 +1,0 @@
-[Unit]
-Description=code
-
-[Service]
-WorkingDirectory=%h/code/arch
-ExecStart=%h/code/arch/code.sh
-
