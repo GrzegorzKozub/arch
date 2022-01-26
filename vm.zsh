@@ -2,9 +2,17 @@
 
 set -e
 
+# put windows and virtio-win iso from https://github.com/virtio-win/virtio-win-pkg-scripts in $DIR
+# install disk, vga and nic drivers from virtio-win on guest
+# disable fast startup on guest
+# map \\10.0.2.4\qemu as network drive on guest
+
+# for clipboard or folder sharing install virt-viewer on host
+# install guest tools and webdav daemon from https://www.spice-space.org/download.html on guest
+
 # config
 
-zparseopts clipboard=OPTS folder=OPTS
+zparseopts clipboard=PARAMS folder=PARAMS
 
 MOUNT=/run/media/$USER/backup
 DIR=/run/media/$USER/backup/vm
@@ -26,60 +34,54 @@ SHARE=$HOME/Downloads
 
 [[ ! -f $DIR/$DISK ]] && qemu-img create -f qcow2 $DIR/$DISK 128G
 
-# params
+# options
 
-opts='-name windows'
+OPTS+=('-name windows')
 
-opts="$opts -enable-kvm"
+OPTS+=('-enable-kvm')
 
-opts="$opts -cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,topoext"
-opts="$opts -smp 4,sockets=1,cores=2,threads=2"
+OPTS+=('-cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,topoext')
+OPTS+=('-smp 4,sockets=1,cores=2,threads=2')
 
-opts="$opts -m 8G"
+OPTS+=('-m 8G')
 
-opts="$opts -vga std"
+OPTS+=('-vga std')
 
-opts="$opts -device ich9-intel-hda"
-opts="$opts -device hda-output"
+OPTS+=('-device ich9-intel-hda')
+OPTS+=('-device hda-output')
 
-opts="$opts -nic user,model=virtio-net-pci,smb=$SHARE"
+OPTS+=("-nic user,model=virtio-net-pci,smb=$SHARE")
 
-opts="$opts -drive file=$DIR/$DISK,if=virtio,aio=native,cache.direct=on"
-[[ -f $DIR/$WINDOWS ]] && opts="$opts -drive file=$DIR/$WINDOWS,media=cdrom"
-[[ -f $DIR/$VIRTIO ]] && opts="$opts -drive file=$DIR/$VIRTIO,media=cdrom"
+OPTS+=("-drive file=$DIR/$DISK,if=virtio,aio=native,cache.direct=on")
+[[ -f $DIR/$WINDOWS ]] && OPTS+=("-drive file=$DIR/$WINDOWS,media=cdrom")
+[[ -f $DIR/$VIRTIO ]] && OPTS+=("-drive file=$DIR/$VIRTIO,media=cdrom")
 
-if (( $OPTS[(I)-clipboard|-folder] )); then
+if (( $PARAMS[(I)-clipboard|-folder] )); then
 
-  opts="$opts -spice port=5930,disable-ticketing=on"
-  opts="$opts -display spice-app"
-  opts="$opts -device virtio-serial-pci"
+  OPTS+=('-spice port=5930,disable-ticketing=on')
+  OPTS+=('-display spice-app')
+  OPTS+=('-device virtio-serial-pci')
 
-  if (( $OPTS[(Ie)-clipboard] )); then
-    opts="$opts -device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0"
-    opts="$opts -chardev spicevmc,id=spicechannel0,name=vdagent"
+  if (( $PARAMS[(Ie)-clipboard] )); then
+    OPTS+=('-device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0')
+    OPTS+=('-chardev spicevmc,id=spicechannel0,name=vdagent')
   fi
 
-  if (( $OPTS[(Ie)-folder] )); then
-    opts="$opts -device virtserialport,chardev=spicechannel1,name=org.spice-space.webdav.0"
-    opts="$opts -chardev spiceport,name=org.spice-space.webdav.0,id=spicechannel1"
+  if (( $PARAMS[(Ie)-folder] )); then
+    OPTS+=('-device virtserialport,chardev=spicechannel1,name=org.spice-space.webdav.0')
+    OPTS+=('-chardev spiceport,name=org.spice-space.webdav.0,id=spicechannel1')
   fi
 
 fi
 
-opts="$opts -boot menu=on"
-opts="$opts -monitor stdio"
+OPTS+=('-boot menu=on')
+OPTS+=('-monitor stdio')
 
-# run
+# start
 
 setopt shwordsplit
 
-qemu-system-x86_64 $opts
+qemu-system-x86_64 $OPTS
 
 unsetopt shwordsplit
 
-# better name for $opts
-  #echo 'use disk (viostor dir), vga and nic drivers from virtio-win and disable fast startup'
-#  echo "put windows and virtio-win iso from https://github.com/virtio-win/virtio-win-pkg-scripts in $DIR"
-# map \\10.0.2.4\qemu
-# https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe
-# sudo pacman -S virt-viewer
