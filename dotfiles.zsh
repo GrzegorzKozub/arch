@@ -20,6 +20,7 @@ chmod 600 ~/.ssh/config
 
 cp -r /mnt/.arch/keys/openssh/.ssh/github.com ~/.ssh
 chmod 600 ~/.ssh/github.com/*
+chmod 600 ~/.ssh/gitlab.com/*
 
 sudo umount -R /mnt
 

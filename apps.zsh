@@ -14,7 +14,7 @@ sudo pacman -Sy --noconfirm
 # git and openssh
 
 sudo pacman -S --noconfirm \
-  git \
+  git git-lfs \
   openssh
 
 paru -S --aur --noconfirm \
