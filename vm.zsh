@@ -38,6 +38,13 @@ OPTS+=('-smp 4,sockets=1,cores=2,threads=2')
 OPTS+=('-m 8G')
 
 OPTS+=('-vga std')
+#OPTS+=('-vga qxl')
+#OPTS+=('-vga none -device qxl-vga,vgamem_mb=32') # hi-res with spice but slow
+#OPTS+=('-vga virtio')
+#OPTS+=('-vga virtio -display gtk,gl=on')
+
+#OPTS+=('-usbdevice tablet') # works with std; with qxl/virtio only with spice
+#OPTS+=('-display default,show-cursor=on')
 
 OPTS+=('-device ich9-intel-hda')
 OPTS+=('-device hda-output')
