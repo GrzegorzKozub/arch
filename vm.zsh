@@ -10,6 +10,8 @@ set -e
 # for clipboard or folder sharing install virt-viewer on host
 # install guest tools and webdav daemon from https://www.spice-space.org/download.html on guest
 
+# to reduce image size: defrag, sdelete -z, and qemu-img convert -O qcow2 from.cow to.cow
+
 # config
 
 zparseopts clipboard=PARAMS folder=PARAMS
