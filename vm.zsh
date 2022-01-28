@@ -2,16 +2,6 @@
 
 set -e
 
-# put windows and virtio-win iso from https://github.com/virtio-win/virtio-win-pkg-scripts in $DIR
-# install disk, vga and nic drivers from virtio-win on guest
-# disable fast startup on guest
-# map \\10.0.2.4\qemu as network drive on guest
-
-# for clipboard or folder sharing install virt-viewer on host
-# install guest tools and webdav daemon from https://www.spice-space.org/download.html on guest
-
-# to reduce image size: defrag, sdelete -z, and qemu-img convert -O qcow2 from.cow to.cow
-
 # config
 
 zparseopts clipboard=PARAMS folder=PARAMS
