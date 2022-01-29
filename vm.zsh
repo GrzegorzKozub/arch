@@ -7,7 +7,7 @@ set -e
 zparseopts clipboard=PARAMS folder=PARAMS
 
 MOUNT=/run/media/$USER/backup
-DIR=/run/media/$USER/backup/vm
+DIR=$MOUNT/vm
 DISK=windows.cow
 WINDOWS=windows.iso
 VIRTIO=virtio-win-0.1.215.iso
@@ -37,19 +37,23 @@ OPTS+=('-smp 4,sockets=1,cores=2,threads=2')
 
 OPTS+=('-m 8G')
 
-OPTS+=('-vga std')
-#OPTS+=('-vga qxl')
-#OPTS+=('-vga none -device qxl-vga,vgamem_mb=32') # hi-res with spice but slow
-#OPTS+=('-vga virtio')
-#OPTS+=('-vga virtio -display gtk,gl=on')
+if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
-#OPTS+=('-usbdevice tablet') # works with std; with qxl/virtio only with spice
-#OPTS+=('-display default,show-cursor=on')
+  OPTS+=('-vga virtio -display sdl,gl=on')
+  # OPTS+=('-vga none -device qxl-vga,vgamem_mb=64,ram_size_mb=128,vram_size_mb=256,vram64_size_mb=256')
+
+else
+
+  OPTS+=('-vga std')
+
+fi
 
 OPTS+=('-device ich9-intel-hda')
 OPTS+=('-device hda-output')
 
 OPTS+=("-nic user,model=virtio-net-pci,smb=$SHARE")
+
+OPTS+=('-usbdevice tablet')
 
 OPTS+=("-drive file=$DIR/$DISK,if=virtio,aio=native,cache.direct=on")
 [[ -f $DIR/$WINDOWS ]] && OPTS+=("-drive file=$DIR/$WINDOWS,media=cdrom")
