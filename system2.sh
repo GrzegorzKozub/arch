@@ -128,6 +128,11 @@ echo '# /dev/mapper/vg1-backup' >> /etc/fstab
 echo '/dev/mapper/vg1-backup	/run/media/greg/backup	ext4	defaults	0 1' >> /etc/fstab
 echo '' >> /etc/fstab
 
+# default sound over hdmi to primary monitor
+
+sed -Ei 's/priority = 59/priority = 58/' /usr/share/pulseaudio/alsa-mixer/paths/hdmi-output-0.conf
+sed -Ei 's/priority = 58/priority = 59/' /usr/share/pulseaudio/alsa-mixer/paths/hdmi-output-1.conf
+
 # scripts
 
 su greg --command 'mkdir ~/code; git clone https://github.com/GrzegorzKozub/arch.git ~/code/arch'
