@@ -39,9 +39,9 @@ OPTS+=('-m 8G')
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
-  # 2560x1600
-  OPTS+=('-vga virtio -display sdl,gl=on')
-  # OPTS+=('-vga none -device qxl-vga,vgamem_mb=64,ram_size_mb=128,vram_size_mb=256,vram64_size_mb=256')
+  # 1920x1080
+  # OPTS+=('-vga virtio -display sdl,gl=on')
+  OPTS+=('-vga none -device qxl-vga,vgamem_mb=64,ram_size_mb=128,vram_size_mb=256,vram64_size_mb=256')
 
 else
 
