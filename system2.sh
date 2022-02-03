@@ -130,8 +130,12 @@ echo '' >> /etc/fstab
 
 # default sound over hdmi to primary monitor
 
-sed -Ei 's/priority = 59/priority = 58/' /usr/share/pulseaudio/alsa-mixer/paths/hdmi-output-0.conf
-sed -Ei 's/priority = 58/priority = 59/' /usr/share/pulseaudio/alsa-mixer/paths/hdmi-output-1.conf
+if [[ $MY_HOSTNAME = 'worker' ]]; then
+
+  sed -Ei 's/priority = 59/priority = 58/' /usr/share/pulseaudio/alsa-mixer/paths/hdmi-output-0.conf
+  sed -Ei 's/priority = 58/priority = 59/' /usr/share/pulseaudio/alsa-mixer/paths/hdmi-output-1.conf
+
+fi
 
 # scripts
 
