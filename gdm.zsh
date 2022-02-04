@@ -52,7 +52,7 @@ EOF
 [[ $HOST = 'worker' ]] && cat <<EOF >> $TMP/theme/gnome-shell.css
 #lockDialogGroup {
   background: url(resource:///org/gnome/shell/theme/women.jpg);
-  background-position: 0 180px;
+  background-position: 0 0;
   background-repeat: repeat-x;
   background-size: 3840px 2525px;
 }
