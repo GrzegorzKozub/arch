@@ -75,30 +75,19 @@ function medium_qt { medium $1 $(( - $title_bar )) $title_bar }
 function small_electron { small $1 $(( - $title_bar )) }
 function small_qt { small $1 $(( - $title_bar )) $title_bar }
 
-function chromium { [[ -v _4k ]] && { big $1 63 -15 47 -24 } || big $1 104 -24 76 -38 }
-function brave { chromium ".?Brave$" }
-function chrome { chromium ".?Chrom(e|ium)$" }
-
-function slack {
-  local title=".?Slack$"
-  [[ -v _4k ]] && {
-    fix $title \
-      $(( ( $width / 7 ) * 3 )) \
-      $(( $height - $margin * 6 - $top_bar - $title_bar )) \
-      $(( ( $width / 7 ) * 4 - $margin * 3 )) \
-      $(( $margin * 3 + $top_bar ))
-    } || medium $title $(( - $title_bar ))
-  # [[ -v dual ]] && push $title
+function brave {
+  local title=".?Brave$"
+  [[ -v _4k ]] && big $title 63 -15 47 -24 || big $title 104 -24 76 -38
 }
 
 function vscode { big ".?Visual Studio Code$" }
 function postman { big_electron "^Postman$" }
-
 function data_studio { big ".?Azure Data Studio$" }
 function mysql_workbench { big ".?MySQL Workbench$" }
 function obs { big_qt "^OBS.*Profile.*Scenes.?" }
 function shotcut { big_qt ".?Shotcut$" }
 
+function slack { medium ".?Slack$" $(( - $title_bar )) }
 function foliate { medium "Foliate" }
 
 function gimp {
@@ -112,13 +101,13 @@ function pinta { small ".?Pinta$" }
 [[ -z "$1" ]] && {
   brave
   chrome
-  slack
   vscode
   postman
   data_studio
   mysql_workbench
   obs
   shotcut
+  slack
   foliate
   gimp
   keepass

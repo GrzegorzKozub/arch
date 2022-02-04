@@ -52,40 +52,32 @@ Automated Arch Linux installation
   - Don't ask where to save downloaded files
   - Don't show Wayback Machine prompts on 404 pages
   - Don't continue running background apps
-  - Sign in to your sites and allow notifications, camera and microphone where needed (including Hangouts)
   - Enable `brave://flags/#enable-webrtc-pipewire-capturer`
-2. Chrome
-  - Setup your profiles and sync your Google accounts
-  - Set as default browser
-  - See that English and Polish languages are enabled
-  - Enable enhanced spell check for all lanuages
-  - Disable continuing in the background
-  - Sign in to your sites and allow notifications, camera and microphone where needed (including Hangouts)
-  - Enable `chrome://flags/#enable-webrtc-pipewire-capturer`
-  - Remove the Hangouts link from `~/.local/share/applications`
-3. KeePassXC
+  - Sign in to your sites
+  - Teams
+    - Disable surveys
+    - Disable optional connected experiences
+    - Disable missed activity emails
+    - Disable notification banners
+    - Don't show message preview
+    - Don't play sound for incoming calls and notifications
+    - Show notifications in feed or not at all
+    - Open files in browser
+    - Block notifications in browser
+    - Allow camera and microphone in browser
+2. KeePassXC
   - Open your databases
   - Only show attachment, title and username columns
   - Fit columns to window
-4. Hide the menu in Slack
-5. Teams
-  - Disable autostart
-  - Disable logging
-  - Turn off animations
-  - Disable surveys
-  - Disable optional connected experiences
-  - Disable missed activity emails
-  - Don't play sound for incoming calls and notifications
-  - Open files in the browser
-6. Change the font to `Fira Code Retina` and tab size to `2` in Postman
-7. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
-9. Gnome
+3. Change the font to `Fira Code Retina` and tab size to `2` in Postman
+4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
+5. Gnome
   - Reorder the icons
   - Add VPN server
   - Select the sound device and set volume to 50%
   - Remove the `~/.gnome` dir
-9. Clone the work repo, run `update.zsh` and setup `.env` files
-10. Run `windows.zsh`
+6. Clone the work repo, run `update.zsh` and setup `.env` files
+7. Run `windows.zsh`
 
 ## Windows VM
 
