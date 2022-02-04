@@ -172,7 +172,6 @@ paru -S --aur --noconfirm \
   brave-bin \
   chrome-gnome-shell \
   postman-bin \
-  teams \
   visual-studio-code-bin
 
 # paru -S --aur --noconfirm \

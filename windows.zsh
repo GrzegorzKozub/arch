@@ -75,23 +75,9 @@ function medium_qt { medium $1 $(( - $title_bar )) $title_bar }
 function small_electron { small $1 $(( - $title_bar )) }
 function small_qt { small $1 $(( - $title_bar )) $title_bar }
 
-function chromium {
-  [[ -v _4k ]] && {
-    fix $1 \
-      $(( ( $width / 3 ) * 2 )) \
-      $(( $height - $margin - $top_bar )) \
-      $margin \
-      $(( $margin + $top_bar ))
-   } || big $1 104 -24 76 -38
-}
-
-function brave {
-  chromium ".?Brave$"
-}
-
-function chrome {
-  chromium ".?Chrom(e|ium)$"
-}
+function chromium { [[ -v _4k ]] && { big $1 0 16 } || big $1 104 -24 76 -38 }
+function brave { chromium ".?Brave$" }
+function chrome { chromium ".?Chrom(e|ium)$" }
 
 function slack {
   local title=".?Slack$"
@@ -102,18 +88,6 @@ function slack {
       $(( ( $width / 7 ) * 4 - $margin * 3 )) \
       $(( $margin * 3 + $top_bar ))
     } || medium $title $(( - $title_bar ))
-  # [[ -v dual ]] && push $title
-}
-
-function teams {
-  local title="^Microsoft Teams.?"
-  [[ -v _4k ]] && {
-    fix $title \
-      $(( ( $width / 11 ) * 5 )) \
-      $(( $height - $margin * 6 - $top_bar )) \
-      $(( ( $width / 11 ) * 6 - $margin * 3 )) \
-      $(( $margin * 3 + $top_bar ))
-    } || medium $title
   # [[ -v dual ]] && push $title
 }
 
@@ -139,7 +113,6 @@ function pinta { small ".?Pinta$" }
   brave
   chrome
   slack
-  teams
   vscode
   postman
   data_studio
