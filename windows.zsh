@@ -75,7 +75,7 @@ function medium_qt { medium $1 $(( - $title_bar )) $title_bar }
 function small_electron { small $1 $(( - $title_bar )) }
 function small_qt { small $1 $(( - $title_bar )) $title_bar }
 
-function chromium { [[ -v _4k ]] && { big $1 0 16 } || big $1 104 -24 76 -38 }
+function chromium { [[ -v _4k ]] && { big $1 63 -15 47 -24 } || big $1 104 -24 76 -38 }
 function brave { chromium ".?Brave$" }
 function chrome { chromium ".?Chrom(e|ium)$" }
 
