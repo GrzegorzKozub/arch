@@ -38,3 +38,8 @@ sudo pacdiff
 . `dirname $0`/gnome.zsh
 . `dirname $0`/links.zsh
 
+# keys and passwords
+
+pushd ~/code/keys && git pull && popd
+pushd ~/code/passwords && git pull && popd
+
