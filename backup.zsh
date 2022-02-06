@@ -9,7 +9,10 @@ set -e
 . $1/unlock.zsh
 . $1/mount.zsh
 
-while [[ $(df /dev/mapper/vg1-backup --output=avail | grep -v Avail) -lt 12000000 ]]; do
+while [[ \
+  $(df /dev/mapper/vg1-backup --output=avail | grep -v Avail) -lt 10000000 && \
+  $(ls -d ~/mnt/[0-9]* | wc -l) -gt 3 \
+]]; do
   local oldest="/mnt/$(ls -t /mnt | grep '^[0-9]*$' | tail -n1)"
   echo "removing $oldest"
   rm -rf $oldest
@@ -23,3 +26,4 @@ fsarchiver savefs -c - $dir/root.fsa /dev/mapper/vg1-root
 cp /mnt/boot/*.img /mnt/boot/vmlinuz-linux* $dir/
 
 } `dirname $0`
+
