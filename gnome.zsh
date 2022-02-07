@@ -19,7 +19,7 @@ dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-  "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+  "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
 
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
@@ -32,6 +32,20 @@ gsettings set \
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
   binding '<Primary><Super>w'
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot '[]'
+
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+  name 'flameshot'
+
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+  command 'flameshot gui'
+
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+  binding 'Print'
 
 # mouse and touchpad
 
