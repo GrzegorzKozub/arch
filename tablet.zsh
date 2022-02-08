@@ -10,6 +10,8 @@ paru -S --aur --noconfirm \
 sudo pacman -S --noconfirm \
   mypaint
 
+# links
+
 for APP in \
   Pentablet-Driver
 do

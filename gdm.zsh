@@ -64,5 +64,3 @@ popd
 
 sudo cp $TMP/theme/$GST $GS/$GST
 
-unset GS GST TMP
-

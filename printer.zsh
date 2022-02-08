@@ -12,6 +12,8 @@ sudo pacman -Sy --noconfirm \
 sudo systemctl enable cups
 sudo systemctl start cups
 
+# links
+
 for APP in \
   cups \
   hplip \

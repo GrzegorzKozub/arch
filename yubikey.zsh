@@ -19,5 +19,3 @@ YUBIKEY="auth       sufficient                  pam_u2f.so origin=pam://$HOST ap
 
 grep -Fxq $YUBIKEY $FILE || sudo sed -i "/^$LOGIN$/i $YUBIKEY" $FILE
 
-unset DIR FILE LOGIN YUBIKEY
-

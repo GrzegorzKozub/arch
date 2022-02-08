@@ -46,5 +46,3 @@ LINUX=$(efibootmgr | grep 'Linux Boot Manager' | sed -E 's/^Boot(.+)\* Linux Boo
 
 efibootmgr --bootorder $WINDOWS,$LINUX
 
-unset WINDOWS LINUX
-

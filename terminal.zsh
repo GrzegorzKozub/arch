@@ -30,5 +30,3 @@ dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/foreground-color" "'rgb
 
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/scrollbar-policy" "'never'"
 
-unset UUID
-

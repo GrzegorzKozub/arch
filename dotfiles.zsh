@@ -10,8 +10,6 @@ PENDRIVE=$(lsblk -r -o NAME,LABEL | grep ARCHISO | sed -e 's/\s.*$//')
 [[ $(sudo mount | grep "/dev/$PENDRIVE") ]] && sudo umount /dev/$PENDRIVE
 sudo mount /dev/$PENDRIVE /mnt
 
-unset $PENDRIVE
-
 [[ -d ~/.ssh || -n ~/.ssh ]] && rm -rf ~/.ssh
 mkdir ~/.ssh
 

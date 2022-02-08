@@ -102,5 +102,3 @@ sudo pacman -Rs --noconfirm \
 paru -Rs --aur --noconfirm \
   preloader-signed
 
-unset ARCHISO PROFILE ISO USB WORK
-
