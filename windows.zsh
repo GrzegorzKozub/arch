@@ -14,8 +14,6 @@ local theme=$(gsettings get org.gnome.desktop.interface gtk-theme)
 function fix {
   local windows=$(xdotool search --onlyvisible --maxdepth 2 --name --class "$1")
   [[ -z $windows ]] || while IFS= read -r window; do
-    # xdotool windowstate --remove MAXIMIZED_HORZ $window
-    # xdotool windowstate --remove MAXIMIZED_VERT $window
     xdotool windowsize $window $2 $3
     xdotool windowmove $window $4 $5
   done <<< $windows
@@ -36,6 +34,14 @@ function push {
     local left=$(xdotool getwindowgeometry --shell $window | grep "X=" | cut -d= -f2)
     local top=$(xdotool getwindowgeometry --shell $window | grep "Y=" | cut -d= -f2)
     xdotool windowmove $window $(( $left + $width )) $top
+  done <<< $windows
+}
+
+function unmax {
+  local windows=$(xdotool search --onlyvisible --maxdepth 2 --name --class "$1")
+  [[ -z $windows ]] || while IFS= read -r window; do
+    xdotool windowstate --remove MAXIMIZED_HORZ $window
+    xdotool windowstate --remove MAXIMIZED_VERT $window
   done <<< $windows
 }
 
@@ -77,6 +83,7 @@ function small_qt { small $1 $(( - $title_bar )) $title_bar }
 
 function brave {
   local title=".?Brave$"
+  unmax $title && sleep 0.1
   [[ -v _4k ]] && big $title 63 -15 47 -24 || big $title 104 -24 76 -38
 }
 
