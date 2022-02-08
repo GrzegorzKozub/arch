@@ -77,8 +77,7 @@ function small_qt { small $1 $(( - $title_bar )) $title_bar }
 
 function brave {
   local title=".?Brave$"
-  [[ -v _4k ]] && big $title || big $title
-  # [[ -v _4k ]] && big $title 63 -15 47 -24 || big $title 104 -24 76 -38
+  [[ -v _4k ]] && big $title 63 -15 47 -24 || big $title 104 -24 76 -38
 }
 
 function vscode { big ".?Visual Studio Code$" }
@@ -101,7 +100,6 @@ function pinta { small ".?Pinta$" }
 
 [[ -z "$1" ]] && {
   brave
-  chrome
   vscode
   postman
   data_studio
