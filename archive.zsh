@@ -2,13 +2,16 @@
 
 set -e
 
-# config
+# archive
 
-# mount
+() {
 
-[[ $(mount | grep '/dev/sda1 on /mnt') ]] || sudo mount /dev/sda1 /mnt
+local disk=/dev/sda1
+local mount=/mnt
 
-# unmount
+[[ $(mount | grep "$disk on $mount") ]] || sudo mount $disk $mount
 
-sudo umount -R /mnt
+sudo umount -R $mount
+
+}
 
