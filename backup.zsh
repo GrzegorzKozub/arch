@@ -10,7 +10,7 @@ set -e
 . $1/mount.zsh
 
 while [[ \
-  $(df -h /dev/mapper/vg1-backup --output=avail | grep -v Avail | sed 's/ //' | sed 's/[ G]//') -lt 10 && \
+  $(df -h /dev/mapper/vg1-backup --output=avail | grep -v Avail | sed -E 's/ |G//g') -lt 10 && \
   $(ls -d /mnt/[0-9]* | wc -l) -gt 3 \
 ]]; do
   local oldest="/mnt/$(ls -t /mnt | grep '^[0-9]*$' | tail -n1)"

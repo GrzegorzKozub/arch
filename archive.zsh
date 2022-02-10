@@ -14,8 +14,8 @@ local target=$mount/arch
 [[ $(mount | grep "$disk on $mount") ]] || sudo mount $disk $mount
 [[ -d $target ]] || mkdir $target
 
-local free=$(df -h $disk --output=avail | grep -v Avail | sed 's/ //' | sed 's/[ G]//' )
-[[ $free -lt 20 ]] && echo "only ${free}G free on $disk"
+local free=$(df -h $disk --output=avail | grep -v Avail | sed -E 's/ |G//g' )
+[[ $free -lt 50 ]] && echo "only ${free}G free on $disk"
 
 rsync \
   --archive --delete --delete-excluded \
