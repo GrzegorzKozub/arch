@@ -18,7 +18,7 @@ local free=$(df -h $disk --output=avail | grep -v Avail | sed -E 's/ |G//g' )
 [[ $free -lt 50 ]] && echo "only ${free}G free on $disk"
 
 rsync \
-  --archive --delete --delete-excluded \
+  --archive \
   --exclude 'boot' \
   --exclude 'lost+found' \
   --human-readable --progress \
