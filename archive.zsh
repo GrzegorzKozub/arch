@@ -6,19 +6,23 @@ set -e
 
 () {
 
-local source=/run/media/$USER/backup/
 local disk=/dev/sda1
 local mount=/mnt
+local source=/run/media/$USER/backup/
+local target=$mount/arch
 
 [[ $(mount | grep "$disk on $mount") ]] || sudo mount $disk $mount
+[[ -d $target ]] || mkdir $target
+
+local free=$(df -h $disk --output=avail | grep -v Avail | sed 's/ //' | sed 's/[ G]//' )
+[[ $free -lt 20 ]] && echo "only ${free}G free on $disk"
 
 rsync \
   --archive --delete --delete-excluded \
   --exclude 'boot' \
   --exclude 'lost+found' \
-  --exclude 'vm' \
   --human-readable --progress \
-  $source $mount
+  $source $target
 
 sudo umount -R $mount
 
