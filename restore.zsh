@@ -18,4 +18,6 @@ echo "restoring from $dir"
 fsarchiver restfs -c - $dir/root.fsa id=0,dest=/dev/mapper/vg1-root
 cp $dir/*.img $dir/vmlinuz-linux* /mnt/boot/
 
+umount -R /mnt
+
 } `dirname $0` $1

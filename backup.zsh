@@ -25,5 +25,9 @@ mkdir $dir
 fsarchiver savefs -c - $dir/root.fsa /dev/mapper/vg1-root
 cp /mnt/boot/*.img /mnt/boot/vmlinuz-linux* $dir/
 
+umount -R /mnt
+
 } `dirname $0`
+
+
 
