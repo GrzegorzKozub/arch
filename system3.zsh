@@ -50,3 +50,9 @@ if [[ $MY_HOSTNAME = 'worker' ]]; then
 
 fi
 
+# fonts
+
+[[ -d ~/.config/fontconfig ]] || mkdir -p ~/.config/fontconfig
+cp `dirname $0`/home/greg/.config/fontconfig/fonts.conf ~/.config/fontconfig
+fc-cache -f
+
