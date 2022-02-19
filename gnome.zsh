@@ -67,7 +67,7 @@ if [[ $HOST = 'drifter' ]]; then
     --session \
     --dest org.gnome.SettingsDaemon.Power \
     --object-path /org/gnome/SettingsDaemon/Power \
-    --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 50>'
+    --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 25>'
 
 fi
 
@@ -75,6 +75,8 @@ fi
 
 amixer sset Master 50%
 amixer sset Capture 50%
+
+[[ $HOST = 'drifter' ]] && amixer sset Master mute
 
 gsettings set org.gnome.desktop.sound event-sounds false
 
