@@ -3,5 +3,5 @@ Description=history
 
 [Service]
 WorkingDirectory=%h/code/history
-ExecStart=%h/code/history/save.sh
+ExecStart=%h/code/history/sync.sh
 
