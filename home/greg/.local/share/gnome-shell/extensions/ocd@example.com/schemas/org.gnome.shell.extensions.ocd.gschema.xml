@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.ocd" path="/org/gnome/shell/extensions/ocd/">
+    <key name="ocd" type="as">
+      <default>
+<![CDATA[['<Ctrl><Super>O']]]>
+      </default>
+      <summary>ocd</summary>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,8 @@
+{
+  "name": "ocd",
+  "description": "ocd",
+  "uuid": "ocd@example.com",
+  "shell-version": [
+    "41"
+  ]
+}
