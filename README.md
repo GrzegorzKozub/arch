@@ -44,6 +44,7 @@ Automated Arch Linux installation
   - Disable everything except background images on the dashboard
   - Enable search and URL autocompletion
   - Join the Sync Chain and sync everything
+  - Don't allow sites to send notifications
   - Install your extensions
   - Disable Brave Wallet and hide the button
   - Don't offer to save passwords and don't sign in automatically
