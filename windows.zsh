@@ -4,12 +4,17 @@
 
 () {
 
-[[ $(xrandr | grep "*" | wc -l) = 2 ]] && local dual=true
+# local res=$(xrandr | grep "*" | head -n 1 | sed -n -e "s/^ *//p" | sed -n -e "s/ .*$//p")
 
-local res=$(xrandr | grep "*" | head -n 1 | sed -n -e "s/^ *//p" | sed -n -e "s/ .*$//p")
-local width=$(echo $res | cut -dx -f1)
-local height=$(echo $res | cut -dx -f2)
-local theme=$(gsettings get org.gnome.desktop.interface gtk-theme)
+local desktop=$(xprop -root | grep -e 'NET_WORKAREA(CARDINAL)' | sed -e 's/.*=//' )
+
+local left=$(echo $desktop | cut -d ',' -f1 | sed -e 's/ //')
+local top=$(echo $desktop | cut -d ',' -f2 | sed -e 's/ //')
+local width=$(echo $desktop | cut -d ',' -f3 | sed -e 's/ //')
+local height=$(echo $desktop | cut -d ',' -f4 | sed -e 's/ //')
+
+[[ $(xrandr | grep "*" | wc -l) = 2 ]] && local dual=true
+[[ $dual ]] && width=$(( $width / 2 ))
 
 function fix {
   local windows=$(xdotool search --onlyvisible --maxdepth 2 --name --class "$1")
@@ -46,27 +51,16 @@ function unmax {
 }
 
 [[ $width = 3840 ]] && [[ $height = 2400 ]] && {
-
-  if [[ $theme =~ "Adwaita" ]]; then local top_bar=80; local title_bar=73
-  elif [[ $theme =~ "Arc" ]]; then local top_bar=78; local title_bar=57
-  elif [[ $theme =~ "Materia" ]]; then local top_bar=64; local title_bar=71
-  else exit 1; fi
-
+  local top_bar=80; local title_bar=73
   function big { center $1 7.0 14.5 $2 $3 $4 $5 }
   function medium { center $1 6 12.5 $2 $3 $4 $5 }
   function small { center $1 5.0 10.5 $2 $3 $4 $5 }
 }
 
 [[ $width = 3840 ]] && [[ $height = 2160 ]] && {
-
-  if [[ $theme =~ "Adwaita" ]]; then local top_bar=48; local title_bar=37
-  elif [[ $theme =~ "Arc" ]]; then local top_bar=47; local title_bar=28
-  elif [[ $theme =~ "Materia" ]]; then local top_bar=38; local title_bar=42
-  else exit 1; fi
-
+  local top_bar=48; local title_bar=37
   local _4k=true
   local margin=25
-
   function big { center $1 6 14 $2 $3 $4 $5 }
   function medium { center $1 4.5 12 $2 $3 $4 $5 }
   function small { center $1 3.0 10 $2 $3 $4 $5 }
