@@ -47,7 +47,7 @@ function unmax { # window
   function small { center $1 5.0 10.5 $2 $3 $4 $5 }
 }
 
-[[ $width = 3840 ]] && [[ $height = 2080 ]] && {
+[[ $width = 3840 ]] && [[ $height = 2112 ]] && {
   local title_bar=37; local uhd=true
   function big { center $1 6.0 14.0 $2 $3 $4 $5 }
   function medium { center $1 4.5 12.0 $2 $3 $4 $5 }
@@ -66,7 +66,7 @@ function small_qt { small $1 0 $(( - $title_bar )) 0 $title_bar }
 function brave {
   local title=".?Brave$"
   unmax $title && sleep 0.1
-  [[ -v uhd ]] && big $title 63 -15 47 -24 || big $title 80 100 -40 -22
+  [[ -v uhd ]] && big $title 48 64 -24 -16 || big $title 80 100 -40 -22
 }
 
 function vscode { big ".?Visual Studio Code$" }
