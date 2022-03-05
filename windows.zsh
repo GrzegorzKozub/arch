@@ -73,18 +73,18 @@ function vscode { big ".?Visual Studio Code$" }
 function postman { big_electron "^Postman$" }
 function data_studio { big ".?Azure Data Studio$" }
 function mysql_workbench { big ".?MySQL Workbench$" }
-function obs { big_qt "^OBS.*Profile.*Scenes.?" }
+function obs { big_qt "^OBS.?" }
 function shotcut { big_qt ".?Shotcut$" }
 
 function slack { medium_electron ".?Slack$" }
-function foliate { medium "Foliate" }
+function foliate { medium ".?Foliate$" }
 
 function gimp {
-  medium "GNU Image Manipulation Program"
+  medium "^GNU Image Manipulation Program$"
   medium ".?GIMP$"
 }
 
-function keepass { small_qt "KeePassXC$" }
+function keepass { small_qt ".?KeePassXC$" }
 function pinta { small ".?Pinta$" }
 
 [[ -z "$1" ]] && {
