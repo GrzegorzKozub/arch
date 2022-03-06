@@ -78,7 +78,7 @@ Automated Arch Linux installation
   - Select the sound device and set volume to 50%
   - Remove the `~/.gnome` dir
 6. Clone the work repo, run `update.zsh` and setup `.env` files
-7. Run `windows.zsh`
+7. Fix window size and position
 
 ## Windows VM
 
