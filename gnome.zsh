@@ -116,12 +116,6 @@ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-tim
 
 # themes
 
-sudo pacman -S --needed --noconfirm \
-  arc-gtk-theme \
-  arc-solid-gtk-theme \
-  materia-gtk-theme \
-  papirus-icon-theme
-
 # gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Lighter-solid'
 # gsettings set org.gnome.shell.extensions.user-theme name 'Arc-solid'
 
@@ -157,9 +151,17 @@ gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'Alacritty.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'brave-browser.desktop', 'org.keepassxc.KeePassXC.desktop']" # 'slack-desktop'
 
-gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl', 'Hide_Activities@shay.shayel.org']"
-
 gsettings set org.gnome.desktop.interface enable-hot-corners false
+
+# extensions
+
+EXT=${XDG_DATA_HOME:-~/.local/share}/gnome-shell/extensions
+[[ -d $EXT ]] || mkdir -p $EXT
+
+cp -r `dirname $0`/home/greg/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com $EXT
+pushd $EXT/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
+
+gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl', 'Hide_Activities@shay.shayel.org', 'windows@grzegorzkozub.github.com']"
 
 # nautilus
 

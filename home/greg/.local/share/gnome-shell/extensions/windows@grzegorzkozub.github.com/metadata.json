@@ -1,0 +1,8 @@
+{
+  "name": "windows",
+  "description": "windows",
+  "uuid": "windows@grzegorzkozub.github.com",
+  "shell-version": [
+    "41"
+  ]
+}

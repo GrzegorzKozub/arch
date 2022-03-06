@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.windows" path="/org/gnome/shell/extensions/windows/">
+    <key name="windows" type="as">
+      <default>
+<![CDATA[['<Ctrl><Super>W']]]>
+      </default>
+      <summary>windows</summary>
+    </key>
+  </schema>
+</schemalist>

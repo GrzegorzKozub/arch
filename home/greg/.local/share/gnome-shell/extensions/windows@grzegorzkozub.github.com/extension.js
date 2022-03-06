@@ -35,8 +35,8 @@ class Extension {
       'window-created',
       this.windowCreated.bind(this));
     Main.wm.addKeybinding(
-      'ocd',
-      ExtensionUtils.getSettings('org.gnome.shell.extensions.ocd'),
+      'windows',
+      ExtensionUtils.getSettings('org.gnome.shell.extensions.windows'),
       Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
       Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
       this.hotkeyPressed.bind(this));
@@ -44,7 +44,7 @@ class Extension {
 
   disable() {
     global.display.disconnect(this.windowCreatedHandler);
-    Main.wm.removeKeybinding('ocd');
+    Main.wm.removeKeybinding('windows');
   }
 
   windowCreated(_, win) { this.fixAuto(win); }

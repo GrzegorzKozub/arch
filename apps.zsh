@@ -42,6 +42,14 @@ sudo pacman -S --noconfirm \
   ttf-fira-code \
   ttf-liberation
 
+# themes
+
+sudo pacman -S --needed --noconfirm \
+  arc-gtk-theme \
+  arc-solid-gtk-theme \
+  materia-gtk-theme \
+  papirus-icon-theme
+
 # gnome
 
 . `dirname $0`/gdm.zsh
