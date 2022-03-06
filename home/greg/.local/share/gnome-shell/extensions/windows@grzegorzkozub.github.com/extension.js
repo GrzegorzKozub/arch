@@ -8,26 +8,35 @@ const Shell = imports.gi.Shell;
 class Extension {
   uhd;
   windowCreatedHandler;
+  config = [];
 
-  config = [
-    { title: /.?Azure Data Studio$/, big: true },
-    { title: /.?Brave$/, big: true, auto: true },
-    { title: /.?MySQL Workbench$/, big: true },
-    { title: /^OBS.?/, big: true },
-    { title: /^Postman$/, big: true, auto: true },
-    { title: /.?Shotcut$/, big: true },
-    { title: /.?Visual Studio Code$/, big: true },
-
-    { class: /.?Foliate$/, medium: true },
-    { title: /.?GIMP$/, medium: true },
-    { title: /^GNU Image Manipulation Program$/, medium: true },
-    { title: /.?Slack$/, medium: true, auto: true },
-
-    { title: /.?KeePassXC$/, small: true },
-    { title: /.?Pinta$/, medium: true },
-  ];
-
-  constructor() {}
+  constructor() {
+    const big = [
+      { title: /.?Azure Data Studio$/ },
+      { title: /.?Brave$/, auto: true },
+      { title: /.?MySQL Workbench$/ },
+      { title: /^OBS.?/ },
+      { title: /^Postman$/, auto: true },
+      { title: /.?Shotcut$/ },
+      { title: /.?Visual Studio Code$/ },
+    ];
+    const medium = [
+      { class: /.?Foliate$/ },
+      { title: /.?GIMP$/ },
+      { title: /^GNU Image Manipulation Program$/ },
+      { title: /.?Slack$/, auto: true },
+    ];
+    const small = [
+      { title: /.?KeePassXC$/ },
+      { title: /.?Pinta$/ },
+    ];
+    const addConfig = (config, fix) => {
+      this.config.push(...config.map(cfg => ({ ...cfg, fix })));
+    };
+    addConfig(big, this.big.bind(this));
+    addConfig(medium, this.medium.bind(this));
+    addConfig(small, this.small.bind(this));
+  }
 
   enable() {
     this.uhd = global.screen_width === 3840 && global.screen_height === 2160;
@@ -64,9 +73,7 @@ class Extension {
       cfg.class && cfg.class.test(win.wm_class));
     if (!cfg) { return; }
     this.unmax(win);
-    if (cfg.big) { this.big(win); }
-    else if (cfg.medium) { this.medium(win); }
-    else if (cfg.small) { this.small(win); }
+    cfg.fix(win);
   }
 
   unmax(win) { if (win.get_maximized()) { win.unmaximize(Meta.MaximizeFlags.BOTH); } }
