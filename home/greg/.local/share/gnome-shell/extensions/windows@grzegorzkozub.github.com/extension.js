@@ -39,7 +39,7 @@ class Extension {
   }
 
   enable() {
-    this.uhd = global.screen_width === 3840 && global.screen_height === 2160;
+    this.uhd = this.uhdMonitor();
     this.windowCreatedHandler = global.display.connect(
       'window-created',
       this.windowCreated.bind(this));
@@ -83,7 +83,7 @@ class Extension {
   small(win) { if (this.uhd) { this.center(win, 3, 10); } else { this.center(win, 5, 10.5); } }
 
   center(win, width, height) {
-    const desktop = Main.layoutManager.getWorkAreaForMonitor(0);
+    const desktop = this.getDesktop();
     const widthStep = 8, heightStep = 16;
     win.move_resize_frame(
       0,
@@ -92,6 +92,14 @@ class Extension {
       (desktop.width / widthStep) * width,
       (desktop.height / heightStep) * height);
   }
+
+  uhdMonitor() {
+    const monitor = this.getMonitor();
+    return monitor.width === 3840 && monitor.height === 2160;
+  }
+
+  getMonitor() { return global.display.get_monitor_geometry(global.display.get_primary_monitor()); }
+  getDesktop() { return Main.layoutManager.getWorkAreaForMonitor(global.display.get_primary_monitor()); }
 }
 
 // eslint-disable-next-line no-unused-vars
