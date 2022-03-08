@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 
 const ExtensionUtils = imports.misc.extensionUtils;
+const GLib = imports.gi.GLib;
 const Main = imports.ui.main;
 const Meta = imports.gi.Meta;
 const Shell = imports.gi.Shell;
@@ -76,7 +77,12 @@ class Extension {
     cfg.fix(win);
   }
 
-  unmax(win) { if (win.get_maximized()) { win.unmaximize(Meta.MaximizeFlags.BOTH); } }
+  unmax(win) {
+    // todo: use this timeout for auto only
+    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
+      if (win.get_maximized()) { win.unmaximize(Meta.MaximizeFlags.BOTH); }
+    });
+  }
 
   big(win) { if (this.uhd) { this.center(win, 6, 14); } else { this.center(win, 7, 14.5); } }
   medium(win) { if (this.uhd) { this.center(win, 4.5, 12); } else { this.center(win, 6, 12.5); } }
