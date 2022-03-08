@@ -61,7 +61,9 @@ class Extension {
   hotkeyPressed() { this.fixAll(); }
 
   fixAuto(win) {
-    this.fix(this.config.filter(cfg => cfg.auto), win);
+    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
+      this.fix(this.config.filter(cfg => cfg.auto), win);
+    });
   }
 
   fixAll() {
@@ -78,10 +80,7 @@ class Extension {
   }
 
   unmax(win) {
-    // todo: use this timeout for auto only
-    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
-      if (win.get_maximized()) { win.unmaximize(Meta.MaximizeFlags.BOTH); }
-    });
+    if (win.get_maximized()) { win.unmaximize(Meta.MaximizeFlags.BOTH); }
   }
 
   big(win) { if (this.uhd) { this.center(win, 6, 14); } else { this.center(win, 7, 14.5); } }
