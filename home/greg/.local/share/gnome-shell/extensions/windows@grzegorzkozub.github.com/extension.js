@@ -14,7 +14,7 @@ class Extension {
   constructor() {
     const big = [
       { title: /.?Azure Data Studio$/ },
-      { title: /.?Brave$/, auto: true },
+      { title: /.?Brave$/, auto: true, noRole: 'pop-up' },
       { title: /.?MySQL Workbench$/ },
       { title: /^OBS.?/ },
       { title: /^Postman$/, auto: true },
@@ -72,8 +72,9 @@ class Extension {
 
   fix(config, win) {
     const cfg = config.find(cfg =>
-      cfg.title && cfg.title.test(win.title) ||
-      cfg.class && cfg.class.test(win.wm_class));
+      (cfg.title && cfg.title.test(win.title) ||
+       cfg.class && cfg.class.test(win.wm_class)) &&
+      (!cfg.noRole || cfg.noRole !== win.get_role()));
     if (!cfg) { return; }
     this.unmax(win);
     cfg.fix(win);
