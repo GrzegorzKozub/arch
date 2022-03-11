@@ -7,7 +7,6 @@ const Meta = imports.gi.Meta;
 const Shell = imports.gi.Shell;
 
 class Extension {
-  uhd;
   windowCreatedHandler;
   config = [];
 
@@ -40,7 +39,6 @@ class Extension {
   }
 
   enable() {
-    this.uhd = this.uhdMonitor();
     this.windowCreatedHandler = global.display.connect(
       'window-created',
       this.windowCreated.bind(this));
@@ -84,22 +82,22 @@ class Extension {
     if (win.get_maximized()) { win.unmaximize(Meta.MaximizeFlags.BOTH); }
   }
 
-  big(win) { if (this.uhd) { this.center(win, 6, 14); } else { this.center(win, 7, 14.5); } }
-  medium(win) { if (this.uhd) { this.center(win, 4.5, 12); } else { this.center(win, 6, 12.5); } }
-  small(win) { if (this.uhd) { this.center(win, 3, 10); } else { this.center(win, 5, 10.5); } }
+  big(win) { if (this.uhd()) { this.center(win, 12, 14); } else { this.center(win, 14, 14.5); } }
+  medium(win) { if (this.uhd()) { this.center(win, 9, 12); } else { this.center(win, 12, 12.5); } }
+  small(win) { if (this.uhd()) { this.center(win, 6, 10); } else { this.center(win, 10, 10.5); } }
 
   center(win, width, height) {
     const desktop = this.getDesktop();
-    const widthStep = 8, heightStep = 16;
+    const step = 16;
     win.move_resize_frame(
       0,
-      ((desktop.width / widthStep) * ((widthStep - width) / 2)) + desktop.x,
-      ((desktop.height / heightStep) * ((heightStep - height) / 2)) + desktop.y,
-      (desktop.width / widthStep) * width,
-      (desktop.height / heightStep) * height);
+      ((desktop.width / step) * ((step - width) / 2)) + desktop.x,
+      ((desktop.height / step) * ((step - height) / 2)) + desktop.y,
+      (desktop.width / step) * width,
+      (desktop.height / step) * height);
   }
 
-  uhdMonitor() {
+  uhd() {
     const monitor = this.getMonitor();
     return monitor.width === 3840 && monitor.height === 2160;
   }
