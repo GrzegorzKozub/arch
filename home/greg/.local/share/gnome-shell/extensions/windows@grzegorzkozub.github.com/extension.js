@@ -27,8 +27,11 @@ class Extension {
       { title: /.?Slack$/, auto: true },
     ];
     const small = [
+      { class: /.?Evince$/, auto: true },
       { title: /.?KeePassXC$/ },
       { title: /.?Pinta$/ },
+      { title: /^Settings$/, auto: true },
+      { title: /^System Monitor$/ },
     ];
     const addConfig = (config, fix) => {
       this.config.push(...config.map(cfg => ({ ...cfg, fix })));
