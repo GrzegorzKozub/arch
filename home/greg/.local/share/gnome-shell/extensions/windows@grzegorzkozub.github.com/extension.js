@@ -31,7 +31,6 @@ class Extension {
       { title: /.?KeePassXC$/ },
       { title: /.?Pinta$/ },
       { title: /^Settings$/, auto: true },
-      { title: /^System Monitor$/ },
     ];
     const addConfig = (config, fix) => {
       this.config.push(...config.map(cfg => ({ ...cfg, fix })));
