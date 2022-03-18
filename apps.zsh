@@ -153,7 +153,7 @@ paru -S --aur --noconfirm \
 # dev
 
 sudo pacman -S --noconfirm \
-  dotnet-sdk \
+  dotnet-sdk aspnet-runtime \
   elixir \
   go \
   nodejs npm \
