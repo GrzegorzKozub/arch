@@ -15,7 +15,7 @@ for APP in \
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
   sed -i \
-    -e 's/^Name=GNU Image Manipulation Program$/Name=GIMP/' \
+    -e 's/^Name=.*$/Name=GIMP/' \
     ~/.local/share/applications/$APP.desktop
 done
 
