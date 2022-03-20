@@ -25,6 +25,7 @@ class Extension {
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
       { title: /.?Slack$/, auto: true },
+      { title: /.?Steam$/ },
     ];
     const small = [
       { class: /.?Evince$/, auto: true },
