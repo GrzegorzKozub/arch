@@ -15,7 +15,7 @@ sudo pacman -Sy
 
 # steam
 
-sudo pacman -S --noconfirm steam
+sudo pacman -S --noconfirm lib32-nvidia-utils steam
 
 MOUNT=/run/media/$USER/steam
 
