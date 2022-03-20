@@ -1,3 +1,5 @@
+# Gaming
+
 1. Enable multilib repo in `/etc/pacman.conf`
 2. Install steam:
   ```
