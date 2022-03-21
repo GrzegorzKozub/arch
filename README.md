@@ -88,3 +88,17 @@ For clipboard or folder sharing install `virt-viewer` on host and [guest tools a
 
 To reduce the image size after freeing up space on guest, first defragment the drives and run `sdelete -z` on guest, then run `qemu-img convert -O qcow2 from.cow to.cow`.
 
+## Games
+
+1. Run `~/code/arch/games.zsh`
+2. Start Steam
+3. Once per machine, configure Steam and specifically
+  - Select Proton Experimental and vulkan something
+  - Select bleeding-edge Beta
+  - `mangohud gamemoderun %command%` https://www.protondb.com/
+4. Once per machine, move Steam to games disk with
+  ```
+  mv ${XDG_DATA_HOME:-~/.local/share}/Steam /run/media/$USER/games/
+  ln -s /run/media/$USER/games/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
+  ```
+
