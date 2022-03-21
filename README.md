@@ -93,9 +93,13 @@ To reduce the image size after freeing up space on guest, first defragment the d
 1. Run `~/code/arch/games.zsh`
 2. Start Steam
 3. Once per machine, configure Steam and specifically
-  - Select Proton Experimental and vulkan something
-  - Select bleeding-edge Beta
-  - `mangohud gamemoderun %command%` https://www.protondb.com/
+  - Enable Shader Pre-Caching
+  - Allow background processing of Vulkan shaders
+  - Enable Steam Play for supported titles
+  - Enable Steam Play for all other titles
+  - Run other titles with Proton Experimental
+  - For Proton Experimental tool, select bleeding-edge beta
+  - For your games, set launch options to `mangohud gamemoderun %command%` ([protondb](https://www.protondb.com/))
 4. Once per machine, move Steam to games disk with
   ```zsh
   mv ${XDG_DATA_HOME:-~/.local/share}/Steam /run/media/$USER/games/

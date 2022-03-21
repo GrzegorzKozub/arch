@@ -19,9 +19,11 @@ MOUNT=/run/media/$USER/games
 
 [[ $(mount | grep "$DISK on $MOUNT") ]] || sudo mount $DISK $MOUNT
 
-echo "# $DISK" >> /etc/fstab
-echo "$DISK	$MOUNT	ext4	defaults	0 1" >> /etc/fstab
-echo '' >> /etc/fstab
+[[ $(grep "# $DISK" /etc/fstab) ]] || {
+  echo "# $DISK" | sudo tee --append /etc/fstab > /dev/null
+  echo "$DISK	$MOUNT	ext4	defaults	0 1" | sudo tee --append /etc/fstab > /dev/null
+  echo '' | sudo tee --append /etc/fstab > /dev/null
+}
 
 # multilib
 
