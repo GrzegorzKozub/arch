@@ -15,7 +15,7 @@ Automated Arch Linux installation
 3. Label the partition with `sudo mlabel -i /dev/sda1 ::archiso`
 4. Build with `~/code/arch/archiso.zsh`
 5. Copy with
-  ```
+  ```zsh
   rm -rf /run/media/$USER/ARCHISO/(arch|EFI|loader|syslinux|shellx64.efi)
   cp -r ~/code/arch/archiso/usb/* /run/media/$USER/ARCHISO
   ```
@@ -97,7 +97,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - Select bleeding-edge Beta
   - `mangohud gamemoderun %command%` https://www.protondb.com/
 4. Once per machine, move Steam to games disk with
-  ```
+  ```zsh
   mv ${XDG_DATA_HOME:-~/.local/share}/Steam /run/media/$USER/games/
   ln -s /run/media/$USER/games/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
   ```
