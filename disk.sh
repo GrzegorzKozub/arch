@@ -11,7 +11,14 @@ set -e -o verbose
 read -p "Ensure a partition of type Linux filesystem is created as $MY_ARCH_PART"
 cfdisk $MY_DISK
 
-[[ $(lsblk -lno PATH,PARTTYPE | grep -i '0FC63DAF-8483-4772-8E79-3D69D8477DE4' | cut -d' ' -f1) = $MY_ARCH_PART ]] || exit 1
+ARCH_PART="$(
+  lsblk -lno PATH,PARTTYPE,FSTYPE |
+  grep -i '0FC63DAF-8483-4772-8E79-3D69D8477DE4' |
+  grep 'crypto_LUKS' |
+  cut -d' ' -f1
+)"
+
+[[ $ARCH_PART = $MY_ARCH_PART ]] || exit 1
 
 # encryption
 

@@ -6,7 +6,12 @@ set -e
 
 () {
 
-local efi_part="$(lsblk -lno PATH,PARTTYPE | grep -i 'C12A7328-F81F-11D2-BA4B-00A0C93EC93B' | cut -d' ' -f1)"
+local efi_part="$(
+  lsblk -lno PATH,PARTTYPE,FSTYPE |
+  grep -i 'C12A7328-F81F-11D2-BA4B-00A0C93EC93B' |
+  grep 'vfat' |
+  cut -d' ' -f1
+)"
 
 [[ $(mount | grep 'vg1-backup on /mnt') ]] || mount /dev/mapper/vg1-backup /mnt
 [[ -d /mnt/boot ]] || mkdir /mnt/boot

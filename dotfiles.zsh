@@ -4,11 +4,11 @@ set -e -o verbose
 
 # temporary keys
 
-PENDRIVE=$(lsblk -r -o NAME,LABEL | grep ARCHISO | sed -e 's/\s.*$//')
+PENDRIVE=$(lsblk -r -o PATH,LABEL | grep ARCHISO | sed -e 's/\s.*$//')
 [[ $PENDRIVE ]] || exit 1
 
-[[ $(sudo mount | grep "/dev/$PENDRIVE") ]] && sudo umount /dev/$PENDRIVE
-sudo mount /dev/$PENDRIVE /mnt
+[[ $(mount | grep $PENDRIVE) ]] && sudo umount $PENDRIVE
+sudo mount $PENDRIVE /mnt
 
 [[ -d ~/.ssh || -n ~/.ssh ]] && rm -rf ~/.ssh
 mkdir ~/.ssh
