@@ -49,7 +49,10 @@ FAVS=$(gsettings get org.gnome.shell favorite-apps)
   gsettings set org.gnome.shell favorite-apps $FAVS
 }
 
-[[ -d $MOUNT/Steam ]] && ln -s $MOUNT/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
+[[ -d $MOUNT/Steam ]] && {
+  rm -f ${XDG_DATA_HOME:-~/.local/share}/Steam
+  ln -s $MOUNT/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
+}
 
 # gamemode
 
