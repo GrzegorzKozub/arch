@@ -99,7 +99,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - Enable Steam Play for all other titles
   - Run other titles with Proton Experimental
   - For Proton Experimental tool, select bleeding-edge beta
-  - For your games, set launch options to `mangohud %command%` ([protondb](https://www.protondb.com/))
+  - For your games, set launch options to `mangohud gamemoderun %command%` ([protondb](https://www.protondb.com/))
 4. Once per machine, move Steam to games disk with
   ```zsh
   mv ${XDG_DATA_HOME:-~/.local/share}/Steam /run/media/$USER/games/
@@ -107,5 +107,5 @@ To reduce the image size after freeing up space on guest, first defragment the d
   ```
 5. Elden Ring
   - Download [er-patcher](https://github.com/gurrgur/er-patcher) to the game dir and `chmod u+x er-patcher`
-  - Set launch options to `./er-patcher --rate 60 -vca -- mangohud %command%`
+  - Set launch options to `./er-patcher --rate 60 -vca -- mangohud gamemoderun %command%`
 
