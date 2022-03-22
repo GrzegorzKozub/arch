@@ -54,15 +54,6 @@ FAVS=$(gsettings get org.gnome.shell favorite-apps)
   ln -s $MOUNT/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
 }
 
-# gamemode
-
-sudo pacman -S --noconfirm \
-  gamemode \
-  lib32-gamemode
-
-systemctl --user enable gamemoded.service
-systemctl --user start gamemoded.service
-
 # mangohud
 
 paru -S --aur --noconfirm \
