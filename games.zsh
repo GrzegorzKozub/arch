@@ -80,3 +80,7 @@ do
     ~/.local/share/applications/$APP.desktop
 done
 
+# dotfiles
+
+. ~/code/dotfiles/games.zsh
+
