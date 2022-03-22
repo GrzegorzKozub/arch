@@ -105,4 +105,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
   mv ${XDG_DATA_HOME:-~/.local/share}/Steam /run/media/$USER/games/
   ln -s /run/media/$USER/games/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
   ```
+5. Elden Ring
+  - Download [er-patcher](https://github.com/gurrgur/er-patcher) to the game dir and `chmod u+x er-patcher`
+  - Set launch options to `./er-patcher --rate 60 -vca -- mangohud gamemoderun %command%`
 
