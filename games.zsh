@@ -42,6 +42,13 @@ sudo pacman -S --noconfirm \
   lib32-nvidia-utils \
   steam
 
+FAVS=$(gsettings get org.gnome.shell favorite-apps)
+
+[[ $(echo $FAVS | grep 'steam.desktop') ]] || {
+  FAVS=$(echo $FAVS | sed "s/\]/, 'steam.desktop']/")
+  gsettings set org.gnome.shell favorite-apps $FAVS
+}
+
 [[ -d $MOUNT/Steam ]] && ln -s $MOUNT/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
 
 # gamemode
