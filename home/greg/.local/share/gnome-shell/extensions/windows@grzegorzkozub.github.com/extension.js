@@ -31,7 +31,7 @@ class Extension {
       { class: /.?Evince$/, auto: true },
       { title: /.?KeePassXC$/ },
       { title: /.?Pinta$/ },
-      { title: /^Settings$/, auto: true, noClass: 'Steam' },
+      { class: /^Gnome-control-center$/, auto: true },
     ];
     const addConfig = (config, fix) => {
       this.config.push(...config.map(cfg => ({ ...cfg, fix })));
@@ -75,8 +75,7 @@ class Extension {
     const cfg = config.find(cfg =>
       (cfg.title && cfg.title.test(win.title) ||
        cfg.class && cfg.class.test(win.wm_class)) &&
-      (!cfg.noRole || cfg.noRole !== win.get_role()) &&
-      (!cfg.noClass || cfg.noClass !== win.wm_class));
+      (!cfg.noRole || cfg.noRole !== win.get_role()));
     if (!cfg) { return; }
     this.unmax(win);
     cfg.fix(win);
