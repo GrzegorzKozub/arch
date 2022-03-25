@@ -8,7 +8,7 @@ set -e -o verbose
 
 # mount
 
-DISK=/dev/sda2
+DISK=/dev/nvme1n1p2
 MOUNT=/run/media/$USER/games
 
 [[ -d $MOUNT ]] || {
