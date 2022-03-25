@@ -120,12 +120,12 @@ reflector --save /etc/pacman.d/mirrorlist --protocol https --country Poland,Germ
 
 sed -i 's/#Color/Color/' /etc/pacman.conf
 
-# always mount backup
+# always mount data
 
-[[ -d /run/media/greg/backup ]] || mkdir -p /run/media/greg/backup
+[[ -d /run/media/greg/data ]] || mkdir -p /run/media/greg/data
 
-echo '# /dev/mapper/vg1-backup' >> /etc/fstab
-echo '/dev/mapper/vg1-backup	/run/media/greg/backup	ext4	defaults	0 1' >> /etc/fstab
+echo '# /dev/mapper/vg1-data' >> /etc/fstab
+echo '/dev/mapper/vg1-data	/run/media/greg/data	ext4	defaults	0 1' >> /etc/fstab
 echo '' >> /etc/fstab
 
 # default sound over hdmi to primary monitor

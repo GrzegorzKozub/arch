@@ -8,7 +8,7 @@ set -e
 
 local disk=/dev/sda1
 local mount=/mnt
-local source=/run/media/$USER/backup/
+local source=/run/media/$USER/data/backup
 local target=$mount/arch
 
 [[ $(mount | grep "$disk on $mount") ]] || sudo mount $disk $mount

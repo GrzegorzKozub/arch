@@ -6,7 +6,7 @@ set -e
 
 zparseopts clipboard=PARAMS folder=PARAMS
 
-MOUNT=/run/media/$USER/backup
+MOUNT=/run/media/$USER/data
 DIR=$MOUNT/vm
 DISK=windows.cow
 WINDOWS=windows.iso
@@ -16,7 +16,7 @@ SHARE=$HOME/Downloads
 # mount
 
 [[ -d $MOUNT ]] || sudo mkdir -p $MOUNT
-[[ $(mount | grep "vg1-backup on $MOUNT") ]] || sudo mount /dev/mapper/vg1-backup $MOUNT
+[[ $(mount | grep "vg1-data on $MOUNT") ]] || sudo mount /dev/mapper/vg1-data $MOUNT
 
 # dirs
 

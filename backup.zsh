@@ -9,16 +9,20 @@ set -e
 . $1/unlock.zsh
 . $1/mount.zsh
 
+local backup=/mnt/backup
+
+[[ -d $backup ]] || mkdir -p $backup
+
 while [[ \
-  $(df -h /dev/mapper/vg1-backup --output=avail | grep -v Avail | sed -E 's/ |G//g') -lt 10 && \
-  $(ls -d /mnt/[0-9]* | wc -l) -gt 3 \
+  $(df -h /dev/mapper/vg1-data --output=avail | grep -v Avail | sed -E 's/ |G//g') -lt 10 && \
+  $(ls -d $backup/[0-9]* | wc -l) -gt 3 \
 ]]; do
-  local oldest="/mnt/$(ls -t /mnt | grep '^[0-9]*$' | tail -n1)"
+  local oldest="$backup/$(ls -t /mnt | grep '^[0-9]*$' | tail -n1)"
   echo "removing $oldest"
   rm -rf $oldest
 done
 
-local dir=/mnt/$(date +%Y%m%d%H%M)
+local dir=$backup/$(date +%Y%m%d%H%M)
 echo "backing up to $dir"
 mkdir $dir
 

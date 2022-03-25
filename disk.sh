@@ -31,12 +31,12 @@ pvcreate /dev/mapper/lvm
 vgcreate vg1 /dev/mapper/lvm
 
 lvcreate --size 8G vg1 --name swap
-lvcreate -l 67%FREE vg1 -n root
-lvcreate -l 100%FREE vg1 -n backup
+lvcreate -l 33%FREE vg1 -n root
+lvcreate -l 100%FREE vg1 -n data
 
 # format
 
 mkswap /dev/mapper/vg1-swap
 mkfs.ext4 /dev/mapper/vg1-root
-mkfs.ext4 /dev/mapper/vg1-backup
+mkfs.ext4 /dev/mapper/vg1-data
 
