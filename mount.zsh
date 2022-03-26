@@ -15,7 +15,7 @@ local efi_part="$(
 
 [[ $(mount | grep 'vg1-data on /mnt') ]] || mount /dev/mapper/vg1-data /mnt
 [[ -d /mnt/boot ]] || mkdir /mnt/boot
-[[ $(mount | grep "$efi_part on /mnt/boot") ]] ||  mount $efi_part /mnt/boot
+[[ $(mount | grep "$efi_part on /mnt/boot") ]] || mount $efi_part /mnt/boot
 
 }
 

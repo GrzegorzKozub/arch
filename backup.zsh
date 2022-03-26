@@ -17,7 +17,7 @@ while [[ \
   $(df -h /dev/mapper/vg1-data --output=avail | grep -v Avail | sed -E 's/ |G//g') -lt 10 && \
   $(ls -d $backup/[0-9]* | wc -l) -gt 3 \
 ]]; do
-  local oldest="$backup/$(ls -t /mnt | grep '^[0-9]*$' | tail -n1)"
+  local oldest="$backup/$(ls -t $backup | grep '^[0-9]*$' | tail -n1)"
   echo "removing $oldest"
   rm -rf $oldest
 done
