@@ -107,5 +107,5 @@ To reduce the image size after freeing up space on guest, first defragment the d
   ```
 5. Elden Ring
   - Download [er-patcher](https://github.com/gurrgur/er-patcher) to the game dir and `chmod u+x er-patcher`
-  - Set launch options to `./er-patcher --rate 60 -vcas --fix-camera -- mangohud gamemoderun %command%`
+  - Set launch options to `./er-patcher --rate 144 -vcas --fix-camera -- mangohud gamemoderun %command%`
 
