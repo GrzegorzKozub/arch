@@ -54,6 +54,11 @@ FAVS=$(gsettings get org.gnome.shell favorite-apps)
   ln -s $MOUNT/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
 }
 
+# proton-ge-custom
+
+paru -S --aur --noconfirm \
+  proton-ge-custom-bin
+
 # gamemode
 
 sudo pacman -S --noconfirm \

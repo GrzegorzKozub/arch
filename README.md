@@ -99,7 +99,8 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - Enable Steam Play for all other titles
   - Run other titles with Proton Experimental
   - For Proton Experimental tool, select bleeding-edge beta
-  - For your games, set launch options to `MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%` ([protondb](https://www.protondb.com/))
+  - For your games, set compatibility to Proton-GE
+  - For your games, set launch options to `DXVK_ASYNC=1 MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
 4. Once per machine, move Steam to games disk with
   ```zsh
   mv ${XDG_DATA_HOME:-~/.local/share}/Steam /run/media/$USER/games/
@@ -107,5 +108,5 @@ To reduce the image size after freeing up space on guest, first defragment the d
   ```
 5. Elden Ring
   - Download [er-patcher](https://github.com/gurrgur/er-patcher) to the game dir and `chmod u+x er-patcher`
-  - Set launch options to `./er-patcher --rate 144 -vcas --fix-camera -- env MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
+  - Set launch options to `./er-patcher --rate 144 -vcas --fix-camera -- env DXVK_ASYNC=1 MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
 
