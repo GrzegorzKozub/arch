@@ -16,3 +16,17 @@ docker run \
 sudo pacman -S --noconfirm \
   mysql-workbench
 
+# links
+
+for APP in \
+  mysql-workbench
+do
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i 's/^Name=MySQL Workbench$/Name=MySQL/' \
+    ~/.local/share/applications/$APP.desktop
+done
+
+# dotfiles
+
+. ~/code/dotfiles/mysql.zsh
+
