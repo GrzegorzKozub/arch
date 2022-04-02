@@ -39,18 +39,6 @@ gsettings set \
   org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
   binding 'Print'
 
-# gsettings set \
-  # org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
-  # name 'windows.zsh'
-
-# gsettings set \
-  # org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
-  # command '~/code/arch/windows.zsh'
-
-# gsettings set \
-  # org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
-  # binding '<Primary><Super>w'
-
 # mouse and touchpad
 
 gsettings set org.gnome.desktop.peripherals.mouse speed -0.5

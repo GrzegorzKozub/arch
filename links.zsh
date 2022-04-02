@@ -61,21 +61,3 @@ do
   echo 'NoDisplay=true' >> ~/.local/share/applications/$APP.desktop
 done
 
-# for APP in \
-  # postman # slack
-# do
-  # cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  # sed -i \
-    # -e 's/^Exec=\(.*\)$/Exec=\/home\/greg\/code\/arch\/window.sh "\1" '$APP'/' \
-    # ~/.local/share/applications/$APP.desktop
-# done
-
-# for APP in \
-  # brave-browser
-# do
-  # cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  # sed -i \
-    # -e 's/^Exec=\(.*\)$/Exec=\/home\/greg\/code\/arch\/window.sh "\1" brave/' \
-    # ~/.local/share/applications/$APP.desktop
-# done
-

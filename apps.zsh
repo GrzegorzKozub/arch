@@ -84,8 +84,6 @@ sudo pacman -S --noconfirm \
   wget \
   wkhtmltopdf \
   xclip \
-  xdotool \
-  xorg-xrandr \
   yt-dlp \
   zip
 
