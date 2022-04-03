@@ -106,7 +106,10 @@ To reduce the image size after freeing up space on guest, first defragment the d
   mv ${XDG_DATA_HOME:-~/.local/share}/Steam /run/media/$USER/games/
   ln -s /run/media/$USER/games/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
   ```
-5. Elden Ring
+5. Dark Souls 3
+  - Download [ds3-patcher](https://github.com/grzegorzkozub/ds3-patcher) to the game dir and `chmod u+x ds3-patcher`
+  - Set launch options to `./ds3-patcher -s -- env DXVK_ASYNC=1 MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
+6. Elden Ring
   - Download [er-patcher](https://github.com/gurrgur/er-patcher) to the game dir and `chmod u+x er-patcher`
   - Set launch options to `./er-patcher --rate 144 -vcas --fix-camera -- env DXVK_ASYNC=1 MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
 
