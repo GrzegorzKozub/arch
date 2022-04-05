@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schemalist>
   <schema id="org.gnome.shell.extensions.windows" path="/org/gnome/shell/extensions/windows/">
-    <key name="windows" type="as">
+    <key name="fix-all" type="as">
+      <default>
+<![CDATA[['<Ctrl><Super>O']]]>
+      </default>
+      <summary>fix-all</summary>
+    </key>
+    <key name="fix-active" type="as">
       <default>
 <![CDATA[['<Ctrl><Super>W']]]>
       </default>
-      <summary>windows</summary>
+      <summary>fix-active</summary>
     </key>
   </schema>
 </schemalist>
+

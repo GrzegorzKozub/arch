@@ -47,11 +47,17 @@ class Extension {
       'window-created',
       this.windowCreated.bind(this));
     Main.wm.addKeybinding(
-      'windows',
+      'fix-all',
       ExtensionUtils.getSettings('org.gnome.shell.extensions.windows'),
       Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
       Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
-      this.hotkeyPressed.bind(this));
+      this.fixAllHotkeyPressed.bind(this));
+    Main.wm.addKeybinding(
+      'fix-active',
+      ExtensionUtils.getSettings('org.gnome.shell.extensions.windows'),
+      Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
+      Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
+      this.fixActiveHotkeyPressed.bind(this));
   }
 
   disable() {
@@ -60,7 +66,8 @@ class Extension {
   }
 
   windowCreated(_, win) { this.fixAuto(win); }
-  hotkeyPressed() { this.fixAll(); }
+  fixAllHotkeyPressed() { this.fixAll(); }
+  fixActiveHotkeyPressed() { this.fixActive(); }
 
   fixAuto(win) {
     GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
@@ -70,6 +77,11 @@ class Extension {
 
   fixAll() {
     global.get_window_actors().forEach(actor => this.fix(this.config, actor.meta_window));
+  }
+
+  fixActive() {
+    const win = global.display.get_focus_window();
+    if (win) { this.fix(this.config, win); }
   }
 
   fix(config, win) {
