@@ -23,6 +23,7 @@ class Extension {
       { title: /^DevTools.?/ },
       { class: /.?Foliate$/ },
       { title: /.?GIMP$/ },
+      { class: /^Gnome-shell-portal-helper$/, auto: true }, // hotspot login
       { title: /^GNU Image Manipulation Program$/ },
       { title: /.?MySQL Workbench$/ },
       { title: /.?Slack$/, auto: true },
