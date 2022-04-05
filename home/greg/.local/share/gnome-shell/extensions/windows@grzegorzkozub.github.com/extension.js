@@ -46,23 +46,22 @@ class Extension {
     this.windowCreatedHandler = global.display.connect(
       'window-created',
       this.windowCreated.bind(this));
-    Main.wm.addKeybinding(
-      'fix-all',
-      ExtensionUtils.getSettings('org.gnome.shell.extensions.windows'),
-      Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
-      Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
-      this.fixAllHotkeyPressed.bind(this));
-    Main.wm.addKeybinding(
-      'fix-active',
-      ExtensionUtils.getSettings('org.gnome.shell.extensions.windows'),
-      Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
-      Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
-      this.fixActiveHotkeyPressed.bind(this));
+    this.addKeybinding('fix-all', this.fixAllHotkeyPressed);
+    this.addKeybinding('fix-active', this.fixActiveHotkeyPressed);
   }
 
   disable() {
     global.display.disconnect(this.windowCreatedHandler);
     Main.wm.removeKeybinding('windows');
+  }
+
+  addKeybinding(name, handler) {
+    Main.wm.addKeybinding(
+      name,
+      ExtensionUtils.getSettings('org.gnome.shell.extensions.windows'),
+      Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
+      Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
+      handler.bind(this));
   }
 
   windowCreated(_, win) { this.fixAuto(win); }
