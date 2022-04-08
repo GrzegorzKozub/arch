@@ -17,11 +17,7 @@ dconf write /org/gnome/desktop/wm/keybindings/move-to-side-w "['<Super><Control>
 dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Super>Tab']"
 dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot '[]'
-
-# gsettings set \
-  # org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-  # "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
+gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
 
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
@@ -111,11 +107,13 @@ gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
 # wallpapers
 
-[[ -d ~/Pictures ]] || mkdir ~/Pictures
-cp `dirname $0`/home/greg/Pictures/* ~/Pictures
+[[ -d ${XDG_DATA_HOME:-~/.local/share}/backgrounds ]] || mkdir ${XDG_DATA_HOME:-~/.local/share}/backgrounds
+cp `dirname $0`/home/greg/Pictures/* ${XDG_DATA_HOME:-~/.local/share}/backgrounds
 
-gsettings set org.gnome.desktop.background picture-uri 'file:///home/greg/Pictures/women.jpg'
-gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/greg/Pictures/women.jpg'
+gsettings set org.gnome.desktop.background picture-uri "file:///home/$USER/.local/share/backgrounds/women.jpg"
+gsettings set org.gnome.desktop.background picture-uri-dark "file:///home/$USER/.local/share/backgrounds/women.jpg"
+
+gsettings set org.gnome.desktop.screensaver picture-uri "file:///home/$USER/.local/share/backgrounds/women.jpg"
 
 # fonts
 
