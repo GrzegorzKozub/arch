@@ -20,7 +20,7 @@ TMP="$(mktemp -d)"
 sudo cp -n $GS/$GST $GS/$GST.backup
 mkdir -p $TMP/theme/icons/scalable/actions
 mkdir -p $TMP/theme/icons/scalable/status
-cp `dirname $0`/home/greg/Pictures/women.jpg $TMP/theme/
+cp `dirname $0`/home/$USER/.local/share/backgrounds/women.jpg $TMP/theme/
 
 for RES in `gresource list $GS/$GST`; do
   gresource extract $GS/$GST $RES > $TMP/${RES#\/org\/gnome\/shell/}
