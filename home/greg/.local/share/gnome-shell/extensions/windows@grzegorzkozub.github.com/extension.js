@@ -23,7 +23,6 @@ class Extension {
       { title: /^DevTools.?/ },
       { class: /.?Foliate$/ },
       { title: /.?GIMP$/ },
-      { class: /^Gnome-shell-portal-helper$/, auto: true }, // hotspot login
       { title: /^GNU Image Manipulation Program$/ },
       { title: /.?MySQL Workbench$/ },
       { title: /.?Slack$/, auto: true },
@@ -31,9 +30,9 @@ class Extension {
     ];
     const small = [
       { class: /.?Evince$/, auto: true },
+      { class: /^gnome-control-center$/ },
       { title: /.?KeePassXC$/ },
       { title: /.?Pinta$/ },
-      { class: /^Gnome-control-center$/, auto: true },
     ];
     const addConfig = (config, fix) => {
       this.config.push(...config.map(cfg => ({ ...cfg, fix })));
@@ -123,5 +122,5 @@ class Extension {
 }
 
 // eslint-disable-next-line no-unused-vars
-const init = () => new Extension();
+var init = () => new Extension();
 
