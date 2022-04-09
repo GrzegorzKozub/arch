@@ -61,6 +61,9 @@ paru -S --aur --noconfirm \
 
 # gamemode
 
+sudo groupadd gamemode
+sudo usermod -a -G gamemode $(whoami)
+
 sudo pacman -S --noconfirm \
   gamemode \
   lib32-gamemode
