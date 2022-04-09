@@ -36,12 +36,14 @@ LINE=$(grep -n '#\[multilib\]' /etc/pacman.conf | awk '{print $1}' FS=':')
 
 sudo pacman -Sy
 
-# nvidia
+# nvidia-settings
 
 sudo pacman -S --noconfirm \
   nvidia-settings
 
 sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
+
+[[ -d $XDG_DATA_HOME/nvidia-settings ]] || mkdir $XDG_DATA_HOME/nvidia-settings
 
 for APP in \
   nvidia-settings
@@ -49,6 +51,7 @@ do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
   sed -i \
     -e 's/^Name=.*$/Name=NVIDIA/' \
+    -e 's/^Exec=.*$/Exec=\/usr\/bin\/nvidia-settings --config=\/home\/greg\/.local\/share\/nvidia-settings\/nvidia-settings-rc/' \
     ~/.local/share/applications/$APP.desktop
 done
 
