@@ -36,6 +36,22 @@ LINE=$(grep -n '#\[multilib\]' /etc/pacman.conf | awk '{print $1}' FS=':')
 
 sudo pacman -Sy
 
+# nvidia
+
+sudo pacman -S --noconfirm \
+  nvidia-settings
+
+sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
+
+for APP in \
+  nvidia-settings
+do
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i \
+    -e 's/^Name=.*$/Name=NVIDIA/' \
+    ~/.local/share/applications/$APP.desktop
+done
+
 # steam
 
 sudo pacman -S --noconfirm \
@@ -54,6 +70,15 @@ FAVS=$(gsettings get org.gnome.shell favorite-apps)
   ln -s $MOUNT/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
 }
 
+for APP in \
+  steam
+do
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i \
+    -e 's/^Name=.*$/Name=Steam/' \
+    ~/.local/share/applications/$APP.desktop
+done
+
 # proton-ge-custom
 
 paru -S --aur --noconfirm \
@@ -61,7 +86,7 @@ paru -S --aur --noconfirm \
 
 # gamemode
 
-sudo groupadd gamemode
+[[ $(grep gamemode /etc/group) ]] || sudo groupadd gamemode
 sudo usermod -a -G gamemode $(whoami)
 
 sudo pacman -S --noconfirm \
@@ -76,17 +101,6 @@ systemctl --user start gamemoded.service
 paru -S --aur --noconfirm \
   lib32-mangohud \
   mangohud
-
-# links
-
-for APP in \
-  steam
-do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i \
-    -e 's/^Name=.*$/Name=Steam/' \
-    ~/.local/share/applications/$APP.desktop
-done
 
 # dotfiles
 
