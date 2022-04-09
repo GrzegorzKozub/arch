@@ -102,6 +102,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - For Proton Experimental tool, select bleeding-edge beta
   - For your games, set compatibility to Proton-GE
   - For your games, set launch options to `DXVK_ASYNC=1 MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
+  - To limit FPS with `libstrangle` instead of `mangohud`, add `strangle --vulkan-only --vsync 0 60`
 5. Once per machine, move Steam to games disk with
   ```zsh
   mv ${XDG_DATA_HOME:-~/.local/share}/Steam /run/media/$USER/games/

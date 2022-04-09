@@ -102,6 +102,11 @@ paru -S --aur --noconfirm \
   lib32-mangohud \
   mangohud
 
+# libstrangle
+
+paru -S --aur --noconfirm \
+  libstrangle-git
+
 # dotfiles
 
 . ~/code/dotfiles/games.zsh
