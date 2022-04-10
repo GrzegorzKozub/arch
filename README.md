@@ -114,4 +114,6 @@ To reduce the image size after freeing up space on guest, first defragment the d
 7. Elden Ring
   - Download [er-patcher](https://github.com/gurrgur/er-patcher) to the game dir and `chmod u+x er-patcher`
   - Set launch options to `./er-patcher --rate 144 -vcas --fix-camera -- env DXVK_ASYNC=1 MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
+8. Insurgency Sandstorm
+  - Set launch options to `DXVK_ASYNC=1 MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command% -dx12 -noglobalinvalidation -nominidumps -useallavailablecores`
 
