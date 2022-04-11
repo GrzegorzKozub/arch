@@ -13,7 +13,7 @@ class Extension {
   constructor() {
     const big = [
       { title: /.?Azure Data Studio$/ },
-      { title: /.?Brave$/, auto: true, noRole: 'pop-up' },
+      { title: /.?Brave$/, noRole: 'pop-up' },
       { title: /^OBS.?/ },
       { title: /^Postman$/, auto: true },
       { title: /.?Shotcut$/ },
