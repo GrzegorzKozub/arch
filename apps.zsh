@@ -79,7 +79,6 @@ sudo pacman -S --noconfirm \
   stress \
   trash-cli \
   wget \
-  wkhtmltopdf \
   xclip \
   yt-dlp \
   zip
@@ -158,7 +157,6 @@ sudo pacman -S --noconfirm \
   rust
 
 paru -S --aur --noconfirm \
-  hyx \
   nvm
 
 NVM_DIR=${XDG_DATA_HOME:-~/.local/share}/nvm source /usr/share/nvm/init-nvm.sh
