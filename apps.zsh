@@ -45,9 +45,6 @@ sudo pacman -S --noconfirm \
 # themes
 
 sudo pacman -S --needed --noconfirm \
-  arc-gtk-theme \
-  arc-solid-gtk-theme \
-  materia-gtk-theme \
   papirus-icon-theme
 
 # gnome

@@ -100,9 +100,6 @@ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-tim
 
 # themes
 
-# gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Lighter-solid'
-# gsettings set org.gnome.shell.extensions.user-theme name 'Arc-solid'
-
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
 # wallpapers
