@@ -110,10 +110,10 @@ To reduce the image size after freeing up space on guest, first defragment the d
   ```
 6. Dark Souls 3
   - Download [ds3-patcher](https://github.com/grzegorzkozub/ds3-patcher) to the game dir and `chmod u+x ds3_patcher`
-  - Set launch options to `./ds3_patcher -s -- env DXVK_ASYNC=1 MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
+  - Set launch options to `./ds3_patcher -s -- env DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
 7. Elden Ring
   - Download [er-patcher](https://github.com/gurrgur/er-patcher) to the game dir and `chmod u+x er-patcher`
-  - Set launch options to `./er-patcher --rate 144 -vcas -- env DXVK_ASYNC=1 MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
+  - Set launch options to `./er-patcher --rate 144 -vcas -- env DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
 8. Insurgency Sandstorm
-  - Set launch options to `DXVK_ASYNC=1 MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command% -dx12 -noglobalinvalidation -nominidumps -useallavailablecores`
+  - Set launch options to `DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=upload_hvv WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command% -dx12 -noglobalinvalidation -nominidumps -useallavailablecores`
 
