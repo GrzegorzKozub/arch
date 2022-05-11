@@ -1,5 +1,6 @@
 [Unit]
 Description=history
+After=network-online.target
 
 [Timer]
 OnCalendar=00/1:00
