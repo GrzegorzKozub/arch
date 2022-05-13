@@ -1,0 +1,12 @@
+[Unit]
+Description=net
+
+[Service]
+Type=oneshot
+ExecStart=%h/code/arch/net.sh
+RemainAfterExit=true
+
+[Install]
+RequiredBy=history.timer
+RequiredBy=passwords.timer
+
