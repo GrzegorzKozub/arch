@@ -26,9 +26,6 @@ sudo systemctl enable iptables.service
 cp `dirname $0`/home/greg/.config/systemd/user/dnd.service ~/.config/systemd/user
 systemctl --user enable dnd.service
 
-cp `dirname $0`/home/greg/.config/systemd/user/net.service ~/.config/systemd/user
-systemctl --user enable net.service
-
 cp `dirname $0`/home/greg/.config/systemd/user/history.* ~/.config/systemd/user
 systemctl --user enable history.timer
 systemctl --user start history.timer
