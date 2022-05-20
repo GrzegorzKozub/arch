@@ -36,6 +36,11 @@ LINE=$(grep -n '#\[multilib\]' /etc/pacman.conf | awk '{print $1}' FS=':')
 
 sudo pacman -Sy
 
+# pipewire
+
+sudo pacman -S --noconfirm \
+  lib32-pipewire
+
 # nvidia-settings
 
 sudo pacman -S --noconfirm \
