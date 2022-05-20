@@ -61,10 +61,10 @@ fi
 
 # sound
 
-amixer sset Master 50%
-amixer sset Capture 50%
+pactl set-sink-volume @DEFAULT_SINK@ 50%
+pactl set-source-volume @DEFAULT_SOURCE@ 50%
 
-[[ $HOST = 'drifter' ]] && amixer sset Master mute
+[[ $HOST = 'drifter' ]] && pactl set-sink-mute @DEFAULT_SINK@ 1
 
 gsettings set org.gnome.desktop.sound event-sounds false
 
