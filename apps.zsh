@@ -168,7 +168,7 @@ sudo pacman -S --noconfirm \
   keepassxc \
   mpv celluloid \
   openconnect networkmanager-openconnect \
-  peek gifski gst-plugins-good gst-plugins-ugly
+  peek gifski gst-plugins-good
 
 paru -S --aur --noconfirm \
   brave-bin \
