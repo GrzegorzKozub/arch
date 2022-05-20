@@ -55,18 +55,19 @@ pacstrap /mnt \
   base base-devel \
   linux linux-lts linux-firmware \
   terminus-font \
-  alsa-utils \
   efibootmgr \
   lvm2 \
   ntfs-3g \
   nss-mdns \
   lm_sensors \
   v4l-utils \
+  alsa-utils \
+  pipewire pipewire-alsa pipewire-pulse \
+  xdg-desktop-portal \
   pacman-contrib \
   git go reflector sudo zsh \
   xorg-server \
   gdm gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb networkmanager xdg-user-dirs-gtk xdg-utils \
-  pipewire xdg-desktop-portal \
   eog evince gnome-calculator gnome-control-center gnome-software gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus
 
 # fstab file
