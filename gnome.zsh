@@ -40,8 +40,12 @@ gsettings set \
 gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
 
 if [[ $HOST = 'drifter' ]]; then
-  gsettings set org.gnome.desktop.peripherals.touchpad speed 0.5
+
+  [[ $XDG_SESSION_TYPE = 'wayland' ]] && gsettings set org.gnome.desktop.peripherals.touchpad speed 0.25
+  [[ $XDG_SESSION_TYPE = 'x11' ]] && gsettings set org.gnome.desktop.peripherals.touchpad speed 0.5
+
   gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
 fi
 
 # screen
