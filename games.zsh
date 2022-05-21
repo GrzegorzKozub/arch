@@ -41,12 +41,10 @@ sudo pacman -Sy
 sudo pacman -S --noconfirm \
   lib32-pipewire
 
-# nvidia-settings
+# nvidia
 
 sudo pacman -S --noconfirm \
   nvidia-settings
-
-sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
 
 [[ -d $XDG_DATA_HOME/nvidia-settings ]] || mkdir $XDG_DATA_HOME/nvidia-settings
 
@@ -59,6 +57,11 @@ do
     -e 's/^Exec=.*$/Exec=\/usr\/bin\/nvidia-settings --config=\/home\/greg\/.local\/share\/nvidia-settings\/nvidia-settings-rc/' \
     ~/.local/share/applications/$APP.desktop
 done
+
+sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
+
+cp `dirname $0`/home/greg/.config/systemd/user/nvidia.service ~/.config/systemd/user
+systemctl --user enable nvidia.service
 
 # steam
 
