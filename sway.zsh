@@ -2,7 +2,7 @@
 
 set -e -o verbose
 
-# video
+# sway
 
 sudo pacman -S --noconfirm \
   sway \
@@ -10,4 +10,6 @@ sudo pacman -S --noconfirm \
   swayidle swaylock swaybg \
   bemenu-wayland bemenu \
   waybar otf-font-awesome
+
+. ~/code/dotfiles/sway.zsh
 
