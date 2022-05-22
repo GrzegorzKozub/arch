@@ -1,0 +1,1 @@
+sudo pacman -Sy sway polkit dmenu bemenu mako swayidle swaylock swaybg waybar otf-font-awesome foot
