@@ -6,10 +6,14 @@ set -e -o verbose
 
 sudo pacman -S --noconfirm \
   sway \
-  brightnessctl polkit \
+  brightnessctl \
+  polkit \
   swayidle swaylock swaybg \
   bemenu-wayland bemenu \
   waybar otf-font-awesome
+
+paru -S --aur --noconfirm \
+  wob
 
 . ~/code/dotfiles/sway.zsh
 
