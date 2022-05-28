@@ -61,6 +61,7 @@ pacstrap /mnt \
   nss-mdns \
   lm_sensors \
   v4l-utils \
+  bluez-utils \
   pipewire pipewire-alsa pipewire-pulse \
   xdg-desktop-portal \
   pacman-contrib \
