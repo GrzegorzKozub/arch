@@ -40,6 +40,7 @@ Automated Arch Linux installation
   - Set as default browser
   - Hide bookmarks
   - Enable wide address bar
+  - Hide tab search button
   - Hide Brave Rewards button
   - Disable everything except background images on the dashboard
   - Enable search and URL autocompletion
