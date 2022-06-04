@@ -14,7 +14,8 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
-  swaylock-effects-git
+  swaylock-effects-git \
+  waylogout-git
 
 . ~/code/dotfiles/sway.zsh
 
