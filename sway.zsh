@@ -8,12 +8,13 @@ sudo pacman -S --noconfirm \
   sway \
   brightnessctl \
   polkit \
-  swaybg swayidle swaylock \
+  swaybg swayidle \
   bemenu-wayland bemenu \
   waybar
 
 paru -S --aur --noconfirm \
-  ttf-material-design-icons-extended
+  ttf-material-design-icons-extended \
+  swaylock-effects-git
 
 . ~/code/dotfiles/sway.zsh
 
