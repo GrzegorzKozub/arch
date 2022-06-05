@@ -9,8 +9,8 @@ sudo pacman -S --noconfirm \
   brightnessctl \
   polkit \
   swaybg swayidle \
-  bemenu-wayland bemenu \
-  waybar
+  waybar \
+  wofi
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
