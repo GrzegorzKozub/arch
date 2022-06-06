@@ -6,11 +6,11 @@ set -e -o verbose
 
 sudo pacman -S --noconfirm \
   sway \
-  brightnessctl \
-  polkit \
+  brightnessctl polkit \
   swaybg swayidle \
   waybar \
-  wofi
+  wofi \
+  grim slurp swappy wl-clipboard
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
