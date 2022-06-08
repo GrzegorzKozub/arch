@@ -136,7 +136,7 @@ gsettings set org.gnome.desktop.search-providers disable-external true
 gsettings set org.gnome.desktop.notifications show-banners false
 gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'Alacritty.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'brave-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'logseq.desktop']" # 'slack-desktop'
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'Alacritty.desktop', 'visual-studio-code.desktop', 'postman.desktop', 'brave-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'logseq.desktop', 'steam.desktop']" # 'slack-desktop'
 
 gsettings set org.gnome.desktop.interface enable-hot-corners false
 
