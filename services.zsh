@@ -32,6 +32,10 @@ cp `dirname $0`/home/greg/.config/systemd/user/history.* ~/.config/systemd/user
 systemctl --user enable history.timer
 systemctl --user start history.timer
 
+cp `dirname $0`/home/greg/.config/systemd/user/notes.* ~/.config/systemd/user
+systemctl --user enable notes.timer
+systemctl --user start notes.timer
+
 cp `dirname $0`/home/greg/.config/systemd/user/passwords.* ~/.config/systemd/user
 systemctl --user enable passwords.timer
 systemctl --user start passwords.timer
