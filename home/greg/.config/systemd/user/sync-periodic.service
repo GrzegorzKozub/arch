@@ -1,0 +1,8 @@
+[Unit]
+Description=sync-periodic
+
+[Service]
+Type=oneshot
+RemainAfterExit=false
+WorkingDirectory=%h/code/arch
+ExecStart=%h/code/arch/sync.sh

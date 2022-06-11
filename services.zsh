@@ -28,17 +28,9 @@ sudo systemctl enable iptables.service
 cp `dirname $0`/home/greg/.config/systemd/user/dnd.service ~/.config/systemd/user
 systemctl --user enable dnd.service
 
-cp `dirname $0`/home/greg/.config/systemd/user/history.* ~/.config/systemd/user
-systemctl --user enable history.timer
-systemctl --user start history.timer
-
-cp `dirname $0`/home/greg/.config/systemd/user/notes.* ~/.config/systemd/user
-systemctl --user enable notes.timer
-systemctl --user start notes.timer
-
-cp `dirname $0`/home/greg/.config/systemd/user/passwords.* ~/.config/systemd/user
-systemctl --user enable passwords.timer
-systemctl --user start passwords.timer
+cp `dirname $0`/home/greg/.config/systemd/user/sync-* ~/.config/systemd/user
+systemctl --user enable sync-periodic.timer
+systemctl --user enable sync-session.service
 
 if [[ $HOST = 'drifter' ]]; then
 

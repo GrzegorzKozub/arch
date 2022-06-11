@@ -1,0 +1,13 @@
+[Unit]
+Description=sync-session
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+WorkingDirectory=%h/code/arch
+ExecStart=%h/code/arch/sync.sh
+ExecStop=%h/code/arch/sync.sh
+
+[Install]
+WantedBy=default.target
+

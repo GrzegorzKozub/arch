@@ -2,6 +2,8 @@
 
 set -e
 
+[ "${FLOCKER}" != "$0" ] && exec env FLOCKER="$0" flock -en "$0" "$0" "$@" || :
+
 wait_net() {
   until [[
     $(ping -c 1 -t 32 'github.com' 2> /dev/null |
@@ -14,4 +16,8 @@ wait_net() {
 }
 
 wait_net
+
+pushd ~/code/history && ./sync.sh && popd
+pushd ~/code/notes && ./sync.sh && popd
+pushd ~/code/passwords && ./sync.sh && popd
 

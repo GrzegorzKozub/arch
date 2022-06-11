@@ -1,7 +1,0 @@
-[Unit]
-Description=history
-
-[Service]
-WorkingDirectory=%h/code/history
-ExecStart=%h/code/history/sync.sh
-

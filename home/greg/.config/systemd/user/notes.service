@@ -1,7 +1,0 @@
-[Unit]
-Description=notes
-
-[Service]
-WorkingDirectory=%h/code/notes
-ExecStart=%h/code/notes/sync.sh
-
