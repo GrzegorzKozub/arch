@@ -103,7 +103,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - Run other titles with Proton Experimental
   - For Proton Experimental tool, select bleeding-edge beta
   - For your games, set compatibility to Proton-GE
-  - For your games, set launch options to `DXVK_ASYNC=1 MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=np_upload_hvv,single_queue WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
+  - For your games, set launch options to `<variables> gamemoderun %command%`
   - To limit FPS with `libstrangle` instead of `mangohud`, add `strangle --vulkan-only --vsync 0 60`
 5. Once per machine, move Steam to games disk with
   ```zsh
@@ -112,10 +112,18 @@ To reduce the image size after freeing up space on guest, first defragment the d
   ```
 6. Dark Souls 3
   - Download [ds3-patcher](https://github.com/grzegorzkozub/ds3-patcher) to the game dir and `chmod u+x ds3_patcher`
-  - Set launch options to `./ds3_patcher -s -- env DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=no_upload_hvv,single_queue WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
+  - Set launch options to `./ds3_patcher -s -- env <variables> gamemoderun %command%`
 7. Elden Ring
   - Download [er-patcher](https://github.com/gurrgur/er-patcher) to the game dir and `chmod u+x er-patcher`
-  - Set launch options to `./er-patcher --rate 144 -vcas -- env DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=no_upload_hvv,single_queue WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
+  - Set launch options to `./er-patcher --rate 144 -vcas -- env <variables> gamemoderun %command%`
 8. Insurgency Sandstorm
-  - Set launch options to `DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=no_upload_hvv,single WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command% -dx12 -noglobalinvalidation -nominidumps -useallavailablecores`
+  - Set launch options to `<variables> gamemoderun %command% -dx12 -noglobalinvalidation -nominidumps -useallavailablecores`
+
+### Variables
+
+Currently using `DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2`
+
+Also considering `VKD3D_CONFIG=np_upload_hvv,single_queue` but couldn't verify that they help with stutter
+
+Documented [here](https://github.com/GloriousEggroll/proton-ge-custom#modification) and [here](https://github.com/HansKristian-Work/vkd3d-proton#environment-variables)
 
