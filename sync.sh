@@ -2,7 +2,7 @@
 
 set -e
 
-[ "${FLOCKER}" != "$0" ] && exec env FLOCKER="$0" flock -en "$0" "$0" "$@" || :
+[ "${FLOCKER}" != "$0" ] && exec env FLOCKER="$0" flock -E 0 -en "$0" "$0" "$@" || :
 
 wait_net() {
   until [[
