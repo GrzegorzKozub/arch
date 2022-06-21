@@ -6,5 +6,7 @@ set -e -o verbose
 # https://wallhaven.cc/w/g7lyd7
 # https://wallhaven.cc/w/735k2e
 
-curl 'https://wallhaven.cc/api/v1/search?q=From%20Software&purity=sfw&sorting=toplist&apikey=lw8CJsACiTynhWyjHGIdX0gdNjT5exts' | jq
+#curl 'https://wallhaven.cc/api/v1/search?q=From%20Software&purity=sfw&sorting=toplist&apikey=lw8CJsACiTynhWyjHGIdX0gdNjT5exts' |
+curl 'https://wallhaven.cc/api/v1/search?q=like:735k2e&sorting=random' |
+  jq '.data[0].path'  | xargs xdg-open
 
