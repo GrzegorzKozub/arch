@@ -102,9 +102,8 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - Enable Steam Play for all other titles
   - Run other titles with Proton Experimental
   - For Proton Experimental tool, select bleeding-edge beta
-  - For your games, set compatibility to Proton-GE
-  - For your games, set launch options to `<variables> gamemoderun %command%`
-  - To limit FPS with `libstrangle` instead of `mangohud`, add `strangle --vulkan-only --vsync 0 60`
+  - Set game compatibility to Proton-GE
+  - Set game launch options to `<variables> gamemoderun strangle --vulkan-only --vsync 0 60 %command%`
 5. Once per machine, move Steam to games disk with
   ```zsh
   mv ${XDG_DATA_HOME:-~/.local/share}/Steam /run/media/$USER/games/
@@ -115,9 +114,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - Set launch options to `./ds3_patcher -s -- env <variables> gamemoderun %command%`
 7. Elden Ring
   - Download [er-patcher](https://github.com/gurrgur/er-patcher) to the game dir and `chmod u+x er-patcher`
-  - Set launch options to `./er-patcher --rate 144 -vcas -- env <variables> gamemoderun %command%`
-8. Insurgency Sandstorm
-  - Set launch options to `<variables> gamemoderun %command% -dx12 -noglobalinvalidation -nominidumps -useallavailablecores`
+  - Set launch options to `./er-patcher --rate 144 -vcas -- env <variables> gamemoderun strangle --vulkan-only --vsync 0 60 %command%`
 
 ### Variables
 
