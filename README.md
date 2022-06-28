@@ -122,5 +122,13 @@ Currently using `DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0"
 
 Also considering `VKD3D_CONFIG=np_upload_hvv,single_queue` but couldn't verify that they help with stutter
 
-Documented [here](https://github.com/GloriousEggroll/proton-ge-custom#modification) and [here](https://github.com/HansKristian-Work/vkd3d-proton#environment-variables)
+To enable ray tracing, use `VKD3D_CONFIG=dxr11`
+
+### References
+
+- [gamescope](https://github.com/Plagman/gamescope)
+- [libstrangle](https://gitlab.com/torkel104/libstrangle)
+- [MangoHud](https://github.com/flightlessmango/MangoHud)
+- [proton-ge-custom](https://github.com/GloriousEggroll/proton-ge-custom)
+- [vkd3d-proton](https://github.com/HansKristian-Work/vkd3d-proton)
 
