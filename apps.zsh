@@ -167,8 +167,7 @@ sudo pacman -S --noconfirm \
   flameshot \
   keepassxc \
   mpv celluloid \
-  openconnect networkmanager-openconnect \
-  peek gifski gst-plugins-good
+  openconnect networkmanager-openconnect
 
 paru -S --aur --noconfirm \
   brave-bin \
