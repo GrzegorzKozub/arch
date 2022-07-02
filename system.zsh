@@ -62,7 +62,7 @@ pacstrap /mnt \
   lm_sensors \
   v4l-utils \
   bluez-utils \
-  pipewire pipewire-alsa pipewire-pulse \
+  pipewire pipewire-alsa pipewire-pulse wireplumber \
   xdg-desktop-portal \
   pacman-contrib \
   git go reflector sudo zsh \
