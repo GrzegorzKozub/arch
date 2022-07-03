@@ -70,7 +70,6 @@ sudo pacman -S --noconfirm \
   htop \
   imwheel \
   jq \
-  man-db man-pages \
   p7zip \
   pass \
   qemu-desktop samba \

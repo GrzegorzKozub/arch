@@ -66,6 +66,7 @@ pacstrap /mnt \
   xdg-desktop-portal \
   pacman-contrib \
   git go reflector sudo zsh \
+  man-db man-pages \
   xorg-server \
   gdm gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb networkmanager xdg-user-dirs-gtk xdg-utils \
   eog evince gnome-calculator gnome-control-center gnome-software gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus \
