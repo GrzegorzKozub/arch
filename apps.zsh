@@ -80,6 +80,7 @@ sudo pacman -S --noconfirm \
   trash-cli \
   wget \
   xclip \
+  xcolor \
   yt-dlp \
   zip
 
