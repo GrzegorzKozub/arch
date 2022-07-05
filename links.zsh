@@ -30,7 +30,8 @@ for APP in \
   stoken-gui \
   stoken-gui-small \
   unison \
-  vim
+  vim \
+  xcolor
 do
   printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
 done
