@@ -111,7 +111,8 @@ systemctl --user start gamemoded.service
 
 paru -S --aur --noconfirm \
   lib32-mangohud \
-  mangohud
+  mangohud \
+  mangohud-common
 
 # libstrangle
 
