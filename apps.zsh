@@ -182,7 +182,7 @@ paru -S --aur --noconfirm \
 gsettings set io.github.celluloid-player.Celluloid always-use-floating-controls true
 gsettings set io.github.celluloid-player.Celluloid dark-theme-enable false
 gsettings set io.github.celluloid-player.Celluloid mpv-config-enable true
-gsettings set io.github.celluloid-player.Celluloid mpv-config-file '/home/greg/.config/mpv/mpv.conf'
+gsettings set io.github.celluloid-player.Celluloid mpv-config-file 'file:///home/greg/.config/mpv/mpv.conf'
 
 # xdg-mime default slack.desktop x-scheme-handler/slack
 
