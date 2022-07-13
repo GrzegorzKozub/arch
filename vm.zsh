@@ -6,11 +6,17 @@ set -e
 
 zparseopts clipboard=PARAMS folder=PARAMS
 
+SECURE_BOOT=0
+
 MOUNT=/run/media/$USER/data
 DIR=$MOUNT/vm
+TPM=$DIR/tpm
+
 DISK=windows.cow
 WINDOWS=windows.iso
+VARS=windows.fd
 VIRTIO=virtio-win-0.1.215.iso
+
 SHARE=$HOME/Downloads
 
 # mount
@@ -61,6 +67,29 @@ OPTS+=("-drive file=$DIR/$DISK,if=virtio,aio=native,cache.direct=on")
 [[ -f $DIR/$WINDOWS ]] && OPTS+=("-drive file=$DIR/$WINDOWS,media=cdrom")
 [[ -f $DIR/$VIRTIO ]] && OPTS+=("-drive file=$DIR/$VIRTIO,media=cdrom")
 
+if [[ $SECURE_BOOT = 1 ]]; then
+
+  OPTS+=('-machine q35,smm=on')
+
+  [[ -d $TPM ]] || mkdir $TPM
+
+  swtpm socket \
+    --tpm2 \
+    --tpmstate dir=$TPM \
+    --ctrl type=unixio,path=$TPM/socket \
+    --daemon
+
+  OPTS+=("-chardev socket,path=$TPM/socket,id=chardev0")
+  OPTS+=('-tpmdev emulator,chardev=chardev0,id=tpmdev0')
+  OPTS+=('-device tpm-tis,tpmdev=tpmdev0')
+
+  [[ -f $DIR/$VARS ]] || cp /usr/share/edk2-ovmf/x64/OVMF_VARS.fd $DIR/$VARS
+
+  OPTS+=('-drive if=pflash,format=raw,unit=0,file=/usr/share/edk2-ovmf/x64/OVMF_CODE.secboot.fd,readonly=on')
+  OPTS+=("-drive if=pflash,format=raw,unit=1,file=$DIR/$VARS")
+
+fi
+
 if (( $PARAMS[(I)-clipboard|-folder] )); then
 
   OPTS+=('-spice port=5930,disable-ticketing=on')
@@ -68,13 +97,13 @@ if (( $PARAMS[(I)-clipboard|-folder] )); then
   OPTS+=('-device virtio-serial-pci')
 
   if (( $PARAMS[(Ie)-clipboard] )); then
-    OPTS+=('-device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0')
-    OPTS+=('-chardev spicevmc,id=spicechannel0,name=vdagent')
+    OPTS+=('-chardev spicevmc,name=vdagent,id=chardev1')
+    OPTS+=('-device virtserialport,name=com.redhat.spice.0,chardev=chardev1')
   fi
 
   if (( $PARAMS[(Ie)-folder] )); then
-    OPTS+=('-device virtserialport,chardev=spicechannel1,name=org.spice-space.webdav.0')
-    OPTS+=('-chardev spiceport,name=org.spice-space.webdav.0,id=spicechannel1')
+    OPTS+=('-chardev spiceport,name=org.spice-space.webdav.0,id=chardev2')
+    OPTS+=('-device virtserialport,name=org.spice-space.webdav.0,chardev=chardev2')
   fi
 
 fi
