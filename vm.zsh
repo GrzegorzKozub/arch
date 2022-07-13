@@ -15,7 +15,7 @@ TPM=$DIR/tpm
 DISK=windows.cow
 WINDOWS=windows.iso
 VARS=windows.fd
-VIRTIO=virtio-win-0.1.215.iso
+VIRTIO=virtio-win-0.1.217.iso
 
 SHARE=$HOME/Downloads
 
