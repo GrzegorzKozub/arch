@@ -6,7 +6,7 @@ set -e
 
 zparseopts clipboard=PARAMS folder=PARAMS
 
-SECURE_BOOT=0
+UEFI=0
 
 MOUNT=/run/media/$USER/data
 DIR=$MOUNT/vm
@@ -67,7 +67,7 @@ OPTS+=("-drive file=$DIR/$DISK,if=virtio,aio=native,cache.direct=on")
 [[ -f $DIR/$WINDOWS ]] && OPTS+=("-drive file=$DIR/$WINDOWS,media=cdrom")
 [[ -f $DIR/$VIRTIO ]] && OPTS+=("-drive file=$DIR/$VIRTIO,media=cdrom")
 
-if [[ $SECURE_BOOT = 1 ]]; then
+if [[ $UEFI = 1 ]]; then
 
   OPTS+=('-machine q35,smm=on')
 
