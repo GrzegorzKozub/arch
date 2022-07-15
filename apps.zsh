@@ -87,20 +87,6 @@ paru -S --aur --noconfirm \
   btop \
   wrk2-git
 
-if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
-
-  sudo pacman -S --noconfirm \
-    nvtop
-
-fi
-
-if [[ $HOST = 'drifter' ]]; then
-
-  sudo pacman -S --noconfirm \
-    intel-gpu-tools
-
-fi
-
 # zsh, tmux and lf
 
 sudo pacman -S --noconfirm \

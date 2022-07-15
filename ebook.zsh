@@ -5,5 +5,6 @@ set -e -o verbose
 # ebook
 
 sudo pacman -S --noconfirm \
+  calibre \
   foliate
 

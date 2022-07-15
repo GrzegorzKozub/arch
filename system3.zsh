@@ -25,17 +25,18 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
 
   sudo pacman -S --noconfirm \
     amd-ucode \
-    nvidia nvidia-lts
+    nvidia nvidia-lts nvtop \
+    argyllcms
 
 fi
 
 if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
   sudo pacman -S --noconfirm \
-    iwd \
     intel-ucode \
-    intel-media-driver \
-    alsa-firmware alsa-ucm-conf sof-firmware
+    intel-gpu-tools intel-media-driver \
+    alsa-firmware alsa-ucm-conf sof-firmware \
+    iwd
 
   # sudo pacman -S --noconfirm \
     # iio-sensor-proxy
@@ -46,7 +47,23 @@ if [[ $MY_HOSTNAME = 'worker' ]]; then
 
   sudo pacman -S --noconfirm \
     intel-ucode \
-    nvidia nvidia-lts
+    nvidia nvidia-lts nvtop \
+    argyllcms
+
+fi
+
+# colors
+
+if [[ $MY_HOSTNAME = 'player' ]]; then
+
+  dispwin -d1 -I `dirname $0`/home/greg/.config/color/icc/devices/display/27gp950-b.icm
+
+fi
+
+if [[ $MY_HOSTNAME = 'worker' ]]; then
+
+  dispwin -d1 -I `dirname $0`/home/greg/.config/color/icc/devices/display/27ul850-w.icm
+  dispwin -d2 -I `dirname $0`/home/greg/.config/color/icc/devices/display/27ud88-w.icm
 
 fi
 
