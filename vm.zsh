@@ -6,18 +6,19 @@ set -e
 
 zparseopts clipboard=PARAMS folder=PARAMS
 
+NAME=windows
 UEFI=0
 
 MOUNT=/run/media/$USER/data
 DIR=$MOUNT/vm
-TPM=$DIR/tpm
-
-DISK=windows.cow
-WINDOWS=windows.iso
-VARS=windows.fd
-VIRTIO=virtio-win-0.1.217.iso
-
 SHARE=$HOME/Downloads
+
+DISK=$NAME.cow
+VARS=$NAME.fd
+TPM=$NAME-tpm
+
+OS=$NAME.iso
+DRIVERS=virtio-win-0.1.217.iso
 
 # mount
 
@@ -34,7 +35,7 @@ SHARE=$HOME/Downloads
 
 # options
 
-OPTS+=('-name windows')
+OPTS+=("-name $NAME")
 
 OPTS+=('-machine q35,smm=on')
 
@@ -66,20 +67,20 @@ OPTS+=("-nic user,model=virtio-net-pci,smb=$SHARE")
 OPTS+=('-usbdevice tablet')
 
 OPTS+=("-drive file=$DIR/$DISK,if=virtio,aio=native,cache.direct=on")
-[[ -f $DIR/$WINDOWS ]] && OPTS+=("-drive file=$DIR/$WINDOWS,media=cdrom")
-[[ -f $DIR/$VIRTIO ]] && OPTS+=("-drive file=$DIR/$VIRTIO,media=cdrom")
+[[ -f $DIR/$OS ]] && OPTS+=("-drive file=$DIR/$OS,media=cdrom")
+[[ -f $DIR/$DRIVERS ]] && OPTS+=("-drive file=$DIR/$DRIVERS,media=cdrom")
 
 if [[ $UEFI = 1 ]]; then
 
-  [[ -d $TPM ]] || mkdir $TPM
+  [[ -d $DIR/$TPM ]] || mkdir $DIR/$TPM
 
   swtpm socket \
     --tpm2 \
-    --tpmstate dir=$TPM \
-    --ctrl type=unixio,path=$TPM/socket \
+    --tpmstate dir=$DIR/$TPM \
+    --ctrl type=unixio,path=$DIR/$TPM/socket \
     --daemon
 
-  OPTS+=("-chardev socket,path=$TPM/socket,id=chardev0")
+  OPTS+=("-chardev socket,path=$DIR/$TPM/socket,id=chardev0")
   OPTS+=('-tpmdev emulator,chardev=chardev0,id=tpmdev0')
   OPTS+=('-device tpm-tis,tpmdev=tpmdev0')
 
