@@ -2,6 +2,12 @@
 
 set -e
 
-[[ $HOSTNAME = 'drifter' ]] && dispwin -d1 -L
-[[ $HOSTNAME = 'worker' ]] && dispwin -d1 -L && dispwin -d2 -L
+if [[ $HOSTNAME = 'player' ]]; then
+  dispwin -d1 -L
+fi
+
+if [[ $HOSTNAME = 'worker' ]]; then
+  dispwin -d1 -L
+  dispwin -d2 -L
+fi
 
