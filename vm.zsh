@@ -36,6 +36,8 @@ SHARE=$HOME/Downloads
 
 OPTS+=('-name windows')
 
+OPTS+=('-machine q35,smm=on')
+
 OPTS+=('-enable-kvm')
 
 OPTS+=('-cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,topoext')
@@ -68,8 +70,6 @@ OPTS+=("-drive file=$DIR/$DISK,if=virtio,aio=native,cache.direct=on")
 [[ -f $DIR/$VIRTIO ]] && OPTS+=("-drive file=$DIR/$VIRTIO,media=cdrom")
 
 if [[ $UEFI = 1 ]]; then
-
-  OPTS+=('-machine q35,smm=on')
 
   [[ -d $TPM ]] || mkdir $TPM
 
