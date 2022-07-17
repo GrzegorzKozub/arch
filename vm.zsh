@@ -4,10 +4,9 @@ set -e
 
 # config
 
-zparseopts clipboard=PARAMS folder=PARAMS
-
 NAME=windows
 UEFI=0
+SPICE=0
 
 MOUNT=/run/media/$USER/data
 DIR=$MOUNT/vm
@@ -91,21 +90,19 @@ if [[ $UEFI = 1 ]]; then
 
 fi
 
-if (( $PARAMS[(I)-clipboard|-folder] )); then
+if [[ $SPICE = 1 ]]; then
 
   OPTS+=('-spice port=5930,disable-ticketing=on')
   OPTS+=('-display spice-app')
   OPTS+=('-device virtio-serial-pci')
 
-  if (( $PARAMS[(Ie)-clipboard] )); then
-    OPTS+=('-chardev spicevmc,name=vdagent,id=chardev1')
-    OPTS+=('-device virtserialport,name=com.redhat.spice.0,chardev=chardev1')
-  fi
+  # clipboard sharing
+  OPTS+=('-chardev spicevmc,name=vdagent,id=chardev1')
+  OPTS+=('-device virtserialport,name=com.redhat.spice.0,chardev=chardev1')
 
-  if (( $PARAMS[(Ie)-folder] )); then
-    OPTS+=('-chardev spiceport,name=org.spice-space.webdav.0,id=chardev2')
-    OPTS+=('-device virtserialport,name=org.spice-space.webdav.0,chardev=chardev2')
-  fi
+  # folder sharing
+  OPTS+=('-chardev spiceport,name=org.spice-space.webdav.0,id=chardev2')
+  OPTS+=('-device virtserialport,name=org.spice-space.webdav.0,chardev=chardev2')
 
 fi
 
