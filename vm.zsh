@@ -6,7 +6,7 @@ set -e
 
 NAME=windows
 UEFI=0
-SPICE=0
+SPICE=1
 
 MOUNT=/run/media/$USER/data
 DIR=$MOUNT/vm
@@ -71,6 +71,9 @@ OPTS+=("-drive file=$DIR/$DISK,if=virtio,aio=native,cache.direct=on")
 
 if [[ $UEFI = 1 ]]; then
 
+  [[ $(pacman -Qs swtpm) ]] || sudo pacman -S --noconfirm swtpm
+  [[ $(pacman -Qs edk2-ovmf) ]] || sudo pacman -S --noconfirm edk2-ovmf
+
   [[ -d $DIR/$TPM ]] || mkdir $DIR/$TPM
 
   swtpm socket \
@@ -91,6 +94,8 @@ if [[ $UEFI = 1 ]]; then
 fi
 
 if [[ $SPICE = 1 ]]; then
+
+  [[ $(pacman -Qs virt-viewer) ]] || sudo pacman -S --noconfirm virt-viewer
 
   OPTS+=('-spice port=5930,disable-ticketing=on')
   OPTS+=('-display spice-app')
