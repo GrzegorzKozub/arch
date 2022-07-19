@@ -95,7 +95,10 @@ fi
 
 if [[ $SPICE = 1 ]]; then
 
-  [[ $(pacman -Qs virt-viewer) ]] || sudo pacman -S --noconfirm virt-viewer
+  [[ $(pacman -Qs virt-viewer) ]] || {
+    sudo pacman -S --noconfirm virt-viewer
+    printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/remote-viewer.desktop
+  }
 
   OPTS+=('-spice port=5930,disable-ticketing=on')
   OPTS+=('-display spice-app')
