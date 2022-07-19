@@ -6,7 +6,7 @@ set -e
 
 NAME=windows
 UEFI=0
-SPICE=1
+SPICE=0
 
 MOUNT=/run/media/$USER/data
 DIR=$MOUNT/vm
