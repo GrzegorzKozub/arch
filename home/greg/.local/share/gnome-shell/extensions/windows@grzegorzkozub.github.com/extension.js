@@ -24,7 +24,6 @@ class Extension {
       { class: /.?Foliate$/ },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
-      { class: /^Logseq.?/, auto: true },
       { title: /.?MySQL Workbench$/ },
       { title: /.?Slack$/, auto: true },
       { title: /.?Steam$/ },

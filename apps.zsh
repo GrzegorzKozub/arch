@@ -158,7 +158,6 @@ sudo pacman -S --noconfirm \
 paru -S --aur --noconfirm \
   brave-bin \
   chrome-gnome-shell \
-  logseq-desktop-bin \
   postman-bin \
   visual-studio-code-bin
 
