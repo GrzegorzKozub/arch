@@ -73,14 +73,13 @@ Automated Arch Linux installation
   - Fit columns to window
 3. Change the font to `Fira Code Retina` and tab size to `2` in Postman
 4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
-5. Open the `~/code/notes` graph in Loqseq
-6. Gnome
+5. Gnome
   - Reorder the icons
   - Add VPN server
   - Select the sound device and set volume to 50%
   - Remove the `~/.gnome` dir
-7. Clone the work repo, run `update.zsh` and setup `.env` files
-8. Fix window sizes and positions
+6. Clone the work repo, run `update.zsh` and setup `.env` files
+7. Fix window sizes and positions
 
 ## Windows VM
 

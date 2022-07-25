@@ -18,8 +18,8 @@ wait_net() {
 wait_net
 
 pushd ~/code/history && ./sync.sh && popd &
-pushd ~/code/notes && ./sync.sh && popd &
 pushd ~/code/passwords && ./sync.sh && popd &
+pushd ~/code/apsis && ./sync.sh && popd &
 
 wait
 

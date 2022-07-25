@@ -26,9 +26,6 @@ sudo umount -R /mnt
 
 [[ -d ~/code ]] || mkdir ~/code
 
-# [[ -d ~/code/apsis ]] && rm -rf ~/code/apsis
-# git clone git@github.com:GrzegorzKozub/apsis.git ~/code/apsis
-
 [[ -d ~/code/arch ]] && rm -rf ~/code/arch
 git clone git@github.com:GrzegorzKozub/arch.git ~/code/arch
 
@@ -41,12 +38,12 @@ git clone git@github.com:GrzegorzKozub/history.git ~/code/history
 [[ -d ~/code/keys ]] && rm -rf ~/code/keys
 git clone git@github.com:GrzegorzKozub/keys.git ~/code/keys
 
-[[ -d ~/code/notes ]] && rm -rf ~/code/notes
-git clone git@github.com:GrzegorzKozub/notes.git ~/code/notes
-
 [[ -d ~/code/passwords ]] && rm -rf ~/code/passwords
 git clone git@github.com:GrzegorzKozub/passwords.git ~/code/passwords
 
 [[ -d ~/code/themes ]] && rm -rf ~/code/themes
 git clone git@github.com:GrzegorzKozub/themes.git ~/code/themes
+
+[[ -d ~/code/apsis ]] && rm -rf ~/code/apsis
+git clone git@github.com:GrzegorzKozub/apsis.git ~/code/apsis
 
