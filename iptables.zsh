@@ -66,10 +66,6 @@ sudo iptables -A INPUT -p tcp -j REJECT --reject-with tcp-reset
 # sudo iptables -A TCP -p tcp --dport 80 -j ACCEPT
 # sudo iptables -A TCP -p tcp --dport 443 -j ACCEPT
 
-# spoofing attacks
-
-sudo iptables -t raw -I PREROUTING -m rpfilter --invert -j DROP
-
 # syn scans
 
 sudo iptables -I TCP -p tcp -m recent --update --rsource --seconds 60 --name TCP-PORTSCAN -j REJECT --reject-with tcp-reset
