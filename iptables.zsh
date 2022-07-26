@@ -25,18 +25,13 @@ sudo iptables -P INPUT ACCEPT
 sudo iptables -P FORWARD ACCEPT
 sudo iptables -P OUTPUT ACCEPT
 
-# user-defined chains
-
-sudo iptables -N TCP
-sudo iptables -N UDP
-
 # default policies
 
 sudo iptables -P INPUT DROP
 sudo iptables -P FORWARD DROP
 sudo iptables -P OUTPUT ACCEPT
 
-# established and local connections
+# established, related and local connections
 
 sudo iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 sudo iptables -A INPUT -i lo -j ACCEPT
@@ -51,8 +46,13 @@ sudo iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEP
 
 # tcp and udp
 
+sudo iptables -N UDP
+sudo iptables -N TCP
+
 sudo iptables -A INPUT -p udp -m conntrack --ctstate NEW -j UDP
 sudo iptables -A INPUT -p tcp --syn -m conntrack --ctstate NEW -j TCP
+
+# reject everything else
 
 sudo iptables -A INPUT -p udp -j REJECT --reject-with icmp-port-unreachable
 sudo iptables -A INPUT -p tcp -j REJECT --reject-with tcp-reset
