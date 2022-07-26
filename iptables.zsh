@@ -52,8 +52,6 @@ sudo iptables -N TCP
 sudo iptables -A INPUT -p udp -m conntrack --ctstate NEW -j UDP
 sudo iptables -A INPUT -p tcp --syn -m conntrack --ctstate NEW -j TCP
 
-# reject everything else
-
 sudo iptables -A INPUT -p udp -j REJECT --reject-with icmp-port-unreachable
 sudo iptables -A INPUT -p tcp -j REJECT --reject-with tcp-reset
 

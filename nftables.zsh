@@ -39,11 +39,8 @@ nft add chain inet my_table my_tcp_chain
 nft add rule inet my_table my_input meta l4proto udp ct state new jump my_udp_chain
 nft add rule inet my_table my_input 'meta l4proto tcp tcp flags & (fin|syn|rst|ack) == syn ct state new jump my_tcp_chain'
 
-# reject everything else
-
 nft add rule inet my_table my_input meta l4proto udp reject
 nft add rule inet my_table my_input meta l4proto tcp reject with tcp reset
-nft add rule inet my_table my_input counter reject with icmpx port-unreachable
 
 # ssh
 
@@ -53,4 +50,8 @@ nft add rule inet my_table my_input counter reject with icmpx port-unreachable
 
 # nft add rule inet my_table my_tcp_chain tcp dport 80 accept
 # nft add rule inet my_table my_tcp_chain tcp dport 443 accept
+
+# other connections
+
+nft add rule inet my_table my_input counter reject with icmpx port-unreachable
 
