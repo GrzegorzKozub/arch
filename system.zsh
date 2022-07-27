@@ -60,6 +60,7 @@ pacstrap /mnt \
   ntfs-3g \
   nss-mdns \
   lm_sensors \
+  nftables \
   v4l-utils \
   bluez-utils \
   pipewire pipewire-alsa pipewire-pulse wireplumber \
