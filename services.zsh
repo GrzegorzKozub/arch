@@ -20,13 +20,13 @@ sudo systemctl enable gdm.service
 
 sudo systemctl enable reflector.timer
 
-# sudo cp /etc/iptables/iptables.rules /etc/iptables/iptables.rules.backup
-# sudo cp `dirname $0`/etc/iptables/iptables.rules /etc/iptables/iptables.rules
-# sudo systemctl enable iptables.service
+sudo cp /etc/iptables/iptables.rules /etc/iptables/iptables.rules.backup
+sudo cp `dirname $0`/etc/iptables/iptables.rules /etc/iptables/iptables.rules
+sudo systemctl enable iptables.service
 
-sudo cp /etc/nftables.conf /etc/nftables.conf.backup
-sudo cp `dirname $0`/etc/nftables.rules /etc/nftables.rules
-sudo systemctl enable nftables.service
+# sudo cp /etc/nftables.conf /etc/nftables.conf.backup
+# sudo cp `dirname $0`/etc/nftables.rules /etc/nftables.rules
+# sudo systemctl enable nftables.service
 
 [[ -d ~/.config/systemd/user ]] || mkdir -p ~/.config/systemd/user
 

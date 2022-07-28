@@ -16,6 +16,9 @@ rm -rf ~/paru
 
 # operating system continued
 
+# sudo pacman -S --noconfirm \
+  # nftables
+
 paru -S --aur --noconfirm \
   aic94xx-firmware wd719x-firmware upd72020x-fw \
   gnome-shell-extension-hide-activities-git \
