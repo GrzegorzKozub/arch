@@ -24,6 +24,10 @@ sudo cp /etc/iptables/iptables.rules /etc/iptables/iptables.rules.backup
 sudo cp `dirname $0`/etc/iptables/iptables.rules /etc/iptables/iptables.rules
 sudo systemctl enable iptables.service
 
+sudo cp /etc/iptables/ip6tables.rules /etc/iptables/ip6tables.rules.backup
+sudo cp `dirname $0`/etc/iptables/ip6tables.rules /etc/iptables/ip6tables.rules
+sudo systemctl enable ip6tables.service
+
 # sudo cp /etc/nftables.conf /etc/nftables.conf.backup
 # sudo cp `dirname $0`/etc/nftables.rules /etc/nftables.rules
 # sudo systemctl enable nftables.service

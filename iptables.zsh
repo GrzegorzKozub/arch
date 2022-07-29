@@ -5,19 +5,22 @@ set -e -o verbose
 # reset
 
 sudo iptables -Z
-
 sudo iptables -F
 sudo iptables -X
 
+sudo iptables -t nat -Z
 sudo iptables -t nat -F
 sudo iptables -t nat -X
 
+sudo iptables -t mangle -Z
 sudo iptables -t mangle -F
 sudo iptables -t mangle -X
 
+sudo iptables -t raw -Z
 sudo iptables -t raw -F
 sudo iptables -t raw -X
 
+sudo iptables -t security -Z
 sudo iptables -t security -F
 sudo iptables -t security -X
 
@@ -81,4 +84,8 @@ sudo iptables -A INPUT -p udp -m recent --set --rsource --name UDP-PORTSCAN -j R
 # other connections
 
 sudo iptables -A INPUT -j REJECT --reject-with icmp-proto-unreachable
+
+# save
+
+sudo iptables-save -f `dirname $0`/etc/iptables/iptables.rules
 
