@@ -78,7 +78,7 @@ Automated Arch Linux installation
   - Add VPN server
   - Select the sound device and set volume to 50%
   - Remove the `~/.gnome` dir
-6. Clone the work repo, run `update.zsh` and setup `.env` files
+6. Clone apsis repo, run `repos.zsh`, setup `.env` files and token env vars
 7. Fix window sizes and positions
 
 ## Windows VM
