@@ -42,7 +42,6 @@ sudo pacdiff
 
 # repos
 
-# pushd ~/code/apsis && git pull && popd
 pushd ~/code/keys && git pull && popd
 pushd ~/code/themes && git pull && popd
 
