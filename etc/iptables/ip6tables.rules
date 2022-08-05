@@ -40,7 +40,11 @@ COMMIT
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -m conntrack --ctstate INVALID -j DROP
--A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 128 -m conntrack --ctstate NEW -j ACCEPT
+-A INPUT -p ipv6-icmp -j ACCEPT
+-A INPUT -p udp -m udp --sport 5353 --dport 5353 -j ACCEPT
+-A INPUT -p tcp -m tcp --sport 9100 -j ACCEPT
+-A INPUT -p udp -m udp --sport 9100 -j ACCEPT
+-A INPUT -p udp -m udp --dport 161 -j ACCEPT
 -A INPUT -p udp -m conntrack --ctstate NEW -j UDP
 -A INPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -m conntrack --ctstate NEW -j TCP
 -A INPUT -p tcp -m recent --set --name TCP-PORTSCAN --mask ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff --rsource -j REJECT --reject-with tcp-reset

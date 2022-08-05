@@ -34,6 +34,18 @@ sudo ip6tables -P INPUT DROP
 sudo ip6tables -P FORWARD DROP
 sudo ip6tables -P OUTPUT ACCEPT
 
+# debugging
+
+# sudo ip6tables -N LOG_ACCEPT
+# sudo ip6tables -A INPUT -p ipv6-icmp -j LOG_ACCEPT
+# sudo ip6tables -A LOG_ACCEPT -m limit --limit 120/min -j LOG --log-prefix "ipv6 accept: " --log-level 4
+# sudo ip6tables -A LOG_ACCEPT -j ACCEPT
+
+# sudo ip6tables -N LOG_DROP
+# sudo ip6tables -A INPUT -j LOG_DROP
+# sudo ip6tables -A LOG_DROP -m limit --limit 120/min -j LOG --log-prefix "ipv6 drop: " --log-level 3
+# sudo ip6tables -A LOG_DROP -j DROP
+
 # established, related and local connections
 
 sudo ip6tables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
@@ -45,7 +57,17 @@ sudo ip6tables -A INPUT -m conntrack --ctstate INVALID -j DROP
 
 # ping
 
-sudo ip6tables -A INPUT -p ipv6-icmp --icmpv6-type 128 -m conntrack --ctstate NEW -j ACCEPT
+sudo ip6tables -A INPUT -p ipv6-icmp -j ACCEPT
+
+# avahi
+
+sudo ip6tables -A INPUT -p udp --dport 5353 --sport 5353 -j ACCEPT
+
+# printer
+
+sudo ip6tables -A INPUT -p tcp --sport 9100 -j ACCEPT
+sudo ip6tables -A INPUT -p udp --sport 9100 -j ACCEPT
+sudo ip6tables -A INPUT -p udp --dport 161 -j ACCEPT
 
 # tcp and udp
 
