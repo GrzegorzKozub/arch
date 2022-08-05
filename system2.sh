@@ -39,7 +39,7 @@ echo '::1       localhost' >> /etc/hosts
 echo "127.0.0.1 $MY_HOSTNAME.localdomain $MY_HOSTNAME" >> /etc/hosts
 echo "::1       $MY_HOSTNAME.localdomain $MY_HOSTNAME" >> /etc/hosts
 
-sed -i 's/mymachines/mymachines mdns_minimal [NOTFOUND=return]/' /etc/nsswitch.conf
+sed -i 's/myhostname resolve/myhostname mdns4_minimal [NOTFOUND=return] resolve/' /etc/nsswitch.conf
 
 # root password
 
