@@ -38,12 +38,12 @@ sudo ip6tables -P OUTPUT ACCEPT
 
 # sudo ip6tables -N LOG_ACCEPT
 # sudo ip6tables -A INPUT -p ipv6-icmp -j LOG_ACCEPT
-# sudo ip6tables -A LOG_ACCEPT -m limit --limit 120/min -j LOG --log-prefix "ipv6 accept: " --log-level 4
+# sudo ip6tables -A LOG_ACCEPT -m limit --limit 10/second -j LOG --log-prefix "ipv6 accept: " --log-level err
 # sudo ip6tables -A LOG_ACCEPT -j ACCEPT
 
 # sudo ip6tables -N LOG_DROP
 # sudo ip6tables -A INPUT -j LOG_DROP
-# sudo ip6tables -A LOG_DROP -m limit --limit 120/min -j LOG --log-prefix "ipv6 drop: " --log-level 3
+# sudo ip6tables -A LOG_DROP -m limit --limit 10/second -j LOG --log-prefix "ipv6 drop: " --log-level warn
 # sudo ip6tables -A LOG_DROP -j DROP
 
 # established, related and local connections
