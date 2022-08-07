@@ -34,6 +34,18 @@ sudo iptables -P INPUT DROP
 sudo iptables -P FORWARD DROP
 sudo iptables -P OUTPUT ACCEPT
 
+# debugging
+
+# sudo iptables -N LOG_ACCEPT
+# sudo iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j LOG_ACCEPT
+# sudo iptables -A LOG_ACCEPT -m limit --limit 10/second -j LOG --log-prefix "ipv4 accept: " --log-level err
+# sudo iptables -A LOG_ACCEPT -j ACCEPT
+
+# sudo iptables -N LOG_DROP
+# sudo iptables -A INPUT -j LOG_DROP
+# sudo iptables -A LOG_DROP -m limit --limit 10/second -j LOG --log-prefix "ipv4 drop: " --log-level warn
+# sudo iptables -A LOG_DROP -j DROP
+
 # established, related and local connections
 
 sudo iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
@@ -46,6 +58,16 @@ sudo iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 # ping
 
 sudo iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
+
+# avahi
+
+sudo iptables -A INPUT -p udp --dport 5353 --sport 5353 -j ACCEPT
+
+# printer
+
+sudo iptables -A INPUT -p tcp --sport 9100 -j ACCEPT
+sudo iptables -A INPUT -p udp --sport 9100 -j ACCEPT
+sudo iptables -A INPUT -p udp --dport 161 -j ACCEPT
 
 # tcp and udp
 
