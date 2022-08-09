@@ -5,13 +5,13 @@ set -e -o verbose
 # printer
 
 sudo pacman -Sy --noconfirm \
-  cups \
-  system-config-printer
+  cups
 
 paru -S --aur --noconfirm \
   hpuld
 
 # sudo pacman -Sy --noconfirm \
+  # system-config-printer \
   # hplip hplip-plugin python-gobject python-pyqt5
 
 sudo systemctl enable cups
