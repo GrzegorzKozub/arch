@@ -119,7 +119,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 ### Variables
 
-Currently using `DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2`
+Currently using `DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2`
 
 Also considering `VKD3D_CONFIG=np_upload_hvv,single_queue` but couldn't verify that they help with stutter
 
