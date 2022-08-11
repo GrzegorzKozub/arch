@@ -157,7 +157,7 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   brave-bin \
-  chrome-gnome-shell \
+  gnome-browser-connector \
   postman-bin \
   visual-studio-code-bin
 
