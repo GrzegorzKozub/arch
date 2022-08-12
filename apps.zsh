@@ -157,11 +157,11 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   brave-bin \
-  gnome-browser-connector \
   postman-bin \
   visual-studio-code-bin
 
 # paru -S --aur --noconfirm \
+  # gnome-browser-connector \
   # slack-desktop
 
 gsettings set io.github.celluloid-player.Celluloid always-use-floating-controls true
