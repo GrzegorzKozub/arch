@@ -8,7 +8,7 @@ git pull
 
 # update all packages
 
-# sudo pacman --noconfirm -Syy archlinux-keyring
+sudo pacman --noconfirm -Sy archlinux-keyring
 
 sudo pacman --noconfirm -Syu
 paru --aur --noconfirm -Syu
