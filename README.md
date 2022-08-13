@@ -127,6 +127,7 @@ To enable ray tracing, use `VKD3D_CONFIG=dxr11`
 
 ### References
 
+- [dxvk](https://github.com/doitsujin/dxvk)
 - [gamescope](https://github.com/Plagman/gamescope)
 - [libstrangle](https://gitlab.com/torkel104/libstrangle)
 - [MangoHud](https://github.com/flightlessmango/MangoHud)
