@@ -8,7 +8,7 @@ set -e -o verbose
 
 # pacman refresh
 
-sudo pacman --noconfirm -Sy archlinux-keyring
+# sudo pacman --noconfirm -Sy archlinux-keyring
 sudo pacman --noconfirm -Sy
 
 # git and openssh
