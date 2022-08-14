@@ -40,8 +40,3 @@ sudo pacdiff
 . `dirname $0`/gnome.zsh
 . `dirname $0`/links.zsh
 
-# repos
-
-pushd ~/code/keys && git pull && popd
-pushd ~/code/themes && git pull && popd
-
