@@ -2,6 +2,10 @@
 
 set -e -o verbose
 
+# software
+
+gsettings set org.gnome.software download-updates false
+
 # keyboard
 
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
