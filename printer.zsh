@@ -5,14 +5,15 @@ set -e -o verbose
 # printer
 
 sudo pacman -Sy --noconfirm \
-  cups
-
-paru -S --aur --noconfirm \
-  hpuld
+  cups \
+  hplip \
+  system-config-printer
 
 # sudo pacman -Sy --noconfirm \
-  # system-config-printer \
-  # hplip hplip-plugin python-gobject python-pyqt5
+  # python-gobject python-pyqt5
+
+# paru -S --aur --noconfirm \
+  # hpuld
 
 sudo systemctl enable cups
 sudo systemctl start cups
@@ -21,8 +22,8 @@ sudo systemctl start cups
 
 for APP in \
   cups \
-  # hplip \
-  # hp-uiscan
+  hplip \
+  hp-uiscan
 do
   printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
 done
