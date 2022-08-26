@@ -85,6 +85,8 @@ fi
 
 # power
 
+gsettings set org.gnome.SessionManager logout-prompt false
+
 if [[ $HOST = 'drifter' ]]; then
 
   powerprofilesctl set power-saver
