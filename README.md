@@ -40,15 +40,16 @@ Automated Arch Linux installation
   - Set as default browser
   - Hide bookmarks
   - Enable wide address bar
-  - Only allow suggestions from history and bookmarks
+  - Only allow suggestions from top sites, history and bookmarks
   - Hide Brave Rewards button
   - Hide tab search button
   - Disable everything except background images on the dashboard
   - Enable search and URL autocompletion
+  - Disable daily usage ping and diagnostic reports
   - Join the Sync Chain and sync everything
   - Don't allow sites to send notifications
   - Install your extensions
-  - Disable Brave Wallet and hide the button
+  - Disable wallets and hide the button
   - Don't offer to save passwords and don't sign in automatically
   - Add Polish and enable spell check for it
   - Don't offer to translate pages
