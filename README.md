@@ -43,6 +43,7 @@ Automated Arch Linux installation
   - Only allow suggestions from top sites, history and bookmarks
   - Hide Brave Rewards button
   - Hide tab search button
+  - Cycle through the most recently used tabs with Ctrl-Tab
   - Disable everything except background images on the dashboard
   - Enable search and URL autocompletion
   - Disable daily usage ping and diagnostic reports
