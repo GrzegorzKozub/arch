@@ -6,7 +6,7 @@ set -e
 
 NAME=windows
 UEFI=0
-SPICE=0
+SPICE=1
 
 MOUNT=/run/media/$USER/data
 DIR=$MOUNT/vm
@@ -98,6 +98,7 @@ if [[ $SPICE = 1 ]]; then
   [[ $(pacman -Qs virt-viewer) ]] || {
     sudo pacman -S --noconfirm virt-viewer
     printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/remote-viewer.desktop
+    xdg-mime default remote-viewer.desktop x-scheme-handler/spice+unix
   }
 
   OPTS+=('-spice port=5930,disable-ticketing=on')
