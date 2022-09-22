@@ -110,8 +110,8 @@ if [[ $SPICE = 1 ]]; then
   OPTS+=('-device virtserialport,name=com.redhat.spice.0,chardev=chardev1')
 
   # folder sharing
-  OPTS+=('-chardev spiceport,name=org.spice-space.webdav.0,id=chardev2')
-  OPTS+=('-device virtserialport,name=org.spice-space.webdav.0,chardev=chardev2')
+  # OPTS+=('-chardev spiceport,name=org.spice-space.webdav.0,id=chardev2')
+  # OPTS+=('-device virtserialport,name=org.spice-space.webdav.0,chardev=chardev2')
 
 fi
 
