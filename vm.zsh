@@ -47,13 +47,11 @@ OPTS+=('-m 8G')
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
-  # 1920x1080
   # OPTS+=('-vga virtio -display sdl,gl=on')
   OPTS+=('-vga none -device qxl-vga,vgamem_mb=64,ram_size_mb=128,vram_size_mb=256,vram64_size_mb=256')
 
 else
 
-  # 1920x1080
   OPTS+=('-vga std')
 
 fi
@@ -110,8 +108,8 @@ if [[ $SPICE = 1 ]]; then
   OPTS+=('-device virtserialport,name=com.redhat.spice.0,chardev=chardev1')
 
   # folder sharing
-  # OPTS+=('-chardev spiceport,name=org.spice-space.webdav.0,id=chardev2')
-  # OPTS+=('-device virtserialport,name=org.spice-space.webdav.0,chardev=chardev2')
+  OPTS+=('-chardev spiceport,name=org.spice-space.webdav.0,id=chardev2')
+  OPTS+=('-device virtserialport,name=org.spice-space.webdav.0,chardev=chardev2')
 
 fi
 
