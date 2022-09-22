@@ -17,7 +17,7 @@ VARS=$NAME.fd
 TPM=$NAME-tpm
 
 OS=$NAME.iso
-DRIVERS=virtio-win-0.1.217.iso
+DRIVERS=virtio-win-0.1.221.iso
 
 # mount
 
