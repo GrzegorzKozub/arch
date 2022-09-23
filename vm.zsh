@@ -43,7 +43,7 @@ OPTS+=('-enable-kvm')
 OPTS+=('-cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,topoext')
 OPTS+=('-smp 4,sockets=1,cores=2,threads=2')
 
-OPTS+=('-m 8G')
+OPTS+=('-m 4G')
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
