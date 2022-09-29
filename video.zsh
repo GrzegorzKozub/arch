@@ -8,8 +8,6 @@ sudo pacman -S --noconfirm \
   obs-studio \
   shotcut
 
-. ~/code/dotfiles/video.zsh
-
 # links
 
 for APP in \

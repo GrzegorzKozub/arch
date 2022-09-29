@@ -7,9 +7,6 @@ set -e -o verbose
 paru -S --aur --noconfirm \
   xp-pen-tablet
 
-sudo pacman -S --noconfirm \
-  mypaint
-
 # links
 
 for APP in \
