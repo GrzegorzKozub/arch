@@ -39,6 +39,7 @@ Automated Arch Linux installation
   - Setup your profiles
   - Set as default browser
   - Hide bookmarks
+  - Hide side pannel button
   - Enable wide address bar
   - Only allow suggestions from top sites, history and bookmarks
   - Hide Brave Rewards button
