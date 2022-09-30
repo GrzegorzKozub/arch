@@ -11,7 +11,6 @@ sudo pacman -S --noconfirm \
 # links
 
 for APP in \
-  com.obsproject.Studio \
   org.shotcut.Shotcut
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
