@@ -118,7 +118,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
   ```
 6. Dark Souls 3
   - Download [ds3-patcher](https://github.com/grzegorzkozub/ds3-patcher) to the game dir and `chmod u+x ds3_patcher`
-  - Set launch options to `./ds3_patcher -s -- env <variables> gamemoderun %command%`
+  - Set launch options to `./ds3_patcher -is -- env <variables> gamemoderun %command%`
 7. Elden Ring
   - Download [er-patcher](https://github.com/gurrgur/er-patcher) to the game dir and `chmod u+x er-patcher`
   - Set launch options to `./er-patcher --rate 144 -vcas -- env <variables> gamemoderun strangle --vulkan-only --vsync 0 60 %command%`
