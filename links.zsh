@@ -17,6 +17,7 @@ for APP in \
   lf \
   lstopo \
   mpv \
+  nvtop \
   org.freedesktop.MalcontentControl \
   org.gnome.Cheese \
   org.gnome.Software \
