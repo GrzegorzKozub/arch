@@ -49,8 +49,8 @@ for APP in \
   Alacritty
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i 's/^Exec=/Exec=env WAYLAND_DISPLAY= /' \
-    ~/.local/share/applications/$APP.desktop
+  # sed -i 's/^Exec=/Exec=env WAYLAND_DISPLAY= /' \
+  #   ~/.local/share/applications/$APP.desktop
 done
 
 for APP in \
@@ -58,7 +58,7 @@ for APP in \
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
   sed -i \
-    -e 's/^Exec=nvim %F$/Exec=env WAYLAND_DISPLAY= alacritty --command nvim %F/' \
+    -e 's/^Exec=nvim %F$/Exec=alacritty --command nvim %F/' \
     -e 's/^Terminal=true$/Terminal=false/' \
     ~/.local/share/applications/$APP.desktop
   echo 'NoDisplay=true' >> ~/.local/share/applications/$APP.desktop
