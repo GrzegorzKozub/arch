@@ -107,7 +107,7 @@ mkinitcpio -p linux-lts
 
 # disable wayland on nvidia
 
-[[ $MY_HOSTNAME != 'drifter' ]] && sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
+# [[ $MY_HOSTNAME != 'drifter' ]] && sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
 
 # reflector
 
