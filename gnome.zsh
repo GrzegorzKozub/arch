@@ -126,11 +126,11 @@ gsettings set org.gnome.desktop.screensaver picture-uri "file:///home/$USER/.loc
 
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
-if [[ $HOST = 'drifter' ]]; then
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-else
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
-fi
+# if [[ $HOST = 'drifter' ]]; then
+#   gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+# else
+#   gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+# fi
 
 # shell
 
