@@ -6,6 +6,16 @@ set -e -o verbose
 
 sudo machinectl shell gdm@ /bin/bash -c "gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'"
 
+# screen scale
+
+SCHEMAS=/usr/share/glib-2.0/schemas
+OVERRIDE=10_screen-scale.gschema.override
+
+echo '[org.gnome.desktop.interface]' | sudo tee $SCHEMAS/$OVERRIDE > /dev/null
+echo 'scaling-factor=2' | sudo tee --append $SCHEMAS/$OVERRIDE > /dev/null
+
+sudo glib-compile-schemas $SCHEMAS
+
 # fonts
 
 # [[ $HOST = 'drifter' ]] && sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.25'
