@@ -105,9 +105,9 @@ sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev consolefont autodetect modconf block encr
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
-# disable wayland on nvidia
+# disable wayland on nvidia used for gaming
 
-# [[ $MY_HOSTNAME != 'drifter' ]] && sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
+[[ $MY_HOSTNAME != 'player' ]] && sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
 
 # reflector
 

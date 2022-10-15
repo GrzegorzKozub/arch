@@ -13,17 +13,16 @@ sed -i "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" /boot/loader/entries
 
 if [[ $MY_HOSTNAME = 'drifter' ]]; then
   sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/*.conf
+  sed -i "s/<kernel_params>//g" /boot/loader/entries/*.conf
 fi
 
 if [[ $MY_HOSTNAME = 'player' ]]; then
   sed -i "s/<ucode>/amd-ucode/g" /boot/loader/entries/*.conf
+  sed -i "s/<kernel_params>//g" /boot/loader/entries/*.conf
 fi
 
 if [[ $MY_HOSTNAME = 'worker' ]]; then
   sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/*.conf
-fi
-
-if [[ $MY_HOSTNAME = 'player' || $MY_HOSTNAME = 'worker' ]]; then
   sed -i "s/<kernel_params>/nvidia_drm.modeset=1 /g" /boot/loader/entries/*.conf
 fi
 
