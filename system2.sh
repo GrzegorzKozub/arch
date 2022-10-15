@@ -77,13 +77,13 @@ chown greg:users /home/greg/.zshrc
 if [[ $MY_HOSTNAME = 'player' ]]; then
 
   # don't wake up immediately after going to sleep
-  echo 'w /proc/acpi/wakeup - - - - GPP0' > /usr/lib/tmpfiles.d/player.conf
+  echo 'w /proc/acpi/wakeup - - - - GPP0' > /usr/lib/tmpfiles.d/wakeup.conf
 
   # don't wake up with usb keyboard or mouse
-  # echo 'w /proc/acpi/wakeup - - - - XHC0' > /usr/lib/tmpfiles.d/player.conf
+  # echo 'w /proc/acpi/wakeup - - - - XHC0' > /usr/lib/tmpfiles.d/wakeup.conf
 
   # don't wake up with usb mouse
-  cp `dirname $0`/etc/udev/rules.d/10-player.rules /etc/udev/rules.d/10-player.rules
+  cp `dirname $0`/etc/udev/rules.d/10-player.rules /etc/udev/rules.d/10-wakeup.rules
 fi
 
 # drifter power saving
