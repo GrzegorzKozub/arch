@@ -30,7 +30,7 @@ class Extension {
     ];
     const small = [
       { class: /.?Evince$/, auto: true },
-      { class: /^gnome-control-center$/ },
+      { class: /^org.gnome.Settings$/ },
       { title: /.?KeePassXC$/ },
       { title: /.?Pinta$/ },
     ];
