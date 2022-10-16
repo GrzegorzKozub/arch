@@ -92,6 +92,9 @@ done
 
 # proton-ge-custom
 
+sudo pacman -S --noconfirm \
+  lib32-at-spi2-core
+
 paru -S --aur --noconfirm \
   proton-ge-custom-bin
 
