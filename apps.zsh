@@ -160,6 +160,9 @@ paru -S --aur --noconfirm \
   postman-bin \
   visual-studio-code-bin
 
+xdg-mime default brave-browser.desktop x-scheme-handler/mailto
+xdg-mime default brave-browser.desktop text/calendar
+
 # paru -S --aur --noconfirm \
   # gnome-browser-connector \
   # slack-desktop
