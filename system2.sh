@@ -105,9 +105,16 @@ sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev consolefont autodetect modconf block encr
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
-# disable wayland on nvidia used for gaming
+# wayland disabled on nvidia
 
-[[ $MY_HOSTNAME != 'player' ]] && sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
+if [[ $MY_HOSTNAME = 'player' || $MY_HOSTNAME = 'worker' ]]; then
+
+  sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
+
+  # required for wayland on nvidia
+  # ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+
+fi
 
 # reflector
 

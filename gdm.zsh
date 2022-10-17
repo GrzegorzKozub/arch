@@ -8,18 +8,22 @@ sudo machinectl shell gdm@ /bin/bash -c "gsettings set org.gnome.desktop.periphe
 
 # screen scale
 
-SCHEMAS=/usr/share/glib-2.0/schemas
-OVERRIDE=10_screen-scale.gschema.override
+if [[ $HOST = 'drifter' ]]; then
 
-echo '[org.gnome.desktop.interface]' | sudo tee $SCHEMAS/$OVERRIDE > /dev/null
-echo 'scaling-factor=2' | sudo tee --append $SCHEMAS/$OVERRIDE > /dev/null
+  SCHEMAS=/usr/share/glib-2.0/schemas
+  OVERRIDE=10_screen-scale.gschema.override
 
-sudo glib-compile-schemas $SCHEMAS
+  echo '[org.gnome.desktop.interface]' | sudo tee $SCHEMAS/$OVERRIDE > /dev/null
+  echo 'scaling-factor=2' | sudo tee --append $SCHEMAS/$OVERRIDE > /dev/null
+
+  sudo glib-compile-schemas $SCHEMAS
+
+fi
 
 # fonts
 
-# [[ $HOST = 'drifter' ]] && sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.25'
-# [[ $HOST = 'player' || $HOST = 'worker' ]] &&  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.5'
+[[ $HOST = 'drifter' ]] && sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.25'
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.5'
 
 # background image
 

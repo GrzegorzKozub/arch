@@ -9,21 +9,26 @@ bootctl --path=/boot install
 cp `dirname $0`/boot/loader/loader.conf /boot/loader
 cp `dirname $0`/boot/loader/entries/*.conf /boot/loader/entries
 
+# cryptdevice
+
 sed -i "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" /boot/loader/entries/*.conf
 
-if [[ $MY_HOSTNAME = 'drifter' ]]; then
-  sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/*.conf
-  sed -i "s/<kernel_params>//g" /boot/loader/entries/*.conf
-fi
+# initrd cpu ucode image
 
-if [[ $MY_HOSTNAME = 'player' ]]; then
-  sed -i "s/<ucode>/amd-ucode/g" /boot/loader/entries/*.conf
-  sed -i "s/<kernel_params>//g" /boot/loader/entries/*.conf
-fi
+[[ $MY_HOSTNAME = 'drifter' || $MY_HOSTNAME = 'worker' ]] && sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/*.conf
+[[ $MY_HOSTNAME = 'player' ]] && sed -i "s/<ucode>/amd-ucode/g" /boot/loader/entries/*.conf
 
-if [[ $MY_HOSTNAME = 'worker' ]]; then
-  sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/*.conf
-  sed -i "s/<kernel_params>/nvidia_drm.modeset=1 /g" /boot/loader/entries/*.conf
+# wayland disabled on nvidia
+
+[[ $MY_HOSTNAME = 'drifter' ]] && sed -i "s/<kernel_params>//g" /boot/loader/entries/*.conf
+
+if [[ $MY_HOSTNAME = 'player' || $MY_HOSTNAME = 'worker' ]]; then
+
+  sed -i "s/<kernel_params>//g" /boot/loader/entries/*.conf
+
+  # required for wayland on nvidia
+  # sed -i "s/<kernel_params>/nvidia_drm.modeset=1 /g" /boot/loader/entries/*.conf
+
 fi
 
 # secure boot support
