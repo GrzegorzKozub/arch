@@ -41,7 +41,8 @@ gsettings set \
 
 # mouse and touchpad
 
-gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
+[[ $XDG_SESSION_TYPE = 'wayland' ]] && gsettings set org.gnome.desktop.peripherals.mouse speed -0.75
+[[ $XDG_SESSION_TYPE = 'x11' ]] && gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
 
 if [[ $HOST = 'drifter' ]]; then
 
