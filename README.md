@@ -78,12 +78,19 @@ Automated Arch Linux installation
 3. Change the font to `Fira Code Retina` and tab size to `2` in Postman
 4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
 5. Gnome
+  - Set display scale to 200% on drifter
   - Reorder the icons
   - Add VPN server
   - Select the sound device and set volume to 50%
   - Remove the `~/.gnome` dir
 6. Clone apsis repo, run `repos.zsh`, setup `.env` files and token env vars
 7. Fix window sizes and positions
+
+## Wayland
+
+Wayland is now enabled on Intel. Alacritty and Visual Studio Code are running in native Wayland. Brave is running on XWayland because KeePassXC auto-type is not supported in native.
+
+To enable Wayland on NVIDIA, adding `nvidia_drm.modeset=1` kernel module setting and running `ln -s /dev/null /etc/udev/rules.d/61-gdm.rules` is required. XWayland stutters, high latency in games and lack of Wayland support in `nvidia-settings` (coolbits, undervolting and overclocking) prevent from enabling Wayland on NVIDIA at this point.
 
 ## Windows VM
 
