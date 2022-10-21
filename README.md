@@ -92,6 +92,8 @@ Wayland is now enabled on Intel. Alacritty and Visual Studio Code are running in
 
 To enable Wayland on NVIDIA, adding `nvidia_drm.modeset=1` kernel module setting and running `ln -s /dev/null /etc/udev/rules.d/61-gdm.rules` is required. XWayland stutters, high latency in games and lack of Wayland support in `nvidia-settings` (coolbits, undervolting and overclocking) prevent from enabling Wayland on NVIDIA at this point.
 
+Minor issues: `imwheel` doesn't work on Wayland, drag and drop doesn't work on XWayland.
+
 ## Windows VM
 
 During the installation, put Windows and [virtio-win](https://github.com/virtio-win/virtio-win-pkg-scripts) iso in `$DIR`. Install disk, graphics card and network card drivers from virtio-win. Disable fast startup. Map `\\10.0.2.4\qemu` as network drive on guest.
