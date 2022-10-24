@@ -72,7 +72,6 @@ sudo pacman -S --noconfirm \
   jq \
   p7zip \
   pass \
-  qemu-desktop samba \
   ripgrep \
   rsync \
   stress \

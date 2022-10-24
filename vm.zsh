@@ -19,6 +19,11 @@ TPM=$NAME-tpm
 OS=$NAME.iso
 DRIVERS=virtio-win-0.1.221.iso
 
+# packages
+
+[[ $(pacman -Qs qemu-desktop) ]] || sudo pacman -S --noconfirm qemu-desktop
+[[ $(pacman -Qs samba) ]] || sudo pacman -S --noconfirm samba
+
 # mount
 
 [[ -d $MOUNT ]] || sudo mkdir -p $MOUNT
