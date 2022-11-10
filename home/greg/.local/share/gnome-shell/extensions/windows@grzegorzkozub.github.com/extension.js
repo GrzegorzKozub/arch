@@ -32,7 +32,6 @@ class Extension {
       { class: /.?Evince$/, auto: true },
       { class: /^gnome-control-center$/ },
       { title: /.?KeePassXC$/ },
-      { class: /^org.gnome.Settings$/ },
       { title: /.?Pinta$/ },
     ];
     const addConfig = (config, fix) => {

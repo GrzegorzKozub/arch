@@ -3,7 +3,6 @@
   "description": "windows",
   "uuid": "windows@grzegorzkozub.github.com",
   "shell-version": [
-    "42",
     "43"
   ]
 }
