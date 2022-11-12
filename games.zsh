@@ -71,8 +71,8 @@ sudo pacman -S --noconfirm \
 
 FAVS=$(gsettings get org.gnome.shell favorite-apps)
 
-[[ $(echo $FAVS | grep 'steam.desktop') ]] || {
-  FAVS=$(echo $FAVS | sed "s/\]/, 'steam.desktop']/")
+[[ $(echo $FAVS | grep 'steam-native.desktop') ]] || {
+  FAVS=$(echo $FAVS | sed "s/\]/, 'steam-native.desktop']/")
   gsettings set org.gnome.shell favorite-apps $FAVS
 }
 
@@ -83,6 +83,12 @@ FAVS=$(gsettings get org.gnome.shell favorite-apps)
 
 for APP in \
   steam
+do
+  printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
+done
+
+for APP in \
+  steam-native
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
   sed -i \
