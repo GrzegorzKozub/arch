@@ -66,7 +66,6 @@ sudo pacman -S --noconfirm \
   ffmpeg \
   freerdp \
   fzf \
-  graphviz \
   htop \
   imwheel \
   jq \
@@ -83,8 +82,7 @@ sudo pacman -S --noconfirm \
   zip
 
 paru -S --aur --noconfirm \
-  btop \
-  wrk2-git
+  btop
 
 # zsh, tmux and lf
 
