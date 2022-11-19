@@ -34,7 +34,17 @@ cp -r /usr/share/archiso/configs/releng $PROFILE
 
 [[ $(grep 'linux-lts' $PROFILE/packages.x86_64) ]] || echo 'linux-lts' >> $PROFILE/packages.x86_64
 
-# loader
+# enable systemd-boot
+
+sed -i \
+  -e "/^.*'uefi-ia32.grub.esp' 'uefi-x64.grub.esp'.*$/d" \
+  $PROFILE/profiledef.sh
+
+sed -i \
+  -e "s/'uefi-ia32.grub.eltorito' 'uefi-x64.grub.eltorito'/'uefi-x64.systemd-boot.eltorito' 'uefi-x64.systemd-boot.esp'/" \
+  $PROFILE/profiledef.sh
+
+# config systemd-boot
 
 cp $PROFILE/efiboot/loader/entries/01-archiso-x86_64-linux.conf \
   $PROFILE/efiboot/loader/entries/01-archiso.conf
