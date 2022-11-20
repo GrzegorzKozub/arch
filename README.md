@@ -106,7 +106,7 @@ For folder sharing using spice install `virt-viewer` on host and [webdav daemon]
 
 To reduce the image size after freeing up space on guest, first defragment the drives and run `sdelete -z` on guest, then run `qemu-img convert -O qcow2 from.cow to.cow`.
 
-## Games
+## Gaming
 
 1. Run `~/code/arch/games.zsh`
 2. Reboot
@@ -118,27 +118,44 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - Enable Steam Play for all other titles
   - Run other titles with Proton Experimental
   - For Proton Experimental tool, select bleeding-edge beta
-  - Set game compatibility to Proton-GE
-  - Set game launch options to `<variables> gamemoderun strangle --vulkan-only --vsync 0 60 %command%`
+  - For each game, set game compatibility to Proton-GE
 5. Once per machine, move Steam to games disk with
   ```zsh
   mv ${XDG_DATA_HOME:-~/.local/share}/Steam /run/media/$USER/games/
   ln -s /run/media/$USER/games/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
   ```
-6. Dark Souls 3
-  - Download [ds3-patcher](https://github.com/grzegorzkozub/ds3-patcher) to the game dir and `chmod u+x ds3_patcher`
-  - Set launch options to `./ds3_patcher -is -- env <variables> gamemoderun %command%`
-7. Elden Ring
-  - Download [er-patcher](https://github.com/gurrgur/er-patcher) to the game dir and `chmod u+x er-patcher`
-  - Set launch options to `./er-patcher --rate 144 -vcas -- env <variables> gamemoderun strangle --vulkan-only --vsync 0 60 %command%`
 
-### Variables
+### Launch options
 
-Currently using `DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2`
+Template
 
-Also considering `VKD3D_CONFIG=np_upload_hvv,single_queue` but couldn't verify that they help with stutter
+```
+<variables> gamemoderun strangle --vulkan-only --vsync 0 60 %command%`
+```
 
-To enable ray tracing, use `VKD3D_CONFIG=dxr11`
+Default variables
+
+```
+LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1
+```
+
+Options
+
+- `DXVK_ASYNC=1` - stutter
+- `DXVK_FRAME_RATE=60` - libstrangle does not work with DXVK
+- `VKD3D_CONFIG=dxr11` - DXR 1.1 (ray tracing)
+- `WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2` - FSR 1.0
+
+Games
+
+- Cemu, VULKAN
+  - `LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 python3 ./cemu_launcher gamemoderun %command% -f -g "<game dir>"`
+- Dark Souls 3, DXVK
+  - `./ds3_patcher -is -- env DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
+- Elden Ring, VKD3D
+  - `./er-patcher --rate 144 -vcas -- env LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun strangle --vulkan-only --vsync 0 60 %command%`
+- God of War, DXVK
+  - `DXVK_ASYNC=1 DXVK_FRAME_RATE=60 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 gamemoderun %command%`
 
 ### References
 
@@ -148,4 +165,5 @@ To enable ray tracing, use `VKD3D_CONFIG=dxr11`
 - [MangoHud](https://github.com/flightlessmango/MangoHud)
 - [proton-ge-custom](https://github.com/GloriousEggroll/proton-ge-custom)
 - [vkd3d-proton](https://github.com/HansKristian-Work/vkd3d-proton)
+
 
