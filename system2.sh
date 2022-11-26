@@ -100,7 +100,7 @@ rm /home/greg/system3.zsh
 
 [[ $MY_HOSTNAME = 'drifter' ]] && sed -Ei 's/^MODULES=.+$/MODULES=(i915)/' /etc/mkinitcpio.conf
 
-sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev consolefont autodetect modconf block encrypt lvm2 resume filesystems keyboard fsck)/' /etc/mkinitcpio.conf
+sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev consolefont autodetect modconf block encrypt lvm2 resume filesystems kms keyboard keymap fsck)/' /etc/mkinitcpio.conf
 
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
