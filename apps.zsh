@@ -111,7 +111,9 @@ xdg-mime default nvim.desktop text/plain
 # docker
 
 sudo pacman -S --noconfirm \
-  docker docker-machine
+  docker \
+  docker-buildx \
+  docker-machine
 
 sudo usermod -aG docker $USER
 
