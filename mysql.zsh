@@ -2,14 +2,22 @@
 
 set -e -o verbose
 
+# config
+
+LOCAL=0
+
 # mysql
 
-# docker run \
-  # --detach \
-  # --env MYSQL_ALLOW_EMPTY_PASSWORD=1 \
-  # --name mysql \
-  # -p 3306:3306 \
-  # mysql:5.7
+if [[ $LOCAL = 1 ]]; then
+
+  docker run \
+    --detach \
+    --env MYSQL_ALLOW_EMPTY_PASSWORD=1 \
+    --name mysql \
+    -p 3306:3306 \
+    mysql:5.7
+
+fi
 
 # mysql-workbench
 
