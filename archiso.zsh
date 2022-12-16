@@ -30,11 +30,13 @@ mkdir -p $USB
 
 cp -r /usr/share/archiso/configs/releng $PROFILE
 
-# packages
+# lts kernel
 
 [[ $(grep 'linux-lts' $PROFILE/packages.x86_64) ]] || echo 'linux-lts' >> $PROFILE/packages.x86_64
 
-# enable systemd-boot
+# systemd-boot
+
+# sed -i -e '/grub/d' $PROFILE/packages.x86_64
 
 sed -i \
   -e "/^.*'uefi-ia32.grub.esp' 'uefi-x64.grub.esp'.*$/d" \
@@ -67,6 +69,7 @@ sed -i \
 sed -i \
   -e 's/^timeout 15$/timeout 1/' \
   -e 's/^default.*$/default 01-archiso.conf/' \
+  -e '/beep on/d' \
   $PROFILE/efiboot/loader/loader.conf
 
 # scripts
