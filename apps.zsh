@@ -103,9 +103,6 @@ sudo pacman -S --noconfirm \
   astyle ctags editorconfig-core-c gvim tidy \
   glibc neovim
 
-paru -S --aur --noconfirm \
-  hadolint-bin
-
 xdg-mime default nvim.desktop text/plain
 
 # docker
@@ -137,14 +134,17 @@ sudo pacman -S --noconfirm \
   dotnet-sdk aspnet-runtime \
   elixir \
   go \
-  nodejs npm \
+  lua luacheck \
+  nodejs npm prettier \
   perl \
   python python-pip \
   ruby \
   rust
 
 paru -S --aur --noconfirm \
-  nvm
+  hadolint-bin \
+  nvm \
+  stylua-bin
 
 NVM_DIR=${XDG_DATA_HOME:-~/.local/share}/nvm source /usr/share/nvm/init-nvm.sh
 
