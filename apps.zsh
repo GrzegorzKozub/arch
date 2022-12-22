@@ -135,7 +135,7 @@ sudo pacman -S --noconfirm \
   elixir \
   go \
   lua luacheck \
-  nodejs npm prettier \
+  nodejs npm \
   perl \
   python python-pip \
   ruby \
