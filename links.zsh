@@ -12,7 +12,6 @@ for APP in \
   cmake-gui \
   electron4 \
   electron7 \
-  gvim \
   htop \
   lf \
   lstopo \
@@ -31,7 +30,6 @@ for APP in \
   stoken-gui \
   stoken-gui-small \
   unison \
-  vim \
   xcolor
 do
   printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
@@ -47,7 +45,7 @@ do
     ~/.local/share/applications/$APP.desktop
 done
 
-# nvim
+# neovim
 
 for APP in \
   nvim

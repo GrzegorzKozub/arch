@@ -97,11 +97,11 @@ paru -S --aur --noconfirm \
 
 rm -rf ~/.bash*
 
-# vim and neovim
+# neovim
 
 sudo pacman -S --noconfirm \
-  astyle ctags editorconfig-core-c gvim tidy \
-  glibc neovim
+  astyle ctags tidy \
+  neovim
 
 xdg-mime default nvim.desktop text/plain
 
