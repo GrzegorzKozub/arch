@@ -139,7 +139,8 @@ sudo pacman -S --noconfirm \
   perl \
   python python-pip \
   ruby \
-  rust
+  rust \
+  tree-sitter
 
 paru -S --aur --noconfirm \
   hadolint-bin \
