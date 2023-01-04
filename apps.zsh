@@ -38,6 +38,7 @@ sudo pacman -S --noconfirm \
   gnu-free-fonts \
   noto-fonts \
   noto-fonts-emoji \
+  otf-cascadia-code \
   ttf-dejavu \
   ttf-fira-code \
   ttf-liberation
