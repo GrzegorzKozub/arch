@@ -112,6 +112,9 @@ systemctl --user start gamemoded.service
 
 # mangohud
 
+sudo pacman -S --noconfirm \
+  python-distutils-extra
+
 paru -S --aur --noconfirm \
   lib32-mangohud \
   mangohud \
