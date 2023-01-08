@@ -135,7 +135,7 @@ sudo pacman -S --noconfirm \
   dotnet-sdk aspnet-runtime \
   elixir \
   go \
-  lua luacheck \
+  lua luacheck luarocks \
   nodejs npm \
   perl \
   python python-pip \
