@@ -101,7 +101,6 @@ rm -rf ~/.bash*
 # neovim
 
 sudo pacman -S --noconfirm \
-  astyle ctags tidy \
   neovim
 
 xdg-mime default nvim.desktop text/plain
@@ -144,6 +143,7 @@ sudo pacman -S --noconfirm \
   tree-sitter
 
 paru -S --aur --noconfirm \
+  editorconfig-checker \
   hadolint-bin \
   nvm \
   stylua-bin
