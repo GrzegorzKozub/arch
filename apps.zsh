@@ -143,8 +143,6 @@ sudo pacman -S --noconfirm \
   tree-sitter
 
 paru -S --aur --noconfirm \
-  editorconfig-checker \
-  hadolint-bin \
   nvm \
   stylua-bin
 
