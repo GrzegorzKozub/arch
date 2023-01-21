@@ -125,6 +125,7 @@ gsettings set org.gnome.desktop.screensaver picture-uri "file:///home/$USER/.loc
 
 # fonts
 
+gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code Regular 10'
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
 if [[ $HOST = 'drifter' ]]; then
