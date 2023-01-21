@@ -141,7 +141,6 @@ LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAP
 
 Options
 
-- `DXVK_ASYNC=1` - stutter
 - `DXVK_FRAME_RATE=60` - libstrangle does not work with DXVK
 - `VKD3D_CONFIG=dxr11` - DXR 1.1 (ray tracing)
 - `WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2` - FSR 1.0
@@ -151,11 +150,9 @@ Games
 - Cemu, VULKAN
   - `LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 python3 ./cemu_launcher gamemoderun %command% -f -g "<game dir>"`
 - Dark Souls 3, DXVK
-  - `./ds3_patcher -is -- env DXVK_ASYNC=1 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
+  - `./ds3_patcher -is -- env LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
 - Elden Ring, VKD3D
   - `./er-patcher --rate 144 -vcas -- env LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun strangle --vulkan-only --vsync 0 60 %command%`
-- God of War, DXVK
-  - `DXVK_ASYNC=1 DXVK_FRAME_RATE=60 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 gamemoderun %command%`
 
 ### References
 
