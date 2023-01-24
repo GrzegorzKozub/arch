@@ -57,7 +57,8 @@ sudo pacman -S --needed --noconfirm \
 # terminal
 
 sudo pacman -S --noconfirm \
-  alacritty
+  alacritty \
+  kitty
 
 # common
 
