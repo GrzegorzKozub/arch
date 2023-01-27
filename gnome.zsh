@@ -146,7 +146,7 @@ gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
 [[ $XDG_SESSION_TYPE = 'wayland' ]] && CODE=code-url-handler || CODE=code
 
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'Alacritty.desktop', '$CODE.desktop', 'postman.desktop', 'brave-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'steam.desktop']" # 'slack-desktop'
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'Alacritty.desktop', 'kitty.desktop', '$CODE.desktop', 'postman.desktop', 'brave-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'steam.desktop']" # 'slack-desktop'
 
 gsettings set org.gnome.desktop.interface enable-hot-corners false
 
