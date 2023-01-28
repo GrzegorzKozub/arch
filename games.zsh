@@ -48,15 +48,12 @@ sudo pacman -S --noconfirm \
 
 [[ -d $XDG_DATA_HOME/nvidia-settings ]] || mkdir $XDG_DATA_HOME/nvidia-settings
 
-for APP in \
-  nvidia-settings
-do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i \
-    -e 's/^Name=.*$/Name=NVIDIA/' \
-    -e 's/^Exec=.*$/Exec=\/usr\/bin\/nvidia-settings --config=\/home\/greg\/.local\/share\/nvidia-settings\/nvidia-settings-rc/' \
-    ~/.local/share/applications/$APP.desktop
-done
+APP=nvidia-settings
+cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+sed -i \
+  -e 's/^Name=.*$/Name=NVIDIA/' \
+  -e 's/^Exec=.*$/Exec=\/usr\/bin\/nvidia-settings --config=\/home\/greg\/.local\/share\/nvidia-settings\/nvidia-settings-rc/' \
+  ~/.local/share/applications/$APP.desktop
 
 sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
 
@@ -81,14 +78,11 @@ FAVS=$(gsettings get org.gnome.shell favorite-apps)
   ln -s $MOUNT/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
 }
 
-for APP in \
-  steam
-do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i \
-    -e 's/^Name=.*$/Name=Steam/' \
-    ~/.local/share/applications/$APP.desktop
-done
+APP=steam
+cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+sed -i \
+  -e 's/^Name=.*$/Name=Steam/' \
+  ~/.local/share/applications/$APP.desktop
 
 # proton-ge-custom
 

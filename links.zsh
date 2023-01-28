@@ -41,36 +41,40 @@ for APP in \
   org.keepassxc.KeePassXC
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' \
+  sed -i \
+    -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' \
     ~/.local/share/applications/$APP.desktop
 done
 
-# force xwayland
+# alacritty
 
 if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
+  APP=Alacritty
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i \
+    -e's/^Exec=/Exec=env WAYLAND_DISPLAY= /' \
+    ~/.local/share/applications/$APP.desktop
+fi
 
-  for APP in \
-    Alacritty
-  do
-    cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-    sed -i 's/^Exec=/Exec=env WAYLAND_DISPLAY= /' \
-      ~/.local/share/applications/$APP.desktop
-  done
+# kitty
 
+if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
+  APP=kitty
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i \
+    -e 's/^Exec=/Exec=env KITTY_DISABLE_WAYLAND=1 /' \
+    ~/.local/share/applications/$APP.desktop
 fi
 
 # nvim
 
-for APP in \
-  nvim
-do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i \
-    -e 's/^Exec=nvim %F$/Exec=kitty nvim %F/' \
-    -e 's/^Terminal=true$/Terminal=false/' \
-    ~/.local/share/applications/$APP.desktop
-  echo 'NoDisplay=true' >> ~/.local/share/applications/$APP.desktop
-done
+APP=nvim
+cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+sed -i \
+  -e 's/^Exec=nvim %F$/Exec=kitty nvim %F/' \
+  -e 's/^Terminal=true$/Terminal=false/' \
+  ~/.local/share/applications/$APP.desktop
+echo 'NoDisplay=true' >> ~/.local/share/applications/$APP.desktop
 
 # vscode
 
@@ -79,16 +83,21 @@ for APP in \
   code-url-handler
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i 's/^Name=.*/Name=Code/' \
+  sed -i \
+    -e 's/^Name=.*/Name=Code/' \
     ~/.local/share/applications/$APP.desktop
 done
 
 if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 
   [[ $(grep 'NoDisplay' ~/.local/share/applications/code.desktop) ]] ||
-    sed -i -e '/^Keywords=.*/a NoDisplay=true' ~/.local/share/applications/code.desktop
+    sed -i \
+      -e '/^Keywords=.*/a NoDisplay=true' \
+      ~/.local/share/applications/code.desktop
 
-  sed -i -e '/^NoDisplay=.*/a NoDisplay=false' ~/.local/share/applications/code-url-handler.desktop
+  sed -i \
+    -e '/^NoDisplay=.*/a NoDisplay=false' \
+    ~/.local/share/applications/code-url-handler.desktop
 
 fi
 

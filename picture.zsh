@@ -9,12 +9,9 @@ sudo pacman -S --noconfirm \
 
 # links
 
-for APP in \
-  gimp
-do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i \
-    -e 's/^Name=.*$/Name=GIMP/' \
-    ~/.local/share/applications/$APP.desktop
-done
+APP=gimp
+cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+sed -i \
+  -e 's/^Name=.*$/Name=GIMP/' \
+  ~/.local/share/applications/$APP.desktop
 

@@ -26,13 +26,11 @@ sudo pacman -S --noconfirm \
 
 # links
 
-for APP in \
-  mysql-workbench
-do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i 's/^Name=MySQL Workbench$/Name=MySQL/' \
-    ~/.local/share/applications/$APP.desktop
-done
+APP=mysql-workbench
+cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+sed -i \
+  -e 's/^Name=MySQL Workbench$/Name=MySQL/' \
+  ~/.local/share/applications/$APP.desktop
 
 # dotfiles
 
