@@ -114,6 +114,9 @@ paru -S --aur --noconfirm \
   mangohud \
   mangohud-common
 
+
+cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf ${XDG_DATA_HOME:-~/.local/share}/mangohud
+
 # libstrangle
 
 paru -S --aur --noconfirm \
