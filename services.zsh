@@ -41,13 +41,6 @@ cp `dirname $0`/home/greg/.config/systemd/user/sync-* ~/.config/systemd/user
 systemctl --user enable sync-periodic.timer
 systemctl --user enable sync-session.service
 
-# if [[ $HOST = 'drifter' ]]; then
-
-  # cp `dirname $0`/home/greg/.config/systemd/user/4k.service ~/.config/systemd/user
-  # systemctl --user enable 4k.service
-
-# fi
-
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
   sudo systemctl mask colord.service
