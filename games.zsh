@@ -21,7 +21,7 @@ MOUNT=/run/media/$USER/games
 
 [[ $(grep "# $DISK" /etc/fstab) ]] || {
   echo "# $DISK" | sudo tee --append /etc/fstab > /dev/null
-  echo "$DISK	$MOUNT	ext4	defaults	0 1" | sudo tee --append /etc/fstab > /dev/null
+  echo "$DISK	$MOUNT	ext4	defaults	0 2" | sudo tee --append /etc/fstab > /dev/null
   echo '' | sudo tee --append /etc/fstab > /dev/null
 }
 

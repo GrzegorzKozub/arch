@@ -133,7 +133,7 @@ sed -i 's/#Color/Color/' /etc/pacman.conf
 [[ -d /run/media/greg/data ]] || mkdir -p /run/media/greg/data
 
 echo '# /dev/mapper/vg1-data' >> /etc/fstab
-echo '/dev/mapper/vg1-data	/run/media/greg/data	ext4	defaults	0 1' >> /etc/fstab
+echo '/dev/mapper/vg1-data	/run/media/greg/data	ext4	defaults	0 2' >> /etc/fstab
 echo '' >> /etc/fstab
 
 # default sound over hdmi to primary monitor
