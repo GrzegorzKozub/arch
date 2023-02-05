@@ -114,7 +114,7 @@ paru -S --aur --noconfirm \
   mangohud \
   mangohud-common
 
-
+[[ -d ${XDG_DATA_HOME:-~/.local/share}/mangohud ]] || mkdir -p ${XDG_DATA_HOME:-~/.local/share}/mangohud
 cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf ${XDG_DATA_HOME:-~/.local/share}/mangohud
 
 # libstrangle
