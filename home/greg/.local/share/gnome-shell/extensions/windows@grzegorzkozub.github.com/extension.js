@@ -14,6 +14,7 @@ class Extension {
     const big = [
       { title: /.?Azure Data Studio$/ },
       { title: /.?Brave$/, noRole: 'pop-up' },
+      { title: /.?MySQL Workbench$/ },
       { title: /^OBS.?/ },
       { title: /^Postman$/, auto: true },
       { title: /.?Shotcut$/ },
@@ -24,7 +25,6 @@ class Extension {
       { class: /.?Foliate$/ },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
-      { title: /.?MySQL Workbench$/ },
       { title: /.?Slack$/, auto: true },
       { title: /.?Steam$/ },
     ];
