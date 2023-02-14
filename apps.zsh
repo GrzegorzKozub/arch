@@ -78,6 +78,7 @@ sudo pacman -S --noconfirm \
   stress \
   trash-cli \
   wget \
+  wl-clipboard \
   xclip \
   xcolor \
   yt-dlp \
