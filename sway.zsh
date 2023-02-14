@@ -10,7 +10,7 @@ sudo pacman -S --noconfirm \
   swaybg swayidle \
   waybar \
   wofi \
-  grim slurp swappy wl-clipboard \
+  grim slurp \
   xdg-desktop-portal-wlr
 
 paru -S --aur --noconfirm \
