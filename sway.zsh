@@ -10,7 +10,8 @@ sudo pacman -S --noconfirm \
   swaybg swayidle \
   waybar \
   wofi \
-  grim slurp swappy wl-clipboard
+  grim slurp swappy wl-clipboard \
+  xdg-desktop-portal-wlr
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
