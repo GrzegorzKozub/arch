@@ -10,13 +10,14 @@ sudo pacman -S --noconfirm \
   swaybg swayidle \
   waybar \
   wofi \
-  grim slurp \
-  xdg-desktop-portal-wlr
+  grim slurp xdg-desktop-portal-wlr \
+  swayimg
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
   swaylock-effects-git \
-  waylogout-git
+  waylogout-git \
+  wl-gammarelay-rs
 
 . ~/code/dotfiles/sway.zsh
 
