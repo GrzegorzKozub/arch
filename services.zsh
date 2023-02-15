@@ -43,6 +43,7 @@ systemctl --user enable sync-session.service
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
+  # conflicts with setting custom color profiles using dispwin
   sudo systemctl mask colord.service
 
   cp `dirname $0`/home/greg/.config/systemd/user/colors.service ~/.config/systemd/user

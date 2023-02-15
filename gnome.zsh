@@ -55,10 +55,11 @@ fi
 
 # screen
 
-gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
-gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
-
 if [[ $HOST = 'drifter' ]]; then
+
+  # depends on colord.service that is disabled when using custom color profiles 
+  gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
+  gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
   gdbus call \
     --session \
