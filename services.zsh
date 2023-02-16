@@ -49,8 +49,8 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
   cp `dirname $0`/home/greg/.config/systemd/user/colors.service ~/.config/systemd/user
   systemctl --user enable colors.service
 
-  cp `dirname $0`/home/greg/.config/systemd/user/imwheel.service ~/.config/systemd/user
-  systemctl --user enable imwheel.service
+  # cp `dirname $0`/home/greg/.config/systemd/user/imwheel.service ~/.config/systemd/user
+  # systemctl --user enable imwheel.service
 
 fi
 
