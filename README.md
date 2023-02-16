@@ -88,7 +88,7 @@ Automated Arch Linux installation
 
 ## Wayland
 
-Wayland is now enabled on Intel. Alacritty and Visual Studio Code are running in native Wayland. Brave is running on XWayland because KeePassXC auto-type is not supported in native.
+Wayland is now enabled on Intel. Visual Studio Code is running in native Wayland. Kitty is running on XWayland because native window decorations are ugly. Brave and KeePassXC are running on XWayland because auto-type is not supported in native.
 
 To enable Wayland on NVIDIA, adding `nvidia_drm.modeset=1` kernel module setting and running `ln -s /dev/null /etc/udev/rules.d/61-gdm.rules` is required. XWayland stutters, high latency in games and lack of Wayland support in `nvidia-settings` (coolbits, undervolting and overclocking) prevent from enabling Wayland on NVIDIA at this point.
 
