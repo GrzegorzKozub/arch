@@ -16,8 +16,7 @@ sudo pacman -S --noconfirm \
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
   swaylock-effects-git \
-  waylogout-git \
-  wl-gammarelay-rs
+  waylogout-git
 
 . ~/code/dotfiles/sway.zsh
 
