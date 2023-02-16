@@ -46,11 +46,10 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
   # conflicts with setting custom color profiles using dispwin
   sudo systemctl mask colord.service
 
+  systemctl --user enable redshift.service
+
   cp `dirname $0`/home/greg/.config/systemd/user/colors.service ~/.config/systemd/user
   systemctl --user enable colors.service
-
-  cp `dirname $0`/home/greg/.config/systemd/user/redshift.service ~/.config/systemd/user
-  systemctl --user enable redshift.service
 
   # cp `dirname $0`/home/greg/.config/systemd/user/imwheel.service ~/.config/systemd/user
   # systemctl --user enable imwheel.service
