@@ -69,7 +69,6 @@ sudo pacman -S --noconfirm \
   freerdp \
   fzf \
   htop \
-  imwheel \
   jq \
   p7zip \
   pass \
@@ -85,8 +84,17 @@ sudo pacman -S --noconfirm \
   zip
 
 paru -S --aur --noconfirm \
-  btop \
-  redshift-minimal
+  btop
+
+if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+
+  # sudo pacman -S --noconfirm \
+    # imwheel
+
+  paru -S --aur --noconfirm \
+    redshift-minimal
+
+fi
 
 # zsh, tmux and lf
 
