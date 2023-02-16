@@ -85,7 +85,8 @@ sudo pacman -S --noconfirm \
   zip
 
 paru -S --aur --noconfirm \
-  btop
+  btop \
+  redshift-minimal
 
 # zsh, tmux and lf
 
