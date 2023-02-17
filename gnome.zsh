@@ -24,10 +24,6 @@ dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
 
 gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-  "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
-
-gsettings set \
   org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
   name 'flameshot'
 
@@ -39,17 +35,31 @@ gsettings set \
   org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
   binding 'Print'
 
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
-  name 'night light'
+if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
-  command 'pkill -USR1 redshift'
+  gsettings set \
+    org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+    name 'night light'
 
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
-  binding '<Control><Super>n'
+  gsettings set \
+    org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+    command 'pkill -USR1 redshift'
+
+  gsettings set \
+    org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+    binding '<Control><Super>n'
+
+  gsettings set \
+    org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
+    "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
+
+else
+
+  gsettings set \
+    org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
+    "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+
+fi
 
 # mouse and touchpad
 
