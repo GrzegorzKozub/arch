@@ -7,35 +7,34 @@ set -e -o verbose
 for APP in \
   avahi-discover \
   bssh \
-  bvnc \
   btop \
-  cmake-gui \
-  electron4 \
-  electron7 \
+  bvnc \
   htop \
   lf \
   lstopo \
   mpv \
-  nvtop \
-  org.freedesktop.MalcontentControl \
-  org.gnome.Cheese \
   org.gnome.Software \
   org.gnome.Terminal \
-  org.gtk.Demo4 \
-  org.gtk.IconBrowser4 \
-  org.gtk.PrintEditor4 \
-  org.gtk.WidgetFactory4 \
   qv4l2 \
   qvidcap \
-  redshift \
-  redshift-gtk \
   stoken-gui \
   stoken-gui-small \
-  unison \
   xcolor
 do
   printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
 done
+
+if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+
+  for APP in \
+    nvtop \
+    redshift \
+    redshift-gtk
+  do
+    printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
+  done
+
+fi
 
 # qt
 
