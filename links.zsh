@@ -27,6 +27,8 @@ for APP in \
   org.gtk.WidgetFactory4 \
   qv4l2 \
   qvidcap \
+  redshift \
+  redshift-gtk \
   stoken-gui \
   stoken-gui-small \
   unison \

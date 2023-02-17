@@ -88,11 +88,11 @@ paru -S --aur --noconfirm \
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
+  sudo pacman -S --noconfirm \
+    redshift
+
   # sudo pacman -S --noconfirm \
     # imwheel
-
-  paru -S --aur --noconfirm \
-    redshift-minimal
 
 fi
 
