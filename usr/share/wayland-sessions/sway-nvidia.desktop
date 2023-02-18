@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Sway (NVIDIA)
+Exec=/home/greg/code/arch/sway-nvidia.sh
+Type=Application

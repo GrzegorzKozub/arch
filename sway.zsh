@@ -18,6 +18,17 @@ paru -S --aur --noconfirm \
   swaylock-effects-git \
   waylogout-git
 
+# experimental nvidia support
+
+if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+
+  sudo cp `dirname $0`/usr/share/wayland-sessions/sway-nvidia.desktop /usr/share/wayland-sessions
+
+  sudo pacman -S --noconfirm \
+    vulkan-validation-layers
+
+fi
+
 # links
 
 for APP in \
