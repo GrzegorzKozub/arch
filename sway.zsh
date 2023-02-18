@@ -16,7 +16,6 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
-  sway-audio-idle-inhibit-git \
   swaylock-effects-git \
   waylogout-git
 
