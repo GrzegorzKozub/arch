@@ -18,5 +18,15 @@ paru -S --aur --noconfirm \
   swaylock-effects-git \
   waylogout-git
 
+# links
+
+for APP in \
+  swayimg
+do
+  printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
+done
+
+# dotfiles
+
 . ~/code/dotfiles/sway.zsh
 
