@@ -7,6 +7,7 @@ set -e -o verbose
 sudo pacman -S --noconfirm \
   sway \
   brightnessctl polkit \
+  gammastep \
   swaybg swayidle \
   waybar \
   wofi \
