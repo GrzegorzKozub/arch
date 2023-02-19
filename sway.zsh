@@ -9,6 +9,7 @@ sudo pacman -S --noconfirm \
   brightnessctl polkit \
   gammastep \
   swaybg swayidle swaylock \
+  pavucontrol \
   waybar \
   wofi \
   grim slurp xdg-desktop-portal-wlr \
@@ -33,6 +34,9 @@ fi
 # links
 
 for APP in \
+  gammastep \
+  gammastep-indicator \
+  pavucontrol \
   swayimg
 do
   printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
