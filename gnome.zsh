@@ -21,7 +21,11 @@ dconf write /org/gnome/desktop/wm/keybindings/move-to-side-w "['<Super><Control>
 dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Super>Tab']"
 dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 
+# shortcuts
+
 gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
+
+CUSTOM_KEYBINDINGS=()
 
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
@@ -34,6 +38,8 @@ gsettings set \
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
   binding 'Print'
+
+CUSTOM_KEYBINDINGS+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/'"
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
@@ -49,17 +55,13 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
     org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
     binding '<Control><Super>n'
 
-  gsettings set \
-    org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-    "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
-
-else
-
-  gsettings set \
-    org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-    "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+  CUSTOM_KEYBINDINGS+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/'"
 
 fi
+  
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
+  "[${(j., .)CUSTOM_KEYBINDINGS}]"
 
 # mouse and touchpad
 
