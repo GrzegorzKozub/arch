@@ -17,8 +17,7 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
-  chayang-git \
-  waylogout-git
+  chayang-git
 
 # experimental nvidia support
 
