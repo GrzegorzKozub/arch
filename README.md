@@ -163,4 +163,9 @@ Games
 - [proton-ge-custom](https://github.com/GloriousEggroll/proton-ge-custom)
 - [vkd3d-proton](https://github.com/HansKristian-Work/vkd3d-proton)
 
+## Useful packages
+
+- Fonts 
+  - `font-manager`
+  - `gnome-characters`
 
