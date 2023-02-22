@@ -1,9 +1,28 @@
 #!/usr/bin/env zsh
 
-RUNNING_ID=$(pactl list short sinks | grep 'RUNNING' | cut -f1)
+ALL=$(pactl list short sinks | cut -f2)
 
-pactl list short sinks | while read -r id name driver s1 s2 s3 state; do
-  [[ $PREVIOUS == 1 ]] && pactl set-default-sink $id
-  [[ $id == $RUNNING_ID ]] && PREVIOUS=1
+NOW=0
+while true; do
+
+
+ echo $ALL | while read -r name; do
+    if [[ $NOW == 1 ]]; then
+      pactl set-default-sink $name
+      
+      
+    if [[ $(pactl info | grep 'Default Sink' | cut -d' ' -f3) == "$name" ]]; then
+      return
+    fi
+    fi
+
+    if [[ $(pactl info | grep 'Default Sink' | cut -d' ' -f3) == "$name" ]]; then
+      NOW=1
+    fi
+
+  done
+ 
 done
+
+
 
