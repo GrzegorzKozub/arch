@@ -41,21 +41,49 @@ gsettings set \
 
 CUSTOM_KEYBINDINGS+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/'"
 
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+  name 'audio output'
+
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+  command '/home/greg/code/arch/audio.zsh sink'
+
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+  binding '<Control><Super>a'
+
+CUSTOM_KEYBINDINGS+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/'"
+
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
+  name 'audio input'
+
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
+  command '/home/greg/code/arch/audio.zsh source'
+
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
+  binding '<Control><Super>m'
+
+CUSTOM_KEYBINDINGS+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/'"
+
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
   gsettings set \
-    org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+    org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ \
     name 'night light'
 
   gsettings set \
-    org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+    org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ \
     command 'pkill -USR1 redshift'
 
   gsettings set \
-    org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+    org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ \
     binding '<Control><Super>n'
 
-  CUSTOM_KEYBINDINGS+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/'"
+  CUSTOM_KEYBINDINGS+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/'"
 
 fi
   
