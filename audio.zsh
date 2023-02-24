@@ -1,58 +1,27 @@
 #!/usr/bin/env zsh
 
-if [[ $1 = 'sink' ]]; then
+set -e
 
+() {
 
-ALL=$(pactl list short sinks | cut -f2)
+[[ $1 = '' || $1 = 'sink' ]] && local snk=true
+[[ $1 = 'source' ]] && local src=true
 
-NOW=0
+[[ $snk || $src ]] || exit
+
+[[ $snk ]] && local all=$(pactl list short sinks | cut -f2) && local default='Default Sink'
+[[ $src ]] && local all=$(pactl list short sources | cut -f2) && local default='Default Source'
+
 while true; do
-
-
- echo $ALL | while read -r name; do
-    if [[ $NOW == 1 ]]; then
-      pactl set-default-sink $name
-      
-      
-    if [[ $(pactl info | grep 'Default Sink' | cut -d' ' -f3) == "$name" ]]; then
-      return
+  echo $all | while read -r current; do
+    if [[ $switch ]]; then
+      [[ $snk ]] && pactl set-default-sink $current
+      [[ $src ]] && pactl set-default-source $current
+      [[ $(pactl info | grep $default | cut -d' ' -f3) = $current ]] && return
     fi
-    fi
-
-    if [[ $(pactl info | grep 'Default Sink' | cut -d' ' -f3) == "$name" ]]; then
-      NOW=1
-    fi
-
+    [[ $(pactl info | grep $default | cut -d' ' -f3) = $current ]] && local switch=true
   done
- 
 done
 
+} $1
 
-else
-
-
-ALL=$(pactl list short sources | cut -f2)
-
-NOW=0
-while true; do
-
-
- echo $ALL | while read -r name; do
-    if [[ $NOW == 1 ]]; then
-      pactl set-default-source $name
-      
-      
-    if [[ $(pactl info | grep 'Default Source' | cut -d' ' -f3) == "$name" ]]; then
-      return
-    fi
-    fi
-
-    if [[ $(pactl info | grep 'Default Source' | cut -d' ' -f3) == "$name" ]]; then
-      NOW=1
-    fi
-
-  done
- 
-done
-
-fi
