@@ -61,22 +61,23 @@ pacstrap /mnt \
   nss-mdns \
   lm_sensors \
   v4l-utils \
+  networkmanager \
   bluez-utils \
   pipewire pipewire-alsa pipewire-pulse wireplumber \
-  xdg-desktop-portal \
+  gst-plugins-good \
+  xdg-desktop-portal xdg-utils \
   pacman-contrib \
   git go reflector sudo zsh \
   man-db man-pages \
   xorg-server \
-  gdm gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb networkmanager xdg-user-dirs-gtk xdg-utils \
-  eog evince gnome-calculator gnome-control-center gnome-software gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus \
-  gst-plugins-good
+  gdm gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb xdg-user-dirs-gtk \
+  eog evince gnome-calculator gnome-control-center gnome-software gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus
 
 # fstab file
 
 genfstab -U /mnt > /mnt/etc/fstab
 
-# config
+# continue
 
 cp -r `dirname $0`/../arch /mnt/root
 arch-chroot /mnt ~/arch/system2.sh

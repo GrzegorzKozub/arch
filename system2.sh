@@ -90,7 +90,7 @@ fi
 
 [[ $MY_HOSTNAME = 'drifter' ]] && . `dirname $0`/power.zsh
 
-# operating system continued
+# continue
 
 cp `dirname $0`/system3.zsh /home/greg
 su greg --command '~/system3.zsh'
