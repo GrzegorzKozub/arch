@@ -38,7 +38,8 @@ for APP in \
   pavucontrol \
   swayimg
 do
-  printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
+  EXEC=$(cat /usr/share/applications/$APP.desktop | grep '^Exec=')
+  printf "[Desktop Entry]\n%s\nNoDisplay=true" $EXEC > ~/.local/share/applications/$APP.desktop
 done
 
 # dotfiles

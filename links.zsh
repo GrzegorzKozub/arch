@@ -13,6 +13,8 @@ for APP in \
   lf \
   lstopo \
   mpv \
+  org.freedesktop.MalcontentControl \
+  org.gnome.ColorProfileViewer \
   org.gnome.Software \
   org.gnome.Terminal \
   qv4l2 \
@@ -21,7 +23,8 @@ for APP in \
   stoken-gui-small \
   xcolor
 do
-  printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
+  EXEC=$(cat /usr/share/applications/$APP.desktop | grep '^Exec=')
+  printf "[Desktop Entry]\n%s\nNoDisplay=true" $EXEC > ~/.local/share/applications/$APP.desktop
 done
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
@@ -31,7 +34,8 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
     redshift \
     redshift-gtk
   do
-    printf "[Desktop Entry]\nNoDisplay=true" > ~/.local/share/applications/$APP.desktop
+    EXEC=$(cat /usr/share/applications/$APP.desktop | grep '^Exec=')
+    printf "[Desktop Entry]\n%s\nNoDisplay=true" $EXEC > ~/.local/share/applications/$APP.desktop
   done
 
 fi

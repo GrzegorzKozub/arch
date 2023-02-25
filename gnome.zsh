@@ -148,7 +148,9 @@ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-tim
 
 # themes
 
+gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
 
 # wallpapers
 
