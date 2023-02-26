@@ -158,8 +158,10 @@ NVM_DIR=${XDG_DATA_HOME:-~/.local/share}/nvm source /usr/share/nvm/init-nvm.sh
 sudo pacman -S --noconfirm \
   flameshot \
   keepassxc \
-  mpv celluloid \
+  mpv \
   openconnect networkmanager-openconnect
+
+  # celluloid
 
 paru -S --aur --noconfirm \
   brave-bin \
@@ -171,10 +173,10 @@ paru -S --aur --noconfirm \
 xdg-mime default brave-browser.desktop x-scheme-handler/mailto
 xdg-mime default brave-browser.desktop text/calendar
 
-gsettings set io.github.celluloid-player.Celluloid always-use-floating-controls true
-gsettings set io.github.celluloid-player.Celluloid dark-theme-enable false
-gsettings set io.github.celluloid-player.Celluloid mpv-config-enable true
-gsettings set io.github.celluloid-player.Celluloid mpv-config-file 'file:///home/greg/.config/mpv/mpv.conf'
+# gsettings set io.github.celluloid-player.Celluloid always-use-floating-controls true
+# gsettings set io.github.celluloid-player.Celluloid dark-theme-enable false
+# gsettings set io.github.celluloid-player.Celluloid mpv-config-enable true
+# gsettings set io.github.celluloid-player.Celluloid mpv-config-file 'file:///home/greg/.config/mpv/mpv.conf'
 
 # xdg-mime default slack.desktop x-scheme-handler/slack
 
