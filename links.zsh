@@ -55,13 +55,13 @@ done
 
 # alacritty
 
-if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
-  APP=Alacritty
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i \
-    -e's/^Exec=/Exec=env WAYLAND_DISPLAY= /' \
-    ~/.local/share/applications/$APP.desktop
-fi
+# if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
+#   APP=Alacritty
+#   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+#   sed -i \
+#     -e's/^Exec=/Exec=env WAYLAND_DISPLAY= /' \
+#     ~/.local/share/applications/$APP.desktop
+# fi
 
 # kitty
 

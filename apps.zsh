@@ -57,8 +57,10 @@ sudo pacman -S --needed --noconfirm \
 # terminal
 
 sudo pacman -S --noconfirm \
-  alacritty \
   kitty
+
+# sudo pacman -S --noconfirm \
+#   alacritty
 
 # common
 
@@ -92,7 +94,7 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
     redshift
 
   # sudo pacman -S --noconfirm \
-    # imwheel
+  #   imwheel
 
 fi
 
@@ -173,8 +175,8 @@ paru -S --aur --noconfirm \
   visual-studio-code-bin
 
 # paru -S --aur --noconfirm \
-  # gnome-browser-connector \
-  # slack-desktop
+#   gnome-browser-connector \
+#   slack-desktop
 
 xdg-mime default brave-browser.desktop x-scheme-handler/mailto
 xdg-mime default brave-browser.desktop text/calendar
