@@ -100,8 +100,8 @@ if [[ $SPICE = 1 ]]; then
 
   [[ $(pacman -Qs virt-viewer) ]] || {
     sudo pacman -S --noconfirm virt-viewer
-    EXEC=$(cat /usr/share/applications/remote-viewer.desktop | grep '^Exec=')
-    printf "[Desktop Entry]\n%s\nNoDisplay=true" $EXEC > ~/.local/share/applications/remote-viewer.desktop
+    cp /usr/share/applications/remote-viewer.desktop ~/.local/share/applications
+    sed -i '2iNoDisplay=true' ~/.local/share/applications/remote-viewer.desktop
     xdg-mime default remote-viewer.desktop x-scheme-handler/spice+unix
   }
 

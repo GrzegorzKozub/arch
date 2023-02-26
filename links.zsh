@@ -23,8 +23,8 @@ for APP in \
   stoken-gui-small \
   xcolor
 do
-  EXEC=$(cat /usr/share/applications/$APP.desktop | grep '^Exec=')
-  printf "[Desktop Entry]\n%s\nNoDisplay=true" $EXEC > ~/.local/share/applications/$APP.desktop
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i '2iNoDisplay=true' ~/.local/share/applications/$APP.desktop
 done
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
@@ -34,8 +34,8 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
     redshift \
     redshift-gtk
   do
-    EXEC=$(cat /usr/share/applications/$APP.desktop | grep '^Exec=')
-    printf "[Desktop Entry]\n%s\nNoDisplay=true" $EXEC > ~/.local/share/applications/$APP.desktop
+    cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+    sed -i '2iNoDisplay=true' ~/.local/share/applications/$APP.desktop
   done
 
 fi
@@ -79,7 +79,7 @@ sed -i \
   -e 's/^Exec=nvim %F$/Exec=kitty nvim %F/' \
   -e 's/^Terminal=true$/Terminal=false/' \
   ~/.local/share/applications/$APP.desktop
-echo 'NoDisplay=true' >> ~/.local/share/applications/$APP.desktop
+sed -i '2iNoDisplay=true' ~/.local/share/applications/$APP.desktop
 
 # vscode
 

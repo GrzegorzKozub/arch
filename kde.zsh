@@ -23,8 +23,8 @@ for APP in \
   org.kde.kuserfeedback-console \
   qdbusviewer
 do
-  EXEC=$(cat /usr/share/applications/$APP.desktop | grep '^Exec=')
-  printf "[Desktop Entry]\n%s\nNoDisplay=true" $EXEC > ~/.local/share/applications/$APP.desktop
+  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+  sed -i '2iNoDisplay=true' ~/.local/share/applications/$APP.desktop
 done
 
 for APP in \
@@ -32,9 +32,7 @@ for APP in \
   org.kde.klipper
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i \
-    -e 's/^NotShowIn=KDE;$/NotShowIn=GNOME;KDE;/' \
-    ~/.local/share/applications/$APP.desktop
+  sed -i '2iNoDisplay=true' ~/.local/share/applications/$APP.desktop
 done
 
 for APP in \
