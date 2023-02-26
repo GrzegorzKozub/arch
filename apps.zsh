@@ -48,19 +48,12 @@ sudo pacman -S --noconfirm \
 sudo pacman -S --needed --noconfirm \
   papirus-icon-theme
 
-# gnome
-
-. `dirname $0`/gdm.zsh
-. `dirname $0`/gnome.zsh
-. `dirname $0`/settings.zsh
-
 # terminal
 
 sudo pacman -S --noconfirm \
   kitty
 
-# sudo pacman -S --noconfirm \
-#   alacritty
+  # alacritty
 
 # common
 
@@ -93,8 +86,7 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
   sudo pacman -S --noconfirm \
     redshift
 
-  # sudo pacman -S --noconfirm \
-  #   imwheel
+    # imwheel
 
 fi
 
@@ -174,9 +166,7 @@ paru -S --aur --noconfirm \
   postman-bin \
   visual-studio-code-bin
 
-# paru -S --aur --noconfirm \
-#   gnome-browser-connector \
-#   slack-desktop
+  # gnome-browser-connector slack-desktop
 
 xdg-mime default brave-browser.desktop x-scheme-handler/mailto
 xdg-mime default brave-browser.desktop text/calendar
@@ -193,9 +183,12 @@ gsettings set io.github.celluloid-player.Celluloid mpv-config-file 'file:///home
 sudo pacman --noconfirm -Sc
 paru --aur -Sccd
 
-# links
+# settings
 
+. `dirname $0`/settings.zsh
 . `dirname $0`/links.zsh
+. `dirname $0`/gdm.zsh
+[[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && . `dirname $0`/gnome.zsh
 
 # dotfiles install
 

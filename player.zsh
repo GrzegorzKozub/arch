@@ -9,3 +9,5 @@ export MY_ARCH_PART=/dev/nvme0n1p5
 
 export MY_HOSTNAME=player
 
+export MY_DESKTOP=GNOME
+

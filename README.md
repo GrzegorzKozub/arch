@@ -75,7 +75,7 @@ Automated Arch Linux installation
   - Open your databases
   - Only show attachment, title and username columns
   - Fit columns to window
-3. Change the font to `Fira Code Retina` and tab size to `2` in Postman
+3. Change the font to `Cascadia Code` and tab size to `2` in Postman
 4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
 5. Gnome
   - Set display scale to 200% on drifter
@@ -83,7 +83,7 @@ Automated Arch Linux installation
   - Add VPN server
   - Select the sound device and set volume to 50%
   - Remove the `~/.gnome` dir
-6. Clone apsis repo, run `repos.zsh`, setup `.env` files and token env vars
+6. Clone apsis repo, run `repos.zsh`, setup `.env` files and token env variables
 7. Fix window sizes and positions
 
 ## Wayland

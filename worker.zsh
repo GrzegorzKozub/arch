@@ -9,3 +9,5 @@ export MY_ARCH_PART=/dev/nvme0n1p6
 
 export MY_HOSTNAME=worker
 
+export MY_DESKTOP=GNOME
+

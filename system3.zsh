@@ -14,25 +14,12 @@ makepkg -si --noconfirm
 popd
 rm -rf ~/paru
 
-# operating system continued
-
-# sudo pacman -S --noconfirm \
-  # nftables
+# packages
 
 paru -S --aur --noconfirm \
-  aic94xx-firmware wd719x-firmware upd72020x-fw \
-  gnome-shell-extension-hide-activities-git \
-  gnome-shell-extension-tray-icons-reloaded-git
-
-if [[ $MY_HOSTNAME = 'player' ]]; then
-
-  sudo pacman -S --noconfirm \
-    amd-ucode \
-    nvidia nvidia-lts nvtop \
-    libva-vdpau-driver \
-    argyllcms
-
-fi
+  aic94xx-firmware \
+  wd719x-firmware \
+  upd72020x-fw
 
 if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
@@ -44,7 +31,17 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
     iwd
 
   # sudo pacman -S --noconfirm \
-    # iio-sensor-proxy
+  #   iio-sensor-proxy
+
+fi
+
+if [[ $MY_HOSTNAME = 'player' ]]; then
+
+  sudo pacman -S --noconfirm \
+    amd-ucode \
+    nvidia nvidia-lts nvtop \
+    libva-vdpau-driver \
+    argyllcms
 
 fi
 
@@ -55,6 +52,20 @@ if [[ $MY_HOSTNAME = 'worker' ]]; then
     nvidia nvidia-lts nvtop \
     libva-vdpau-driver \
     argyllcms
+
+fi
+
+# desktop
+
+if [[ $MY_DESKTOP = 'GNOME' ]]; then
+
+  sudo pacman -S --noconfirm \
+    gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb xdg-user-dirs-gtk \
+    eog evince gnome-calculator gnome-control-center gnome-software gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus
+
+  paru -S --aur --noconfirm \
+    gnome-shell-extension-hide-activities-git \
+    gnome-shell-extension-tray-icons-reloaded-git
 
 fi
 

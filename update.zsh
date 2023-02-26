@@ -34,10 +34,10 @@ sudo journalctl --vacuum-time=3months
 
 sudo DIFFPROG="nvim -d" pacdiff
 
-# gdm, gnome and links
+# settings
 
-. `dirname $0`/gdm.zsh
-. `dirname $0`/gnome.zsh
 . `dirname $0`/settings.zsh
 . `dirname $0`/links.zsh
+. `dirname $0`/gdm.zsh
+[[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && . `dirname $0`/gnome.zsh
 

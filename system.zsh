@@ -70,8 +70,9 @@ pacstrap /mnt \
   git go reflector sudo zsh \
   man-db man-pages \
   xorg-server \
-  gdm gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb xdg-user-dirs-gtk \
-  eog evince gnome-calculator gnome-control-center gnome-software gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus
+  gdm
+
+  # nftables
 
 # fstab file
 

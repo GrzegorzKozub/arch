@@ -34,9 +34,6 @@ sudo systemctl enable ip6tables.service
 
 [[ -d ~/.config/systemd/user ]] || mkdir -p ~/.config/systemd/user
 
-cp `dirname $0`/home/greg/.config/systemd/user/dnd.service ~/.config/systemd/user
-systemctl --user enable dnd.service
-
 cp `dirname $0`/home/greg/.config/systemd/user/sync-* ~/.config/systemd/user
 systemctl --user enable sync-periodic.timer
 systemctl --user enable sync-session.service
@@ -54,6 +51,13 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
   # cp `dirname $0`/home/greg/.config/systemd/user/imwheel.service ~/.config/systemd/user
   # systemctl --user enable imwheel.service
+
+fi
+
+if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
+
+  cp `dirname $0`/home/greg/.config/systemd/user/dnd.service ~/.config/systemd/user
+  systemctl --user enable dnd.service
 
 fi
 
