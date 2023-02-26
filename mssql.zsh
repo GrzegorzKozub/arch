@@ -2,7 +2,7 @@
 
 set -e -o verbose
 
-# mssql
+# packages
 
 paru -S --aur --noconfirm \
   azuredatastudio-bin

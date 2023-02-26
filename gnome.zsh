@@ -2,14 +2,13 @@
 
 set -e -o verbose
 
-# software
+# locale
 
-# gsettings set org.gnome.software download-updates false
+gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
 
 # keyboard
 
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
-gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
 
 dconf write /org/gnome/desktop/wm/keybindings/move-to-center "['<Super><Control>C']"
 
@@ -209,6 +208,10 @@ cp -r `dirname $0`/home/greg/.local/share/gnome-shell/extensions/windows@grzegor
 pushd $EXT/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 
 gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl', 'Hide_Activities@shay.shayel.org', 'windows@grzegorzkozub.github.com']"
+
+# software
+
+# gsettings set org.gnome.software download-updates false
 
 # terminal
 

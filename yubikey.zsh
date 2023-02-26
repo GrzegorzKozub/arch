@@ -2,10 +2,12 @@
 
 set -e -o verbose
 
-# yubikey
+# packages
 
 sudo pacman -Sy --noconfirm \
   pam-u2f
+
+# settings
 
 DIR=${XDG_CONFIG_HOME:-~/.config}/Yubico
 

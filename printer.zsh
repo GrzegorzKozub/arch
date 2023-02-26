@@ -2,7 +2,7 @@
 
 set -e -o verbose
 
-# printer
+# packages
 
 sudo pacman -Sy --noconfirm \
   cups \
@@ -10,10 +10,12 @@ sudo pacman -Sy --noconfirm \
   system-config-printer
 
 # sudo pacman -Sy --noconfirm \
-  # python-gobject python-pyqt5
+#   python-gobject python-pyqt5
 
 # paru -S --aur --noconfirm \
-  # hpuld
+#   hpuld
+
+# services
 
 sudo systemctl enable cups
 sudo systemctl start cups

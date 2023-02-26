@@ -2,7 +2,7 @@
 
 set -e -o verbose
 
-# ledger
+# packages
 
 paru -S --aur --noconfirm \
   ledger-live-bin

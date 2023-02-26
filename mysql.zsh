@@ -6,7 +6,7 @@ set -e -o verbose
 
 LOCAL=0
 
-# mysql
+# local
 
 if [[ $LOCAL = 1 ]]; then
 
@@ -19,7 +19,7 @@ if [[ $LOCAL = 1 ]]; then
 
 fi
 
-# mysql-workbench
+# packages
 
 sudo pacman -S --noconfirm \
   mysql-workbench

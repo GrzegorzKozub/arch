@@ -2,7 +2,7 @@
 
 set -e -o verbose
 
-# sway
+# packages
 
 sudo pacman -S --noconfirm \
   sway \

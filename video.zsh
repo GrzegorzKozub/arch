@@ -2,7 +2,7 @@
 
 set -e -o verbose
 
-# video
+# packages
 
 sudo pacman -S --noconfirm \
   obs-studio \
