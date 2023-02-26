@@ -96,13 +96,10 @@ done
 
 if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 
-  [[ $(grep 'NoDisplay' ~/.local/share/applications/code.desktop) ]] ||
-    sed -i \
-      -e '/^Keywords=.*/a NoDisplay=true' \
-      ~/.local/share/applications/code.desktop
+  sed -i '2iNoDisplay=true' ~/.local/share/applications/code.desktop
 
   sed -i \
-    -e '/^NoDisplay=.*/a NoDisplay=false' \
+    -e 's/^NoDisplay=true$/NoDisplay=false/' \
     ~/.local/share/applications/code-url-handler.desktop
 
 fi
