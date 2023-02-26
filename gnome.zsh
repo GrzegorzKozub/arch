@@ -125,6 +125,9 @@ fi
 
 gsettings set org.gnome.desktop.sound event-sounds false
 
+# when kde-gtk-config is installed
+# gsettings set org.gnome.desktop.sound theme-name 'freedesktop'
+
 # power
 
 gsettings set org.gnome.SessionManager logout-prompt false
@@ -148,9 +151,11 @@ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-tim
 
 # themes
 
-gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
-gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+
+# when kde-gtk-config is installed
+# gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+# gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
 
 # wallpapers
 
@@ -164,7 +169,13 @@ gsettings set org.gnome.desktop.screensaver picture-uri "file:///home/$USER/.loc
 
 # fonts
 
+# when kde-gtk-config is installed
+# gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
+# gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
+# gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
+
 gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code Regular 10'
+
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
 if [[ $HOST = 'drifter' ]]; then

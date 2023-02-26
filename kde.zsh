@@ -9,7 +9,6 @@ sudo pacman -S --noconfirm \
   bluedevil powerdevil \
   khotkeys kscreen \
   breeze-gtk \
-  kde-gtk-config \
   plasma-systemmonitor
 
 # links
@@ -39,6 +38,6 @@ for APP in \
   org.kde.plasma-systemmonitor
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  echo 'NotShowIn=GNOME;' >> ~/.local/share/applications/$APP.desktop
+  sed -i '2iNotShowIn=GNOME;' ~/.local/share/applications/$APP.desktop
 done
 

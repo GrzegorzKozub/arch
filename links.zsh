@@ -11,7 +11,6 @@ for APP in \
   bvnc \
   htop \
   lf \
-  lstopo \
   mpv \
   org.freedesktop.MalcontentControl \
   org.gnome.ColorProfileViewer \
@@ -26,6 +25,9 @@ do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications
   sed -i '2iNoDisplay=true' ~/.local/share/applications/$APP.desktop
 done
+
+cp /usr/share/applications/lstopo.desktop ~/.local/share/applications
+sed -i '4iNoDisplay=true' ~/.local/share/applications/lstopo.desktop
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
