@@ -61,7 +61,7 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
 
   sudo pacman -S --noconfirm \
     gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb xdg-user-dirs-gtk \
-    eog evince gnome-calculator gnome-control-center gnome-software gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus
+    eog evince gnome-calculator gnome-control-center gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus
 
   paru -S --aur --noconfirm \
     gnome-shell-extension-hide-activities-git \

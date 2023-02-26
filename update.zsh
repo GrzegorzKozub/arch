@@ -32,7 +32,7 @@ sudo journalctl --vacuum-time=3months
 
 # merge *.pacnew and *.pacsave files
 
-sudo DIFFPROG="nvim -d" pacdiff
+sudo DIFFPROG='nvim -d' pacdiff
 
 # settings
 

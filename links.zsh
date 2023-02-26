@@ -14,7 +14,6 @@ for APP in \
   mpv \
   org.freedesktop.MalcontentControl \
   org.gnome.ColorProfileViewer \
-  org.gnome.Software \
   org.gnome.Terminal \
   qv4l2 \
   qvidcap \
