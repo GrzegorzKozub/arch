@@ -63,6 +63,8 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
     gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb xdg-user-dirs-gtk \
     eog evince gnome-calculator gnome-control-center gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus
 
+    # gnome-software
+
   paru -S --aur --noconfirm \
     gnome-shell-extension-hide-activities-git \
     gnome-shell-extension-tray-icons-reloaded-git

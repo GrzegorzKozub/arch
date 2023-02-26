@@ -4,7 +4,7 @@ set -e -o verbose
 
 # software
 
-gsettings set org.gnome.software download-updates false
+# gsettings set org.gnome.software download-updates false
 
 # keyboard
 
