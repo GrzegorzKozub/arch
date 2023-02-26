@@ -33,7 +33,7 @@ Automated Arch Linux installation
 9. Run `~/code/arch/apps.zsh`
 10. Reboot
 
-## Manual config
+### Manual config
 
 1. Brave
   - Setup your profiles
@@ -88,11 +88,23 @@ Automated Arch Linux installation
 
 ## Wayland
 
-Wayland is now enabled on Intel. Visual Studio Code is running in native Wayland. Kitty is running on XWayland because native window decorations are ugly. Brave and KeePassXC are running on XWayland because auto-type is not supported in native.
+Currently enabled on Intel. Visual Studio Code is running in native Wayland. Kitty, Brave and KeePassXC are running on XWayland.
 
-To enable Wayland on NVIDIA, adding `nvidia_drm.modeset=1` kernel module setting and running `ln -s /dev/null /etc/udev/rules.d/61-gdm.rules` is required. XWayland stuttering, high latency in games and lack of Wayland support in `nvidia-settings` (coolbits, undervolting and overclocking) prevent from enabling Wayland on NVIDIA at this point.
+### Problems
 
-Minor issues: `imwheel` and `redshift` don't work on Wayland, drag and drop doesn't work on XWayland.
+- KeePassXC auto-type is not supported
+- Kitty window decorations are ugly on Gnome (fine on Plasma)
+- `redshift` is not compatible (use `gammastep`)
+- `imwheel` is not compatible
+- `nvidia-settings` is not compatible (coolbits, undervolting and overclocking)
+- Stuttering in games on XWayland
+- High latency in games on NVIDIA 
+- Drag and drop doesn't work on XWayland
+
+### Enabling on NVIDIA
+
+- Add `nvidia_drm.modeset=1` kernel module setting
+- Run `ln -s /dev/null /etc/udev/rules.d/61-gdm.rules`
 
 ## Windows VM
 
