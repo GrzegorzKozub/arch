@@ -9,7 +9,7 @@ sudo pacman -S --noconfirm \
   bluedevil powerdevil \
   khotkeys kscreen \
   breeze-gtk \
-  plasma-systemmonitor
+  plasma-systemmonitor dolphin
 
 # links
 
@@ -35,6 +35,7 @@ do
 done
 
 for APP in \
+  org.kde.dolphin \
   org.kde.plasma-systemmonitor
 do
   cp /usr/share/applications/$APP.desktop ~/.local/share/applications

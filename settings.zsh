@@ -4,6 +4,14 @@ set -e -o verbose
 
 # sound
 
+echo $(pactl list short sinks | cut -f1) | while read -r id; do
+  pactl set-sink-volume $id 50%
+done
+
+echo $(pactl list short sources | cut -f1) | while read -r id; do
+  pactl set-source-volume $id 50%
+done
+
 pactl set-sink-volume @DEFAULT_SINK@ 50%
 pactl set-source-volume @DEFAULT_SOURCE@ 50%
 

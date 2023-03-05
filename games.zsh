@@ -66,11 +66,17 @@ sudo pacman -S --noconfirm \
   lib32-nvidia-utils \
   steam
 
-FAVS=$(gsettings get org.gnome.shell favorite-apps)
+[[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && {
+  FAVS=$(gsettings get org.gnome.shell favorite-apps)
+  [[ $(echo $FAVS | grep 'steam.desktop') ]] || {
+    FAVS=$(echo $FAVS | sed "s/\]/, 'steam.desktop']/")
+    gsettings set org.gnome.shell favorite-apps $FAVS
+  }
+}
 
-[[ $(echo $FAVS | grep 'steam.desktop') ]] || {
-  FAVS=$(echo $FAVS | sed "s/\]/, 'steam.desktop']/")
-  gsettings set org.gnome.shell favorite-apps $FAVS
+[[ $XDG_CURRENT_DESKTOP = 'KDE' ]] && {
+  sed -i '/^launchers=/ s/$/,applications:steam.desktop/' ${XDG_CONFIG_HOME:-~/.config}/plasma-org.kde.plasma.desktop-appletsrc
+  kquitapp5 plasmashell && kstart5 plasmashell &
 }
 
 [[ -d $MOUNT/Steam ]] && {
