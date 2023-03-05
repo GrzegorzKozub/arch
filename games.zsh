@@ -46,21 +46,17 @@ sudo pacman -S --noconfirm \
 sudo pacman -S --noconfirm \
   nvidia-settings
 
-DIR=${XDG_DATA_HOME:-~/.local/share}/nvidia-settings
-[[ -d $DIR ]] || mkdir $DIR
+[[ -d $XDG_DATA_HOME/nvidia-settings ]] || mkdir $XDG_DATA_HOME/nvidia-settings
 
-LOCAL=${XDG_DATA_HOME:-~/.local/share}/applications
-APP=nvidia-settings.desktop
-
-cp /usr/share/applications/$APP $LOCAL
+cp /usr/share/applications/nvidia-settings.desktop $XDG_DATA_HOME/applications
 sed -i \
   -e 's/^Name=.*$/Name=NVIDIA/' \
-  -e 's/^Exec=.*$/Exec=\/usr\/bin\/nvidia-settings --config=\/home\/greg\/.local\/share\/nvidia-settings\/nvidia-settings-rc/' \
-  $LOCAL/$APP
+  -e "s/^Exec=.*$/Exec=\/usr\/bin\/nvidia-settings --config=\/home\/$USER\/.local\/share\/nvidia-settings\/nvidia-settings-rc/" \
+  $XDG_DATA_HOME/applications/nvidia-settings.desktop
 
 sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
 
-cp `dirname $0`/home/greg/.config/systemd/user/nvidia.service ~/.config/systemd/user
+cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.service $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable nvidia.service
 
 # steam
@@ -78,21 +74,17 @@ sudo pacman -S --noconfirm \
 }
 
 [[ $XDG_CURRENT_DESKTOP = 'KDE' ]] && {
-  sed -i '/^launchers=/ s/$/,applications:steam.desktop/' ${XDG_CONFIG_HOME:-~/.config}/plasma-org.kde.plasma.desktop-appletsrc
+  sed -i '/^launchers=/ s/$/,applications:steam.desktop/' $XDG_CONFIG_HOME/plasma-org.kde.plasma.desktop-appletsrc
   kquitapp5 plasmashell && kstart5 plasmashell &
 }
 
 [[ -d $MOUNT/Steam ]] && {
-  DIR=${XDG_DATA_HOME:-~/.local/share}/Steam
-  rm -f $DIR
-  ln -s $MOUNT/Steam $DIR
+  rm -f $XDG_DATA_HOME/Steam
+  ln -s $MOUNT/Steam $XDG_DATA_HOME/Steam
 }
 
-LOCAL=${XDG_DATA_HOME:-~/.local/share}/applications
-APP=steam.desktop
-
-cp /usr/share/applications/$APP $LOCAL
-sed -i -e 's/^Name=.*$/Name=Steam/' $LOCAL/$APP
+cp /usr/share/applications/steam.desktop $XDG_DATA_HOME/applications
+sed -i -e 's/^Name=.*$/Name=Steam/' $XDG_DATA_HOME/applications/steam.desktop
 
 # proton-ge-custom
 
@@ -124,9 +116,8 @@ paru -S --aur --noconfirm \
   mangohud \
   mangohud-common
 
-DIR=${XDG_DATA_HOME:-~/.local/share}/mangohud
-[[ -d $DIR ]] || mkdir -p $DIR
-cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $DIR
+[[ -d $XDG_DATA_HOME/mangohud ]] || mkdir -p $XDG_DATA_HOME/mangohud
+cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
 
 # libstrangle
 

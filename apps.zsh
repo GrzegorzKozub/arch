@@ -6,6 +6,11 @@ set -e -o verbose
 
 [[ . = `dirname $0` ]] && exit 1
 
+# env
+
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+export XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
+
 # pacman refresh
 
 # sudo pacman --noconfirm -Sy archlinux-keyring
@@ -96,7 +101,7 @@ sudo pacman -S --noconfirm \
   tmux \
   zsh zsh-completions
 
-export GOPATH=${XDG_DATA_HOME:-~/.local/share}/go
+export GOPATH=$XDG_DATA_HOME/go
 
 paru -S --aur --noconfirm \
   lf
@@ -151,7 +156,7 @@ paru -S --aur --noconfirm \
   nvm \
   stylua-bin
 
-NVM_DIR=${XDG_DATA_HOME:-~/.local/share}/nvm source /usr/share/nvm/init-nvm.sh
+NVM_DIR=$XDG_DATA_HOME/nvm source /usr/share/nvm/init-nvm.sh
 
 # apps
 

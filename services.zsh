@@ -2,6 +2,10 @@
 
 set -e -o verbose
 
+# env
+
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+
 # time sync
 
 sudo timedatectl set-ntp true
@@ -32,9 +36,9 @@ sudo systemctl enable ip6tables.service
 # sudo cp `dirname $0`/etc/nftables.rules /etc/nftables.rules
 # sudo systemctl enable nftables.service
 
-[[ -d ~/.config/systemd/user ]] || mkdir -p ~/.config/systemd/user
+[[ -d $XDG_CONFIG_HOME/systemd/user ]] || mkdir -p $XDG_CONFIG_HOME/systemd/user
 
-cp `dirname $0`/home/greg/.config/systemd/user/sync-* ~/.config/systemd/user
+cp `dirname $0`/home/$USER/.config/systemd/user/sync-* $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable sync-periodic.timer
 systemctl --user enable sync-session.service
 
@@ -43,20 +47,20 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
   # conflicts with setting custom color profiles using dispwin
   sudo systemctl mask colord.service
 
-  cp `dirname $0`/home/greg/.config/systemd/user/redshift.service ~/.config/systemd/user
+  cp `dirname $0`/home/$USER/.config/systemd/user/redshift.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable redshift.service
 
-  cp `dirname $0`/home/greg/.config/systemd/user/colors.service ~/.config/systemd/user
+  cp `dirname $0`/home/$USER/.config/systemd/user/colors.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable colors.service
 
-  # cp `dirname $0`/home/greg/.config/systemd/user/imwheel.service ~/.config/systemd/user
+  # cp `dirname $0`/home/$USER/.config/systemd/user/imwheel.service $XDG_CONFIG_HOME/systemd/user
   # systemctl --user enable imwheel.service
 
 fi
 
 if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
 
-  cp `dirname $0`/home/greg/.config/systemd/user/dnd.service ~/.config/systemd/user
+  cp `dirname $0`/home/$USER/.config/systemd/user/dnd.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable dnd.service
 
 fi

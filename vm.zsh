@@ -106,13 +106,10 @@ if [[ $SPICE = 1 ]]; then
 
     # links
 
-    LOCAL=${XDG_DATA_HOME:-~/.local/share}/applications
-    APP=remote-viewer.desktop
+    cp /usr/share/applications/remote-viewer.desktop $XDG_DATA_HOME/applications
+    sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/remote-viewer.desktop
 
-    cp /usr/share/applications/$APP $LOCAL
-    sed -i '2iNoDisplay=true' $LOCAL/$APP
-
-    xdg-mime default $APP x-scheme-handler/spice+unix
+    xdg-mime default remote-viewer.desktop x-scheme-handler/spice+unix
   }
 
   OPTS+=('-spice port=5930,disable-ticketing=on')

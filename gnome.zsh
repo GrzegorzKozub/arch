@@ -46,7 +46,7 @@ gsettings set \
 
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
-  command '/home/greg/code/arch/audio.zsh sink'
+  command "/home/$USER/code/arch/audio.zsh sink"
 
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
@@ -60,7 +60,7 @@ gsettings set \
 
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
-  command '/home/greg/code/arch/audio.zsh source'
+  command "/home/$USER/code/arch/audio.zsh source"
 
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
@@ -158,9 +158,8 @@ gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
 # wallpapers
 
-DIR=${XDG_DATA_HOME:-~/.local/share}/backgrounds
-[[ -d $DIR ]] && rm -rf $DIR
-ln -s $(dirname $(realpath $0))/home/$USER/.local/share/backgrounds $DIR
+[[ -d $XDG_DATA_HOME/backgrounds ]] && rm -rf $XDG_DATA_HOME/backgrounds
+ln -s $(dirname $(realpath $0))/home/$USER/.local/share/backgrounds $XDG_DATA_HOME/backgrounds
 
 gsettings set org.gnome.desktop.background picture-uri "file:///home/$USER/.local/share/backgrounds/women.jpg"
 gsettings set org.gnome.desktop.background picture-uri-dark "file:///home/$USER/.local/share/backgrounds/women.jpg"
@@ -202,11 +201,10 @@ gsettings set org.gnome.desktop.interface enable-hot-corners false
 
 # extensions
 
-EXT=${XDG_DATA_HOME:-~/.local/share}/gnome-shell/extensions
-[[ -d $EXT ]] || mkdir -p $EXT
+[[ -d $XDG_DATA_HOME/gnome-shell/extensions ]] || mkdir -p $XDG_DATA_HOME/gnome-shell/extensions
 
-cp -r `dirname $0`/home/greg/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com $EXT
-pushd $EXT/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
+cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com $XDG_DATA_HOME/gnome-shell/extensions
+pushd $XDG_DATA_HOME/gnome-shell/extensions/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 
 gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl', 'Hide_Activities@shay.shayel.org', 'windows@grzegorzkozub.github.com']"
 

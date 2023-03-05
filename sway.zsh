@@ -21,16 +21,14 @@ paru -S --aur --noconfirm \
 
 # links
 
-LOCAL=${XDG_DATA_HOME:-~/.local/share}/applications
-
 for APP in \
   gammastep \
   gammastep-indicator \
   pavucontrol \
   swayimg
 do
-  cp /usr/share/applications/$APP.desktop $LOCAL
-  sed -i '2iNoDisplay=true' $LOCAL/$APP.desktop
+  cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
+  sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
 # experimental nvidia support

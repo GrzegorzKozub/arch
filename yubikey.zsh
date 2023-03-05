@@ -9,7 +9,7 @@ sudo pacman -Sy --noconfirm \
 
 # settings
 
-DIR=${XDG_CONFIG_HOME:-~/.config}/Yubico
+DIR=$XDG_CONFIG_HOME/Yubico
 
 [[ -d $DIR ]] || mkdir -p $DIR
 pamu2fcfg -o pam://$HOST -i pam://$HOST > $DIR/u2f_keys

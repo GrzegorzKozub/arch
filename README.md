@@ -133,8 +133,8 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - For each game, set game compatibility to Proton-GE
 5. Once per machine, move Steam to games disk with
   ```zsh
-  mv ${XDG_DATA_HOME:-~/.local/share}/Steam /run/media/$USER/games/
-  ln -s /run/media/$USER/games/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
+  mv $XDG_DATA_HOME/Steam /run/media/$USER/games/
+  ln -s /run/media/$USER/games/Steam $XDG_DATA_HOME/Steam
   ```
 
 ### Launch options

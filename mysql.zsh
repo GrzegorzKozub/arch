@@ -26,11 +26,8 @@ sudo pacman -S --noconfirm \
 
 # links
 
-LOCAL=${XDG_DATA_HOME:-~/.local/share}/applications
-APP=mysql-workbench.desktop
-
-cp /usr/share/applications/$APP $LOCAL
-sed -i -e 's/^Name=MySQL Workbench$/Name=MySQL/' $LOCAL/$APP
+cp /usr/share/applications/mysql-workbench.desktop $XDG_DATA_HOME/applications
+sed -i -e 's/^Name=MySQL Workbench$/Name=MySQL/' $XDG_DATA_HOME/applications/mysql-workbench.desktop
 
 # dotfiles
 
