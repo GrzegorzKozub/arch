@@ -10,9 +10,9 @@ sudo pacman -S --noconfirm \
 
 # links
 
-APP=org.shotcut.Shotcut
-cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-sed -i \
-  -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' \
-  ~/.local/share/applications/$APP.desktop
+LOCAL=${XDG_DATA_HOME:-~/.local/share}/applications
+APP=org.shotcut.Shotcut.desktop
+
+cp /usr/share/applications/$APP $LOCAL
+sed -i -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' $LOCAL/$APP
 

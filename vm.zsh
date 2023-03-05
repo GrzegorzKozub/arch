@@ -99,10 +99,20 @@ fi
 if [[ $SPICE = 1 ]]; then
 
   [[ $(pacman -Qs virt-viewer) ]] || {
+
+    # packages
+
     sudo pacman -S --noconfirm virt-viewer
-    cp /usr/share/applications/remote-viewer.desktop ~/.local/share/applications
-    sed -i '2iNoDisplay=true' ~/.local/share/applications/remote-viewer.desktop
-    xdg-mime default remote-viewer.desktop x-scheme-handler/spice+unix
+
+    # links
+
+    LOCAL=${XDG_DATA_HOME:-~/.local/share}/applications
+    APP=remote-viewer.desktop
+
+    cp /usr/share/applications/$APP $LOCAL
+    sed -i '2iNoDisplay=true' $LOCAL/$APP
+
+    xdg-mime default $APP x-scheme-handler/spice+unix
   }
 
   OPTS+=('-spice port=5930,disable-ticketing=on')
