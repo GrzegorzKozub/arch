@@ -19,6 +19,20 @@ paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
   chayang-git
 
+# links
+
+LOCAL=${XDG_DATA_HOME:-~/.local/share}/applications
+
+for APP in \
+  gammastep \
+  gammastep-indicator \
+  pavucontrol \
+  swayimg
+do
+  cp /usr/share/applications/$APP.desktop $LOCAL
+  sed -i '2iNoDisplay=true' $LOCAL/$APP.desktop
+done
+
 # experimental nvidia support
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
@@ -29,18 +43,6 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
     vulkan-validation-layers
 
 fi
-
-# links
-
-for APP in \
-  gammastep \
-  gammastep-indicator \
-  pavucontrol \
-  swayimg
-do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i '2iNoDisplay=true' ~/.local/share/applications/$APP.desktop
-done
 
 # dotfiles
 

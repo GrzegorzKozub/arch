@@ -13,6 +13,9 @@ sudo pacman -S --noconfirm \
 
 # links
 
+USR=/usr/share/applications
+LOCAL=${XDG_DATA_HOME:-~/.local/share}/applications
+
 for APP in \
   assistant \
   designer \
@@ -22,23 +25,23 @@ for APP in \
   org.kde.kuserfeedback-console \
   qdbusviewer
 do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i '2iNoDisplay=true' ~/.local/share/applications/$APP.desktop
+  cp $USR/$APP.desktop $LOCAL
+  sed -i '2iNoDisplay=true' $LOCAL/$APP.desktop
 done
 
 for APP in \
   kdesystemsettings \
   org.kde.klipper
 do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i '2iNoDisplay=true' ~/.local/share/applications/$APP.desktop
+  cp $USR/$APP.desktop $LOCAL
+  sed -i '2iNoDisplay=true' $LOCAL/$APP.desktop
 done
 
 for APP in \
   org.kde.dolphin \
   org.kde.plasma-systemmonitor
 do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i '2iNotShowIn=GNOME;' ~/.local/share/applications/$APP.desktop
+  cp $USR/$APP.desktop $LOCAL
+  sed -i '2iNotShowIn=GNOME;' $LOCAL/$APP.desktop
 done
 

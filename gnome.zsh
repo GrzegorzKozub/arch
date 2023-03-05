@@ -158,8 +158,9 @@ gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
 # wallpapers
 
-[[ -d ${XDG_DATA_HOME:-~/.local/share}/backgrounds ]] || mkdir ${XDG_DATA_HOME:-~/.local/share}/backgrounds
-cp `dirname $0`/home/$USER/.local/share/backgrounds/* ${XDG_DATA_HOME:-~/.local/share}/backgrounds
+DIR=${XDG_DATA_HOME:-~/.local/share}/backgrounds
+[[ -d $DIR ]] && rm -rf $DIR
+ln -s $(dirname $(realpath $0))/home/$USER/.local/share/backgrounds $DIR
 
 gsettings set org.gnome.desktop.background picture-uri "file:///home/$USER/.local/share/backgrounds/women.jpg"
 gsettings set org.gnome.desktop.background picture-uri-dark "file:///home/$USER/.local/share/backgrounds/women.jpg"

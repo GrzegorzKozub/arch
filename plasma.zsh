@@ -4,30 +4,34 @@ set -e -o verbose
 
 # https://github.com/shalva97/kde-configuration-files
 
+# config
+
+CONFIG=${XDG_CONFIG_HOME:-~/.config}
+
 # locale
 
-CFG=${XDG_CONFIG_HOME:-~/.config}/plasma-localerc
+FILE=$CONFIG/plasma-localerc
 
-kwriteconfig5 --file $CFG --group 'Formats' --key 'LC_MEASUREMENT' 'pl_PL.UTF-8'
-kwriteconfig5 --file $CFG --group 'Formats' --key 'LC_MONETARY' 'pl_PL.UTF-8'
-kwriteconfig5 --file $CFG --group 'Formats' --key 'LC_NUMERIC' 'pl_PL.UTF-8'
-kwriteconfig5 --file $CFG --group 'Formats' --key 'LC_PAGE' 'pl_PL.UTF-8'
-kwriteconfig5 --file $CFG --group 'Formats' --key 'LC_TIME' 'pl_PL.UTF-8'
+kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_MEASUREMENT' 'pl_PL.UTF-8'
+kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_MONETARY' 'pl_PL.UTF-8'
+kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_NUMERIC' 'pl_PL.UTF-8'
+kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_PAGE' 'pl_PL.UTF-8'
+kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_TIME' 'pl_PL.UTF-8'
 
 # keyboard
 
-CFG=${XDG_CONFIG_HOME:-~/.config}/kxkbrc
+FILE=$CONFIG/kxkbrc
 
-kwriteconfig5 --file $CFG --group 'Layout' --key 'DisplayNames' ','
-kwriteconfig5 --file $CFG --group 'Layout' --key 'LayoutList' 'pl,us'
-kwriteconfig5 --file $CFG --group 'Layout' --key 'Use' 'true'
+kwriteconfig5 --file $FILE --group 'Layout' --key 'DisplayNames' ','
+kwriteconfig5 --file $FILE --group 'Layout' --key 'LayoutList' 'pl,us'
+kwriteconfig5 --file $FILE --group 'Layout' --key 'Use' 'true'
 
 # mouse and touchpad
 
-CFG=${XDG_CONFIG_HOME:-~/.config}/kcminputrc
+FILE=$CONFIG/kcminputrc
 
-[[ $XDG_SESSION_TYPE = 'wayland' ]] && kwriteconfig5 --file $CFG --group 'Mouse' --key 'XLbInptPointerAcceleration' -- '-0.8'
-[[ $XDG_SESSION_TYPE = 'x11' ]] && kwriteconfig5 --file $CFG --group 'Mouse' --key 'XLbInptPointerAcceleration' -- '-0.4'
+[[ $XDG_SESSION_TYPE = 'wayland' ]] && kwriteconfig5 --file $FILE --group 'Mouse' --key 'XLbInptPointerAcceleration' -- '-0.8'
+[[ $XDG_SESSION_TYPE = 'x11' ]] && kwriteconfig5 --file $FILE --group 'Mouse' --key 'XLbInptPointerAcceleration' -- '-0.4'
 
 # themes
 
@@ -39,48 +43,47 @@ plasma-apply-colorscheme 'BreezeDark'
 # wallpapers
 
 DIR=${XDG_DATA_HOME:-~/.local/share}/wallpapers
-
-[[ -d $DIR ]] || mkdir $DIR
-cp `dirname $0`/home/$USER/.local/share/backgrounds/* $DIR
+[[ -d $DIR ]] && rm -rf $DIR
+ln -s $(dirname $(realpath $0))/home/$USER/.local/share/backgrounds $DIR
 
 plasma-apply-wallpaperimage $DIR/women.jpg
 
 # window decorations
 
-CFG=${XDG_CONFIG_HOME:-~/.config}/kwinrc
+FILE=$CONFIG/kwinrc
 
-kwriteconfig5 --file $CFG --group 'org.kde.kdecoration2' --key 'ButtonsOnLeft' ''
-kwriteconfig5 --file $CFG --group 'org.kde.kdecoration2' --key 'ButtonsOnRight' 'IAX'
+kwriteconfig5 --file $FILE --group 'org.kde.kdecoration2' --key 'ButtonsOnLeft' ''
+kwriteconfig5 --file $FILE --group 'org.kde.kdecoration2' --key 'ButtonsOnRight' 'IAX'
 
 # panel
 
-sed -i 's/^thickness=.*$/thickness=80/' ${XDG_CONFIG_HOME:-~/.config}/plasmashellrc
+sed -i 's/^thickness=.*$/thickness=80/' $CONFIG/plasmashellrc
 
-CFG=${XDG_CONFIG_HOME:-~/.config}/plasma-org.kde.plasma.desktop-appletsrc
+FILE=$CONFIG/plasma-org.kde.plasma.desktop-appletsrc
 
-sed -i '/^plugin=org.kde.plasma.pager$/d' $CFG
-sed -i '/^plugin=org.kde.plasma.showdesktop$/d' $CFG
+sed -i '/^plugin=org.kde.plasma.pager$/d' $FILE
+sed -i '/^plugin=org.kde.plasma.showdesktop$/d' $FILE
 
-echo "$(grep 'org.kde.plasma.kickoff' $CFG --before-context=2 | grep 'Containments')[Configuration][General]" >> $CFG
-echo 'alphaSort=true' >> $CFG
-echo 'applicationsDisplay=0' >> $CFG
-echo 'primaryActions=3' >> $CFG
-echo 'showActionButtonCaptions=false' >> $CFG
-echo 'systemFavorites=lock-screen\\,logout\\,save-session\\,switch-user\\,suspend\\,hibernate\\,reboot\\,shutdown' >> $CFG
+echo "$(grep 'org.kde.plasma.kickoff' $FILE --before-context=2 | grep 'Containments')[Configuration][General]" >> $FILE
+echo 'alphaSort=true' >> $FILE
+echo 'applicationsDisplay=0' >> $FILE
+echo 'primaryActions=3' >> $FILE
+echo 'showActionButtonCaptions=false' >> $FILE
+echo 'systemFavorites=lock-screen\\,logout\\,save-session\\,switch-user\\,suspend\\,hibernate\\,reboot\\,shutdown' >> $FILE
 
-echo "$(grep 'org.kde.plasma.icontasks' $CFG --before-context=2 | grep 'Containments')[Configuration][General]" >> $CFG
-echo 'indicateAudioStreams=false' >> $CFG
-echo 'launchers=applications:org.kde.dolphin.desktop,applications:kitty.desktop,applications:code.desktop,applications:postman.desktop,preferred://browser,applications:org.keepassxc.KeePassXC.desktop' >> $CFG
+echo "$(grep 'org.kde.plasma.icontasks' $FILE --before-context=2 | grep 'Containments')[Configuration][General]" >> $FILE
+echo 'indicateAudioStreams=false' >> $FILE
+echo 'launchers=applications:org.kde.dolphin.desktop,applications:kitty.desktop,applications:code.desktop,applications:postman.desktop,preferred://browser,applications:org.keepassxc.KeePassXC.desktop' >> $FILE
 
-sed -i -E 's/^(extraItems=.*)(,org.kde.plasma.mediacontroller)(.*)/\1\3/' $CFG
-sed -i '/^extraItems=.*$/a hiddenItems=org.kde.plasma.clipboard,org.kde.plasma.keyboardlayout,org.kde.plasma.notifications' $CFG
+sed -i -E 's/^(extraItems=.*)(,org.kde.plasma.mediacontroller)(.*)/\1\3/' $FILE
+sed -i '/^extraItems=.*$/a hiddenItems=org.kde.plasma.clipboard,org.kde.plasma.keyboardlayout,org.kde.plasma.notifications' $FILE
 
-echo "$(grep 'org.kde.plasma.digitalclock' $CFG --before-context=2 | grep 'Containments')[Configuration][Apperance]" >> $CFG
-echo 'showDate=false' >> $CFG
+echo "$(grep 'org.kde.plasma.digitalclock' $FILE --before-context=2 | grep 'Containments')[Configuration][Apperance]" >> $FILE
+echo 'showDate=false' >> $FILE
 
 # dnd
 
-kwriteconfig5 --file ${XDG_CONFIG_HOME:-~/.config}/plasmanotifyrc --group 'DoNotDisturb' --key 'Until' "$[$(date --iso-8601 | cut -d- -f1) + 1],1,1,0,0,0"
+kwriteconfig5 --file $CONFIG/plasmanotifyrc --group 'DoNotDisturb' --key 'Until' "$[$(date --iso-8601 | cut -d- -f1) + 1],1,1,0,0,0"
 
 # restart apps for some changes to take effect
 

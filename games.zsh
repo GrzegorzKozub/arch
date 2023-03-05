@@ -46,14 +46,17 @@ sudo pacman -S --noconfirm \
 sudo pacman -S --noconfirm \
   nvidia-settings
 
-[[ -d $XDG_DATA_HOME/nvidia-settings ]] || mkdir $XDG_DATA_HOME/nvidia-settings
+DIR=${XDG_DATA_HOME:-~/.local/share}/nvidia-settings
+[[ -d $DIR ]] || mkdir $DIR
 
-APP=nvidia-settings
-cp /usr/share/applications/$APP.desktop ~/.local/share/applications
+LOCAL=${XDG_DATA_HOME:-~/.local/share}/applications
+APP=nvidia-settings.desktop
+
+cp /usr/share/applications/$APP $LOCAL
 sed -i \
   -e 's/^Name=.*$/Name=NVIDIA/' \
   -e 's/^Exec=.*$/Exec=\/usr\/bin\/nvidia-settings --config=\/home\/greg\/.local\/share\/nvidia-settings\/nvidia-settings-rc/' \
-  ~/.local/share/applications/$APP.desktop
+  $LOCAL/$APP
 
 sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
 
@@ -80,15 +83,16 @@ sudo pacman -S --noconfirm \
 }
 
 [[ -d $MOUNT/Steam ]] && {
-  rm -f ${XDG_DATA_HOME:-~/.local/share}/Steam
-  ln -s $MOUNT/Steam ${XDG_DATA_HOME:-~/.local/share}/Steam
+  DIR=${XDG_DATA_HOME:-~/.local/share}/Steam
+  rm -f $DIR
+  ln -s $MOUNT/Steam $DIR
 }
 
-APP=steam
-cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-sed -i \
-  -e 's/^Name=.*$/Name=Steam/' \
-  ~/.local/share/applications/$APP.desktop
+LOCAL=${XDG_DATA_HOME:-~/.local/share}/applications
+APP=steam.desktop
+
+cp /usr/share/applications/$APP $LOCAL
+sed -i -e 's/^Name=.*$/Name=Steam/' $LOCAL/$APP
 
 # proton-ge-custom
 
@@ -120,8 +124,9 @@ paru -S --aur --noconfirm \
   mangohud \
   mangohud-common
 
-[[ -d ${XDG_DATA_HOME:-~/.local/share}/mangohud ]] || mkdir -p ${XDG_DATA_HOME:-~/.local/share}/mangohud
-cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf ${XDG_DATA_HOME:-~/.local/share}/mangohud
+DIR=${XDG_DATA_HOME:-~/.local/share}/mangohud
+[[ -d $DIR ]] || mkdir -p $DIR
+cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $DIR
 
 # libstrangle
 

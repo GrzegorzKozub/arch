@@ -22,12 +22,14 @@ sudo systemctl start cups
 
 # links
 
+LOCAL=${XDG_DATA_HOME:-~/.local/share}/applications
+
 for APP in \
   cups \
   hplip \
   hp-uiscan
 do
-  cp /usr/share/applications/$APP.desktop ~/.local/share/applications
-  sed -i '2iNoDisplay=true' ~/.local/share/applications/$APP.desktop
+  cp /usr/share/applications/$APP.desktop $LOCAL
+  sed -i '2iNoDisplay=true' $LOCAL/$APP.desktop
 done
 
