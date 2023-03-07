@@ -18,9 +18,20 @@ kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_TIME' 'pl_PL.UTF-8'
 
 FILE=$XDG_CONFIG_HOME/kxkbrc
 
-kwriteconfig5 --file $FILE --group 'Layout' --key 'DisplayNames' ','
-kwriteconfig5 --file $FILE --group 'Layout' --key 'LayoutList' 'pl,us'
+kwriteconfig5 --file $FILE --group 'Layout' --key 'LayoutList' 'pl'
 kwriteconfig5 --file $FILE --group 'Layout' --key 'Use' 'true'
+
+kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'KDE Keyboard Layout Switcher' --key 'Switch to Next Keyboard Layout' 'Meta+Space,none,Switch to Next Keyboard Layout'
+
+# shortcuts
+
+# FILE=$XDG_CONFIG_HOME/kglobalshortcutsrc or khotkeysrc
+
+if [[ $HOST = 'worker' ]]; then
+
+# "env QT_SCREEN_SCALE_FACTORS='1.5,1.5' flameshot gui"
+
+fi
 
 # mouse and touchpad
 
