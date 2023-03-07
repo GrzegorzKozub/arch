@@ -158,8 +158,10 @@ gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
 # wallpapers
 
-[[ -d $XDG_DATA_HOME/backgrounds ]] && rm -rf $XDG_DATA_HOME/backgrounds
-ln -s $(dirname $(realpath $0))/home/$USER/.local/share/backgrounds $XDG_DATA_HOME/backgrounds
+DIR=$XDG_DATA_HOME/backgrounds
+
+[[ -d $DIR ]] && rm -rf $DIR
+ln -s $(dirname $(realpath $0))/home/$USER/.local/share/backgrounds $DIR
 
 gsettings set org.gnome.desktop.background picture-uri "file:///home/$USER/.local/share/backgrounds/women.jpg"
 gsettings set org.gnome.desktop.background picture-uri-dark "file:///home/$USER/.local/share/backgrounds/women.jpg"
@@ -193,7 +195,7 @@ gsettings set org.gnome.desktop.search-providers disable-external true
 gsettings set org.gnome.desktop.notifications show-banners false
 gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
-[[ $XDG_SESSION_TYPE = 'wayland' ]] && CODE=code-url-handler || CODE=code
+[[ $XDG_SESSION_TYPE = 'wayland' ]] && CODE='code-url-handler' || CODE='code'
 
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'kitty.desktop', '$CODE.desktop', 'postman.desktop', 'brave-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'steam.desktop']" # 'slack-desktop'
 
@@ -201,10 +203,11 @@ gsettings set org.gnome.desktop.interface enable-hot-corners false
 
 # extensions
 
-[[ -d $XDG_DATA_HOME/gnome-shell/extensions ]] || mkdir -p $XDG_DATA_HOME/gnome-shell/extensions
+DIR=$XDG_DATA_HOME/gnome-shell/extensions
 
-cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com $XDG_DATA_HOME/gnome-shell/extensions
-pushd $XDG_DATA_HOME/gnome-shell/extensions/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
+[[ -d $DIR ]] || mkdir -p $DIR
+cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com $DIR
+pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 
 gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl', 'Hide_Activities@shay.shayel.org', 'windows@grzegorzkozub.github.com']"
 

@@ -21,16 +21,42 @@ FILE=$XDG_CONFIG_HOME/kxkbrc
 kwriteconfig5 --file $FILE --group 'Layout' --key 'LayoutList' 'pl'
 kwriteconfig5 --file $FILE --group 'Layout' --key 'Use' 'true'
 
-kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'KDE Keyboard Layout Switcher' --key 'Switch to Next Keyboard Layout' 'Meta+Space,none,Switch to Next Keyboard Layout'
+# kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'KDE Keyboard Layout Switcher' --key 'Switch to Next Keyboard Layout' 'Meta+Space,none,Switch to Next Keyboard Layout'
 
 # shortcuts
 
-# FILE=$XDG_CONFIG_HOME/kglobalshortcutsrc or khotkeysrc
+shortcut() {
+  local file=$XDG_CONFIG_HOME/khotkeysrc
+  local id=$(uuidgen)
+
+  kwriteconfig5 --file $file --group 'Data' --key 'DataCount' \
+    "$[$(grep '\[Data\]' $file --after-context=1 | grep 'DataCount' | cut -d= -f2) + 1]"
+
+  kwriteconfig5 --file $file --group 'Data_4' --key 'Comment' ''
+  kwriteconfig5 --file $file --group 'Data_4' --key 'Enabled' 'true'
+  kwriteconfig5 --file $file --group 'Data_4' --key 'Name' $2
+  kwriteconfig5 --file $file --group 'Data_4' --key 'Type' 'SIMPLE_ACTION_DATA'
+
+  kwriteconfig5 --file $file --group 'Data_4Actions' --key 'ActionsCount' '1'
+  kwriteconfig5 --file $file --group 'Data_4Actions0' --key 'CommandURL' $3
+  kwriteconfig5 --file $file --group 'Data_4Actions0' --key 'Type' 'COMMAND_URL'
+
+  kwriteconfig5 --file $file --group 'Data_4Conditions' --key 'Comment' ''
+  kwriteconfig5 --file $file --group 'Data_4Conditions' --key 'ConditionsCount' '0'
+
+  kwriteconfig5 --file $file --group 'Data_4Triggers' --key 'Comment' ''
+  kwriteconfig5 --file $file --group 'Data_4Triggers' --key 'TriggersCount' '1'
+  kwriteconfig5 --file $file --group 'Data_4Triggers0' --key 'Key' $1
+  kwriteconfig5 --file $file --group 'Data_4Triggers0' --key 'Type' 'SHORTCUT'
+  kwriteconfig5 --file $file --group 'Data_4Triggers0' --key 'Uuid' "{$id}"
+
+  kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key "{$id}" "$1,none,$2"
+}
 
 if [[ $HOST = 'worker' ]]; then
-
-# "env QT_SCREEN_SCALE_FACTORS='1.5,1.5' flameshot gui"
-
+  shortcut 'Print' 'flameshot' "env QT_SCREEN_SCALE_FACTORS='1.5,1.5' flameshot gui"
+else
+  shortcut 'Print' 'flameshot' 'flameshot gui'
 fi
 
 # mouse and touchpad
@@ -85,10 +111,12 @@ kwriteconfig5 --file $FILE --group 'KSplash' --key 'Theme' 'None'
 
 # wallpapers
 
-[[ -d $XDG_DATA_HOME/wallpapers ]] && rm -rf $XDG_DATA_HOME/wallpapers
-ln -s $(dirname $(realpath $0))/home/$USER/.local/share/backgrounds $XDG_DATA_HOME/wallpapers
+DIR=$XDG_DATA_HOME/wallpapers
 
-plasma-apply-wallpaperimage $XDG_DATA_HOME/wallpapers/women.jpg
+[[ -d $DIR ]] && rm -rf $DIR
+ln -s $(dirname $(realpath $0))/home/$USER/.local/share/backgrounds $DIR
+
+plasma-apply-wallpaperimage $DIR/women.jpg
 
 # panel
 
@@ -126,5 +154,5 @@ kwriteconfig5 --file $XDG_CONFIG_HOME/plasmanotifyrc --group 'DoNotDisturb' --ke
 
 # restart apps for some changes to take effect
 
-kquitapp5 plasmashell && kstart5 plasmashell &
+# kquitapp5 plasmashell && kstart5 plasmashell &
 
