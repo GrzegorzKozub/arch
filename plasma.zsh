@@ -28,27 +28,27 @@ kwriteconfig5 --file $FILE --group 'Layout' --key 'Use' 'true'
 shortcut() {
   local file=$XDG_CONFIG_HOME/khotkeysrc
   local id=$(uuidgen)
+  local count=$[$(grep '\[Data\]' $file --after-context=1 | grep 'DataCount' | cut -d= -f2) + 1]
 
-  kwriteconfig5 --file $file --group 'Data' --key 'DataCount' \
-    "$[$(grep '\[Data\]' $file --after-context=1 | grep 'DataCount' | cut -d= -f2) + 1]"
+  kwriteconfig5 --file $file --group 'Data' --key 'DataCount' $count
 
-  kwriteconfig5 --file $file --group 'Data_4' --key 'Comment' ''
-  kwriteconfig5 --file $file --group 'Data_4' --key 'Enabled' 'true'
-  kwriteconfig5 --file $file --group 'Data_4' --key 'Name' $2
-  kwriteconfig5 --file $file --group 'Data_4' --key 'Type' 'SIMPLE_ACTION_DATA'
+  kwriteconfig5 --file $file --group "Data_$count" --key 'Comment' ''
+  kwriteconfig5 --file $file --group "Data_$count" --key 'Enabled' 'true'
+  kwriteconfig5 --file $file --group "Data_$count" --key 'Name' $2
+  kwriteconfig5 --file $file --group "Data_$count" --key 'Type' 'SIMPLE_ACTION_DATA'
 
-  kwriteconfig5 --file $file --group 'Data_4Actions' --key 'ActionsCount' '1'
-  kwriteconfig5 --file $file --group 'Data_4Actions0' --key 'CommandURL' $3
-  kwriteconfig5 --file $file --group 'Data_4Actions0' --key 'Type' 'COMMAND_URL'
+  kwriteconfig5 --file $file --group "Data_${count}Actions" --key 'ActionsCount' '1'
+  kwriteconfig5 --file $file --group "Data_${count}Actions0" --key 'CommandURL' $3
+  kwriteconfig5 --file $file --group "Data_${count}Actions0" --key 'Type' 'COMMAND_URL'
 
-  kwriteconfig5 --file $file --group 'Data_4Conditions' --key 'Comment' ''
-  kwriteconfig5 --file $file --group 'Data_4Conditions' --key 'ConditionsCount' '0'
+  kwriteconfig5 --file $file --group "Data_${count}Conditions" --key 'Comment' ''
+  kwriteconfig5 --file $file --group "Data_${count}Conditions" --key 'ConditionsCount' '0'
 
-  kwriteconfig5 --file $file --group 'Data_4Triggers' --key 'Comment' ''
-  kwriteconfig5 --file $file --group 'Data_4Triggers' --key 'TriggersCount' '1'
-  kwriteconfig5 --file $file --group 'Data_4Triggers0' --key 'Key' $1
-  kwriteconfig5 --file $file --group 'Data_4Triggers0' --key 'Type' 'SHORTCUT'
-  kwriteconfig5 --file $file --group 'Data_4Triggers0' --key 'Uuid' "{$id}"
+  kwriteconfig5 --file $file --group "Data_${count}Triggers" --key 'Comment' ''
+  kwriteconfig5 --file $file --group "Data_${count}Triggers" --key 'TriggersCount' '1'
+  kwriteconfig5 --file $file --group "Data_${count}Triggers0" --key 'Key' $1
+  kwriteconfig5 --file $file --group "Data_${count}Triggers0" --key 'Type' 'SHORTCUT'
+  kwriteconfig5 --file $file --group "Data_${count}Triggers0" --key 'Uuid' "{$id}"
 
   kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key "{$id}" "$1,none,$2"
 }
@@ -58,6 +58,13 @@ if [[ $HOST = 'worker' ]]; then
 else
   shortcut 'Print' 'flameshot' 'flameshot gui'
 fi
+
+
+sed -i 's/^Activate Window Demanding Attention=Meta+Ctrl+A/Activate Window Demanding Attention=none/' $XDG_CONFIG_HOME/kglobalshortcutsrc
+
+shortcut 'Meta+Ctrl+A' 'audio output' 'audio.zsh sink'
+shortcut 'Meta+Ctrl+M' 'audio input' 'audio.zsh source'
+shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
 
 # mouse and touchpad
 
@@ -135,12 +142,17 @@ echo 'showActionButtonCaptions=false' >> $FILE
 echo 'systemFavorites=lock-screen\\,logout\\,save-session\\,switch-user\\,suspend\\,hibernate\\,reboot\\,shutdown' >> $FILE
 
 echo "$(grep 'org.kde.plasma.icontasks' $FILE --before-context=2 | grep 'Containments')[Configuration][General]" >> $FILE
-echo 'iconSpacing=3' >> $FILE
+# echo 'iconSpacing=3' >> $FILE
 echo 'indicateAudioStreams=false' >> $FILE
 echo 'launchers=applications:org.kde.dolphin.desktop,applications:kitty.desktop,applications:code.desktop,applications:postman.desktop,preferred://browser,applications:org.keepassxc.KeePassXC.desktop' >> $FILE
 
+sed -i '/^plugin=org.kde.plasma.mediacontroller$/d' $FILE
+sed -i '/^plugin=org.kde.kscreen$/d' $FILE
 sed -i -E 's/^(extraItems=.*)(,org.kde.plasma.mediacontroller)(.*)/\1\3/' $FILE
+sed -i -E 's/^(extraItems=.*)(,org.kde.kscreen)(.*)/\1\3/' $FILE
+sed -i '/^hiddenItems=.*$/d' $FILE
 sed -i '/^extraItems=.*$/a hiddenItems=org.kde.plasma.clipboard,org.kde.plasma.keyboardlayout,org.kde.plasma.notifications' $FILE
+sed -i '/^shownItems=.*$/d' $FILE
 
 echo "$(grep 'org.kde.plasma.digitalclock' $FILE --before-context=2 | grep 'Containments')[Configuration][Appearance]" >> $FILE
 echo 'customDateFormat=d MMM' >> $FILE
