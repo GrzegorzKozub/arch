@@ -55,47 +55,65 @@ kwriteconfig5 --file $FILE --group $ID --key 'wmclassmatch' '1'
 kwriteconfig5 --file $FILE --group 'General' --key 'count' '1'
 kwriteconfig5 --file $FILE --group 'General' --key 'rules' $ID
 
+# shortcuts > shortcuts
+
+kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc \
+  --group 'kwin' --key 'Activate Window Demanding Attention' \
+  'none,Meta+Ctrl+A,Activate Window Demanding Attention'
+
 # shortcuts > custom shortcuts
 
 shortcut() {
   local file=$XDG_CONFIG_HOME/khotkeysrc
 
-  local old_data=$(grep --before-context=3 "Name=$2" $file | grep '\[Data_' | sed -r 's/\[|\]//g')
-  local old_id=$(grep --after-context=3 "\[${old_data}Triggers0\]" $file | grep 'Uuid' | cut -d= -f2)
+  local count() {
+    echo $(grep --after-context=1 '\[Data\]' $file | grep 'DataCount' | cut -d= -f2)
+  }
 
-  local id=$(uuidgen)
-  local count=$[$(grep --after-context=1 '\[Data\]' $file | grep 'DataCount' | cut -d= -f2) + 1]
+  local nbr=$(grep --before-context=3 "Name=$2" $file | grep '\[Data_' | sed -r 's/[^0-9]*//g')
 
-  sed -i "/$old_id/d" $XDG_CONFIG_HOME/kglobalshortcutsrc
+  if [[ $nbr ]]; then
 
-  sed -i "/^\[${old_data}\]/,+5d" $file
-  sed -i "/^\[${old_data}Actions\]/,+2d" $file
-  sed -i "/^\[${old_data}Actions0\]/,+3d" $file
-  sed -i "/^\[${old_data}Conditions\]/,+3d" $file
-  sed -i "/^\[${old_data}Triggers\]/,+3d" $file
-  sed -i "/^\[${old_data}Triggers0\]/,+4d" $file
+    local id=$(grep --after-context=3 "\[Data_${nbr}Triggers0\]" $file | grep 'Uuid' | cut -d= -f2)
+    kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key $id --delete
 
-  # kwriteconfig5 --file $file --group 'Data' --key 'DataCount' $count
-  #
-  # kwriteconfig5 --file $file --group "Data_$count" --key 'Comment' ''
-  # kwriteconfig5 --file $file --group "Data_$count" --key 'Enabled' 'true'
-  # kwriteconfig5 --file $file --group "Data_$count" --key 'Name' $2
-  # kwriteconfig5 --file $file --group "Data_$count" --key 'Type' 'SIMPLE_ACTION_DATA'
-  #
-  # kwriteconfig5 --file $file --group "Data_${count}Actions" --key 'ActionsCount' '1'
-  # kwriteconfig5 --file $file --group "Data_${count}Actions0" --key 'CommandURL' $3
-  # kwriteconfig5 --file $file --group "Data_${count}Actions0" --key 'Type' 'COMMAND_URL'
-  #
-  # kwriteconfig5 --file $file --group "Data_${count}Conditions" --key 'Comment' ''
-  # kwriteconfig5 --file $file --group "Data_${count}Conditions" --key 'ConditionsCount' '0'
-  #
-  # kwriteconfig5 --file $file --group "Data_${count}Triggers" --key 'Comment' ''
-  # kwriteconfig5 --file $file --group "Data_${count}Triggers" --key 'TriggersCount' '1'
-  # kwriteconfig5 --file $file --group "Data_${count}Triggers0" --key 'Key' $1
-  # kwriteconfig5 --file $file --group "Data_${count}Triggers0" --key 'Type' 'SHORTCUT'
-  # kwriteconfig5 --file $file --group "Data_${count}Triggers0" --key 'Uuid' "{$id}"
-  #
-  # kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key "{$id}" "$1,none,$2"
+    sed -i -r -f - $file << END
+      /^\[Data_${nbr}\]/,+5d
+      /^\[Data_${nbr}Actions\]/,+2d
+      /^\[Data_${nbr}Actions0\]/,+3d
+      /^\[Data_${nbr}Conditions\]/,+3d
+      /^\[Data_${nbr}Triggers\]/,+3d
+      /^\[Data_${nbr}Triggers0\]/,+4d
+END
+
+    kwriteconfig5 --file $file --group 'Data' --key 'DataCount' $[$(count) - 1]
+
+  fi
+
+  local nbr=$[$(count) + 1]
+  local id="{$(uuidgen)}"
+
+  kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key $id "$1,none,$2"
+
+  kwriteconfig5 --file $file --group "Data_$nbr" --key 'Comment' ''
+  kwriteconfig5 --file $file --group "Data_$nbr" --key 'Enabled' 'true'
+  kwriteconfig5 --file $file --group "Data_$nbr" --key 'Name' $2
+  kwriteconfig5 --file $file --group "Data_$nbr" --key 'Type' 'SIMPLE_ACTION_DATA'
+
+  kwriteconfig5 --file $file --group "Data_${nbr}Actions" --key 'ActionsCount' '1'
+  kwriteconfig5 --file $file --group "Data_${nbr}Actions0" --key 'CommandURL' $3
+  kwriteconfig5 --file $file --group "Data_${nbr}Actions0" --key 'Type' 'COMMAND_URL'
+
+  kwriteconfig5 --file $file --group "Data_${nbr}Conditions" --key 'Comment' ''
+  kwriteconfig5 --file $file --group "Data_${nbr}Conditions" --key 'ConditionsCount' '0'
+
+  kwriteconfig5 --file $file --group "Data_${nbr}Triggers" --key 'Comment' ''
+  kwriteconfig5 --file $file --group "Data_${nbr}Triggers" --key 'TriggersCount' '1'
+  kwriteconfig5 --file $file --group "Data_${nbr}Triggers0" --key 'Key' $1
+  kwriteconfig5 --file $file --group "Data_${nbr}Triggers0" --key 'Type' 'SHORTCUT'
+  kwriteconfig5 --file $file --group "Data_${nbr}Triggers0" --key 'Uuid' $id
+
+  kwriteconfig5 --file $file --group 'Data' --key 'DataCount' $nbr
 }
 
 if [[ $HOST = 'worker' ]]; then
@@ -104,15 +122,15 @@ else
   shortcut 'Print' 'flameshot' 'flameshot gui'
 fi
 
-sed -i 's/^Activate Window Demanding Attention=Meta+Ctrl+A/Activate Window Demanding Attention=none/' $XDG_CONFIG_HOME/kglobalshortcutsrc
-
-# shortcut 'Meta+Ctrl+A' 'audio output' 'audio.zsh sink'
-# shortcut 'Meta+Ctrl+M' 'audio input' 'audio.zsh source'
-# shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
+shortcut 'Meta+Ctrl+A' 'audio output' 'audio.zsh sink'
+shortcut 'Meta+Ctrl+M' 'audio input' 'audio.zsh source'
+shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
 
 # notifications
 
-kwriteconfig5 --file $XDG_CONFIG_HOME/plasmanotifyrc --group 'DoNotDisturb' --key 'Until' "$[$(date --iso-8601 | cut -d- -f1) + 1],1,1,0,0,0"
+kwriteconfig5 --file $XDG_CONFIG_HOME/plasmanotifyrc \
+  --group 'DoNotDisturb' --key 'Until' \
+  "$[$(date --iso-8601 | cut -d- -f1) + 1],1,1,0,0,0"
 
 # regional settings > region & language
 
