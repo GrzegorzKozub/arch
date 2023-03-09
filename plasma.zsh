@@ -216,8 +216,13 @@ END
 
 cat << END >> $FILE
 $(grep --before-context=2 'org.kde.plasma.digitalclock' $FILE | grep 'Containments')[Configuration][Appearance]
+autoFontAndSize=false
 customDateFormat=d MMM
 dateFormat=custom
+fontFamily=Noto Sans
+fontSize=12
+fontStyleName=Medium
+fontWeight=57
 END
 
 cat << END >> $FILE
