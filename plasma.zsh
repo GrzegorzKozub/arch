@@ -63,21 +63,18 @@ kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc \
 
 # shortcuts > custom shortcuts
 
-shortcut() {
-  local file=$XDG_CONFIG_HOME/khotkeysrc
+FILE=$XDG_CONFIG_HOME/khotkeysrc
 
-  local count() {
-    echo $(grep --after-context=1 '\[Data\]' $file | grep 'DataCount' | cut -d= -f2)
-  }
+count() {
+  echo $(grep --after-context=1 '\[Data\]' $FILE | grep 'DataCount' | cut -d= -f2)
+}
 
-  local nbr=$(grep --before-context=3 "Name=$2" $file | grep '\[Data_' | sed -r 's/[^0-9]*//g')
-
+rem_shortcut() {
+  local nbr=$(grep --before-context=3 "Name=$1" $FILE | grep '\[Data_' | sed -r 's/[^0-9]*//g')
   if [[ $nbr ]]; then
-
-    local id=$(grep --after-context=3 "\[Data_${nbr}Triggers0\]" $file | grep 'Uuid' | cut -d= -f2)
+    local id=$(grep --after-context=3 "\[Data_${nbr}Triggers0\]" $FILE | grep 'Uuid' | cut -d= -f2)
     kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key $id --delete
-
-    sed -i -r -f - $file << END
+    sed -i -r -f - $FILE << END
       /^\[Data_${nbr}\]/,+5d
       /^\[Data_${nbr}Actions\]/,+2d
       /^\[Data_${nbr}Actions0\]/,+3d
@@ -85,46 +82,48 @@ shortcut() {
       /^\[Data_${nbr}Triggers\]/,+3d
       /^\[Data_${nbr}Triggers0\]/,+4d
 END
-
-    kwriteconfig5 --file $file --group 'Data' --key 'DataCount' $[$(count) - 1]
-
+    kwriteconfig5 --file $FILE --group 'Data' --key 'DataCount' $[$(count) - 1]
   fi
+}
 
+add_shortcut() {
   local nbr=$[$(count) + 1]
   local id="{$(uuidgen)}"
 
   kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key $id "$1,none,$2"
 
-  kwriteconfig5 --file $file --group "Data_$nbr" --key 'Comment' ''
-  kwriteconfig5 --file $file --group "Data_$nbr" --key 'Enabled' 'true'
-  kwriteconfig5 --file $file --group "Data_$nbr" --key 'Name' $2
-  kwriteconfig5 --file $file --group "Data_$nbr" --key 'Type' 'SIMPLE_ACTION_DATA'
+  kwriteconfig5 --file $FILE --group "Data_$nbr" --key 'Comment' ''
+  kwriteconfig5 --file $FILE --group "Data_$nbr" --key 'Enabled' 'true'
+  kwriteconfig5 --file $FILE --group "Data_$nbr" --key 'Name' $2
+  kwriteconfig5 --file $FILE --group "Data_$nbr" --key 'Type' 'SIMPLE_ACTION_DATA'
 
-  kwriteconfig5 --file $file --group "Data_${nbr}Actions" --key 'ActionsCount' '1'
-  kwriteconfig5 --file $file --group "Data_${nbr}Actions0" --key 'CommandURL' $3
-  kwriteconfig5 --file $file --group "Data_${nbr}Actions0" --key 'Type' 'COMMAND_URL'
+  kwriteconfig5 --file $FILE --group "Data_${nbr}Actions" --key 'ActionsCount' '1'
+  kwriteconfig5 --file $FILE --group "Data_${nbr}Actions0" --key 'CommandURL' $3
+  kwriteconfig5 --file $FILE --group "Data_${nbr}Actions0" --key 'Type' 'COMMAND_URL'
 
-  kwriteconfig5 --file $file --group "Data_${nbr}Conditions" --key 'Comment' ''
-  kwriteconfig5 --file $file --group "Data_${nbr}Conditions" --key 'ConditionsCount' '0'
+  kwriteconfig5 --file $FILE --group "Data_${nbr}Conditions" --key 'Comment' ''
+  kwriteconfig5 --file $FILE --group "Data_${nbr}Conditions" --key 'ConditionsCount' '0'
 
-  kwriteconfig5 --file $file --group "Data_${nbr}Triggers" --key 'Comment' ''
-  kwriteconfig5 --file $file --group "Data_${nbr}Triggers" --key 'TriggersCount' '1'
-  kwriteconfig5 --file $file --group "Data_${nbr}Triggers0" --key 'Key' $1
-  kwriteconfig5 --file $file --group "Data_${nbr}Triggers0" --key 'Type' 'SHORTCUT'
-  kwriteconfig5 --file $file --group "Data_${nbr}Triggers0" --key 'Uuid' $id
+  kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers" --key 'Comment' ''
+  kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers" --key 'TriggersCount' '1'
+  kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers0" --key 'Key' $1
+  kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers0" --key 'Type' 'SHORTCUT'
+  kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers0" --key 'Uuid' $id
 
-  kwriteconfig5 --file $file --group 'Data' --key 'DataCount' $nbr
+  kwriteconfig5 --file $FILE --group 'Data' --key 'DataCount' $nbr
 }
 
+for NAME ('flameshot' 'night light' 'audio output' 'audio input') rem_shortcut $NAME
+
 if [[ $HOST = 'worker' ]]; then
-  shortcut 'Print' 'flameshot' "env QT_SCREEN_SCALE_FACTORS='1.5,1.5' flameshot gui"
+  add_shortcut 'Print' 'flameshot' "env QT_SCREEN_SCALE_FACTORS='1.5,1.5' flameshot gui"
 else
-  shortcut 'Print' 'flameshot' 'flameshot gui'
+  add_shortcut 'Print' 'flameshot' 'flameshot gui'
 fi
 
-shortcut 'Meta+Ctrl+A' 'audio output' 'audio.zsh sink'
-shortcut 'Meta+Ctrl+M' 'audio input' 'audio.zsh source'
-shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
+add_shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
+add_shortcut 'Meta+Ctrl+A' 'audio output' 'audio.zsh sink'
+add_shortcut 'Meta+Ctrl+M' 'audio input' 'audio.zsh source'
 
 # notifications
 
