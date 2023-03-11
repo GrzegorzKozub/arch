@@ -23,7 +23,7 @@ kwriteconfig5 --file $FILE --group 'org.kde.kdecoration2' --key 'ButtonsOnRight'
 
 FILE=$XDG_CONFIG_HOME/kdeglobals
 
-kwriteconfig5 --file $FILE --group 'General' --key 'fixed' 'Cascadia Code,11,-1,5,50,0,0,0,0,0'
+kwriteconfig5 --file $FILE --group 'General' --key 'fixed' 'Cascadia Code,10,-1,5,50,0,0,0,0,0'
 kwriteconfig5 --file $FILE --group 'General' --key 'font' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
 kwriteconfig5 --file $FILE --group 'General' --key 'menuFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
 kwriteconfig5 --file $FILE --group 'General' --key 'smallestReadableFont' 'Noto Sans,9,-1,5,50,0,0,0,0,0'
