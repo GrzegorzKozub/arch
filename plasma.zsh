@@ -121,6 +121,8 @@ kwriteconfig5 --file $FILE --group 'kwin' --key 'Switch to Next Desktop' 'Meta+P
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Window to Previous Desktop' 'Meta+Shift+PgUp,,Window to Previous Desktop'
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Window to Next Desktop' 'Meta+Shift+PgDown,,Window to Next Desktop'
 
+qdbus org.kde.KWin /KWin reconfigure
+
 # shortcuts > custom shortcuts
 
 FILE=$XDG_CONFIG_HOME/khotkeysrc
@@ -186,6 +188,41 @@ add_shortcut 'Meta+Ctrl+A' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 add_shortcut 'Meta+Ctrl+M' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 
 qdbus org.kde.KWin /KWin reconfigure
+
+# startup and shutdown > desktop session
+
+FILE=$XDG_CONFIG_HOME/ksmserverrc
+
+typeset -A OPTS=(
+  'confirmLogout' 'false'
+  'loginMode' 'emptySession'
+)
+
+for KEY VAL ("${(@kv)OPTS}") kwriteconfig5 --file $FILE --group 'General' --key $KEY $VAL
+
+# search > file search
+
+FILE=$XDG_CONFIG_HOME/baloofilerc
+
+kwriteconfig5 --file $FILE --group 'Basic Settings' --key 'Indexing-Enabled' 'false'
+
+# search > plasma search
+
+FILE=$XDG_CONFIG_HOME/krunnerrc
+
+kwriteconfig5 --file $FILE --group 'General' --key 'RetainPriorSearch' 'false'
+
+typeset -A OPTS=(
+  'bookmarksEnabled' 'false'
+  'shellEnabled' 'false'
+  'baloosearchEnabled' 'false'
+  'recentdocumentsEnabled' 'false'
+  'appstreamEnabled' 'false'
+  'krunner_systemsettingsEnabled' 'false'
+  'webshortcutsEnabled' 'false'
+)
+
+for KEY VAL ("${(@kv)OPTS}") kwriteconfig5 --file $FILE --group 'Plugins' --key $KEY $VAL
 
 # notifications
 
