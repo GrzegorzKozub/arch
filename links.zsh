@@ -59,6 +59,13 @@ done
 #
 # fi
 
+# flameshot
+
+if [[ $HOST = 'worker' ]]; then
+  cp /usr/share/applications/org.flameshot.Flameshot.desktop $XDG_DATA_HOME/applications
+  sed -i -e "s/^Exec=/Exec=QT_SCREEN_SCALE_FACTORS='1.5,1.5' /" $XDG_DATA_HOME/applications/org.flameshot.Flameshot.desktop
+fi
+
 # kitty
 
 if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
