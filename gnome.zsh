@@ -22,6 +22,8 @@ dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
 
 # shortcuts
 
+gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>w']"
+
 gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
 
 CUSTOM_KEYBINDINGS=()

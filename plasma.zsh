@@ -17,11 +17,17 @@ kwriteconfig5 --file $XDG_CONFIG_HOME/plasmarc --group 'Theme' --key 'name' 'bre
 FILE=$XDG_CONFIG_HOME/kwinrc
 
 kwriteconfig5 --file $FILE --group 'org.kde.kdecoration2' --key 'ButtonsOnLeft' ''
-kwriteconfig5 --file $FILE --group 'org.kde.kdecoration2' --key 'ButtonsOnRight' 'IAX'
+kwriteconfig5 --file $FILE --group 'org.kde.kdecoration2' --key 'ButtonsOnRight' 'X'
 
 # appearance > fonts
 
-# ...
+FILE=$XDG_CONFIG_HOME/kdeglobals
+
+kwriteconfig5 --file $FILE --group 'General' --key 'fixed' 'Cascadia Code,11,-1,5,50,0,0,0,0,0'
+kwriteconfig5 --file $FILE --group 'General' --key 'font' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
+kwriteconfig5 --file $FILE --group 'General' --key 'menuFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
+kwriteconfig5 --file $FILE --group 'General' --key 'smallestReadableFont' 'Noto Sans,9,-1,5,50,0,0,0,0,0'
+kwriteconfig5 --file $FILE --group 'General' --key 'toolBarFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
 
 # appearance > icons
 
@@ -37,6 +43,42 @@ FILE=$XDG_CONFIG_HOME/ksplashrc
 
 kwriteconfig5 --file $FILE --group 'KSplash' --key 'Engine' 'none'
 kwriteconfig5 --file $FILE --group 'KSplash' --key 'Theme' 'None'
+
+# workspace behavior > general behavior
+
+FILE=$XDG_CONFIG_HOME/kdeglobals
+
+kwriteconfig5 --file $FILE --group 'KDE' --key 'SingleClick' 'false'
+
+# workspace behavior > scren edges
+
+FILE=$XDG_CONFIG_HOME/kwinrc
+
+kwriteconfig5 --file $FILE --group 'Effect-windowview' --key 'BorderActivateAll' '9'
+
+# workspace behavior > screen locking
+
+FILE=$XDG_CONFIG_HOME/kscreenlockerrc
+
+kwriteconfig5 --file $FILE \
+  --group 'Greeter' --group 'LnF' --group 'General' \
+  --key 'showMediaControls' 'false'
+
+typeset -A OPTS=(
+  'Image' "$XDG_DATA_HOME/wallpapers/women.jpg"
+  'PreviewImage' "$XDG_DATA_HOME/wallpapers/women.jpg"
+)
+
+for KEY VAL ("${(@kv)OPTS}")
+  kwriteconfig5 --file $FILE \
+    --group 'Greeter' --group 'Wallpaper' --group 'org.kde.image' --group 'General' \
+    --key $KEY $VAL
+
+# window management > task switcher
+
+FILE=$XDG_CONFIG_HOME/kwinrulesrc
+
+kwriteconfig5 --file $FILE --group 'TabBox' --key 'ShowTabBox' 'false'
 
 # window management > window rules
 
@@ -57,9 +99,27 @@ kwriteconfig5 --file $FILE --group 'General' --key 'rules' $ID
 
 # shortcuts > shortcuts
 
-kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc \
-  --group 'kwin' --key 'Activate Window Demanding Attention' \
-  'none,Meta+Ctrl+A,Activate Window Demanding Attention'
+FILE=$XDG_CONFIG_HOME/kglobalshortcutsrc
+
+kwriteconfig5 --file $FILE --group 'kaccess' --key 'Toggle Screen Reader On and Off' 'none,Meta+Alt+S,Toggle Screen Reader On and Off'
+
+kwriteconfig5 --file $XDG_CONFIG_HOME/kwinrc --group 'ModifierOnlyShortcuts' --key Meta 'org.kde.krunner,/App,,toggleDisplay'
+
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Activate Window Demanding Attention' 'none,Meta+Ctrl+A,Activate Window Demanding Attention'
+
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Maximize' 'Meta+Down\tMeta+Up,Meta+PgUp,Maximize Window'
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Minimize' 'Meta+H,Meta+PgDown,Minimize Window'
+
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Move Center' 'Meta+Ctrl+C,,Move Window to the Center'
+
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Quick Tile Bottom' 'none,Meta+Down,Quick Tile Window to the Bottom'
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Quick Tile Top' 'none,Meta+Up,Quick Tile Window to the Top'
+
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Switch to Previous Desktop' 'Meta+PgUp,,Switch to Previous Desktop'
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Switch to Next Desktop' 'Meta+PgDown,,Switch to Next Desktop'
+
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window to Previous Desktop' 'Meta+Shift+PgUp,,Window to Previous Desktop'
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window to Next Desktop' 'Meta+Shift+PgDown,,Window to Next Desktop'
 
 # shortcuts > custom shortcuts
 
@@ -122,8 +182,10 @@ else
 fi
 
 add_shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
-add_shortcut 'Meta+Ctrl+A' 'audio output' 'audio.zsh sink'
-add_shortcut 'Meta+Ctrl+M' 'audio input' 'audio.zsh source'
+add_shortcut 'Meta+Ctrl+A' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
+add_shortcut 'Meta+Ctrl+M' 'audio input' "/home/$USER/code/arch/audio.zsh source"
+
+qdbus org.kde.KWin /KWin reconfigure
 
 # notifications
 
@@ -176,6 +238,7 @@ sed -i 's/^thickness=.*$/thickness=80/' $XDG_CONFIG_HOME/plasmashellrc
 FILE=$XDG_CONFIG_HOME/plasma-org.kde.plasma.desktop-appletsrc
 
 sed -i -f - $FILE << END
+  /^plugin=org.kde.plasma.kickoff$/d
   /^plugin=org.kde.plasma.pager$/d
   /^plugin=org.kde.plasma.showdesktop$/d
 END
@@ -195,6 +258,7 @@ END
 
 cat << END >> $FILE
 $(grep --before-context=2 'org.kde.plasma.icontasks' $FILE | grep 'Containments')[Configuration][General]
+iconSpacing=3
 indicateAudioStreams=false
 launchers=applications:org.kde.dolphin.desktop,applications:kitty.desktop,applications:code.desktop,applications:postman.desktop,applications:brave-browser.desktop,applications:org.keepassxc.KeePassXC.desktop
 END
@@ -219,9 +283,8 @@ autoFontAndSize=false
 customDateFormat=d MMM
 dateFormat=custom
 fontFamily=Noto Sans
-fontSize=12
-fontStyleName=Medium
-fontWeight=57
+fontSize=14
+fontStyleName=Regular
 END
 
 cat << END >> $FILE
