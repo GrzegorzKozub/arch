@@ -101,25 +101,32 @@ kwriteconfig5 --file $FILE --group 'General' --key 'rules' $ID
 
 FILE=$XDG_CONFIG_HOME/kglobalshortcutsrc
 
-kwriteconfig5 --file $FILE --group 'kaccess' --key 'Toggle Screen Reader On and Off' 'none,Meta+Alt+S,Toggle Screen Reader On and Off'
-
-kwriteconfig5 --file $XDG_CONFIG_HOME/kwinrc --group 'ModifierOnlyShortcuts' --key Meta 'org.kde.krunner,/App,,toggleDisplay'
+kwriteconfig5 --file $FILE --group 'plasmashell' --key 'stop current activity' 'none,Meta+S,Stop Current Activity'
 
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Activate Window Demanding Attention' 'none,Meta+Ctrl+A,Activate Window Demanding Attention'
+
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Quick Tile Bottom' 'none,Meta+Down,Quick Tile Window to the Bottom'
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Quick Tile Top' 'none,Meta+Up,Quick Tile Window to the Top'
 
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Maximize' 'Meta+Down\tMeta+Up,Meta+PgUp,Maximize Window'
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Minimize' 'Meta+H,Meta+PgDown,Minimize Window'
 
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Move Center' 'Meta+Ctrl+C,,Move Window to the Center'
 
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Quick Tile Bottom' 'none,Meta+Down,Quick Tile Window to the Bottom'
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Quick Tile Top' 'none,Meta+Up,Quick Tile Window to the Top'
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Overview' 'Meta+S,Meta+W,Toggle Overview'
 
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Switch to Previous Desktop' 'Meta+PgUp,,Switch to Previous Desktop'
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Switch to Next Desktop' 'Meta+PgDown,,Switch to Next Desktop'
 
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Window to Previous Desktop' 'Meta+Shift+PgUp,,Window to Previous Desktop'
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Window to Next Desktop' 'Meta+Shift+PgDown,,Window to Next Desktop'
+
+sed -i 's/\\\\t/\\t/g' $FILE
+
+FILE=$XDG_CONFIG_HOME/kwinrc
+
+# kwriteconfig5 --file $FILE --group 'ModifierOnlyShortcuts' --key 'Meta' 'org.kde.krunner,/App,,toggleDisplay'
+kwriteconfig5 --file $FILE --group 'ModifierOnlyShortcuts' --key 'Meta' 'org.kde.kglobalaccel,/component/kwin,,invokeShortcut,Overview'
 
 qdbus org.kde.KWin /KWin reconfigure
 

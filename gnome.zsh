@@ -8,21 +8,27 @@ gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
 
 # keyboard
 
+# reset all from dconf list /org/gnome/desktop/wm/keybindings/
+
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
+
+dconf write /org/gnome/desktop/wm/keybindings/show-desktop "['<Super>d']"
+
+dconf write /org/gnome/desktop/wm/keybindings/switch-applications '@as []'
+dconf write /org/gnome/desktop/wm/keybindings/switch-applications-backward '@as []'
+
+dconf write /org/gnome/desktop/wm/keybindings/cycle-windows "['<Alt>Tab']"
+dconf write /org/gnome/desktop/wm/keybindings/cycle-windows-backward "['<Shift><Alt>Tab']"
+
+dconf write /org/gnome/desktop/wm/keybindings/cycle-group "['<Alt>grave']"
+dconf write /org/gnome/desktop/wm/keybindings/cycle-group-backward "['<Shift><Alt>grave']"
+
+dconf write /org/gnome/desktop/wm/keybindings/switch-group '@as []'
+dconf write /org/gnome/desktop/wm/keybindings/switch-group-backward '@as []'
 
 dconf write /org/gnome/desktop/wm/keybindings/move-to-center "['<Super><Control>C']"
 
-dconf write /org/gnome/desktop/wm/keybindings/move-to-side-e "['<Super><Control>Right']"
-dconf write /org/gnome/desktop/wm/keybindings/move-to-side-n "['<Super><Control>Up']"
-dconf write /org/gnome/desktop/wm/keybindings/move-to-side-s "['<Super><Control>Down']"
-dconf write /org/gnome/desktop/wm/keybindings/move-to-side-w "['<Super><Control>Left']"
-
-dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Super>Tab']"
-dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
-
 # shortcuts
-
-gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>w']"
 
 gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
 
