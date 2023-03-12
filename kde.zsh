@@ -9,7 +9,8 @@ sudo pacman -S --noconfirm \
   bluedevil powerdevil \
   khotkeys kscreen \
   breeze-gtk \
-  plasma-systemmonitor dolphin
+  plasma-systemmonitor dolphin \
+  hunspell hunspell-en_us hunspell-pl
 
 # links
 

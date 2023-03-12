@@ -4,11 +4,11 @@ set -e -o verbose
 
 # sound
 
-echo $(pactl list short sinks | cut -f1) | while read -r id; do
+pactl list short sinks | cut -f1 | while read -r id; do
   pactl set-sink-volume $id 50%
 done
 
-echo $(pactl list short sources | cut -f1) | while read -r id; do
+pactl list short sources | cut -f1 | while read -r id; do
   pactl set-source-volume $id 50%
 done
 
@@ -23,6 +23,10 @@ if [[ $HOST = 'player' ]]; then
   nmcli radio wifi off
   rfkill block bluetooth
 fi
+
+nmcli connection \
+  modify $(nmcli connection show | grep 'ethernet' | tr -s ' ' | cut -d' ' -f2) \
+  connection.id 'ether'
 
 # power
 

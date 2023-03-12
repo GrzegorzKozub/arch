@@ -253,6 +253,25 @@ kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_NUMERIC' 'pl_PL.UTF-8'
 kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_PAGE' 'pl_PL.UTF-8'
 kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_TIME' 'pl_PL.UTF-8'
 
+# regional settings > spell check
+
+kwriteconfig5 --file $XDG_CONFIG_HOME/KDE/Sonnet.conf --group 'General' --key 'preferredLanguages' 'en_US, pl_PL'
+
+# accessibility > bell
+
+kwriteconfig5 --file $XDG_CONFIG_HOME/kaccessrc --group 'Bell' --key 'SystemBell' 'false'
+
+# accessibility > screen reader
+
+kwriteconfig5 --file $XDG_CONFIG_HOME/kaccessrc --group 'ScreenReader' --key 'Enabled' 'false'
+
+# applications > default applications
+
+FILE=$XDG_CONFIG_HOME/kdeglobals
+
+kwriteconfig5 --file $FILE --group 'General' --key 'TerminalApplication' 'kitty'
+kwriteconfig5 --file $FILE --group 'General' --key 'TerminalService' 'kitty.desktop'
+
 # input devices > keyboard
 
 FILE=$XDG_CONFIG_HOME/kxkbrc
@@ -271,6 +290,21 @@ kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'XLbInptP
 
 # kscreen-doctor output.DP-4.scale.1.5
 # kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' '1.5'
+
+# power management
+
+FILE=$XDG_CONFIG_HOME/powermanagementprofilesrc
+
+kwriteconfig5 --file $FILE --group 'AC' --group 'DPMSControl' --key 'idleTime' '600'
+kwriteconfig5 --file $FILE --group 'Battery' --group 'DPMSControl' --key 'idleTime' '300'
+
+kwriteconfig5 --file $FILE --group 'AC' --group 'SuspendSession' --key 'idleTime' '3600000'
+kwriteconfig5 --file $FILE --group 'AC' --group 'SuspendSession' --key 'suspendType' '1'
+
+kwriteconfig5 --file $FILE --group 'Battery' --group 'SuspendSession' --key 'idleTime' '600000'
+kwriteconfig5 --file $FILE --group 'Battery' --group 'SuspendSession' --key 'suspendType' '1'
+
+kwriteconfig5 --file $FILE --group 'AC' --group 'HandleButtonEvents' --key 'powerButtonAction' '1'
 
 # wallpapers
 
