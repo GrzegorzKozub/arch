@@ -113,8 +113,7 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   lib32-mangohud \
-  mangohud \
-  mangohud-common
+  mangohud-common mangohud
 
 [[ -d $XDG_DATA_HOME/mangohud ]] || mkdir -p $XDG_DATA_HOME/mangohud
 cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
