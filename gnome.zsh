@@ -2,228 +2,56 @@
 
 set -e -o verbose
 
-# locale
-
-gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
-
-# keyboard
-
-# reset all from dconf list /org/gnome/desktop/wm/keybindings/
-
-gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
-
-dconf write /org/gnome/desktop/wm/keybindings/show-desktop "['<Super>d']"
-
-dconf write /org/gnome/desktop/wm/keybindings/switch-applications '@as []'
-dconf write /org/gnome/desktop/wm/keybindings/switch-applications-backward '@as []'
-
-dconf write /org/gnome/desktop/wm/keybindings/cycle-windows "['<Alt>Tab']"
-dconf write /org/gnome/desktop/wm/keybindings/cycle-windows-backward "['<Shift><Alt>Tab']"
-
-dconf write /org/gnome/desktop/wm/keybindings/cycle-group "['<Alt>grave']"
-dconf write /org/gnome/desktop/wm/keybindings/cycle-group-backward "['<Shift><Alt>grave']"
-
-dconf write /org/gnome/desktop/wm/keybindings/switch-group '@as []'
-dconf write /org/gnome/desktop/wm/keybindings/switch-group-backward '@as []'
-
-dconf write /org/gnome/desktop/wm/keybindings/move-to-center "['<Super><Control>C']"
-
-# shortcuts
-
-gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
-
-CUSTOM_KEYBINDINGS=()
-
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
-  name 'flameshot'
-
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
-  command 'flameshot gui'
-
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
-  binding 'Print'
-
-CUSTOM_KEYBINDINGS+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/'"
-
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
-  name 'audio output'
-
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
-  command "/home/$USER/code/arch/audio.zsh sink"
-
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
-  binding '<Control><Super>a'
-
-CUSTOM_KEYBINDINGS+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/'"
-
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
-  name 'audio input'
-
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
-  command "/home/$USER/code/arch/audio.zsh source"
-
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
-  binding '<Control><Super>m'
-
-CUSTOM_KEYBINDINGS+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/'"
-
-if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
-
-  gsettings set \
-    org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ \
-    name 'night light'
-
-  gsettings set \
-    org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ \
-    command 'pkill -USR1 redshift'
-
-  gsettings set \
-    org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ \
-    binding '<Control><Super>n'
-
-  CUSTOM_KEYBINDINGS+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/'"
-
-fi
-  
-gsettings set \
-  org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-  "[${(j., .)CUSTOM_KEYBINDINGS}]"
-
-# mouse and touchpad
-
-[[ $XDG_SESSION_TYPE = 'wayland' ]] && gsettings set org.gnome.desktop.peripherals.mouse speed -0.75
-[[ $XDG_SESSION_TYPE = 'x11' ]] && gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
-
-if [[ $HOST = 'drifter' ]]; then
-
-  [[ $XDG_SESSION_TYPE = 'wayland' ]] && gsettings set org.gnome.desktop.peripherals.touchpad speed 0.25
-  [[ $XDG_SESSION_TYPE = 'x11' ]] && gsettings set org.gnome.desktop.peripherals.touchpad speed 0.5
-
-  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-
-fi
-
-# screen
-
-if [[ $HOST = 'drifter' ]]; then
-
-  # depends on colord.service that is disabled when using custom color profiles 
-  gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
-  gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
-
-  gdbus call \
-    --session \
-    --dest org.gnome.SettingsDaemon.Power \
-    --object-path /org/gnome/SettingsDaemon/Power \
-    --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 25>'
-
-fi
-
-# sound
-
-gsettings set org.gnome.desktop.sound event-sounds false
-
-# when kde-gtk-config is installed
-# gsettings set org.gnome.desktop.sound theme-name 'freedesktop'
-
-# power
-
-gsettings set org.gnome.SessionManager logout-prompt false
-
-if [[ $HOST = 'drifter' ]]; then
-
-  gsettings set org.gnome.desktop.session idle-delay 300
-  gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
-  gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
-
-else
-
-  gsettings set org.gnome.desktop.session idle-delay 600
-
-fi
-
-gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 25
-
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 3600
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 600
-
-# themes
-
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
-
-# when kde-gtk-config is installed
-# gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
-# gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
-
-# wallpapers
+# appearance
 
 DIR=$XDG_DATA_HOME/backgrounds
 
 [[ -d $DIR ]] && rm -rf $DIR
 ln -s $(dirname $(realpath $0))/home/$USER/.local/share/backgrounds $DIR
 
-gsettings set org.gnome.desktop.background picture-uri "file:///home/$USER/.local/share/backgrounds/women.jpg"
-gsettings set org.gnome.desktop.background picture-uri-dark "file:///home/$USER/.local/share/backgrounds/women.jpg"
+FILE="file:///home/$USER/.local/share/backgrounds/women.jpg"
 
-gsettings set org.gnome.desktop.screensaver picture-uri "file:///home/$USER/.local/share/backgrounds/women.jpg"
+gsettings set org.gnome.desktop.background picture-uri $FILE
+gsettings set org.gnome.desktop.background picture-uri-dark $FILE
 
-# fonts
+gsettings set org.gnome.desktop.screensaver picture-uri $FILE
 
-# when kde-gtk-config is installed
-# gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
-# gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
-# gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
-
-gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code Regular 10'
-
-gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
-
-if [[ $HOST = 'drifter' ]]; then
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-else
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
-fi
-
-# shell
-
-gsettings set org.gnome.mutter center-new-windows true
-
-gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Software.desktop']"
-gsettings set org.gnome.desktop.search-providers disable-external true
+# notifications
 
 gsettings set org.gnome.desktop.notifications show-banners false
 gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
-[[ $XDG_SESSION_TYPE = 'wayland' ]] && CODE='code-url-handler' || CODE='code'
+# search
 
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'kitty.desktop', '$CODE.desktop', 'postman.desktop', 'brave-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'steam.desktop']" # 'slack-desktop'
+gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Software.desktop']"
+gsettings set org.gnome.desktop.search-providers disable-external true
 
-gsettings set org.gnome.desktop.interface enable-hot-corners false
+# applications > document viewer
 
-# extensions
+gsettings set org.gnome.Evince.Default show-sidebar false
+gsettings set org.gnome.Evince.Default sizing-mode 'fit-width'
 
-DIR=$XDG_DATA_HOME/gnome-shell/extensions
+xdg-mime default org.gnome.Evince.desktop application/pdf
 
-[[ -d $DIR ]] || mkdir -p $DIR
-cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com $DIR
-pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
+# applications > files
 
-gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl', 'Hide_Activities@shay.shayel.org', 'windows@grzegorzkozub.github.com']"
+gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 
-# software
+dconf write /org/gtk/settings/file-chooser/show-hidden true
+dconf write /org/gtk/settings/file-chooser/sort-directories-first true
+
+# applications > image viewer
+
+gsettings set org.gnome.eog.ui sidebar false
+
+xdg-mime default org.gnome.eog.desktop image/jpeg
+xdg-mime default org.gnome.eog.desktop image/png
+
+# applications > software
 
 # gsettings set org.gnome.software download-updates false
 
-# terminal
+# applications > terminal
 
 UUID=$(gsettings get org.gnome.Terminal.ProfilesList default)
 UUID=${UUID:1:-1}
@@ -251,24 +79,172 @@ dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/foreground-color" "'rgb
 
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/scrollbar-policy" "'never'"
 
-# nautilus
+# power
 
-gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
+if [[ $HOST = 'drifter' ]]; then
 
-dconf write /org/gtk/settings/file-chooser/show-hidden true
-dconf write /org/gtk/settings/file-chooser/sort-directories-first true
+  gsettings set org.gnome.desktop.session idle-delay 300
+  gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
+  gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
 
-# eog
+else
+  gsettings set org.gnome.desktop.session idle-delay 600
+fi
 
-gsettings set org.gnome.eog.ui sidebar false
+gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 25
 
-xdg-mime default org.gnome.eog.desktop image/jpeg
-xdg-mime default org.gnome.eog.desktop image/png
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 3600
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 600
 
-# evince
+gsettings set org.gnome.SessionManager logout-prompt false
 
-gsettings set org.gnome.Evince.Default show-sidebar false
-gsettings set org.gnome.Evince.Default sizing-mode 'fit-width'
+# displays
 
-xdg-mime default org.gnome.Evince.desktop application/pdf
+if [[ $HOST = 'drifter' ]]; then
+
+  # depends on colord.service that is disabled when using custom color profiles 
+  gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
+  gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
+
+  gdbus call \
+    --session \
+    --dest org.gnome.SettingsDaemon.Power \
+    --object-path /org/gnome/SettingsDaemon/Power \
+    --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 25>'
+
+fi
+
+# mouse and touchpad
+
+[[ $XDG_SESSION_TYPE = 'wayland' ]] && gsettings set org.gnome.desktop.peripherals.mouse speed -0.75
+[[ $XDG_SESSION_TYPE = 'x11' ]] && gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
+
+if [[ $HOST = 'drifter' ]]; then
+
+  [[ $XDG_SESSION_TYPE = 'wayland' ]] && gsettings set org.gnome.desktop.peripherals.touchpad speed 0.25
+  [[ $XDG_SESSION_TYPE = 'x11' ]] && gsettings set org.gnome.desktop.peripherals.touchpad speed 0.5
+
+  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
+fi
+
+# keyboard > input sources
+
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
+
+# keyboard > keyboard shortcuts
+
+DIR='/org/gnome/desktop/wm/keybindings'
+
+for KEY in $(dconf list $DIR)
+  dconf reset $DIR/$KEY
+
+# keyboard > keyboard shortcuts > navigation
+
+dconf write $DIR/show-desktop "['<Super>d']"
+
+dconf write $DIR/switch-applications '@as []'
+dconf write $DIR/switch-applications-backward '@as []'
+
+dconf write $DIR/cycle-windows "['<Alt>Tab']"
+dconf write $DIR/cycle-windows-backward "['<Shift><Alt>Tab']"
+
+dconf write $DIR/cycle-group "['<Alt>grave']"
+dconf write $DIR/cycle-group-backward "['<Shift><Alt>grave']"
+
+dconf write $DIR/switch-group '@as []'
+dconf write $DIR/switch-group-backward '@as []'
+
+# keyboard > keyboard shortcuts > screenshots
+
+gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
+
+# keyboard > keyboard shortcuts > windows
+
+dconf write /org/gnome/desktop/wm/keybindings/move-to-center "['<Super><Control>C']"
+
+# keyboard > keyboard shortcuts > custom shortcuts
+
+CUSTOM_KEYBINDINGS=()
+
+add_shortcut() {
+  local schema="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding"
+  local dir="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$1/"
+
+  gsettings set "$schema:$dir" 'binding' $2
+  gsettings set "$schema:$dir" 'name' $3
+  gsettings set "$schema:$dir" 'command' $4 
+
+  CUSTOM_KEYBINDINGS+="'$dir'"
+}
+
+add_shortcut 0 'Print' 'flameshot' 'flameshot gui'
+add_shortcut 1 '<Control><Super>a' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
+add_shortcut 2 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio.zsh source"
+
+[[ $HOST = 'player' || $HOST = 'worker' ]] && 
+  add_shortcut 3 '<Control><Super>n' 'night light' 'pkill -USR1 redshift'
+  
+gsettings set \
+  org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
+  "[${(j., .)CUSTOM_KEYBINDINGS}]"
+
+# region and language
+
+gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
+
+# accessibility
+
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+  gsettings set org.gnome.desktop.interface cursor-size 32
+
+# extensions
+
+DIR=$XDG_DATA_HOME/gnome-shell/extensions
+
+[[ -d $DIR ]] || mkdir -p $DIR
+cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com $DIR
+pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
+
+gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl', 'Hide_Activities@shay.shayel.org', 'windows@grzegorzkozub.github.com']"
+
+# tweaks > appearance
+
+gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
+
+# when kde-gtk-config is installed
+# gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+# gsettings set org.gnome.desktop.sound theme-name 'freedesktop'
+# gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+
+gsettings set org.gnome.desktop.sound event-sounds false
+
+# tweaks > fonts
+
+# when kde-gtk-config is installed
+# gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
+# gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
+# gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
+
+gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code Regular 10'
+
+gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
+
+if [[ $HOST = 'drifter' ]]; then
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+else
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+fi
+
+# tweaks > windows
+
+gsettings set org.gnome.mutter center-new-windows true
+
+# dash
+
+[[ $XDG_SESSION_TYPE = 'wayland' ]] && CODE='code-url-handler' || CODE='code'
+
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'kitty.desktop', '$CODE.desktop', 'postman.desktop', 'brave-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'steam.desktop']" # 'slack-desktop'
+
+gsettings set org.gnome.desktop.interface enable-hot-corners false
 

@@ -182,7 +182,7 @@ add_shortcut() {
   kwriteconfig5 --file $FILE --group 'Data' --key 'DataCount' $nbr
 }
 
-for NAME ('flameshot' 'night light' 'audio output' 'audio input') rem_shortcut $NAME
+for NAME ('flameshot' 'audio output' 'audio input' 'night light') rem_shortcut $NAME
 
 if [[ $HOST = 'worker' ]]; then
   add_shortcut 'Print' 'flameshot' "env QT_SCREEN_SCALE_FACTORS='1.5,1.5' flameshot gui"
@@ -190,9 +190,11 @@ else
   add_shortcut 'Print' 'flameshot' 'flameshot gui'
 fi
 
-add_shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
 add_shortcut 'Meta+Ctrl+A' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 add_shortcut 'Meta+Ctrl+M' 'audio input' "/home/$USER/code/arch/audio.zsh source"
+
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+  add_shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
 
 qdbus org.kde.KWin /KWin reconfigure
 
