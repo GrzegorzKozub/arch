@@ -108,18 +108,22 @@ kwriteconfig5 --file $FILE --group 'kwin' --key 'Activate Window Demanding Atten
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Quick Tile Bottom' 'none,Meta+Down,Quick Tile Window to the Bottom'
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Quick Tile Top' 'none,Meta+Up,Quick Tile Window to the Top'
 
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Maximize' 'Meta+Down\tMeta+Up,Meta+PgUp,Maximize Window'
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Maximize' 'Alt+F10\tMeta+Down\tMeta+Up,Meta+PgUp,Maximize Window'
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Minimize' 'Meta+H,Meta+PgDown,Minimize Window'
+
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Move' 'Alt+F7,,Move Window'
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Resize' 'Alt+F8,,Resize Window'
+kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Fullscreen' 'Alt+F11,,Make Window Fullscreen'
 
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Move Center' 'Meta+Ctrl+C,,Move Window to the Center'
 
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Overview' 'Meta+S,Meta+W,Toggle Overview'
 
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Switch to Previous Desktop' 'Meta+PgUp,,Switch to Previous Desktop'
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Switch to Next Desktop' 'Meta+PgDown,,Switch to Next Desktop'
+# kwriteconfig5 --file $FILE --group 'kwin' --key 'Switch to Previous Desktop' 'Meta+PgUp,,Switch to Previous Desktop'
+# kwriteconfig5 --file $FILE --group 'kwin' --key 'Switch to Next Desktop' 'Meta+PgDown,,Switch to Next Desktop'
 
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window to Previous Desktop' 'Meta+Shift+PgUp,,Window to Previous Desktop'
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window to Next Desktop' 'Meta+Shift+PgDown,,Window to Next Desktop'
+# kwriteconfig5 --file $FILE --group 'kwin' --key 'Window to Previous Desktop' 'Meta+Shift+PgUp,,Window to Previous Desktop'
+# kwriteconfig5 --file $FILE --group 'kwin' --key 'Window to Next Desktop' 'Meta+Shift+PgDown,,Window to Next Desktop'
 
 sed -i 's/\\\\t/\\t/g' $FILE
 

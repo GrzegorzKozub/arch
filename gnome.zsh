@@ -155,13 +155,25 @@ dconf write $DIR/cycle-group-backward "['<Shift><Alt>grave']"
 dconf write $DIR/switch-group '@as []'
 dconf write $DIR/switch-group-backward '@as []'
 
+dconf write $DIR/switch-to-workspace-1 "['<Control><Super>Home']"
+dconf write $DIR/switch-to-workspace-left "['<Control><Super>Left']"
+dconf write $DIR/switch-to-workspace-right "['<Control><Super>Right']"
+dconf write $DIR/switch-to-workspace-last "['<Control><Super>End']"
+
+dconf write $DIR/move-to-workspace-1 "['<Shift><Control><Super>Home']"
+dconf write $DIR/move-to-workspace-left "['<Shift><Control><Super>Left']"
+dconf write $DIR/move-to-workspace-right "['<Shift><Control><Super>Right']"
+dconf write $DIR/move-to-workspace-last "['<Shift><Control><Super>End']"
+
 # keyboard > keyboard shortcuts > screenshots
 
 gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
 
 # keyboard > keyboard shortcuts > windows
 
-dconf write /org/gnome/desktop/wm/keybindings/move-to-center "['<Super><Control>C']"
+dconf write $DIR/toggle-fullscreen "['<Alt>F11']"
+
+dconf write $DIR/move-to-center "['<Super><Control>C']"
 
 # keyboard > keyboard shortcuts > custom shortcuts
 
