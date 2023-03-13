@@ -136,7 +136,7 @@ gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
 
 DIR='/org/gnome/desktop/wm/keybindings'
 
-for KEY in $(dconf list $DIR)
+for KEY in $(dconf list $DIR/)
   dconf reset $DIR/$KEY
 
 # keyboard > keyboard shortcuts > navigation
