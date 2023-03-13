@@ -24,10 +24,6 @@ if [[ $HOST = 'player' ]]; then
   rfkill block bluetooth
 fi
 
-nmcli connection \
-  modify $(nmcli connection show | grep 'ethernet' | tr -s ' ' | cut -d' ' -f2) \
-  connection.id 'ether'
-
 # power
 
 if [[ $HOST = 'drifter' ]]; then
