@@ -28,6 +28,7 @@ kwriteconfig5 --file $FILE --group 'General' --key 'font' 'Noto Sans,11,-1,5,50,
 kwriteconfig5 --file $FILE --group 'General' --key 'menuFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
 kwriteconfig5 --file $FILE --group 'General' --key 'smallestReadableFont' 'Noto Sans,9,-1,5,50,0,0,0,0,0'
 kwriteconfig5 --file $FILE --group 'General' --key 'toolBarFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
+kwriteconfig5 --file $FILE --group 'WM' --key 'activeFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
 
 # appearance > icons
 
@@ -36,6 +37,12 @@ kwriteconfig5 --file $FILE --group 'General' --key 'toolBarFont' 'Noto Sans,11,-
 # appearance > cursors
 
 kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'cursorSize' '36'
+
+FILE=$XDG_CONFIG_HOME/klaunchrc
+
+kwriteconfig5 --file $FILE --group 'BusyCursorSettings' --key 'Bouncing' 'false'
+kwriteconfig5 --file $FILE --group 'FeedbackStyle' --key 'BusyCursor' 'false'
+kwriteconfig5 --file $FILE --group 'FeedbackStyle' --key 'TaskbarButton' 'false'
 
 # appearance > splash screen
 
@@ -76,7 +83,7 @@ for KEY VAL ("${(@kv)OPTS}")
 
 # window management > task switcher
 
-FILE=$XDG_CONFIG_HOME/kwinrulesrc
+FILE=$XDG_CONFIG_HOME/kwinrc
 
 kwriteconfig5 --file $FILE --group 'TabBox' --key 'ShowTabBox' 'false'
 
@@ -118,12 +125,6 @@ kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Fullscreen' 'Alt+F11,,Ma
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Move Center' 'Meta+Ctrl+C,,Move Window to the Center'
 
 kwriteconfig5 --file $FILE --group 'kwin' --key 'Overview' 'Meta+S,Meta+W,Toggle Overview'
-
-# kwriteconfig5 --file $FILE --group 'kwin' --key 'Switch to Previous Desktop' 'Meta+PgUp,,Switch to Previous Desktop'
-# kwriteconfig5 --file $FILE --group 'kwin' --key 'Switch to Next Desktop' 'Meta+PgDown,,Switch to Next Desktop'
-
-# kwriteconfig5 --file $FILE --group 'kwin' --key 'Window to Previous Desktop' 'Meta+Shift+PgUp,,Window to Previous Desktop'
-# kwriteconfig5 --file $FILE --group 'kwin' --key 'Window to Next Desktop' 'Meta+Shift+PgDown,,Window to Next Desktop'
 
 sed -i 's/\\\\t/\\t/g' $FILE
 
