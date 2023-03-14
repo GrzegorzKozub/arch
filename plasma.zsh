@@ -364,11 +364,6 @@ for FILE ('plasmashellrc' 'plasma-org.kde.plasma.desktop-appletsrc')
 #   /^shownItems=.*$/d
 # END
 #
-# cat << END >> $FILE
-# [Containments][$(grep 'SystrayContainmentId' $FILE | cut -d= -f2)[General]
-# iconSpacing=1
-# END
-#
 # # panel > digital clock
 #
 # cat << END >> $FILE
@@ -377,7 +372,7 @@ for FILE ('plasmashellrc' 'plasma-org.kde.plasma.desktop-appletsrc')
 # customDateFormat=d MMM
 # dateFormat=custom
 # fontFamily=Noto Sans
-# fontSize=14
+# fontSize=12
 # fontStyleName=Regular
 # showDate=false
 # END
