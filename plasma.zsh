@@ -306,15 +306,6 @@ kwriteconfig5 --file $FILE --group 'Battery' --group 'SuspendSession' --key 'sus
 
 kwriteconfig5 --file $FILE --group 'AC' --group 'HandleButtonEvents' --key 'powerButtonAction' '1'
 
-# wallpapers
-
-DIR=$XDG_DATA_HOME/wallpapers
-
-[[ -d $DIR ]] && rm -rf $DIR
-ln -s $(dirname $(realpath $0))/home/$USER/.local/share/backgrounds $DIR
-
-plasma-apply-wallpaperimage $DIR/women.jpg
-
 # panel
 
 for FILE ('plasmashellrc' 'plasma-org.kde.plasma.desktop-appletsrc')
@@ -376,4 +367,13 @@ for FILE ('plasmashellrc' 'plasma-org.kde.plasma.desktop-appletsrc')
 # fontStyleName=Regular
 # showDate=false
 # END
+
+# wallpapers
+
+DIR=$XDG_DATA_HOME/wallpapers
+
+[[ -d $DIR ]] && rm -rf $DIR
+ln -s $(dirname $(realpath $0))/home/$USER/.local/share/backgrounds $DIR
+
+plasma-apply-wallpaperimage $DIR/women.jpg
 
