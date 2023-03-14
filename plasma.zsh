@@ -317,63 +317,68 @@ plasma-apply-wallpaperimage $DIR/women.jpg
 
 # panel
 
-sed -i 's/^thickness=.*$/thickness=80/' $XDG_CONFIG_HOME/plasmashellrc
+for FILE ('plasmashellrc' 'plasma-org.kde.plasma.desktop-appletsrc')
+  cp `dirname $0`/home/$USER/.config/$FILE $XDG_CONFIG_HOME
 
-FILE=$XDG_CONFIG_HOME/plasma-org.kde.plasma.desktop-appletsrc
-
-sed -i -f - $FILE << END
-  /^plugin=org.kde.plasma.kickoff$/d
-  /^plugin=org.kde.plasma.pager$/d
-  /^plugin=org.kde.plasma.showdesktop$/d
-END
-
-# panel > application launcher
-
-cat << END >> $FILE
-$(grep --before-context=2 'org.kde.plasma.kickoff' $FILE | grep 'Containments')[Configuration][General]
-alphaSort=true
-applicationsDisplay=0
-primaryActions=3
-showActionButtonCaptions=false
-systemFavorites=lock-screen\\,logout\\,save-session\\,switch-user\\,suspend\\,hibernate\\,reboot\\,shutdown
-END
-
-# panel > icons-only task manager
-
-cat << END >> $FILE
-$(grep --before-context=2 'org.kde.plasma.icontasks' $FILE | grep 'Containments')[Configuration][General]
-iconSpacing=3
-indicateAudioStreams=false
-launchers=applications:org.kde.dolphin.desktop,applications:kitty.desktop,applications:code.desktop,applications:postman.desktop,applications:brave-browser.desktop,applications:org.keepassxc.KeePassXC.desktop
-END
-
-# panel > system tray
-
-sed -i -r -f - $FILE << END
-  /^plugin=org.kde.kscreen$/d
-  /^plugin=org.kde.plasma.mediacontroller$/d
-  s/^(extraItems=.*)(,org.kde.kscreen)(.*)/\1\3/
-  s/^(extraItems=.*)(,org.kde.plasma.mediacontroller)(.*)/\1\3/
-  /^hiddenItems=.*$/d
-  /^extraItems=.*$/a hiddenItems=org.kde.plasma.clipboard,org.kde.plasma.keyboardlayout,org.kde.plasma.notifications
-  /^shownItems=.*$/d
-END
-
-cat << END >> $FILE
-[Containments][$(grep 'SystrayContainmentId' $FILE | cut -d= -f2)[General]
-iconSpacing=1
-END
-
-# panel > digital clock
-
-cat << END >> $FILE
-$(grep --before-context=2 'org.kde.plasma.digitalclock' $FILE | grep 'Containments')[Configuration][Appearance]
-autoFontAndSize=false
-customDateFormat=d MMM
-dateFormat=custom
-fontFamily=Noto Sans
-fontSize=14
-fontStyleName=Regular
-showDate=false
-END
+# # panel
+#
+# sed -i 's/^thickness=.*$/thickness=80/' $XDG_CONFIG_HOME/plasmashellrc
+#
+# FILE=$XDG_CONFIG_HOME/plasma-org.kde.plasma.desktop-appletsrc
+#
+# sed -i -f - $FILE << END
+#   /^plugin=org.kde.plasma.kickoff$/d
+#   /^plugin=org.kde.plasma.pager$/d
+#   /^plugin=org.kde.plasma.showdesktop$/d
+# END
+#
+# # panel > application launcher
+#
+# cat << END >> $FILE
+# $(grep --before-context=2 'org.kde.plasma.kickoff' $FILE | grep 'Containments')[Configuration][General]
+# alphaSort=true
+# applicationsDisplay=0
+# primaryActions=3
+# showActionButtonCaptions=false
+# systemFavorites=lock-screen\\,logout\\,save-session\\,switch-user\\,suspend\\,hibernate\\,reboot\\,shutdown
+# END
+#
+# # panel > icons-only task manager
+#
+# cat << END >> $FILE
+# $(grep --before-context=2 'org.kde.plasma.icontasks' $FILE | grep 'Containments')[Configuration][General]
+# iconSpacing=3
+# indicateAudioStreams=false
+# launchers=applications:org.kde.dolphin.desktop,applications:kitty.desktop,applications:code.desktop,applications:postman.desktop,applications:brave-browser.desktop,applications:org.keepassxc.KeePassXC.desktop
+# END
+#
+# # panel > system tray
+#
+# sed -i -r -f - $FILE << END
+#   /^plugin=org.kde.kscreen$/d
+#   /^plugin=org.kde.plasma.mediacontroller$/d
+#   s/^(extraItems=.*)(,org.kde.kscreen)(.*)/\1\3/
+#   s/^(extraItems=.*)(,org.kde.plasma.mediacontroller)(.*)/\1\3/
+#   /^hiddenItems=.*$/d
+#   /^extraItems=.*$/a hiddenItems=org.kde.plasma.clipboard,org.kde.plasma.keyboardlayout,org.kde.plasma.notifications
+#   /^shownItems=.*$/d
+# END
+#
+# cat << END >> $FILE
+# [Containments][$(grep 'SystrayContainmentId' $FILE | cut -d= -f2)[General]
+# iconSpacing=1
+# END
+#
+# # panel > digital clock
+#
+# cat << END >> $FILE
+# $(grep --before-context=2 'org.kde.plasma.digitalclock' $FILE | grep 'Containments')[Configuration][Appearance]
+# autoFontAndSize=false
+# customDateFormat=d MMM
+# dateFormat=custom
+# fontFamily=Noto Sans
+# fontSize=14
+# fontStyleName=Regular
+# showDate=false
+# END
 
