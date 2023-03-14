@@ -359,6 +359,11 @@ sed -i -r -f - $FILE << END
   /^shownItems=.*$/d
 END
 
+cat << END >> $FILE
+[Containments][$(grep 'SystrayContainmentId' $FILE | cut -d= -f2)[General]
+iconSpacing=1
+END
+
 # panel > digital clock
 
 cat << END >> $FILE
@@ -369,10 +374,6 @@ dateFormat=custom
 fontFamily=Noto Sans
 fontSize=14
 fontStyleName=Regular
-END
-
-cat << END >> $FILE
-$(grep --before-context=2 'org.kde.plasma.digitalclock' $FILE | grep 'Containments')[Configuration][Apperance]
 showDate=false
 END
 
