@@ -16,23 +16,24 @@ class Extension {
       { title: /.?Brave$/, noRole: 'pop-up' },
       { title: /.?MySQL Workbench$/ },
       { title: /^OBS.?/ },
-      { title: /^Postman$/, auto: true },
+      { class: /^Postman$/, autoDelayed: true },
       { title: /.?Shotcut$/ },
       { title: /.?Visual Studio Code$/ },
     ];
     const medium = [
       { title: /^DevTools.?/ },
-      { class: /.?Foliate$/ },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
-      { title: /.?Slack$/, auto: true },
+      { title: /.?Slack$/, autoDelayed: true },
       { title: /.?Steam$/ },
     ];
     const small = [
-      { class: /.?Evince$/, auto: true },
+      { class: /.?Evince$/, autoDelayed: true },
       { title: /^Settings$/ },
       { title: /.?KeePassXC$/ },
-      { title: /.?Pinta$/ },
+    ];
+    const dark = [
+      { class: /^kitty$/, autoImmediate: true },
     ];
     const addConfig = (config, fix) => {
       this.config.push(...config.map(cfg => ({ ...cfg, fix })));
@@ -40,6 +41,7 @@ class Extension {
     addConfig(big, this.big.bind(this));
     addConfig(medium, this.medium.bind(this));
     addConfig(small, this.small.bind(this));
+    addConfig(dark, this.dark.bind(this));
   }
 
   enable() {
@@ -69,8 +71,9 @@ class Extension {
   fixActiveHotkeyPressed() { this.fixActive(); }
 
   fixAuto(win) {
+    this.fix(this.config.filter(cfg => cfg.autoImmediate), win);
     GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
-      this.fix(this.config.filter(cfg => cfg.auto), win);
+      this.fix(this.config.filter(cfg => cfg.autoDelayed), win);
     });
   }
 
@@ -85,21 +88,22 @@ class Extension {
 
   fix(config, win) {
     const cfg = config.find(cfg =>
-      (cfg.title && cfg.title.test(win.title) ||
-       cfg.class && cfg.class.test(win.wm_class)) &&
+      (cfg.title && cfg.title.test(win.title) || cfg.class && cfg.class.test(win.wm_class)) &&
       (!cfg.noRole || cfg.noRole !== win.get_role()));
     if (!cfg) { return; }
-    this.unmax(win);
     cfg.fix(win);
   }
 
-  unmax(win) {
-    if (win.get_maximized()) { win.unmaximize(Meta.MaximizeFlags.BOTH); }
-  }
+  big(win) { this.unmax(win); if (this.uhd()) { this.center(win, 12, 14); } else { this.center(win, 14, 14.5); } }
+  medium(win) { this.unmax(win); if (this.uhd()) { this.center(win, 9, 12); } else { this.center(win, 12, 12.5); } }
+  small(win) { this.unmax(win); if (this.uhd()) { this.center(win, 6, 10); } else { this.center(win, 10, 10.5); } }
 
-  big(win) { if (this.uhd()) { this.center(win, 12, 14); } else { this.center(win, 14, 14.5); } }
-  medium(win) { if (this.uhd()) { this.center(win, 9, 12); } else { this.center(win, 12, 12.5); } }
-  small(win) { if (this.uhd()) { this.center(win, 6, 10); } else { this.center(win, 10, 10.5); } }
+  unmax(win) { if (win.get_maximized()) { win.unmaximize(Meta.MaximizeFlags.BOTH); } }
+
+  dark(win) {
+    GLib.spawn_command_line_async(
+      `xprop -f _GTK_THEME_VARIANT '8u' -set _GTK_THEME_VARIANT 'dark' -name '${win.get_title()}'`);
+  }
 
   center(win, width, height) {
     const desktop = this.getDesktop();
