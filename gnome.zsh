@@ -79,6 +79,10 @@ dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/foreground-color" "'rgb
 
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/scrollbar-policy" "'never'"
 
+# applications > tweaks
+
+gsettings set org.gnome.tweaks show-extensions-notice false
+
 # power
 
 if [[ $HOST = 'drifter' ]]; then
