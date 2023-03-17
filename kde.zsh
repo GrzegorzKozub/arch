@@ -5,7 +5,7 @@ set -e -o verbose
 # packages
 
 sudo pacman -S --noconfirm \
-  plasma-desktop plasma-nm plasma-pa \
+  plasma-desktop plasma-nm plasma-pa plasma-wayland-session \
   bluedevil powerdevil \
   khotkeys kscreen \
   breeze-gtk \
