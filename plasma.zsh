@@ -36,6 +36,7 @@ kwriteconfig5 --file $FILE --group 'WM' --key 'activeFont' 'Noto Sans,11,-1,5,50
 
 # appearance > cursors
 
+[[ $HOST = 'drifter' ]] && SIZE='48' || SIZE='36'
 kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'cursorSize' '36'
 
 FILE=$XDG_CONFIG_HOME/klaunchrc
@@ -282,35 +283,77 @@ kwriteconfig5 --file $FILE --group 'Layout' --key 'Use' 'true'
 
 # input devices > mouse
 
-[[ $XDG_SESSION_TYPE = 'wayland' ]] && VAL='-0.8'
-[[ $XDG_SESSION_TYPE = 'x11' ]] && VAL='-0.4'
+[[ $XDG_SESSION_TYPE = 'wayland' ]] && ACCEL='-0.8'
+[[ $XDG_SESSION_TYPE = 'x11' ]] && ACCEL='-0.4'
 
-kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'XLbInptPointerAcceleration' -- $VAL
+kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'XLbInptPointerAcceleration' -- $ACCEL
+
+# input devices > touchpad
+
+if [[ $HOST = 'drifter' ]]; then
+
+  FILE=$XDG_CONFIG_HOME/touchpadxlibinputrc
+
+  kwriteconfig5 --file $FILE --group 'DLL0945:00 06CB:CDE6 Touchpad' --key 'naturalScroll' 'true'
+  kwriteconfig5 --file $FILE --group 'DLL0945:00 06CB:CDE6 Touchpad' --key 'tapToClick' 'true'
+
+fi
 
 # display and monitor
 
-# kscreen-doctor output.DP-4.scale.1.5
-# kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' '1.5'
+# [[ $HOST = 'drifter' ]] && DISP='eDP-1'; SCALE='2.0'
+# [[ $HOST = 'player' ]] && DISP='DP-4'; SCALE='1.5'
+
+# kscreen-doctor output.$DISP.scale.$SCALE
+# kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' $SCALE
+
+# display and monitor > night color
+
+[[ $HOST = 'drifter' ]] &&
+  kwriteconfig5 --file $XDG_CONFIG_HOME/kwinrc --group 'NightColor' --key 'Active' 'true'
 
 # power management
 
 FILE=$XDG_CONFIG_HOME/powermanagementprofilesrc
 
+kwriteconfig5 --file $FILE --group 'AC' --group 'DimDisplay' --key 'idleTime' '300000'
 kwriteconfig5 --file $FILE --group 'AC' --group 'DPMSControl' --key 'idleTime' '600'
-kwriteconfig5 --file $FILE --group 'Battery' --group 'DPMSControl' --key 'idleTime' '300'
-
 kwriteconfig5 --file $FILE --group 'AC' --group 'SuspendSession' --key 'idleTime' '3600000'
 kwriteconfig5 --file $FILE --group 'AC' --group 'SuspendSession' --key 'suspendType' '1'
-
-kwriteconfig5 --file $FILE --group 'Battery' --group 'SuspendSession' --key 'idleTime' '600000'
-kwriteconfig5 --file $FILE --group 'Battery' --group 'SuspendSession' --key 'suspendType' '1'
-
 kwriteconfig5 --file $FILE --group 'AC' --group 'HandleButtonEvents' --key 'powerButtonAction' '1'
+
+if [[ $HOST = 'drifter' ]]; then
+
+  kwriteconfig5 --file $FILE --group 'AC' --group 'BrightnessControl' --key 'value' '25'
+
+  kwriteconfig5 --file $FILE --group 'Battery' --group 'BrightnessControl' --key 'value' '25'
+  kwriteconfig5 --file $FILE --group 'Battery' --group 'DimDisplay' --key 'idleTime' '120000'
+  kwriteconfig5 --file $FILE --group 'Battery' --group 'DPMSControl' --key 'idleTime' '300'
+  kwriteconfig5 --file $FILE --group 'Battery' --group 'SuspendSession' --key 'idleTime' '600000'
+  kwriteconfig5 --file $FILE --group 'Battery' --group 'SuspendSession' --key 'suspendType' '1'
+  kwriteconfig5 --file $FILE --group 'Battery' --group 'HandleButtonEvents' --key 'lidAction' '1'
+  kwriteconfig5 --file $FILE --group 'Battery' --group 'HandleButtonEvents' --key 'powerButtonAction' '1'
+
+  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'BrightnessControl' --key 'value' '0'
+  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'DimDisplay' --key 'idleTime' '60000'
+  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'DPMSControl' --key 'idleTime' '120'
+  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'SuspendSession' --key 'idleTime' '300000'
+  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'SuspendSession' --key 'suspendType' '1'
+  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'HandleButtonEvents' --key 'lidAction' '1'
+  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'HandleButtonEvents' --key 'powerButtonAction' '1'
+
+fi
 
 # panel
 
 for FILE ('plasmashellrc' 'plasma-org.kde.plasma.desktop-appletsrc')
   cp `dirname $0`/home/$USER/.config/$FILE $XDG_CONFIG_HOME
+
+if [[ $HOST = 'drifter' ]]; then
+
+# normal spacing, 120, 12 clock font
+
+fi
 
 # wallpapers
 
