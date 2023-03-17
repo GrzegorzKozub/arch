@@ -290,7 +290,8 @@ kwriteconfig5 --file $FILE --group 'Layout' --key 'Use' 'true'
 
 if [[ $HOST = 'drifter' ]]; then
 
-  FILE=$XDG_CONFIG_HOME/touchpadxlibinputrc
+  [[ $XDG_SESSION_TYPE = 'x11' ]] && FILE=$XDG_CONFIG_HOME/touchpadxlibinputrc
+  [[ $XDG_SESSION_TYPE = 'wayland' ]] && FILE=$XDG_CONFIG_HOME/kcminputrc
 
   kwriteconfig5 --file $FILE --group 'Libinput' --group '1739' --group '52710' --group 'DLL0945:00 06CB:CDE6 Touchpad' --key 'naturalScroll' 'true'
   kwriteconfig5 --file $FILE --group 'Libinput' --group '1739' --group '52710' --group 'DLL0945:00 06CB:CDE6 Touchpad' --key 'tapToClick' 'true'
