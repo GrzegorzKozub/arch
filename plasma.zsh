@@ -344,14 +344,8 @@ fi
 
 # panel
 
-# for FILE ('plasmashellrc' 'plasma-org.kde.plasma.desktop-appletsrc')
-#   cp `dirname $0`/home/$USER/.config/$FILE $XDG_CONFIG_HOME
-
-if [[ $HOST = 'drifter' ]]; then
-
-# normal spacing, 120, 12 clock font
-
-fi
+for FILE ('plasmashellrc' 'plasma-org.kde.plasma.desktop-appletsrc')
+  cp `dirname $0`/home/$USER/.config/$FILE.$HOST $XDG_CONFIG_HOME/$FILE
 
 # wallpapers
 

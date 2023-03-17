@@ -38,10 +38,6 @@ fontSize=12
 fontStyleName=Regular
 showDate=false
 
-[Containments][2][Applets][16][Configuration][ConfigDialog]
-DialogHeight=930
-DialogWidth=1240
-
 [Containments][2][Applets][22]
 immutability=1
 plugin=org.kde.plasma.panelspacer
@@ -54,10 +50,6 @@ plugin=org.kde.plasma.panelspacer
 immutability=1
 plugin=org.kde.plasma.icontasks
 
-[Containments][2][Applets][5][Configuration][ConfigDialog]
-DialogHeight=930
-DialogWidth=1240
-
 [Containments][2][Applets][5][Configuration][General]
 iconSpacing=3
 indicateAudioStreams=false
@@ -68,12 +60,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][2][Applets][7][Configuration]
-PreloadWeight=85
 SystrayContainmentId=8
-
-[Containments][2][ConfigDialog]
-DialogHeight=118
-DialogWidth=3840
 
 [Containments][2][General]
 AppletOrder=23;5;22;7;16
@@ -85,16 +72,11 @@ immutability=1
 lastScreen=0
 location=4
 plugin=org.kde.plasma.private.systemtray
-popupHeight=768
-popupWidth=768
 wallpaperplugin=org.kde.image
 
 [Containments][8][Applets][10]
 immutability=1
 plugin=org.kde.plasma.keyboardlayout
-
-[Containments][8][Applets][11][Configuration]
-PreloadWeight=42
 
 [Containments][8][Applets][12]
 immutability=1
@@ -127,16 +109,9 @@ plugin=org.kde.plasma.networkmanagement
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
-[Containments][8][Applets][21][Configuration]
-PreloadWeight=42
-
 [Containments][8][Applets][9]
 immutability=1
 plugin=org.kde.plasma.devicenotifier
-
-[Containments][8][ConfigDialog]
-DialogHeight=930
-DialogWidth=1240
 
 [Containments][8][General]
 extraItems=org.kde.plasma.devicenotifier,org.kde.plasma.keyboardlayout,org.kde.plasma.bluetooth,org.kde.plasma.networkmanagement,org.kde.plasma.clipboard,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.battery,org.kde.plasma.manage-inputmethod
