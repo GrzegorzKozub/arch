@@ -36,8 +36,8 @@ kwriteconfig5 --file $FILE --group 'WM' --key 'activeFont' 'Noto Sans,11,-1,5,50
 
 # appearance > cursors
 
-[[ $HOST = 'drifter' ]] && SIZE='48' || SIZE='36'
-kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'cursorSize' '36'
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+  kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'cursorSize' '36'
 
 FILE=$XDG_CONFIG_HOME/klaunchrc
 
@@ -283,10 +283,8 @@ kwriteconfig5 --file $FILE --group 'Layout' --key 'Use' 'true'
 
 # input devices > mouse
 
-[[ $XDG_SESSION_TYPE = 'wayland' ]] && ACCEL='-0.8'
-[[ $XDG_SESSION_TYPE = 'x11' ]] && ACCEL='-0.4'
-
-kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'XLbInptPointerAcceleration' -- $ACCEL
+[[ $XDG_SESSION_TYPE = 'x11' ]] &&
+  kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'XLbInptPointerAcceleration' -- '-0.4'
 
 # input devices > touchpad
 
@@ -294,18 +292,18 @@ if [[ $HOST = 'drifter' ]]; then
 
   FILE=$XDG_CONFIG_HOME/touchpadxlibinputrc
 
-  kwriteconfig5 --file $FILE --group 'DLL0945:00 06CB:CDE6 Touchpad' --key 'naturalScroll' 'true'
-  kwriteconfig5 --file $FILE --group 'DLL0945:00 06CB:CDE6 Touchpad' --key 'tapToClick' 'true'
+  kwriteconfig5 --file $FILE --group 'Libinput' --group '1739' --group '52710' --group 'DLL0945:00 06CB:CDE6 Touchpad' --key 'naturalScroll' 'true'
+  kwriteconfig5 --file $FILE --group 'Libinput' --group '1739' --group '52710' --group 'DLL0945:00 06CB:CDE6 Touchpad' --key 'tapToClick' 'true'
 
 fi
 
 # display and monitor
 
-# [[ $HOST = 'drifter' ]] && DISP='eDP-1'; SCALE='2.0'
+[[ $HOST = 'drifter' ]] && DISP='eDP-1'; SCALE='2.0'
 # [[ $HOST = 'player' ]] && DISP='DP-4'; SCALE='1.5'
 
-# kscreen-doctor output.$DISP.scale.$SCALE
-# kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' $SCALE
+kscreen-doctor output.$DISP.scale.$SCALE
+kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' $SCALE
 
 # display and monitor > night color
 
@@ -346,8 +344,8 @@ fi
 
 # panel
 
-for FILE ('plasmashellrc' 'plasma-org.kde.plasma.desktop-appletsrc')
-  cp `dirname $0`/home/$USER/.config/$FILE $XDG_CONFIG_HOME
+# for FILE ('plasmashellrc' 'plasma-org.kde.plasma.desktop-appletsrc')
+#   cp `dirname $0`/home/$USER/.config/$FILE $XDG_CONFIG_HOME
 
 if [[ $HOST = 'drifter' ]]; then
 
