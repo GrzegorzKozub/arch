@@ -211,8 +211,7 @@ gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
 
 # accessibility
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
-  gsettings set org.gnome.desktop.interface cursor-size 32
+gsettings set org.gnome.desktop.interface cursor-size 32
 
 # extensions
 
