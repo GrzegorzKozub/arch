@@ -23,7 +23,13 @@ gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
 # search
 
-gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Software.desktop']"
+gsettings set org.gnome.desktop.search-providers disabled "[
+  'org.gnome.Nautilus.desktop',
+  'org.gnome.Calculator.desktop',
+  'org.gnome.Terminal.desktop',
+  'org.gnome.Software.desktop'
+]"
+
 gsettings set org.gnome.desktop.search-providers disable-external true
 
 # applications > document viewer
@@ -67,7 +73,10 @@ dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/audible-bell" false
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/use-theme-colors" false
 
 # solarized
-dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/palette" "['rgb(7,54,66)', 'rgb(220,50,47)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']"
+dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/palette" "[
+  'rgb(7,54,66)', 'rgb(220,50,47)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)',
+  'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)'
+]"
 
 # solarized dark
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/background-color" "'rgb(0,43,54)'"
@@ -221,7 +230,12 @@ DIR=$XDG_DATA_HOME/gnome-shell/extensions
 cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com $DIR
 pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 
-gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'trayIconsReloaded@selfmade.pl', 'Hide_Activities@shay.shayel.org', 'windows@grzegorzkozub.github.com']"
+gsettings set org.gnome.shell enabled-extensions "[
+  'user-theme@gnome-shell-extensions.gcampax.github.com',
+  'trayIconsReloaded@selfmade.pl',
+  'Hide_Activities@shay.shayel.org',
+  'windows@grzegorzkozub.github.com'
+]"
 
 # tweaks > appearance
 
@@ -259,7 +273,15 @@ gsettings set org.gnome.mutter center-new-windows true
 
 [[ $XDG_SESSION_TYPE = 'wayland' ]] && CODE='code-url-handler' || CODE='code'
 
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'kitty.desktop', '$CODE.desktop', 'postman.desktop', 'brave-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'steam.desktop']" # 'slack-desktop'
+gsettings set org.gnome.shell favorite-apps "[
+  'org.gnome.Nautilus.desktop',
+  'kitty.desktop',
+  '$CODE.desktop',
+  'postman.desktop',
+  'brave-browser.desktop',
+  'org.keepassxc.KeePassXC.desktop',
+  'steam.desktop'
+]" 
 
 gsettings set org.gnome.desktop.interface enable-hot-corners false
 

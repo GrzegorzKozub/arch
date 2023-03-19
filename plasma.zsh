@@ -2,8 +2,6 @@
 
 set -e -o verbose
 
-# https://github.com/shalva97/kde-configuration-files
-
 # appearance > global theme
 
 plasma-apply-lookandfeel --apply 'org.kde.breeze.desktop'
@@ -23,11 +21,17 @@ kwriteconfig5 --file $FILE --group 'org.kde.kdecoration2' --key 'ButtonsOnRight'
 
 FILE=$XDG_CONFIG_HOME/kdeglobals
 
-kwriteconfig5 --file $FILE --group 'General' --key 'fixed' 'Cascadia Code,10,-1,5,50,0,0,0,0,0'
-kwriteconfig5 --file $FILE --group 'General' --key 'font' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
-kwriteconfig5 --file $FILE --group 'General' --key 'menuFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
-kwriteconfig5 --file $FILE --group 'General' --key 'smallestReadableFont' 'Noto Sans,9,-1,5,50,0,0,0,0,0'
-kwriteconfig5 --file $FILE --group 'General' --key 'toolBarFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
+typeset -A OPTS=(
+  'fixed' 'Cascadia Code,10,-1,5,50,0,0,0,0,0'
+  'font' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
+  'menuFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
+  'smallestReadableFont' 'Noto Sans,9,-1,5,50,0,0,0,0,0'
+  'toolBarFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
+)
+
+for KEY VAL ("${(@kv)OPTS}")
+  kwriteconfig5 --file $FILE --group 'General' --key $KEY $VAL
+
 kwriteconfig5 --file $FILE --group 'WM' --key 'activeFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
 
 # appearance > icons
@@ -96,11 +100,16 @@ sed -i -r '/^\[\$Version]$|^update_info=.*$/!d' $FILE
 
 ID=$(uuidgen)
 
-kwriteconfig5 --file $FILE --group $ID --key 'Description' 'kitty'
-kwriteconfig5 --file $FILE --group $ID --key 'decocolor' 'BreezeDark'
-kwriteconfig5 --file $FILE --group $ID --key 'decocolorrule' '2'
-kwriteconfig5 --file $FILE --group $ID --key 'wmclass' 'kitty'
-kwriteconfig5 --file $FILE --group $ID --key 'wmclassmatch' '1'
+typeset -A OPTS=(
+  'Description' 'kitty'
+  'decocolor' 'BreezeDark'
+  'decocolorrule' '2'
+  'wmclass' 'kitty'
+  'wmclassmatch' '1'
+)
+
+for KEY VAL ("${(@kv)OPTS}")
+  kwriteconfig5 --file $FILE --group $ID --key $KEY $VAL
 
 kwriteconfig5 --file $FILE --group 'General' --key 'count' '1'
 kwriteconfig5 --file $FILE --group 'General' --key 'rules' $ID
@@ -111,21 +120,26 @@ FILE=$XDG_CONFIG_HOME/kglobalshortcutsrc
 
 kwriteconfig5 --file $FILE --group 'plasmashell' --key 'stop current activity' 'none,Meta+S,Stop Current Activity'
 
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Activate Window Demanding Attention' 'none,Meta+Ctrl+A,Activate Window Demanding Attention'
+typeset -A OPTS=(
+  'Activate Window Demanding Attention' 'none,Meta+Ctrl+A,Activate Window Demanding Attention'
 
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Quick Tile Bottom' 'none,Meta+Down,Quick Tile Window to the Bottom'
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Quick Tile Top' 'none,Meta+Up,Quick Tile Window to the Top'
+  'Window Quick Tile Bottom' 'none,Meta+Down,Quick Tile Window to the Bottom'
+  'Window Quick Tile Top' 'none,Meta+Up,Quick Tile Window to the Top'
 
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Maximize' 'Alt+F10\tMeta+Down\tMeta+Up,Meta+PgUp,Maximize Window'
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Minimize' 'Meta+H,Meta+PgDown,Minimize Window'
+  'Window Maximize' 'Alt+F10\tMeta+Down\tMeta+Up,Meta+PgUp,Maximize Window'
+  'Window Minimize' 'Meta+H,Meta+PgDown,Minimize Window'
 
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Move' 'Alt+F7,,Move Window'
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Resize' 'Alt+F8,,Resize Window'
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Fullscreen' 'Alt+F11,,Make Window Fullscreen'
+  'Window Move' 'Alt+F7,,Move Window'
+  'Window Resize' 'Alt+F8,,Resize Window'
+  'Window Fullscreen' 'Alt+F11,,Make Window Fullscreen'
 
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Window Move Center' 'Meta+Ctrl+C,,Move Window to the Center'
+  'Window Move Center' 'Meta+Ctrl+C,,Move Window to the Center'
 
-kwriteconfig5 --file $FILE --group 'kwin' --key 'Overview' 'Meta+S,Meta+W,Toggle Overview'
+  'Overview' 'Meta+S,Meta+W,Toggle Overview'
+)
+
+for KEY VAL ("${(@kv)OPTS}")
+  kwriteconfig5 --file $FILE --group 'kwin' --key $KEY $VAL
 
 sed -i 's/\\\\t/\\t/g' $FILE
 
@@ -167,12 +181,18 @@ add_shortcut() {
 
   kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key $id "$1,none,$2"
 
-  kwriteconfig5 --file $FILE --group "Data_$nbr" --key 'Comment' ''
-  kwriteconfig5 --file $FILE --group "Data_$nbr" --key 'Enabled' 'true'
-  kwriteconfig5 --file $FILE --group "Data_$nbr" --key 'Name' $2
-  kwriteconfig5 --file $FILE --group "Data_$nbr" --key 'Type' 'SIMPLE_ACTION_DATA'
+  typeset -A OPTS=(
+    'Comment' ''
+    'Enabled' 'true'
+    'Name' $2
+    'Type' 'SIMPLE_ACTION_DATA'
+  )
+
+  for KEY VAL ("${(@kv)OPTS}")
+    kwriteconfig5 --file $FILE --group "Data_$nbr" --key $KEY $VAL
 
   kwriteconfig5 --file $FILE --group "Data_${nbr}Actions" --key 'ActionsCount' '1'
+
   kwriteconfig5 --file $FILE --group "Data_${nbr}Actions0" --key 'CommandURL' $3
   kwriteconfig5 --file $FILE --group "Data_${nbr}Actions0" --key 'Type' 'COMMAND_URL'
 
@@ -181,6 +201,7 @@ add_shortcut() {
 
   kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers" --key 'Comment' ''
   kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers" --key 'TriggersCount' '1'
+
   kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers0" --key 'Key' $1
   kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers0" --key 'Type' 'SHORTCUT'
   kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers0" --key 'Uuid' $id
@@ -206,14 +227,13 @@ qdbus org.kde.KWin /KWin reconfigure
 
 # startup and shutdown > desktop session
 
-FILE=$XDG_CONFIG_HOME/ksmserverrc
-
 typeset -A OPTS=(
   'confirmLogout' 'false'
   'loginMode' 'emptySession'
 )
 
-for KEY VAL ("${(@kv)OPTS}") kwriteconfig5 --file $FILE --group 'General' --key $KEY $VAL
+for KEY VAL ("${(@kv)OPTS}")
+  kwriteconfig5 --file $XDG_CONFIG_HOME/ksmserverrc --group 'General' --key $KEY $VAL
 
 # search > file search
 
@@ -237,7 +257,8 @@ typeset -A OPTS=(
   'webshortcutsEnabled' 'false'
 )
 
-for KEY VAL ("${(@kv)OPTS}") kwriteconfig5 --file $FILE --group 'Plugins' --key $KEY $VAL
+for KEY VAL ("${(@kv)OPTS}")
+  kwriteconfig5 --file $FILE --group 'Plugins' --key $KEY $VAL
 
 # notifications
 
@@ -247,13 +268,16 @@ kwriteconfig5 --file $XDG_CONFIG_HOME/plasmanotifyrc \
 
 # regional settings > region & language
 
-FILE=$XDG_CONFIG_HOME/plasma-localerc
+typeset -A OPTS=(
+  'LC_MEASUREMENT' 'pl_PL.UTF-8'
+  'LC_MONETARY' 'pl_PL.UTF-8'
+  'LC_NUMERIC' 'pl_PL.UTF-8'
+  'LC_PAGE' 'pl_PL.UTF-8'
+  'LC_TIME' 'pl_PL.UTF-8'
+)
 
-kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_MEASUREMENT' 'pl_PL.UTF-8'
-kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_MONETARY' 'pl_PL.UTF-8'
-kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_NUMERIC' 'pl_PL.UTF-8'
-kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_PAGE' 'pl_PL.UTF-8'
-kwriteconfig5 --file $FILE --group 'Formats' --key 'LC_TIME' 'pl_PL.UTF-8'
+for KEY VAL ("${(@kv)OPTS}")
+  kwriteconfig5 --file $XDG_CONFIG_HOME/plasma-localerc --group 'Formats' --key $KEY $VAL
 
 # regional settings > spell check
 
@@ -293,15 +317,17 @@ if [[ $HOST = 'drifter' ]]; then
   [[ $XDG_SESSION_TYPE = 'x11' ]] && FILE=$XDG_CONFIG_HOME/touchpadxlibinputrc
   [[ $XDG_SESSION_TYPE = 'wayland' ]] && FILE=$XDG_CONFIG_HOME/kcminputrc
 
-  kwriteconfig5 --file $FILE --group 'Libinput' --group '1739' --group '52710' --group 'DLL0945:00 06CB:CDE6 Touchpad' --key 'naturalScroll' 'true'
-  kwriteconfig5 --file $FILE --group 'Libinput' --group '1739' --group '52710' --group 'DLL0945:00 06CB:CDE6 Touchpad' --key 'tapToClick' 'true'
+  for KEY ('naturalScroll' 'tapToClick')
+    kwriteconfig5 --file $FILE \
+      --group 'Libinput' --group '1739' --group '52710' --group 'DLL0945:00 06CB:CDE6 Touchpad' \
+      --key $KEY 'true'
 
 fi
 
 # display and monitor
 
 [[ $HOST = 'drifter' ]] && DISP='eDP-1'; SCALE='2.0'
-# [[ $HOST = 'player' ]] && DISP='DP-4'; SCALE='1.5'
+[[ $HOST = 'player' ]] && DISP='DP-4'; SCALE='1.5'
 
 kscreen-doctor output.$DISP.scale.$SCALE
 kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' $SCALE

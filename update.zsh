@@ -40,4 +40,5 @@ sudo DIFFPROG='nvim -d' pacdiff
 . `dirname $0`/links.zsh
 . `dirname $0`/gdm.zsh
 [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && . `dirname $0`/gnome.zsh
+[[ $XDG_CURRENT_DESKTOP = 'KDE' ]] && . `dirname $0`/plasma.zsh
 
