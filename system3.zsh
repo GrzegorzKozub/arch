@@ -71,7 +71,10 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
     # gnome-software
 
   paru -S --aur --noconfirm \
-    gnome-shell-extension-hide-activities-git \
+    gnome-browser-connector \
+    gnome-shell-extension-blur-my-shell \
+    gnome-shell-extension-just-perfection-desktop \
+    gnome-shell-extension-rounded-window-corners-git \
     gnome-shell-extension-tray-icons-reloaded-git
 
 fi

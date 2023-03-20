@@ -233,8 +233,10 @@ pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && p
 gsettings set org.gnome.shell enabled-extensions "[
   'user-theme@gnome-shell-extensions.gcampax.github.com',
   'trayIconsReloaded@selfmade.pl',
-  'Hide_Activities@shay.shayel.org',
-  'windows@grzegorzkozub.github.com'
+  'windows@grzegorzkozub.github.com',
+  'rounded-window-corners@yilozt',
+  'just-perfection-desktop@just-perfection',
+  'blur-my-shell@aunetx'
 ]"
 
 # tweaks > appearance
