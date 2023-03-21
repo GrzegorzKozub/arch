@@ -26,9 +26,12 @@ paru --aur -Sccd
 
 sudo journalctl --vacuum-time=3months
 
-# remove obsolete dirs
+# remove obsolete dirs and files
 
 [[ -d ~/.gnome ]] && rm -rf ~/.gnome
+
+[[ -d ~/.cache/yarn ]] && rm -rf ~/.cache/yarn
+[[ -f ~/.yarnrc ]] && rm ~/.yarnrc
 
 # merge *.pacnew and *.pacsave files
 
