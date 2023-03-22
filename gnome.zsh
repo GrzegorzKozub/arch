@@ -225,18 +225,20 @@ gsettings set org.gnome.desktop.interface cursor-size 32
 # extensions
 
 DIR=$XDG_DATA_HOME/gnome-shell/extensions
-
 [[ -d $DIR ]] || mkdir -p $DIR
-cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com $DIR
+
+for NAME ('panel' 'windows')
+  cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/$NAME@grzegorzkozub.github.com $DIR
+
 pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 
 gsettings set org.gnome.shell enabled-extensions "[
-  'user-theme@gnome-shell-extensions.gcampax.github.com',
-  'trayIconsReloaded@selfmade.pl',
-  'windows@grzegorzkozub.github.com',
+  'blur-my-shell@aunetx',
+  'panel@grzegorzkozub.github.com',
   'rounded-window-corners@yilozt',
-  'just-perfection-desktop@just-perfection',
-  'blur-my-shell@aunetx'
+  'trayIconsReloaded@selfmade.pl',
+  'user-theme@gnome-shell-extensions.gcampax.github.com',
+  'windows@grzegorzkozub.github.com'
 ]"
 
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true

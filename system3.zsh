@@ -73,7 +73,6 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
   paru -S --aur --noconfirm \
     gnome-browser-connector \
     gnome-shell-extension-blur-my-shell \
-    gnome-shell-extension-just-perfection-desktop \
     gnome-shell-extension-rounded-window-corners-git \
     gnome-shell-extension-tray-icons-reloaded-git
 
