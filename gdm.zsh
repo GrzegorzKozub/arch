@@ -22,8 +22,11 @@ fi
 
 # fonts
 
-[[ $HOST = 'drifter' ]] && sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.25'
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.5'
+[[ $HOST = 'drifter' ]] &&
+  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.25'
+
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.5'
 
 # background image
 
@@ -31,7 +34,6 @@ GS=/usr/share/gnome-shell
 GST=gnome-shell-theme.gresource
 TMP="$(mktemp -d)"
 
-sudo cp -n $GS/$GST $GS/$GST.backup
 mkdir -p $TMP/theme/icons/scalable/actions
 mkdir -p $TMP/theme/icons/scalable/status
 cp `dirname $0`/home/$USER/.local/share/backgrounds/women.jpg $TMP/theme/
