@@ -30,6 +30,7 @@ sudo journalctl --vacuum-time=3months
 
 [[ -d ~/.gnome ]] && rm -rf ~/.gnome
 
+[[ -d ~/.cache/js-v8flags ]] && rm -rf ~/.cache/js-v8flags
 [[ -d ~/.cache/yarn ]] && rm -rf ~/.cache/yarn
 [[ -f ~/.yarnrc ]] && rm ~/.yarnrc
 
