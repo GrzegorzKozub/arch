@@ -26,14 +26,6 @@ paru --aur -Sccd
 
 sudo journalctl --vacuum-time=3months
 
-# remove obsolete dirs and files
-
-[[ -d ~/.gnome ]] && rm -rf ~/.gnome
-
-[[ -d ~/.cache/js-v8flags ]] && rm -rf ~/.cache/js-v8flags
-[[ -d ~/.cache/yarn ]] && rm -rf ~/.cache/yarn
-[[ -f ~/.yarnrc ]] && rm ~/.yarnrc
-
 # merge *.pacnew and *.pacsave files
 
 sudo DIFFPROG='nvim -d' pacdiff
@@ -46,4 +38,8 @@ sudo DIFFPROG='nvim -d' pacdiff
 
 [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && . `dirname $0`/gnome.zsh
 [[ $XDG_CURRENT_DESKTOP = 'KDE' ]] && . `dirname $0`/plasma.zsh
+
+# clean
+
+. `dirname $0`/clean.zsh
 

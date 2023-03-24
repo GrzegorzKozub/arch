@@ -199,17 +199,11 @@ paru --aur -Sccd
 [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && . `dirname $0`/gnome.zsh
 [[ $XDG_CURRENT_DESKTOP = 'KDE' ]] && . `dirname $0`/plasma.zsh
 
+# clean
+
+. `dirname $0`/clean.zsh
+
 # dotfiles install
 
 . ~/code/dotfiles/install.zsh
-
-# remove obsolete dirs and files
-
-[[ -f ~/.zshrc ]] && rm -f ~/.zshrc
-
-[[ -d ~/.gnome ]] && rm -rf ~/.gnome
-
-[[ -d ~/.cache/js-v8flags ]] && rm -rf ~/.cache/js-v8flags
-[[ -d ~/.cache/yarn ]] && rm -rf ~/.cache/yarn
-[[ -f ~/.yarnrc ]] && rm ~/.yarnrc
 
