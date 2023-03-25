@@ -235,11 +235,12 @@ pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && p
 gsettings set org.gnome.shell enabled-extensions "[
   'blur-my-shell@aunetx',
   'panel@grzegorzkozub.github.com',
-  'rounded-window-corners@yilozt',
   'trayIconsReloaded@selfmade.pl',
   'user-theme@gnome-shell-extensions.gcampax.github.com',
   'windows@grzegorzkozub.github.com'
 ]"
+
+  # 'rounded-window-corners@yilozt'
 
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
 

@@ -8,7 +8,7 @@ set -e -o verbose
 
 [[ -d ~/.gnome ]] && rm -rf ~/.gnome
 
-[[ -d ~/.cache/js-v8flags ]] && rm -rf ~/.cache/js-v8flags
-[[ -d ~/.cache/yarn ]] && rm -rf ~/.cache/yarn
-[[ -f ~/.yarnrc ]] && rm ~/.yarnrc
+# [[ -d ~/.cache/js-v8flags ]] && rm -rf ~/.cache/js-v8flags
+# [[ -d ~/.cache/yarn ]] && rm -rf ~/.cache/yarn
+# [[ -f ~/.yarnrc ]] && rm ~/.yarnrc
 
