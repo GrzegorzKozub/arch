@@ -149,7 +149,7 @@ sudo pacman -S --noconfirm \
   perl \
   python python-pip \
   ruby \
-  rust \
+  rust taplo \
   tree-sitter
 
 paru -S --aur --noconfirm \
