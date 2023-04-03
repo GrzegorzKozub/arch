@@ -233,14 +233,15 @@ for NAME ('panel' 'windows')
 pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 
 gsettings set org.gnome.shell enabled-extensions "[
+  'appindicatorsupport@rgcjonas.gmail.com',
   'blur-my-shell@aunetx',
   'panel@grzegorzkozub.github.com',
-  'trayIconsReloaded@selfmade.pl',
   'user-theme@gnome-shell-extensions.gcampax.github.com',
   'windows@grzegorzkozub.github.com'
 ]"
 
   # 'rounded-window-corners@yilozt'
+  # 'trayIconsReloaded@selfmade.pl',
 
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
 
