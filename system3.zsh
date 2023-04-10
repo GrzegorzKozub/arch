@@ -76,7 +76,6 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
     gnome-shell-extension-blur-my-shell
 
     # gnome-shell-extension-rounded-window-corners-git
-    # gnome-shell-extension-tray-icons-reloaded-git
 
 fi
 

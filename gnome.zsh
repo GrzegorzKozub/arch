@@ -241,7 +241,6 @@ gsettings set org.gnome.shell enabled-extensions "[
 ]"
 
   # 'rounded-window-corners@yilozt'
-  # 'trayIconsReloaded@selfmade.pl',
 
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
 
