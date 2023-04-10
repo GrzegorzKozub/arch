@@ -67,7 +67,7 @@ pacstrap /mnt \
   gst-plugins-good \
   xdg-desktop-portal xdg-utils \
   pacman-contrib \
-  git go reflector sudo zsh \
+  git go pkgfile reflector sudo zsh \
   man-db man-pages \
   xorg-server \
   gdm

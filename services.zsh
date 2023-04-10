@@ -22,6 +22,7 @@ systemctl --user enable pipewire-pulse.service
 
 sudo systemctl enable gdm.service
 
+sudo systemctl enable pkgfile-update.timer
 sudo systemctl enable reflector.timer
 
 sudo cp /etc/iptables/iptables.rules /etc/iptables/iptables.rules.backup
