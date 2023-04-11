@@ -66,13 +66,13 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
 
   sudo pacman -S --noconfirm \
     gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb xdg-user-dirs-gtk \
-    eog evince gnome-calculator gnome-control-center gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus
+    eog evince gnome-calculator gnome-control-center gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus \
+    gnome-shell-extension-appindicator
 
     # gnome-software
 
   paru -S --aur --noconfirm \
     gnome-browser-connector \
-    gnome-shell-extension-appindicator \
     gnome-shell-extension-blur-my-shell
 
     # gnome-shell-extension-rounded-window-corners-git
