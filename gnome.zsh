@@ -115,7 +115,7 @@ gsettings set org.gnome.SessionManager logout-prompt false
 
 if [[ $HOST = 'drifter' ]]; then
 
-  # depends on colord.service that is disabled when using custom color profiles 
+  # depends on colord.service that is disabled when using custom color profiles
   gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
   gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
@@ -159,6 +159,9 @@ dconf write $DIR/show-desktop "['<Super>d']"
 dconf write $DIR/switch-applications '@as []'
 dconf write $DIR/switch-applications-backward '@as []'
 
+dconf write $DIR/switch-windows "['<Super>Tab']"
+dconf write $DIR/switch-windows-backward "['<Shift><Super>Tab']"
+
 dconf write $DIR/cycle-windows "['<Alt>Tab']"
 dconf write $DIR/cycle-windows-backward "['<Shift><Alt>Tab']"
 
@@ -198,7 +201,7 @@ add_shortcut() {
 
   gsettings set "$schema:$dir" 'binding' $2
   gsettings set "$schema:$dir" 'name' $3
-  gsettings set "$schema:$dir" 'command' $4 
+  gsettings set "$schema:$dir" 'command' $4
 
   CUSTOM_KEYBINDINGS+="'$dir'"
 }
@@ -207,9 +210,9 @@ add_shortcut 0 'Print' 'flameshot' 'flameshot gui'
 add_shortcut 1 '<Control><Super>a' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 add_shortcut 2 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] && 
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
   add_shortcut 3 '<Control><Super>n' 'night light' 'pkill -USR1 redshift'
-  
+
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
   "[${(j., .)CUSTOM_KEYBINDINGS}]"
@@ -288,7 +291,7 @@ gsettings set org.gnome.shell favorite-apps "[
   'brave-browser.desktop',
   'org.keepassxc.KeePassXC.desktop',
   'steam.desktop'
-]" 
+]"
 
 gsettings set org.gnome.desktop.interface enable-hot-corners false
 
