@@ -59,6 +59,11 @@ sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-
 cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.service $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable nvidia.service
 
+# vulkan
+
+sudo pacman -S --noconfirm \
+  lib32-vulkan-validation-layers
+
 # steam
 
 sudo pacman -S --noconfirm \
