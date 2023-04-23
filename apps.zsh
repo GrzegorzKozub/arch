@@ -62,6 +62,8 @@ sudo pacman -S --noconfirm \
 
 # common
 
+# xclip, wl-clipboard - for keepassxc, neovim and pass
+
 sudo pacman -S --noconfirm \
   cpupower \
   fd \
