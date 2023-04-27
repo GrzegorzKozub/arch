@@ -147,12 +147,13 @@ sudo pacman -S --noconfirm \
   elixir \
   go \
   lua luacheck luarocks \
-  nodejs npm \
   perl \
   python python-pip \
   ruby \
   rust taplo \
   tree-sitter
+
+  # nodejs npm
 
 paru -S --aur --noconfirm \
   nvm \
