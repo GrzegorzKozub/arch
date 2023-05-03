@@ -98,7 +98,7 @@ Currently enabled on Intel. Visual Studio Code is running in native Wayland. Kit
 - `imwheel` is not compatible
 - `nvidia-settings` is not compatible (coolbits, undervolting and overclocking)
 - Stuttering in games on XWayland
-- High latency in games on NVIDIA 
+- High latency in games on NVIDIA
 - Drag and drop doesn't work on XWayland
 
 ### Enabling on NVIDIA
@@ -123,13 +123,15 @@ To reduce the image size after freeing up space on guest, first defragment the d
 1. Run `~/code/arch/games.zsh`
 2. Reboot
 3. Start Steam
-4. Once per machine, configure Steam and specifically
-  - Enable Shader Pre-Caching
-  - Allow background processing of Vulkan shaders
-  - Enable Steam Play for supported titles
-  - Enable Steam Play for all other titles
-  - Run other titles with Proton Experimental
-  - For Proton Experimental tool, select bleeding-edge beta
+4. Once per machine, configure Steam, and specifically
+  - Don't sign in to friends when Steam starts
+  - Disable non-critical notifications and hide non-critical notifications while in game
+  - Set start up location to Library
+  - Disable community content and hide game icons in Library
+  - Enable shader pre-caching and allow background processing of Vulkan shaders
+  - Disable Steam overlay and remove screenshot shortcut
+  - Enable Steam Play for supported and all other titles
+  - Disable Remote Play
   - For each game, set game compatibility to Proton-GE
 5. Once per machine, move Steam to games disk with
   ```zsh
@@ -161,8 +163,6 @@ Games
 
 - Cemu, VULKAN
   - `LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 python3 ./cemu_launcher gamemoderun %command% -f -g "<game dir>"`
-- Dark Souls 3, DXVK
-  - `./ds3_patcher -is -- env LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun %command%`
 - Elden Ring, VKD3D
   - `./er-patcher --rate 144 -vcas -- env LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" MANGOHUD=1 PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 gamemoderun strangle --vulkan-only --vsync 0 60 %command%`
 
@@ -177,7 +177,7 @@ Games
 
 ## Useful packages
 
-- Fonts 
+- Fonts
   - `font-manager`
   - `gnome-characters`
 
