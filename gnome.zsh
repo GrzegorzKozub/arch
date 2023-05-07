@@ -25,12 +25,10 @@ gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
 gsettings set org.gnome.desktop.search-providers disabled "[
   'org.gnome.Nautilus.desktop',
-  'org.gnome.Calculator.desktop',
-  'org.gnome.Terminal.desktop',
-  'org.gnome.Software.desktop'
+  'org.gnome.Terminal.desktop'
 ]"
 
-gsettings set org.gnome.desktop.search-providers disable-external true
+gsettings set org.gnome.desktop.search-providers disable-external false
 
 # applications > document viewer
 
