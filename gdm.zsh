@@ -2,6 +2,11 @@
 
 set -e -o verbose
 
+# reset
+
+sudo pacman -S --noconfirm \
+  gnome-shell
+
 # tap to click
 
 sudo machinectl shell gdm@ /bin/bash -c "gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'"
@@ -63,6 +68,9 @@ EOF
   background-repeat: no-repeat;
   background-size: cover;
 }
+.login-dialog {
+  background-color: rgba(0, 0, 0, 0.5);
+}
 EOF
 
 [[ $HOST = 'worker' ]] && cat <<EOF >> $TMP/theme/gnome-shell.css
@@ -71,6 +79,9 @@ EOF
   background-position: 0 0;
   background-repeat: repeat-x;
   background-size: 3840px 2525px;
+}
+.login-dialog {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 EOF
 
