@@ -77,7 +77,7 @@ EOF
 #lockDialogGroup {
   background: url(resource:///org/gnome/shell/theme/women.jpg);
   background-position: 0 0;
-  background-repeat: repeat-x;
+  background-repeat: repeat;
   background-size: 3840px 2525px;
 }
 .login-dialog {
