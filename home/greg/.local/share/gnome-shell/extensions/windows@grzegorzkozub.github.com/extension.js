@@ -32,16 +32,16 @@ class Extension {
       { title: /^Settings$/ },
       { title: /.?KeePassXC$/ },
     ];
-    const dark = [
-      { class: /^kitty$/, autoImmediate: true },
-    ];
+    // const dark = [
+    //   { class: /^kitty$/, autoImmediate: true },
+    // ];
     const addConfig = (config, fix) => {
       this.config.push(...config.map(cfg => ({ ...cfg, fix })));
     };
     addConfig(big, this.big.bind(this));
     addConfig(medium, this.medium.bind(this));
     addConfig(small, this.small.bind(this));
-    addConfig(dark, this.dark.bind(this));
+    // addConfig(dark, this.dark.bind(this));
   }
 
   enable() {
@@ -100,10 +100,10 @@ class Extension {
 
   unmax(win) { if (win.get_maximized()) { win.unmaximize(Meta.MaximizeFlags.BOTH); } }
 
-  dark(win) {
-    GLib.spawn_command_line_async(
-      `xprop -f _GTK_THEME_VARIANT '8u' -set _GTK_THEME_VARIANT 'dark' -name '${win.get_title()}'`);
-  }
+  // dark(win) {
+  //   GLib.spawn_command_line_async(
+  //     `xprop -f _GTK_THEME_VARIANT '8u' -set _GTK_THEME_VARIANT 'dark' -name '${win.get_title()}'`);
+  // }
 
   center(win, width, height) {
     const desktop = this.getDesktop();
