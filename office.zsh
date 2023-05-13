@@ -34,3 +34,7 @@ do
   sed -i -e 's/^Name=LibreOffice /Name=/' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
+# dotfiles
+
+. ~/code/dotfiles/office.zsh
+
