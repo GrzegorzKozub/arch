@@ -24,6 +24,7 @@ class Extension {
       { title: /^DevTools.?/ },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
+      { title: /.?LibreOffice.?/ },
       { title: /.?Slack$/, autoDelayed: true },
       { title: /.?Steam$/ },
     ];
