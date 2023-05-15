@@ -12,6 +12,9 @@ sudo pacman -S --noconfirm \
 
 sudo sed -i -e 's/Logo=1/Logo=0/' /etc/libreoffice/sofficerc
 
+xdg-mime default libreoffice-calc.desktop application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+xdg-mime default libreoffice-writer.desktop application/vnd.openxmlformats-officedocument.wordprocessingml.document
+
 # links
 
 for APP in \
