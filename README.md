@@ -93,13 +93,12 @@ Currently enabled on Intel. Visual Studio Code is running in native Wayland. Kit
 ### Problems
 
 - KeePassXC auto-type is not supported
+- Drag and drop doesn't work on XWayland
 - Kitty window decorations are ugly on Gnome (fine on Plasma)
 - `redshift` is not compatible (use `gammastep`)
-- `imwheel` is not compatible
 - `nvidia-settings` is not compatible (coolbits, undervolting and overclocking)
-- Stuttering in games on XWayland
-- High latency in games on NVIDIA
-- Drag and drop doesn't work on XWayland
+- Game performance on NVIDIA is worse compared to Xorg
+- Games stutter on Gnome (fine on Plasma)
 
 ### Enabling on NVIDIA
 
