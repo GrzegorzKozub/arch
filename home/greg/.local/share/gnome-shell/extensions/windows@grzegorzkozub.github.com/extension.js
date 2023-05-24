@@ -21,6 +21,7 @@ class Extension {
       { title: /.?Visual Studio Code$/ },
     ];
     const medium = [
+      { title: /^Cemu.?/ },
       { title: /^DevTools.?/ },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
