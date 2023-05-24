@@ -104,6 +104,7 @@ Currently enabled on Intel. Visual Studio Code is running in native Wayland. Kit
 
 - Add `nvidia_drm.modeset=1` kernel module setting
 - Run `ln -s /dev/null /etc/udev/rules.d/61-gdm.rules`
+- Make sure there's no `WaylandEnable=false` in `/etc/gdm/custom.conf`
 
 ## Windows VM
 
