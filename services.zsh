@@ -59,6 +59,14 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
 fi
 
+if [[ $HOST = 'worker' ]]; then
+
+  # required for wayland on nvidia to fix gnome shell suspend
+  sudo systemctl enable nvidia-hibernate.service
+  sudo systemctl enable nvidia-suspend.service
+
+fi
+
 if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
 
   cp `dirname $0`/home/$USER/.config/systemd/user/dnd.service $XDG_CONFIG_HOME/systemd/user

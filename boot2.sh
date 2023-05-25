@@ -18,7 +18,7 @@ sed -i "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" /boot/loader/entries
 [[ $MY_HOSTNAME = 'drifter' || $MY_HOSTNAME = 'worker' ]] && sed -i "s/<ucode>/intel-ucode/g" /boot/loader/entries/*.conf
 [[ $MY_HOSTNAME = 'player' ]] && sed -i "s/<ucode>/amd-ucode/g" /boot/loader/entries/*.conf
 
-# wayland disabled on nvidia
+# wayland disabled on player (see readme)
 
 [[ $MY_HOSTNAME = 'drifter' || $MY_HOSTNAME = 'player' ]] && sed -i "s/<kernel_params>//g" /boot/loader/entries/*.conf
 

@@ -105,14 +105,17 @@ sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev consolefont autodetect modconf block encr
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
-# wayland disabled on nvidia
+# wayland disabled on player (see readme)
 
-if [[ $MY_HOSTNAME = 'player' || $MY_HOSTNAME = 'worker' ]]; then
+[[ $MY_HOSTNAME = 'player' ]] && sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
 
-  sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
+if [[ $MY_HOSTNAME = 'worker' ]]; then
 
   # required for wayland on nvidia
-  # ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+  ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+
+  # required for wayland on nvidia to fix gnome shell suspend
+  echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia-power-management.conf
 
 fi
 
