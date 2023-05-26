@@ -291,5 +291,7 @@ gsettings set org.gnome.shell favorite-apps "[
   'steam.desktop'
 ]"
 
+  # 'Alacritty.desktop'
+
 gsettings set org.gnome.desktop.interface enable-hot-corners false
 
