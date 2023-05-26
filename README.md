@@ -95,7 +95,6 @@ Currently enabled on Intel. Visual Studio Code is running in native Wayland. Kit
 
 - Text scaling factor is not supported by the apps and Gnome experimental fractional scaling breaks most apps
 - KeePassXC auto-type is not supported
-- Drag and drop doesn't work on XWayland
 - Kitty window decorations are ugly on Gnome (fine on Plasma)
 - `redshift` is not compatible (use `gammastep`)
 - `nvidia-settings` is not compatible (coolbits, undervolting and overclocking) and PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
