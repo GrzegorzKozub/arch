@@ -93,6 +93,7 @@ Currently enabled on Intel. Visual Studio Code is running in native Wayland. Kit
 
 ### Problems
 
+- Text scaling factor is not supported by the apps and Gnome experimental fractional scaling breaks most apps
 - KeePassXC auto-type is not supported
 - Drag and drop doesn't work on XWayland
 - Kitty window decorations are ugly on Gnome (fine on Plasma)
