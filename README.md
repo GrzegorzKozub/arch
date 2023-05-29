@@ -93,6 +93,7 @@ Currently enabled on Intel. Visual Studio Code is running in native Wayland. Kit
 
 ### Problems
 
+- Last open window is not active due to [this mutter bug](https://gitlab.gnome.org/GNOME/mutter/-/issues/2690)
 - Text scaling factor is not supported by the apps and Gnome experimental fractional scaling is slow
 - KeePassXC auto-type is not supported
 - Kitty client-side decorations (CSD) are ugly on Gnome (Plasma provides server-side decorations)
