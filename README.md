@@ -95,8 +95,9 @@ Currently enabled on Intel. Visual Studio Code is running in native Wayland. Kit
 
 - Text scaling factor is not supported by the apps and Gnome experimental fractional scaling is slow
 - KeePassXC auto-type is not supported
-- Kitty window decorations are ugly on Gnome (fine on Plasma) and the app breaks on dual monitor setup
+- Kitty client-side decorations (CSD) are ugly on Gnome (Plasma provides server-side decorations)
 - `redshift` is not compatible (use `gammastep`)
+- Brave graphical glitches on NVIDIA
 - `nvidia-settings` is not compatible (coolbits, undervolting and overclocking) and PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
 - Game performance on NVIDIA is worse compared to Xorg
 - Games stutter on Gnome (fine on Plasma)

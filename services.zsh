@@ -59,13 +59,13 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
 fi
 
-if [[ $HOST = 'worker' ]]; then
-
-  # required for wayland on nvidia to fix gnome shell suspend
-  sudo systemctl enable nvidia-hibernate.service
-  sudo systemctl enable nvidia-suspend.service
-
-fi
+# if [[ $HOST = 'worker' ]]; then
+#
+#   # required for wayland on nvidia to fix gnome shell suspend
+#   sudo systemctl enable nvidia-hibernate.service
+#   sudo systemctl enable nvidia-suspend.service
+#
+# fi
 
 if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
 
