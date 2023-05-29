@@ -50,6 +50,13 @@ do
   sed -i -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
+# flameshot
+
+if [[ $HOST = 'worker' ]]; then
+  cp /usr/share/applications/org.flameshot.Flameshot.desktop $XDG_DATA_HOME/applications
+  sed -i -e "s/^Exec=/Exec=QT_SCREEN_SCALE_FACTORS='1.5,1.5' /" $XDG_DATA_HOME/applications/org.flameshot.Flameshot.desktop
+fi
+
 # alacritty
 
 # if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
@@ -59,12 +66,23 @@ done
 #
 # fi
 
-# flameshot
+# foot
 
-if [[ $HOST = 'worker' ]]; then
-  cp /usr/share/applications/org.flameshot.Flameshot.desktop $XDG_DATA_HOME/applications
-  sed -i -e "s/^Exec=/Exec=QT_SCREEN_SCALE_FACTORS='1.5,1.5' /" $XDG_DATA_HOME/applications/org.flameshot.Flameshot.desktop
-fi
+for APP in \
+  org.codeberg.dnkl.foot-server \
+  org.codeberg.dnkl.foot \
+  org.codeberg.dnkl.footclient
+do
+  cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
+  sed -i '2iStartupWMClass=foot' $XDG_DATA_HOME/applications/$APP.desktop
+done
+
+for APP in \
+  org.codeberg.dnkl.foot-server \
+  org.codeberg.dnkl.footclient
+do
+  sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
+done
 
 # kitty
 

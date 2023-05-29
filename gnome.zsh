@@ -292,6 +292,7 @@ gsettings set org.gnome.shell favorite-apps "[
 ]"
 
   # 'Alacritty.desktop'
+  # 'org.codeberg.dnkl.foot.desktop'
 
 gsettings set org.gnome.desktop.interface enable-hot-corners false
 

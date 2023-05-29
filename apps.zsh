@@ -58,7 +58,8 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --noconfirm \
   kitty
 
-  # alacritty
+  # alacritty \
+  # foot
 
 # common
 
