@@ -189,7 +189,7 @@ add_shortcut() {
   )
 
   for KEY VAL ("${(@kv)OPTS}")
-    kwriteconfig5 --file $FILE --group "Data_$nbr" --key $KEY $VAL
+    kwriteconfig5 --file $FILE --group "Data_$nbr" --key $KEY "$VAL"
 
   kwriteconfig5 --file $FILE --group "Data_${nbr}Actions" --key 'ActionsCount' '1'
 
@@ -307,8 +307,8 @@ kwriteconfig5 --file $FILE --group 'Layout' --key 'Use' 'true'
 
 # input devices > mouse
 
-[[ $XDG_SESSION_TYPE = 'x11' ]] &&
-  kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'XLbInptPointerAcceleration' -- '-0.4'
+# [[ $XDG_SESSION_TYPE = 'x11' ]] &&
+#   kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'XLbInptPointerAcceleration' -- '-0.4'
 
 # input devices > touchpad
 
@@ -326,11 +326,29 @@ fi
 
 # display and monitor
 
-[[ $HOST = 'drifter' ]] && DISP='eDP-1'; SCALE='2.0'
-[[ $HOST = 'player' ]] && DISP='DP-4'; SCALE='1.5'
+if [[ $HOST = 'drifter' ]]; then
 
-kscreen-doctor output.$DISP.scale.$SCALE
-kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' $SCALE
+  kscreen-doctor output.eDP-1.scale.2.0
+  kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 2.0
+
+fi
+
+if [[ $HOST = 'player' ]]; then
+
+  kscreen-doctor output.DP-4.scale.1.5
+
+  kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 1.5
+
+fi
+
+if [[ $HOST = 'worker' ]]; then
+
+  kscreen-doctor output.DP-2.scale.1.5
+  kscreen-doctor output.DP-3.scale.1.5
+
+  kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 1.5
+
+fi
 
 # display and monitor > night color
 
