@@ -89,7 +89,7 @@ Automated Arch Linux installation
 
 ## Wayland
 
-Currently enabled on Intel. Visual Studio Code is running in native Wayland. Kitty, Brave and KeePassXC are running on XWayland.
+Currently enabled on Intel. Kitty and Visual Studio Code run in native Wayland. Brave and KeePassXC run on XWayland.
 
 ### Problems
 

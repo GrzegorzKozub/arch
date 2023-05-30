@@ -86,12 +86,12 @@ fi
 
 # kitty
 
-if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
-
-  cp /usr/share/applications/kitty.desktop $XDG_DATA_HOME/applications
-  sed -i -e 's/^Exec=/Exec=env KITTY_DISABLE_WAYLAND=1 /' $XDG_DATA_HOME/applications/kitty.desktop
-
-fi
+# if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
+#
+#   cp /usr/share/applications/kitty.desktop $XDG_DATA_HOME/applications
+#   sed -i -e 's/^Exec=/Exec=env KITTY_DISABLE_WAYLAND=1 /' $XDG_DATA_HOME/applications/kitty.desktop
+#
+# fi
 
 # nvim
 
