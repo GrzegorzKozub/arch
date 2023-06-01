@@ -98,9 +98,10 @@ if [[ $HOST = 'drifter' ]]; then
   gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
   gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
 
-else
-  gsettings set org.gnome.desktop.session idle-delay 600
 fi
+
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+  gsettings set org.gnome.desktop.session idle-delay 600
 
 gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 25
 
@@ -111,7 +112,8 @@ gsettings set org.gnome.SessionManager logout-prompt false
 
 # displays
 
-[[ $XDG_SESSION_TYPE = 'wayland' ]] && gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+# [[ $XDG_SESSION_TYPE = 'wayland' ]] &&
+#   gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 
 if [[ $HOST = 'drifter' ]]; then
 
@@ -206,12 +208,6 @@ add_shortcut() {
   CUSTOM_KEYBINDINGS+="'$dir'"
 }
 
-if [[ $HOST = 'worker' && $XDG_SESSION_TYPE = 'wayland' ]]; then
-  add_shortcut 0 'Print' 'flameshot' "env QT_SCREEN_SCALE_FACTORS='1.5,1.5' flameshot gui"
-else
-  add_shortcut 0 'Print' 'flameshot' 'flameshot gui'
-fi
-
 add_shortcut 1 '<Control><Super>a' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 add_shortcut 2 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 
@@ -274,15 +270,11 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code Reg
 
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
-if [[ $HOST = 'drifter' ]]; then
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-else
-  if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
-    gsettings set org.gnome.desktop.interface text-scaling-factor 1
-  else
-    gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
-  fi
-fi
+[[ $HOST = 'drifter' ]] &&
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1
+
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
 
 # tweaks > windows
 

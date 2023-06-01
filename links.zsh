@@ -41,29 +41,23 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
 fi
 
-# qt
-
-for APP in \
-  org.keepassxc.KeePassXC
-do
-  cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
-  sed -i -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' $XDG_DATA_HOME/applications/$APP.desktop
-  # sed -i -e 's/^Exec=env/Exec=env QT_QPA_PLATFORM=wayland/' $XDG_DATA_HOME/applications/$APP.desktop
-done
-
-# flameshot
-
-if [[ $HOST = 'worker' && $XDG_SESSION_TYPE = 'wayland' ]]; then
-  cp /usr/share/applications/org.flameshot.Flameshot.desktop $XDG_DATA_HOME/applications
-  sed -i -e "s/^Exec=/Exec=env QT_SCREEN_SCALE_FACTORS='1.5,1.5' /" $XDG_DATA_HOME/applications/org.flameshot.Flameshot.desktop
-fi
-
 # alacritty
 
 # if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 #
 #   cp /usr/share/applications/Alacritty.desktop $XDG_DATA_HOME/applications
+#
+#   # xwayland
 #   sed -i -e's/^Exec=/Exec=env WAYLAND_DISPLAY= /' $XDG_DATA_HOME/applications/Alacritty.desktop
+#
+# fi
+
+# flameshot
+
+# if [[ $HOST = 'worker' ]]; then
+#
+#   cp /usr/share/applications/org.flameshot.Flameshot.desktop $XDG_DATA_HOME/applications
+#   sed -i -e "s/^Exec=/Exec=env QT_SCREEN_SCALE_FACTORS='1.5,1.5' /" $XDG_DATA_HOME/applications/org.flameshot.Flameshot.desktop
 #
 # fi
 
@@ -77,7 +71,7 @@ fi
 #   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
 #   sed -i '2iStartupWMClass=foot' $XDG_DATA_HOME/applications/$APP.desktop
 # done
-
+#
 # for APP in \
 #   org.codeberg.dnkl.foot-server \
 #   org.codeberg.dnkl.footclient
@@ -85,11 +79,32 @@ fi
 #   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
 # done
 
+# keepassxc
+
+cp /usr/share/applications/org.keepassxc.KeePassXC.desktop $XDG_DATA_HOME/applications
+
+if [[ $HOST = 'drifter' ]]; then
+
+  # native wayland
+  sed -i \
+    -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough QT_QPA_PLATFORM=wayland /' \
+    $XDG_DATA_HOME/applications/org.keepassxc.KeePassXC.desktop
+
+else
+
+  sed -i \
+    -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' \
+    $XDG_DATA_HOME/applications/org.keepassxc.KeePassXC.desktop
+
+fi
+
 # kitty
 
 # if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 #
 #   cp /usr/share/applications/kitty.desktop $XDG_DATA_HOME/applications
+#
+#   # xwayland
 #   sed -i -e 's/^Exec=/Exec=env KITTY_DISABLE_WAYLAND=1 /' $XDG_DATA_HOME/applications/kitty.desktop
 #
 # fi
