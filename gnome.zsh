@@ -277,7 +277,11 @@ gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 if [[ $HOST = 'drifter' ]]; then
   gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 else
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+  if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1
+  else
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+  fi
 fi
 
 # tweaks > windows
