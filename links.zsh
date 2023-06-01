@@ -48,11 +48,12 @@ for APP in \
 do
   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
   sed -i -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' $XDG_DATA_HOME/applications/$APP.desktop
+  # sed -i -e 's/^Exec=env/Exec=env QT_QPA_PLATFORM=wayland/' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
 # flameshot
 
-if [[ $HOST = 'worker' ]]; then
+if [[ $HOST = 'worker' && $XDG_SESSION_TYPE = 'wayland' ]]; then
   cp /usr/share/applications/org.flameshot.Flameshot.desktop $XDG_DATA_HOME/applications
   sed -i -e "s/^Exec=/Exec=env QT_SCREEN_SCALE_FACTORS='1.5,1.5' /" $XDG_DATA_HOME/applications/org.flameshot.Flameshot.desktop
 fi

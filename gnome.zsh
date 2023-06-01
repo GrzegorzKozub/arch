@@ -111,6 +111,8 @@ gsettings set org.gnome.SessionManager logout-prompt false
 
 # displays
 
+[[ $XDG_SESSION_TYPE = 'wayland' ]] && gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
 if [[ $HOST = 'drifter' ]]; then
 
   # depends on colord.service that is disabled when using custom color profiles
@@ -204,7 +206,12 @@ add_shortcut() {
   CUSTOM_KEYBINDINGS+="'$dir'"
 }
 
-add_shortcut 0 'Print' 'flameshot' 'flameshot gui'
+if [[ $HOST = 'worker' && $XDG_SESSION_TYPE = 'wayland' ]]; then
+  add_shortcut 0 'Print' 'flameshot' "env QT_SCREEN_SCALE_FACTORS='1.5,1.5' flameshot gui"
+else
+  add_shortcut 0 'Print' 'flameshot' 'flameshot gui'
+fi
+
 add_shortcut 1 '<Control><Super>a' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 add_shortcut 2 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 

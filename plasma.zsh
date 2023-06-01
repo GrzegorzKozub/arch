@@ -211,7 +211,7 @@ add_shortcut() {
 
 for NAME ('flameshot' 'audio output' 'audio input' 'night light') rem_shortcut $NAME
 
-if [[ $HOST = 'worker' ]]; then
+if [[ $HOST = 'worker' && $XDG_SESSION_TYPE = 'wayland' ]]; then
   add_shortcut 'Print' 'flameshot' "env QT_SCREEN_SCALE_FACTORS='1.5,1.5' flameshot gui"
 else
   add_shortcut 'Print' 'flameshot' 'flameshot gui'

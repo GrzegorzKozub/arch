@@ -89,19 +89,26 @@ Automated Arch Linux installation
 
 ## Wayland
 
-Currently enabled on Intel. Kitty and Visual Studio Code run in native Wayland. Brave and KeePassXC run on XWayland.
+Currently enabled on Intel. Kitty and Visual Studio Code run in native Wayland. Brave, KeePassXC and Postman run on XWayland.
 
 ### Problems
 
-- Last open window is not active due to [this mutter bug](https://gitlab.gnome.org/GNOME/mutter/-/issues/2690)
-- Text scaling factor is not supported by the apps and Gnome experimental fractional scaling is slow
-- KeePassXC auto-type is not supported
-- Kitty client-side decorations (CSD) are ugly on Gnome (Plasma provides server-side decorations)
+- Gnome
+  - Last open window is not active due to [this bug](https://gitlab.gnome.org/GNOME/mutter/-/issues/2690)
+  - Text scaling factor is not supported by most apps
+  - Games stutter on Gnome (fine on Plasma)
+- Kitty
+  - Breaks when maximized with `hide_window_decorations` enabled
+- KeePassXC
+  - Auto-type is not supported
+  - Blurry when using fractional scaling (force into native Wayland with `QT_QPA_PLATFORM=wayland`)
+- Flameshot
+  - Doesn't work when using fractional scaling with two monitors due to [this bug](https://github.com/flameshot-org/flameshot/issues/564)
+- NVIDIA
+  - Game performance is worse compared to Xorg
+  - `nvidia-settings` is not compatible (coolbits, undervolting and overclocking)
+  - PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
 - `redshift` is not compatible (use `gammastep`)
-- Brave graphical glitches on NVIDIA
-- `nvidia-settings` is not compatible (coolbits, undervolting and overclocking) and PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
-- Game performance on NVIDIA is worse compared to Xorg
-- Games stutter on Gnome (fine on Plasma)
 
 ### Enabling on NVIDIA
 
