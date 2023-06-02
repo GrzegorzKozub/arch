@@ -208,6 +208,7 @@ add_shortcut() {
   CUSTOM_KEYBINDINGS+="'$dir'"
 }
 
+add_shortcut 0 'Print' 'flameshot' 'flameshot gui'
 add_shortcut 1 '<Control><Super>a' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 add_shortcut 2 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 
