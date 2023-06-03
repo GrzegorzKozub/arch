@@ -58,12 +58,16 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --noconfirm \
   kitty
 
-  # alacritty \
-  # foot
+  # alacritty
+
+if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
+
+  sudo pacman -S --noconfirm \
+    foot
+
+fi
 
 # common
-
-# xclip, wl-clipboard - for keepassxc, neovim and pass
 
 sudo pacman -S --noconfirm \
   cpupower \
@@ -86,15 +90,23 @@ sudo pacman -S --noconfirm \
   yt-dlp \
   zip
 
+  # xclip, wl-clipboard - for keepassxc, neovim and pass
+  # imwheel
+
 paru -S --aur --noconfirm \
   btop
 
-if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+if [[ $HOST = 'player' ]]; then
 
   sudo pacman -S --noconfirm \
     redshift
 
-    # imwheel
+fi
+
+if [[ $HOST = 'worker' ]]; then
+
+  sudo pacman -S --noconfirm \
+    gammastep
 
 fi
 

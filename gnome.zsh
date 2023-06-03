@@ -281,13 +281,18 @@ gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
 gsettings set org.gnome.mutter center-new-windows true
 
+# app picker
+
+gsettings set org.gnome.shell app-picker-layout '[]'
+
 # dash
 
+[[ $XDG_SESSION_TYPE = 'wayland' ]] && TERMINAL='org.codeberg.dnkl.foot' || TERMINAL='kitty'
 [[ $XDG_SESSION_TYPE = 'wayland' ]] && CODE='code-url-handler' || CODE='code'
 
 gsettings set org.gnome.shell favorite-apps "[
   'org.gnome.Nautilus.desktop',
-  'kitty.desktop',
+  '$TERMINAL.desktop',
   '$CODE.desktop',
   'postman.desktop',
   'brave-browser.desktop',
@@ -296,7 +301,8 @@ gsettings set org.gnome.shell favorite-apps "[
 ]"
 
   # 'Alacritty.desktop'
-  # 'org.codeberg.dnkl.foot.desktop'
+
+# desktop
 
 gsettings set org.gnome.desktop.interface enable-hot-corners false
 

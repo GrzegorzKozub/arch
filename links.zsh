@@ -9,37 +9,30 @@ for APP in \
   bssh \
   btop \
   bvnc \
+  gammastep \
+  gammastep-indicator \
   htop \
   lf \
   mpv \
+  nvtop \
   org.freedesktop.MalcontentControl \
   org.gnome.ColorProfileViewer \
   org.gnome.Terminal \
   qv4l2 \
   qvidcap \
+  redshift \
+  redshift-gtk \
   stoken-gui \
   stoken-gui-small \
   xcolor
 do
+  [[ ! -f /usr/share/applications/$APP.desktop ]] && continue
   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
 cp /usr/share/applications/lstopo.desktop $XDG_DATA_HOME/applications
 sed -i '4iNoDisplay=true' $XDG_DATA_HOME/applications/lstopo.desktop
-
-if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
-
-  for APP in \
-    nvtop \
-    redshift \
-    redshift-gtk
-  do
-    cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
-    sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
-  done
-
-fi
 
 # alacritty
 
@@ -63,21 +56,25 @@ fi
 
 # foot
 
-# for APP in \
-#   org.codeberg.dnkl.foot-server \
-#   org.codeberg.dnkl.foot \
-#   org.codeberg.dnkl.footclient
-# do
-#   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
-#   sed -i '2iStartupWMClass=foot' $XDG_DATA_HOME/applications/$APP.desktop
-# done
-#
-# for APP in \
-#   org.codeberg.dnkl.foot-server \
-#   org.codeberg.dnkl.footclient
-# do
-#   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
-# done
+if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
+
+  for APP in \
+    org.codeberg.dnkl.foot-server \
+    org.codeberg.dnkl.foot \
+    org.codeberg.dnkl.footclient
+  do
+    cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
+    sed -i '2iStartupWMClass=foot' $XDG_DATA_HOME/applications/$APP.desktop
+  done
+
+  for APP in \
+    org.codeberg.dnkl.foot-server \
+    org.codeberg.dnkl.footclient
+  do
+    sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
+  done
+
+fi
 
 # keepassxc
 
