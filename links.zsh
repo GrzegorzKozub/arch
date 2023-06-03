@@ -9,8 +9,6 @@ for APP in \
   bssh \
   btop \
   bvnc \
-  gammastep \
-  gammastep-indicator \
   htop \
   lf \
   mpv \

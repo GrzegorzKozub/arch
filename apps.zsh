@@ -103,13 +103,6 @@ if [[ $HOST = 'player' ]]; then
 
 fi
 
-if [[ $HOST = 'worker' ]]; then
-
-  sudo pacman -S --noconfirm \
-    gammastep
-
-fi
-
 # zsh, tmux and lf
 
 sudo pacman -S --noconfirm \

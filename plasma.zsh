@@ -215,7 +215,7 @@ add_shortcut 'Print' 'flameshot' 'flameshot gui'
 add_shortcut 'Meta+Ctrl+A' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 add_shortcut 'Meta+Ctrl+M' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+[[ $HOST = 'player' ]] &&
   add_shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
 
 qdbus org.kde.KWin /KWin reconfigure

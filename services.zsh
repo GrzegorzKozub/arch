@@ -39,9 +39,20 @@ sudo systemctl enable ip6tables.service
 # sudo cp `dirname $0`/etc/nftables.rules /etc/nftables.rules
 # sudo systemctl enable nftables.service
 
-# sync
+# dirs
 
 [[ -d $XDG_CONFIG_HOME/systemd/user ]] || mkdir -p $XDG_CONFIG_HOME/systemd/user
+
+# imwheel
+
+# if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+#
+#   cp `dirname $0`/home/$USER/.config/systemd/user/imwheel.service $XDG_CONFIG_HOME/systemd/user
+#   systemctl --user enable imwheel.service
+#
+# fi
+
+# sync
 
 cp `dirname $0`/home/$USER/.config/systemd/user/sync-* $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable sync-periodic.timer
@@ -54,14 +65,15 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
   # conflicts with setting custom color profiles using dispwin
   sudo systemctl mask colord.service
 
-  cp `dirname $0`/home/$USER/.config/systemd/user/redshift.service $XDG_CONFIG_HOME/systemd/user
-  systemctl --user enable redshift.service
-
   cp `dirname $0`/home/$USER/.config/systemd/user/colors.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable colors.service
 
-  # cp `dirname $0`/home/$USER/.config/systemd/user/imwheel.service $XDG_CONFIG_HOME/systemd/user
-  # systemctl --user enable imwheel.service
+fi
+
+if [[ $HOST = 'player' ]]; then
+
+  cp `dirname $0`/home/$USER/.config/systemd/user/redshift.service $XDG_CONFIG_HOME/systemd/user
+  systemctl --user enable redshift.service
 
 fi
 
