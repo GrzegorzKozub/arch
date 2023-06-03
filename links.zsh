@@ -48,7 +48,7 @@ fi
 #   cp /usr/share/applications/Alacritty.desktop $XDG_DATA_HOME/applications
 #
 #   # xwayland
-#   sed -i -e's/^Exec=/Exec=env WAYLAND_DISPLAY= /' $XDG_DATA_HOME/applications/Alacritty.desktop
+#   sed -i -e 's/^Exec=/Exec=env WAYLAND_DISPLAY= /' $XDG_DATA_HOME/applications/Alacritty.desktop
 #
 # fi
 

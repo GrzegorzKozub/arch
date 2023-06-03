@@ -89,7 +89,10 @@ sudo pacman -S --noconfirm \
 }
 
 cp /usr/share/applications/steam.desktop $XDG_DATA_HOME/applications
-sed -i -e 's/^Name=.*$/Name=Steam/' $XDG_DATA_HOME/applications/steam.desktop
+sed -i \
+  -e 's/^Name=.*$/Name=Steam/' \
+  -e 's/steam-runtime/steam-runtime -forcedesktopscaling 1.5/' \
+  $XDG_DATA_HOME/applications/steam.desktop
 
 # proton-ge-custom
 
