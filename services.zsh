@@ -10,7 +10,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
 sudo timedatectl set-ntp true
 
-# services
+# system services
 
 sudo systemctl enable fstrim.timer
 
@@ -25,6 +25,8 @@ sudo systemctl enable gdm.service
 sudo systemctl enable pkgfile-update.timer
 sudo systemctl enable reflector.timer
 
+# firewall
+
 sudo cp /etc/iptables/iptables.rules /etc/iptables/iptables.rules.backup
 sudo cp `dirname $0`/etc/iptables/iptables.rules /etc/iptables/iptables.rules
 sudo systemctl enable iptables.service
@@ -37,11 +39,15 @@ sudo systemctl enable ip6tables.service
 # sudo cp `dirname $0`/etc/nftables.rules /etc/nftables.rules
 # sudo systemctl enable nftables.service
 
+# sync
+
 [[ -d $XDG_CONFIG_HOME/systemd/user ]] || mkdir -p $XDG_CONFIG_HOME/systemd/user
 
 cp `dirname $0`/home/$USER/.config/systemd/user/sync-* $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable sync-periodic.timer
 systemctl --user enable sync-session.service
+
+# night light
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
@@ -59,13 +65,17 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
 fi
 
-# if [[ $HOST = 'worker' ]]; then
-#
-#   # required for wayland on nvidia
-#   sudo systemctl enable nvidia-hibernate.service
-#   sudo systemctl enable nvidia-suspend.service
-#
-# fi
+# wayland enabled on worker
+
+if [[ $HOST = 'worker' ]]; then
+
+  # preserves nvidia video memory during suspend
+  sudo systemctl enable nvidia-hibernate.service
+  sudo systemctl enable nvidia-suspend.service
+
+fi
+
+# do not disturb
 
 if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
 

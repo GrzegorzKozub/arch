@@ -83,20 +83,20 @@ fi
 
 cp /usr/share/applications/org.keepassxc.KeePassXC.desktop $XDG_DATA_HOME/applications
 
-if [[ $HOST = 'drifter' ]]; then
+# if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
+#
+#   # native wayland
+#   sed -i \
+#     -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough QT_QPA_PLATFORM=wayland /' \
+#     $XDG_DATA_HOME/applications/org.keepassxc.KeePassXC.desktop
+#
+# else
 
-  # native wayland
-  sed -i \
-    -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough QT_QPA_PLATFORM=wayland /' \
-    $XDG_DATA_HOME/applications/org.keepassxc.KeePassXC.desktop
+sed -i \
+  -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' \
+  $XDG_DATA_HOME/applications/org.keepassxc.KeePassXC.desktop
 
-else
-
-  sed -i \
-    -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' \
-    $XDG_DATA_HOME/applications/org.keepassxc.KeePassXC.desktop
-
-fi
+# fi
 
 # kitty
 

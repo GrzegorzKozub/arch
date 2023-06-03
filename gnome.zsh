@@ -272,7 +272,7 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code Reg
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
 [[ $HOST = 'drifter' ]] &&
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1
+  gsettings reset org.gnome.desktop.interface text-scaling-factor
 
 [[ $HOST = 'player' || $HOST = 'worker' ]] &&
   gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
