@@ -55,8 +55,7 @@ if [[ $MY_HOSTNAME = 'worker' ]]; then
   sudo pacman -S --noconfirm \
     intel-ucode \
     nvidia nvidia-lts nvtop \
-    libva-vdpau-driver \
-    argyllcms
+    libva-vdpau-driver
 
 fi
 
@@ -87,12 +86,12 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
 
 fi
 
-if [[ $MY_HOSTNAME = 'worker' ]]; then
-
-  dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ul850-w.icm
-  dispwin -d2 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ud88-w.icm
-
-fi
+# if [[ $MY_HOSTNAME = 'worker' ]]; then
+#
+#   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ul850-w.icm
+#   dispwin -d2 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ud88-w.icm
+#
+# fi
 
 # fonts
 

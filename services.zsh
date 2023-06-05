@@ -60,17 +60,13 @@ systemctl --user enable sync-session.service
 
 # night light
 
-if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+if [[ $HOST = 'player' ]]; then
 
   # conflicts with setting custom color profiles using dispwin
   sudo systemctl mask colord.service
 
   cp `dirname $0`/home/$USER/.config/systemd/user/colors.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable colors.service
-
-fi
-
-if [[ $HOST = 'player' ]]; then
 
   cp `dirname $0`/home/$USER/.config/systemd/user/redshift.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable redshift.service
