@@ -125,7 +125,7 @@ do
   sed -i -e 's/^Name=.*/Name=Code/' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
-if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
+if [[ $HOST = 'drifter' ]]; then
 
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/code.desktop
   sed -i -e 's/^NoDisplay=true$/NoDisplay=false/' $XDG_DATA_HOME/applications/code-url-handler.desktop

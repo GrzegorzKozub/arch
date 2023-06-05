@@ -288,7 +288,7 @@ gsettings set org.gnome.shell app-picker-layout '[]'
 # dash
 
 [[ $XDG_SESSION_TYPE = 'wayland' ]] && TERMINAL='org.codeberg.dnkl.foot' || TERMINAL='kitty'
-[[ $XDG_SESSION_TYPE = 'wayland' ]] && CODE='code-url-handler' || CODE='code'
+[[ $HOST = 'drifter' ]] && CODE='code-url-handler' || CODE='code'
 
 gsettings set org.gnome.shell favorite-apps "[
   'org.gnome.Nautilus.desktop',
