@@ -43,9 +43,11 @@ Automated Arch Linux installation
   - Enable wide address bar
   - Only allow suggestions from top sites, history and bookmarks
   - Hide Brave Rewards button
+  - Hide VPN button
   - Hide tab search button
   - Cycle through the most recently used tabs with Ctrl-Tab
   - Disable everything except background images on the dashboard
+  - Disable Brave News on the dashboard
   - Enable search and URL autocompletion
   - Disable daily usage ping and diagnostic reports
   - Join the Sync Chain and sync everything
@@ -59,6 +61,7 @@ Automated Arch Linux installation
   - Don't show Wayback Machine prompts on 404 pages
   - Don't continue running background apps
   - Enable Memory Saver
+  - Disable EasyList Cookie in `brave://settings/shields/filters`
   - Enable `brave://flags/#enable-webrtc-pipewire-capturer`
   - Sign in to your sites
   - Teams
@@ -84,6 +87,7 @@ Automated Arch Linux installation
   - Add VPN server
   - Select the sound device and set volume to 50%
   - Remove the `~/.gnome` dir
+  - Install [Rounded Window Corners](https://extensions.gnome.org/extension/5237/rounded-window-corners/) extension
 6. Clone apsis repo, run `repos.zsh`, setup `.env` files and token env variables
 7. Fix window sizes and positions
 
