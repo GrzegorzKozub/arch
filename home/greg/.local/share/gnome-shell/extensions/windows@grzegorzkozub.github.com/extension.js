@@ -16,7 +16,7 @@ class Extension {
       { title: /.?Brave$/, noRole: 'pop-up' },
       { title: /.?MySQL Workbench$/ },
       { title: /^OBS.?/ },
-      { class: /^Postman$/, autoDelayed: true },
+      { class: /^Postman$/, auto: true },
       { title: /.?Shotcut$/ },
       { title: /.?Visual Studio Code$/ },
     ];
@@ -26,24 +26,20 @@ class Extension {
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
       { title: /.?LibreOffice.?/ },
-      { title: /.?Slack$/, autoDelayed: true },
+      { title: /.?Slack$/, auto: true },
       { title: /.?Steam$/ },
     ];
     const small = [
-      { class: /.?Evince$/, autoDelayed: true },
+      { class: /.?Evince$/, auto: true },
       { title: /^Settings$/ },
       { title: /.?KeePassXC$/ },
     ];
-    // const dark = [
-    //   { class: /^kitty$/, autoImmediate: true },
-    // ];
     const addConfig = (config, fix) => {
       this.config.push(...config.map(cfg => ({ ...cfg, fix })));
     };
     addConfig(big, this.big.bind(this));
     addConfig(medium, this.medium.bind(this));
     addConfig(small, this.small.bind(this));
-    // addConfig(dark, this.dark.bind(this));
   }
 
   enable() {
@@ -73,9 +69,9 @@ class Extension {
   fixActiveHotkeyPressed() { this.fixActive(); }
 
   fixAuto(win) {
-    this.fix(this.config.filter(cfg => cfg.autoImmediate), win);
     GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
-      this.fix(this.config.filter(cfg => cfg.autoDelayed), win);
+      this.fix(this.config.filter(cfg => cfg.auto), win);
+      this.activate(win);
     });
   }
 
@@ -102,10 +98,12 @@ class Extension {
 
   unmax(win) { if (win.get_maximized()) { win.unmaximize(Meta.MaximizeFlags.BOTH); } }
 
-  // dark(win) {
-  //   GLib.spawn_command_line_async(
-  //     `xprop -f _GTK_THEME_VARIANT '8u' -set _GTK_THEME_VARIANT 'dark' -name '${win.get_title()}'`);
-  // }
+  activate(win) {
+    // https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
+    if (!Meta.is_wayland_compositor()) { return; }
+    const now = global.get_current_time(); const workspace = win.get_workspace();
+    if (workspace) { workspace.activate_with_focus(win, now); } else { win.activate(now); }
+  }
 
   center(win, width, height) {
     const desktop = this.getDesktop();

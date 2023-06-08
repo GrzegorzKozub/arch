@@ -8,7 +8,7 @@ Automated Arch Linux installation
 * There's at least 80 GB unassigned space on the disk for Arch
 * In Windows, real time is set to UTC following [this guide](https://wiki.archlinux.org/index.php/Time#UTC_in_Windows)
 
-## Archiso
+### Archiso
 
 1. Create a DOS partition table on the pendrive
 2. Add a FAT32 partition with the boot flag
@@ -120,6 +120,14 @@ Currently enabled on Intel. Kitty and Visual Studio Code run in native Wayland. 
 - Run `ln -s /dev/null /etc/udev/rules.d/61-gdm.rules`
 - Make sure there's no `WaylandEnable=false` in `/etc/gdm/custom.conf`
 - [Fix Gnome shell suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
+
+## Gnome Shell extensions
+
+To test on Wayland run `dbus-run-session -- env MUTTER_DEBUG_DUMMY_MODE_SPECS=2560x1440 gnome-shell --nested --wayland`.
+
+### References
+
+- [GJS](https://gjs.guide/)
 
 ## Windows VM
 
