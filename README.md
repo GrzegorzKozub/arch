@@ -93,33 +93,27 @@ Automated Arch Linux installation
 
 ## Wayland
 
-Currently enabled on Intel. Kitty and Visual Studio Code run in native Wayland. Brave, KeePassXC and Postman run on XWayland.
+Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code runs on native Wayland on drifetr and on XWayland on worker. Brave, KeePassXC and Postman run on XWayland.
 
 ### Problems
 
-- Gnome
-  - Last open window is not active due to [this bug](https://gitlab.gnome.org/GNOME/mutter/-/issues/2690)
-  - Text scaling factor is not supported by most apps
-  - Games stutter on Gnome (fine on Plasma)
-- Kitty
-  - Breaks when maximized with `hide_window_decorations` enabled
-- KeePassXC
-  - Auto-type is not supported
-  - Blurry when using fractional scaling (force into native Wayland with `QT_QPA_PLATFORM=wayland`)
-- Flameshot
-  - Doesn't work when using fractional scaling with two monitors due to [this bug](https://github.com/flameshot-org/flameshot/issues/564)
-- NVIDIA
-  - Game performance is worse compared to Xorg
-  - `nvidia-settings` is not compatible (coolbits, undervolting and overclocking)
-  - PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
-- `redshift` is not compatible (use `gammastep`)
+- Gnome text scaling factor not supported by the apps
+- KeePassXC auto-type not supported on native Wayland
+- KeePassXC blurry when using fractional scaling on XWayland (force native Wayland with `QT_QPA_PLATFORM=wayland`)
+- [Flameshot issue when using fractional scaling with two monitors](https://github.com/flameshot-org/flameshot/issues/564)
+- `dispwin` not compatible and `colormgr` most likely doesn't work on NVIDIA
+- `redshift` not compatible with Wayland and `gammastep` doesn't work on Gnome
+- Game performance worse compared to Xorg
+- Games stutter on Gnome (fine on Plasma)
+- `nvidia-settings` not compatible (coolbits, undervolting and overclocking)
+- PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
 
 ### Enabling on NVIDIA
 
 - Add `nvidia_drm.modeset=1` kernel module setting
 - Run `ln -s /dev/null /etc/udev/rules.d/61-gdm.rules`
 - Make sure there's no `WaylandEnable=false` in `/etc/gdm/custom.conf`
-- [Fix Gnome shell suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
+- [Fix Gnome Shell suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
 
 ## Gnome Shell extensions
 
