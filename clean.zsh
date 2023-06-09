@@ -12,3 +12,5 @@ set -e -o verbose
 # [[ -d ~/.cache/yarn ]] && rm -rf ~/.cache/yarn
 # [[ -f ~/.yarnrc ]] && rm ~/.yarnrc
 
+(exit 0)
+
