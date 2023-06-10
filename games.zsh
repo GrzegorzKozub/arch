@@ -128,8 +128,8 @@ cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
 
 # libstrangle
 
-paru -S --aur --noconfirm \
-  libstrangle-git
+# paru -S --aur --noconfirm \
+#   libstrangle-git
 
 # remove unused packages
 
