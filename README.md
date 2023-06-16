@@ -115,6 +115,10 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code runs o
 - Make sure there's no `WaylandEnable=false` in `/etc/gdm/custom.conf`
 - [Fix Gnome Shell suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
 
+## Sway
+
+As long as `xdg-desktop-portal-gnome` is installed, waybar [takes 30 seconds to start](xdg-desktop-portal-gnome).
+
 ## Gnome Shell extensions
 
 To test on Wayland run `dbus-run-session -- env MUTTER_DEBUG_DUMMY_MODE_SPECS=2560x1440 gnome-shell --nested --wayland`.
