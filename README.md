@@ -103,8 +103,6 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code runs o
 - [Flameshot issue when using fractional scaling with two monitors](https://github.com/flameshot-org/flameshot/issues/564)
 - `dispwin` not compatible and `colormgr` most likely doesn't work on NVIDIA
 - `redshift` not compatible with Wayland and `gammastep` doesn't work on Gnome
-- Game performance worse compared to Xorg
-- Games stutter on Gnome (fine on Plasma)
 - `nvidia-settings` not compatible (coolbits, undervolting and overclocking)
 - PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
 
@@ -198,6 +196,9 @@ Games
 
 ## Useful packages
 
+- Images
+  - `drawing`
+  - `eyedropper`
 - Fonts
   - `font-manager`
   - `gnome-characters`
