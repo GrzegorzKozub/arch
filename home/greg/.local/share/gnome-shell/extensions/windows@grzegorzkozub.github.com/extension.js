@@ -30,6 +30,7 @@ class Extension {
       { title: /.?Steam$/ },
     ];
     const small = [
+      { class: /.?drawing.?/ },
       { class: /.?Evince$/, auto: true },
       { title: /^Settings$/ },
       { title: /.?KeePassXC$/ },
