@@ -6,15 +6,14 @@ set -e -o verbose
 
 sudo pacman -S --noconfirm \
   sway \
+  swaybg \
+  swayidle swaylock \
+  waybar wofi \
   brightnessctl polkit \
   gammastep \
-  swaybg swayidle swaylock \
   pavucontrol \
-  waybar \
-  wofi \
   grim slurp xdg-desktop-portal-wlr \
-  swayimg \
-  foot
+  foot swayimg
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
