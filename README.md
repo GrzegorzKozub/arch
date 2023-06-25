@@ -113,9 +113,14 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code runs o
 - Make sure there's no `WaylandEnable=false` in `/etc/gdm/custom.conf`
 - [Fix Gnome Shell suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
 
-## Sway
+## XDG Desktop Portal
 
-As long as `xdg-desktop-portal-gnome` is installed, waybar [takes 30 seconds to start](xdg-desktop-portal-gnome).
+XDP implementations conflict each other so only one should be installed at the same time:
+
+- Gnome - `xdg-desktop-portal-gnome` and `xdg-desktop-portal-gtk`
+- KDE - `xdg-desktop-portal-kde`
+- Hyprland - `xdg-desktop-portal-hyprland`
+- Sway - `xdg-desktop-portal-wlr`
 
 ## Gnome Shell extensions
 

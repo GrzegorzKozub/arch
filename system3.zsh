@@ -65,6 +65,7 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
 
   sudo pacman -S --noconfirm \
     gnome-menus gnome-shell gnome-shell-extensions gnome-keyring gvfs gvfs-smb xdg-user-dirs-gtk \
+    xdg-desktop-portal-gnome xdg-desktop-portal-gtk \
     eog evince gnome-calculator gnome-control-center gnome-system-monitor gnome-terminal gnome-tweak-tool nautilus \
     gnome-shell-extension-appindicator
 

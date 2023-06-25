@@ -5,6 +5,7 @@ set -e -o verbose
 # packages
 
 sudo pacman -S --noconfirm \
+  xdg-desktop-portal-wlr \
   sway \
   swaybg \
   swayidle swaylock \
@@ -12,8 +13,9 @@ sudo pacman -S --noconfirm \
   brightnessctl polkit \
   gammastep \
   pavucontrol \
-  grim slurp xdg-desktop-portal-wlr \
-  foot swayimg
+  grim slurp \
+  foot \
+  swayimg
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
