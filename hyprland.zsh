@@ -8,7 +8,8 @@ sudo pacman -S --noconfirm \
   xdg-desktop-portal-hyprland \
   hyprland \
   hyprpaper \
-  wofi \
+  waybar wofi \
+  gammastep \
   grim slurp \
   foot
 
