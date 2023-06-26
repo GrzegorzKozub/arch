@@ -119,11 +119,8 @@ systemctl --user start gamemoded.service
 # mangohud
 
 sudo pacman -S --noconfirm \
-  python-distutils-extra
-
-paru -S --aur --noconfirm \
   lib32-mangohud \
-  mangohud-common mangohud
+  mangohud
 
 [[ -d $XDG_DATA_HOME/mangohud ]] || mkdir -p $XDG_DATA_HOME/mangohud
 cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
