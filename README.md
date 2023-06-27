@@ -199,9 +199,7 @@ Games
 - [proton-ge-custom](https://github.com/GloriousEggroll/proton-ge-custom)
 - [vkd3d-proton](https://github.com/HansKristian-Work/vkd3d-proton)
 
-## Links
-
-### Apps
+## More packages
 
 - Images
   - `drawing`
@@ -209,10 +207,4 @@ Games
 - Fonts
   - `font-manager`
   - `gnome-characters`
-
-### GTK themes
-
-- [Fluent](https://github.com/vinceliuice/Fluent-gtk-theme)
-- [Orchis](https://github.com/vinceliuice/Orchis-theme)
-- [Vimix](https://github.com/vinceliuice/vimix-gtk-themes)
 
