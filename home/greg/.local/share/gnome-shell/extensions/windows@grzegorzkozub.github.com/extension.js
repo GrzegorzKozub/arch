@@ -101,7 +101,7 @@ class Extension {
 
   activate(win) {
     // https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
-    if (!Meta.is_wayland_compositor()) { return; }
+    // if (!Meta.is_wayland_compositor()) { return; }
     const now = global.get_current_time(); const workspace = win.get_workspace();
     if (workspace) { workspace.activate_with_focus(win, now); } else { win.activate(now); }
   }
