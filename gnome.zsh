@@ -6,7 +6,7 @@ set -e -o verbose
 
 DIR=$XDG_DATA_HOME/backgrounds
 
-[[ -d $DIR ]] && rm -rf $DIR
+[[ -L $DIR ]] && rm -rf $DIR
 ln -s ~/code/walls $DIR
 
 FILE="file:///home/$USER/.local/share/backgrounds/women.jpg"
