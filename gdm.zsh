@@ -41,7 +41,7 @@ TMP="$(mktemp -d)"
 
 mkdir -p $TMP/theme/icons/scalable/actions
 mkdir -p $TMP/theme/icons/scalable/status
-cp `dirname $0`/home/$USER/.local/share/backgrounds/women.jpg $TMP/theme/
+cp ~/code/walls/women.jpg $TMP/theme/
 
 for RES in `gresource list $GS/$GST`; do
   gresource extract $GS/$GST $RES > $TMP/${RES#\/org\/gnome\/shell/}

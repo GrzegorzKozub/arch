@@ -29,6 +29,9 @@ sudo umount -R /mnt
 [[ -d ~/code/arch ]] && rm -rf ~/code/arch
 git clone git@github.com:GrzegorzKozub/arch.git ~/code/arch
 
+[[ -d ~/code/walls ]] && rm -rf ~/code/walls
+git clone git@github.com:GrzegorzKozub/walls.git ~/code/walls
+
 [[ -d ~/code/dotfiles ]] && rm -rf ~/code/dotfiles
 git clone --recursive git@github.com:GrzegorzKozub/dotfiles.git ~/code/dotfiles
 

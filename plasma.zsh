@@ -392,7 +392,7 @@ for FILE ('plasmashellrc' 'plasma-org.kde.plasma.desktop-appletsrc')
 DIR=$XDG_DATA_HOME/wallpapers
 
 [[ -d $DIR ]] && rm -rf $DIR
-ln -s $(dirname $(realpath $0))/home/$USER/.local/share/backgrounds $DIR
+ln -s ~/code/walls $DIR
 
 plasma-apply-wallpaperimage $DIR/women.jpg
 
