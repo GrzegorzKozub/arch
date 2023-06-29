@@ -71,12 +71,13 @@ class Extension {
   fixAllHotkeyPressed() { this.fixAll(); }
   fixActiveHotkeyPressed() { this.fixActive(); }
   tileLeftHotkeyPressed() { this.tileLeft(); }
-  tileRightHotkeyPressed() { }
+  tileRightHotkeyPressed() { this.tileRight(); }
 
   fixAuto(win) {
     GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
       this.fix(this.config.filter(cfg => cfg.auto), win);
       this.activate(win);
+      return GLib.SOURCE_REMOVE;
     });
   }
 
@@ -97,38 +98,9 @@ class Extension {
     cfg.fix(win);
   }
 
-  big(win) {
-
-
-
-
-win.get_compositor_private().remove_all_transitions();
-  Main.wm._prepareAnimationInfo(
-                global.window_manager,
-                win.get_compositor_private(),
-                win.get_frame_rect().copy(),
-                Meta.SizeChange.MAXIMIZE
-            );
-
-    this.unmax(win); if (this.uhd()) { this.center(win, 12, 14); } else { this.center(win, 14, 14.5); } }
-  medium(win) { this.unmax(win); if (this.uhd()) { this.center(win, 9, 12); } else { this.center(win, 12, 12.5); } }
-  small(win) { this.unmax(win); if (this.uhd()) { this.center(win, 6, 10); } else { this.center(win, 10, 10.5); } }
-
-  unmax(win) { if (win.get_maximized()) {
-
-
- // win.get_compositor_private().remove_all_transitions();
- //  Main.wm._prepareAnimationInfo(
- //                global.window_manager,
- //                win.get_compositor_private(),
- //                win.get_frame_rect().copy(),
- //                Meta.SizeChange.MAXIMIZE
- //            );
-
-
-
-
-    win.unmaximize(win.get_maximized()); } }
+  big(win) { if (this.uhd()) { this.center(win, 12, 14); } else { this.center(win, 14, 14.5); } }
+  medium(win) { if (this.uhd()) { this.center(win, 9, 12); } else { this.center(win, 12, 12.5); } }
+  small(win) { if (this.uhd()) { this.center(win, 6, 10); } else { this.center(win, 10, 10.5); } }
 
   activate(win) {
     // https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
@@ -138,63 +110,67 @@ win.get_compositor_private().remove_all_transitions();
   }
 
   center(win, width, height) {
-
-//   win.unmake_above();
-//         win.unminimize();
-// win.unmake_fullscreen();
-
     const desktop = this.getDesktop();
     const step = 16;
-    // animation
- // win.get_compositor_private().remove_all_transitions();
- //  Main.wm._prepareAnimationInfo(
- //                global.window_manager,
- //                win.get_compositor_private(),
- //                win.get_frame_rect().copy(),
- //                Meta.SizeChange.MAXIMIZE
- //            );
-
- win.move_frame(true, ((desktop.width / step) * ((step - width) / 2)) + desktop.x, ((desktop.height / step) * ((step - height) / 2)) + desktop.y);
-
-    win.move_resize_frame(
-      0,
+    this.move(
+      win,
       ((desktop.width / step) * ((step - width) / 2)) + desktop.x,
       ((desktop.height / step) * ((step - height) / 2)) + desktop.y,
       (desktop.width / step) * width,
       (desktop.height / step) * height);
   }
 
-  uhd() {
-    const monitor = this.getMonitor();
-    return monitor.width === 3840 && monitor.height === 2160;
+  async move(win, x, y, width, height) {
+    await this.unmax(win);
+    this.animate(win);
+    win.move_resize_frame(true, x, y, width, height);
   }
+
+  unmax(win) {
+    return new Promise(resolve => {
+      const max = win.get_maximized();
+      if (max) {
+        win.unmaximize(max);
+        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => { resolve(); return GLib.SOURCE_REMOVE; });
+      } else { resolve(); }
+    });
+  }
+
+  animate(win) {
+    const compositor = win.get_compositor_private();
+    compositor.remove_all_transitions();
+    Main.wm._prepareAnimationInfo(
+      global.window_manager,
+      compositor,
+      win.get_frame_rect().copy(),
+      Meta.SizeChange.MAXIMIZE);
+  }
+
+  uhd() { const monitor = this.getMonitor(); return monitor.width === 3840 && monitor.height === 2160; }
 
   tileLeft() {
     const win = global.display.get_focus_window();
     const desktop = this.getDesktop();
     const gap = 20;
-
-
-    // animation
-    //
-      // win.move_frame(true, x, y);
-  Main.wm._prepareAnimationInfo(
-                global.window_manager,
-                win.get_compositor_private(),
-                win.get_frame_rect().copy(),
-                Meta.SizeChange.MAXIMIZE
-            );
-
-
-
-    win.move_resize_frame(
-      0,
+    this.move(
+      win,
       desktop.x + gap,
       desktop.y + gap,
-      (desktop.width / 2) - (gap / 2),
+      (desktop.width / 2) - (gap * 1.5),
       (desktop.height) - (gap * 2));
   }
 
+  tileRight() {
+    const win = global.display.get_focus_window();
+    const desktop = this.getDesktop();
+    const gap = 20;
+    this.move(
+      win,
+      (desktop.width / 2) + desktop.x + (gap / 2),
+      desktop.y + gap,
+      (desktop.width / 2) - (gap * 1.5),
+      (desktop.height) - (gap * 2));
+  }
   getMonitor() { return global.display.get_monitor_geometry(global.display.get_primary_monitor()); }
   getDesktop() { return Main.layoutManager.getWorkAreaForMonitor(global.display.get_primary_monitor()); }
 }
