@@ -13,6 +13,18 @@
       </default>
       <summary>fix-active</summary>
     </key>
+    <key name="tile-left" type="as">
+      <default>
+        <![CDATA[['<Alt><Super>Left']]]>
+      </default>
+      <summary>tile-left</summary>
+    </key>
+    <key name="tile-right" type="as">
+      <default>
+        <![CDATA[['<Alt><Super>Right']]]>
+      </default>
+      <summary>tile-right</summary>
+    </key>
   </schema>
 </schemalist>
 
