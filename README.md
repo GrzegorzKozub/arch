@@ -129,6 +129,7 @@ To test on Wayland run `dbus-run-session -- env MUTTER_DEBUG_DUMMY_MODE_SPECS=25
 ### References
 
 - [GJS](https://gjs.guide/)
+- [GNOME JavaScript Docs](https://gjs-docs.gnome.org/)
 
 ## Windows VM
 
