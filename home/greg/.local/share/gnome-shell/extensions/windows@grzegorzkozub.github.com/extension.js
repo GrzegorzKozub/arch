@@ -111,23 +111,66 @@ class Extension {
     if (workspace) { workspace.activate_with_focus(win, now); } else { win.activate(now); }
   }
 
-  big(win) { if (this.uhd(win)) { this.center(win, 12, 14); } else { this.center(win, 14, 14.5); } }
-  medium(win) { if (this.uhd(win)) { this.center(win, 9, 12); } else { this.center(win, 12, 12.5); } }
-  small(win) { if (this.uhd(win)) { this.center(win, 6, 10); } else { this.center(win, 10, 10.5); } }
+  big(win) { if (this.onUhd(win)) { this.center(win, 12, 14); } else { this.center(win, 14, 14.5); } }
+  medium(win) { if (this.onUhd(win)) { this.center(win, 9, 12); } else { this.center(win, 12, 12.5); } }
+  small(win) { if (this.onUhd(win)) { this.center(win, 6, 10); } else { this.center(win, 10, 10.5); } }
 
-  uhd(win) { const monitor = this.getMonitor(win); return monitor.width === 3840 && monitor.height === 2160; }
+  onUhd(win) { const monitor = this.getMonitor(win); return monitor.width === 3840 && monitor.height === 2160; }
 
-  center(win, width, height) { this.move(win, this.centerTile(win, width, height)); }
+  center(win, width, height) { this.move(win, this.getCenterTile(win, width, height)); }
 
   tileLeft() {
     const win = this.getWindow();
-    const now = win.get_frame_rect();
-    if (now.equal(this.leftTile(win))) { return; }
-    // in progress
-    this.move(win, this.leftTile(win));
+    const now = this.getCurrentTile(win);
+    const down = this.getDownTile(win);
+    const up = this.getUpTile(win);
+    const left = this.getLeftTile(win);
+    const downLeft = this.getDownLeftTile(win);
+    const upLeft = this.getUpLeftTile(win);
+    if (now.equal(down)) { this.move(win, downLeft); return; }
+    if (now.equal(up)) { this.move(win, upLeft); return; }
+    if (now.equal(left) || now.equal(downLeft) || now.equal(upLeft)) { return; }
+    this.move(win, left);
   }
 
-  centerTile(win, width, height) {
+  tileDown() {
+    const win = this.getWindow();
+    const now = this.getCurrentTile(win);
+    const down = this.getDownTile(win);
+    const up = this.getUpTile(win);
+    const left = this.getLeftTile(win);
+    const downLeft = this.getDownLeftTile(win);
+    const upLeft = this.getUpLeftTile(win);
+    if (now.equal(left)) { this.move(win, downLeft); return; }
+    if (now.equal(down) || now.equal(downLeft)) { return; }
+    if (now.equal(upLeft)) { this.move(win, left); return; }
+    this.move(win, down);
+  }
+
+  tileUp() {
+    const win = this.getWindow();
+    const now = this.getCurrentTile(win);
+    const down = this.getDownTile(win);
+    const up = this.getUpTile(win);
+    const left = this.getLeftTile(win);
+    const downLeft = this.getDownLeftTile(win);
+    const upLeft = this.getUpLeftTile(win);
+    if (now.equal(down)) { this.move(win, up); return; }
+    if (now.equal(left)) { this.move(win, upLeft); return; }
+    if (now.equal(downLeft)) { this.move(win, left); return; }
+    if (now.equal(up) || now.equal(upLeft)) { return; }
+    this.move(win, up);
+  }
+
+  tileRight() { }
+
+  getCurrentTile(win) {
+    const tile = win.get_frame_rect();
+    if (/.?KeePassXC$/.test(win.title)) { tile.width++; }
+    return tile;
+  }
+
+  getCenterTile(win, width, height) {
     const desktop = this.getDesktop(win);
     const tile = new Meta.Rectangle();
     tile.x = ((desktop.width / this.step) * ((this.step - width) / 2)) + desktop.x;
@@ -137,7 +180,27 @@ class Extension {
     return tile;
   }
 
-  leftTile(win) {
+  getDownTile(win) {
+    const desktop = this.getDesktop(win);
+    const tile = new Meta.Rectangle();
+    tile.x = desktop.x + this.gap;
+    tile.y = desktop.y + (desktop.height / 2) + (this.gap * 0.5);
+    tile.width = desktop.width - (this.gap * 2);
+    tile.height = (desktop.height / 2) - (this.gap * 1.5);
+    return tile;
+  }
+
+  getUpTile(win) {
+    const desktop = this.getDesktop(win);
+    const tile = new Meta.Rectangle();
+    tile.x = desktop.x + this.gap;
+    tile.y = desktop.y + this.gap;
+    tile.width = desktop.width - (this.gap * 2);
+    tile.height = (desktop.height / 2) - (this.gap * 1.5);
+    return tile;
+  }
+
+  getLeftTile(win) {
     const desktop = this.getDesktop(win);
     const tile = new Meta.Rectangle();
     tile.x = desktop.x + this.gap;
@@ -147,13 +210,33 @@ class Extension {
     return tile;
   }
 
-  rightTile(win) {
+  getRightTile(win) {
     const desktop = this.getDesktop(win);
     const tile = new Meta.Rectangle();
     tile.x = desktop.x + (desktop.width * 0.5) + (this.gap * 0.5);
     tile.y = desktop.y + this.gap;
     tile.width = (desktop.width / 2) - (this.gap * 1.5);
     tile.height = (desktop.height) - (this.gap * 2);
+    return tile;
+  }
+
+  getDownLeftTile(win) {
+    const desktop = this.getDesktop(win);
+    const tile = new Meta.Rectangle();
+    tile.x = desktop.x + this.gap;
+    tile.y = desktop.y + (desktop.height / 2) + (this.gap * 0.5);
+    tile.width = (desktop.width / 2) - (this.gap * 1.5);
+    tile.height = (desktop.height / 2) - (this.gap * 1.5);
+    return tile;
+  }
+
+  getUpLeftTile(win) {
+    const desktop = this.getDesktop(win);
+    const tile = new Meta.Rectangle();
+    tile.x = desktop.x + this.gap;
+    tile.y = desktop.y + this.gap;
+    tile.width = (desktop.width / 2) - (this.gap * 1.5);
+    tile.height = (desktop.height / 2) - (this.gap * 1.5);
     return tile;
   }
 
@@ -230,6 +313,8 @@ class Extension {
   getWindow() { return global.display.get_focus_window(); }
   getDesktop(win) { return Main.layoutManager.getWorkAreaForMonitor(win.get_monitor()); }
   getMonitor(win) { return global.display.get_monitor_geometry(win.get_monitor()); }
+
+  // log(rect) { console.log(`${rect.x} ${rect.y} ${rect.width} ${rect.height}`); }
 }
 
 // eslint-disable-next-line no-unused-vars
