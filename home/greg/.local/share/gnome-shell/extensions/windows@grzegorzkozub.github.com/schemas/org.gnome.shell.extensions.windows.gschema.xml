@@ -2,29 +2,28 @@
 <schemalist>
   <schema id="org.gnome.shell.extensions.windows" path="/org/gnome/shell/extensions/windows/">
     <key name="fix-all" type="as">
-      <default>
-<![CDATA[['<Ctrl><Super>O']]]>
-      </default>
+      <default><![CDATA[['<Ctrl><Super>O']]]></default>
       <summary>fix-all</summary>
     </key>
     <key name="fix-active" type="as">
-      <default>
-<![CDATA[['<Ctrl><Super>W']]]>
-      </default>
+      <default><![CDATA[['<Ctrl><Super>W']]]></default>
       <summary>fix-active</summary>
     </key>
     <key name="tile-left" type="as">
-      <default>
-        <![CDATA[['<Alt><Super>Left']]]>
-      </default>
+      <default><![CDATA[['<Ctrl><Super>H']]]></default>
       <summary>tile-left</summary>
     </key>
+    <key name="tile-down" type="as">
+      <default><![CDATA[['<Ctrl><Super>J']]]></default>
+      <summary>tile-down</summary>
+    </key>
+    <key name="tile-up" type="as">
+      <default><![CDATA[['<Ctrl><Super>K']]]></default>
+      <summary>tile-up</summary>
+    </key>
     <key name="tile-right" type="as">
-      <default>
-        <![CDATA[['<Alt><Super>Right']]]>
-      </default>
+      <default><![CDATA[['<Ctrl><Super>L']]]></default>
       <summary>tile-right</summary>
     </key>
   </schema>
 </schemalist>
-

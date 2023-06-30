@@ -9,6 +9,8 @@ const Shell = imports.gi.Shell;
 class Extension {
   windowCreatedHandler;
   config = [];
+  step = 16;
+  gap = 20;
 
   constructor() {
     const big = [
@@ -50,6 +52,8 @@ class Extension {
     this.addKeybinding('fix-all', this.fixAllHotkeyPressed);
     this.addKeybinding('fix-active', this.fixActiveHotkeyPressed);
     this.addKeybinding('tile-left', this.tileLeftHotkeyPressed);
+    this.addKeybinding('tile-down', this.tileDownHotkeyPressed);
+    this.addKeybinding('tile-up', this.tileUpHotkeyPressed);
     this.addKeybinding('tile-right', this.tileRightHotkeyPressed);
   }
 
@@ -71,6 +75,8 @@ class Extension {
   fixAllHotkeyPressed() { this.fixAll(); }
   fixActiveHotkeyPressed() { this.fixActive(); }
   tileLeftHotkeyPressed() { this.tileLeft(); }
+  tileDownHotkeyPressed() { this.tileDown(); }
+  tileUpHotkeyPressed() { this.tileUp(); }
   tileRightHotkeyPressed() { this.tileRight(); }
 
   fixAuto(win) {
@@ -86,7 +92,7 @@ class Extension {
   }
 
   fixActive() {
-    const win = global.display.get_focus_window();
+    const win = this.getWindow();
     if (win) { this.fix(this.config, win); }
   }
 
@@ -98,10 +104,6 @@ class Extension {
     cfg.fix(win);
   }
 
-  big(win) { if (this.uhd()) { this.center(win, 12, 14); } else { this.center(win, 14, 14.5); } }
-  medium(win) { if (this.uhd()) { this.center(win, 9, 12); } else { this.center(win, 12, 12.5); } }
-  small(win) { if (this.uhd()) { this.center(win, 6, 10); } else { this.center(win, 10, 10.5); } }
-
   activate(win) {
     // https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
     // if (!Meta.is_wayland_compositor()) { return; }
@@ -109,21 +111,104 @@ class Extension {
     if (workspace) { workspace.activate_with_focus(win, now); } else { win.activate(now); }
   }
 
-  center(win, width, height) {
-    const desktop = this.getDesktop();
-    const step = 16;
-    this.move(
-      win,
-      ((desktop.width / step) * ((step - width) / 2)) + desktop.x,
-      ((desktop.height / step) * ((step - height) / 2)) + desktop.y,
-      (desktop.width / step) * width,
-      (desktop.height / step) * height);
+  big(win) { if (this.uhd(win)) { this.center(win, 12, 14); } else { this.center(win, 14, 14.5); } }
+  medium(win) { if (this.uhd(win)) { this.center(win, 9, 12); } else { this.center(win, 12, 12.5); } }
+  small(win) { if (this.uhd(win)) { this.center(win, 6, 10); } else { this.center(win, 10, 10.5); } }
+
+  uhd(win) { const monitor = this.getMonitor(win); return monitor.width === 3840 && monitor.height === 2160; }
+
+  center(win, width, height) { this.move(win, this.centerTile(win, width, height)); }
+
+  tileLeft() {
+    const win = this.getWindow();
+    const now = win.get_frame_rect();
+    if (now.equal(this.leftTile(win))) { return; }
+    // in progress
+    this.move(win, this.leftTile(win));
   }
 
-  async move(win, x, y, width, height) {
+  centerTile(win, width, height) {
+    const desktop = this.getDesktop(win);
+    const tile = new Meta.Rectangle();
+    tile.x = ((desktop.width / this.step) * ((this.step - width) / 2)) + desktop.x;
+    tile.y = ((desktop.height / this.step) * ((this.step - height) / 2)) + desktop.y;
+    tile.width = (desktop.width / this.step) * width;
+    tile.height = (desktop.height / this.step) * height;
+    return tile;
+  }
+
+  leftTile(win) {
+    const desktop = this.getDesktop(win);
+    const tile = new Meta.Rectangle();
+    tile.x = desktop.x + this.gap;
+    tile.y = desktop.y + this.gap;
+    tile.width = (desktop.width / 2) - (this.gap * 1.5);
+    tile.height = (desktop.height) - (this.gap * 2);
+    return tile;
+  }
+
+  rightTile(win) {
+    const desktop = this.getDesktop(win);
+    const tile = new Meta.Rectangle();
+    tile.x = desktop.x + (desktop.width * 0.5) + (this.gap * 0.5);
+    tile.y = desktop.y + this.gap;
+    tile.width = (desktop.width / 2) - (this.gap * 1.5);
+    tile.height = (desktop.height) - (this.gap * 2);
+    return tile;
+  }
+
+  // dirty start
+
+  // tileUp() {
+  //   log('tileup');
+  //   const win = this.getWindow();
+  //   const r = this.isRight(win) ? this.upRightRect(win) : this.rightRect(win);
+  //   this.move(win, r.x, r.y, r.width, r.height);
+  // }
+  //
+  // tileDown() {
+  //   log('tiledown');
+  //   const win = this.getWindow();
+  //   const r = this.isRight(win) ? this.upRightRect(win) : this.rightRect(win);
+  //   this.move(win, r.x, r.y, r.width, r.height);
+  // }
+  //
+  // tileRight() {
+  //   const win = this.getWindow();
+  //   const r = this.rightRect(win);
+  //   this.move(win, r.x, r.y, r.width, r.height);
+  // }
+  //
+  //
+  // upRightRect(win) {
+  //   const desktop = this.getDesktop(win);
+  //   const gap = 20;
+  //   const r = new Meta.Rectangle();
+  //   r.x = (desktop.width / 2) + desktop.x + (gap / 2);
+  //   r.y = desktop.y + gap;
+  //   r.width = (desktop.width / 2) - (gap * 1.5);
+  //   r.height = (desktop.height / 2) - (gap * 1.5);
+  //   return r;
+  // }
+  //
+  // rightRect(win) {
+  //   const desktop = this.getDesktop(win);
+  //   const gap = 20;
+  //   const r = new Meta.Rectangle();
+  //   r.x = (desktop.width / 2) + desktop.x + (gap / 2);
+  //   r.y = desktop.y + gap;
+  //   r.width = (desktop.width / 2) - (gap * 1.5);
+  //   r.height = (desktop.height) - (gap * 2);
+  //   return r;
+  // }
+
+  // dirty end
+
+  async move(win, tile) {
     await this.unmax(win);
+    if (!win.allows_move() || !win.allows_resize() || win.is_skip_taskbar()) { return; }
     this.animate(win);
-    win.move_resize_frame(true, x, y, width, height);
+    win.move_resize_frame(false, tile.x, tile.y, tile.width, tile.height);
   }
 
   unmax(win) {
@@ -139,40 +224,12 @@ class Extension {
   animate(win) {
     const compositor = win.get_compositor_private();
     compositor.remove_all_transitions();
-    Main.wm._prepareAnimationInfo(
-      global.window_manager,
-      compositor,
-      win.get_frame_rect().copy(),
-      Meta.SizeChange.MAXIMIZE);
+    Main.wm._prepareAnimationInfo(global.window_manager, compositor, win.get_frame_rect(), Meta.SizeChange.MAXIMIZE);
   }
 
-  uhd() { const monitor = this.getMonitor(); return monitor.width === 3840 && monitor.height === 2160; }
-
-  tileLeft() {
-    const win = global.display.get_focus_window();
-    const desktop = this.getDesktop();
-    const gap = 20;
-    this.move(
-      win,
-      desktop.x + gap,
-      desktop.y + gap,
-      (desktop.width / 2) - (gap * 1.5),
-      (desktop.height) - (gap * 2));
-  }
-
-  tileRight() {
-    const win = global.display.get_focus_window();
-    const desktop = this.getDesktop();
-    const gap = 20;
-    this.move(
-      win,
-      (desktop.width / 2) + desktop.x + (gap / 2),
-      desktop.y + gap,
-      (desktop.width / 2) - (gap * 1.5),
-      (desktop.height) - (gap * 2));
-  }
-  getMonitor() { return global.display.get_monitor_geometry(global.display.get_primary_monitor()); }
-  getDesktop() { return Main.layoutManager.getWorkAreaForMonitor(global.display.get_primary_monitor()); }
+  getWindow() { return global.display.get_focus_window(); }
+  getDesktop(win) { return Main.layoutManager.getWorkAreaForMonitor(win.get_monitor()); }
+  getMonitor(win) { return global.display.get_monitor_geometry(win.get_monitor()); }
 }
 
 // eslint-disable-next-line no-unused-vars
