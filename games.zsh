@@ -132,7 +132,7 @@ cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
 
 # remove unused packages
 
-sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
+# sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
 
 # dotfiles
 
