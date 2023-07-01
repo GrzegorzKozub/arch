@@ -3,7 +3,6 @@
   "description": "panel",
   "uuid": "panel@grzegorzkozub.github.com",
   "shell-version": [
-    "43",
     "44"
   ]
 }

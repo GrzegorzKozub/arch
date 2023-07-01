@@ -9,8 +9,6 @@ const Shell = imports.gi.Shell;
 class Extension {
   windowCreatedHandler;
   config = [];
-  step = 16;
-  gap = 20;
 
   constructor() {
     const big = [
@@ -52,9 +50,9 @@ class Extension {
     this.addKeybinding('fix-all', this.fixAllHotkeyPressed);
     this.addKeybinding('fix-active', this.fixActiveHotkeyPressed);
     this.addKeybinding('tile-left', this.tileLeftHotkeyPressed);
+    this.addKeybinding('tile-right', this.tileRightHotkeyPressed);
     this.addKeybinding('tile-down', this.tileDownHotkeyPressed);
     this.addKeybinding('tile-up', this.tileUpHotkeyPressed);
-    this.addKeybinding('tile-right', this.tileRightHotkeyPressed);
   }
 
   disable() {
@@ -75,9 +73,9 @@ class Extension {
   fixAllHotkeyPressed() { this.fixAll(); }
   fixActiveHotkeyPressed() { this.fixActive(); }
   tileLeftHotkeyPressed() { this.tileLeft(); }
+  tileRightHotkeyPressed() { this.tileRight(); }
   tileDownHotkeyPressed() { this.tileDown(); }
   tileUpHotkeyPressed() { this.tileUp(); }
-  tileRightHotkeyPressed() { this.tileRight(); }
 
   fixAuto(win) {
     GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
@@ -119,173 +117,86 @@ class Extension {
 
   center(win, width, height) { this.move(win, this.getCenterTile(win, width, height)); }
 
+  getCenterTile(win, width, height) {
+    const step = 16;
+    const desktop = this.getDesktop(win);
+    return new Tile(
+      ((desktop.width / step) * ((step - width) / 2)) + desktop.x,
+      ((desktop.height / step) * ((step - height) / 2)) + desktop.y,
+      (desktop.width / step) * width,
+      (desktop.height / step) * height);
+  }
+
   tileLeft() {
     const win = this.getWindow();
-    const now = this.getCurrentTile(win);
-    const down = this.getDownTile(win);
-    const up = this.getUpTile(win);
-    const left = this.getLeftTile(win);
-    const downLeft = this.getDownLeftTile(win);
-    const upLeft = this.getUpLeftTile(win);
-    if (now.equal(down)) { this.move(win, downLeft); return; }
-    if (now.equal(up)) { this.move(win, upLeft); return; }
-    if (now.equal(left) || now.equal(downLeft) || now.equal(upLeft)) { return; }
-    this.move(win, left);
+    const tiles = this.getTiles(win);
+    const now = win.get_frame_rect();
+    if (tiles.left.equal(now) || tiles.leftDown.equal(now) || tiles.leftUp.equal(now)) { return; }
+    if (tiles.down.equal(now)) { this.move(win, tiles.leftDown); return; }
+    if (tiles.up.equal(now)) { this.move(win, tiles.leftUp); return; }
+    if (tiles.rightDown.equal(now)) { this.move(win, tiles.down); return; }
+    if (tiles.rightUp.equal(now)) { this.move(win, tiles.up); return; }
+    this.move(win, tiles.left);
+  }
+
+  tileRight() {
+    const win = this.getWindow();
+    const tiles = this.getTiles(win);
+    const now = win.get_frame_rect();
+    if (tiles.right.equal(now) || tiles.rightDown.equal(now) || tiles.rightUp.equal(now)) { return; }
+    if (tiles.down.equal(now)) { this.move(win, tiles.rightDown); return; }
+    if (tiles.up.equal(now)) { this.move(win, tiles.rightUp); return; }
+    if (tiles.leftDown.equal(now)) { this.move(win, tiles.down); return; }
+    if (tiles.leftUp.equal(now)) { this.move(win, tiles.up); return; }
+    this.move(win, tiles.right);
   }
 
   tileDown() {
     const win = this.getWindow();
-    const now = this.getCurrentTile(win);
-    const down = this.getDownTile(win);
-    const up = this.getUpTile(win);
-    const left = this.getLeftTile(win);
-    const downLeft = this.getDownLeftTile(win);
-    const upLeft = this.getUpLeftTile(win);
-    if (now.equal(left)) { this.move(win, downLeft); return; }
-    if (now.equal(down) || now.equal(downLeft)) { return; }
-    if (now.equal(upLeft)) { this.move(win, left); return; }
-    this.move(win, down);
+    const tiles = this.getTiles(win);
+    const now = win.get_frame_rect();
+    if (tiles.down.equal(now) || tiles.leftDown.equal(now) || tiles.rightDown.equal(now)) { return; }
+    if (tiles.left.equal(now)) { this.move(win, tiles.leftDown); return; }
+    if (tiles.right.equal(now)) { this.move(win, tiles.rightDown); return; }
+    if (tiles.leftUp.equal(now)) { this.move(win, tiles.left); return; }
+    if (tiles.rightUp.equal(now)) { this.move(win, tiles.right); return; }
+    this.move(win, tiles.down);
   }
 
   tileUp() {
     const win = this.getWindow();
-    const now = this.getCurrentTile(win);
-    const down = this.getDownTile(win);
-    const up = this.getUpTile(win);
-    const left = this.getLeftTile(win);
-    const downLeft = this.getDownLeftTile(win);
-    const upLeft = this.getUpLeftTile(win);
-    if (now.equal(down)) { this.move(win, up); return; }
-    if (now.equal(left)) { this.move(win, upLeft); return; }
-    if (now.equal(downLeft)) { this.move(win, left); return; }
-    if (now.equal(up) || now.equal(upLeft)) { return; }
-    this.move(win, up);
+    const tiles = this.getTiles(win);
+    const now = win.get_frame_rect();
+    if (tiles.up.equal(now) || tiles.leftUp.equal(now) || tiles.rightUp.equal(now)) { return; }
+    if (tiles.left.equal(now)) { this.move(win, tiles.leftUp); return; }
+    if (tiles.right.equal(now)) { this.move(win, tiles.rightUp); return; }
+    if (tiles.leftDown.equal(now)) { this.move(win, tiles.left); return; }
+    if (tiles.rightDown.equal(now)) { this.move(win, tiles.right); return; }
+    this.move(win, tiles.up);
   }
 
-  tileRight() { }
-
-  getCurrentTile(win) {
-    const tile = win.get_frame_rect();
-    if (/.?KeePassXC$/.test(win.title)) { tile.width++; }
-    return tile;
-  }
-
-  getCenterTile(win, width, height) {
+  getTiles(win) {
+    const gap = 20;
     const desktop = this.getDesktop(win);
-    const tile = new Meta.Rectangle();
-    tile.x = ((desktop.width / this.step) * ((this.step - width) / 2)) + desktop.x;
-    tile.y = ((desktop.height / this.step) * ((this.step - height) / 2)) + desktop.y;
-    tile.width = (desktop.width / this.step) * width;
-    tile.height = (desktop.height / this.step) * height;
-    return tile;
+    const xLeft = desktop.x + gap;
+    const xRight = desktop.x + (desktop.width / 2) + (gap * 0.5);
+    const yDown = desktop.y + (desktop.height / 2) + (gap * 0.5);
+    const yUp = desktop.y + gap;
+    const widthFull = desktop.width - (gap * 2);
+    const widthHalf = (desktop.width / 2) - (gap * 1.5);
+    const heightFull = (desktop.height) - (gap * 2);
+    const heightHalf = (desktop.height / 2) - (gap * 1.5);
+    return {
+      left: new Tile(xLeft, yUp, widthHalf, heightFull),
+      right: new Tile(xRight, yUp, widthHalf, heightFull),
+      down: new Tile(xLeft, yDown, widthFull, heightHalf),
+      up: new Tile(xLeft, yUp, widthFull, heightHalf),
+      leftDown: new Tile(xLeft, yDown, widthHalf, heightHalf),
+      leftUp: new Tile(xLeft, yUp, widthHalf, heightHalf),
+      rightDown: new Tile(xRight, yDown, widthHalf, heightHalf),
+      rightUp: new Tile(xRight, yUp, widthHalf, heightHalf)
+    };
   }
-
-  getDownTile(win) {
-    const desktop = this.getDesktop(win);
-    const tile = new Meta.Rectangle();
-    tile.x = desktop.x + this.gap;
-    tile.y = desktop.y + (desktop.height / 2) + (this.gap * 0.5);
-    tile.width = desktop.width - (this.gap * 2);
-    tile.height = (desktop.height / 2) - (this.gap * 1.5);
-    return tile;
-  }
-
-  getUpTile(win) {
-    const desktop = this.getDesktop(win);
-    const tile = new Meta.Rectangle();
-    tile.x = desktop.x + this.gap;
-    tile.y = desktop.y + this.gap;
-    tile.width = desktop.width - (this.gap * 2);
-    tile.height = (desktop.height / 2) - (this.gap * 1.5);
-    return tile;
-  }
-
-  getLeftTile(win) {
-    const desktop = this.getDesktop(win);
-    const tile = new Meta.Rectangle();
-    tile.x = desktop.x + this.gap;
-    tile.y = desktop.y + this.gap;
-    tile.width = (desktop.width / 2) - (this.gap * 1.5);
-    tile.height = (desktop.height) - (this.gap * 2);
-    return tile;
-  }
-
-  getRightTile(win) {
-    const desktop = this.getDesktop(win);
-    const tile = new Meta.Rectangle();
-    tile.x = desktop.x + (desktop.width * 0.5) + (this.gap * 0.5);
-    tile.y = desktop.y + this.gap;
-    tile.width = (desktop.width / 2) - (this.gap * 1.5);
-    tile.height = (desktop.height) - (this.gap * 2);
-    return tile;
-  }
-
-  getDownLeftTile(win) {
-    const desktop = this.getDesktop(win);
-    const tile = new Meta.Rectangle();
-    tile.x = desktop.x + this.gap;
-    tile.y = desktop.y + (desktop.height / 2) + (this.gap * 0.5);
-    tile.width = (desktop.width / 2) - (this.gap * 1.5);
-    tile.height = (desktop.height / 2) - (this.gap * 1.5);
-    return tile;
-  }
-
-  getUpLeftTile(win) {
-    const desktop = this.getDesktop(win);
-    const tile = new Meta.Rectangle();
-    tile.x = desktop.x + this.gap;
-    tile.y = desktop.y + this.gap;
-    tile.width = (desktop.width / 2) - (this.gap * 1.5);
-    tile.height = (desktop.height / 2) - (this.gap * 1.5);
-    return tile;
-  }
-
-  // dirty start
-
-  // tileUp() {
-  //   log('tileup');
-  //   const win = this.getWindow();
-  //   const r = this.isRight(win) ? this.upRightRect(win) : this.rightRect(win);
-  //   this.move(win, r.x, r.y, r.width, r.height);
-  // }
-  //
-  // tileDown() {
-  //   log('tiledown');
-  //   const win = this.getWindow();
-  //   const r = this.isRight(win) ? this.upRightRect(win) : this.rightRect(win);
-  //   this.move(win, r.x, r.y, r.width, r.height);
-  // }
-  //
-  // tileRight() {
-  //   const win = this.getWindow();
-  //   const r = this.rightRect(win);
-  //   this.move(win, r.x, r.y, r.width, r.height);
-  // }
-  //
-  //
-  // upRightRect(win) {
-  //   const desktop = this.getDesktop(win);
-  //   const gap = 20;
-  //   const r = new Meta.Rectangle();
-  //   r.x = (desktop.width / 2) + desktop.x + (gap / 2);
-  //   r.y = desktop.y + gap;
-  //   r.width = (desktop.width / 2) - (gap * 1.5);
-  //   r.height = (desktop.height / 2) - (gap * 1.5);
-  //   return r;
-  // }
-  //
-  // rightRect(win) {
-  //   const desktop = this.getDesktop(win);
-  //   const gap = 20;
-  //   const r = new Meta.Rectangle();
-  //   r.x = (desktop.width / 2) + desktop.x + (gap / 2);
-  //   r.y = desktop.y + gap;
-  //   r.width = (desktop.width / 2) - (gap * 1.5);
-  //   r.height = (desktop.height) - (gap * 2);
-  //   return r;
-  // }
-
-  // dirty end
 
   async move(win, tile) {
     await this.unmax(win);
@@ -307,14 +218,32 @@ class Extension {
   animate(win) {
     const compositor = win.get_compositor_private();
     compositor.remove_all_transitions();
-    Main.wm._prepareAnimationInfo(global.window_manager, compositor, win.get_frame_rect(), Meta.SizeChange.MAXIMIZE);
+    Main.wm._prepareAnimationInfo(global.window_manager, compositor, win.get_frame_rect(), Meta.SizeChange.UNMAXIMIZE);
   }
 
   getWindow() { return global.display.get_focus_window(); }
   getDesktop(win) { return Main.layoutManager.getWorkAreaForMonitor(win.get_monitor()); }
   getMonitor(win) { return global.display.get_monitor_geometry(win.get_monitor()); }
+}
 
-  // log(rect) { console.log(`${rect.x} ${rect.y} ${rect.width} ${rect.height}`); }
+class Tile {
+  constructor(...params) {
+    this.rect = new Meta.Rectangle();
+    this.rect.x = params[0];
+    this.rect.y = params[1];
+    this.rect.width = params[2];
+    this.rect.height = params[3];
+  }
+  get x() { return this.rect.x; }
+  get y() { return this.rect.y; }
+  get width() { return this.rect.width; }
+  get height() { return this.rect.height; }
+  equal(rect) {
+    if (this.rect.equal(rect)) { return true; }
+    const close = (val1, val2) => Math.abs(val1 - val2) <= 1;
+    return close(this.rect.x, rect.x) && close(this.rect.y, rect.y) &&
+      close(this.rect.width, rect.width) && close(this.rect.height, rect.height);
+  }
 }
 
 // eslint-disable-next-line no-unused-vars

@@ -13,6 +13,10 @@
       <default><![CDATA[['<Ctrl><Super>H']]]></default>
       <summary>tile-left</summary>
     </key>
+    <key name="tile-right" type="as">
+      <default><![CDATA[['<Ctrl><Super>L']]]></default>
+      <summary>tile-right</summary>
+    </key>
     <key name="tile-down" type="as">
       <default><![CDATA[['<Ctrl><Super>J']]]></default>
       <summary>tile-down</summary>
@@ -20,10 +24,6 @@
     <key name="tile-up" type="as">
       <default><![CDATA[['<Ctrl><Super>K']]]></default>
       <summary>tile-up</summary>
-    </key>
-    <key name="tile-right" type="as">
-      <default><![CDATA[['<Ctrl><Super>L']]]></default>
-      <summary>tile-right</summary>
     </key>
   </schema>
 </schemalist>
