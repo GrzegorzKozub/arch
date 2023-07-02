@@ -193,26 +193,27 @@ class Extension {
   getTilingSetup() { const win = this.getWindow(); return [win, this.getTiles(win), win.get_frame_rect()]; }
 
   getTiles(win) {
-    const gap = 20;
+    const gap = 25; const step = 2; const master = 1;
     const desktop = this.getDesktop(win);
     const xLeft = desktop.x + gap;
-    const xRight = desktop.x + (desktop.width / 2) + (gap * 0.5);
+    const xRight = desktop.x + (desktop.width / step * master) + (gap * 0.5);
     const yDown = desktop.y + (desktop.height / 2) + (gap * 0.5);
     const yUp = desktop.y + gap;
     const widthFull = desktop.width - (gap * 2);
-    const widthHalf = (desktop.width / 2) - (gap * 1.5);
+    const widthLeft = (desktop.width / step * master) - (gap * 1.5);
+    const widthRight = (desktop.width / step * (step - master)) - (gap * 1.5);
     const heightFull = (desktop.height) - (gap * 2);
     const heightHalf = (desktop.height / 2) - (gap * 1.5);
     return {
       full: new Tile(xLeft, yUp, widthFull, heightFull),
-      left: new Tile(xLeft, yUp, widthHalf, heightFull),
-      right: new Tile(xRight, yUp, widthHalf, heightFull),
+      left: new Tile(xLeft, yUp, widthLeft, heightFull),
+      right: new Tile(xRight, yUp, widthRight, heightFull),
       down: new Tile(xLeft, yDown, widthFull, heightHalf),
       up: new Tile(xLeft, yUp, widthFull, heightHalf),
-      leftDown: new Tile(xLeft, yDown, widthHalf, heightHalf),
-      leftUp: new Tile(xLeft, yUp, widthHalf, heightHalf),
-      rightDown: new Tile(xRight, yDown, widthHalf, heightHalf),
-      rightUp: new Tile(xRight, yUp, widthHalf, heightHalf)
+      leftDown: new Tile(xLeft, yDown, widthLeft, heightHalf),
+      leftUp: new Tile(xLeft, yUp, widthLeft, heightHalf),
+      rightDown: new Tile(xRight, yDown, widthRight, heightHalf),
+      rightUp: new Tile(xRight, yUp, widthRight, heightHalf)
     };
   }
 
