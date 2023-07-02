@@ -62,7 +62,13 @@ class Extension {
 
   disable() {
     global.display.disconnect(this.windowCreatedHandler);
-    Main.wm.removeKeybinding('windows');
+    Main.wm.removeKeybinding('fix-all');
+    Main.wm.removeKeybinding('fix-active');
+    Main.wm.removeKeybinding('tile-full');
+    Main.wm.removeKeybinding('tile-left');
+    Main.wm.removeKeybinding('tile-right');
+    Main.wm.removeKeybinding('tile-down');
+    Main.wm.removeKeybinding('tile-up');
   }
 
   addKeybinding(name, handler) {
