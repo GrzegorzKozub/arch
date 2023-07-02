@@ -9,6 +9,10 @@
       <default><![CDATA[['<Ctrl><Super>W']]]></default>
       <summary>fix-active</summary>
     </key>
+    <key name="tile-full" type="as">
+      <default><![CDATA[['<Ctrl><Super>F']]]></default>
+      <summary>tile-full</summary>
+    </key>
     <key name="tile-left" type="as">
       <default><![CDATA[['<Ctrl><Super>H']]]></default>
       <summary>tile-left</summary>

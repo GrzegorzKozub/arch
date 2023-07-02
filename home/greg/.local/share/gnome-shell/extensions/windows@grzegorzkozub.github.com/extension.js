@@ -53,6 +53,7 @@ class Extension {
       this.windowCreated.bind(this));
     this.addKeybinding('fix-all', this.fixAllHotkeyPressed);
     this.addKeybinding('fix-active', this.fixActiveHotkeyPressed);
+    this.addKeybinding('tile-full', this.tileFullHotkeyPressed);
     this.addKeybinding('tile-left', this.tileLeftHotkeyPressed);
     this.addKeybinding('tile-right', this.tileRightHotkeyPressed);
     this.addKeybinding('tile-down', this.tileDownHotkeyPressed);
@@ -76,6 +77,7 @@ class Extension {
   windowCreated(_, win) { this.fixAuto(win); }
   fixAllHotkeyPressed() { this.fixAll(); }
   fixActiveHotkeyPressed() { this.fixActive(); }
+  tileFullHotkeyPressed() { this.tileFull(); }
   tileLeftHotkeyPressed() { this.tileLeft(); }
   tileRightHotkeyPressed() { this.tileRight(); }
   tileDownHotkeyPressed() { this.tileDown(); }
@@ -132,6 +134,14 @@ class Extension {
       (desktop.height / step) * height);
   }
 
+  tileFull() {
+    const win = this.getWindow();
+    const tiles = this.getTiles(win);
+    const now = win.get_frame_rect();
+    if (tiles.full.equal(now)) { return; }
+    this.move(win, tiles.full);
+  }
+
   tileLeft() {
     const win = this.getWindow();
     const tiles = this.getTiles(win);
@@ -139,6 +149,7 @@ class Extension {
     if (tiles.left.equal(now) || tiles.leftDown.equal(now) || tiles.leftUp.equal(now)) { return; }
     if (tiles.down.equal(now)) { this.move(win, tiles.leftDown); return; }
     if (tiles.up.equal(now)) { this.move(win, tiles.leftUp); return; }
+    if (tiles.right.equal(now)) { this.move(win, tiles.full); return; }
     if (tiles.rightDown.equal(now)) { this.move(win, tiles.down); return; }
     if (tiles.rightUp.equal(now)) { this.move(win, tiles.up); return; }
     this.move(win, tiles.left);
@@ -151,6 +162,7 @@ class Extension {
     if (tiles.right.equal(now) || tiles.rightDown.equal(now) || tiles.rightUp.equal(now)) { return; }
     if (tiles.down.equal(now)) { this.move(win, tiles.rightDown); return; }
     if (tiles.up.equal(now)) { this.move(win, tiles.rightUp); return; }
+    if (tiles.left.equal(now)) { this.move(win, tiles.full); return; }
     if (tiles.leftDown.equal(now)) { this.move(win, tiles.down); return; }
     if (tiles.leftUp.equal(now)) { this.move(win, tiles.up); return; }
     this.move(win, tiles.right);
@@ -161,6 +173,7 @@ class Extension {
     const tiles = this.getTiles(win);
     const now = win.get_frame_rect();
     if (tiles.down.equal(now) || tiles.leftDown.equal(now) || tiles.rightDown.equal(now)) { return; }
+    if (tiles.up.equal(now)) { this.move(win, tiles.full); return; }
     if (tiles.left.equal(now)) { this.move(win, tiles.leftDown); return; }
     if (tiles.right.equal(now)) { this.move(win, tiles.rightDown); return; }
     if (tiles.leftUp.equal(now)) { this.move(win, tiles.left); return; }
@@ -173,6 +186,7 @@ class Extension {
     const tiles = this.getTiles(win);
     const now = win.get_frame_rect();
     if (tiles.up.equal(now) || tiles.leftUp.equal(now) || tiles.rightUp.equal(now)) { return; }
+    if (tiles.down.equal(now)) { this.move(win, tiles.full); return; }
     if (tiles.left.equal(now)) { this.move(win, tiles.leftUp); return; }
     if (tiles.right.equal(now)) { this.move(win, tiles.rightUp); return; }
     if (tiles.leftDown.equal(now)) { this.move(win, tiles.left); return; }
@@ -192,6 +206,7 @@ class Extension {
     const heightFull = (desktop.height) - (gap * 2);
     const heightHalf = (desktop.height / 2) - (gap * 1.5);
     return {
+      full: new Tile(xLeft, yUp, widthFull, heightFull),
       left: new Tile(xLeft, yUp, widthHalf, heightFull),
       right: new Tile(xRight, yUp, widthHalf, heightFull),
       down: new Tile(xLeft, yDown, widthFull, heightHalf),
