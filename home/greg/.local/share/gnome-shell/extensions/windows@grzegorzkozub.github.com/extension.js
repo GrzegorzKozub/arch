@@ -62,13 +62,9 @@ class Extension {
 
   disable() {
     global.display.disconnect(this.windowCreatedHandler);
-    Main.wm.removeKeybinding('fix-all');
-    Main.wm.removeKeybinding('fix-active');
-    Main.wm.removeKeybinding('tile-full');
-    Main.wm.removeKeybinding('tile-left');
-    Main.wm.removeKeybinding('tile-right');
-    Main.wm.removeKeybinding('tile-down');
-    Main.wm.removeKeybinding('tile-up');
+    for (const key of ['fix-all', 'fix-active', 'tile-full', 'tile-left', 'tile-right', 'tile-down', 'tile-up']) {
+      Main.wm.removeKeybinding(key);
+    }
   }
 
   addKeybinding(name, handler) {
