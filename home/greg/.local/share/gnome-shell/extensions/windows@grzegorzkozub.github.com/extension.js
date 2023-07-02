@@ -176,6 +176,13 @@ class Extension {
     this.move(win, tiles.up);
   }
 
+/*
+* global.display.get_focus_window().get_frame_rect()
+* foot 3080x1560 drifter
+* kitty 1674 3234 drifter
+* alacritty 3220 1780 drifter
+*/
+
   getTiles(win) {
     const gap = 20;
     const desktop = this.getDesktop(win);
