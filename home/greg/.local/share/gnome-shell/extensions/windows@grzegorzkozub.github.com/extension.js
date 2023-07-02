@@ -25,7 +25,6 @@ class Extension {
       { title: /^DevTools.?/ },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
-      { class: /^kitty$/ },
       { title: /.?LibreOffice.?/ },
       { title: /.?Slack$/, auto: true },
       { title: /.?Steam$/ },
@@ -36,12 +35,16 @@ class Extension {
       { title: /^Settings$/ },
       { title: /.?KeePassXC$/ },
     ];
+    const terminal = [
+      { class: /^kitty$/ },
+    ];
     const addConfig = (config, fix) => {
       this.config.push(...config.map(cfg => ({ ...cfg, fix })));
     };
     addConfig(big, this.big.bind(this));
     addConfig(medium, this.medium.bind(this));
     addConfig(small, this.small.bind(this));
+    addConfig(terminal, this.terminal.bind(this));
   }
 
   enable() {
@@ -113,6 +116,7 @@ class Extension {
   big(win) { if (this.onUhd(win)) { this.center(win, 12, 14); } else { this.center(win, 14, 14.5); } }
   medium(win) { if (this.onUhd(win)) { this.center(win, 9, 12); } else { this.center(win, 12, 12.5); } }
   small(win) { if (this.onUhd(win)) { this.center(win, 6, 10); } else { this.center(win, 10, 10.5); } }
+  terminal(win) { if (this.onUhd(win)) { this.center(win, 10.25, 9.5); } else { this.center(win, 12, 12); } }
 
   onUhd(win) { const monitor = this.getMonitor(win); return monitor.width === 3840 && monitor.height === 2160; }
 
@@ -175,13 +179,6 @@ class Extension {
     if (tiles.rightDown.equal(now)) { this.move(win, tiles.right); return; }
     this.move(win, tiles.up);
   }
-
-/*
-* global.display.get_focus_window().get_frame_rect()
-* foot 3080x1560 drifter
-* kitty 1674 3234 drifter
-* alacritty 3220 1780 drifter
-*/
 
   getTiles(win) {
     const gap = 20;
