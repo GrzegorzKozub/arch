@@ -135,17 +135,13 @@ class Extension {
   }
 
   tileFull() {
-    const win = this.getWindow();
-    const tiles = this.getTiles(win);
-    const now = win.get_frame_rect();
+    const [win, tiles, now] = this.getTilingSetup();
     if (tiles.full.equal(now)) { return; }
     this.move(win, tiles.full);
   }
 
   tileLeft() {
-    const win = this.getWindow();
-    const tiles = this.getTiles(win);
-    const now = win.get_frame_rect();
+    const [win, tiles, now] = this.getTilingSetup();
     if (tiles.left.equal(now) || tiles.leftDown.equal(now) || tiles.leftUp.equal(now)) { return; }
     if (tiles.down.equal(now)) { this.move(win, tiles.leftDown); return; }
     if (tiles.up.equal(now)) { this.move(win, tiles.leftUp); return; }
@@ -156,9 +152,7 @@ class Extension {
   }
 
   tileRight() {
-    const win = this.getWindow();
-    const tiles = this.getTiles(win);
-    const now = win.get_frame_rect();
+    const [win, tiles, now] = this.getTilingSetup();
     if (tiles.right.equal(now) || tiles.rightDown.equal(now) || tiles.rightUp.equal(now)) { return; }
     if (tiles.down.equal(now)) { this.move(win, tiles.rightDown); return; }
     if (tiles.up.equal(now)) { this.move(win, tiles.rightUp); return; }
@@ -169,9 +163,7 @@ class Extension {
   }
 
   tileDown() {
-    const win = this.getWindow();
-    const tiles = this.getTiles(win);
-    const now = win.get_frame_rect();
+    const [win, tiles, now] = this.getTilingSetup();
     if (tiles.down.equal(now) || tiles.leftDown.equal(now) || tiles.rightDown.equal(now)) { return; }
     if (tiles.up.equal(now)) { this.move(win, tiles.full); return; }
     if (tiles.left.equal(now)) { this.move(win, tiles.leftDown); return; }
@@ -182,9 +174,7 @@ class Extension {
   }
 
   tileUp() {
-    const win = this.getWindow();
-    const tiles = this.getTiles(win);
-    const now = win.get_frame_rect();
+    const [win, tiles, now] = this.getTilingSetup();
     if (tiles.up.equal(now) || tiles.leftUp.equal(now) || tiles.rightUp.equal(now)) { return; }
     if (tiles.down.equal(now)) { this.move(win, tiles.full); return; }
     if (tiles.left.equal(now)) { this.move(win, tiles.leftUp); return; }
@@ -193,6 +183,8 @@ class Extension {
     if (tiles.rightDown.equal(now)) { this.move(win, tiles.right); return; }
     this.move(win, tiles.up);
   }
+
+  getTilingSetup() { const win = this.getWindow(); return [win, this.getTiles(win), win.get_frame_rect()]; }
 
   getTiles(win) {
     const gap = 20;
