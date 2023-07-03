@@ -124,11 +124,14 @@ class Extension {
 
   onUhd(win) { const monitor = this.getMonitor(win); return monitor.width === 3840 && monitor.height === 2160; }
 
-  center(win, width, height) { this.move(win, this.getCenterTile(win, width, height)); }
+  center(win, width, height) {
+    const center = this.getCenterTile(win, width, height);
+    if (center.equal(win.get_frame_rect())) { return; }
+    this.move(win, center);
+  }
 
   getCenterTile(win, width, height) {
-    const step = 16;
-    const desktop = this.getDesktop(win);
+    const step = 16; const desktop = this.getDesktop(win);
     return new Tile(
       ((desktop.width / step) * ((step - width) / 2)) + desktop.x,
       ((desktop.height / step) * ((step - height) / 2)) + desktop.y,
