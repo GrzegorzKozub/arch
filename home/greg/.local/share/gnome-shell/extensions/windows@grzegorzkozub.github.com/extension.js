@@ -9,6 +9,7 @@ const Shell = imports.gi.Shell;
 class Extension {
   windowCreatedHandler;
   config = [];
+  initial = {};
 
   constructor() {
     const big = [
@@ -35,8 +36,10 @@ class Extension {
       { title: /^Settings$/ },
       { title: /.?KeePassXC$/ },
     ];
-    const terminal = [
-      { class: /^kitty$/ },
+    const initial = [
+      { class: /^Alacritty$/, initial: true },
+      { class: /^foot$/, initial: true },
+      { class: /^kitty$/, initial: true },
     ];
     const addConfig = (config, fix) => {
       this.config.push(...config.map(cfg => ({ ...cfg, fix })));
@@ -44,7 +47,7 @@ class Extension {
     addConfig(big, this.big.bind(this));
     addConfig(medium, this.medium.bind(this));
     addConfig(small, this.small.bind(this));
-    addConfig(terminal, this.terminal.bind(this));
+    addConfig(initial, this.restore.bind(this));
   }
 
   enable() {
@@ -88,6 +91,7 @@ class Extension {
   fixAuto(win) {
     GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
       this.fix(this.config.filter(cfg => cfg.auto), win);
+      this.save(this.config.filter(cfg => cfg.initial), win);
       this.activate(win);
       return GLib.SOURCE_REMOVE;
     });
@@ -103,11 +107,19 @@ class Extension {
   }
 
   fix(config, win) {
-    const cfg = config.find(cfg =>
+    const cfg = this.findConfig(config, win); if (!cfg) { return; }
+    cfg.fix(win);
+  }
+
+  save(config, win) {
+    const cfg = this.findConfig(config, win); if (!cfg) { return; }
+    this.initial[win.wm_class] = win.get_frame_rect();
+  }
+
+  findConfig(config, win) {
+    return config.find(cfg =>
       (cfg.title && cfg.title.test(win.title) || cfg.class && cfg.class.test(win.wm_class)) &&
       (!cfg.noRole || cfg.noRole !== win.get_role()));
-    if (!cfg) { return; }
-    cfg.fix(win);
   }
 
   activate(win) {
@@ -120,7 +132,6 @@ class Extension {
   big(win) { if (this.onUhd(win)) { this.center(win, 12, 14); } else { this.center(win, 14, 14.5); } }
   medium(win) { if (this.onUhd(win)) { this.center(win, 9, 12); } else { this.center(win, 12, 12.5); } }
   small(win) { if (this.onUhd(win)) { this.center(win, 6, 10); } else { this.center(win, 10, 10.5); } }
-  terminal(win) { if (this.onUhd(win)) { this.center(win, 10.25, 9.5); } else { this.center(win, 12, 12); } }
 
   onUhd(win) { const monitor = this.getMonitor(win); return monitor.width === 3840 && monitor.height === 2160; }
 
@@ -137,6 +148,12 @@ class Extension {
       ((desktop.height / step) * ((step - height) / 2)) + desktop.y,
       (desktop.width / step) * width,
       (desktop.height / step) * height);
+  }
+
+  restore(win) {
+    const initial = this.initial[win.wm_class];
+    if (!initial || initial.equal(win.get_frame_rect())) { return; }
+    this.move(win, initial);
   }
 
   tileFull() {
