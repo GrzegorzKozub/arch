@@ -33,8 +33,10 @@ class Extension {
     const small = [
       { class: /.?drawing.?/ },
       { class: /.?Evince$/, auto: true },
-      { title: /^Settings$/ },
+      { class: /^Gnome-system-monitor$/ },
       { title: /.?KeePassXC$/ },
+      { class: /^org.gnome.Nautilus$/ },
+      { title: /^Settings$/ },
     ];
     const initial = [
       { class: /^Alacritty$/, initial: true },
