@@ -15,7 +15,7 @@ Automated Arch Linux installation
 3. Label the partition with `sudo mlabel -i /dev/sda1 ::archiso`
 4. Build with `~/code/arch/archiso.zsh`
 5. Copy with
-  ```zsh
+  ```bash
   rm -rf /run/media/$USER/ARCHISO/(arch|EFI|loader|syslinux|shellx64.efi)
   cp -r ~/code/arch/archiso/usb/* /run/media/$USER/ARCHISO
   ```
@@ -39,7 +39,7 @@ Automated Arch Linux installation
   - Setup your profiles
   - Set as default browser
   - Hide bookmarks
-  - Hide side pannel button
+  - Hide side panel button
   - Enable wide address bar
   - Only allow suggestions from top sites, history and bookmarks
   - Hide Brave Rewards button
@@ -93,7 +93,7 @@ Automated Arch Linux installation
 
 ## Wayland
 
-Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code runs on native Wayland on drifetr and on XWayland on worker. Brave, KeePassXC and Postman run on XWayland.
+Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code runs on native Wayland on drifter and on XWayland on worker. Brave, KeePassXC and Postman run on XWayland.
 
 ### Problems
 
@@ -113,7 +113,7 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code runs o
 - Make sure there's no `WaylandEnable=false` in `/etc/gdm/custom.conf`
 - [Fix Gnome Shell suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
 
-## XDG Desktop Portal
+### XDG Desktop Portal
 
 XDP implementations conflict each other so only one should be installed at the same time:
 
@@ -159,7 +159,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - Disable Remote Play
   - For each game, set game compatibility to Proton-GE
 5. Once per machine, move Steam to games disk with
-  ```zsh
+  ```bash
   mv $XDG_DATA_HOME/Steam /run/media/$USER/games/
   ln -s /run/media/$USER/games/Steam $XDG_DATA_HOME/Steam
   ```
@@ -200,12 +200,32 @@ Games
 - [proton-ge-custom](https://github.com/GloriousEggroll/proton-ge-custom)
 - [vkd3d-proton](https://github.com/HansKristian-Work/vkd3d-proton)
 
+## Bugs
+
+#### [Proper focus is not given when a new window is launched from the overview]()
+
+Affects all machines. Worked around in the `windows` Gnome Shell extension.
+
+#### [Random Xid 61 and Xorg lock-up](https://forums.developer.nvidia.com/t/random-xid-61-and-xorg-lock-up/79731)
+
+Affects worker only.
+
+Ideas to reproduce:
+
+- [`nvidia-smi -lgc 300,300`](https://forums.developer.nvidia.com/t/random-xid-61-and-xorg-lock-up/79731/226)
+
+Potential fixes:
+
+- [`pcie_aspm=off`](https://forums.developer.nvidia.com/t/random-xid-61-and-xorg-lock-up/79731/144)
+- [`rcutree.rcu_idle_gp_delay=1`](https://forums.developer.nvidia.com/t/random-xid-61-and-xorg-lock-up/79731/148)
+- [`nvidia-settings -a [gpu:0]/GPUPowerMizerMode=1`](https://forums.developer.nvidia.com/t/random-xid-61-and-xorg-lock-up/79731/55)
+- [`nvidia-smi -lgc 1000,1755`](https://forums.developer.nvidia.com/t/random-xid-61-and-xorg-lock-up/79731/213)
+
+#### [The entire screen is frequently flickering](https://github.com/NVIDIA/open-gpu-kernel-modules/issues/511)
+
+Affects worker only when FreeSync is enabled on the monitor and running on Wayland. Worked around by using the Xorg session in GDM.
+
 ## More packages
 
-- Images
-  - `drawing`
-  - `eyedropper`
-- Fonts
-  - `font-manager`
-  - `gnome-characters`
+`drawing`, `eyedropper`, `font-manager`, `gnome-characters`, `teams-for-linux`
 
