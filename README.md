@@ -225,6 +225,14 @@ Potential fixes:
 
 Affects worker only when FreeSync is enabled on the monitor and running on Wayland. Worked around by using the Xorg session in GDM.
 
+#### [Steam does not start, steamwebhelper keeps crashing in a loop](https://github.com/ValveSoftware/steam-for-linux/issues/9780)
+
+Worked around with `rm -rf ~/.cache/nvidia/GLCache`.
+
+#### [Steam crashes at launch with libgudev 238](https://github.com/ValveSoftware/steam-for-linux/issues/9805)
+
+Worked around by installing `lib32-libnm`.
+
 ## More packages
 
 `drawing`, `eyedropper`, `font-manager`, `gnome-characters`, `teams-for-linux`
