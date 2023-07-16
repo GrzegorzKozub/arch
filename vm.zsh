@@ -5,7 +5,7 @@ set -e
 # config
 
 NAME=windows
-UEFI=0
+UEFI=1
 SPICE=1
 
 MOUNT=/run/media/$USER/data
@@ -17,7 +17,7 @@ VARS=$NAME.fd
 TPM=$NAME-tpm
 
 OS=$NAME.iso
-DRIVERS=virtio-win-0.1.221.iso
+DRIVERS=virtio-win-0.1.229.iso
 
 # packages
 

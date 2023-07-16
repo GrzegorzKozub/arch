@@ -141,6 +141,8 @@ For clipboard sharing using spice install `virt-viewer` on host and [guest tools
 
 For folder sharing using spice install `virt-viewer` on host and [webdav daemon](https://www.spice-space.org/download.html) on guest. Run `c:\Program Files (x86)\SPICE webdavd\map-drive.bat` on guest.
 
+To install Windows 11 without Internet connection and with local account, when asked to connect to Internet, press `Shift + F10` to bring up the command prompt and type `OOBE\BYPASSNRO`.
+
 To reduce the image size after freeing up space on guest, first defragment the drives and run `sdelete -z` on guest, then run `qemu-img convert -O qcow2 from.cow to.cow`.
 
 ## Gaming
