@@ -110,17 +110,17 @@ mkinitcpio -p linux-lts
 [[ $MY_HOSTNAME = 'player' ]] &&
   sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
 
-# wayland enabled on worker
-
-if [[ $MY_HOSTNAME = 'worker' ]]; then
-
-  # required for wayland on nvidia
-  ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
-
-  # preserves nvidia video memory during suspend
-  echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia-power-management.conf
-
-fi
+# # wayland enabled on worker
+#
+# if [[ $MY_HOSTNAME = 'worker' ]]; then
+#
+#   # required for wayland on nvidia
+#   ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+#
+#   # preserves nvidia video memory during suspend
+#   echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia-power-management.conf
+#
+# fi
 
 # reflector
 

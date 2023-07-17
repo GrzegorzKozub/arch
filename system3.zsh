@@ -30,13 +30,17 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
   sudo pacman -S --noconfirm \
     intel-ucode \
-    intel-gpu-tools \
-    intel-media-driver \
     alsa-firmware alsa-ucm-conf sof-firmware \
     iwd
 
   # sudo pacman -S --noconfirm \
   #   iio-sensor-proxy
+
+  # intel gpu
+  sudo pacman -S --noconfirm \
+    intel-gpu-tools \
+    intel-media-driver \
+    vulkan-intel
 
 fi
 
@@ -44,9 +48,13 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
 
   sudo pacman -S --noconfirm \
     amd-ucode \
-    nvidia nvidia-lts nvtop \
-    libva-vdpau-driver \
+    nvtop \
     argyllcms
+
+  # nvidia gpu
+  sudo pacman -S --noconfirm \
+    nvidia nvidia-lts nvidia-utils \
+    libva-vdpau-driver
 
 fi
 
@@ -54,8 +62,18 @@ if [[ $MY_HOSTNAME = 'worker' ]]; then
 
   sudo pacman -S --noconfirm \
     intel-ucode \
-    nvidia nvidia-lts nvtop \
-    libva-vdpau-driver
+    nvtop
+
+  # # nvidia gpu
+  # sudo pacman -S --noconfirm \
+  #   nvidia nvidia-lts nvidia-utils \
+  #   libva-vdpau-driver
+
+  # amd gpu
+  sudo pacman -S --noconfirm \
+    mesa xf86-video-amdgpu \
+    vulkan-radeon \
+    libva-mesa-driver mesa-vdpau
 
 fi
 

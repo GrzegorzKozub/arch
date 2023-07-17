@@ -53,7 +53,7 @@ done
 
 # experimental nvidia support
 
-if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+if [[ $HOST = 'player' ]]; then
 
   sudo cp `dirname $0`/usr/share/wayland-sessions/sway-nvidia.desktop /usr/share/wayland-sessions
 
