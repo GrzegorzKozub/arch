@@ -77,6 +77,7 @@ sudo pacman -S --noconfirm \
   fzf \
   htop \
   jq \
+  nvtop \
   p7zip \
   pass \
   ripgrep \

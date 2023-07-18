@@ -48,7 +48,6 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
 
   sudo pacman -S --noconfirm \
     amd-ucode \
-    nvtop \
     argyllcms
 
   # nvidia gpu
@@ -61,13 +60,7 @@ fi
 if [[ $MY_HOSTNAME = 'worker' ]]; then
 
   sudo pacman -S --noconfirm \
-    intel-ucode \
-    nvtop
-
-  # # nvidia gpu
-  # sudo pacman -S --noconfirm \
-  #   nvidia nvidia-lts nvidia-utils \
-  #   libva-vdpau-driver
+    intel-ucode
 
   # amd gpu
   sudo pacman -S --noconfirm \

@@ -237,5 +237,5 @@ Worked around by installing `lib32-libnm`.
 
 ## More packages
 
-`drawing`, `eyedropper`, `font-manager`, `gnome-characters`, `teams-for-linux`
+`amdgpu_top-bin`, `drawing`, `eyedropper`, `font-manager`, `gnome-characters`, `lact`, `teams-for-linux`
 
