@@ -204,28 +204,13 @@ Games
 
 ## Bugs
 
-#### [Proper focus is not given when a new window is launched from the overview]()
+#### [Proper focus is not given when a new window is launched from the overview](https://gitlab.gnome.org/GNOME/mutter/-/issues/2690)
 
 Affects all machines. Worked around in the `windows` Gnome Shell extension.
 
-#### [Random Xid 61 and Xorg lock-up](https://forums.developer.nvidia.com/t/random-xid-61-and-xorg-lock-up/79731)
+#### [Hardware video acceleration with VA-API](https://bbs.archlinux.org/viewtopic.php?id=244031)
 
-Affects worker only.
-
-Ideas to reproduce:
-
-- [`nvidia-smi -lgc 300,300`](https://forums.developer.nvidia.com/t/random-xid-61-and-xorg-lock-up/79731/226)
-
-Potential fixes:
-
-- [`pcie_aspm=off`](https://forums.developer.nvidia.com/t/random-xid-61-and-xorg-lock-up/79731/144)
-- [`rcutree.rcu_idle_gp_delay=1`](https://forums.developer.nvidia.com/t/random-xid-61-and-xorg-lock-up/79731/148)
-- [`nvidia-settings -a [gpu:0]/GPUPowerMizerMode=1`](https://forums.developer.nvidia.com/t/random-xid-61-and-xorg-lock-up/79731/55)
-- [`nvidia-smi -lgc 1000,1755`](https://forums.developer.nvidia.com/t/random-xid-61-and-xorg-lock-up/79731/213)
-
-#### [The entire screen is frequently flickering](https://github.com/NVIDIA/open-gpu-kernel-modules/issues/511)
-
-Affects worker only when FreeSync is enabled on the monitor and running on Wayland. Worked around by using the Xorg session in GDM.
+Affects all machines. Check the linked thread from time to time.
 
 #### [Steam does not start, steamwebhelper keeps crashing in a loop](https://github.com/ValveSoftware/steam-for-linux/issues/9780)
 
