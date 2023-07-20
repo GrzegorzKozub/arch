@@ -170,13 +170,13 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 Template
 
-```
-<variables> mangohud gamemoderun %command%`
+```bash
+<variables> mangohud gamemoderun %command%
 ```
 
 Default variables
 
-```
+```bash
 LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" PROTON_ENABLE_NVAPI=1
 ```
 
@@ -189,9 +189,13 @@ Options
 Games
 
 - Cemu, VULKAN
-  - `LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" PROTON_ENABLE_NVAPI=1 python3 ./save_sync mangohud gamemoderun %command% -f -g "<game file>"`
+  ```bash
+  LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" PROTON_ENABLE_NVAPI=1 python3 ./save_sync mangohud gamemoderun %command% -f -g "<game file>"
+  ```
 - Elden Ring, VKD3D
-  - `./er-patcher --rate 144 -vcas -- env LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 mangohud gamemoderun %command%`
+  ```bash
+  ./er-patcher --rate 144 -vcas -- env LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" PROTON_ENABLE_NVAPI=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 mangohud gamemoderun %command%
+  ```
 
 ### References
 
@@ -214,11 +218,11 @@ Affects all machines. Check the linked thread from time to time.
 
 #### [Steam does not start, steamwebhelper keeps crashing in a loop](https://github.com/ValveSoftware/steam-for-linux/issues/9780)
 
-Worked around with `rm -rf ~/.cache/nvidia/GLCache`.
+Worked around with `rm -rf ~/.cache/nvidia/GLCache`
 
 #### [Steam crashes at launch with libgudev 238](https://github.com/ValveSoftware/steam-for-linux/issues/9805)
 
-Worked around by installing `lib32-libnm`.
+Worked around by installing `lib32-libnm`
 
 ## More packages
 
