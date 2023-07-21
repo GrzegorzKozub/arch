@@ -99,7 +99,7 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code runs o
 
 - Gnome text scaling factor not supported by the apps
 - KeePassXC auto-type not supported on native Wayland
-- KeePassXC blurry when using fractional scaling on XWayland (force native Wayland with `QT_QPA_PLATFORM=wayland`)
+- [Blurry XWayland apps with fractional scaling](https://gitlab.gnome.org/GNOME/mutter/-/issues/2328)
 - [Flameshot issue when using fractional scaling with two monitors](https://github.com/flameshot-org/flameshot/issues/564)
 - `dispwin` not compatible and `colormgr` most likely doesn't work on NVIDIA
 - `redshift` not compatible with Wayland and `gammastep` doesn't work on Gnome
@@ -112,6 +112,10 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code runs o
 - Run `ln -s /dev/null /etc/udev/rules.d/61-gdm.rules`
 - Make sure there's no `WaylandEnable=false` in `/etc/gdm/custom.conf`
 - [Fix Gnome Shell suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
+
+### Forcing native Wayland
+
+Force native Wayland for QT apps with `QT_QPA_PLATFORM=wayland`
 
 ### XDG Desktop Portal
 
