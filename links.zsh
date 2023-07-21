@@ -72,7 +72,7 @@ if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
     sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
   done
 
-  if [[ $HOST = 'difter' ]]; then
+  if [[ $HOST = 'drifter' ]]; then
     sed -i \
       -e "s/^Exec=foot$/Exec=foot --font=monospace:size=13/" \
       $XDG_DATA_HOME/applications/org.codeberg.dnkl.foot.desktop
@@ -100,7 +100,7 @@ sed -i \
 
 # kitty
 
-if [[ $HOST = 'difter' ]]; then
+if [[ $HOST = 'drifter' ]]; then
   cp /usr/share/applications/kitty.desktop $XDG_DATA_HOME/applications
   sed -i \
     -e "s/^Exec=kitty$/Exec=kitty --override=font_size=13/" \
