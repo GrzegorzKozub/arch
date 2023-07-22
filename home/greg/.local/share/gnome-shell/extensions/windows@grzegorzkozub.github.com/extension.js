@@ -35,13 +35,13 @@ class Extension {
       { class: /.?Evince$/, auto: true },
       { class: /^Gnome-system-monitor$/ },
       { title: /.?KeePassXC$/ },
-      { class: /^org.gnome.Nautilus$/ },
       { title: /^Settings$/ },
     ];
     const initial = [
       { class: /^Alacritty$/, initial: true },
       { class: /^foot$/, initial: true },
       { class: /^kitty$/, initial: true },
+      { class: /^org.gnome.Nautilus$/, initial: true },
     ];
     const addConfig = (config, fix) => {
       this.config.push(...config.map(cfg => ({ ...cfg, fix })));
