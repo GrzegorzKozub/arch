@@ -17,7 +17,7 @@ class Extension {
       { title: /.?Brave$/, noRole: 'pop-up' },
       { title: /.?MySQL Workbench$/ },
       { title: /^OBS.?/ },
-      { class: /^Postman$/, auto: true },
+      { class: /^Postman$/, auto: true, noRole: 'GtkFileChooserDialog' },
       { title: /.?Shotcut$/ },
       { title: /.?Visual Studio Code$/ },
     ];
