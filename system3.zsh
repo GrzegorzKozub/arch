@@ -52,7 +52,7 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
 
   # nvidia gpu
   sudo pacman -S --noconfirm \
-    nvidia nvidia-lts nvidia-utils \
+    nvidia nvidia-lts nvidia-settings nvidia-utils \
     libva-vdpau-driver
 
 fi

@@ -43,17 +43,6 @@ sudo pacman -S --noconfirm \
 
 # nvidia
 
-sudo pacman -S --noconfirm \
-  nvidia-settings
-
-[[ -d $XDG_DATA_HOME/nvidia-settings ]] || mkdir $XDG_DATA_HOME/nvidia-settings
-
-cp /usr/share/applications/nvidia-settings.desktop $XDG_DATA_HOME/applications
-sed -i \
-  -e 's/^Name=.*$/Name=NVIDIA/' \
-  -e "s/^Exec=.*$/Exec=\/usr\/bin\/nvidia-settings --config=\/home\/$USER\/.local\/share\/nvidia-settings\/nvidia-settings-rc/" \
-  $XDG_DATA_HOME/applications/nvidia-settings.desktop
-
 sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
 
 cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.service $XDG_CONFIG_HOME/systemd/user

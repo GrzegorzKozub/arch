@@ -116,6 +116,20 @@ fi
 #
 # fi
 
+# nvidia
+
+if [[ $HOST = 'player' ]]; then
+
+  [[ -d $XDG_DATA_HOME/nvidia-settings ]] || mkdir $XDG_DATA_HOME/nvidia-settings
+
+  cp /usr/share/applications/nvidia-settings.desktop $XDG_DATA_HOME/applications
+  sed -i \
+    -e 's/^Name=.*$/Name=NVIDIA/' \
+    -e "s/^Exec=.*$/Exec=\/usr\/bin\/nvidia-settings --config=\/home\/$USER\/.local\/share\/nvidia-settings\/nvidia-settings-rc/" \
+    $XDG_DATA_HOME/applications/nvidia-settings.desktop
+
+fi
+
 # nvim
 
 [[ $XDG_SESSION_TYPE = 'wayland' ]] && TERMINAL='foot' || TERMINAL='kitty'
