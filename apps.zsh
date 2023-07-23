@@ -70,6 +70,7 @@ fi
 # common
 
 sudo pacman -S --noconfirm \
+  bat \
   cpupower \
   fd \
   ffmpeg \
