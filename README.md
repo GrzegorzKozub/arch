@@ -13,7 +13,7 @@ Automated Arch Linux installation
 1. Create a DOS partition table on the pendrive
 2. Add a FAT32 partition with the boot flag
 3. Label the partition with `sudo mlabel -i /dev/sda1 ::archiso`
-4. Build with `~/code/arch/archiso.zsh`
+4. Build with `~/code/arch/archiso.zsh` based on [USB flash installation medium](https://wiki.archlinux.org/title/USB_flash_installation_medium)
 5. Copy with
   ```bash
   rm -rf /run/media/$USER/ARCHISO/(arch|boot|EFI|loader|shellx64.efi)
