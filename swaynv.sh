@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # wlroots does not support hardware cursor
 export WLR_NO_HARDWARE_CURSORS=1

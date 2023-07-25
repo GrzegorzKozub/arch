@@ -1,0 +1,11 @@
+[Unit]
+Description=iam
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/code/arch/iam.sh
+
+[Install]
+WantedBy=graphical-session.target
+

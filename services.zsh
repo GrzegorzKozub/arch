@@ -92,6 +92,15 @@ if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
 
 fi
 
+# aws iam access key refresh
+
+if [[ $HOST = 'worker' ]]; then
+
+  cp `dirname $0`/home/$USER/.config/systemd/user/iam.service $XDG_CONFIG_HOME/systemd/user
+  systemctl --user enable iam.service
+
+fi
+
 # group check
 
 sudo grpck
