@@ -12,6 +12,9 @@ sudo pacman -S --noconfirm \
   gammastep \
   grim slurp
 
+paru -S --aur --noconfirm \
+  ttf-material-design-icons-extended
+
 # dotfiles
 
 . ~/code/dotfiles/hyprland.zsh
