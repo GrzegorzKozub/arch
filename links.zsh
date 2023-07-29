@@ -99,14 +99,7 @@ sed -i \
 # fi
 
 # kitty
-
-if [[ $HOST = 'drifter' || $HOST = 'player' ]]; then
-  cp /usr/share/applications/kitty.desktop $XDG_DATA_HOME/applications
-  sed -i \
-    -e "s/^Exec=kitty$/Exec=kitty --override=font_size=13/" \
-    $XDG_DATA_HOME/applications/kitty.desktop
-fi
-
+#
 # if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 #
 #   cp /usr/share/applications/kitty.desktop $XDG_DATA_HOME/applications

@@ -41,6 +41,10 @@ echo "::1       $MY_HOSTNAME.localdomain $MY_HOSTNAME" >> /etc/hosts
 
 sed -i 's/myhostname resolve/myhostname mdns_minimal [NOTFOUND=return] resolve/' /etc/nsswitch.conf
 
+# global host environment variable
+
+echo "HOST=$MY_HOSTNAME" >> /etc/environment
+
 # root password
 
 set +e
