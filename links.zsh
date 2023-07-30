@@ -72,11 +72,9 @@ if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
     sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
   done
 
-  if [[ $HOST = 'drifter' ]]; then
-    sed -i \
-      -e "s/^Exec=foot$/Exec=foot --font=monospace:size=13/" \
-      $XDG_DATA_HOME/applications/org.codeberg.dnkl.foot.desktop
-  fi
+  sed -i \
+    -e "s/^Exec=foot$/Exec=foot --override=include=~\/.config\/foot\/$HOST.ini/" \
+    $XDG_DATA_HOME/applications/org.codeberg.dnkl.foot.desktop
 fi
 
 # keepassxc
