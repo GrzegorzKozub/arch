@@ -8,12 +8,14 @@ sudo pacman -S --noconfirm \
   xdg-desktop-portal-hyprland \
   hyprland \
   hyprpaper \
+  swayidle swaylock \
   waybar wofi \
-  gammastep \
+  brightnessctl \
   grim slurp
 
 paru -S --aur --noconfirm \
-  ttf-material-design-icons-extended
+  ttf-material-design-icons-extended \
+  wlsunset
 
 # dotfiles
 
