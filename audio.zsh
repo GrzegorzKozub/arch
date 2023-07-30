@@ -11,6 +11,8 @@ up() {
     && pactl set-sink-volume @DEFAULT_SINK@ +5%
 }
 
+play-pause() { playerctl play-pause }
+
 device() {
   [[ $1 = 'sink' ]] && local snk=true
   [[ $1 = 'source' ]] && local src=true
@@ -33,5 +35,6 @@ device() {
 [[ $1 = '' || $1 = 'mute' ]] && mute
 [[ $1 = 'down' ]] && down
 [[ $1 = 'up' ]] && up
+[[ $1 = 'play-pause' ]] && play-pause
 [[ $1 = 'source' || $1 = 'sink' ]] && device $1
 
