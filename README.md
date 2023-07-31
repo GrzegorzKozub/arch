@@ -83,6 +83,7 @@ Automated Arch Linux installation
 4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
 5. Gnome
   - Set display scale to 200% on drifter
+  - Enable Night Light on worker
   - Reorder the icons
   - Add VPN server
   - Select the sound device and set volume to 50%
@@ -102,7 +103,7 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code runs o
 - [Blurry XWayland apps with fractional scaling](https://gitlab.gnome.org/GNOME/mutter/-/issues/2328)
 - [Flameshot issue when using fractional scaling with two monitors](https://github.com/flameshot-org/flameshot/issues/564)
 - `dispwin` not compatible and `colormgr` most likely doesn't work on NVIDIA
-- `redshift` not compatible with Wayland and `gammastep` doesn't work on Gnome
+- `redshift` not compatible with Wayland and `gammastep` doesn't work in Gnome on NVIDIA
 - `nvidia-settings` not compatible (coolbits, undervolting and overclocking)
 - PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
 
