@@ -10,13 +10,13 @@ sudo pacman -S --noconfirm \
   hyprpaper \
   swayidle swaylock \
   waybar wofi \
+  gammastep \
   brightnessctl \
   grim slurp
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
-  chayang-git \
-  wlsunset
+  chayang-git
 
 # dotfiles
 
