@@ -1,0 +1,18 @@
+temp_input = "temp1_input"
+log_level = "Error"
+
+[[speed_matrix]]
+temp = 4.0
+speed = 4.0
+
+[[speed_matrix]]
+temp = 30.0
+speed = 30.0
+
+[[speed_matrix]]
+temp = 50.0
+speed = 30.0
+
+[[speed_matrix]]
+temp = 80.0
+speed = 100.0

@@ -73,6 +73,16 @@ if [[ $HOST = 'player' ]]; then
 
 fi
 
+# amd gpu fan speed
+
+if [[ $HOST = 'worker' ]]; then
+
+  [[ -d /etc/amdfand ]] || sudo mkdir /etc/amdfand
+  sudo cp `dirname $0`/etc/amdfand/config.toml /etc/amdfand/config.toml
+  sudo systemctl enable amdfand.service
+
+fi
+
 # # wayland enabled on worker
 #
 # if [[ $HOST = 'worker' ]]; then

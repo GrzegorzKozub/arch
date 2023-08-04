@@ -51,6 +51,7 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
     argyllcms
 
   # nvidia gpu
+
   sudo pacman -S --noconfirm \
     nvidia nvidia-lts nvidia-settings nvidia-utils \
     libva-vdpau-driver
@@ -63,10 +64,14 @@ if [[ $MY_HOSTNAME = 'worker' ]]; then
     intel-ucode
 
   # amd gpu
+
   sudo pacman -S --noconfirm \
     mesa xf86-video-amdgpu \
     vulkan-radeon \
     libva-mesa-driver mesa-vdpau
+
+  paru -S --aur --noconfirm \
+    amdfand-bin
 
 fi
 
