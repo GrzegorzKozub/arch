@@ -183,6 +183,8 @@ dconf write $DIR/move-to-workspace-left "['<Shift><Control><Super>Left']"
 dconf write $DIR/move-to-workspace-right "['<Shift><Control><Super>Right']"
 dconf write $DIR/move-to-workspace-last "['<Shift><Control><Super>End']"
 
+dconf write $DIR/always-on-top "['<Super>T']"
+
 # keyboard > keyboard shortcuts > screenshots
 
 gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
