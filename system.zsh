@@ -78,6 +78,11 @@ pacstrap /mnt \
 
 genfstab -U /mnt > /mnt/etc/fstab
 
+sed -i \
+  -e "s/fmask=0022/fmask=0077/" \
+  -e "s/dmask=0022/dmask=0077/" \
+  /etc/fstab
+
 # continue
 
 cp -r `dirname $0`/../arch /mnt/root
