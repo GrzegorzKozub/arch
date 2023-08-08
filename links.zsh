@@ -123,7 +123,7 @@ fi
 
 # nvim
 
-[[ $XDG_SESSION_TYPE = 'wayland' ]] && TERMINAL='foot' || TERMINAL='kitty'
+[[ $XDG_SESSION_TYPE = 'wayland' ]] && TERMINAL="foot --override=include=~\/.config\/foot\/$HOST.ini" || TERMINAL='kitty'
 
 cp /usr/share/applications/nvim.desktop $XDG_DATA_HOME/applications
 sed -i \
