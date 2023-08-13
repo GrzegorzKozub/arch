@@ -93,6 +93,13 @@ if [[ $HOST = 'player' ]]; then
     $XDG_DATA_HOME/applications/org.codeberg.dnkl.foot.desktop
 fi
 
+# cleanup
+
+sudo pacman -Rs --noconfirm \
+  cmake
+
+sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
+
 # dotfiles
 
 . ~/code/dotfiles/hyprland.zsh

@@ -123,9 +123,9 @@ cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
 # paru -S --aur --noconfirm \
 #   libstrangle-git
 
-# remove unused packages
+# cleanup
 
-# sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
+sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
 
 # dotfiles
 
