@@ -49,10 +49,11 @@ sudo pacman -S --noconfirm \
   hyprpaper \
   swayidle swaylock \
   waybar wofi \
-  gammastep \
-  brightnessctl \
+  gammastep brightnessctl \
   pavucontrol \
   grim slurp
+
+  # blueman
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended
