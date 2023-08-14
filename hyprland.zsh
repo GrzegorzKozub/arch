@@ -52,8 +52,7 @@ sudo pacman -S --noconfirm \
   gammastep \
   brightnessctl \
   pavucontrol \
-  grim slurp \
-  swayimg
+  grim slurp
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended
