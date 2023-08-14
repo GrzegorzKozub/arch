@@ -6,6 +6,22 @@ set -e -o verbose
 
 if [[ $HOST = 'player' ]]; then
 
+  # wayland
+
+  FILE=/boot/loader/entries/01-arch.conf
+  OPT=nvidia-drm.modeset=1
+  [[ $(sudo grep $OPT $FILE) ]] || sudo sed -i "/^options/ s/$/ $OPT/" $FILE
+
+  sudo sed -i -e 's/^.+WaylandEnable=.+$/#WaylandEnable=false/' /etc/gdm/custom.conf
+  sudo ln -sf /dev/null /etc/udev/rules.d/61-gdm.rules
+
+  echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' |
+    sudo tee /etc/modprobe.d/nvidia-power-management.conf > /dev/null
+  sudo systemctl enable nvidia-hibernate.service
+  sudo systemctl enable nvidia-suspend.service
+
+  # hyprland
+
   [[ $(sudo pacman -Qs nvidia) ]] && sudo pacman -Rs --noconfirm nvidia
   [[ $(sudo pacman -Qs nvidia-lts) ]] && sudo pacman -Rs --noconfirm nvidia-lts
 
@@ -16,14 +32,6 @@ if [[ $HOST = 'player' ]]; then
   sudo mkinitcpio -p linux
 
   echo 'options nvidia-drm modeset=1' | sudo tee /etc/modprobe.d/nvidia.conf > /dev/null
-
-  echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' |
-    sudo tee /etc/modprobe.d/nvidia-power-management.conf > /dev/null
-  sudo systemctl enable nvidia-hibernate.service
-  sudo systemctl enable nvidia-suspend.service
-
-  sudo sed -i -e 's/^.+WaylandEnable=.+$/#WaylandEnable=false/' /etc/gdm/custom.conf
-  sudo ln -sf /dev/null /etc/udev/rules.d/61-gdm.rules
 
 fi
 
