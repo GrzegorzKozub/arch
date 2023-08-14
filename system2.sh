@@ -109,16 +109,16 @@ sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev consolefont autodetect modconf block encr
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
-# wayland disabled on player
+# wayland disabled on nvidia
 
 [[ $MY_HOSTNAME = 'player' ]] &&
   sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
 
-# # wayland enabled on worker
+# # wayland enabled on nvidia
 #
-# if [[ $MY_HOSTNAME = 'worker' ]]; then
+# if [[ $MY_HOSTNAME = 'player' ]]; then
 #
-#   # required for wayland on nvidia
+#   # forces wayland on nvidia in gdm
 #   ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 #
 #   # preserves nvidia video memory during suspend

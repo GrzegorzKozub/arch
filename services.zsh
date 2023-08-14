@@ -83,9 +83,9 @@ if [[ $HOST = 'worker' ]]; then
 
 fi
 
-# # wayland enabled on worker
+# # wayland enabled on nvidia
 #
-# if [[ $HOST = 'worker' ]]; then
+# if [[ $HOST = 'player' ]]; then
 #
 #   # preserves nvidia video memory during suspend
 #   sudo systemctl enable nvidia-hibernate.service
