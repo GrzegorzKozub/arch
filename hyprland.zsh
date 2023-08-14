@@ -56,8 +56,7 @@ sudo pacman -S --noconfirm \
   swayimg
 
 paru -S --aur --noconfirm \
-  ttf-material-design-icons-extended \
-  chayang-git
+  ttf-material-design-icons-extended
 
 # links
 
@@ -92,6 +91,10 @@ if [[ $HOST = 'player' ]]; then
     -e "s/^Exec=foot$/Exec=foot --override=include=~\/.config\/foot\/$HOST.ini/" \
     $XDG_DATA_HOME/applications/org.codeberg.dnkl.foot.desktop
 fi
+
+# disable gnome xdg-desktop-portal
+
+systemctl --user mask xdg-desktop-portal-gnome xdg-desktop-portal-gtk
 
 # cleanup
 
