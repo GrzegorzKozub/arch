@@ -56,15 +56,17 @@ sudo pacman -S --noconfirm \
   xdg-desktop-portal-hyprland \
   hyprpaper \
   swayidle swaylock \
-  waybar wofi \
+  waybar wofi dunst \
   gammastep brightnessctl \
   pavucontrol \
-  grim slurp
+  grim slurp \
+  swayimg
 
   # blueman
 
 paru -S --aur --noconfirm \
-  ttf-material-design-icons-extended
+  ttf-material-design-icons-extended \
+  hyprpicker
 
 # links
 
