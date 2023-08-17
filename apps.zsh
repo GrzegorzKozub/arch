@@ -96,7 +96,8 @@ sudo pacman -S --noconfirm \
   # imwheel
 
 paru -S --aur --noconfirm \
-  btop
+  btop \
+  cava
 
 if [[ $HOST = 'player' ]]; then
 
