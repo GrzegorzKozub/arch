@@ -32,7 +32,7 @@ class Extension {
     ];
     const small = [
       { class: /.?drawing.?/ },
-      { class: /.?Evince$/, auto: true },
+      { class: /.?evince$/, auto: true },
       { class: /^Gnome-system-monitor$/ },
       { title: /.?KeePassXC$/ },
       { title: /^Settings$/ },
