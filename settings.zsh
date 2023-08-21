@@ -38,7 +38,7 @@ pactl list short sinks | cut -f1 | while read -r id; do
   pactl set-sink-volume $id 50%
 done
 
-pactl list short sources | cut -f1 | while read -r id; do
+pactl list short sources | grep -v 'monitor' | cut -f1 | while read -r id; do
   pactl set-source-volume $id 50%
 done
 
