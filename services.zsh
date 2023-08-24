@@ -102,6 +102,11 @@ if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
 
 fi
 
+# random wallpaper every hour
+
+cp `dirname $0`/home/$USER/.config/systemd/user/wall.* $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable wall.timer
+
 # aws iam access key refresh
 
 if [[ $HOST = 'worker' ]]; then
