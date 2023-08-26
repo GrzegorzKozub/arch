@@ -62,7 +62,7 @@ cat <<EOF >> $TMP/theme/$GST.xml
 </gresources>
 EOF
 
-[[ $HOST = 'drifter' || $HOST = 'player' ]] && cat <<EOF >> $TMP/theme/gnome-shell.css
+[[ $HOST = 'drifter' ]] && cat <<EOF >> $TMP/theme/gnome-shell.css
 #lockDialogGroup {
   background: url(resource:///org/gnome/shell/theme/women.jpg);
   background-repeat: no-repeat;
@@ -73,7 +73,7 @@ EOF
 }
 EOF
 
-[[ $HOST = 'worker' ]] && cat <<EOF >> $TMP/theme/gnome-shell.css
+[[ $HOST = 'player' || $HOST = 'worker' ]] && cat <<EOF >> $TMP/theme/gnome-shell.css
 #lockDialogGroup {
   background: url(resource:///org/gnome/shell/theme/women.jpg);
   background-position: 0 0;
