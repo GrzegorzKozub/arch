@@ -22,12 +22,20 @@ device() {
   [[ $snk ]] && local all=$(pactl list short sinks | cut -f2) && local default='Default Sink'
   [[ $src ]] && local all=$(pactl list short sources | cut -f2) && local default='Default Source'
 
+  show() {
+    pactl list $1 | grep --context=1 $2 | grep 'Description' | sed -e 's/.*Description: //'
+  }
+
   while true; do
     echo $all | while read -r current; do
       if [[ $switch ]]; then
         [[ $snk ]] && pactl set-default-sink $current
         [[ $src ]] && pactl set-default-source $current
-        [[ $(pactl info | grep $default | cut -d' ' -f3) = $current ]] && return
+        if [[ $(pactl info | grep $default | cut -d' ' -f3) = $current ]]; then
+          [[ $snk ]] && show 'sinks' $current
+          [[ $src ]] && show 'sources' $current
+          return
+        fi
       fi
       [[ $(pactl info | grep $default | cut -d' ' -f3) = $current ]] && local switch=true
     done
