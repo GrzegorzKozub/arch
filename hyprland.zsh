@@ -62,7 +62,14 @@ sudo pacman -S --noconfirm \
   grim slurp \
   swayimg
 
-  # blueman
+if [[ $HOST = 'drifter' ]]; then
+
+  sudo pacman -S --noconfirm \
+    iwd
+
+  sudo systemctl enable iwd.service
+
+fi
 
 paru -S --aur --noconfirm \
   ttf-material-design-icons-extended \
