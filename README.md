@@ -40,6 +40,8 @@ Automated Arch Linux installation
   - Set as default browser
   - Hide bookmarks
   - Hide side panel button
+  - Hide bookmarks button
+  - Hide Brave News button in address bar
   - Enable wide address bar
   - Only allow suggestions from top sites, history and bookmarks
   - Hide Brave Rewards button
@@ -49,7 +51,7 @@ Automated Arch Linux installation
   - Disable everything except background images on the dashboard
   - Disable Brave News on the dashboard
   - Enable search and URL autocompletion
-  - Disable daily usage ping and diagnostic reports
+  - Disable product analytics, daily usage ping and diagnostic reports
   - Join the Sync Chain and sync everything
   - Don't allow sites to send notifications
   - Install your extensions
