@@ -77,6 +77,7 @@ sudo pacman -S --noconfirm \
   freerdp \
   fzf \
   htop \
+  hyperfine \
   jq \
   nvtop \
   p7zip \
