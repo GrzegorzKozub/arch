@@ -79,6 +79,7 @@ sudo pacman -S --noconfirm \
   htop \
   hyperfine \
   jq \
+  ncdu \
   nvtop \
   p7zip \
   pass \
