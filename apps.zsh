@@ -46,7 +46,8 @@ sudo pacman -S --noconfirm \
   otf-cascadia-code \
   ttf-dejavu \
   ttf-fira-code \
-  ttf-liberation
+  ttf-liberation \
+  ttf-nerd-fonts-symbols
 
 # themes
 
