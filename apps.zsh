@@ -79,7 +79,6 @@ sudo pacman -S --noconfirm \
   htop \
   hyperfine \
   jq \
-  ncdu \
   nvtop \
   p7zip \
   pass \
@@ -95,7 +94,7 @@ sudo pacman -S --noconfirm \
   zip
 
   # xclip, wl-clipboard - for keepassxc, neovim and pass
-  # imwheel
+  # imwheel ncdu
 
 paru -S --aur --noconfirm \
   btop \
