@@ -72,7 +72,6 @@ if [[ $HOST = 'drifter' ]]; then
 fi
 
 paru -S --aur --noconfirm \
-  ttf-material-design-icons-extended \
   hyprpicker
 
 # links
