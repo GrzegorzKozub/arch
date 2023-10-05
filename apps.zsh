@@ -112,8 +112,9 @@ fi
 
 sudo pacman -S --noconfirm \
   zsh zsh-completions \
-  tmux \
-  zellij
+  tmux
+
+  # zellij
 
 export GOPATH=$XDG_DATA_HOME/go
 
