@@ -22,8 +22,7 @@ for APP in \
   redshift-gtk \
   stoken-gui \
   stoken-gui-small \
-  xcolor \
-  zellij
+  xcolor
 do
   [[ ! -f /usr/share/applications/$APP.desktop ]] && continue
   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications

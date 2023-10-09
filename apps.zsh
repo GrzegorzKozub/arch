@@ -108,13 +108,11 @@ if [[ $HOST = 'player' ]]; then
 
 fi
 
-# terminal
+# tmux & zsh
 
 sudo pacman -S --noconfirm \
-  zsh zsh-completions \
-  tmux
-
-  # zellij
+  tmux \
+  zsh zsh-completions
 
 export GOPATH=$XDG_DATA_HOME/go
 
