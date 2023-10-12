@@ -46,10 +46,8 @@ dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 
 # applications > image viewer
 
-gsettings set org.gnome.eog.ui sidebar false
-
-xdg-mime default org.gnome.eog.desktop image/jpeg
-xdg-mime default org.gnome.eog.desktop image/png
+xdg-mime default org.gnome.Loupe.desktop image/jpeg
+xdg-mime default org.gnome.Loupe.desktop image/png
 
 # applications > software
 
