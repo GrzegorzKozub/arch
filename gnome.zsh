@@ -232,7 +232,7 @@ gsettings set org.gnome.desktop.interface cursor-size 32
 DIR=$XDG_DATA_HOME/gnome-shell/extensions
 [[ -d $DIR ]] || mkdir -p $DIR
 
-for NAME ('panel' 'windows')
+for NAME ('windows')
   cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/$NAME@grzegorzkozub.github.com $DIR
 
 pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
@@ -240,7 +240,6 @@ pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && p
 gsettings set org.gnome.shell enabled-extensions "[
   'appindicatorsupport@rgcjonas.gmail.com',
   'blur-my-shell@aunetx',
-  'panel@grzegorzkozub.github.com',
   'user-theme@gnome-shell-extensions.gcampax.github.com',
   'windows@grzegorzkozub.github.com',
   'rounded-window-corners@yilozt'
