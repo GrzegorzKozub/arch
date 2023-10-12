@@ -106,7 +106,7 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code runs o
 - [Flameshot issue when using fractional scaling with two monitors](https://github.com/flameshot-org/flameshot/issues/564)
 - `dispwin` not compatible and `colormgr` most likely doesn't work on NVIDIA
 - `redshift` not compatible with Wayland and `gammastep` doesn't work in Gnome on NVIDIA
-- `nvidia-settings` not compatible (coolbits, undervolting and overclocking)
+- `nvidia-settings` not compatible (coolbits, undervolting and overclocking) but maybe [tuxclocker](https://github.com/lurkki14/tuxclocker/) can be used
 - PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
 
 ### Enabling on NVIDIA
