@@ -1,17 +1,18 @@
 /* eslint-disable no-undef */
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const GLib = imports.gi.GLib;
-const Main = imports.ui.main;
-const Meta = imports.gi.Meta;
-const Shell = imports.gi.Shell;
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import GLib from 'gi://GLib';
+import Meta from 'gi://Meta';
+import Shell from 'gi://Shell';
 
-class Extension {
+export default class Windows extends Extension {
   windowCreatedHandler;
   config = [];
   initial = {};
 
-  constructor() {
+  constructor(metadata) {
+    super(metadata);
     const big = [
       { title: /.?Azure Data Studio$/ },
       { title: /.?Brave$/, noRole: 'pop-up' },
@@ -75,7 +76,7 @@ class Extension {
   addKeybinding(name, handler) {
     Main.wm.addKeybinding(
       name,
-      ExtensionUtils.getSettings('org.gnome.shell.extensions.windows'),
+      this.getSettings('org.gnome.shell.extensions.windows'),
       Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
       Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
       handler.bind(this));
@@ -282,7 +283,4 @@ class Tile {
       close(this.rect.width, rect.width) && close(this.rect.height, rect.height);
   }
 }
-
-// eslint-disable-next-line no-unused-vars
-var init = () => new Extension();
 
