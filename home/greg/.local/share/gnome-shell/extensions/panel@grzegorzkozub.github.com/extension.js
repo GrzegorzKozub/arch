@@ -1,8 +1,9 @@
 /* eslint-disable no-undef */
 
-const Main = imports.ui.main;
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
-class Extension {
+export default class Panel extends Extension {
   enable() {
     this.hideActivities();
     this.hideA11y();
@@ -21,7 +22,4 @@ class Extension {
   hideA11y() { const a11y = this.a11y(); if (a11y) { a11y.container.hide(); } }
   showA11y() { const a11y = this.a11y(); if (a11y) { a11y.container.show(); } }
 }
-
-// eslint-disable-next-line no-unused-vars
-var init = () => new Extension();
 
