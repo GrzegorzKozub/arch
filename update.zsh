@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-set -o verbose
+set -e -o verbose
 
 # update self
 
@@ -15,7 +15,9 @@ paru --aur --noconfirm -Syu
 
 # remove unused packages
 
+set +e
 sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
+set -e
 
 # clean package caches
 
