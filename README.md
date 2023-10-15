@@ -62,6 +62,7 @@ Automated Arch Linux installation
   - Don't ask where to save downloaded files
   - Don't show Wayback Machine prompts on 404 pages
   - Don't continue running background apps
+  - Disable Brave VPN
   - Enable Memory Saver
   - Disable EasyList Cookie in `brave://settings/shields/filters`
   - Enable `brave://flags/#enable-webrtc-pipewire-capturer`
