@@ -9,6 +9,7 @@ for APP in \
   bssh \
   btop \
   bvnc \
+  cmake-gui \
   htop \
   lf \
   mpv \
