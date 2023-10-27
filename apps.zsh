@@ -86,6 +86,7 @@ sudo pacman -S --noconfirm \
   ripgrep \
   rsync \
   stress \
+  time \
   trash-cli \
   wget \
   wl-clipboard \
