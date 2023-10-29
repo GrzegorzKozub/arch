@@ -35,14 +35,10 @@ sed -i '4iNoDisplay=true' $XDG_DATA_HOME/applications/lstopo.desktop
 
 # alacritty
 
-# if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
-#
-#   cp /usr/share/applications/Alacritty.desktop $XDG_DATA_HOME/applications
-#
-#   # xwayland
-#   sed -i -e 's/^Exec=/Exec=env WAYLAND_DISPLAY= /' $XDG_DATA_HOME/applications/Alacritty.desktop
-#
-# fi
+cp /usr/share/applications/Alacritty.desktop $XDG_DATA_HOME/applications
+sed -i \
+  -e "s/^Exec=alacritty$/Exec=alacritty --option=font.size=$($XDG_CONFIG_HOME/alacritty/font.sh)/" \
+  $XDG_DATA_HOME/applications/Alacritty.desktop
 
 # flameshot
 
@@ -81,32 +77,9 @@ fi
 # keepassxc
 
 cp /usr/share/applications/org.keepassxc.KeePassXC.desktop $XDG_DATA_HOME/applications
-
-# if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
-#
-#   # native wayland
-#   sed -i \
-#     -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough QT_QPA_PLATFORM=wayland /' \
-#     $XDG_DATA_HOME/applications/org.keepassxc.KeePassXC.desktop
-#
-# else
-
 sed -i \
   -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' \
   $XDG_DATA_HOME/applications/org.keepassxc.KeePassXC.desktop
-
-# fi
-
-# kitty
-#
-# if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
-#
-#   cp /usr/share/applications/kitty.desktop $XDG_DATA_HOME/applications
-#
-#   # xwayland
-#   sed -i -e 's/^Exec=/Exec=env KITTY_DISABLE_WAYLAND=1 /' $XDG_DATA_HOME/applications/kitty.desktop
-#
-# fi
 
 # nvidia
 
