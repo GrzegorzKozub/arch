@@ -115,6 +115,8 @@ sudo pacman -S --noconfirm \
   tmux \
   zsh zsh-completions
 
+  # zellij
+
 export GOPATH=$XDG_DATA_HOME/go
 
 paru -S --aur --noconfirm \
