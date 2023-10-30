@@ -96,7 +96,8 @@ sudo pacman -S --noconfirm \
   zip
 
   # xclip, wl-clipboard - for keepassxc, neovim and pass
-  # imwheel ncdu
+  # gdu ncdu
+  # imwheel
 
 paru -S --aur --noconfirm \
   btop \
