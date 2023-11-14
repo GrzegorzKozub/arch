@@ -127,8 +127,11 @@ rm -rf ~/.bash*
 
 # neovim
 
-sudo pacman -S --noconfirm \
-  neovim
+# sudo pacman -S --noconfirm \
+#   neovim
+
+paru -S --aur --noconfirm \
+  neovim-nightly-bin
 
 xdg-mime default nvim.desktop text/plain
 
