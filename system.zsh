@@ -62,6 +62,7 @@ pacstrap /mnt \
   lm_sensors \
   v4l-utils \
   networkmanager \
+  usbutils \
   bluez-utils \
   pipewire pipewire-alsa pipewire-pulse wireplumber \
   gst-plugins-good \
