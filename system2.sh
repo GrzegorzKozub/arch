@@ -87,7 +87,13 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
   # echo 'w /proc/acpi/wakeup - - - - XHC0' > /usr/lib/tmpfiles.d/wakeup.conf
 
   # don't wake up with usb mouse
-  cp `dirname $0`/etc/udev/rules.d/10-player.rules /etc/udev/rules.d/10-wakeup.rules
+  cp `dirname $0`/etc/udev/rules.d/10-wakeup.rules /etc/udev/rules.d/10-wakeup.rules
+fi
+
+# webcam video format
+
+if [[ $MY_HOSTNAME = 'worker' ]]; then
+  cp `dirname $0`/etc/udev/rules.d/10-webcam.rules /etc/udev/rules.d/10-webcam.rules
 fi
 
 # drifter power saving
