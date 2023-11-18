@@ -76,7 +76,7 @@ echo 'greg ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
 touch /home/greg/.zshrc
 chown greg:users /home/greg/.zshrc
 
-# player sleep fixes
+# sleep fixes
 
 if [[ $MY_HOSTNAME = 'player' ]]; then
 
@@ -87,14 +87,16 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
   # echo 'w /proc/acpi/wakeup - - - - XHC0' > /usr/lib/tmpfiles.d/wakeup.conf
 
   # don't wake up with usb mouse
-  cp `dirname $0`/etc/udev/rules.d/10-wakeup.rules /etc/udev/rules.d/10-wakeup.rules
+  cp `dirname $0`/etc/udev/rules.d/10-model-o-2.rules /etc/udev/rules.d/10-model-o-2.rules
 fi
+
+[[ $MY_HOSTNAME = 'worker' ]] &&
+  cp `dirname $0`/etc/udev/rules.d/10-model-o.rules /etc/udev/rules.d/10-model-o.rules
 
 # webcam video format
 
-if [[ $MY_HOSTNAME = 'worker' ]]; then
-  cp `dirname $0`/etc/udev/rules.d/10-webcam.rules /etc/udev/rules.d/10-webcam.rules
-fi
+[[ $MY_HOSTNAME = 'worker' ]] &&
+  cp `dirname $0`/etc/udev/rules.d/10-c922.rules /etc/udev/rules.d/10-c922.rules
 
 # drifter power saving
 

@@ -1,0 +1,7 @@
+#
+# lsusb | grep 'Model O'
+# grep -E '822a|822d' /sys/bus/usb/devices/*/idProduct
+
+ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="2011", ATTR{power/wakeup}="disabled", ATTR{driver/3-4/power/wakeup}="disabled"
+ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="2022", ATTR{power/wakeup}="disabled", ATTR{driver/3-2/power/wakeup}="disabled"
+
