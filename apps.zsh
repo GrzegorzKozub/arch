@@ -92,7 +92,7 @@ sudo pacman -S --noconfirm \
   wl-clipboard \
   xclip \
   xcolor \
-  yt-dlp \
+  python-secretstorage yt-dlp \
   zip
 
   # xclip, wl-clipboard - for keepassxc, neovim and pass
