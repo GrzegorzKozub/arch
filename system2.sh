@@ -86,9 +86,12 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
   # don't wake up with usb keyboard or mouse
   # echo 'w /proc/acpi/wakeup - - - - XHC0' > /usr/lib/tmpfiles.d/wakeup.conf
 
-  # don't wake up with usb mouse
-  cp `dirname $0`/etc/udev/rules.d/10-model-o-2.rules /etc/udev/rules.d/10-model-o-2.rules
 fi
+
+# don't wake up with usb mouse
+
+[[ $MY_HOSTNAME = 'player' ]] &&
+  cp `dirname $0`/etc/udev/rules.d/10-model-o-2.rules /etc/udev/rules.d/10-model-o-2.rules
 
 [[ $MY_HOSTNAME = 'worker' ]] &&
   cp `dirname $0`/etc/udev/rules.d/10-model-o.rules /etc/udev/rules.d/10-model-o.rules
