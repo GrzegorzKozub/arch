@@ -97,7 +97,7 @@ Automated Arch Linux installation
 
 ## Wayland
 
-Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code runs on native Wayland on drifter and on XWayland on worker. Brave, KeePassXC and Postman run on XWayland.
+Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code, Brave, KeePassXC and Postman run on XWayland.
 
 ### Problems
 
