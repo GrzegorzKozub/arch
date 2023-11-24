@@ -243,6 +243,7 @@ gsettings set org.gnome.shell enabled-extensions "[
   'appindicatorsupport@rgcjonas.gmail.com',
   'blur-my-shell@aunetx',
   'user-theme@gnome-shell-extensions.gcampax.github.com',
+  'panel@grzegorzkozub.github.com',
   'windows@grzegorzkozub.github.com',
   'rounded-window-corners@yilozt'
 ]"
