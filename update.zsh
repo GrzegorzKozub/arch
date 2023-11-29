@@ -13,6 +13,9 @@ sudo pacman --noconfirm -Sy archlinux-keyring
 sudo pacman --noconfirm -Syu
 paru --aur --noconfirm -Syu
 
+paru -S --aur --noconfirm \
+  neovim-nightly-bin
+
 # remove unused packages
 
 set +e
