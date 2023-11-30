@@ -62,3 +62,19 @@ else
   powerprofilesctl set balanced
 fi
 
+# apps
+
+xdg-mime default nvim.desktop text/plain
+
+xdg-mime default mpv.desktop audio/mpeg
+xdg-mime default mpv.desktop audio/ogg
+
+xdg-mime default mpv.desktop video/mp4
+xdg-mime default mpv.desktop video/webm
+xdg-mime default mpv.desktop video/x-matroska
+
+xdg-mime default brave-browser.desktop x-scheme-handler/mailto
+xdg-mime default brave-browser.desktop text/calendar
+
+# xdg-mime default slack.desktop x-scheme-handler/slack
+

@@ -133,8 +133,6 @@ rm -rf ~/.bash*
 paru -S --aur --noconfirm \
   neovim-nightly-bin
 
-xdg-mime default nvim.desktop text/plain
-
 # docker
 
 sudo pacman -S --noconfirm \
@@ -187,24 +185,12 @@ sudo pacman -S --noconfirm \
   mpv \
   openconnect networkmanager-openconnect
 
-  # celluloid
-
 paru -S --aur --noconfirm \
-  brave-bin \
+  brave-bin gnome-browser-connector \
   postman-bin \
   visual-studio-code-bin
 
-  # gnome-browser-connector slack-desktop
-
-xdg-mime default brave-browser.desktop x-scheme-handler/mailto
-xdg-mime default brave-browser.desktop text/calendar
-
-# gsettings set io.github.celluloid-player.Celluloid always-use-floating-controls true
-# gsettings set io.github.celluloid-player.Celluloid dark-theme-enable false
-# gsettings set io.github.celluloid-player.Celluloid mpv-config-enable true
-# gsettings set io.github.celluloid-player.Celluloid mpv-config-file 'file:///home/greg/.config/mpv/mpv.conf'
-
-# xdg-mime default slack.desktop x-scheme-handler/slack
+  # slack-desktop
 
 # clean package caches
 
