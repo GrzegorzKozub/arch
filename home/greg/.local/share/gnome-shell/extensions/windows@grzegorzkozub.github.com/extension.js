@@ -16,6 +16,7 @@ export default class Windows extends Extension {
     const big = [
       { title: /.?Azure Data Studio$/ },
       { title: /.?Brave$/, noRole: 'pop-up' },
+      { class: /^DBeaver$/ },
       { title: /.?MySQL Workbench$/ },
       { title: /^OBS.?/ },
       { class: /^Postman$/, auto: true, noRole: 'GtkFileChooserDialog' },
