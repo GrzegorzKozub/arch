@@ -289,12 +289,11 @@ gsettings set org.gnome.shell app-picker-layout '[]'
 # dash
 
 [[ $XDG_SESSION_TYPE = 'wayland' ]] && TERMINAL='org.codeberg.dnkl.foot' || TERMINAL='kitty'
-[[ $HOST = 'drifter' ]] && CODE='code-url-handler' || CODE='code'
 
 gsettings set org.gnome.shell favorite-apps "[
   'org.gnome.Nautilus.desktop',
   '$TERMINAL.desktop',
-  '$CODE.desktop',
+  'code.desktop',
   'postman.desktop',
   'brave-browser.desktop',
   'org.keepassxc.KeePassXC.desktop',
