@@ -90,10 +90,9 @@ Automated Arch Linux installation
   - Reorder the icons
   - Add VPN server
   - Select the sound device and set volume to 50%
-  - Remove the `~/.gnome` dir
-  - Install [Rounded Window Corners](https://extensions.gnome.org/extension/5237/rounded-window-corners/) extension
-6. Clone apsis repo, run `repos.zsh`, setup `.env` files and token env variables
-7. Fix window sizes and positions
+6. Run `clean.zsh`
+7. Clone apsis repo, run `repos.zsh`, setup `.env` files and token env variables
+8. Fix window sizes and positions
 
 ## Wayland
 
