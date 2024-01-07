@@ -29,6 +29,7 @@ export default class Windows extends Extension {
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
       { title: /.?LibreOffice.?/ },
+      { class: /^obsidian$/ },
       { title: /.?Slack$/, auto: true },
       { title: /.?Steam$/ },
     ];
