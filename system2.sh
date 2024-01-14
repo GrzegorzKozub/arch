@@ -90,8 +90,8 @@ fi
 
 # don't wake up with usb mouse
 
-[[ $MY_HOSTNAME = 'player' ]] &&
-  cp `dirname $0`/etc/udev/rules.d/10-model-o-2.rules /etc/udev/rules.d/10-model-o-2.rules
+# [[ $MY_HOSTNAME = 'player' ]] &&
+#   cp `dirname $0`/etc/udev/rules.d/10-model-o-2.rules /etc/udev/rules.d/10-model-o-2.rules
 
 [[ $MY_HOSTNAME = 'worker' ]] &&
   cp `dirname $0`/etc/udev/rules.d/10-model-o.rules /etc/udev/rules.d/10-model-o.rules
