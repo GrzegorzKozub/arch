@@ -72,6 +72,7 @@ fi
 
 sudo pacman -S --noconfirm \
   bat \
+  btop \
   cpupower \
   fd \
   ffmpeg \
@@ -96,11 +97,11 @@ sudo pacman -S --noconfirm \
   zip
 
   # xclip, wl-clipboard - for keepassxc, neovim and pass
+
   # gdu ncdu
   # imwheel
 
 paru -S --aur --noconfirm \
-  btop \
   cava
 
 if [[ $HOST = 'player' ]]; then
@@ -109,6 +110,14 @@ if [[ $HOST = 'player' ]]; then
     redshift
 
 fi
+
+if [[ $HOST = 'worker' ]]; then
+
+  # btop amd gpu monitoring
+  sudo pacman -S --noconfirm \
+    rocm-smi-lib
+
+end
 
 # tmux & zsh
 
