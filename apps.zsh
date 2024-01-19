@@ -57,9 +57,8 @@ sudo pacman -S --needed --noconfirm \
 # terminal
 
 sudo pacman -S --noconfirm \
+  alacritty \
   kitty
-
-  # alacritty
 
 if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
 
