@@ -31,7 +31,7 @@ fi
   sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.25'
 
 [[ $HOST = 'player' || $HOST = 'worker' ]] &&
-  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.5'
+  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.75'
 
 # background image
 

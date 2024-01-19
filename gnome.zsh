@@ -273,10 +273,10 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code Reg
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
 [[ $HOST = 'drifter' ]] &&
-  gsettings reset org.gnome.desktop.interface text-scaling-factor
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 
 [[ $HOST = 'player' || $HOST = 'worker' ]] &&
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.75
 
 # tweaks > windows
 
@@ -288,11 +288,10 @@ gsettings set org.gnome.shell app-picker-layout '[]'
 
 # dash
 
-[[ $XDG_SESSION_TYPE = 'wayland' ]] && TERMINAL='org.codeberg.dnkl.foot' || TERMINAL='kitty'
-
 gsettings set org.gnome.shell favorite-apps "[
   'org.gnome.Nautilus.desktop',
-  '$TERMINAL.desktop',
+  $([[ $XDG_SESSION_TYPE = 'wayland' ]] && echo "'org.codeberg.dnkl.foot.desktop',")
+  'kitty.desktop',
   'code.desktop',
   'postman.desktop',
   'brave-browser.desktop',
