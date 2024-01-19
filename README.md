@@ -82,7 +82,7 @@ Automated Arch Linux installation
   - Open your databases
   - Only show attachment, title and username columns
   - Fit columns to window
-3. Change the font to `Cascadia Code` and tab size to `2` in Postman
+3. Change font to `Cascadia Code`, font size to `16` and tab size to `2` in Postman
 4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
 5. Gnome
   - Set display scale to 200% on drifter
