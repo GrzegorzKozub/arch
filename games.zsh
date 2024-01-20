@@ -58,8 +58,8 @@ sudo pacman -S --noconfirm \
 # steam
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/9805
-sudo pacman -S --noconfirm \
-  lib32-libnm
+# sudo pacman -S --noconfirm \
+#   lib32-libnm
 
 sudo pacman -S --noconfirm \
   lib32-nvidia-utils \

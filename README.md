@@ -180,10 +180,6 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 `LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" PROTON_ENABLE_NGX_UPDATER=1 PROTON_ENABLE_NVAPI=1 python3 ./save_sync mangohud gamemoderun %command% -f -g "<game file>"`
 
-- Cyberpunk 2077, VKD3D
-
-`LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" PROTON_ENABLE_NGX_UPDATER=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=dxr11,dxr mangohud gamemoderun %command% --launcher-skip -skipStartScreen`
-
 - Elden Ring, VKD3D
 
 `./er-patcher --rate 144 -vcas -- env LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" PROTON_ENABLE_NGX_UPDATER=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=dxr11,dxr WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 mangohud gamemoderun %command%`
@@ -201,7 +197,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 #### [Proper focus is not given when a new window is launched from the overview](https://gitlab.gnome.org/GNOME/mutter/-/issues/2690)
 
-Affects all machines. Worked around in the `windows` Gnome Shell extension.
+Affects all machines. Worked around in the `windows` Gnome Shell extension. Disabled the workaround on Jan 20th 2024.
 
 #### [Hardware video acceleration with VA-API](https://bbs.archlinux.org/viewtopic.php?id=244031)
 
@@ -213,7 +209,7 @@ Worked around with `rm -rf ~/.cache/nvidia/GLCache`
 
 #### [Steam crashes at launch with libgudev 238](https://github.com/ValveSoftware/steam-for-linux/issues/9805)
 
-Worked around by installing `lib32-libnm`
+Worked around by installing `lib32-libnm`. Disabled the workaround on Jan 20th 2024.
 
 ## More packages
 

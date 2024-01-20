@@ -97,7 +97,7 @@ export default class Windows extends Extension {
     GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
       this.fix(this.config.filter(cfg => cfg.auto), win);
       this.save(this.config.filter(cfg => cfg.initial), win);
-      this.activate(win);
+      // this.activate(win);
       return GLib.SOURCE_REMOVE;
     });
   }
