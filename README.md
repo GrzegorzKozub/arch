@@ -100,7 +100,7 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code, Brave
 
 ### Problems
 
-- Gnome text scaling factor not supported by the apps
+- Gnome text scaling factor not supported by the apps in native Wayland
 - Brave graphical glitches and (when hardware acceleration is enabled) video flickering on XWayland with NVIDIA when screen refresh rate is above 60 Hz
 - KeePassXC auto-type not supported on native Wayland
 - [Blurry XWayland apps with fractional scaling](https://gitlab.gnome.org/GNOME/mutter/-/issues/2328)
@@ -129,6 +129,21 @@ XDP implementations conflict each other so only one should be installed at the s
 - KDE - `xdg-desktop-portal-kde`
 - Hyprland - `xdg-desktop-portal-hyprland`
 - Sway - `xdg-desktop-portal-wlr`
+
+## Fonts
+
+Comfortable settings for display scale & font scaling factor given the screen size and resolution:
+
+- drifter - 200% & 1.25
+- player & worker - 100% & 1.75
+
+The aim is to use the font size of `1em` or `12pt` or `16px` ([converter](https://simplecss.eu/pxtoems.html)) and have font scaling factor make it comfortable. Apps running on X11 or XWayland respect font scaling factor. For native Wayland apps font size is adjusted to simulate font scaling factor:
+
+- Alacritty, Foot & Kitty
+  - drifter (Wayland) - `15pt` (or `1.25em` or `20px`)
+  - player (X11) - `12pt` (or `1em` or `16px`)
+  - worker (Wayland) - `21pt` (or `1.75em` or `28px`)
+- Brave, Code & Postman (XWayland) - `16px` (or `1em` or `12pt`)
 
 ## Gnome Shell extensions
 
