@@ -36,10 +36,10 @@ sed -i '4iNoDisplay=true' $XDG_DATA_HOME/applications/lstopo.desktop
 
 # alacritty
 
-cp /usr/share/applications/Alacritty.desktop $XDG_DATA_HOME/applications
-sed -i \
-  -e "s/^Exec=alacritty$/Exec=alacritty --option=font.size=$(~/code/dotfiles/alacritty/alacritty/font.sh)/" \
-  $XDG_DATA_HOME/applications/Alacritty.desktop
+# cp /usr/share/applications/Alacritty.desktop $XDG_DATA_HOME/applications
+# sed -i \
+#   -e "s/^Exec=alacritty$/Exec=alacritty --option=font.size=$(~/code/dotfiles/alacritty/alacritty/font.sh)/" \
+#   $XDG_DATA_HOME/applications/Alacritty.desktop
 
 # flameshot
 
