@@ -45,5 +45,5 @@ sed -i -e 's/^Name=DBeaver Community$/Name=DBeaver/' $XDG_DATA_HOME/applications
 
 # dotfiles
 
-. ~/code/dotfiles/mysql.zsh
+. ~/code/dotfiles/sql.zsh
 
