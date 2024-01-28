@@ -17,7 +17,7 @@ VARS=$NAME.fd
 TPM=$NAME-tpm
 
 OS=$NAME.iso
-DRIVERS=virtio-win-0.1.229.iso
+DRIVERS=virtio-win-0.1.240.iso
 
 # packages
 
