@@ -171,7 +171,7 @@ sudo pacman -S --noconfirm \
   dotnet-sdk aspnet-runtime \
   elixir \
   go \
-  lua luacheck luarocks \
+  lua luacheck luarocks stylua \
   perl \
   python python-pip \
   ruby \
@@ -181,8 +181,7 @@ sudo pacman -S --noconfirm \
   # nodejs npm
 
 paru -S --aur --noconfirm \
-  nvm \
-  stylua-bin
+  nvm
 
 NVM_DIR=$XDG_DATA_HOME/nvm source /usr/share/nvm/init-nvm.sh
 
