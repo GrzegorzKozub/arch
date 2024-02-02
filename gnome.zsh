@@ -30,30 +30,30 @@ gsettings set org.gnome.desktop.search-providers disabled "[
 
 gsettings set org.gnome.desktop.search-providers disable-external false
 
-# applications > document viewer
+# apps > document viewer
 
 gsettings set org.gnome.Evince.Default show-sidebar false
 gsettings set org.gnome.Evince.Default sizing-mode 'fit-width'
 
 xdg-mime default org.gnome.Evince.desktop application/pdf
 
-# applications > files
+# apps > files
 
 gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 
 dconf write /org/gtk/settings/file-chooser/show-hidden true
 dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 
-# applications > image viewer
+# apps > image viewer
 
 xdg-mime default org.gnome.Loupe.desktop image/jpeg
 xdg-mime default org.gnome.Loupe.desktop image/png
 
-# applications > software
+# apps > software
 
 # gsettings set org.gnome.software download-updates false
 
-# applications > terminal
+# apps > terminal
 
 UUID=$(gsettings get org.gnome.Terminal.ProfilesList default)
 UUID=${UUID:1:-1}
@@ -84,9 +84,16 @@ dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/foreground-color" "'rgb
 
 dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/scrollbar-policy" "'never'"
 
-# applications > tweaks
+# apps > tweaks
 
 gsettings set org.gnome.tweaks show-extensions-notice false
+
+# privacy > file history & trash
+
+# gsettings set org.gnome.desktop.privacy remember-recent-files false
+
+FILE=$XDG_DATA_HOME/recently-used.xbel
+[[ -f $FILE ]] && rm $FILE
 
 # power
 
