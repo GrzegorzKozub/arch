@@ -175,11 +175,11 @@ sudo pacman -S --noconfirm \
   lua luacheck luarocks stylua \
   perl \
   python python-pip \
-  ruby \
   rust taplo \
   tree-sitter
 
   # nodejs npm
+  # ruby
 
 paru -S --aur --noconfirm \
   nvm
