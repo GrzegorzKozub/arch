@@ -2,7 +2,9 @@
 
 set -o verbose
 
-# remove ruby
+# elixir, ruby
 
-sudo pacman -Rs --noconfirm ruby
+sudo pacman -Rs --noconfirm \
+  elixir \
+  ruby
 

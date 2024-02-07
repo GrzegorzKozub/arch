@@ -170,7 +170,6 @@ paru -S --aur --noconfirm \
 
 sudo pacman -S --noconfirm \
   dotnet-sdk aspnet-runtime \
-  elixir \
   go \
   lua luacheck luarocks stylua \
   perl \
@@ -178,6 +177,7 @@ sudo pacman -S --noconfirm \
   rust taplo \
   tree-sitter
 
+  # elixir
   # nodejs npm
   # ruby
 
