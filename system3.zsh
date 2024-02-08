@@ -9,15 +9,21 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 
 # paru
 
-export CARGO_HOME=$XDG_DATA_HOME/cargo
-
 [[ -d ~/paru ]] && rm -rf ~/paru
+
 pushd ~
+
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si --noconfirm
+
 popd
+
 rm -rf ~/paru
+rm -rf ~/.cargo
+
+sudo pacman -Rs --noconfirm \
+  rust
 
 # packages
 
