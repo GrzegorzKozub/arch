@@ -23,9 +23,7 @@ sudo pacman -S --noconfirm \
   openssh
 
 paru -S --aur --noconfirm \
-  git-extras \
-  gitflow-avh \
-  gitflow-zshcompletion-avh
+  git-extras
 
 # dotfiles init
 
