@@ -208,11 +208,6 @@ paru -S --aur --noconfirm \
 
   # slack-desktop
 
-# clean package caches
-
-sudo pacman --noconfirm -Sc
-paru --aur -Sccd
-
 # settings
 
 . `dirname $0`/settings.zsh
@@ -222,8 +217,9 @@ paru --aur -Sccd
 [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && . `dirname $0`/gnome.zsh
 [[ $XDG_CURRENT_DESKTOP = 'KDE' ]] && . `dirname $0`/plasma.zsh
 
-# clean
+# cleanup
 
+. `dirname $0`/packages.zsh
 . `dirname $0`/clean.zsh
 
 # dotfiles install

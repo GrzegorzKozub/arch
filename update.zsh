@@ -16,21 +16,6 @@ paru --aur --noconfirm -Syu
 paru -S --aur --noconfirm \
   neovim-nightly-bin
 
-# remove unused packages
-
-set +e
-sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
-set -e
-
-# clean package caches
-
-sudo pacman --noconfirm -Sc
-paru --aur -Sccd
-
-# clean system logs
-
-sudo journalctl --vacuum-time=3months
-
 # merge *.pacnew and *.pacsave files
 
 sudo DIFFPROG='nvim -d' pacdiff
@@ -44,7 +29,10 @@ sudo DIFFPROG='nvim -d' pacdiff
 [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && . `dirname $0`/gnome.zsh
 [[ $XDG_CURRENT_DESKTOP = 'KDE' ]] && . `dirname $0`/plasma.zsh
 
-# clean
+# cleanup
 
+sudo journalctl --vacuum-time=3months
+
+. `dirname $0`/packages.zsh
 . `dirname $0`/clean.zsh
 

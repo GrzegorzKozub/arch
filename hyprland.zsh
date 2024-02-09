@@ -117,7 +117,7 @@ systemctl --user mask xdg-desktop-portal-gnome xdg-desktop-portal-gtk
 sudo pacman -Rs --noconfirm \
   cmake
 
-sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
+. `dirname $0`/packages.zsh
 
 # dotfiles
 
