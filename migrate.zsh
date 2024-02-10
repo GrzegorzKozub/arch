@@ -6,3 +6,6 @@ paru -Rs --noconfirm \
   gitflow-avh \
   gitflow-zshcompletion-avh
 
+paru -S --aur --noconfirm \
+  golangci-lint-bin
+

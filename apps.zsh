@@ -181,6 +181,7 @@ sudo pacman -S --noconfirm \
   # rust
 
 paru -S --aur --noconfirm \
+  golangci-lint-bin \
   nvm
 
 NVM_DIR=$XDG_DATA_HOME/nvm source /usr/share/nvm/init-nvm.sh
