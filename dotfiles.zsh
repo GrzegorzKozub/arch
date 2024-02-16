@@ -14,11 +14,8 @@ sudo mount $PENDRIVE /mnt
 mkdir ~/.ssh
 
 cp /mnt/.arch/keys/openssh/.ssh/config ~/.ssh
-chmod 600 ~/.ssh/config
-
 cp -r /mnt/.arch/keys/openssh/.ssh/github.com ~/.ssh
-chmod 600 ~/.ssh/github.com/*
-chmod 600 ~/.ssh/gitlab.com/*
+chmod 600 ~/.ssh/github*
 
 sudo umount -R /mnt
 
