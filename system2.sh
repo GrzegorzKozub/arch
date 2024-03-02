@@ -152,6 +152,8 @@ reflector --save /etc/pacman.d/mirrorlist --protocol https --country Poland,Germ
 
 sed -i 's/#Color/Color/' /etc/pacman.conf
 
+sed -i "s/PKGEXT='.pkg.tar.zst'/PKGEXT='.pkg.tar'/" /etc/makepkg.conf
+
 # always mount data
 
 [[ -d /run/media/greg/data ]] || mkdir -p /run/media/greg/data
