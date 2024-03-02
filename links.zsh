@@ -31,9 +31,6 @@ do
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
-cp /usr/share/applications/lstopo.desktop $XDG_DATA_HOME/applications
-sed -i '4iNoDisplay=true' $XDG_DATA_HOME/applications/lstopo.desktop
-
 # alacritty
 
 # cp /usr/share/applications/Alacritty.desktop $XDG_DATA_HOME/applications
