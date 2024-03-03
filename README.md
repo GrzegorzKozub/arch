@@ -101,7 +101,7 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code, Brave
 ### Problems
 
 - Gnome text scaling factor not supported by the apps in native Wayland
-- Brave graphical glitches and (when hardware acceleration is enabled) video flickering on XWayland with NVIDIA when screen refresh rate is above 60 Hz
+- Brave, Steam & games flickering on XWayland with NVIDIA with VRR when above 60 Hz
 - KeePassXC auto-type not supported on native Wayland
 - [Blurry XWayland apps with fractional scaling](https://gitlab.gnome.org/GNOME/mutter/-/issues/2328)
 - [Flameshot issue when using fractional scaling with two monitors](https://github.com/flameshot-org/flameshot/issues/564)
