@@ -76,6 +76,7 @@ sudo pacman -S --noconfirm \
   ffmpeg \
   freerdp \
   fzf \
+  go-yq \
   htop \
   hyperfine \
   jq \
@@ -84,6 +85,7 @@ sudo pacman -S --noconfirm \
   pass \
   ripgrep \
   rsync \
+  silicon \
   stress \
   time \
   trash-cli \
@@ -92,7 +94,8 @@ sudo pacman -S --noconfirm \
   xclip \
   xcolor \
   python-secretstorage yt-dlp \
-  zip
+  zip \
+  zoxide
 
   # xclip, wl-clipboard - for keepassxc, neovim and pass
 
