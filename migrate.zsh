@@ -7,3 +7,6 @@ sudo pacman -S --noconfirm \
   silicon \
   zoxide
 
+paru -S --aur --noconfirm \
+  ttf-victor-mono
+

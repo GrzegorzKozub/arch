@@ -47,6 +47,9 @@ sudo pacman -S --noconfirm \
   ttf-liberation \
   ttf-nerd-fonts-symbols
 
+paru -S --aur --noconfirm \
+  ttf-victor-mono
+
 # themes
 
 sudo pacman -S --needed --noconfirm \
