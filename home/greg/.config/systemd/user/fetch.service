@@ -1,0 +1,13 @@
+[Unit]
+Description=fetch
+After=graphical-session.target
+
+[Service]
+Type=simple
+EnvironmentFile=%h/.config/zsh/env.zsh
+ExecStart=%h/code/arch/fetch.py
+PassEnvironment=GITHUB_PAT
+
+[Install]
+WantedBy=graphical-session.target
+

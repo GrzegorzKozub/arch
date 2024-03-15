@@ -107,6 +107,11 @@ fi
 cp `dirname $0`/home/$USER/.config/systemd/user/wall.* $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable wall.timer
 
+# fetch cache refresh
+
+cp `dirname $0`/home/$USER/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable fetch.service
+
 # aws iam access key refresh
 
 if [[ $HOST = 'worker' ]]; then
