@@ -52,6 +52,7 @@ Automated Arch Linux installation
   - Disable Brave News on the dashboard
   - Enable search and URL autocompletion
   - Disable product analytics, daily usage ping and diagnostic reports
+  - Allow third party cookies to `[*.]microsoft.com`
   - Join the Sync Chain and sync everything
   - Don't allow sites to send notifications
   - Install your extensions
