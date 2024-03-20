@@ -1,0 +1,16 @@
+#compdef fetch
+
+# https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
+# https://blog.mads-hartmann.com/2017/08/06/writing-zsh-completion-scripts.html
+
+local -a repos
+
+while read -r name; do
+  repos=($repos[@] "$name\:'https://github.com/ApsisInternational/$name'")
+done < $XDG_CACHE_HOME/fetch/repos
+
+_alternative "repos:repos:(($repos))"
+
+# https://github.com/zdharma-continuum/fast-syntax-highlighting/
+FAST_HIGHLIGHT+=(chroma-fetch →chroma/-subcommand.ch)
+

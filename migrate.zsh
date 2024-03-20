@@ -2,7 +2,13 @@
 
 set -o verbose
 
+# pacman
+
+sudo pacman --noconfirm -Syu
+
 # paru
+
+CARGO_HOME=
 
 [[ -d ~/paru ]] && rm -rf ~/paru
 
@@ -27,6 +33,8 @@ sudo pacman -S --noconfirm \
   silicon \
   zoxide
 
+# fonts
+
 paru -S --aur --noconfirm \
   ttf-victor-mono
 
@@ -35,3 +43,6 @@ paru -S --aur --noconfirm \
 cp `dirname $0`/home/$USER/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable fetch.service
 
+# apsis
+
+rm -rf ~/code/apsis

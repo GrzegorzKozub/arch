@@ -9,6 +9,8 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 
 # paru
 
+CARGO_HOME=
+
 [[ -d ~/paru ]] && rm -rf ~/paru
 
 pushd ~

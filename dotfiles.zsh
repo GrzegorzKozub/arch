@@ -44,6 +44,3 @@ git clone git@github.com:GrzegorzKozub/passwords.git ~/code/passwords
 [[ -d ~/code/notes ]] && rm -rf ~/code/notes
 git clone git@github.com:GrzegorzKozub/notes.git ~/code/notes
 
-[[ -d ~/code/apsis ]] && rm -rf ~/code/apsis
-git clone git@github.com:GrzegorzKozub/apsis.git ~/code/apsis
-

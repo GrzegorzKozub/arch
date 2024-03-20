@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+set -e
+
+while read -r name; do
+
+  eval local dir="~/code/$name"
+
+  if [[ ($1 = $name) || ($1 = '' && -d $dir) ]]; then
+
+    echo "fetching $name"
+
+    if [[ -d $dir ]]; then
+      pushd -q $dir && (git checkout master || git checkout main) && git pull --prune && popd -q
+    else
+      git clone "git@github.com:ApsisInternational/$name.git" $dir
+    fi
+
+  fi
+
+done < $XDG_CACHE_HOME/fetch/repos
+

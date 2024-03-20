@@ -22,7 +22,6 @@ pushd ~/code/history && ./sync.sh && popd &
 pushd ~/code/keys && ./sync.sh && popd &
 pushd ~/code/passwords && ./sync.sh && popd &
 pushd ~/code/notes && ./sync.sh && popd &
-pushd ~/code/apsis && ./sync.sh && popd &
 
 wait
 

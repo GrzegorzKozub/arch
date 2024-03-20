@@ -91,7 +91,7 @@ Automated Arch Linux installation
   - Add VPN server
   - Select the sound device and set volume to 50%
 6. Run `clean.zsh`
-7. Clone apsis repo, run `repos.zsh`, setup `.env` files and token env variables
+7. Prepare `$XDG_CONFIG_HOME/zsh/.env` file with GitHub & NPM tokens
 8. Fix window sizes and positions
 
 ## Wayland
