@@ -42,8 +42,8 @@ Automated Arch Linux installation
   - Hide side panel button
   - Hide bookmarks button
   - Hide Brave News button in address bar
-  - Enable wide address bar
-  - Only allow suggestions from top sites, history and bookmarks
+  - Disable Leo in autocomplete suggestions
+  - Only allow suggestions from top sites, history and bookmarks (not Leo)
   - Hide Brave Rewards button
   - Hide VPN button
   - Hide tab search button
@@ -51,10 +51,12 @@ Automated Arch Linux installation
   - Disable everything except background images on the dashboard
   - Disable Brave News on the dashboard
   - Enable search and URL autocompletion
+  - Disable EasyList Cookie content filter
+  - Don't show the number of blocked items on the Shields icon
   - Disable product analytics, daily usage ping and diagnostic reports
-  - Allow third party cookies to `[*.]microsoft.com`
-  - Join the Sync Chain and sync everything
+  - Enable Safe Browsing
   - Don't allow sites to send notifications
+  - Join the Sync Chain and sync everything
   - Install your extensions
   - Disable wallets and hide the button
   - Don't offer to save passwords and don't sign in automatically
@@ -65,8 +67,6 @@ Automated Arch Linux installation
   - Don't continue running background apps
   - Disable Brave VPN
   - Enable Memory Saver
-  - Disable EasyList Cookie in `brave://settings/shields/filters`
-  - Enable `brave://flags/#enable-webrtc-pipewire-capturer`
   - Sign in to your sites
   - Teams
     - Disable surveys
