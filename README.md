@@ -218,5 +218,5 @@ Worked around by installing `lib32-libnm`. Disabled the workaround on Jan 20th 2
 
 ## More packages
 
-`amdgpu_top-bin`, `drawing`, `eyedropper`, `font-manager`, `gnome-characters`, `lact`, `teams-for-linux`
+eyedropper, font-manager, gimp, gnome-characters, mdpdf (npm), teams-for-linux
 
