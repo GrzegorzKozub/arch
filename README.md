@@ -37,12 +37,12 @@ Automated Arch Linux installation
 
 1. Brave
   - Setup your profiles
+  - Sign in to your sites
   - Set as default browser
   - Hide bookmarks
   - Hide side panel button
   - Hide bookmarks button
   - Hide Brave News button in address bar
-  - Disable Leo in autocomplete suggestions
   - Only allow suggestions from top sites, history and bookmarks (not Leo)
   - Hide Brave Rewards button
   - Hide VPN button
@@ -56,6 +56,7 @@ Automated Arch Linux installation
   - Disable product analytics, daily usage ping and diagnostic reports
   - Enable Safe Browsing
   - Don't allow sites to send notifications
+  - Allow camera and microphone access to Teams
   - Join the Sync Chain and sync everything
   - Install your extensions
   - Disable wallets and hide the button
@@ -67,18 +68,6 @@ Automated Arch Linux installation
   - Don't continue running background apps
   - Disable Brave VPN
   - Enable Memory Saver
-  - Sign in to your sites
-  - Teams
-    - Disable surveys
-    - Disable optional connected experiences
-    - Disable missed activity emails
-    - Disable notification banners
-    - Don't show message preview
-    - Don't play sound for incoming calls and notifications
-    - Show notifications in feed or not at all
-    - Open files in browser
-    - Block notifications in browser
-    - Allow camera and microphone in browser
 2. KeePassXC
   - Open your databases
   - Only show attachment, title and username columns
