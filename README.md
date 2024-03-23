@@ -29,7 +29,7 @@ Automated Arch Linux installation
 5. Once per machine, run `~/arch/boot.zsh`
 6. Reboot to Arch and login as normal user
 7. Run `~/code/arch/services.zsh`
-8. Reboot to Gnome, login as normal user and connect to internet
+8. Reboot to GNOME, login as normal user and connect to internet
 9. Run `~/code/arch/apps.zsh`
 10. Reboot
 
@@ -74,7 +74,7 @@ Automated Arch Linux installation
   - Fit columns to window
 3. Change font to `Cascadia Code`, font size to `16` and tab size to `2` in Postman
 4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
-5. Gnome
+5. GNOME
   - Set display scale to 200% on drifter
   - Enable Night Light on worker
   - Reorder the icons
@@ -90,13 +90,13 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code, Brave
 
 ### Problems
 
-- Gnome text scaling factor not supported by the apps in native Wayland
+- GNOME text scaling factor not supported by the apps in native Wayland
 - Brave, Steam & games flickering on XWayland with NVIDIA with VRR when above 60 Hz
 - KeePassXC auto-type not supported on native Wayland
 - [Blurry XWayland apps with fractional scaling](https://gitlab.gnome.org/GNOME/mutter/-/issues/2328)
 - [Flameshot issue when using fractional scaling with two monitors](https://github.com/flameshot-org/flameshot/issues/564)
 - `dispwin` not compatible and `colormgr` most likely doesn't work on NVIDIA
-- `redshift` not compatible with Wayland and `gammastep` doesn't work in Gnome on NVIDIA
+- `redshift` not compatible with Wayland and `gammastep` doesn't work in GNOME on NVIDIA
 - `nvidia-settings` not compatible (coolbits, undervolting and overclocking) but maybe [tuxclocker](https://github.com/lurkki14/tuxclocker/) can be used
 - PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
 
@@ -105,7 +105,7 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code, Brave
 - Add `nvidia_drm.modeset=1` kernel module setting
 - Run `ln -s /dev/null /etc/udev/rules.d/61-gdm.rules`
 - Make sure there's no `WaylandEnable=false` in `/etc/gdm/custom.conf`
-- [Fix Gnome Shell suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
+- [Fix GNOME Shell suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
 
 ### Forcing native Wayland
 
@@ -115,7 +115,7 @@ Force native Wayland for QT apps with `QT_QPA_PLATFORM=wayland`
 
 XDP implementations conflict each other so only one should be installed at the same time:
 
-- Gnome - `xdg-desktop-portal-gnome` and `xdg-desktop-portal-gtk`
+- GNOME - `xdg-desktop-portal-gnome` and `xdg-desktop-portal-gtk`
 - KDE - `xdg-desktop-portal-kde`
 - Hyprland - `xdg-desktop-portal-hyprland`
 - Sway - `xdg-desktop-portal-wlr`
@@ -135,7 +135,7 @@ The aim is to use the font size of `1em` or `12pt` or `16px` ([converter](https:
   - worker (Wayland) - `21pt` (or `1.75em` or `28px`)
 - Brave, Code & Postman (XWayland) - `16px` (or `1em` or `12pt`)
 
-## Gnome Shell extensions
+## GNOME Shell extensions
 
 To test on Wayland run `dbus-run-session -- env MUTTER_DEBUG_DUMMY_MODE_SPECS=2560x1440 gnome-shell --nested --wayland`.
 
@@ -202,7 +202,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 #### [Proper focus is not given when a new window is launched from the overview](https://gitlab.gnome.org/GNOME/mutter/-/issues/2690)
 
-Affects all machines. Worked around in the `windows` Gnome Shell extension. Disabled the workaround on Jan 20th 2024.
+Affects all machines. Worked around in the `windows` GNOME Shell extension. Disabled the workaround on Jan 20th 2024.
 
 #### [Hardware video acceleration with VA-API](https://bbs.archlinux.org/viewtopic.php?id=244031)
 
@@ -218,5 +218,5 @@ Worked around by installing `lib32-libnm`. Disabled the workaround on Jan 20th 2
 
 ## More packages
 
-eyedropper, font-manager, gimp, gnome-characters, mdpdf (npm), teams-for-linux
+[Apps for GNOME](https://apps.gnome.org/en/), font-manager, gimp, mdpdf (npm), teams-for-linux
 
