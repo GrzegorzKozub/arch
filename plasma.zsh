@@ -25,7 +25,8 @@ fi
 
 FILE=$XDG_CONFIG_HOME/kwinrc
 
-kwriteconfig6 --file $FILE --group 'Effect-overview' --key 'BorderActivateAll' '9'
+for KEY ('BorderActivate' 'BorderActivateAll')
+  kwriteconfig6 --file $FILE --group 'Effect-overview' --key $KEY '9'
 
 # input & output > keyboard > layouts
 
@@ -267,12 +268,6 @@ kwriteconfig6 --file $XDG_CONFIG_HOME/plasmanotifyrc \
 #
 # kwriteconfig6 --file $FILE --group 'TabBox' --key 'ShowTabBox' 'false'
 
-# workspace > general behavior
-
-# FILE=$XDG_CONFIG_HOME/kdeglobals
-#
-# kwriteconfig6 --file $FILE --group 'KDE' --key 'SingleClick' 'false'
-
 # workspace > search > file search
 
 FILE=$XDG_CONFIG_HOME/baloofilerc
@@ -346,8 +341,6 @@ kwriteconfig6 --file $XDG_CONFIG_HOME/KDE/Sonnet.conf --group 'General' --key 'p
 
 FILE=$XDG_CONFIG_HOME/powerdevilrc
 
-# kwriteconfig6 --file $FILE --group 'AC' --group 'Display' --key 'DimDisplayIdleTimeoutSec' '300'
-# kwriteconfig6 --file $FILE --group 'AC' --group 'Display' --key 'TurnOffDisplayIdleTimeoutSec' '600'
 kwriteconfig6 --file $FILE --group 'AC' --group 'SuspendAndShutdown' --key 'AutoSuspendIdleTimeoutSec' '3600'
 kwriteconfig6 --file $FILE --group 'AC' --group 'SuspendAndShutdown' --key 'PowerButtonAction' '1'
 
@@ -356,19 +349,15 @@ if [[ $HOST = 'drifter' ]]; then
   kwriteconfig6 --file $FILE --group 'AC' --group 'Display' --key 'DisplayBrightness' '25'
   kwriteconfig6 --file $FILE --group 'AC' --group 'Display' --key 'UseProfileSpecificDisplayBrightness' 'true'
 
-  kwriteconfig6 --file $FILE --group 'Battery' --group 'Display' --key 'DisplayBrightness' '25'
-  kwriteconfig6 --file $FILE --group 'Battery' --group 'Display' --key 'UseProfileSpecificDisplayBrightness' 'true'
-  kwriteconfig6 --file $FILE --group 'Battery' --group 'HandleButtonEvents' --key 'LidAction' '1'
-  kwriteconfig6 --file $FILE --group 'Battery' --group 'HandleButtonEvents' --key 'PowerButtonAction' '1'
   kwriteconfig6 --file $FILE --group 'Battery' --group 'SuspendAndShutdown' --key 'AutoSuspendIdleTimeoutSec' '600'
   kwriteconfig6 --file $FILE --group 'Battery' --group 'SuspendAndShutdown' --key 'PowerButtonAction' '1'
+  kwriteconfig6 --file $FILE --group 'Battery' --group 'Display' --key 'DisplayBrightness' '25'
+  kwriteconfig6 --file $FILE --group 'Battery' --group 'Display' --key 'UseProfileSpecificDisplayBrightness' 'true'
 
-  kwriteconfig6 --file $FILE --group 'LowBattery' --group 'Display' --key 'DisplayBrightness' '0'
-  kwriteconfig6 --file $FILE --group 'LowBattery' --group 'Display' --key 'UseProfileSpecificDisplayBrightness' 'true'
-  kwriteconfig6 --file $FILE --group 'LowBattery' --group 'HandleButtonEvents' --key 'LidAction' '1'
-  kwriteconfig6 --file $FILE --group 'LowBattery' --group 'HandleButtonEvents' --key 'PowerButtonAction' '1'
   kwriteconfig6 --file $FILE --group 'LowBattery' --group 'SuspendAndShutdown' --key 'AutoSuspendIdleTimeoutSec' '300'
   kwriteconfig6 --file $FILE --group 'LowBattery' --group 'SuspendAndShutdown' --key 'PowerButtonAction' '1'
+  kwriteconfig6 --file $FILE --group 'LowBattery' --group 'Display' --key 'DisplayBrightness' '1'
+  kwriteconfig6 --file $FILE --group 'LowBattery' --group 'Display' --key 'UseProfileSpecificDisplayBrightness' 'true'
 
 fi
 
