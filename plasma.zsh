@@ -268,6 +268,30 @@ kwriteconfig6 --file $XDG_CONFIG_HOME/plasmanotifyrc \
 #
 # kwriteconfig6 --file $FILE --group 'TabBox' --key 'ShowTabBox' 'false'
 
+# apps & windows > window management > window rules
+
+if [[ $HOST = 'drifter' ]]; then
+
+FILE=$XDG_CONFIG_HOME/kwinrulesrc
+
+ID=$(uuidgen)
+
+typeset -A OPTS=(
+  'Description' 'kitty'
+  'noborder' 'true'
+  'noborderrule' '3'
+  'wmclass' 'kitty'
+  'wmclassmatch' '1'
+)
+
+for KEY VAL ("${(@kv)OPTS}")
+  kwriteconfig6 --file $FILE --group $ID --key $KEY $VAL
+
+kwriteconfig6 --file $FILE --group 'General' --key 'count' '1'
+kwriteconfig6 --file $FILE --group 'General' --key 'rules' $ID
+
+fi
+
 # workspace > search > file search
 
 FILE=$XDG_CONFIG_HOME/baloofilerc
