@@ -6,10 +6,9 @@ wheel:Vertical;NoModifier=org.kde.switchdesktop
 RightButton;NoModifier=org.kde.contextmenu
 
 [Containments][1]
-ItemGeometries-1396x873=
 ItemGeometries-1920x1200=
 ItemGeometriesHorizontal=
-activityId=ff06f069-0090-4ff8-965c-48f05ff7e4c0
+activityId=e629e9a9-f612-47e7-8d28-067dd3d1fd57
 formfactor=0
 immutability=1
 lastScreen=0
@@ -17,9 +16,10 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
-[Containments][1][General]
-ToolBoxButtonState=topcenter
-ToolBoxButtonX=506
+[Containments][1][Wallpaper][org.kde.image][General]
+Image=/home/greg/.local/share/wallpapers/women.jpg
+PreviewImage=/home/greg/.local/share/wallpapers/women.jpg
+SlidePaths=/home/greg/.local/share/wallpapers/,/usr/share/wallpapers/
 
 [Containments][2]
 activityId=
@@ -41,7 +41,7 @@ dateFormat=custom
 fontFamily=Noto Sans
 fontSize=8
 fontStyleName=Regular
-showDate=false
+fontWeight=400
 
 [Containments][2][Applets][22]
 immutability=1
@@ -57,7 +57,7 @@ plugin=org.kde.plasma.icontasks
 
 [Containments][2][Applets][5][Configuration][General]
 indicateAudioStreams=false
-launchers=applications:org.kde.dolphin.desktop,applications:kitty.desktop,applications:code-url-handler.desktop,applications:postman.desktop,applications:brave-browser.desktop,applications:org.keepassxc.KeePassXC.desktop
+launchers=applications:org.kde.dolphin.desktop,applications:org.codeberg.dnkl.foot.desktop,applications:kitty.desktop,applications:code-url-handler.desktop,applications:postman.desktop,applications:brave-browser.desktop,applications:org.keepassxc.KeePassXC.desktop
 
 [Containments][2][Applets][7]
 immutability=1
@@ -80,11 +80,11 @@ wallpaperplugin=org.kde.image
 
 [Containments][8][Applets][10]
 immutability=1
-plugin=org.kde.plasma.manage-inputmethod
+plugin=org.kde.plasma.keyboardlayout
 
 [Containments][8][Applets][12]
 immutability=1
-plugin=org.kde.plasma.keyboardlayout
+plugin=org.kde.plasma.clipboard
 
 [Containments][8][Applets][13]
 immutability=1
@@ -95,11 +95,11 @@ migrated=true
 
 [Containments][8][Applets][14]
 immutability=1
-plugin=org.kde.plasma.devicenotifier
+plugin=org.kde.plasma.notifications
 
 [Containments][8][Applets][15]
 immutability=1
-plugin=org.kde.plasma.notifications
+plugin=org.kde.plasma.manage-inputmethod
 
 [Containments][8][Applets][18]
 immutability=1
@@ -113,14 +113,26 @@ plugin=org.kde.plasma.networkmanagement
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
+[Containments][8][Applets][24]
+immutability=1
+plugin=org.kde.kscreen
+
+[Containments][8][Applets][25]
+immutability=1
+plugin=org.kde.plasma.cameraindicator
+
+[Containments][8][Applets][27]
+immutability=1
+plugin=org.kde.plasma.brightness
+
 [Containments][8][Applets][9]
 immutability=1
-plugin=org.kde.plasma.clipboard
+plugin=org.kde.plasma.devicenotifier
 
 [Containments][8][General]
-extraItems=org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.keyboardlayout,org.kde.plasma.volume,org.kde.plasma.networkmanagement,org.kde.plasma.devicenotifier,org.kde.plasma.bluetooth,org.kde.plasma.notifications,org.kde.plasma.battery
-hiddenItems=org.kde.plasma.clipboard,org.kde.plasma.notifications,org.kde.plasma.keyboardlayout
-knownItems=org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.kscreen,org.kde.plasma.keyboardlayout,org.kde.plasma.volume,org.kde.plasma.networkmanagement,org.kde.plasma.devicenotifier,org.kde.plasma.bluetooth,org.kde.plasma.notifications,org.kde.plasma.battery
+extraItems=org.kde.plasma.volume,org.kde.plasma.bluetooth,org.kde.plasma.battery,org.kde.kscreen,org.kde.plasma.keyboardlayout,org.kde.plasma.devicenotifier,org.kde.plasma.brightness,org.kde.plasma.manage-inputmethod,org.kde.plasma.networkmanagement,org.kde.plasma.cameraindicator
+knownItems=org.kde.plasma.volume,org.kde.plasma.bluetooth,org.kde.plasma.mediacontroller,org.kde.plasma.battery,org.kde.kscreen,org.kde.plasma.keyboardlayout,org.kde.plasma.devicenotifier,org.kde.plasma.clipboard,org.kde.plasma.brightness,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.networkmanagement,org.kde.plasma.cameraindicator
 
 [ScreenMapping]
 itemsOnDisabledScreens=
+screenMapping=
