@@ -6,15 +6,20 @@ wheel:Vertical;NoModifier=org.kde.switchdesktop
 RightButton;NoModifier=org.kde.contextmenu
 
 [Containments][1]
-ItemGeometries-3840x2160=
+ItemGeometries-2560x1440=
 ItemGeometriesHorizontal=
-activityId=ce0eaa3d-e130-42a2-970b-fbe739d5aaaf
+activityId=f6804b70-2d25-474e-bd63-970e22b0adc5
 formfactor=0
 immutability=1
 lastScreen=0
 location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
+
+[Containments][1][Wallpaper][org.kde.image][General]
+Image=/home/greg/.local/share/wallpapers/women.jpg
+PreviewImage=/home/greg/.local/share/wallpapers/women.jpg
+SlidePaths=/home/greg/.local/share/wallpapers/,/usr/share/wallpapers/
 
 [Containments][2]
 activityId=
@@ -36,7 +41,7 @@ dateFormat=custom
 fontFamily=Noto Sans
 fontSize=12
 fontStyleName=Regular
-showDate=false
+fontWeight=400
 
 [Containments][2][Applets][22]
 immutability=1
@@ -51,7 +56,6 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][2][Applets][5][Configuration][General]
-iconSpacing=3
 indicateAudioStreams=false
 launchers=applications:org.kde.dolphin.desktop,applications:kitty.desktop,applications:code.desktop,applications:postman.desktop,applications:brave-browser.desktop,applications:org.keepassxc.KeePassXC.desktop
 
@@ -114,9 +118,10 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][8][General]
-extraItems=org.kde.plasma.devicenotifier,org.kde.plasma.keyboardlayout,org.kde.plasma.bluetooth,org.kde.plasma.networkmanagement,org.kde.plasma.clipboard,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.battery,org.kde.plasma.manage-inputmethod
-hiddenItems=org.kde.plasma.keyboardlayout,org.kde.plasma.clipboard,org.kde.plasma.notifications
-knownItems=org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardlayout,org.kde.plasma.bluetooth,org.kde.plasma.networkmanagement,org.kde.kscreen,org.kde.plasma.clipboard,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.battery,org.kde.plasma.manage-inputmethod
+extraItems=org.kde.plasma.volume,org.kde.plasma.bluetooth,org.kde.plasma.battery,org.kde.kscreen,org.kde.plasma.keyboardlayout,org.kde.plasma.devicenotifier,org.kde.plasma.brightness,org.kde.plasma.manage-inputmethod,org.kde.plasma.networkmanagement,org.kde.plasma.cameraindicator
+hiddenItems=org.kde.plasma.brightness,org.kde.plasma.networkmanagement
+knownItems=org.kde.plasma.volume,org.kde.plasma.bluetooth,org.kde.plasma.mediacontroller,org.kde.plasma.battery,org.kde.kscreen,org.kde.plasma.keyboardlayout,org.kde.plasma.devicenotifier,org.kde.plasma.clipboard,org.kde.plasma.brightness,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.networkmanagement,org.kde.plasma.cameraindicator
 
 [ScreenMapping]
 itemsOnDisabledScreens=
+screenMapping=

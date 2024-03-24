@@ -315,6 +315,16 @@ for KEY VAL ("${(@kv)OPTS}")
     --group 'Greeter' --group 'Wallpaper' --group 'org.kde.image' --group 'General' \
     --key $KEY $VAL
 
+# security & privacy > recent files
+
+FILE=$XDG_CONFIG_HOME/kactivitymanagerdrc
+
+kwriteconfig6 --file $FILE --group 'Plugins' --key 'org.kde.ActivityManager.ResourceScoringEnabled' 'false'
+
+FILE=$XDG_CONFIG_HOME/kactivitymanagerd-pluginsrc
+
+kwriteconfig6 --file $FILE --group 'Plugin-org.kde.ActivityManager.Resources.Scoring' --key 'what-to-remember' '2'
+
 # language & time > region & language
 
 typeset -A OPTS=(
@@ -336,8 +346,8 @@ kwriteconfig6 --file $XDG_CONFIG_HOME/KDE/Sonnet.conf --group 'General' --key 'p
 
 FILE=$XDG_CONFIG_HOME/powerdevilrc
 
-kwriteconfig6 --file $FILE --group 'AC' --group 'Display' --key 'DimDisplayIdleTimeoutSec' '300'
-kwriteconfig6 --file $FILE --group 'AC' --group 'Display' --key 'TurnOffDisplayIdleTimeoutSec' '600'
+# kwriteconfig6 --file $FILE --group 'AC' --group 'Display' --key 'DimDisplayIdleTimeoutSec' '300'
+# kwriteconfig6 --file $FILE --group 'AC' --group 'Display' --key 'TurnOffDisplayIdleTimeoutSec' '600'
 kwriteconfig6 --file $FILE --group 'AC' --group 'SuspendAndShutdown' --key 'AutoSuspendIdleTimeoutSec' '3600'
 kwriteconfig6 --file $FILE --group 'AC' --group 'SuspendAndShutdown' --key 'PowerButtonAction' '1'
 

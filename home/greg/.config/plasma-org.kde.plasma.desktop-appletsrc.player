@@ -39,7 +39,7 @@ autoFontAndSize=false
 customDateFormat=d MMM
 dateFormat=custom
 fontFamily=Noto Sans
-fontSize=14
+fontSize=12
 fontStyleName=Regular
 fontWeight=400
 
@@ -56,7 +56,6 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][2][Applets][5][Configuration][General]
-iconSpacing=3
 indicateAudioStreams=false
 launchers=applications:org.kde.dolphin.desktop,applications:kitty.desktop,applications:code.desktop,applications:postman.desktop,applications:brave-browser.desktop,applications:org.keepassxc.KeePassXC.desktop
 
@@ -119,9 +118,9 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][8][General]
-extraItems=org.kde.plasma.devicenotifier,org.kde.plasma.keyboardlayout,org.kde.plasma.bluetooth,org.kde.plasma.networkmanagement,org.kde.plasma.clipboard,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.battery,org.kde.plasma.manage-inputmethod
-hiddenItems=org.kde.plasma.keyboardlayout,org.kde.plasma.clipboard,org.kde.plasma.notifications
-knownItems=org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardlayout,org.kde.plasma.bluetooth,org.kde.plasma.networkmanagement,org.kde.kscreen,org.kde.plasma.clipboard,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.battery,org.kde.plasma.manage-inputmethod
+extraItems=org.kde.plasma.volume,org.kde.plasma.bluetooth,org.kde.plasma.battery,org.kde.kscreen,org.kde.plasma.keyboardlayout,org.kde.plasma.devicenotifier,org.kde.plasma.brightness,org.kde.plasma.manage-inputmethod,org.kde.plasma.networkmanagement,org.kde.plasma.cameraindicator
+hiddenItems=org.kde.plasma.brightness,org.kde.plasma.networkmanagement
+knownItems=org.kde.plasma.volume,org.kde.plasma.bluetooth,org.kde.plasma.mediacontroller,org.kde.plasma.battery,org.kde.kscreen,org.kde.plasma.keyboardlayout,org.kde.plasma.devicenotifier,org.kde.plasma.clipboard,org.kde.plasma.brightness,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.networkmanagement,org.kde.plasma.cameraindicator
 
 [ScreenMapping]
 itemsOnDisabledScreens=
