@@ -6,15 +6,20 @@ wheel:Vertical;NoModifier=org.kde.switchdesktop
 RightButton;NoModifier=org.kde.contextmenu
 
 [Containments][1]
-ItemGeometries-3840x2160=
+ItemGeometries-2560x1440=
 ItemGeometriesHorizontal=
-activityId=ce0eaa3d-e130-42a2-970b-fbe739d5aaaf
+activityId=f6804b70-2d25-474e-bd63-970e22b0adc5
 formfactor=0
 immutability=1
 lastScreen=0
 location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
+
+[Containments][1][Wallpaper][org.kde.image][General]
+Image=/home/greg/.local/share/wallpapers/women.jpg
+PreviewImage=/home/greg/.local/share/wallpapers/women.jpg
+SlidePaths=/home/greg/.local/share/wallpapers/,/usr/share/wallpapers/
 
 [Containments][2]
 activityId=
@@ -34,9 +39,9 @@ autoFontAndSize=false
 customDateFormat=d MMM
 dateFormat=custom
 fontFamily=Noto Sans
-fontSize=12
+fontSize=14
 fontStyleName=Regular
-showDate=false
+fontWeight=400
 
 [Containments][2][Applets][22]
 immutability=1
@@ -120,3 +125,4 @@ knownItems=org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.
 
 [ScreenMapping]
 itemsOnDisabledScreens=
+screenMapping=
