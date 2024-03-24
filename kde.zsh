@@ -6,9 +6,9 @@ set -e -o verbose
 
 sudo pacman -S --noconfirm \
   plasma-desktop plasma-nm plasma-pa \
-  plasma-wayland-session xdg-desktop-portal-kde \
+  xdg-desktop-portal-kde \
   bluedevil powerdevil \
-  khotkeys kscreen \
+  kscreen \
   breeze-gtk \
   plasma-systemmonitor dolphin \
   hunspell hunspell-en_us hunspell-pl
