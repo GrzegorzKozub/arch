@@ -2,123 +2,43 @@
 
 set -e -o verbose
 
-# appearance > global theme
+# input & output > mouse & touchpad > mouse
 
-plasma-apply-lookandfeel --apply 'org.kde.breeze.desktop'
+# [[ $XDG_SESSION_TYPE = 'x11' ]] &&
+#   kwriteconfig6 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'XLbInptPointerAcceleration' -- '-0.4'
 
-# appearance > plasma style
+# input & output > mouse & touchpad > touchpad
 
-kwriteconfig5 --file $XDG_CONFIG_HOME/plasmarc --group 'Theme' --key 'name' 'breeze-dark'
+if [[ $HOST = 'drifter' ]]; then
 
-# appearance > window decorations
+  [[ $XDG_SESSION_TYPE = 'x11' ]] && FILE=$XDG_CONFIG_HOME/touchpadxlibinputrc
+  [[ $XDG_SESSION_TYPE = 'wayland' ]] && FILE=$XDG_CONFIG_HOME/kcminputrc
 
-FILE=$XDG_CONFIG_HOME/kwinrc
+  for KEY ('naturalScroll' 'tapToClick')
+    kwriteconfig6 --file $FILE \
+      --group 'Libinput' --group '1739' --group '52710' --group 'DLL0945:00 06CB:CDE6 Touchpad' \
+      --key $KEY 'true'
 
-kwriteconfig5 --file $FILE --group 'org.kde.kdecoration2' --key 'ButtonsOnLeft' ''
-kwriteconfig5 --file $FILE --group 'org.kde.kdecoration2' --key 'ButtonsOnRight' 'X'
+fi
 
-# appearance > fonts
-
-FILE=$XDG_CONFIG_HOME/kdeglobals
-
-typeset -A OPTS=(
-  'fixed' 'Cascadia Code,10,-1,5,50,0,0,0,0,0'
-  'font' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
-  'menuFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
-  'smallestReadableFont' 'Noto Sans,9,-1,5,50,0,0,0,0,0'
-  'toolBarFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
-)
-
-for KEY VAL ("${(@kv)OPTS}")
-  kwriteconfig5 --file $FILE --group 'General' --key $KEY $VAL
-
-kwriteconfig5 --file $FILE --group 'WM' --key 'activeFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
-
-# appearance > icons
-
-/usr/lib/plasma-changeicons 'Papirus'
-
-# appearance > cursors
-
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
-  kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'cursorSize' '36'
-
-FILE=$XDG_CONFIG_HOME/klaunchrc
-
-kwriteconfig5 --file $FILE --group 'BusyCursorSettings' --key 'Bouncing' 'false'
-kwriteconfig5 --file $FILE --group 'FeedbackStyle' --key 'BusyCursor' 'false'
-kwriteconfig5 --file $FILE --group 'FeedbackStyle' --key 'TaskbarButton' 'false'
-
-# appearance > splash screen
-
-FILE=$XDG_CONFIG_HOME/ksplashrc
-
-kwriteconfig5 --file $FILE --group 'KSplash' --key 'Engine' 'none'
-kwriteconfig5 --file $FILE --group 'KSplash' --key 'Theme' 'None'
-
-# workspace behavior > general behavior
-
-FILE=$XDG_CONFIG_HOME/kdeglobals
-
-kwriteconfig5 --file $FILE --group 'KDE' --key 'SingleClick' 'false'
-
-# workspace behavior > scren edges
+# input & output > mouse & touchpad > screen edges
 
 FILE=$XDG_CONFIG_HOME/kwinrc
 
-kwriteconfig5 --file $FILE --group 'Effect-windowview' --key 'BorderActivateAll' '9'
+kwriteconfig6 --file $FILE --group 'Effect-overview' --key 'BorderActivateAll' '9'
 
-# workspace behavior > screen locking
+# input & output > keyboard > layouts
 
-FILE=$XDG_CONFIG_HOME/kscreenlockerrc
+FILE=$XDG_CONFIG_HOME/kxkbrc
 
-kwriteconfig5 --file $FILE \
-  --group 'Greeter' --group 'LnF' --group 'General' \
-  --key 'showMediaControls' 'false'
+kwriteconfig6 --file $FILE --group 'Layout' --key 'LayoutList' 'pl'
+kwriteconfig6 --file $FILE --group 'Layout' --key 'Use' 'true'
 
-typeset -A OPTS=(
-  'Image' "$XDG_DATA_HOME/wallpapers/women.jpg"
-  'PreviewImage' "$XDG_DATA_HOME/wallpapers/women.jpg"
-)
-
-for KEY VAL ("${(@kv)OPTS}")
-  kwriteconfig5 --file $FILE \
-    --group 'Greeter' --group 'Wallpaper' --group 'org.kde.image' --group 'General' \
-    --key $KEY $VAL
-
-# window management > task switcher
-
-FILE=$XDG_CONFIG_HOME/kwinrc
-
-kwriteconfig5 --file $FILE --group 'TabBox' --key 'ShowTabBox' 'false'
-
-# window management > window rules
-
-FILE=$XDG_CONFIG_HOME/kwinrulesrc
-
-sed -i -r '/^\[\$Version]$|^update_info=.*$/!d' $FILE
-
-ID=$(uuidgen)
-
-typeset -A OPTS=(
-  'Description' 'kitty'
-  'decocolor' 'BreezeDark'
-  'decocolorrule' '2'
-  'wmclass' 'kitty'
-  'wmclassmatch' '1'
-)
-
-for KEY VAL ("${(@kv)OPTS}")
-  kwriteconfig5 --file $FILE --group $ID --key $KEY $VAL
-
-kwriteconfig5 --file $FILE --group 'General' --key 'count' '1'
-kwriteconfig5 --file $FILE --group 'General' --key 'rules' $ID
-
-# shortcuts > shortcuts
+# input & output > keyboard > shortcuts
 
 FILE=$XDG_CONFIG_HOME/kglobalshortcutsrc
 
-kwriteconfig5 --file $FILE --group 'plasmashell' --key 'stop current activity' 'none,Meta+S,Stop Current Activity'
+kwriteconfig6 --file $FILE --group 'plasmashell' --key 'stop current activity' 'none,Meta+S,Stop Current Activity'
 
 typeset -A OPTS=(
   'Activate Window Demanding Attention' 'none,Meta+Ctrl+A,Activate Window Demanding Attention'
@@ -139,18 +59,18 @@ typeset -A OPTS=(
 )
 
 for KEY VAL ("${(@kv)OPTS}")
-  kwriteconfig5 --file $FILE --group 'kwin' --key $KEY $VAL
+  kwriteconfig6 --file $FILE --group 'kwin' --key $KEY $VAL
 
 sed -i 's/\\\\t/\\t/g' $FILE
 
 FILE=$XDG_CONFIG_HOME/kwinrc
 
-# kwriteconfig5 --file $FILE --group 'ModifierOnlyShortcuts' --key 'Meta' 'org.kde.krunner,/App,,toggleDisplay'
-kwriteconfig5 --file $FILE --group 'ModifierOnlyShortcuts' --key 'Meta' 'org.kde.kglobalaccel,/component/kwin,,invokeShortcut,Overview'
+# kwriteconfig6 --file $FILE --group 'ModifierOnlyShortcuts' --key 'Meta' 'org.kde.krunner,/App,,toggleDisplay'
+kwriteconfig6 --file $FILE --group 'ModifierOnlyShortcuts' --key 'Meta' 'org.kde.kglobalaccel,/component/kwin,,invokeShortcut,Overview'
 
-qdbus org.kde.KWin /KWin reconfigure
+qdbus6 org.kde.KWin /KWin reconfigure
 
-# shortcuts > custom shortcuts
+# input & output > keyboard > shortcuts > commands
 
 FILE=$XDG_CONFIG_HOME/khotkeysrc
 
@@ -162,7 +82,7 @@ rem_shortcut() {
   local nbr=$(grep --before-context=3 "Name=$1" $FILE | grep '\[Data_' | sed -r 's/[^0-9]*//g')
   if [[ $nbr ]]; then
     local id=$(grep --after-context=3 "\[Data_${nbr}Triggers0\]" $FILE | grep 'Uuid' | cut -d= -f2)
-    kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key $id --delete
+    kwriteconfig6 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key $id --delete
     sed -i -r -f - $FILE << END
       /^\[Data_${nbr}\]/,+5d
       /^\[Data_${nbr}Actions\]/,+2d
@@ -171,7 +91,7 @@ rem_shortcut() {
       /^\[Data_${nbr}Triggers\]/,+3d
       /^\[Data_${nbr}Triggers0\]/,+4d
 END
-    kwriteconfig5 --file $FILE --group 'Data' --key 'DataCount' $[$(count) - 1]
+    kwriteconfig6 --file $FILE --group 'Data' --key 'DataCount' $[$(count) - 1]
   fi
 }
 
@@ -179,7 +99,7 @@ add_shortcut() {
   local nbr=$[$(count) + 1]
   local id="{$(uuidgen)}"
 
-  kwriteconfig5 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key $id "$1,none,$2"
+  kwriteconfig6 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key $id "$1,none,$2"
 
   typeset -A OPTS=(
     'Comment' ''
@@ -189,79 +109,213 @@ add_shortcut() {
   )
 
   for KEY VAL ("${(@kv)OPTS}")
-    kwriteconfig5 --file $FILE --group "Data_$nbr" --key $KEY "$VAL"
+    kwriteconfig6 --file $FILE --group "Data_$nbr" --key $KEY "$VAL"
 
-  kwriteconfig5 --file $FILE --group "Data_${nbr}Actions" --key 'ActionsCount' '1'
+  kwriteconfig6 --file $FILE --group "Data_${nbr}Actions" --key 'ActionsCount' '1'
 
-  kwriteconfig5 --file $FILE --group "Data_${nbr}Actions0" --key 'CommandURL' $3
-  kwriteconfig5 --file $FILE --group "Data_${nbr}Actions0" --key 'Type' 'COMMAND_URL'
+  kwriteconfig6 --file $FILE --group "Data_${nbr}Actions0" --key 'CommandURL' $3
+  kwriteconfig6 --file $FILE --group "Data_${nbr}Actions0" --key 'Type' 'COMMAND_URL'
 
-  kwriteconfig5 --file $FILE --group "Data_${nbr}Conditions" --key 'Comment' ''
-  kwriteconfig5 --file $FILE --group "Data_${nbr}Conditions" --key 'ConditionsCount' '0'
+  kwriteconfig6 --file $FILE --group "Data_${nbr}Conditions" --key 'Comment' ''
+  kwriteconfig6 --file $FILE --group "Data_${nbr}Conditions" --key 'ConditionsCount' '0'
 
-  kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers" --key 'Comment' ''
-  kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers" --key 'TriggersCount' '1'
+  kwriteconfig6 --file $FILE --group "Data_${nbr}Triggers" --key 'Comment' ''
+  kwriteconfig6 --file $FILE --group "Data_${nbr}Triggers" --key 'TriggersCount' '1'
 
-  kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers0" --key 'Key' $1
-  kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers0" --key 'Type' 'SHORTCUT'
-  kwriteconfig5 --file $FILE --group "Data_${nbr}Triggers0" --key 'Uuid' $id
+  kwriteconfig6 --file $FILE --group "Data_${nbr}Triggers0" --key 'Key' $1
+  kwriteconfig6 --file $FILE --group "Data_${nbr}Triggers0" --key 'Type' 'SHORTCUT'
+  kwriteconfig6 --file $FILE --group "Data_${nbr}Triggers0" --key 'Uuid' $id
 
-  kwriteconfig5 --file $FILE --group 'Data' --key 'DataCount' $nbr
+  kwriteconfig6 --file $FILE --group 'Data' --key 'DataCount' $nbr
 }
 
-for NAME ('flameshot' 'audio output' 'audio input' 'night light') rem_shortcut $NAME
+for NAME ('flameshot gui' 'audio output' 'audio input' 'night light') rem_shortcut $NAME
 
-add_shortcut 'Print' 'flameshot' 'flameshot gui'
+add_shortcut 'Print' 'flameshot gui' 'flameshot gui'
 add_shortcut 'Meta+Ctrl+A' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 add_shortcut 'Meta+Ctrl+M' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 
 [[ $HOST = 'player' ]] &&
   add_shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
 
-qdbus org.kde.KWin /KWin reconfigure
+qdbus6 org.kde.KWin /KWin reconfigure
 
-# startup and shutdown > desktop session
+# input & output > display & monitor
+
+if [[ $HOST = 'drifter' ]]; then
+
+  kscreen-doctor output.eDP-1.scale.2.0
+  kwriteconfig6 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 2.0
+
+fi
+
+if [[ $HOST = 'player' ]]; then
+
+  kscreen-doctor output.DP-4.scale.1.5
+
+  kwriteconfig6 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 1.5
+
+fi
+
+if [[ $HOST = 'worker' ]]; then
+
+  kscreen-doctor output.DP-2.scale.1.5
+  kscreen-doctor output.DP-3.scale.1.5
+
+  kwriteconfig6 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 1.5
+
+fi
+
+# input & output > accessibility > bell
+
+kwriteconfig6 --file $XDG_CONFIG_HOME/kaccessrc --group 'Bell' --key 'SystemBell' 'false'
+
+# input & output > accessibility > screen reader
+
+kwriteconfig6 --file $XDG_CONFIG_HOME/kaccessrc --group 'ScreenReader' --key 'Enabled' 'false'
+
+# appearance & style > colors & themes > global theme
+
+plasma-apply-lookandfeel --apply 'org.kde.breeze.desktop'
+
+# appearance & style > colors & themes > night light
+
+[[ $HOST = 'drifter' ]] &&
+  kwriteconfig6 --file $XDG_CONFIG_HOME/kwinrc --group 'NightColor' --key 'Active' 'true'
+
+# appearance & style > colors & themes > plasma style
+
+kwriteconfig6 --file $XDG_CONFIG_HOME/plasmarc --group 'Theme' --key 'name' 'breeze-dark'
+
+# appearance & style > colors & themes > window decorations
+
+FILE=$XDG_CONFIG_HOME/kwinrc
+
+kwriteconfig6 --file $FILE --group 'org.kde.kdecoration2' --key 'ButtonsOnLeft' ''
+kwriteconfig6 --file $FILE --group 'org.kde.kdecoration2' --key 'ButtonsOnRight' 'X'
+
+# appearance & style > colors & themes > icons
+
+/usr/lib/plasma-changeicons 'Papirus'
+
+# appearance & style > colors & themes > cursors
+
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+  kwriteconfig6 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'cursorSize' '36'
+
+FILE=$XDG_CONFIG_HOME/klaunchrc
+
+kwriteconfig6 --file $FILE --group 'BusyCursorSettings' --key 'Bouncing' 'false'
+kwriteconfig6 --file $FILE --group 'FeedbackStyle' --key 'BusyCursor' 'false'
+kwriteconfig6 --file $FILE --group 'FeedbackStyle' --key 'TaskbarButton' 'false'
+
+# appearance & style > colors & themes > system sounds
+
+FILE=$XDG_CONFIG_HOME/kdeglobals
+
+kwriteconfig6 --file $FILE --group 'Sounds' --key 'Enable' 'false'
+
+# appearance & style > colors & themes > splash screen
+
+FILE=$XDG_CONFIG_HOME/ksplashrc
+
+kwriteconfig6 --file $FILE --group 'KSplash' --key 'Engine' 'none'
+kwriteconfig6 --file $FILE --group 'KSplash' --key 'Theme' 'None'
+
+# appearance & style > text & fonts > fonts
+
+FILE=$XDG_CONFIG_HOME/kdeglobals
 
 typeset -A OPTS=(
-  'confirmLogout' 'false'
-  'loginMode' 'emptySession'
+  'fixed' 'Cascadia Code,10,-1,5,50,0,0,0,0,0'
+  'font' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
+  'menuFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
+  'smallestReadableFont' 'Noto Sans,9,-1,5,50,0,0,0,0,0'
+  'toolBarFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
 )
 
 for KEY VAL ("${(@kv)OPTS}")
-  kwriteconfig5 --file $XDG_CONFIG_HOME/ksmserverrc --group 'General' --key $KEY $VAL
+  kwriteconfig6 --file $FILE --group 'General' --key $KEY $VAL
 
-# search > file search
+kwriteconfig6 --file $FILE --group 'WM' --key 'activeFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
 
-FILE=$XDG_CONFIG_HOME/baloofilerc
+# appearance & style > wallpaper
 
-kwriteconfig5 --file $FILE --group 'Basic Settings' --key 'Indexing-Enabled' 'false'
+DIR=$XDG_DATA_HOME/wallpapers
 
-# search > plasma search
+[[ -L $DIR ]] && rm -rf $DIR
+ln -s ~/code/walls $DIR
 
-FILE=$XDG_CONFIG_HOME/krunnerrc
+plasma-apply-wallpaperimage $DIR/women.jpg
 
-kwriteconfig5 --file $FILE --group 'General' --key 'RetainPriorSearch' 'false'
+# apps & windows > default applications
 
-typeset -A OPTS=(
-  'bookmarksEnabled' 'false'
-  'shellEnabled' 'false'
-  'baloosearchEnabled' 'false'
-  'recentdocumentsEnabled' 'false'
-  'appstreamEnabled' 'false'
-  'krunner_systemsettingsEnabled' 'false'
-  'webshortcutsEnabled' 'false'
-)
+FILE=$XDG_CONFIG_HOME/kdeglobals
 
-for KEY VAL ("${(@kv)OPTS}")
-  kwriteconfig5 --file $FILE --group 'Plugins' --key $KEY $VAL
+kwriteconfig6 --file $FILE --group 'General' --key 'TerminalApplication' 'kitty'
+kwriteconfig6 --file $FILE --group 'General' --key 'TerminalService' 'kitty.desktop'
 
-# notifications
+# apps & windows > notifications
 
-kwriteconfig5 --file $XDG_CONFIG_HOME/plasmanotifyrc \
+kwriteconfig6 --file $XDG_CONFIG_HOME/plasmanotifyrc \
   --group 'DoNotDisturb' --key 'Until' \
   "$[$(date --iso-8601 | cut -d- -f1) + 1],1,1,0,0,0"
 
-# regional settings > region & language
+# apps & windows > window management > task switcher
+
+# FILE=$XDG_CONFIG_HOME/kwinrc
+#
+# kwriteconfig6 --file $FILE --group 'TabBox' --key 'ShowTabBox' 'false'
+
+# workspace > general behavior
+
+# FILE=$XDG_CONFIG_HOME/kdeglobals
+#
+# kwriteconfig6 --file $FILE --group 'KDE' --key 'SingleClick' 'false'
+
+# workspace > search > file search
+
+FILE=$XDG_CONFIG_HOME/baloofilerc
+
+kwriteconfig6 --file $FILE --group 'Basic Settings' --key 'Indexing-Enabled' 'false'
+
+# workspace > search > plasma search
+
+FILE=$XDG_CONFIG_HOME/krunnerrc
+
+kwriteconfig6 --file $FILE --group 'General' --key 'RetainPriorSearch' 'false'
+
+typeset -A OPTS=(
+  'baloosearchEnabled' 'false'
+  'krunner_appstreamEnabled' 'false'
+  'krunner_bookmarksrunnerEnabled' 'false'
+  'krunner_recentdocumentsEnabled' 'false'
+  'krunner_shellEnabled' 'false'
+  'krunner_webshortcutsEnabled' 'false'
+)
+
+for KEY VAL ("${(@kv)OPTS}")
+  kwriteconfig6 --file $FILE --group 'Plugins' --key $KEY $VAL
+
+# security & privacy > screen locking
+
+FILE=$XDG_CONFIG_HOME/kscreenlockerrc
+
+kwriteconfig6 --file $FILE \
+  --group 'Greeter' --group 'LnF' --group 'General' \
+  --key 'showMediaControls' 'false'
+
+typeset -A OPTS=(
+  'Image' "$XDG_DATA_HOME/wallpapers/women.jpg"
+  'PreviewImage' "$XDG_DATA_HOME/wallpapers/women.jpg"
+)
+
+for KEY VAL ("${(@kv)OPTS}")
+  kwriteconfig6 --file $FILE \
+    --group 'Greeter' --group 'Wallpaper' --group 'org.kde.image' --group 'General' \
+    --key $KEY $VAL
+
+# language & time > region & language
 
 typeset -A OPTS=(
   'LC_MEASUREMENT' 'pl_PL.UTF-8'
@@ -272,127 +326,54 @@ typeset -A OPTS=(
 )
 
 for KEY VAL ("${(@kv)OPTS}")
-  kwriteconfig5 --file $XDG_CONFIG_HOME/plasma-localerc --group 'Formats' --key $KEY $VAL
+  kwriteconfig6 --file $XDG_CONFIG_HOME/plasma-localerc --group 'Formats' --key $KEY $VAL
 
-# regional settings > spell check
+# language & time > spell check
 
-kwriteconfig5 --file $XDG_CONFIG_HOME/KDE/Sonnet.conf --group 'General' --key 'preferredLanguages' 'en_US, pl_PL'
+kwriteconfig6 --file $XDG_CONFIG_HOME/KDE/Sonnet.conf --group 'General' --key 'preferredLanguages' 'en_US, pl_PL'
 
-# accessibility > bell
+# system > energy saving
 
-kwriteconfig5 --file $XDG_CONFIG_HOME/kaccessrc --group 'Bell' --key 'SystemBell' 'false'
+FILE=$XDG_CONFIG_HOME/powerdevilrc
 
-# accessibility > screen reader
-
-kwriteconfig5 --file $XDG_CONFIG_HOME/kaccessrc --group 'ScreenReader' --key 'Enabled' 'false'
-
-# applications > default applications
-
-FILE=$XDG_CONFIG_HOME/kdeglobals
-
-kwriteconfig5 --file $FILE --group 'General' --key 'TerminalApplication' 'kitty'
-kwriteconfig5 --file $FILE --group 'General' --key 'TerminalService' 'kitty.desktop'
-
-# input devices > keyboard
-
-FILE=$XDG_CONFIG_HOME/kxkbrc
-
-kwriteconfig5 --file $FILE --group 'Layout' --key 'LayoutList' 'pl'
-kwriteconfig5 --file $FILE --group 'Layout' --key 'Use' 'true'
-
-# input devices > mouse
-
-# [[ $XDG_SESSION_TYPE = 'x11' ]] &&
-#   kwriteconfig5 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'XLbInptPointerAcceleration' -- '-0.4'
-
-# input devices > touchpad
+kwriteconfig6 --file $FILE --group 'AC' --group 'Display' --key 'DimDisplayIdleTimeoutSec' '300'
+kwriteconfig6 --file $FILE --group 'AC' --group 'Display' --key 'TurnOffDisplayIdleTimeoutSec' '600'
+kwriteconfig6 --file $FILE --group 'AC' --group 'SuspendAndShutdown' --key 'AutoSuspendIdleTimeoutSec' '3600'
+kwriteconfig6 --file $FILE --group 'AC' --group 'SuspendAndShutdown' --key 'PowerButtonAction' '1'
 
 if [[ $HOST = 'drifter' ]]; then
 
-  [[ $XDG_SESSION_TYPE = 'x11' ]] && FILE=$XDG_CONFIG_HOME/touchpadxlibinputrc
-  [[ $XDG_SESSION_TYPE = 'wayland' ]] && FILE=$XDG_CONFIG_HOME/kcminputrc
+  kwriteconfig6 --file $FILE --group 'AC' --group 'Display' --key 'DisplayBrightness' '25'
+  kwriteconfig6 --file $FILE --group 'AC' --group 'Display' --key 'UseProfileSpecificDisplayBrightness' 'true'
 
-  for KEY ('naturalScroll' 'tapToClick')
-    kwriteconfig5 --file $FILE \
-      --group 'Libinput' --group '1739' --group '52710' --group 'DLL0945:00 06CB:CDE6 Touchpad' \
-      --key $KEY 'true'
+  kwriteconfig6 --file $FILE --group 'Battery' --group 'Display' --key 'DisplayBrightness' '25'
+  kwriteconfig6 --file $FILE --group 'Battery' --group 'Display' --key 'UseProfileSpecificDisplayBrightness' 'true'
+  kwriteconfig6 --file $FILE --group 'Battery' --group 'HandleButtonEvents' --key 'LidAction' '1'
+  kwriteconfig6 --file $FILE --group 'Battery' --group 'HandleButtonEvents' --key 'PowerButtonAction' '1'
+  kwriteconfig6 --file $FILE --group 'Battery' --group 'SuspendAndShutdown' --key 'AutoSuspendIdleTimeoutSec' '600'
+  kwriteconfig6 --file $FILE --group 'Battery' --group 'SuspendAndShutdown' --key 'PowerButtonAction' '1'
 
-fi
-
-# display and monitor
-
-if [[ $HOST = 'drifter' ]]; then
-
-  kscreen-doctor output.eDP-1.scale.2.0
-  kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 2.0
-
-fi
-
-if [[ $HOST = 'player' ]]; then
-
-  kscreen-doctor output.DP-4.scale.1.5
-
-  kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 1.5
+  kwriteconfig6 --file $FILE --group 'LowBattery' --group 'Display' --key 'DisplayBrightness' '0'
+  kwriteconfig6 --file $FILE --group 'LowBattery' --group 'Display' --key 'UseProfileSpecificDisplayBrightness' 'true'
+  kwriteconfig6 --file $FILE --group 'LowBattery' --group 'HandleButtonEvents' --key 'LidAction' '1'
+  kwriteconfig6 --file $FILE --group 'LowBattery' --group 'HandleButtonEvents' --key 'PowerButtonAction' '1'
+  kwriteconfig6 --file $FILE --group 'LowBattery' --group 'SuspendAndShutdown' --key 'AutoSuspendIdleTimeoutSec' '300'
+  kwriteconfig6 --file $FILE --group 'LowBattery' --group 'SuspendAndShutdown' --key 'PowerButtonAction' '1'
 
 fi
 
-if [[ $HOST = 'worker' ]]; then
+# session > desktop session
 
-  kscreen-doctor output.DP-2.scale.1.5
-  kscreen-doctor output.DP-3.scale.1.5
+typeset -A OPTS=(
+  'confirmLogout' 'false'
+  'loginMode' 'emptySession'
+)
 
-  kwriteconfig5 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 1.5
-
-fi
-
-# display and monitor > night color
-
-[[ $HOST = 'drifter' ]] &&
-  kwriteconfig5 --file $XDG_CONFIG_HOME/kwinrc --group 'NightColor' --key 'Active' 'true'
-
-# power management
-
-FILE=$XDG_CONFIG_HOME/powermanagementprofilesrc
-
-kwriteconfig5 --file $FILE --group 'AC' --group 'DimDisplay' --key 'idleTime' '300000'
-kwriteconfig5 --file $FILE --group 'AC' --group 'DPMSControl' --key 'idleTime' '600'
-kwriteconfig5 --file $FILE --group 'AC' --group 'SuspendSession' --key 'idleTime' '3600000'
-kwriteconfig5 --file $FILE --group 'AC' --group 'SuspendSession' --key 'suspendType' '1'
-kwriteconfig5 --file $FILE --group 'AC' --group 'HandleButtonEvents' --key 'powerButtonAction' '1'
-
-if [[ $HOST = 'drifter' ]]; then
-
-  kwriteconfig5 --file $FILE --group 'AC' --group 'BrightnessControl' --key 'value' '25'
-
-  kwriteconfig5 --file $FILE --group 'Battery' --group 'BrightnessControl' --key 'value' '25'
-  kwriteconfig5 --file $FILE --group 'Battery' --group 'DimDisplay' --key 'idleTime' '120000'
-  kwriteconfig5 --file $FILE --group 'Battery' --group 'DPMSControl' --key 'idleTime' '300'
-  kwriteconfig5 --file $FILE --group 'Battery' --group 'SuspendSession' --key 'idleTime' '600000'
-  kwriteconfig5 --file $FILE --group 'Battery' --group 'SuspendSession' --key 'suspendType' '1'
-  kwriteconfig5 --file $FILE --group 'Battery' --group 'HandleButtonEvents' --key 'lidAction' '1'
-  kwriteconfig5 --file $FILE --group 'Battery' --group 'HandleButtonEvents' --key 'powerButtonAction' '1'
-
-  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'BrightnessControl' --key 'value' '0'
-  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'DimDisplay' --key 'idleTime' '60000'
-  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'DPMSControl' --key 'idleTime' '120'
-  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'SuspendSession' --key 'idleTime' '300000'
-  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'SuspendSession' --key 'suspendType' '1'
-  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'HandleButtonEvents' --key 'lidAction' '1'
-  kwriteconfig5 --file $FILE --group 'LowBattery' --group 'HandleButtonEvents' --key 'powerButtonAction' '1'
-
-fi
+for KEY VAL ("${(@kv)OPTS}")
+  kwriteconfig6 --file $XDG_CONFIG_HOME/ksmserverrc --group 'General' --key $KEY $VAL
 
 # panel
 
 for FILE ('plasmashellrc' 'plasma-org.kde.plasma.desktop-appletsrc')
   cp `dirname $0`/home/$USER/.config/$FILE.$HOST $XDG_CONFIG_HOME/$FILE
-
-# wallpapers
-
-DIR=$XDG_DATA_HOME/wallpapers
-
-[[ -L $DIR ]] && rm -rf $DIR
-ln -s ~/code/walls $DIR
-
-plasma-apply-wallpaperimage $DIR/women.jpg
 

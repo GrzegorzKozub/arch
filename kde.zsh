@@ -16,21 +16,11 @@ sudo pacman -S --noconfirm \
 # links
 
 for APP in \
-  assistant \
-  designer \
   gnome-system-monitor-kde \
-  linguist \
+  kdesystemsettings \
   org.kde.kmenuedit \
   org.kde.kuserfeedback-console \
-  qdbusviewer
-do
-  cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
-  sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
-done
-
-for APP in \
-  kdesystemsettings \
-  org.kde.klipper
+  vlc
 do
   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
