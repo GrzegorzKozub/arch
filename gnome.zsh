@@ -2,6 +2,52 @@
 
 set -e -o verbose
 
+# displays
+
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+  gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"
+
+if [[ $HOST = 'drifter' ]]; then
+
+  # depends on colord.service that is disabled when using custom color profiles
+  gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
+  gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
+
+  gdbus call \
+    --session \
+    --dest org.gnome.SettingsDaemon.Power \
+    --object-path /org/gnome/SettingsDaemon/Power \
+    --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 25>'
+
+fi
+
+# [[ $XDG_SESSION_TYPE = 'wayland' ]] &&
+#   gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
+# power
+
+if [[ $HOST = 'drifter' ]]; then
+
+  gsettings set org.gnome.desktop.session idle-delay 300
+  gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
+  gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
+
+fi
+
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+  gsettings set org.gnome.desktop.session idle-delay 600
+
+gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 25
+
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 3600
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 600
+
+gsettings set org.gnome.SessionManager logout-prompt false
+
+# multitasking > general
+
+gsettings set org.gnome.desktop.interface enable-hot-corners false
+
 # appearance
 
 DIR=$XDG_DATA_HOME/backgrounds
@@ -16,26 +62,33 @@ gsettings set org.gnome.desktop.background picture-uri-dark $FILE
 
 gsettings set org.gnome.desktop.screensaver picture-uri $FILE
 
-# notifications
-
-gsettings set org.gnome.desktop.notifications show-banners false
-gsettings set org.gnome.desktop.notifications show-in-lock-screen false
-
-# search
-
-gsettings set org.gnome.desktop.search-providers disabled "[
-  'org.gnome.Nautilus.desktop',
-  'org.gnome.Terminal.desktop'
-]"
-
-gsettings set org.gnome.desktop.search-providers disable-external false
-
 # apps > document viewer
 
 gsettings set org.gnome.Evince.Default show-sidebar false
 gsettings set org.gnome.Evince.Default sizing-mode 'fit-width'
 
 xdg-mime default org.gnome.Evince.desktop application/pdf
+
+# apps > extensions
+
+DIR=$XDG_DATA_HOME/gnome-shell/extensions
+[[ -d $DIR ]] || mkdir -p $DIR
+
+for NAME ('panel' 'windows')
+  cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/$NAME@grzegorzkozub.github.com $DIR
+
+pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
+
+gsettings set org.gnome.shell enabled-extensions "[
+  'appindicatorsupport@rgcjonas.gmail.com',
+  'blur-my-shell@aunetx',
+  'user-theme@gnome-shell-extensions.gcampax.github.com',
+  'panel@grzegorzkozub.github.com',
+  'windows@grzegorzkozub.github.com',
+  'rounded-window-corners@yilozt'
+]"
+
+gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
 
 # apps > files
 
@@ -88,56 +141,53 @@ dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/scrollbar-policy" "'nev
 
 gsettings set org.gnome.tweaks show-extensions-notice false
 
-# privacy > file history & trash
+# apps > tweaks > appearance
 
-# gsettings set org.gnome.desktop.privacy remember-recent-files false
+gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
-FILE=$XDG_DATA_HOME/recently-used.xbel
-[[ -f $FILE ]] && rm $FILE
+# when kde-gtk-config is installed
+# gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+# gsettings set org.gnome.desktop.sound theme-name 'freedesktop'
+# gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
 
-# power
+gsettings set org.gnome.desktop.sound event-sounds false
 
-if [[ $HOST = 'drifter' ]]; then
+# apps > tweaks > fonts
 
-  gsettings set org.gnome.desktop.session idle-delay 300
-  gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
-  gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
+# when kde-gtk-config is installed
+# gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
+# gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
+# gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
 
-fi
+gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code Regular 10'
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
-  gsettings set org.gnome.desktop.session idle-delay 600
+gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
-gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 25
-
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 3600
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 600
-
-gsettings set org.gnome.SessionManager logout-prompt false
-
-# displays
+[[ $HOST = 'drifter' ]] &&
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 
 [[ $HOST = 'player' || $HOST = 'worker' ]] &&
-  gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.75
 
-# [[ $XDG_SESSION_TYPE = 'wayland' ]] &&
-#   gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+# apps > tweaks > windows
 
-if [[ $HOST = 'drifter' ]]; then
+gsettings set org.gnome.mutter center-new-windows true
 
-  # depends on colord.service that is disabled when using custom color profiles
-  gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
-  gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
+# notifications
 
-  gdbus call \
-    --session \
-    --dest org.gnome.SettingsDaemon.Power \
-    --object-path /org/gnome/SettingsDaemon/Power \
-    --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 25>'
+gsettings set org.gnome.desktop.notifications show-banners false
+gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
-fi
+# search
 
-# mouse and touchpad
+gsettings set org.gnome.desktop.search-providers disabled "[
+  'org.gnome.Nautilus.desktop',
+  'org.gnome.Terminal.desktop'
+]"
+
+gsettings set org.gnome.desktop.search-providers disable-external false
+
+# mouse & touchpad
 
 [[ $HOST = 'player' || $HOST = 'worker' ]] &&
   gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
@@ -231,66 +281,20 @@ gsettings set \
   org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
   "[${(j., .)CUSTOM_KEYBINDINGS}]"
 
-# region and language
-
-gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
-
-# accessibility
+# accessibility > seeing
 
 gsettings set org.gnome.desktop.interface cursor-size 32
 
-# extensions
+# privacy & security > file history & trash
 
-DIR=$XDG_DATA_HOME/gnome-shell/extensions
-[[ -d $DIR ]] || mkdir -p $DIR
+# gsettings set org.gnome.desktop.privacy remember-recent-files false
 
-for NAME ('panel' 'windows')
-  cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/$NAME@grzegorzkozub.github.com $DIR
+FILE=$XDG_DATA_HOME/recently-used.xbel
+[[ -f $FILE ]] && rm $FILE
 
-pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
+# system > region & language
 
-gsettings set org.gnome.shell enabled-extensions "[
-  'appindicatorsupport@rgcjonas.gmail.com',
-  'blur-my-shell@aunetx',
-  'user-theme@gnome-shell-extensions.gcampax.github.com',
-  'panel@grzegorzkozub.github.com',
-  'windows@grzegorzkozub.github.com',
-  'rounded-window-corners@yilozt'
-]"
-
-gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
-
-# tweaks > appearance
-
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
-
-# when kde-gtk-config is installed
-# gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
-# gsettings set org.gnome.desktop.sound theme-name 'freedesktop'
-# gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
-
-gsettings set org.gnome.desktop.sound event-sounds false
-
-# tweaks > fonts
-
-# when kde-gtk-config is installed
-# gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
-# gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
-# gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
-
-gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code Regular 10'
-
-gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
-
-[[ $HOST = 'drifter' ]] &&
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.75
-
-# tweaks > windows
-
-gsettings set org.gnome.mutter center-new-windows true
+gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
 
 # app picker
 
@@ -310,8 +314,4 @@ gsettings set org.gnome.shell favorite-apps "[
 ]"
 
   # 'Alacritty.desktop'
-
-# desktop
-
-gsettings set org.gnome.desktop.interface enable-hot-corners false
 
