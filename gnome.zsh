@@ -117,6 +117,9 @@ gsettings set org.gnome.SessionManager logout-prompt false
 
 # displays
 
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+  gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"
+
 # [[ $XDG_SESSION_TYPE = 'wayland' ]] &&
 #   gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 
