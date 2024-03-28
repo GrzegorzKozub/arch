@@ -4,9 +4,6 @@ set -e -o verbose
 
 # displays
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
-  gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"
-
 if [[ $HOST = 'drifter' ]]; then
 
   # depends on colord.service that is disabled when using custom color profiles
@@ -20,6 +17,9 @@ if [[ $HOST = 'drifter' ]]; then
     --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 25>'
 
 fi
+
+[[ $XDG_SESSION_TYPE = 'wayland' ]] &&
+  gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"
 
 # [[ $XDG_SESSION_TYPE = 'wayland' ]] &&
 #   gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
