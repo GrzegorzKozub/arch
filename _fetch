@@ -1,7 +1,9 @@
 #compdef fetch
 
+zstyle ':completion:*:*:fetch:*:*' \
+  matcher 'm:{[:lower:]}={[:upper:]} l:|=* r:|=*'
+
 # https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
-# https://blog.mads-hartmann.com/2017/08/06/writing-zsh-completion-scripts.html
 
 local -a repos
 
