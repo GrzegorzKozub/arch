@@ -4,7 +4,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-EnvironmentFile=%h/.config/zsh/.env
+EnvironmentFile=%h/.config/zsh/.zshenv
 PassEnvironment=GITHUB_PAT
 ExecStart=%h/code/arch/fetch.py
 
