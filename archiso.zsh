@@ -33,6 +33,7 @@ cp -r /usr/share/archiso/configs/releng $PROFILE
 # lts kernel
 
 [[ $(grep 'linux-lts' $PROFILE/packages.x86_64) ]] || echo 'linux-lts' >> $PROFILE/packages.x86_64
+echo 'tmux' >> $PROFILE/packages.x86_64
 
 # systemd-boot
 
@@ -88,10 +89,39 @@ done
 
 echo ')' >> $PROFILE/profiledef.sh
 
-# shell
+# dotfiles
 
 cat << 'EOF' > $PROFILE/airootfs/root/.zshrc
-typeset -U path && path=(~/arch $path[@])
+typeset -U path
+path=(~/arch $path[@])
+
+alias df='df -h'
+alias du='du -hd1'
+alias grep='grep --color=auto --exclude-dir={.git}'
+alias la='ls -lAh'
+alias ls='ls --color=auto'
+
+alias b='backup.zsh'
+alias r='restore.zsh'
+
+alias tmux='tmux -f ~/tmux.conf'
+[[ ! -z $TMUX ]] || tmux attach || tmux new
+EOF
+
+cat << 'EOF' > $PROFILE/airootfs/root/tmux.conf
+set -g mouse on
+
+unbind C-b
+set -g prefix C-x
+bind C-x send-prefix
+
+bind v split-window -h -c '#{pane_current_path}'
+bind h split-window -v -c '#{pane_current_path}'
+
+set -g mode-keys vi
+
+bind -T copy-mode-vi v send-keys -X begin-selection
+bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 EOF
 
 # build
