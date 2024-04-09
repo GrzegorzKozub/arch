@@ -95,12 +95,6 @@ cat << 'EOF' > $PROFILE/airootfs/root/.zshrc
 typeset -U path
 path=(~/arch $path[@])
 
-alias df='df -h'
-alias du='du -hd1'
-alias grep='grep --color=auto --exclude-dir={.git}'
-alias la='ls -lAh'
-alias ls='ls --color=auto'
-
 alias b='backup.zsh'
 alias r='restore.zsh'
 
@@ -118,10 +112,16 @@ bind C-x send-prefix
 bind v split-window -h -c '#{pane_current_path}'
 bind h split-window -v -c '#{pane_current_path}'
 
+bind -r C-Up resize-pane -U 1
+bind -r C-Down resize-pane -D 1
+bind -r C-Left resize-pane -L 4
+bind -r C-Right resize-pane -R 4
+
 set -g mode-keys vi
 
 bind -T copy-mode-vi v send-keys -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+bind -T copy-mode-vi C-q send-keys -X rectangle-toggle
 EOF
 
 # build
