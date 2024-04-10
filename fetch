@@ -2,18 +2,18 @@
 
 set -e
 
-while read -r name; do
+while read -r repo; do
 
-  eval local dir="~/code/$name"
+  [[ $2 = '' ]] && local dir=~/code/$repo || local dir=~/code/$2
 
-  if [[ ($1 = $name) || ($1 = '' && -d $dir) ]]; then
+  if [[ $1 = $repo ]]; then
 
-    echo "fetching $name"
+    echo "fetching $repo"
 
     if [[ -d $dir ]]; then
       pushd -q $dir && (git checkout master || git checkout main) && git pull --prune && popd -q
     else
-      git clone "git@github.com:ApsisInternational/$name.git" $dir
+      git clone "git@github.com:ApsisInternational/$repo.git" $dir
     fi
 
   fi
