@@ -2,3 +2,6 @@
 
 set -o verbose
 
+sudo pacman -S --noconfirm \
+  gnome-screenshot
+
