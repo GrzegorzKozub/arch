@@ -209,6 +209,7 @@ paru -S --aur --noconfirm \
   brave-bin gnome-browser-connector \
   obsidian-bin \
   postman-bin \
+  satty-bin \
   visual-studio-code-bin
 
   # slack-desktop

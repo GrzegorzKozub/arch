@@ -218,5 +218,5 @@ Worked around by installing `lib32-libnm`. Disabled the workaround on Jan 20th 2
 
 ## More packages
 
-[Apps for GNOME](https://apps.gnome.org/en/), font-manager, gimp, mdpdf (npm), satty-bin, teams-for-linux
+[Apps for GNOME](https://apps.gnome.org/en/), font-manager, gimp, mdpdf (npm), teams-for-linux
 
