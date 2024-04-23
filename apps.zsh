@@ -212,7 +212,7 @@ paru -S --aur --noconfirm \
   satty-bin \
   visual-studio-code-bin
 
-  # slack-desktop
+  # slack-desktop teams-for-linux
 
 # settings
 

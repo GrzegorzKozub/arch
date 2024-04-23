@@ -17,6 +17,7 @@ export default class Windows extends Extension {
       { title: /.?Azure Data Studio$/ },
       { title: /.?Brave$/, noRole: 'pop-up' },
       { class: /^DBeaver$/ },
+      { class: /^draw.io$/, auto: true },
       { title: /.?MySQL Workbench$/ },
       { title: /^OBS.?/ },
       { class: /^Postman$/, auto: true, noRole: 'GtkFileChooserDialog' },
