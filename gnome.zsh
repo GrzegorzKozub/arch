@@ -97,6 +97,8 @@ gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 dconf write /org/gtk/settings/file-chooser/show-hidden true
 dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 
+xdg-mime default org.gnome.Nautilus.desktop inode/directory
+
 # apps > image viewer
 
 xdg-mime default org.gnome.Loupe.desktop image/jpeg
