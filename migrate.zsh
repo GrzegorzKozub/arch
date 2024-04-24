@@ -2,9 +2,11 @@
 
 set -o verbose
 
-sudo pacman -S --noconfirm \
-  gnome-screenshot
+nmcli connection delete apsis
 
-paru -S --aur --noconfirm \
-  satty-bin
+sudo pacman -Rs --noconfirm \
+  openconnect networkmanager-openconnect
+
+sudo pacman -S --noconfirm \
+  openvpn networkmanager-openvpn
 

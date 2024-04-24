@@ -203,7 +203,9 @@ sudo pacman -S --noconfirm \
   flameshot \
   keepassxc \
   mpv \
-  openconnect networkmanager-openconnect
+  openvpn networkmanager-openvpn
+
+  # openconnect networkmanager-openconnect
 
 paru -S --aur --noconfirm \
   brave-bin gnome-browser-connector \
