@@ -33,7 +33,7 @@ export default class Windows extends Extension {
       { class: /^obsidian$/ },
       { title: /.?Slack$/, auto: true },
       { title: /.?Steam$/ },
-      { class: /^teams-for-linux$/ },
+      { class: /^teams-for-linux$/, auto: true },
     ];
     const small = [
       { class: /.?drawing.?/ },

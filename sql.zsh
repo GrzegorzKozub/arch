@@ -38,10 +38,10 @@ OPT=-Dosgi.configuration.area
 # links
 
 # cp /usr/share/applications/mysql-workbench.desktop $XDG_DATA_HOME/applications
-# sed -i -e 's/^Name=MySQL Workbench$/Name=MySQL/' $XDG_DATA_HOME/applications/mysql-workbench.desktop
+# sed -i -e 's/^Name=.*/Name=MySQL/' $XDG_DATA_HOME/applications/mysql-workbench.desktop
 
 cp /usr/share/applications/io.dbeaver.DBeaver.desktop $XDG_DATA_HOME/applications
-sed -i -e 's/^Name=DBeaver Community$/Name=DBeaver/' $XDG_DATA_HOME/applications/io.dbeaver.DBeaver.desktop
+sed -i -e 's/^Name=.*/Name=DBeaver/' $XDG_DATA_HOME/applications/io.dbeaver.DBeaver.desktop
 
 # dotfiles
 
