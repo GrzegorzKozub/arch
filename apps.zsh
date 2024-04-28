@@ -106,7 +106,10 @@ sudo pacman -S --noconfirm \
   # imwheel
 
 paru -S --aur --noconfirm \
-  cava
+  cava \
+  fswatch
+
+  # fswatch - for neovim
 
 if [[ $HOST = 'player' ]]; then
 

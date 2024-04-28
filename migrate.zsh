@@ -10,3 +10,5 @@ sudo pacman -Rs --noconfirm \
 sudo pacman -S --noconfirm \
   openvpn networkmanager-openvpn
 
+paru -S --aur --noconfirm \
+  fswatch
