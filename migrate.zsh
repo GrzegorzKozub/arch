@@ -2,6 +2,17 @@
 
 set -o verbose
 
+# https://aur.archlinux.org/packages/aws-cli-v2
+
+sudo sed -ie \
+  's/#IgnorePkg   =/IgnorePkg    = aws-cli-v2/' \
+  /etc/pacman.conf
+
+# neovim
+
+paru -S --aur --noconfirm \
+  fswatch
+
 # vpn
 
 nmcli connection delete apsis
@@ -15,7 +26,3 @@ sudo pacman -S --noconfirm \
 # nmcli connection import type openvpn file apsis.ovpn
 # nmcli connection modify apsis +vpn.data username=grko_vpn
 
-# neovim
-
-paru -S --aur --noconfirm \
-  fswatch

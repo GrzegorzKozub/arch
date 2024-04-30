@@ -167,10 +167,8 @@ paru -S --aur --noconfirm \
 
 # aws
 
-sudo pacman -S --noconfirm \
-  aws-cli-v2
-
 paru -S --aur --noconfirm \
+  aws-cli-v2 \
   aws-sam-cli-bin
 
 # dev
