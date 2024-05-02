@@ -198,15 +198,23 @@ export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path -y
 
+# vpn
+
+sudo pacman -S --noconfirm \
+  openvpn networkmanager-openvpn \
+  openresolv
+
+  # systemd-resolvconf
+
+# paru -S --aur --noconfirm \
+#   openvpn-update-systemd-resolved
+
 # apps
 
 sudo pacman -S --noconfirm \
   flameshot \
   keepassxc \
-  mpv \
-  openvpn networkmanager-openvpn
-
-  # openconnect networkmanager-openconnect
+  mpv
 
 paru -S --aur --noconfirm \
   brave-bin gnome-browser-connector \
@@ -234,4 +242,5 @@ paru -S --aur --noconfirm \
 # dotfiles install
 
 . ~/code/dotfiles/install.zsh
+. ~/code/keys/install.zsh
 

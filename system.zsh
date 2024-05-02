@@ -58,7 +58,7 @@ pacstrap /mnt \
   efibootmgr \
   lvm2 \
   ntfs-3g \
-  nss-mdns \
+  avahi nss-mdns \
   lm_sensors \
   v4l-utils \
   networkmanager \

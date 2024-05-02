@@ -14,10 +14,11 @@ sudo timedatectl set-ntp true
 
 sudo systemctl enable fstrim.timer
 
-sudo systemctl enable bluetooth.service
 sudo systemctl enable avahi-daemon.service
-sudo systemctl enable NetworkManager.service
+# sudo systemctl enable systemd-resolved.service
 
+sudo systemctl enable bluetooth.service
+sudo systemctl enable NetworkManager.service
 systemctl --user enable pipewire-pulse.service
 
 sudo systemctl enable gdm.service

@@ -21,8 +21,16 @@ sudo pacman -Rs --noconfirm \
   openconnect networkmanager-openconnect
 
 sudo pacman -S --noconfirm \
-  openvpn networkmanager-openvpn
+  openvpn networkmanager-openvpn \
+  openresolv
 
-# nmcli connection import type openvpn file apsis.ovpn
-# nmcli connection modify apsis +vpn.data username=grko_vpn
+  # systemd-resolvconf
+
+# paru -S --aur --noconfirm \
+#   openvpn-update-systemd-resolved
+
+# sudo systemctl enable systemd-resolved.service
+
+. ~/code/keys/init.zsh
+. ~/code/keys/install.zsh
 
