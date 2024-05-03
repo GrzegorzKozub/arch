@@ -21,9 +21,9 @@ sudo pacman -Rs --noconfirm \
   openconnect networkmanager-openconnect
 
 sudo pacman -S --noconfirm \
-  openvpn networkmanager-openvpn \
-  openresolv
+  openvpn networkmanager-openvpn
 
+  # openresolv
   # systemd-resolvconf
 
 # paru -S --aur --noconfirm \
