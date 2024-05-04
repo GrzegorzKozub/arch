@@ -161,7 +161,7 @@ gsettings set org.gnome.desktop.sound event-sounds false
 # gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
 # gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
 
-gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code Regular 10'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code NF Regular 10'
 
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 

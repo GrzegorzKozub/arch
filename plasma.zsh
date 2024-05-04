@@ -228,7 +228,7 @@ kwriteconfig6 --file $FILE --group 'KSplash' --key 'Theme' 'None'
 FILE=$XDG_CONFIG_HOME/kdeglobals
 
 typeset -A OPTS=(
-  'fixed' 'Cascadia Code,10,-1,5,50,0,0,0,0,0'
+  'fixed' 'Cascadia Code NF,10,-1,5,50,0,0,0,0,0'
   'font' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
   'menuFont' 'Noto Sans,11,-1,5,50,0,0,0,0,0'
   'smallestReadableFont' 'Noto Sans,9,-1,5,50,0,0,0,0,0'
