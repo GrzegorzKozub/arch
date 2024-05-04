@@ -5,7 +5,9 @@ set -e -o verbose
 # packages
 
 sudo pacman -S --noconfirm \
-  openvpn networkmanager-openvpn
+  libnma \
+  networkmanager-openvpn \
+  openvpn
 
   # openresolv
   # systemd-resolvconf
