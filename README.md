@@ -77,8 +77,6 @@ Automated Arch Linux installation
 5. GNOME
   - Set display scale to 200% on drifter
   - Enable Night Light on worker
-  - Reorder the icons
-  - Add VPN server
   - Select the sound device and set volume to 50%
 6. Run `clean.zsh`
 7. Prepare `$XDG_CONFIG_HOME/zsh/.env` file with GitHub & NPM tokens
