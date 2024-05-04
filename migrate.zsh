@@ -22,3 +22,7 @@ sudo pacman -Rs --noconfirm \
 
 . ~/code/keys/init.zsh
 
+# fontconfig
+
+cp `dirname $0`/home/$USER/.config/fontconfig/fonts.conf $XDG_CONFIG_HOME/fontconfig
+
