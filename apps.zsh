@@ -189,9 +189,11 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   golangci-lint-bin \
-  nvm
+  fnm-bin
 
-NVM_DIR=$XDG_DATA_HOME/nvm source /usr/share/nvm/init-nvm.sh
+  # nvm
+
+# NVM_DIR=$XDG_DATA_HOME/nvm source /usr/share/nvm/init-nvm.sh
 
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
