@@ -11,5 +11,5 @@ set -e
 # clean package caches
 
 sudo pacman --noconfirm -Sc
-paru --aur -Sccd
+yes | paru --aur -Sccd
 
