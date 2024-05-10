@@ -84,10 +84,19 @@ gsettings set org.gnome.shell enabled-extensions "[
   'blur-my-shell@aunetx',
   'user-theme@gnome-shell-extensions.gcampax.github.com',
   'panel@grzegorzkozub.github.com',
-  'windows@grzegorzkozub.github.com'
+  'windows@grzegorzkozub.github.com',
+  'rounded-window-corners@fxgn'
 ]"
 
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
+
+gsettings set org.gnome.shell.extensions.rounded-window-corners global-rounded-corner-settings \
+  "{'padding': <{'left': <uint32 1>, 'right': <uint32 1>, 'top': <uint32 1>, 'bottom': <uint32 1>}>,
+    'keep_rounded_corners': <{'maximized': <false>, 'fullscreen': <false>}>,
+    'border_radius': <uint32 16>,
+    'smoothing': <uint32 0>,
+    'enabled': <true>
+  }"
 
 # apps > files
 
