@@ -8,3 +8,7 @@ set -o verbose
 #   's/#IgnorePkg   =/IgnorePkg    = aws-cli-v2/' \
 #   /etc/pacman.conf
 
+# https://github.com/flexagoon/rounded-window-corners
+
+paru -Rs --noconfirm \
+  gnome-shell-extension-rounded-window-corners-git

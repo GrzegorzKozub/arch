@@ -84,8 +84,7 @@ gsettings set org.gnome.shell enabled-extensions "[
   'blur-my-shell@aunetx',
   'user-theme@gnome-shell-extensions.gcampax.github.com',
   'panel@grzegorzkozub.github.com',
-  'windows@grzegorzkozub.github.com',
-  'rounded-window-corners@yilozt'
+  'windows@grzegorzkozub.github.com'
 ]"
 
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
