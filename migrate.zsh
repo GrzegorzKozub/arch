@@ -14,7 +14,5 @@ paru -Rs --noconfirm \
   gnome-shell-extension-rounded-window-corners-git
 
 paru -S --aur --noconfirm \
-  gnome-shell-extension-rounded-window-corners-reborn-git
-
-sudo pacman -Rs just npm
+  gnome-shell-extension-rounded-window-corners-reborn
 
