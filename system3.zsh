@@ -102,7 +102,7 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
     gnome-shell-extension-blur-my-shell \
     gnome-shell-extension-rounded-window-corners-reborn-git
 
-  sudo pacman -Rs just npm # clenup after gnome-shell-extension-rounded-window-corners-reborn-git
+  sudo pacman -Rs npm # clenup after gnome-shell-extension-rounded-window-corners-reborn-git
 
 fi
 
