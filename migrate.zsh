@@ -4,9 +4,15 @@ set -o verbose
 
 # https://aur.archlinux.org/packages/aws-cli-v2
 
-# sudo sed -ie \
-#   's/#IgnorePkg   =/IgnorePkg    = aws-cli-v2/' \
-#   /etc/pacman.conf
+sudo sed -ie \
+  's/IgnorePkg    = aws-cli-v2/#IgnorePkg   =/' \
+  /etc/pacman.conf
+
+sudo pacman -Rs --noconfirm \
+  aws-cli-v2
+
+paru -S --aur --noconfirm --nocheck \
+  aws-cli-v2
 
 # https://github.com/flexagoon/rounded-window-corners
 
