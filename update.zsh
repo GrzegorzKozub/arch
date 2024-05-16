@@ -11,7 +11,9 @@ git pull
 # sudo pacman --noconfirm -Sy archlinux-keyring
 
 sudo pacman --noconfirm -Syu
-paru --aur --noconfirm -Syu
+
+# --nocheck skips tests in https://aur.archlinux.org/packages/aws-cli-v2
+paru --aur --noconfirm --nocheck -Syu
 
 paru -S --aur --noconfirm \
   neovim-nightly-bin

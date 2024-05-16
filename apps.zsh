@@ -167,6 +167,7 @@ paru -S --aur --noconfirm \
 
 # aws
 
+# --nocheck skips tests
 paru -S --aur --noconfirm --nocheck \
   aws-cli-v2
 
