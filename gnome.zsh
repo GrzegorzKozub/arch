@@ -310,6 +310,8 @@ gsettings set org.gnome.shell app-picker-layout '[]'
 
 # dash
 
+set +e
+
 gsettings set org.gnome.shell favorite-apps "[
   'org.gnome.Nautilus.desktop',
   $([[ $XDG_SESSION_TYPE = 'wayland' ]] && echo "'org.codeberg.dnkl.foot.desktop',")
@@ -317,9 +319,12 @@ gsettings set org.gnome.shell favorite-apps "[
   'code.desktop',
   'postman.desktop',
   'brave-browser.desktop',
-  'org.keepassxc.KeePassXC.desktop',
-  'steam.desktop'
+  'org.keepassxc.KeePassXC.desktop'
+  $([[ $(sudo pacman -Qq teams-for-linux 2> /dev/null) ]] && echo ",'teams-for-linux.desktop'")
+  $([[ $(sudo pacman -Qq steam 2> /dev/null) ]] && echo ",'steam.desktop'")
 ]"
 
   # 'Alacritty.desktop'
+
+set -e
 
