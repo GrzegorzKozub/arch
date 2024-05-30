@@ -75,6 +75,7 @@ Automated Arch Linux installation
 3. Change font to `Cascadia Code`, font size to `16` and tab size to `2` in Postman
 4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
 5. GNOME
+  - Set display refresh rate to 120 Hz on player
   - Set display scale to 200% on drifter
   - Enable Night Light on worker
   - Select the sound device and set volume to 50%
