@@ -64,6 +64,8 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
     nvidia nvidia-lts nvidia-settings nvidia-utils \
     libva-vdpau-driver
 
+  sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
+
 fi
 
 if [[ $MY_HOSTNAME = 'worker' ]]; then
