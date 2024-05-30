@@ -18,9 +18,13 @@ sed -i "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" /boot/loader/entries
 [[ $MY_HOSTNAME = 'drifter' || $MY_HOSTNAME = 'worker' ]] && sed -i 's/<ucode>/intel-ucode/g' /boot/loader/entries/*.conf
 [[ $MY_HOSTNAME = 'player' ]] && sed -i 's/<ucode>/amd-ucode/g' /boot/loader/entries/*.conf
 
+# fix refresh rates above 60 hz over hdmi broken by nvidia 550 and allow 10 bit color
+
+[[ $MY_HOSTNAME = 'player' ]] && sed -i 's/<kernel_params>/nvidia_modeset.hdmi_deepcolor=1 /g' /boot/loader/entries/*.conf
+
 # required for wayland on nvidia and removes unknown display from gnome but breaks undervolting
 
-# [[ $MY_HOSTNAME = 'player' ]] && sed -i 's/<kernel_params>/nvidia-drm.modeset=1 /g' /boot/loader/entries/*.conf
+# [[ $MY_HOSTNAME = 'player' ]] && sed -i 's/<kernel_params>/nvidia_modeset.hdmi_deepcolor=1 nvidia-drm.modeset=1 /g' /boot/loader/entries/*.conf
 
 # remaining kernel_params placeholder
 
