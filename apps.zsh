@@ -75,6 +75,7 @@ sudo pacman -S --noconfirm \
   bat \
   btop \
   cpupower \
+  eza \
   fd \
   ffmpeg \
   freerdp \
