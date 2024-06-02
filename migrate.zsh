@@ -3,5 +3,4 @@
 set -o verbose
 
 sudo pacman -S --noconfirm \
-  dust \
   eza
