@@ -3,4 +3,4 @@
 set -o verbose
 
 sudo pacman -S --noconfirm \
-  eza lazygit
+  eza

@@ -84,7 +84,6 @@ sudo pacman -S --noconfirm \
   htop \
   hyperfine \
   jq \
-  lazygit \
   nvtop \
   p7zip \
   pass \
