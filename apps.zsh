@@ -75,6 +75,7 @@ sudo pacman -S --noconfirm \
   bat \
   btop \
   cpupower \
+  dust \
   eza \
   fd \
   ffmpeg \
@@ -103,7 +104,7 @@ sudo pacman -S --noconfirm \
 
   # xclip, wl-clipboard - for keepassxc, neovim and pass
 
-  # dua-cli dust gdu
+  # dua-cli gdu
   # imwheel
 
 paru -S --aur --noconfirm \
