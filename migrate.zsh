@@ -4,4 +4,5 @@ set -o verbose
 
 sudo pacman -S --noconfirm \
   dust \
+  git-delta \
   eza

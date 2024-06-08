@@ -81,6 +81,7 @@ sudo pacman -S --noconfirm \
   ffmpeg \
   freerdp \
   fzf \
+  git-delta \
   go-yq \
   htop \
   hyperfine \
