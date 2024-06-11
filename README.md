@@ -217,5 +217,5 @@ Worked around by installing `lib32-libnm`. Disabled the workaround on Jan 20th 2
 
 ## Ideas
 
-- Switch to Wayland on NVIDIA with drivers version 555
-- Try [CachyOS](https://cachyos.org/)
+- When NVIDIA driver 555 comes out, switch to Wayland and revisit gaming
+- Explore [CachyOS](https://cachyos.org/) GitHub and maybe use/install something
