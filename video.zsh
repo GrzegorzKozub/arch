@@ -8,6 +8,14 @@ sudo pacman -S --noconfirm \
   obs-studio \
   shotcut
 
+# sudo pacman -S --noconfirm \
+#   libjpeg6-turbo \
+#   jre-openjdk \
+#   opencl-nvidia
+
+# paru -S --aur --noconfirm \
+#   davinci-resolve
+
 # links
 
 cp /usr/share/applications/org.shotcut.Shotcut.desktop $XDG_DATA_HOME/applications
