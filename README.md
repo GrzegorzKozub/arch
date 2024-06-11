@@ -215,3 +215,7 @@ Worked around with `rm -rf ~/.cache/nvidia/GLCache`
 
 Worked around by installing `lib32-libnm`. Disabled the workaround on Jan 20th 2024.
 
+## Ideas
+
+- Switch to Wayland on NVIDIA with drivers version 555
+- Try [CachyOS](https://cachyos.org/)
