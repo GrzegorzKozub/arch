@@ -83,7 +83,7 @@ sudo pacman -S --noconfirm \
   fzf \
   git-delta \
   go-yq \
-  gopass gopass-jsonapi \
+  gopass \
   htop \
   hyperfine \
   jq \
@@ -107,6 +107,7 @@ sudo pacman -S --noconfirm \
   # xclip, wl-clipboard - for keepassxc, neovim and pass
 
   # dua-cli gdu
+  # gopass-jsonapi
   # imwheel
 
 paru -S --aur --noconfirm \
