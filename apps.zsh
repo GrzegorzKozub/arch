@@ -83,7 +83,7 @@ sudo pacman -S --noconfirm \
   fzf \
   git-delta \
   go-yq \
-  gopass \
+  gopass gopass-jsonapi \
   htop \
   hyperfine \
   jq \
