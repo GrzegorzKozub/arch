@@ -139,12 +139,22 @@ sudo pacman -S --noconfirm \
 
   # zellij
 
+rm -rf ~/.bash*
+
+# lf
+
 export GOPATH=$XDG_DATA_HOME/go
 
 paru -S --aur --noconfirm \
   lf
 
-rm -rf ~/.bash*
+# yazi
+
+sudo pacman -S --noconfirm \
+  ffmpegthumbnailer \
+  poppler \
+  unarchiver \
+  yazi
 
 # neovim
 

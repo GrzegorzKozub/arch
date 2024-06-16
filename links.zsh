@@ -24,6 +24,7 @@ for APP in \
   stoken-gui \
   stoken-gui-small \
   xcolor \
+  yazi \
   zellij
 do
   [[ ! -f /usr/share/applications/$APP.desktop ]] && continue

@@ -9,5 +9,10 @@ sudo pacman -Rs --noconfirm \
   cava
 
 paru -S --aur --noconfirm \
-  cava \
+  cava
 
+sudo pacman -S --noconfirm \
+  ffmpegthumbnailer \
+  poppler \
+  unarchiver \
+  yazi
