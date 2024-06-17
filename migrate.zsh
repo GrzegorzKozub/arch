@@ -13,6 +13,6 @@ paru -S --aur --noconfirm \
 
 sudo pacman -S --noconfirm \
   ffmpegthumbnailer \
+  ouch \
   poppler \
-  unarchiver \
   yazi

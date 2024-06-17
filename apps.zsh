@@ -83,18 +83,18 @@ sudo pacman -S --noconfirm \
   fzf \
   git-delta \
   go-yq \
-  gopass \
+  gopass pass \
   htop \
   hyperfine \
   jq \
   nvtop \
   p7zip \
-  pass \
   ripgrep \
   rsync \
   silicon \
   stress \
   time \
+  tmux \
   trash-cli \
   wget \
   wl-clipboard \
@@ -102,6 +102,7 @@ sudo pacman -S --noconfirm \
   xcolor \
   python-secretstorage yt-dlp \
   zip \
+  zsh zsh-completions \
   zoxide
 
   # xclip, wl-clipboard - for keepassxc, neovim and pass
@@ -109,6 +110,7 @@ sudo pacman -S --noconfirm \
   # dua-cli gdu
   # gopass-jsonapi
   # imwheel
+  # zellij
 
 paru -S --aur --noconfirm \
   cava \
@@ -131,16 +133,6 @@ if [[ $HOST = 'worker' ]]; then
 
 end
 
-# tmux & zsh
-
-sudo pacman -S --noconfirm \
-  tmux \
-  zsh zsh-completions
-
-  # zellij
-
-rm -rf ~/.bash*
-
 # lf
 
 export GOPATH=$XDG_DATA_HOME/go
@@ -152,8 +144,8 @@ paru -S --aur --noconfirm \
 
 sudo pacman -S --noconfirm \
   ffmpegthumbnailer \
+  ouch \
   poppler \
-  unarchiver \
   yazi
 
 # neovim

@@ -4,6 +4,8 @@ set -e -o verbose
 
 # remove obsolete dirs and files
 
+rm -rf ~/.bash*
+
 [[ -d ~/.gnome ]] && rm -rf ~/.gnome
 
 [[ -f ~/.zshrc ]] && rm -f ~/.zshrc
