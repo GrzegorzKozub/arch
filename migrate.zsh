@@ -2,6 +2,8 @@
 
 set -o verbose
 
+# migrate
+
 sudo pacman -S --noconfirm \
   gopass
 
@@ -16,3 +18,8 @@ sudo pacman -S --noconfirm \
   ouch \
   poppler \
   yazi
+
+# cleanup
+
+. `dirname $0`/packages.zsh
+. `dirname $0`/clean.zsh
