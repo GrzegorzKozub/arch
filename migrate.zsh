@@ -19,6 +19,24 @@ sudo pacman -S --noconfirm \
   poppler \
   yazi
 
+if [[ $HOST = 'worker' ]]; then
+
+  sudo sed -i -e '/.*aud.*/d' /etc/hosts
+
+  echo '127.0.0.1 int.aud-stage.apsis.cloud' | sudo tee --append /etc/hosts > /dev/null
+  echo '::1       int.aud-stage.apsis.cloud' | sudo tee --append /etc/hosts > /dev/null
+
+  echo '127.0.0.1 alb-int.aud-stage.apsis.cloud' | sudo tee --append /etc/hosts > /dev/null
+  echo '::1       alb-int.aud-stage.apsis.cloud' | sudo tee --append /etc/hosts > /dev/null
+
+  echo '127.0.0.1 api.stage.ma' | sudo tee --append /etc/hosts > /dev/null
+  echo '::1       api.stage.ma' | sudo tee --append /etc/hosts > /dev/null
+
+  echo '127.0.0.1 dev.apsis' | sudo tee --append /etc/hosts > /dev/null
+  echo '::1       dev.apsis' | sudo tee --append /etc/hosts > /dev/null
+
+fi
+
 # cleanup
 
 . `dirname $0`/packages.zsh
