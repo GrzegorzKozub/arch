@@ -146,7 +146,6 @@ sudo pacman -S --noconfirm \
   ffmpegthumbnailer \
   imagemagick \
   ouch \
-  poppler \
   yazi
 
 # neovim

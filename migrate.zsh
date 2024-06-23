@@ -17,7 +17,6 @@ sudo pacman -S --noconfirm \
   ffmpegthumbnailer \
   imagemagick \
   ouch \
-  poppler \
   yazi
 
 sudo sed -i -e '/.*local.*/d' /etc/hosts
