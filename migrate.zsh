@@ -15,6 +15,7 @@ paru -S --aur --noconfirm \
 
 sudo pacman -S --noconfirm \
   ffmpegthumbnailer \
+  imagemagick \
   ouch \
   poppler \
   yazi
