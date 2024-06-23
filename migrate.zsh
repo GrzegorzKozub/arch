@@ -33,3 +33,7 @@ echo '::1       player.localdomain player' | sudo tee --append /etc/hosts > /dev
 
 . `dirname $0`/packages.zsh
 . `dirname $0`/clean.zsh
+
+# gdk-pixbuf-query-loaders --update-cache
+#sudo reflector --verbose --age 12 --latest 200 --score 50 --sort rate --save /etc/pacman.d/mirrorlist
+# in tsllla xorg-server
