@@ -4,6 +4,11 @@ set -o verbose
 
 # migrate
 
+sudo pacman --noconfirm -Syu
+
+sudo pacman -S --noconfirm \
+  glib2-devel
+
 sudo pacman -S --noconfirm \
   gopass
 

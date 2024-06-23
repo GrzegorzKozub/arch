@@ -70,7 +70,7 @@ pacstrap /mnt \
   git go pkgfile reflector sudo zsh \
   man-db man-pages \
   xorg-server \
-  gdm
+  gdm glib2-devel
 
   # nftables
 
