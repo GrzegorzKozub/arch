@@ -4,9 +4,9 @@ set -e -o verbose
 
 # remove obsolete dirs and files
 
-set +e
-rm -rf ~/.bash*
-set -e
+# set +e
+[[ -e ~/.bash* ]] && rm -rf ~/.bash*
+# set -e
 
 [[ -d ~/.gnome ]] && rm -rf ~/.gnome
 
