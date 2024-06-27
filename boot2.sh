@@ -26,6 +26,10 @@ sed -i "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" /boot/loader/entries
 
 # [[ $MY_HOSTNAME = 'player' ]] && sed -i 's/<kernel_params>/nvidia_modeset.hdmi_deepcolor=1 nvidia-drm.modeset=1 /g' /boot/loader/entries/*.conf
 
+# force s3 sleep (https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Changing_suspend_method)
+
+# [[ $MY_HOSTNAME = 'drifter' ]] && sed -i 's/<kernel_params>/mem_sleep_default=deep /g' /boot/loader/entries/*.conf
+
 # remaining kernel_params placeholder
 
 sed -i 's/<kernel_params>//g' /boot/loader/entries/*.conf

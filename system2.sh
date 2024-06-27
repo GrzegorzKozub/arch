@@ -96,10 +96,6 @@ fi
 # [[ $MY_HOSTNAME = 'worker' ]] &&
 #   cp `dirname $0`/etc/udev/rules.d/10-model-o.rules /etc/udev/rules.d/10-model-o.rules
 
-# hibernation file size
-
-cp `dirname $0`/etc/tmpfiles.d/hibernation_image_size.conf /etc/tmpfiles.d/hibernation_image_size.conf
-
 # webcam video format
 
 [[ $MY_HOSTNAME = 'drifter' ]] &&
