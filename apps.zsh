@@ -118,12 +118,12 @@ paru -S --aur --noconfirm \
 
   # fswatch - for neovim
 
-if [[ $HOST = 'player' ]]; then
-
-  sudo pacman -S --noconfirm \
-    redshift
-
-fi
+# if [[ $HOST = 'player' ]]; then
+#
+#   sudo pacman -S --noconfirm \
+#     redshift
+#
+# fi
 
 if [[ $HOST = 'worker' ]]; then
 

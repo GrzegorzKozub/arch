@@ -193,10 +193,6 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 ## Bugs
 
-#### [Proper focus is not given when a new window is launched from the overview](https://gitlab.gnome.org/GNOME/mutter/-/issues/2690)
-
-Affects all machines. Worked around in the `windows` GNOME Shell extension. Disabled the workaround on Jan 20th 2024.
-
 #### [Hardware video acceleration with VA-API](https://bbs.archlinux.org/viewtopic.php?id=244031)
 
 Affects all machines. Check the linked thread from time to time.
@@ -205,11 +201,6 @@ Affects all machines. Check the linked thread from time to time.
 
 Worked around with `rm -rf ~/.cache/nvidia/GLCache`
 
-#### [Steam crashes at launch with libgudev 238](https://github.com/ValveSoftware/steam-for-linux/issues/9805)
-
-Worked around by installing `lib32-libnm`. Disabled the workaround on Jan 20th 2024.
-
 ## Ideas
 
-- When NVIDIA driver 555 comes out, switch to Wayland and revisit gaming
 - Explore [CachyOS](https://cachyos.org/) GitHub and maybe use/install something

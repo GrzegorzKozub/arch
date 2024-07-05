@@ -130,14 +130,14 @@ add_shortcut() {
   kwriteconfig6 --file $FILE --group 'Data' --key 'DataCount' $nbr
 }
 
-for NAME ('flameshot gui' 'audio output' 'audio input' 'night light') rem_shortcut $NAME
+for NAME ('flameshot gui' 'audio output' 'audio input') rem_shortcut $NAME
 
 add_shortcut 'Print' 'flameshot gui' 'flameshot gui'
 add_shortcut 'Meta+Ctrl+A' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 add_shortcut 'Meta+Ctrl+M' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 
-[[ $HOST = 'player' ]] &&
-  add_shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
+# [[ $HOST = 'player' ]] &&
+#   add_shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
 
 qdbus6 org.kde.KWin /KWin reconfigure
 
@@ -181,8 +181,7 @@ plasma-apply-lookandfeel --apply 'org.kde.breeze.desktop'
 
 # appearance & style > colors & themes > night light
 
-[[ $HOST = 'drifter' ]] &&
-  kwriteconfig6 --file $XDG_CONFIG_HOME/kwinrc --group 'NightColor' --key 'Active' 'true'
+kwriteconfig6 --file $XDG_CONFIG_HOME/kwinrc --group 'NightColor' --key 'Active' 'true'
 
 # appearance & style > colors & themes > plasma style
 

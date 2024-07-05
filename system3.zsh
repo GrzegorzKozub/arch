@@ -55,8 +55,7 @@ fi
 if [[ $MY_HOSTNAME = 'player' ]]; then
 
   sudo pacman -S --noconfirm \
-    amd-ucode \
-    argyllcms
+    amd-ucode
 
   # nvidia gpu
 
@@ -108,11 +107,14 @@ fi
 
 # colors
 
-if [[ $MY_HOSTNAME = 'player' ]]; then
+sudo pacman -S --noconfirm \
+  argyllcms
 
-  dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27gp950-b.icm
-
-fi
+# if [[ $MY_HOSTNAME = 'player' ]]; then
+#
+#   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27gp950-b.icm
+#
+# fi
 
 # if [[ $MY_HOSTNAME = 'worker' ]]; then
 #

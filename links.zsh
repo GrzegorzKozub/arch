@@ -19,8 +19,6 @@ for APP in \
   org.gnome.Terminal \
   qv4l2 \
   qvidcap \
-  redshift \
-  redshift-gtk \
   stoken-gui \
   stoken-gui-small \
   xcolor \
@@ -31,6 +29,8 @@ do
   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
 done
+
+  # redshift redshift-gtk
 
 # alacritty
 
