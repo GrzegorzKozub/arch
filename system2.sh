@@ -123,22 +123,10 @@ sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev consolefont autodetect microcode modconf 
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
-# wayland disabled on nvidia
+# preserve nvidia video during suspend
 
 [[ $MY_HOSTNAME = 'player' ]] &&
-  sed -Ei 's/^.+WaylandEnable=.+$/WaylandEnable=false/' /etc/gdm/custom.conf
-
-# # wayland enabled on nvidia
-#
-# if [[ $MY_HOSTNAME = 'player' ]]; then
-#
-#   # forces wayland on nvidia in gdm
-#   ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
-#
-#   # preserves nvidia video memory during suspend
-#   echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia-power-management.conf
-#
-# fi
+  echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia-power-management.conf
 
 # reflector
 

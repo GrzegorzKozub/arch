@@ -4,19 +4,20 @@ set -e -o verbose
 
 # displays
 
-if [[ $HOST = 'drifter' ]]; then
+if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
 
-  # depends on colord.service that is disabled when using custom color profiles
+  # depends on colord.service
   gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
   gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
+fi
+
+[[ $HOST = 'drifter' ]] &&
   gdbus call \
     --session \
     --dest org.gnome.SettingsDaemon.Power \
     --object-path /org/gnome/SettingsDaemon/Power \
     --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 25>'
-
-fi
 
 [[ $XDG_SESSION_TYPE = 'wayland' ]] &&
   gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"

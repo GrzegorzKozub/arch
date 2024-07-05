@@ -77,7 +77,6 @@ Automated Arch Linux installation
 5. GNOME
   - Set display refresh rate on player to 144 Hz
   - Set display scale to 200% on drifter
-  - Enable Night Light on worker
   - Select the sound device and set volume to 50%
 6. Run `clean.zsh`
 7. Prepare `$XDG_CONFIG_HOME/zsh/.env` file with GitHub & NPM tokens
@@ -90,21 +89,16 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code, Brave
 ### Problems
 
 - GNOME text scaling factor not supported by the apps in native Wayland
-- Brave, Steam & games flickering on XWayland with NVIDIA with VRR when above 60 Hz
-- KeePassXC auto-type not supported on native Wayland
+- KeePassXC auto-type not supported in native Wayland
 - [Blurry XWayland apps with fractional scaling](https://gitlab.gnome.org/GNOME/mutter/-/issues/2328)
-- [Flameshot issue when using fractional scaling with two monitors](https://github.com/flameshot-org/flameshot/issues/564)
-- `dispwin` not compatible and `colormgr` most likely doesn't work on NVIDIA
-- `redshift` not compatible with Wayland and `gammastep` doesn't work in GNOME on NVIDIA
 - `nvidia-settings` not compatible (coolbits, undervolting and overclocking) but maybe [tuxclocker](https://github.com/lurkki14/tuxclocker/) can be used
 - PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
 
 ### Enabling on NVIDIA
 
 - Add `nvidia_drm.modeset=1` kernel module setting
-- Run `ln -s /dev/null /etc/udev/rules.d/61-gdm.rules`
-- Make sure there's no `WaylandEnable=false` in `/etc/gdm/custom.conf`
-- [Fix GNOME Shell suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
+- Ensure no `WaylandEnable=false` in `/etc/gdm/custom.conf`
+- Ensure [video memory is preserved during suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
 
 ### Forcing native Wayland
 
