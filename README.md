@@ -113,6 +113,26 @@ XDP implementations conflict each other so only one should be installed at the s
 - Hyprland - `xdg-desktop-portal-hyprland`
 - Sway - `xdg-desktop-portal-wlr`
 
+## Colors
+
+Monitors were calibrated as described in the [toys](https://github.com/GrzegorzKozub/toys) repo. Color profiles are loaded using `colord` via `settings.zsh`.
+
+To test if a profile is loaded use this `dispwin` command from `argyllcms` package:
+
+```zsh
+dispwin -d1 -V ~/code/arch/home/greg/.local/share/icc/27gp950-b.icm
+```
+
+### NVIDIA
+
+[The wiki states](https://wiki.archlinux.org/title/ICC_profiles#Loading_ICC_profiles) that NVIDIA is not compatible with `colord` so previously `dispwin` was used to load the color profiles. This required disabling `colord.service` which made it necessary to use `redshift` for night light.
+
+Neither `dispwin` nor `redshift` are compatible with Wayland.
+
+Testing with `dispwin` showed that the only visible problem is that launching NVIDIA settings breaks the colors. This can be fixed by either turning the color profile off and on again in GNOME settings or loading it using `dispwin`.
+
+For these reasons `dispwin` and `redshift` were removed in commit [f78146b](https://github.com/GrzegorzKozub/arch/commit/f78146b51d2523dffbbbb770391d63141942a985).
+
 ## Fonts
 
 Comfortable settings for display scale & font scaling factor given the screen size and resolution:
