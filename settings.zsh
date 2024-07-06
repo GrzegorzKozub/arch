@@ -6,6 +6,9 @@ set -e -o verbose
 
 add_color_profile() {
   set +e
+  DEVICE=$(colormgr find-device-by-property Model $2)
+  [[ $(echo $DEVICE | grep $1) ]] && return
+  DEVICE=$(echo $DEVICE | grep 'Device ID' | sed -e 's/Device ID:     //')
   PROFILE=$(colormgr find-profile-by-filename $1.icm |
     grep 'Profile ID' | sed -e 's/Profile ID:    //')
   if [[ -z $PROFILE ]]; then
@@ -14,10 +17,9 @@ add_color_profile() {
       PROFILE=$(
         colormgr import-profile `dirname $0`/home/$USER/.local/share/icc/$1.icm |
           grep 'Profile ID' | sed -e 's/Profile ID:    //')
+      sleep 5
     done
   fi
-  DEVICE=$(colormgr find-device-by-property Model $2 |
-    grep 'Device ID' | sed -e 's/Device ID:     //')
   colormgr device-add-profile $DEVICE $PROFILE
   set -e
 }
