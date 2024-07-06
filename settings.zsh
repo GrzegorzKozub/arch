@@ -17,7 +17,6 @@ add_color_profile() {
       PROFILE=$(
         colormgr import-profile `dirname $0`/home/$USER/.local/share/icc/$1.icm |
           grep 'Profile ID' | sed -e 's/Profile ID:    //')
-      sleep 5
     done
   fi
   colormgr device-add-profile $DEVICE $PROFILE
