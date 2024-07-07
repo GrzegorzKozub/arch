@@ -20,6 +20,7 @@ sudo pacman --noconfirm -Sy
 
 sudo pacman -S --noconfirm \
   git git-lfs \
+  git-credential-gopass \
   openssh
 
 paru -S --aur --noconfirm \
