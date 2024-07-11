@@ -7,11 +7,7 @@ set -e -o verbose
 sudo pacman -S --noconfirm \
   gnome-shell
 
-# tap to click
-
-sudo machinectl shell gdm@ /bin/bash -c "gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'"
-
-# screen scale
+# displays
 
 if [[ $HOST = 'drifter' ]]; then
 
@@ -25,15 +21,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-# fonts
-
-[[ $HOST = 'drifter' ]] &&
-  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.25'
-
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
-  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.75'
-
-# background image
+# appearance
 
 GS=/usr/share/gnome-shell
 GST=gnome-shell-theme.gresource
@@ -90,4 +78,24 @@ glib-compile-resources $GST.xml
 popd
 
 sudo cp $TMP/theme/$GST $GS/$GST
+
+# mouse & touchpad
+
+if [[ $HOST = 'drifter' ]]; then
+
+  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.peripherals.touchpad speed 0.25'
+  sudo machinectl shell gdm@ /bin/bash -c "gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'"
+
+fi
+
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.peripherals.mouse speed -0.5'
+
+# apps > tweaks > fonts
+
+[[ $HOST = 'drifter' ]] &&
+  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.25'
+
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.75'
 
