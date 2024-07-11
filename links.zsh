@@ -105,11 +105,6 @@ sed -i \
   $XDG_DATA_HOME/applications/nvim.desktop
 sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/nvim.desktop
 
-# satty
-
-cp /usr/share/applications/satty.desktop $XDG_DATA_HOME/applications
-echo 'StartupWMClass=com.gabm.satty' >> $XDG_DATA_HOME/applications/satty.desktop
-
 # vscode
 
 for APP in \

@@ -7,6 +7,8 @@ set -o verbose
 sudo pacman -S --noconfirm \
   git-credential-gopass
 
+rm $XDG_DATA_HOME/applications/satty.desktop
+
 # cleanup
 
 . `dirname $0`/packages.zsh

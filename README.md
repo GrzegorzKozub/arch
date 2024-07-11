@@ -79,7 +79,7 @@ Automated Arch Linux installation
   - Set display scale to 200% on drifter
   - Select the sound device and set volume to 50%
 6. Run `clean.zsh`
-7. Prepare `$XDG_CONFIG_HOME/zsh/.env` file with GitHub & NPM tokens
+7. Prepare the `$XDG_CONFIG_HOME/zsh/.zshenv` file
 8. Fix window sizes and positions
 
 ## Wayland
@@ -88,9 +88,9 @@ Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code, Brave
 
 ### Problems
 
+- Fractorial scaling makes the text blurry for native Wayland apps and [the whole interface blurry for XWayland apps](https://gitlab.gnome.org/GNOME/mutter/-/issues/2328)
 - GNOME text scaling factor not supported by the apps in native Wayland
 - KeePassXC auto-type not supported in native Wayland
-- [Blurry XWayland apps with fractional scaling](https://gitlab.gnome.org/GNOME/mutter/-/issues/2328)
 - `nvidia-settings` not compatible (coolbits, undervolting and overclocking) but maybe [tuxclocker](https://github.com/lurkki14/tuxclocker/) can be used
 - PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
 

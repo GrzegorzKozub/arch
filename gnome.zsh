@@ -200,9 +200,7 @@ gsettings set org.gnome.desktop.search-providers disable-external false
 
 if [[ $HOST = 'drifter' ]]; then
 
-  [[ $XDG_SESSION_TYPE = 'wayland' ]] && gsettings set org.gnome.desktop.peripherals.touchpad speed 0.25
-  [[ $XDG_SESSION_TYPE = 'x11' ]] && gsettings set org.gnome.desktop.peripherals.touchpad speed 0.5
-
+  gsettings set org.gnome.desktop.peripherals.touchpad speed 0.25
   gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 
 fi
