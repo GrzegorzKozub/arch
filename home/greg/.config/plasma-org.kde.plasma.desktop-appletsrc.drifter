@@ -57,7 +57,7 @@ plugin=org.kde.plasma.icontasks
 
 [Containments][2][Applets][5][Configuration][General]
 indicateAudioStreams=false
-launchers=applications:org.kde.dolphin.desktop,applications:org.codeberg.dnkl.foot.desktop,applications:kitty.desktop,applications:code-url-handler.desktop,applications:postman.desktop,applications:brave-browser.desktop,applications:org.keepassxc.KeePassXC.desktop
+launchers=applications:org.kde.dolphin.desktop,applications:kitty.desktop,applications:code-url-handler.desktop,applications:postman.desktop,applications:brave-browser.desktop,applications:org.keepassxc.KeePassXC.desktop
 
 [Containments][2][Applets][7]
 immutability=1

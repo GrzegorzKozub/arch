@@ -31,9 +31,6 @@ fi
 
 if [[ $HOST = 'player' ]]; then
 
-  sudo pacman -S --noconfirm \
-    foot
-
   paru -S --aur --noconfirm \
     hyprland-nvidia
 
@@ -52,7 +49,8 @@ sudo pacman -S --noconfirm \
   gammastep brightnessctl \
   pavucontrol \
   grim slurp \
-  swayimg
+  swayimg \
+  foot
 
 if [[ $HOST = 'drifter' ]]; then
 
@@ -77,28 +75,25 @@ do
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
-if [[ $HOST = 'player' ]]; then
+for APP in \
+  org.codeberg.dnkl.foot-server \
+  org.codeberg.dnkl.foot \
+  org.codeberg.dnkl.footclient
+do
+  cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
+  sed -i '2iStartupWMClass=foot' $XDG_DATA_HOME/applications/$APP.desktop
+done
 
-  for APP in \
-    org.codeberg.dnkl.foot-server \
-    org.codeberg.dnkl.foot \
-    org.codeberg.dnkl.footclient
-  do
-    cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
-    sed -i '2iStartupWMClass=foot' $XDG_DATA_HOME/applications/$APP.desktop
-  done
+for APP in \
+  org.codeberg.dnkl.foot-server \
+  org.codeberg.dnkl.footclient
+do
+  sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
+done
 
-  for APP in \
-    org.codeberg.dnkl.foot-server \
-    org.codeberg.dnkl.footclient
-  do
-    sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
-  done
-
-  sed -i \
-    -e "s/^Exec=foot$/Exec=foot --override=include=~\/.config\/foot\/$HOST.ini/" \
-    $XDG_DATA_HOME/applications/org.codeberg.dnkl.foot.desktop
-fi
+sed -i \
+  -e "s/^Exec=foot$/Exec=foot --override=include=~\/.config\/foot\/$HOST.ini/" \
+  $XDG_DATA_HOME/applications/org.codeberg.dnkl.foot.desktop
 
 # disable gnome xdg-desktop-portal
 

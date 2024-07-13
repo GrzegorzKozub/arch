@@ -321,7 +321,6 @@ set +e
 
 gsettings set org.gnome.shell favorite-apps "[
   'org.gnome.Nautilus.desktop',
-  $([[ $XDG_SESSION_TYPE = 'wayland' ]] && echo "'org.codeberg.dnkl.foot.desktop',")
   'kitty.desktop',
   $([[ $XDG_SESSION_TYPE = 'wayland' ]] && echo "'code-url-handler.desktop'," || echo "'code.desktop',")
   'postman.desktop',
@@ -331,7 +330,7 @@ gsettings set org.gnome.shell favorite-apps "[
   $([[ $(sudo pacman -Qq steam 2> /dev/null) ]] && echo ",'steam.desktop'")
 ]"
 
-  # 'Alacritty.desktop'
+  # 'Alacritty.desktop', 'org.codeberg.dnkl.foot.desktop'
 
 set -e
 
