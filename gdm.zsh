@@ -99,3 +99,5 @@ fi
 [[ $HOST = 'player' || $HOST = 'worker' ]] &&
   sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.75'
 
+exit 0
+
