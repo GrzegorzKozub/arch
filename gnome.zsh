@@ -80,9 +80,11 @@ gsettings set org.gnome.shell enabled-extensions "[
   'blur-my-shell@aunetx',
   'user-theme@gnome-shell-extensions.gcampax.github.com',
   'panel@grzegorzkozub.github.com',
-  'windows@grzegorzkozub.github.com',
-  'rounded-window-corners@fxgn'
+  'windows@grzegorzkozub.github.com'
 ]"
+
+  # https://github.com/flexagoon/rounded-window-corners/issues/11
+  # 'rounded-window-corners@fxgn'
 
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
 
