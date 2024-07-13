@@ -5,7 +5,8 @@ set -o verbose
 # migrate
 
 sudo pacman -S --noconfirm \
-  git-credential-gopass
+  git-credential-gopass \
+  gnome-characters
 
 rm $XDG_DATA_HOME/applications/satty.desktop
 
@@ -21,6 +22,9 @@ do
 done
 
 rm -rf $XDG_CONFIG_HOME/foot
+
+
+
 
 # cleanup
 

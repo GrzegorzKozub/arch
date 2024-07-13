@@ -90,7 +90,7 @@ Enabled on drifter and worker. Brave, Code, Alacritty, Foot, Kitty, Obsidian, & 
 
 - Fractorial scaling makes the text blurry for native Wayland apps and [the whole interface blurry for XWayland apps](https://gitlab.gnome.org/GNOME/mutter/-/issues/2328)
 - GNOME text scaling factor not supported by the apps in native Wayland
-- KeePassXC auto-type not supported in native Wayland
+- [KeePassXC auto-type not supported in native Wayland](https://github.com/keepassxreboot/keepassxc/issues/2281)
 - `nvidia-settings` not compatible (coolbits, undervolting and overclocking) but maybe [tuxclocker](https://github.com/lurkki14/tuxclocker/) can be used
 - PowerMizer doesn't work as soon as `nvidia_drm.modeset=1` is enabled
 
