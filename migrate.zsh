@@ -14,3 +14,5 @@ rm $XDG_DATA_HOME/applications/satty.desktop
 . `dirname $0`/packages.zsh
 . `dirname $0`/clean.zsh
 
+# manual
+

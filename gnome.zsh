@@ -86,10 +86,11 @@ gsettings set org.gnome.shell enabled-extensions "[
 
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
 
+[[ $XDG_SESSION_TYPE = 'wayland' ]] && RADIUS=12 || RADIUS=16
 gsettings set org.gnome.shell.extensions.rounded-window-corners global-rounded-corner-settings \
   "{'padding': <{'left': <uint32 1>, 'right': <uint32 1>, 'top': <uint32 1>, 'bottom': <uint32 1>}>,
     'keep_rounded_corners': <{'maximized': <false>, 'fullscreen': <false>}>,
-    'border_radius': <uint32 16>,
+    'border_radius': <uint32 $RADIUS>,
     'smoothing': <uint32 0>,
     'enabled': <true>
   }"
@@ -172,8 +173,11 @@ gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 [[ $HOST = 'drifter' ]] &&
   gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+[[ $HOST = 'player' ]] &&
   gsettings set org.gnome.desktop.interface text-scaling-factor 1.75
+
+[[ $HOST = 'worker' ]] &&
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1
 
 # apps > tweaks > windows
 
@@ -195,15 +199,18 @@ gsettings set org.gnome.desktop.search-providers disable-external false
 
 # mouse & touchpad
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
-  gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
-
 if [[ $HOST = 'drifter' ]]; then
 
   gsettings set org.gnome.desktop.peripherals.touchpad speed 0.25
   gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 
 fi
+
+[[ $HOST = 'player' ]] &&
+  gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
+
+[[ $HOST = 'worker' ]] &&
+  gsettings set org.gnome.desktop.peripherals.mouse speed -0.75
 
 # keyboard > input sources
 
@@ -285,7 +292,11 @@ gsettings set \
 
 # accessibility > seeing
 
-gsettings set org.gnome.desktop.interface cursor-size 32
+[[ $HOST = 'drifter' || $HOST = 'player' ]] &&
+  gsettings set org.gnome.desktop.interface cursor-size 32
+
+[[ $HOST = 'worker' ]] &&
+  gsettings set org.gnome.desktop.interface cursor-size 24
 
 # privacy & security > file history & trash
 
@@ -310,7 +321,7 @@ gsettings set org.gnome.shell favorite-apps "[
   'org.gnome.Nautilus.desktop',
   $([[ $XDG_SESSION_TYPE = 'wayland' ]] && echo "'org.codeberg.dnkl.foot.desktop',")
   'kitty.desktop',
-  'code.desktop',
+  $([[ $XDG_SESSION_TYPE = 'wayland' ]] && echo "'code-url-handler.desktop'," || echo "'code.desktop',")
   'postman.desktop',
   'brave-browser.desktop',
   'org.keepassxc.KeePassXC.desktop'

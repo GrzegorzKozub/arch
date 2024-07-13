@@ -9,7 +9,7 @@ sudo pacman -S --noconfirm \
 
 # displays
 
-if [[ $HOST = 'drifter' ]]; then
+if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
 
   SCHEMAS=/usr/share/glib-2.0/schemas
   OVERRIDE=10_screen-scale.gschema.override
@@ -66,7 +66,7 @@ EOF
   background: url(resource:///org/gnome/shell/theme/women.jpg);
   background-position: 0 0;
   background-repeat: repeat;
-  background-size: 3840px 2525px;
+  background-size: 1920px 1263px;
 }
 .login-dialog {
   background-color: rgba(0, 0, 0, 0.5);
@@ -88,16 +88,22 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+[[ $HOST = 'player' ]] &&
   sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.peripherals.mouse speed -0.5'
+
+[[ $HOST = 'worker' ]] &&
+  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.peripherals.mouse speed -0.75'
 
 # apps > tweaks > fonts
 
 [[ $HOST = 'drifter' ]] &&
   sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.25'
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+[[ $HOST = 'player' ]] &&
   sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.75'
+
+[[ $HOST = 'worker' ]] &&
+  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1'
 
 (exit 0)
 

@@ -72,11 +72,11 @@ Automated Arch Linux installation
   - Open your databases
   - Only show attachment, title and username columns
   - Fit columns to window
-3. Change font to `Cascadia Code`, font size to `16` and tab size to `2` in Postman
+3. Change font to `Cascadia Code`, font size to `14` and tab size to `2` in Postman
 4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
 5. GNOME
   - Set display refresh rate on player to 144 Hz
-  - Set display scale to 200% on drifter
+  - Set display scale to 200% on drifter and worker
   - Select the sound device and set volume to 50%
 6. Run `clean.zsh`
 7. Prepare the `$XDG_CONFIG_HOME/zsh/.zshenv` file
@@ -84,7 +84,7 @@ Automated Arch Linux installation
 
 ## Wayland
 
-Enabled on drifter and worker. Foot and Kitty run on native Wayland. Code, Brave, KeePassXC and Postman run on XWayland.
+Enabled on drifter and worker. Brave, Code, Alacritty, Foot, Kitty, Obsidian, & Postman run in native Wayland.
 
 ### Problems
 
@@ -137,16 +137,30 @@ For these reasons `dispwin` and `redshift` were removed in commit [f78146b](http
 
 Comfortable settings for display scale & font scaling factor given the screen size and resolution:
 
-- drifter - 200% & 1.25
-- player & worker - 100% & 1.75
+- drifter: 200% & 1.25
+- player & worker
+  - Wayland - 200% & 1
+  - X11 - 100% & 1.75
 
-The aim is to use the font size of `1em` or `12pt` or `16px` ([converter](https://simplecss.eu/pxtoems.html)) and have font scaling factor make it comfortable. Apps running on X11 or XWayland respect font scaling factor. For native Wayland apps font size is adjusted to simulate font scaling factor:
+The aim is to standardize on the font size of `1em` or `12pt` or `16px` ([converter](https://simplecss.eu/pxtoems.html)) and achieve about 50 lines of full screen text across all apps.
+
+Current settings:
 
 - Alacritty, Foot & Kitty
-  - drifter (Wayland) - `15pt` (or `1.25em` or `20px`)
-  - player (X11) - `12pt` (or `1em` or `16px`)
-  - worker (Wayland) - `21pt` (or `1.75em` or `28px`)
-- Brave, Code & Postman (XWayland) - `16px` (or `1em` or `12pt`)
+  - drifter: `15pt` (or `1.25em` or `20px`)
+  - player & worker: `12pt` (or `1em` or `16px`)
+- Brave, Code, Obsidian & Postman: `16px` (or `1em` or `12pt`)
+
+### Font scaling factor
+
+Apps running on X11 or XWayland respect font scaling factor. For native Wayland apps, the font size can be adjusted to simulate font scaling factor.
+
+### Windows
+
+For context, on Windows, 4k display scale is 150% and font scaling factor 1. This yields about 60 lines of full screen text with the font sizes:
+
+- Windows Terminal & WezTerm: `14pt` (or `1.17em` or `19px`)
+- Code: `16px` (or `1em` or `12pt`)
 
 ## GNOME Shell extensions
 
@@ -211,16 +225,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
 - [proton-ge-custom](https://github.com/GloriousEggroll/proton-ge-custom)
 - [vkd3d-proton](https://github.com/HansKristian-Work/vkd3d-proton)
 
-## Bugs
+## Discussions
 
-#### [Hardware video acceleration with VA-API](https://bbs.archlinux.org/viewtopic.php?id=244031)
+- [Hardware video acceleration with VA-API](https://bbs.archlinux.org/viewtopic.php?id=244031)
 
-Affects all machines. Check the linked thread from time to time.
-
-#### [Steam does not start, steamwebhelper keeps crashing in a loop](https://github.com/ValveSoftware/steam-for-linux/issues/9780)
-
-Worked around with `rm -rf ~/.cache/nvidia/GLCache`
-
-## Ideas
-
-- Explore [CachyOS](https://cachyos.org/) GitHub and maybe use/install something
