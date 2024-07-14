@@ -63,7 +63,11 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
     nvidia nvidia-lts nvidia-settings nvidia-utils \
     libva-vdpau-driver
 
+  # enable nvidia overclocking
   sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
+
+  # disable rootless xorg to allow nvidia overclocking
+  # sudo cp `dirname $0`/etc/X11/Xwrapper.config /etc/X11/Xwrapper.config
 
 fi
 
