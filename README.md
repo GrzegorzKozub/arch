@@ -72,6 +72,7 @@ Automated Arch Linux installation
   - Open your databases
   - Only show attachment, title and username columns
   - Fit columns to window
+  - Configure Brave extension
 3. Change font to `Cascadia Code`, font size to `14` and tab size to `2` in Postman
 4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
 5. GNOME
