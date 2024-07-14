@@ -18,9 +18,9 @@ sed -i "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" /boot/loader/entries
 [[ $MY_HOSTNAME = 'drifter' || $MY_HOSTNAME = 'worker' ]] && sed -i 's/<ucode>/intel-ucode/g' /boot/loader/entries/*.conf
 [[ $MY_HOSTNAME = 'player' ]] && sed -i 's/<ucode>/amd-ucode/g' /boot/loader/entries/*.conf
 
-# required for wayland on nvidia and removes unknown display from gnome but breaks undervolting
+# enable kernel mode setting (kms) for nvidia (required for gdm to start rootless xorg, required for wayland)
 
-# [[ $MY_HOSTNAME = 'player' ]] && sed -i 's/<kernel_params>/nvidia-drm.modeset=1 /g' /boot/loader/entries/*.conf
+[[ $MY_HOSTNAME = 'player' ]] && sed -i 's/<kernel_params>/nvidia-drm.modeset=1 /g' /boot/loader/entries/*.conf
 
 # force s3 sleep (https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Changing_suspend_method)
 
