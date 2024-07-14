@@ -76,8 +76,8 @@ Automated Arch Linux installation
 3. Change font to `Cascadia Code`, font size to `14` and tab size to `2` in Postman
 4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
 5. GNOME
-  - Set display refresh rate on player to 144 Hz
-  - Set display scale to 200% on drifter and worker
+  - Set display refresh rate on player to variable 144 Hz
+  - Set display scale to 200%
   - Select the sound device and set volume to 50%
 6. Run `clean.zsh`
 7. Prepare the `$XDG_CONFIG_HOME/zsh/.zshenv` file
@@ -85,7 +85,7 @@ Automated Arch Linux installation
 
 ## Wayland
 
-Enabled on drifter and worker. Brave, Code, Alacritty, Foot, Kitty, Obsidian, & Postman run in native Wayland.
+Brave, Code, Alacritty, Foot, Kitty, Obsidian, & Postman run in native Wayland.
 
 ### Problems
 

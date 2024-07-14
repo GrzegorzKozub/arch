@@ -175,10 +175,7 @@ gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 [[ $HOST = 'drifter' ]] &&
   gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 
-[[ $HOST = 'player' ]] &&
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.75
-
-[[ $HOST = 'worker' ]] &&
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
   gsettings set org.gnome.desktop.interface text-scaling-factor 1
 
 # apps > tweaks > windows
@@ -208,10 +205,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-[[ $HOST = 'player' ]] &&
-  gsettings set org.gnome.desktop.peripherals.mouse speed -0.5
-
-[[ $HOST = 'worker' ]] &&
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
   gsettings set org.gnome.desktop.peripherals.mouse speed -0.75
 
 # keyboard > input sources
@@ -294,11 +288,7 @@ gsettings set \
 
 # accessibility > seeing
 
-[[ $HOST = 'drifter' || $HOST = 'player' ]] &&
-  gsettings set org.gnome.desktop.interface cursor-size 32
-
-[[ $HOST = 'worker' ]] &&
-  gsettings set org.gnome.desktop.interface cursor-size 24
+# gsettings set org.gnome.desktop.interface cursor-size 24
 
 # privacy & security > file history & trash
 

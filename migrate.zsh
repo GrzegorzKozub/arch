@@ -23,8 +23,7 @@ done
 
 rm -rf $XDG_CONFIG_HOME/foot
 
-
-
+gsettings set org.gnome.desktop.interface cursor-size 24
 
 # cleanup
 
@@ -33,3 +32,4 @@ rm -rf $XDG_CONFIG_HOME/foot
 
 # manual
 
+# vrr

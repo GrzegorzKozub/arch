@@ -9,17 +9,13 @@ sudo pacman -S --noconfirm \
 
 # displays
 
-if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
+SCHEMAS=/usr/share/glib-2.0/schemas
+OVERRIDE=10_screen-scale.gschema.override
 
-  SCHEMAS=/usr/share/glib-2.0/schemas
-  OVERRIDE=10_screen-scale.gschema.override
+echo '[org.gnome.desktop.interface]' | sudo tee $SCHEMAS/$OVERRIDE > /dev/null
+echo 'scaling-factor=2' | sudo tee --append $SCHEMAS/$OVERRIDE > /dev/null
 
-  echo '[org.gnome.desktop.interface]' | sudo tee $SCHEMAS/$OVERRIDE > /dev/null
-  echo 'scaling-factor=2' | sudo tee --append $SCHEMAS/$OVERRIDE > /dev/null
-
-  sudo glib-compile-schemas $SCHEMAS
-
-fi
+sudo glib-compile-schemas $SCHEMAS
 
 # appearance
 
@@ -88,10 +84,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-[[ $HOST = 'player' ]] &&
-  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.peripherals.mouse speed -0.5'
-
-[[ $HOST = 'worker' ]] &&
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
   sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.peripherals.mouse speed -0.75'
 
 # apps > tweaks > fonts
@@ -99,10 +92,7 @@ fi
 [[ $HOST = 'drifter' ]] &&
   sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.25'
 
-[[ $HOST = 'player' ]] &&
-  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.75'
-
-[[ $HOST = 'worker' ]] &&
+[[ $HOST = 'player' || $HOST = 'worker' ]] &&
   sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1'
 
 (exit 0)
