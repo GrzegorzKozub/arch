@@ -12,6 +12,14 @@ paru -S --aur --noconfirm \
 cp /usr/share/applications/teams-for-linux.desktop $XDG_DATA_HOME/applications
 sed -i -e 's/^Name=.*/Name=Teams/' $XDG_DATA_HOME/applications/teams-for-linux.desktop
 
+if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
+
+  sed -i \
+    -e 's/^Exec=teams-for-linux/Exec=teams-for-linux --disable-features=WaylandFractionalScaleV1 --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto/' \
+    $XDG_DATA_HOME/applications/teams-for-linux.desktop
+
+fi
+
 [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && {
   FAVS=$(gsettings get org.gnome.shell favorite-apps)
   [[ $(echo $FAVS | grep 'teams-for-linux.desktop') ]] || {
