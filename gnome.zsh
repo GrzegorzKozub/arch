@@ -191,7 +191,8 @@ gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
 gsettings set org.gnome.desktop.search-providers disabled "[
   'org.gnome.Nautilus.desktop',
-  'org.gnome.Terminal.desktop'
+  'org.gnome.Terminal.desktop',
+  'org.gnome.Characters.desktop'
 ]"
 
 gsettings set org.gnome.desktop.search-providers disable-external false
