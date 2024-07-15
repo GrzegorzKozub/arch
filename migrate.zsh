@@ -4,6 +4,8 @@ set -o verbose
 
 # migrate
 
+rm ~/.config/monitors.xml~
+
 # cleanup
 
 . `dirname $0`/packages.zsh
