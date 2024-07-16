@@ -13,6 +13,8 @@ sudo pacman -Rs --noconfirm \
 sudo pacman -S --noconfirm \
   qt5-wayland
 
+[[ $HOST = 'worker' ]] && . `dirname $0`/apsis.zsh
+
 # cleanup
 
 . `dirname $0`/packages.zsh
