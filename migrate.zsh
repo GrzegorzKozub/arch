@@ -4,16 +4,12 @@ set -o verbose
 
 # migrate
 
-rm ~/.config/monitors.xml~
-rm -rf ~/.config/flameshot
-
-sudo pacman -Rs --noconfirm \
-  flameshot
-
-sudo pacman -S --noconfirm \
-  qt5-wayland
-
 [[ $HOST = 'worker' ]] && . `dirname $0`/apsis.zsh
+
+sed -i \
+  -e 's/export //' \
+  -e 's/^/export /' \
+  ~/.config/zsh/.zshenv
 
 # cleanup
 
