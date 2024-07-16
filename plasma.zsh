@@ -130,9 +130,9 @@ add_shortcut() {
   kwriteconfig6 --file $FILE --group 'Data' --key 'DataCount' $nbr
 }
 
-for NAME ('flameshot gui' 'audio output' 'audio input') rem_shortcut $NAME
+for NAME ('screenshot' 'audio output' 'audio input') rem_shortcut $NAME
 
-add_shortcut 'Print' 'flameshot gui' 'flameshot gui'
+add_shortcut 'Print' 'screenshot' "/home/$USER/code/arch/screenshot.zsh"
 add_shortcut 'Meta+Ctrl+A' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 add_shortcut 'Meta+Ctrl+M' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 

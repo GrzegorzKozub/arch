@@ -66,6 +66,7 @@ pacstrap /mnt \
   pipewire pipewire-alsa pipewire-pulse wireplumber \
   gst-plugins-good \
   xdg-desktop-portal xdg-utils \
+  qt5-wayland \
   pacman-contrib \
   git go pkgfile reflector sudo zsh \
   man-db man-pages \
