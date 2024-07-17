@@ -4,6 +4,8 @@ set -o verbose
 
 # migrate
 
+[[ $HOST = 'player' ]] && sudo pacman -S libva-nvidia-driver
+
 [[ $HOST = 'worker' ]] && . `dirname $0`/apsis.zsh
 
 sed -i \

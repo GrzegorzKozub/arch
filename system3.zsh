@@ -61,7 +61,7 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
 
   sudo pacman -S --noconfirm \
     nvidia nvidia-lts nvidia-settings nvidia-utils \
-    libva-vdpau-driver
+    libva-nvidia-driver
 
   # enable nvidia overclocking
   sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
