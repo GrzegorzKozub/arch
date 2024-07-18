@@ -13,6 +13,21 @@ sed -i \
   -e 's/^/export /' \
   ~/.config/zsh/.zshenv
 
+rm $XDG_CONFIG_HOME/environment.d
+
+rm -rf $XDG_CONFIG_HOME/btop
+
+pushd ~/code/dotfiles
+
+git update-index --no-assume-unchanged btop/btop.conf
+git reset --hard
+git pull
+git update-index --assume-unchanged btop/btop/btop.conf
+
+popd
+
+
+
 # cleanup
 
 . `dirname $0`/packages.zsh
