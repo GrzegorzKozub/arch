@@ -71,13 +71,13 @@ Automated Arch Linux installation
 2. KeePassXC
   - Open your databases
   - Only show attachment, title and username columns
-  - Fit columns to window
+  - Hide folders panel & fit columns to window
   - Configure Brave extension
 3. Change font to `Cascadia Code`, font size to `14` and tab size to `2` in Postman
 4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
 5. GNOME
   - Set display refresh rate on player to variable 144 Hz
-  - Set display scale to 200%
+  - Set display scale on drifter to 300% and on player & worker to 200%
   - Select the sound device and set volume to 50%
 6. Run `clean.zsh`
 7. Prepare the `$XDG_CONFIG_HOME/zsh/.zshenv` file
@@ -85,7 +85,7 @@ Automated Arch Linux installation
 
 ## Wayland
 
-Brave, Code, Alacritty, Foot, Kitty, Obsidian, & Postman run in native Wayland.
+Brave, Code, Alacritty, Foot, Kitty, Obsidian & Postman run in native Wayland.
 
 ### Problems
 
@@ -136,18 +136,18 @@ For these reasons `dispwin` and `redshift` were removed in commit [f78146b](http
 
 Comfortable settings for display scale & font scaling factor given the screen size and resolution:
 
-- drifter: 200% & 1.25
+- drifter
+  - Wayland - 300% & 1
+  - X11 - 200% & 1.25
 - player & worker
   - Wayland - 200% & 1
   - X11 - 100% & 1.75
 
-The aim is to standardize on the font size of `1em` or `12pt` or `16px` ([converter](https://simplecss.eu/pxtoems.html)) and achieve about 50 lines of full screen text across all apps.
+The aim is to standardize on the font size of `1em` or `12pt` or `16px` ([converter](https://simplecss.eu/pxtoems.html)) and achieve about 50 lines (or 40 lines on drifter) of full screen text across all apps.
 
 Current settings:
 
-- Alacritty, Foot & Kitty
-  - drifter: `15pt` (or `1.25em` or `20px`)
-  - player & worker: `12pt` (or `1em` or `16px`)
+- Alacritty, Foot & Kitty: `12pt` (or `1em` or `16px`)
 - Brave, Code, Obsidian & Postman: `16px` (or `1em` or `12pt`)
 
 ### Font scaling factor

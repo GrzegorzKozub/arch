@@ -172,11 +172,7 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code NF 
 
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
-[[ $HOST = 'drifter' ]] &&
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1
+gsettings set org.gnome.desktop.interface text-scaling-factor 1
 
 # apps > tweaks > windows
 

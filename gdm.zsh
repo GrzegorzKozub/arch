@@ -12,8 +12,10 @@ sudo pacman -S --noconfirm \
 SCHEMAS=/usr/share/glib-2.0/schemas
 OVERRIDE=10_screen-scale.gschema.override
 
+[[ $HOST = 'drifter' ]] && FACTOR=3 || FACTOR=2
+
 echo '[org.gnome.desktop.interface]' | sudo tee $SCHEMAS/$OVERRIDE > /dev/null
-echo 'scaling-factor=2' | sudo tee --append $SCHEMAS/$OVERRIDE > /dev/null
+echo "scaling-factor=$FACTOR" | sudo tee --append $SCHEMAS/$OVERRIDE > /dev/null
 
 sudo glib-compile-schemas $SCHEMAS
 
@@ -89,11 +91,7 @@ fi
 
 # apps > tweaks > fonts
 
-[[ $HOST = 'drifter' ]] &&
-  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1.25'
-
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
-  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1'
+sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1'
 
 (exit 0)
 
