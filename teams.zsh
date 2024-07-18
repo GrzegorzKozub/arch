@@ -30,6 +30,9 @@ fi
 
 # cleanup
 
+sudo pacman -Rs --noconfirm \
+  node-gyp nodejs npm
+
 . `dirname $0`/packages.zsh
 . `dirname $0`/clean.zsh
 
