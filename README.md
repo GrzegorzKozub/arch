@@ -154,13 +154,6 @@ Current settings:
 
 Apps running on X11 or XWayland respect font scaling factor. For native Wayland apps, the font size can be adjusted to simulate font scaling factor.
 
-### Windows
-
-For context, on Windows, 4k display scale is 150% and font scaling factor 1. This yields about 60 lines of full screen text with the font sizes:
-
-- Windows Terminal & WezTerm: `14pt` (or `1.17em` or `19px`)
-- Code: `16px` (or `1em` or `12pt`)
-
 ## GNOME Shell extensions
 
 To test on Wayland run `dbus-run-session -- env MUTTER_DEBUG_DUMMY_MODE_SPECS=2560x1440 gnome-shell --nested --wayland`.
