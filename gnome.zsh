@@ -80,16 +80,14 @@ gsettings set org.gnome.shell enabled-extensions "[
   'blur-my-shell@aunetx',
   'user-theme@gnome-shell-extensions.gcampax.github.com',
   'panel@grzegorzkozub.github.com',
+  'rounded-window-corners@fxgn',
   'windows@grzegorzkozub.github.com'
 ]"
-
-  # https://github.com/flexagoon/rounded-window-corners/issues/11
-  # 'rounded-window-corners@fxgn'
 
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
 
 [[ $XDG_SESSION_TYPE = 'wayland' ]] && RADIUS=12 || RADIUS=16
-gsettings set org.gnome.shell.extensions.rounded-window-corners global-rounded-corner-settings \
+gsettings set org.gnome.shell.extensions.rounded-window-corners-reborn global-rounded-corner-settings \
   "{'padding': <{'left': <uint32 1>, 'right': <uint32 1>, 'top': <uint32 1>, 'bottom': <uint32 1>}>,
     'keep_rounded_corners': <{'maximized': <false>, 'fullscreen': <false>}>,
     'border_radius': <uint32 $RADIUS>,
