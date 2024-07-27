@@ -123,6 +123,11 @@ cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
 # paru -S --aur --noconfirm \
 #   libstrangle-git
 
+# optimization
+
+sudo cp `dirname $0`/etc/sysctl.d/80-gaming.conf /etc/sysctl.d
+sudo cp `dirname $0`/etc/tmpfiles.d/gaming.conf /etc/tmpfiles.d
+
 # cleanup
 
 . `dirname $0`/packages.zsh
