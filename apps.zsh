@@ -217,9 +217,14 @@ paru -S --aur --noconfirm \
   obsidian-bin \
   postman-bin \
   satty-bin \
+  teams-for-linux \
   visual-studio-code-bin
 
   # mission-center slack-desktop teams-for-linux
+
+# cleanup after teams-for-linux
+sudo pacman -Rs --noconfirm \
+  node-gyp nodejs npm
 
 # settings
 

@@ -310,6 +310,7 @@ gsettings set org.gnome.shell favorite-apps "[
   $([[ $XDG_SESSION_TYPE = 'wayland' ]] && echo "'code-url-handler.desktop'," || echo "'code.desktop',")
   'postman.desktop',
   'brave-browser.desktop',
+  'teams-for-linux.desktop',
   'org.keepassxc.KeePassXC.desktop'
   $([[ $(sudo pacman -Qq teams-for-linux 2> /dev/null) ]] && echo ",'teams-for-linux.desktop'")
   $([[ $(sudo pacman -Qq steam 2> /dev/null) ]] && echo ",'steam.desktop'")

@@ -19,6 +19,30 @@ npm install --global \
   neovim \
   typescript
 
+paru -S --aur --noconfirm \
+  teams-for-linux
+
+cp /usr/share/applications/teams-for-linux.desktop $XDG_DATA_HOME/applications
+sed -i -e 's/^Name=.*/Name=Teams/' $XDG_DATA_HOME/applications/teams-for-linux.desktop
+
+if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
+
+  sed -i \
+    -e 's/^Exec=teams-for-linux/Exec=teams-for-linux --disable-features=WaylandFractionalScaleV1 --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto/' \
+    $XDG_DATA_HOME/applications/teams-for-linux.desktop
+
+fi
+
+sudo pacman -Rs --noconfirm \
+  node-gyp nodejs npm
+
+pushd ~/code/dotfiles
+
+stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
+  teams-for-linux
+
+popd
+
 # cleanup
 
 . `dirname $0`/packages.zsh

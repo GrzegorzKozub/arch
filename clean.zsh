@@ -12,6 +12,8 @@ set -e -o verbose
 
 [[ -f ~/.zshrc ]] && rm -f ~/.zshrc
 
+[[ -d ~/.cache/electron ]] && rm -rf ~/.cache/electron
+
 [[ -d ~/.cache/node ]] && rm -rf ~/.cache/node
 [[ -d ~/.npm ]] && rm -rf ~/.npm
 
