@@ -114,7 +114,7 @@ cp `dirname $0`/system3.zsh /home/greg
 su greg --command '~/system3.zsh'
 rm /home/greg/system3.zsh
 
-# kernel hooks: consolefont, encrypt, lvm2 and resume
+# kernel hooks: consolefont, encrypt, lvm2 & resume
 
 [[ $MY_HOSTNAME = 'drifter' ]] && sed -Ei 's/^MODULES=.+$/MODULES=(i915)/' /etc/mkinitcpio.conf
 
@@ -123,10 +123,10 @@ sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev consolefont autodetect microcode modconf 
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
-# preserve nvidia video during suspend
+# nvidia: better memory mamagement & preserve video memory during suspend
 
 [[ $MY_HOSTNAME = 'player' ]] &&
-  echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia-power-management.conf
+  echo 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia.conf
 
 # reflector
 
