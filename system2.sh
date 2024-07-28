@@ -126,9 +126,7 @@ mkinitcpio -p linux-lts
 # nvidia
 
 [[ $MY_HOSTNAME = 'player' ]] &&
-  echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia.conf
-
-  # NVreg_UsePageAttributeTable=1 has issues with elden ring temporal upscaling mod
+  echo 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia.conf
 
 # reflector
 
