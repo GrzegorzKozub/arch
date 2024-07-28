@@ -58,7 +58,7 @@ set -e
 
 # normal user
 
-useradd -m -g users -G wheel -s /bin/zsh greg
+useradd -m -g users -G wheel,realtime -s /bin/zsh greg
 
 set +e
 

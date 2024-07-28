@@ -48,6 +48,11 @@ paru -S --aur --noconfirm \
 
 # migrate next
 
+sudo pacman -S --noconfirm \
+  realtime-privileges
+
+sudo usermod -a -G realtime greg
+
 if [[ $MY_HOSTNAME = 'player' ]]; then
 
   sudo rm /etc/modprobe.d/nvidia-power-management.conf

@@ -64,6 +64,7 @@ pacstrap /mnt \
   networkmanager \
   usbutils bluez-utils v4l-utils \
   pipewire pipewire-alsa pipewire-pulse wireplumber \
+  realtime-privileges \
   gst-plugins-good \
   xdg-desktop-portal xdg-utils \
   qt5-wayland \
