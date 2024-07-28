@@ -43,6 +43,9 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
 
 popd
 
+paru -S --aur --noconfirm \
+  vivify-bin
+
 # cleanup
 
 . `dirname $0`/packages.zsh

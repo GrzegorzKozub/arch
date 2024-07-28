@@ -107,10 +107,7 @@ sudo pacman -S --noconfirm \
   # zellij
 
 paru -S --aur --noconfirm \
-  cava \
-  fswatch
-
-  # fswatch - for neovim
+  cava
 
 # if [[ $HOST = 'player' ]]; then
 #
@@ -148,7 +145,9 @@ sudo pacman -S --noconfirm \
 #   neovim
 
 paru -S --aur --noconfirm \
-  neovim-nightly-bin
+  fswatch \
+  neovim-nightly-bin \
+  vivify-bin
 
 # docker
 
