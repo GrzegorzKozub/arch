@@ -150,6 +150,10 @@ echo '# /dev/mapper/vg1-data' >> /etc/fstab
 echo '/dev/mapper/vg1-data	/run/media/greg/data	ext4	defaults	0 2' >> /etc/fstab
 echo '' >> /etc/fstab
 
+# increase the highest requested rtc interrupt frequency
+
+cp `dirname $0`/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
+
 # default sound over hdmi to primary monitor
 
 if [[ $MY_HOSTNAME = 'worker' ]]; then

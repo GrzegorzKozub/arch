@@ -53,6 +53,8 @@ sudo pacman -S --noconfirm \
 
 sudo usermod -a -G realtime greg
 
+sudo cp `dirname $0`/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
+
 if [[ $MY_HOSTNAME = 'player' ]]; then
 
   sudo rm /etc/modprobe.d/nvidia-power-management.conf
