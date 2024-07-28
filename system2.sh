@@ -123,10 +123,12 @@ sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev consolefont autodetect microcode modconf 
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
-# nvidia: better memory mamagement & preserve video memory during suspend
+# nvidia
 
 [[ $MY_HOSTNAME = 'player' ]] &&
-  echo 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia.conf
+  echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia.conf
+
+  # NVreg_UsePageAttributeTable=1 has issues with elden ring temporal upscaling mod
 
 # reflector
 
