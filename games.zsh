@@ -128,6 +128,9 @@ cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
 sudo cp `dirname $0`/etc/sysctl.d/80-gaming.conf /etc/sysctl.d
 sudo cp `dirname $0`/etc/tmpfiles.d/gaming.conf /etc/tmpfiles.d
 
+cp `dirname $0`/home/$USER/.config/systemd/user/pci.service $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable pci.service
+
 # cleanup
 
 . `dirname $0`/packages.zsh

@@ -1,0 +1,10 @@
+[Unit]
+Description=pci
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/code/arch/pci.sh
+
+[Install]
+WantedBy=graphical-session.target
