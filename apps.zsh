@@ -81,6 +81,7 @@ sudo pacman -S --noconfirm \
   htop \
   hyperfine \
   jq \
+  nushell \
   nvtop \
   p7zip \
   ripgrep \
