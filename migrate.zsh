@@ -5,6 +5,7 @@ set -o verbose
 # migrate
 
 sudo pacman -S --noconfirm \
+  gnome-font-viewer \
   nushell
 
 pushd ~/code/dotfiles
