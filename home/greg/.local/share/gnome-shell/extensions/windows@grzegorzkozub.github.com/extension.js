@@ -25,8 +25,10 @@ export default class Windows extends Extension {
       { title: /.?Visual Studio Code$/ },
     ];
     const medium = [
+      { title: /^calibre.?/ },
       { title: /^Cemu.?/ },
       { title: /^DevTools.?/ },
+      { title: /^Foliate.?/ },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
       { title: /.?LibreOffice.?/ },
