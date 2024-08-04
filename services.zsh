@@ -59,21 +59,6 @@ cp `dirname $0`/home/$USER/.config/systemd/user/sync-* $XDG_CONFIG_HOME/systemd/
 systemctl --user enable sync-periodic.timer
 systemctl --user enable sync-session.service
 
-# night light
-
-# if [[ $HOST = 'player' ]]; then
-#
-#   # conflicts with dispwin
-#   sudo systemctl mask colord.service
-#
-#   cp `dirname $0`/home/$USER/.config/systemd/user/colors.service $XDG_CONFIG_HOME/systemd/user
-#   systemctl --user enable colors.service
-#
-#   cp `dirname $0`/home/$USER/.config/systemd/user/redshift.service $XDG_CONFIG_HOME/systemd/user
-#   systemctl --user enable redshift.service
-#
-# fi
-
 # amd gpu fan speed
 
 if [[ $HOST = 'worker' ]]; then
@@ -94,6 +79,34 @@ if [[ $HOST = 'player' ]]; then
 
 fi
 
+# colors & night light
+
+# if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+#
+#   # conflicts with dispwin
+#   sudo systemctl mask colord.service
+#
+#   cp `dirname $0`/home/$USER/.config/systemd/user/colors.service $XDG_CONFIG_HOME/systemd/user
+#   systemctl --user enable colors.service
+#
+#   cp `dirname $0`/home/$USER/.config/systemd/user/redshift.service $XDG_CONFIG_HOME/systemd/user
+#   systemctl --user enable redshift.service
+#
+# fi
+#
+# if [[ $HOST = 'player' ]]; then
+#
+#   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27gp950-b.icm
+#
+# fi
+#
+# if [[ $HOST = 'worker' ]]; then
+#
+#   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ul850-w.icm
+#   dispwin -d2 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ud88-w.icm
+#
+# fi
+
 # do not disturb
 
 if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
@@ -107,6 +120,12 @@ fi
 
 cp `dirname $0`/home/$USER/.config/systemd/user/wall.* $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable wall.timer
+
+# fonts
+
+[[ -d $XDG_CONFIG_HOME/fontconfig ]] || mkdir -p $XDG_CONFIG_HOME/fontconfig
+cp `dirname $0`/home/$USER/.config/fontconfig/fonts.conf $XDG_CONFIG_HOME/fontconfig
+fc-cache -f
 
 # fetch cache refresh
 

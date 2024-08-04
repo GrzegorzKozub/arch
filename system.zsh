@@ -72,7 +72,8 @@ pacstrap /mnt \
   git go pkgfile reflector sudo zsh \
   man-db man-pages \
   xorg-server \
-  gdm glib2-devel
+  gdm glib2-devel \
+  argyllcms
 
   # nftables
 
@@ -85,7 +86,7 @@ sed -i \
   -e "s/dmask=0022/dmask=0077/" \
   /etc/fstab
 
-# continue
+# continue as root
 
 cp -r `dirname $0`/../arch /mnt/root
 arch-chroot /mnt ~/arch/system2.sh

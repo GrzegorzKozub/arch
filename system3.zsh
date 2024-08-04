@@ -109,27 +109,3 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
 
 fi
 
-# colors
-
-sudo pacman -S --noconfirm \
-  argyllcms
-
-# if [[ $MY_HOSTNAME = 'player' ]]; then
-#
-#   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27gp950-b.icm
-#
-# fi
-
-# if [[ $MY_HOSTNAME = 'worker' ]]; then
-#
-#   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ul850-w.icm
-#   dispwin -d2 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ud88-w.icm
-#
-# fi
-
-# fonts
-
-[[ -d $XDG_CONFIG_HOME/fontconfig ]] || mkdir -p $XDG_CONFIG_HOME/fontconfig
-cp `dirname $0`/home/$USER/.config/fontconfig/fonts.conf $XDG_CONFIG_HOME/fontconfig
-fc-cache -f
-

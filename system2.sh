@@ -76,6 +76,32 @@ echo 'greg ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
 touch /home/greg/.zshrc
 chown greg:users /home/greg/.zshrc
 
+# increase the highest requested rtc interrupt frequency
+
+cp `dirname $0`/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
+
+# nvidia gpu
+
+[[ $MY_HOSTNAME = 'player' ]] &&
+  echo 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia.conf
+
+# default sound over hdmi to primary monitor
+
+if [[ $MY_HOSTNAME = 'worker' ]]; then
+
+  sed -Ei 's/priority = 59/priority = 58/' /usr/share/pulseaudio/alsa-mixer/paths/hdmi-output-0.conf
+  sed -Ei 's/priority = 58/priority = 59/' /usr/share/pulseaudio/alsa-mixer/paths/hdmi-output-1.conf
+
+fi
+
+# webcam video format
+
+[[ $MY_HOSTNAME = 'drifter' ]] &&
+  cp `dirname $0`/etc/udev/rules.d/10-hd-3000.rules /etc/udev/rules.d/10-hd-3000.rules
+
+[[ $MY_HOSTNAME = 'worker' ]] &&
+  cp `dirname $0`/etc/udev/rules.d/10-c922.rules /etc/udev/rules.d/10-c922.rules
+
 # sleep fixes
 
 if [[ $MY_HOSTNAME = 'player' ]]; then
@@ -96,19 +122,32 @@ fi
 # [[ $MY_HOSTNAME = 'worker' ]] &&
 #   cp `dirname $0`/etc/udev/rules.d/10-model-o.rules /etc/udev/rules.d/10-model-o.rules
 
-# webcam video format
-
-[[ $MY_HOSTNAME = 'drifter' ]] &&
-  cp `dirname $0`/etc/udev/rules.d/10-hd-3000.rules /etc/udev/rules.d/10-hd-3000.rules
-
-[[ $MY_HOSTNAME = 'worker' ]] &&
-  cp `dirname $0`/etc/udev/rules.d/10-c922.rules /etc/udev/rules.d/10-c922.rules
-
 # drifter power saving
 
 [[ $MY_HOSTNAME = 'drifter' ]] && . `dirname $0`/power.zsh
 
-# continue
+# always mount data
+
+[[ -d /run/media/greg/data ]] || mkdir -p /run/media/greg/data
+
+echo '# /dev/mapper/vg1-data' >> /etc/fstab
+echo '/dev/mapper/vg1-data	/run/media/greg/data	ext4	defaults	0 2' >> /etc/fstab
+echo '' >> /etc/fstab
+
+# reflector
+
+sed -Ei 's/^\# --country.+$/--country Poland,Germany/' /etc/xdg/reflector/reflector.conf
+sed -Ei 's/^\--latest.+$/--latest 10/' /etc/xdg/reflector/reflector.conf
+sed -Ei 's/^\--sort.+$/--sort rate/' /etc/xdg/reflector/reflector.conf
+
+reflector --save /etc/pacman.d/mirrorlist --protocol https --country Poland,Germany --latest 10 --sort rate
+
+# pacman
+
+sed -i 's/#Color/Color/' /etc/pacman.conf
+sed -i "s/PKGEXT='.pkg.tar.zst'/PKGEXT='.pkg.tar'/" /etc/makepkg.conf
+
+# continue as regular user
 
 cp `dirname $0`/system3.zsh /home/greg
 su greg --command '~/system3.zsh'
@@ -122,46 +161,6 @@ sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev consolefont autodetect microcode modconf 
 
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
-
-# nvidia
-
-[[ $MY_HOSTNAME = 'player' ]] &&
-  echo 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia.conf
-
-# reflector
-
-sed -Ei 's/^\# --country.+$/--country Poland,Germany/' /etc/xdg/reflector/reflector.conf
-sed -Ei 's/^\--latest.+$/--latest 10/' /etc/xdg/reflector/reflector.conf
-sed -Ei 's/^\--sort.+$/--sort rate/' /etc/xdg/reflector/reflector.conf
-
-reflector --save /etc/pacman.d/mirrorlist --protocol https --country Poland,Germany --latest 10 --sort rate
-
-# pacman
-
-sed -i 's/#Color/Color/' /etc/pacman.conf
-
-sed -i "s/PKGEXT='.pkg.tar.zst'/PKGEXT='.pkg.tar'/" /etc/makepkg.conf
-
-# always mount data
-
-[[ -d /run/media/greg/data ]] || mkdir -p /run/media/greg/data
-
-echo '# /dev/mapper/vg1-data' >> /etc/fstab
-echo '/dev/mapper/vg1-data	/run/media/greg/data	ext4	defaults	0 2' >> /etc/fstab
-echo '' >> /etc/fstab
-
-# increase the highest requested rtc interrupt frequency
-
-cp `dirname $0`/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
-
-# default sound over hdmi to primary monitor
-
-if [[ $MY_HOSTNAME = 'worker' ]]; then
-
-  sed -Ei 's/priority = 59/priority = 58/' /usr/share/pulseaudio/alsa-mixer/paths/hdmi-output-0.conf
-  sed -Ei 's/priority = 58/priority = 59/' /usr/share/pulseaudio/alsa-mixer/paths/hdmi-output-1.conf
-
-fi
 
 # scripts
 
