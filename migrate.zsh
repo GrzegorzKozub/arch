@@ -15,6 +15,8 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
 
 popd
 
+code --install-extension asvetliakov.vscode-neovim
+
 # cleanup
 
 . `dirname $0`/packages.zsh
