@@ -6,12 +6,14 @@ set -o verbose
 
 sudo pacman -S --noconfirm \
   gnome-font-viewer \
-  nushell
+  nushell \
+  zellij
 
 pushd ~/code/dotfiles
 
 stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
-  nushell
+  nushell \
+  zellij
 
 popd
 

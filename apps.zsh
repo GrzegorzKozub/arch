@@ -89,7 +89,7 @@ sudo pacman -S --noconfirm \
   silicon \
   stress \
   time \
-  tmux \
+  tmux zellij \
   trash-cli \
   wget \
   wl-clipboard \
@@ -105,7 +105,6 @@ sudo pacman -S --noconfirm \
   # dua-cli gdu
   # gopass-jsonapi
   # imwheel
-  # zellij
 
 paru -S --aur --noconfirm \
   cava
