@@ -2,6 +2,8 @@
 
 set -e -o verbose
 
+# based on https://dieterplex.github.io/rust-ebookshelf/
+
 # mdbook
 
 sudo pacman -S --noconfirm \
