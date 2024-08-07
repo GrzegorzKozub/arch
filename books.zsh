@@ -8,11 +8,11 @@ sudo pacman -S --noconfirm \
   mdbook
 
 paru -S --aur --noconfirm \
-  epub-tools-bin \
-  kepubify-bin \
-  pandoc-bin
+  kepubify-bin
 
-cargo install mdbook-pandoc
+cargo install \
+  mdbook-epub \
+  mdbook-nocomment
 
 # foliate
 
