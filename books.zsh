@@ -2,7 +2,7 @@
 
 set -e -o verbose
 
-# based on https://dieterplex.github.io/rust-ebookshelf/
+# based on https://github.com/dieterplex/rust-ebookshelf/
 
 # mdbook
 
