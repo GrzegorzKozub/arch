@@ -49,15 +49,14 @@ Automated Arch Linux installation
   - Hide tab search button
   - Cycle through the most recently used tabs with Ctrl-Tab
   - Disable everything except background images on the dashboard
-  - Disable Brave News on the dashboard
   - Enable search and URL autocompletion
   - Disable EasyList Cookie content filter
   - Don't show the number of blocked items on the Shields icon
   - Disable product analytics, daily usage ping and diagnostic reports
   - Enable Safe Browsing
   - Don't allow sites to send notifications
-  - Allow camera and microphone access to Teams
   - Join the Sync Chain and sync everything
+  - Set the default search engine
   - Install your extensions
   - Disable wallets and hide the button
   - Don't offer to save passwords and don't sign in automatically
