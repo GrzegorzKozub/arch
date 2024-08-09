@@ -89,7 +89,7 @@ sudo pacman -S --noconfirm \
   silicon \
   stress \
   time \
-  tmux zellij \
+  zellij \
   trash-cli \
   wget \
   wl-clipboard \
@@ -105,9 +105,11 @@ sudo pacman -S --noconfirm \
   # dua-cli gdu
   # gopass-jsonapi
   # imwheel
+  # tmux
 
 paru -S --aur --noconfirm \
-  cava
+  cava \
+  tmux-git
 
 # if [[ $HOST = 'player' ]]; then
 #
