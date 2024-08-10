@@ -223,10 +223,6 @@ paru -S --aur --noconfirm \
 
   # mission-center slack-desktop teams-for-linux
 
-# cleanup after teams-for-linux
-sudo pacman -Rs --noconfirm \
-  node-gyp nodejs npm
-
 # settings
 
 . `dirname $0`/settings.zsh

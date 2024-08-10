@@ -2,6 +2,11 @@
 
 set -e -o verbose
 
+# cleanup after teams-for-linux
+
+sudo pacman -Rs --noconfirm \
+  node-gyp nodejs npm
+
 # remove unused packages
 
 set +e
