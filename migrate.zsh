@@ -4,11 +4,10 @@ set -o verbose
 
 # migrate
 
-paru -S --aur \
-  tmux-git
-
+set +e
 sudo pacman -Rs --noconfirm \
   ouch
+set -e
 
 FILE=$XDG_CONFIG_HOME/yazi/package.toml
 [[ -f $FILE ]] && rm -f $FILE
