@@ -4,6 +4,9 @@ set -o verbose
 
 # migrate
 
+sudo pacman -S --noconfirm \
+  fwupd
+
 set +e
 sudo pacman -Rs --noconfirm \
   ouch

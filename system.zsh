@@ -56,6 +56,7 @@ pacstrap /mnt \
   linux linux-lts linux-firmware \
   terminus-font \
   efibootmgr \
+  fwupd \
   lvm2 \
   ntfs-3g \
   avahi nss-mdns \
