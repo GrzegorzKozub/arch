@@ -138,8 +138,10 @@ paru -S --aur --noconfirm \
 sudo pacman -S --noconfirm \
   ffmpegthumbnailer \
   imagemagick \
-  poppler \
-  yazi
+  poppler
+
+paru -S --aur --noconfirm \
+  yazi-nightly-bin
 
 # neovim
 

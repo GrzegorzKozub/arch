@@ -9,8 +9,12 @@ sudo pacman -S --noconfirm \
 
 set +e
 sudo pacman -Rs --noconfirm \
-  ouch
+  ouch \
+  yazi
 set -e
+
+paru -S --aur --noconfirm \
+  yazi-nightly-bin
 
 FILE=$XDG_CONFIG_HOME/yazi/package.toml
 [[ -f $FILE ]] && rm -f $FILE
