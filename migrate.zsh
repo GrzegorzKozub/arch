@@ -12,7 +12,11 @@ sudo pacman -S --noconfirm \
 
 set +e
 sudo pacman -Rs --noconfirm \
-  ouch \
+  ouch
+set -e
+
+set +e
+sudo pacman -Rs --noconfirm \
   yazi
 set -e
 
