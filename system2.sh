@@ -124,7 +124,13 @@ fi
 
 # drifter power saving
 
-[[ $MY_HOSTNAME = 'drifter' ]] && . `dirname $0`/power.zsh
+if [[ $MY_HOSTNAME = 'drifter' ]]; then
+
+  echo 'options snd_hda_intel power_save=1' > /etc/modprobe.d/audio_powersave.conf
+  echo 'options iwlwifi power_save=1' > /etc/modprobe.d/iwlwifi.conf
+  echo 'vm.dirty_writeback_centisecs = 6000' > /etc/sysctl.d/dirty.conf
+
+fi
 
 # always mount data
 

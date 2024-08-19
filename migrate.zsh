@@ -4,6 +4,9 @@ set -o verbose
 
 # migrate
 
+FILE=/etc/tmpfiles.d/energy_performance_preference.conf
+[[ -f $FILE ]] && sudo rm -f $FILE
+
 sudo pacman -S --noconfirm \
   fwupd
 
