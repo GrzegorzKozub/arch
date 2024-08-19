@@ -158,8 +158,7 @@ paru -S --aur --noconfirm \
 sudo pacman -S --noconfirm \
   docker \
   docker-buildx \
-  docker-compose \
-  docker-machine
+  docker-compose
 
 sudo usermod -aG docker $USER
 
