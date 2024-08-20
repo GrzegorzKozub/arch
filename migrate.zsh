@@ -18,6 +18,10 @@ set -o verbose
 DIR=$XDG_DATA_HOME/zinit/snippets/OMZ::plugins--docker-machine
 [[ -d $DIR ]] && rm -rf $DIR
 
+# add tsx
+
+npm install --global tsx
+
 # cleanup
 
 . `dirname $0`/packages.zsh
