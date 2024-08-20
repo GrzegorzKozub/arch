@@ -159,11 +159,15 @@ cp `dirname $0`/system3.zsh /home/greg
 su greg --command '~/system3.zsh'
 rm /home/greg/system3.zsh
 
-# kernel hooks: consolefont, encrypt, lvm2 & resume
+# initial ramdisk
+# default config: https://github.com/archlinux/mkinitcpio/blob/master/mkinitcpio.conf
 
 [[ $MY_HOSTNAME = 'drifter' ]] && sed -Ei 's/^MODULES=.+$/MODULES=(i915)/' /etc/mkinitcpio.conf
 
-sed -Ei 's/^HOOKS=.+$/HOOKS=(base udev consolefont autodetect microcode modconf block encrypt lvm2 resume filesystems kms keyboard keymap fsck)/' /etc/mkinitcpio.conf
+# busybox based
+sed -Ei \
+  's/^HOOKS=.+$/HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt lvm2 resume filesystems fsck)/' \
+  /etc/mkinitcpio.conf
 
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
