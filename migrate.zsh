@@ -22,6 +22,9 @@ DIR=$XDG_DATA_HOME/zinit/snippets/OMZ::plugins--docker-machine
 
 npm install --global tsx
 
+# manual
+# - aws credentials
+
 # cleanup
 
 . `dirname $0`/packages.zsh
