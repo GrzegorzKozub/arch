@@ -4,9 +4,9 @@ set -e -o verbose
 
 # remove obsolete dirs and files
 
-# set +e
-[[ -e ~/.bash* ]] && rm -rf ~/.bash*
-# set -e
+setopt nullglob
+
+FILES=(~/.bash*); [[ $FILES ]] && rm -rf ~/.bash*
 
 [[ -d ~/.gnome ]] && rm -rf ~/.gnome
 
@@ -23,5 +23,6 @@ set -e -o verbose
 
 [[ -d ~/.cache/js-v8flags ]] && rm -rf ~/.cache/js-v8flags
 
-(exit 0)
+setopt nonullglob
+# (exit 0)
 
