@@ -2,6 +2,15 @@
 
 set -o verbose
 
+# switch initial ramdisk to systemd based
+
+sed -Ei \
+  's/^HOOKS=.+$/HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)/' \
+  /etc/mkinitcpio.conf
+
+mkinitcpio -p linux
+mkinitcpio -p linux-lts
+
 # delete docker-machine
 
 [[ $(pacman -Qs docker-machine) ]] &&
@@ -23,6 +32,7 @@ DIR=$XDG_DATA_HOME/zinit/snippets/OMZ::plugins--docker-machine
 npm install --global tsx
 
 # manual
+# - remove cryptdevice kernel param
 # - aws credentials
 
 # cleanup

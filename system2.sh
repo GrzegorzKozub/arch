@@ -160,13 +160,17 @@ su greg --command '~/system3.zsh'
 rm /home/greg/system3.zsh
 
 # initial ramdisk
-# default config: https://github.com/archlinux/mkinitcpio/blob/master/mkinitcpio.conf
 
 [[ $MY_HOSTNAME = 'drifter' ]] && sed -Ei 's/^MODULES=.+$/MODULES=(i915)/' /etc/mkinitcpio.conf
 
 # busybox based
+# sed -Ei \
+#   's/^HOOKS=.+$/HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt lvm2 resume filesystems fsck)/' \
+#   /etc/mkinitcpio.conf
+
+# systemd based
 sed -Ei \
-  's/^HOOKS=.+$/HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt lvm2 resume filesystems fsck)/' \
+  's/^HOOKS=.+$/HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)/' \
   /etc/mkinitcpio.conf
 
 mkinitcpio -p linux
