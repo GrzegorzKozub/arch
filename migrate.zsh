@@ -14,8 +14,8 @@ sudo sed -i \
   "s/<uuid>/$(sudo blkid -s UUID -o value $MY_ARCH_PART)/g" \
   /etc/crypttab.initramfs
 
-mkinitcpio -p linux
-mkinitcpio -p linux-lts
+sudo mkinitcpio -p linux
+sudo mkinitcpio -p linux-lts
 
 # delete docker-machine
 
