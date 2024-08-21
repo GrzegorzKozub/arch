@@ -39,7 +39,7 @@ npm install --global tsx
 
 # manual
 # - remove cryptdevice kernel param
-# - aws credentials
+# - files from /run/media/greg/data
 
 # cleanup
 
