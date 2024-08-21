@@ -17,7 +17,7 @@ sudo pacman -S --noconfirm \
 
 # sudo systemctl enable systemd-resolved.service
 
-# connection
+# apsis
 
 [[ $(nmcli connection | grep apsis) ]] && nmcli connection delete apsis
 
@@ -31,5 +31,12 @@ nmcli connection modify apsis ipv4.dns-search 'apsis.local'
 nmcli connection modify apsis ipv4.never-default 'yes'
 nmcli connection modify apsis ipv6.never-default 'yes'
 
-nmcli connection up apsis --ask
+# nmcli connection up apsis --ask
 
+# webscript-stage
+
+[[ $(nmcli connection | grep webscript-stage) ]] && nmcli connection delete webscript-stage
+
+nmcli connection import type openvpn file ~/code/keys/openvpn/webscript-stage.ovpn
+
+nmcli connection modify webscript-stage +vpn.data password-flags=2
