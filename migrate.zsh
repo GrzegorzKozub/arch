@@ -4,9 +4,15 @@ set -o verbose
 
 # switch initial ramdisk to systemd based
 
-sed -Ei \
+sudo sed -Ei \
   's/^HOOKS=.+$/HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)/' \
   /etc/mkinitcpio.conf
+
+source `dirname $0`/$HOST.zsh
+sudo cp `dirname $0`/etc/crypttab.initramfs /etc/crypttab.initramfs
+sudo sed -i \
+  "s/<uuid>/$(sudo blkid -s UUID -o value $MY_ARCH_PART)/g" \
+  /etc/crypttab.initramfs
 
 mkinitcpio -p linux
 mkinitcpio -p linux-lts

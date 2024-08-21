@@ -173,6 +173,12 @@ sed -Ei \
   's/^HOOKS=.+$/HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)/' \
   /etc/mkinitcpio.conf
 
+# dm-crypt with systemd based initial ramdisk
+cp `dirname $0`/etc/crypttab.initramfs /etc/crypttab.initramfs
+sed -i \
+  "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" \
+  /etc/crypttab.initramfs
+
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
