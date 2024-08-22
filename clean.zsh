@@ -1,28 +1,31 @@
 #!/usr/bin/env zsh
 
-set -e -o verbose
+set -o verbose
 
-# remove obsolete dirs and files
+# shell
 
-setopt nullglob
+rm -f ~/.bash*
+rm -f ~/.zshrc
 
-FILES=(~/.bash*); [[ $FILES ]] && rm -rf ~/.bash*
+# gnome
 
-[[ -d ~/.gnome ]] && rm -rf ~/.gnome
+rm -rf ~/.gnome
 
-[[ -f ~/.zshrc ]] && rm -f ~/.zshrc
+# node
 
-[[ -d ~/.cache/electron ]] && rm -rf ~/.cache/electron
+rm -f ~/.yarnrc
 
-[[ -d ~/.cache/node ]] && rm -rf ~/.cache/node
-[[ -d ~/.npm ]] && rm -rf ~/.npm
+rm -rf ~/.npm
+rm -rf ~/.yarn
 
-[[ -d ~/.cache/yarn ]] && rm -rf ~/.cache/yarn
-[[ -d ~/.yarn ]] && rm -rf ~/.yarn
-[[ -f ~/.yarnrc ]] && rm -f ~/.yarnrc
+rm -rf ~/.cache/js-v8flags
+rm -rf ~/.cache/node
+rm -rf ~/.cache/node-gyp
+rm -rf ~/.cache/yarn
 
-[[ -d ~/.cache/js-v8flags ]] && rm -rf ~/.cache/js-v8flags
+# electron
 
-setopt nonullglob
-# (exit 0)
+rm -rf ~/.cache/electron
+
+(exit 0)
 
