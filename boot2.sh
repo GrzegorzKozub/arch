@@ -17,26 +17,29 @@ cp `dirname $0`/boot/loader/entries/*.conf /boot/loader/entries
 [[ $MY_HOSTNAME = 'player' ]] &&
   sed -i 's/<ucode>/amd-ucode/g' /boot/loader/entries/*.conf
 
-# kernel params
-
 # dm-crypt with busybox based initial ramdisk
+
 # sed -i \
 #   "s/<params>/cryptdevice=UUID=$(blkid -s UUID -o value $MY_ARCH_PART):vg1:allow-discards <params>/g" \
 #   /boot/loader/entries/*.conf
 
 # enable amd p-state in active mode (amd_pstate_epp driver)
+
 [[ $MY_HOSTNAME = 'player' ]] &&
   sed -i 's/<params>/amd_pstate=active <params>/g' /boot/loader/entries/*.conf
 
-# enable kernel mode setting (kms) for nvidia (required for gdm to start rootless xorg, required for wayland)
+# enable kernel mode setting (kms) for nvidia (required for gdm to start rootless xorg & for wayland)
+
 [[ $MY_HOSTNAME = 'player' ]] &&
   sed -i 's/<params>/nvidia-drm.modeset=1 <params>/g' /boot/loader/entries/*.conf
 
 # force s3 sleep (https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Changing_suspend_method)
+
 # [[ $MY_HOSTNAME = 'drifter' ]] &&
 #   sed -i 's/<params>/mem_sleep_default=deep <params>/g' /boot/loader/entries/*.conf
 
-# remove placeholder
+# remove kernel params placeholder
+
 sed -i 's/ <params>//g' /boot/loader/entries/*.conf
 
 # secure boot support

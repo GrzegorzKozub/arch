@@ -21,15 +21,6 @@ echo 'LC_NUMERIC=pl_PL.UTF-8' >> /etc/locale.conf
 echo 'LC_PAPER=pl_PL.UTF-8' >> /etc/locale.conf
 echo 'LC_TIME=pl_PL.UTF-8' >> /etc/locale.conf
 
-if [[ $MY_HOSTNAME = 'drifter' || $MY_ARCH_PART = 'worker' ]]; then
-  echo 'FONT=ter-232b' >> /etc/vconsole.conf
-else
-  echo 'FONT=ter-216b' >> /etc/vconsole.conf
-fi
-
-echo 'FONT_MAP=8859-2' >> /etc/vconsole.conf
-echo 'KEYMAP=pl2' > /etc/vconsole.conf
-
 # network
 
 echo $MY_HOSTNAME > /etc/hostname
@@ -159,25 +150,42 @@ cp `dirname $0`/system3.zsh /home/greg
 su greg --command '~/system3.zsh'
 rm /home/greg/system3.zsh
 
-# initial ramdisk
+# virtual console (before mkinitcpio)
 
-[[ $MY_HOSTNAME = 'drifter' ]] && sed -Ei 's/^MODULES=.+$/MODULES=(i915)/' /etc/mkinitcpio.conf
+if [[ $MY_HOSTNAME = 'drifter' || $MY_ARCH_PART = 'worker' ]]; then
+  echo 'FONT=ter-232b' >> /etc/vconsole.conf
+else
+  echo 'FONT=ter-216b' >> /etc/vconsole.conf
+fi
 
-# busybox based
+echo 'FONT_MAP=8859-2' >> /etc/vconsole.conf
+echo 'KEYMAP=pl2' > /etc/vconsole.conf
+
+# early (during initramfs) kernel mode setting (kms) (before mkinitcpio)
+
+[[ $MY_HOSTNAME = 'drifter' ]] &&
+  sed -Ei 's/^MODULES=.+$/MODULES=(i915)/' /etc/mkinitcpio.conf
+
+# busybox based initial ramdisk (before mkinitcpio)
+
 # sed -Ei \
 #   's/^HOOKS=.+$/HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt lvm2 resume filesystems fsck)/' \
 #   /etc/mkinitcpio.conf
 
-# systemd based
+# systemd based initial ramdisk (before mkinitcpio)
+
 sed -Ei \
   's/^HOOKS=.+$/HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)/' \
   /etc/mkinitcpio.conf
 
-# dm-crypt with systemd based initial ramdisk
+# dm-crypt with systemd based initial ramdisk (before mkinitcpio)
+
 cp `dirname $0`/etc/crypttab.initramfs /etc/crypttab.initramfs
 sed -i \
   "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" \
   /etc/crypttab.initramfs
+
+# initial ramdisk
 
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
