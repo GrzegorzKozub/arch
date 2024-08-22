@@ -4,6 +4,11 @@ set -o verbose
 
 # switch initial ramdisk to systemd based
 
+[[ $HOST = 'worker' ]] &&
+  sudo sed -i \
+    "s/^FONT=.*/FONT=ter-232b/" \
+    /etc/vconsole.conf
+
 sudo sed -Ei \
   's/^HOOKS=.+$/HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)/' \
   /etc/mkinitcpio.conf
@@ -16,11 +21,6 @@ sudo sed -i \
 
 sudo mkinitcpio -p linux
 sudo mkinitcpio -p linux-lts
-
-[[ $HOST = 'worker' ]] &&
-  sudo sed -i \
-    "s/^FONT=.*/FONT=ter-232b/" \
-    /etc/vconsole.conf
 
 # delete docker-machine
 
@@ -45,6 +45,12 @@ npm install --global tsx
 # no need to restrict access to openvpn config
 
 chmod a+r ~/code/keys/openvpn/*
+
+# no more gnome-software
+
+set +e
+rm -rf ~/.cache/gnome-software
+set -e
 
 # cleanup
 
