@@ -17,6 +17,11 @@ sudo sed -i \
 sudo mkinitcpio -p linux
 sudo mkinitcpio -p linux-lts
 
+[[ $HOST = 'worker' ]] &&
+  sudo sed -i \
+    "s/^FONT=.*/FONT=ter-232b/" \
+    /etc/vconsole.conf
+
 # delete docker-machine
 
 [[ $(pacman -Qs docker-machine) ]] &&

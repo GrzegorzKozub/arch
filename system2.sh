@@ -21,7 +21,7 @@ echo 'LC_NUMERIC=pl_PL.UTF-8' >> /etc/locale.conf
 echo 'LC_PAPER=pl_PL.UTF-8' >> /etc/locale.conf
 echo 'LC_TIME=pl_PL.UTF-8' >> /etc/locale.conf
 
-if [[ $MY_HOSTNAME = 'drifter' ]]; then
+if [[ $MY_HOSTNAME = 'drifter' || $MY_ARCH_PART = 'worker' ]]; then
   echo 'FONT=ter-232b' >> /etc/vconsole.conf
 else
   echo 'FONT=ter-216b' >> /etc/vconsole.conf
