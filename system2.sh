@@ -161,11 +161,6 @@ fi
 echo 'FONT_MAP=8859-2' >> /etc/vconsole.conf
 echo 'KEYMAP=pl2' > /etc/vconsole.conf
 
-# early (during initramfs) kernel mode setting (kms) (before mkinitcpio)
-
-[[ $MY_HOSTNAME = 'drifter' ]] &&
-  sed -Ei 's/^MODULES=.+$/MODULES=(i915)/' /etc/mkinitcpio.conf
-
 # busybox based initial ramdisk (before mkinitcpio)
 
 # sed -Ei \

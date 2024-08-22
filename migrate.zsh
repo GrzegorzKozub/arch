@@ -4,6 +4,11 @@ set -o verbose
 
 # switch initial ramdisk to systemd based
 
+[[ $HOST = 'drifter' ]] &&
+  sudo sed -Ei \
+    's/^MODULES=.+$/MODULES=()/' \
+    /etc/mkinitcpio.conf
+
 [[ $HOST = 'worker' ]] &&
   sudo sed -i \
     "s/^FONT=.*/FONT=ter-232b/" \
