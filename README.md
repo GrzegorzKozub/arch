@@ -44,6 +44,7 @@ Automated Arch Linux installation
   - Hide bookmarks button
   - Hide Brave News button in address bar
   - Only allow suggestions from top sites, history and bookmarks (not Leo)
+  - Hide Leo AI button
   - Hide Brave Rewards button
   - Hide VPN button
   - Hide tab search button
