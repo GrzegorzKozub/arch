@@ -42,9 +42,9 @@ DIR=$XDG_DATA_HOME/zinit/snippets/OMZ::plugins--docker-machine
 
 npm install --global tsx
 
-# manual
-# - remove cryptdevice kernel param
-# - files from /run/media/greg/data
+# no need to restrict access to openvpn config
+
+chmod a+r ~/code/keys/openvpn/*
 
 # cleanup
 
