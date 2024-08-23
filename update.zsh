@@ -16,7 +16,8 @@ sudo pacman --noconfirm -Syu
 paru --aur --noconfirm --nocheck -Syu
 
 paru -S --aur --noconfirm \
-  neovim-nightly-bin
+  neovim-nightly-bin \
+  yazi-nightly-bin
 
 # merge *.pacnew and *.pacsave files
 
