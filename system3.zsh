@@ -27,7 +27,7 @@ rm -rf ~/.cargo
 sudo pacman -Rs --noconfirm \
   rust
 
-# packages
+# firmware
 
 paru -S --aur --noconfirm \
   aic94xx-firmware \
@@ -36,15 +36,23 @@ paru -S --aur --noconfirm \
 
 if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
+  # ucode
+
   sudo pacman -S --noconfirm \
-    intel-ucode \
-    alsa-firmware alsa-ucm-conf sof-firmware
+    intel-ucode
+
+  # firmware
+
+  sudo pacman -S --noconfirm \
+    alsa-firmware alsa-ucm-conf \
+    sof-firmware
 
   # sudo pacman -S --noconfirm \
   #   iio-sensor-proxy
   #   iwd
 
   # intel gpu
+
   sudo pacman -S --noconfirm \
     intel-gpu-tools \
     intel-media-driver \
@@ -54,8 +62,18 @@ fi
 
 if [[ $MY_HOSTNAME = 'player' ]]; then
 
+  # ucode
+
   sudo pacman -S --noconfirm \
     amd-ucode
+
+  # firmware
+
+  sudo pacman -S --noconfirm \
+    linux-firmware-qlogic
+
+  paru -S --aur --noconfirm \
+    ast-firmware
 
   # nvidia gpu
 
@@ -72,6 +90,8 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
 fi
 
 if [[ $MY_HOSTNAME = 'worker' ]]; then
+
+  # ucode
 
   sudo pacman -S --noconfirm \
     intel-ucode
