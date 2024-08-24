@@ -4,7 +4,7 @@ set -o verbose
 
 # firmware
 
-if [[ $HOST = 'player' ]]; then
+if [[ $HOST = 'drifter' || $HOST = 'player' ]]; then
   sudo pacman -S --noconfirm linux-firmware-qlogic
   paru -S --aur --noconfirm ast-firmware
 fi

@@ -45,11 +45,11 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
   sudo pacman -S --noconfirm \
     alsa-firmware alsa-ucm-conf \
+    linux-firmware-qlogic \
     sof-firmware
 
-  # sudo pacman -S --noconfirm \
-  #   iio-sensor-proxy
-  #   iwd
+  paru -S --aur --noconfirm \
+    ast-firmware
 
   # intel gpu
 
