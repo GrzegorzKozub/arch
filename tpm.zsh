@@ -23,3 +23,9 @@ if [[ ! $(sudo systemd-cryptenroll $ARCH_PART | grep recovery) ]]; then
   sudo systemd-cryptenroll $ARCH_PART --recovery-key
 fi
 
+# luks header backup
+
+FILE=/root/luks-header-backup.img
+sudo rm $FILE
+sudo cryptsetup luksHeaderBackup $ARCH_PART --header-backup-file $FILE
+
