@@ -23,7 +23,7 @@ ARCH_PART="$(
 # encryption
 
 cryptsetup luksFormat --type luks2 $MY_ARCH_PART
-cryptsetup luksOpen $MY_ARCH_PART lvm
+cryptsetup --allow-discards --persistent luksOpen $MY_ARCH_PART lvm
 
 # logical volumes
 
