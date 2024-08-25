@@ -12,7 +12,7 @@ fi
 # dm-crypt
 
 sudo sed -i \
-  's/discard$/allow-discards,tpm2-device=auto/' \
+  's/discard$/allow-discards,no-read-workqueue,no-write-workqueue,tpm2-device=auto/' \
   /etc/crypttab.initramfs
 
 # cleanup

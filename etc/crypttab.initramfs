@@ -1,1 +1,1 @@
-vg1 UUID=<uuid> none allow-discards,tpm2-device=auto
+vg1 UUID=<uuid> none allow-discards,no-read-workqueue,no-write-workqueue,tpm2-device=auto
