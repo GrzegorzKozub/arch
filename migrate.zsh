@@ -4,10 +4,16 @@ set -o verbose
 
 # firmware
 
-if [[ $HOST = 'drifter' || $HOST = 'player' ]]; then
+if [[ $HOST =~ ^(drifter|player)$ ]]; then
   sudo pacman -S --noconfirm linux-firmware-qlogic
   paru -S --aur --noconfirm ast-firmware
 fi
+
+# dm-crypt
+
+sudo sed -i \
+  's/discard$/allow-discards/' \
+  /etc/crypttab.initramfs
 
 # cleanup
 

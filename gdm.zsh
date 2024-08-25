@@ -48,7 +48,7 @@ cat <<EOF >> $TMP/theme/$GST.xml
 </gresources>
 EOF
 
-[[ $HOST = 'drifter' || $HOST = 'player' ]] && cat <<EOF >> $TMP/theme/gnome-shell-dark.css
+[[ $HOST =~ ^(drifter|player)$ ]] && cat <<EOF >> $TMP/theme/gnome-shell-dark.css
 #lockDialogGroup {
   background: url(resource:///org/gnome/shell/theme/women.jpg);
   background-repeat: no-repeat;
@@ -86,7 +86,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+[[ $HOST =~ ^(player|worker)$ ]] &&
   sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.peripherals.mouse speed -0.75'
 
 # apps > tweaks > fonts

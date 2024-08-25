@@ -1,1 +1,1 @@
-vg1 UUID=<uuid> none discard
+vg1 UUID=<uuid> none allow-discards

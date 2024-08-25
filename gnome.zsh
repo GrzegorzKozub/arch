@@ -30,7 +30,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+[[ $HOST =~ ^(player|worker)$ ]] &&
   gsettings set org.gnome.desktop.session idle-delay 600
 
 gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 25
@@ -200,7 +200,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+[[ $HOST =~ ^(player|worker)$ ]] &&
   gsettings set org.gnome.desktop.peripherals.mouse speed -0.75
 
 # keyboard > input sources

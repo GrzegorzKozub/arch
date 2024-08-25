@@ -46,7 +46,7 @@ sudo systemctl enable ip6tables.service
 
 # imwheel
 
-# if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+# if [[ $HOST =~ ^(player|worker)$ ]]; then
 #
 #   cp `dirname $0`/home/$USER/.config/systemd/user/imwheel.service $XDG_CONFIG_HOME/systemd/user
 #   systemctl --user enable imwheel.service
@@ -81,7 +81,7 @@ fi
 
 # colors & night light
 
-# if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+# if [[ $HOST =~ ^(player|worker)$ ]]; then
 #
 #   # conflicts with dispwin
 #   sudo systemctl mask colord.service

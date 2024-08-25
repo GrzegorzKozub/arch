@@ -200,7 +200,7 @@ kwriteconfig6 --file $FILE --group 'org.kde.kdecoration2' --key 'ButtonsOnRight'
 
 # appearance & style > colors & themes > cursors
 
-[[ $HOST = 'player' || $HOST = 'worker' ]] &&
+[[ $HOST =~ ^(player|worker)$ ]] &&
   kwriteconfig6 --file $XDG_CONFIG_HOME/kcminputrc --group 'Mouse' --key 'cursorSize' '36'
 
 FILE=$XDG_CONFIG_HOME/klaunchrc

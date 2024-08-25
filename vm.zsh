@@ -50,7 +50,7 @@ OPTS+=('-smp 4,sockets=1,cores=2,threads=2')
 
 OPTS+=('-m 4G')
 
-if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   # OPTS+=('-vga virtio -display sdl,gl=on')
   OPTS+=('-vga none -device qxl-vga,vgamem_mb=64,ram_size_mb=128,vram_size_mb=256,vram64_size_mb=256')
