@@ -4,7 +4,7 @@ set -o verbose
 
 # shell
 
-# rm -f ~/.bash*
+rm -f ~/.bash_history
 rm -f ~/.zshrc
 
 # gnome
