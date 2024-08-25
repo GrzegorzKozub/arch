@@ -26,6 +26,10 @@ fi
 # luks header backup
 
 FILE=/root/luks-header-backup.img
+
+set +e
 sudo rm $FILE
+set -e
+
 sudo cryptsetup luksHeaderBackup $ARCH_PART --header-backup-file $FILE
 
