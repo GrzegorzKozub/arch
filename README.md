@@ -28,10 +28,11 @@ Automated Arch Linux installation
 4. Run `~/arch/system.zsh`
 5. Once per machine, run `~/arch/boot.zsh`
 6. Reboot to Arch and login as normal user
-7. Run `~/code/arch/services.zsh`
-8. Reboot to GNOME, login as normal user and connect to internet
-9. Run `~/code/arch/apps.zsh`
-10. Reboot
+7. Once per machine, run `~/arch/tpm.zsh`
+8. Run `~/code/arch/services.zsh`
+9. Reboot to GNOME, login as normal user and connect to internet
+10. Run `~/code/arch/apps.zsh`
+11. Reboot
 
 ### Manual config
 

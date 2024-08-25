@@ -56,6 +56,7 @@ pacstrap /mnt \
   linux linux-lts linux-firmware \
   terminus-font \
   efibootmgr \
+  tpm2-tss \
   fwupd \
   lvm2 \
   ntfs-3g \
