@@ -29,8 +29,12 @@ sudo pacman -Rs --noconfirm \
 
 # firmware
 
+sudo pacman -S --noconfirm \
+  linux-firmware-qlogic
+
 paru -S --aur --noconfirm \
   aic94xx-firmware \
+  ast-firmware \
   wd719x-firmware \
   upd72020x-fw
 
@@ -45,11 +49,7 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
   sudo pacman -S --noconfirm \
     alsa-firmware alsa-ucm-conf \
-    linux-firmware-qlogic \
     sof-firmware
-
-  paru -S --aur --noconfirm \
-    ast-firmware
 
   # intel gpu
 
@@ -66,14 +66,6 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
 
   sudo pacman -S --noconfirm \
     amd-ucode
-
-  # firmware
-
-  sudo pacman -S --noconfirm \
-    linux-firmware-qlogic
-
-  paru -S --aur --noconfirm \
-    ast-firmware
 
   # nvidia gpu
 
