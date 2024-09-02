@@ -222,7 +222,7 @@ paru -S --aur --noconfirm \
   teams-for-linux \
   visual-studio-code-bin
 
-  # mission-center slack-desktop teams-for-linux
+  # mission-center slack-desktop
 
 # settings
 
