@@ -42,7 +42,7 @@ cp `dirname $0`/boot/loader/entries/*.conf /boot/loader/entries
 
 sed -i 's/ <params>//g' /boot/loader/entries/*.conf
 
-# secure boot support
+# secure boot support using PreLoader
 
 cp `dirname $0`/boot3.zsh /home/greg
 su greg --command '~/boot3.zsh'
@@ -51,7 +51,11 @@ rm /home/greg/boot3.zsh
 cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
 cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
 
-# efi boot menu
+cp `dirname $0`/boot4.zsh /home/greg
+su greg --command '~/boot4.zsh'
+rm /home/greg/boot4.zsh
+
+# efi boot menu using PreLoader
 
 for BOOTNUM in $(efibootmgr | grep 'Linux Boot Manager' | sed -E 's/^Boot(.+)\* Linux.*$/\1/'); do
   efibootmgr --delete-bootnum --bootnum $BOOTNUM

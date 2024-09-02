@@ -2,6 +2,11 @@
 
 set -o verbose
 
+# secure boot
+
+paru -Rs --aur --noconfirm \
+  preloader-signed
+
 # cleanup
 
 . `dirname $0`/packages.zsh

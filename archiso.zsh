@@ -134,7 +134,7 @@ sudo mount --read-only $(ls $ISO/*.iso) /mnt
 cp -r /mnt/* $USB
 sudo umount /mnt
 
-# secure boot support
+# secure boot support using PreLoader
 
 sudo chmod --recursive u+w $USB/EFI/BOOT
 cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi $USB/EFI/BOOT
