@@ -7,6 +7,9 @@ set -o verbose
 paru -Rs --aur --noconfirm \
   preloader-signed
 
+sudo pacman -S --noconfirm \
+  sbctl
+
 # cleanup
 
 . `dirname $0`/packages.zsh

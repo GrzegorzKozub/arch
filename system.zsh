@@ -55,7 +55,7 @@ pacstrap /mnt \
   base base-devel \
   linux linux-lts linux-firmware \
   terminus-font \
-  efibootmgr \
+  efibootmgr sbctl \
   tpm2-tss \
   fwupd \
   lvm2 \
