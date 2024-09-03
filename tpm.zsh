@@ -33,3 +33,28 @@ set -e
 
 sudo cryptsetup luksHeaderBackup $ARCH_PART --header-backup-file $FILE
 
+# sbctl
+
+# sbctl enroll-keys --microsoft --firmware-builtin db,KEK,PK
+
+for FILE in \
+  EFI/systemd/systemd-bootx64.efi \
+  \
+  EFI/systemd/loader.efi \
+  EFI/systemd/HashTool.efi \
+  EFI/systemd/PreLoader.efi \
+  \
+  EFI/Microsoft/Boot/bootmgfw.efi \
+  EFI/Microsoft/Boot/bootmgr.efi \
+  EFI/Microsoft/Boot/memtest.efi \
+  EFI/Microsoft/Boot/SecureBootRecovery.efi \
+  \
+  EFI/Boot/bootx64.efi \
+  \
+  vmlinuz-linux \
+  vmlinuz-linux-lts
+do
+  sudo test -f /boot/$FILE || continue
+  echo /boot/$FILE
+  # sbctl sign --save /boot/$FILE
+done
