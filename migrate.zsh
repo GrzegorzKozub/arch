@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# nvim
+
+rm -rf ~/.cache/nvim
+
 # yazi
 
 FILE=$XDG_CONFIG_HOME/yazi/package.toml
