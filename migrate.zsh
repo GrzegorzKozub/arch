@@ -2,13 +2,18 @@
 
 set -o verbose
 
-# secure boot
+# yazi
 
-paru -Rs --aur --noconfirm \
-  preloader-signed
+FILE=$XDG_CONFIG_HOME/yazi/package.toml
+[[ -f $FILE ]] && rm -f $FILE
 
-sudo pacman -S --noconfirm \
-  sbctl
+for PLUGIN in \
+  KKV9/compress \
+  yazi-rs/plugins:git \
+  yazi-rs/plugins:jump-to-char
+do
+  ya pack --add "$PLUGIN"
+done
 
 # cleanup
 
