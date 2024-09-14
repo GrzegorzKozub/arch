@@ -6,6 +6,14 @@ set -o verbose
 
 rm -rf ~/.cache/nvim
 
+# vscode
+
+for EXTENSION in \
+  bierner.markdown-mermaid
+do
+  code --install-extension $EXTENSION --force
+done
+
 # yazi
 
 sudo pacman -Rs --noconfirm \
