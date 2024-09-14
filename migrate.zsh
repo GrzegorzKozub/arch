@@ -8,11 +8,15 @@ rm -rf ~/.cache/nvim
 
 # yazi
 
+sudo pacman -Rs --noconfirm \
+  ffmpegthumbnailer
+
 FILE=$XDG_CONFIG_HOME/yazi/package.toml
 [[ -f $FILE ]] && rm -f $FILE
 
 for PLUGIN in \
   KKV9/compress \
+  Tyarel8/video-ffmpeg \
   yazi-rs/plugins:git \
   yazi-rs/plugins:jump-to-char
 do

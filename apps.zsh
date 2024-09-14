@@ -136,7 +136,6 @@ paru -S --aur --noconfirm \
 # yazi
 
 sudo pacman -S --noconfirm \
-  ffmpegthumbnailer \
   imagemagick \
   poppler
 
