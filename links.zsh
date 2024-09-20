@@ -10,6 +10,7 @@ for APP in \
   btop \
   bvnc \
   cmake-gui \
+  electron30 \
   htop \
   lf \
   mpv \
