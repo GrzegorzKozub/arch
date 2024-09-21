@@ -9,6 +9,11 @@ sudo pacman -S --noconfirm \
 
 gsettings set org.gnome.shell disable-extension-version-validation true
 
+# mdcat
+
+sudo pacman -S --noconfirm \
+  mdcat
+
 # nvim
 
 rm -rf ~/.cache/nvim
