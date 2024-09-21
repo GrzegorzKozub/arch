@@ -209,15 +209,15 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify
 
 sudo pacman -S --noconfirm \
   keepassxc \
-  mpv
+  mpv \
+  obsidian \
+  satty
 
   # flameshot
 
 paru -S --aur --noconfirm \
   brave-bin gnome-browser-connector \
-  obsidian-bin \
   postman-bin \
-  satty-bin \
   teams-for-linux \
   visual-studio-code-bin
 

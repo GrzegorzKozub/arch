@@ -11,6 +11,14 @@ sudo pacman -S --noconfirm \
 
 rm -rf ~/.cache/nvim
 
+# paru & satty
+
+paru -Rs --noconfirm \
+  satty-bin obsidian-bin
+
+sudo pacman -S --noconfirm \
+  obsidian satty
+
 # vscode
 
 for EXTENSION in \
