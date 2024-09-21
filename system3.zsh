@@ -109,7 +109,7 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
     gvfs gvfs-smb \
     xdg-user-dirs-gtk \
     xdg-desktop-portal-gnome xdg-desktop-portal-gtk \
-    evince gnome-calculator gnome-characters gnome-control-center gnome-font-viewer gnome-screenshot gnome-system-monitor gnome-terminal gnome-tweak-tool loupe nautilus \
+    evince gnome-calculator gnome-characters gnome-control-center gnome-font-viewer gnome-remote-desktop gnome-screenshot gnome-system-monitor gnome-terminal gnome-tweak-tool loupe nautilus \
     gnome-shell-extension-appindicator
 
     # gnome-software

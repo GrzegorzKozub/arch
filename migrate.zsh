@@ -2,6 +2,11 @@
 
 set -o verbose
 
+# gnome
+
+sudo pacman -S --noconfirm \
+ gnome-remote-desktop
+
 # nvim
 
 rm -rf ~/.cache/nvim
