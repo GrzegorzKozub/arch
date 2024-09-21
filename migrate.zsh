@@ -5,7 +5,9 @@ set -o verbose
 # gnome
 
 sudo pacman -S --noconfirm \
- gnome-remote-desktop
+  gnome-remote-desktop
+
+gsettings set org.gnome.shell disable-extension-version-validation true
 
 # nvim
 
