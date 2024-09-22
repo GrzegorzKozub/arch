@@ -127,13 +127,6 @@ if [[ $HOST = 'worker' ]]; then
 
 end
 
-# lf
-
-export GOPATH=$XDG_DATA_HOME/go
-
-paru -S --aur --noconfirm \
-  lf
-
 # yazi
 
 sudo pacman -S --noconfirm \

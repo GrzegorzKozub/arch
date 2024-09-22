@@ -12,7 +12,6 @@ for APP in \
   cmake-gui \
   electron30 \
   htop \
-  lf \
   mpv \
   nvtop \
   org.freedesktop.MalcontentControl \

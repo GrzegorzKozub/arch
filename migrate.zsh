@@ -9,6 +9,15 @@ sudo pacman -S --noconfirm \
 
 gsettings set org.gnome.shell disable-extension-version-validation true
 
+# lf
+
+paru -Rs --noconfirm \
+  lf
+
+rm -rf ~/.local/share/applications/lf.desktop
+rm -rf ~/.local/share/lf
+rm -rf ~/.config/lf
+
 # mdcat
 
 sudo pacman -S --noconfirm \
