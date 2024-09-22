@@ -2,6 +2,19 @@
 
 set -o verbose
 
+# paru
+
+CARGO_HOME=
+
+paru -S --aur --noconfirm \
+  paru-git
+
+rm -rf ~/paru
+rm -rf ~/.cargo
+
+sudo pacman -Rs --noconfirm \
+  rust
+
 # gnome
 
 sudo pacman -S --noconfirm \
@@ -27,7 +40,7 @@ sudo pacman -S --noconfirm \
 
 rm -rf ~/.cache/nvim
 
-# paru & satty
+# obsidian & satty
 
 paru -Rs --noconfirm \
   satty-bin obsidian-bin
