@@ -19,6 +19,7 @@ local free=$(df -h $disk --output=avail | grep -v Avail | sed -E 's/ |G//g' )
 
 rsync \
   --archive \
+  --delete \
   --exclude 'boot' \
   --exclude 'lost+found' \
   --human-readable --progress \
