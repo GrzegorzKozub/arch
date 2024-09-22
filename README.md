@@ -16,7 +16,7 @@ Automated Arch Linux installation
 4. Build with `~/code/arch/archiso.zsh`
 5. Copy with
   ```bash
-  rm -rf /run/media/$USER/ARCHISO/(arch|boot|EFI|loader|shellx64.efi)
+  rm -rf /run/media/$USER/ARCHISO/(arch|boot|EFI|loader|shellia32.efi|shellx64.efi)
   cp -r ~/code/arch/archiso/usb/* /run/media/$USER/ARCHISO
   ```
 
