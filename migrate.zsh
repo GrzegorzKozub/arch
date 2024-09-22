@@ -4,12 +4,24 @@ set -o verbose
 
 # paru
 
+sudo pacman -Rs --noconfirm \
+  paru paru-debug
+
+sudo pacman -Syu --noconfirm
+
 CARGO_HOME=
 
-paru -S --aur --noconfirm \
-  paru-git
+[[ -d ~/paru-git ]] && rm -rf ~/paru-git
 
-rm -rf ~/paru
+pushd ~
+
+git clone https://aur.archlinux.org/paru-git.git
+cd paru-git
+makepkg -si --noconfirm
+
+popd
+
+rm -rf ~/paru-git
 rm -rf ~/.cargo
 
 sudo pacman -Rs --noconfirm \
