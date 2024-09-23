@@ -67,6 +67,8 @@ xdg-mime default org.gnome.Evince.desktop application/pdf
 
 # apps > extensions
 
+gsettings set org.gnome.shell disable-extension-version-validation true
+
 DIR=$XDG_DATA_HOME/gnome-shell/extensions
 [[ -d $DIR ]] || mkdir -p $DIR
 
