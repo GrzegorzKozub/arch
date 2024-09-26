@@ -27,6 +27,13 @@ rm -rf ~/.cargo
 sudo pacman -Rs --noconfirm \
   rust
 
+# splash
+
+paru -S --aur --noconfirm \
+  plymouth-theme-neat
+
+sudo cp `dirname $0`/etc/plymouth/plymouthd.conf /etc/plymouth/plymouthd.conf
+
 # firmware
 
 sudo pacman -S --noconfirm \
