@@ -16,6 +16,10 @@ sudo cp `dirname $0`/etc/plymouth/plymouthd.conf /etc/plymouth/plymouthd.conf
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
+# vscode
+
+code --uninstall-extension asvetliakov.vscode-neovim
+
 # cleanup
 
 . `dirname $0`/packages.zsh
