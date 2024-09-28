@@ -20,6 +20,14 @@ mkinitcpio -p linux-lts
 
 code --uninstall-extension asvetliakov.vscode-neovim
 
+# yazi
+
+for PLUGIN in \
+  GrzegorzKozub/mdcat
+do
+  ya pack --add "$PLUGIN"
+done
+
 # cleanup
 
 . `dirname $0`/packages.zsh
