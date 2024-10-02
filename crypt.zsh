@@ -10,12 +10,21 @@ ARCH_PART="$(
 )"
 
 # disk unlock via tpm 2.0
-# enroll again after updating secure boot keys via secboot.zsh
+# enroll again after updating secure boot keys via secboot.zsh and after windows updates
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
-  if [[ ! $(sudo systemd-cryptenroll $ARCH_PART | grep tpm2) ]]; then
+
+  SLOT=$(sudo systemd-cryptenroll $ARCH_PART | grep tpm2 | awk '{print $1}')
+
+  if [[ ! $SLOT ]]; then
     sudo systemd-cryptenroll --tpm2-device=auto $ARCH_PART
   fi
+
+  if [[ $SLOT && $1 == '--fix-tpm' ]]; then
+    sudo systemd-cryptenroll $ARCH_PART --wipe-slot=$SLOT
+    sudo systemd-cryptenroll --tpm2-device=auto $ARCH_PART
+  fi
+
 fi
 
 # dm-crypt recovery key
@@ -23,14 +32,4 @@ fi
 if [[ ! $(sudo systemd-cryptenroll $ARCH_PART | grep recovery) ]]; then
   sudo systemd-cryptenroll $ARCH_PART --recovery-key
 fi
-
-# luks header backup
-
-FILE=/root/luks-header-backup.img
-
-set +e
-sudo rm $FILE
-set -e
-
-sudo cryptsetup luksHeaderBackup $ARCH_PART --header-backup-file $FILE
 

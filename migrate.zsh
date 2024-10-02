@@ -28,6 +28,10 @@ do
   ya pack --add "$PLUGIN"
 done
 
+# remove luks header backup
+
+sudo rm /root/luks-header-backup.img
+
 # cleanup
 
 . `dirname $0`/packages.zsh
