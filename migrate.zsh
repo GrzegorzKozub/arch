@@ -2,6 +2,11 @@
 
 set -o verbose
 
+# 7z
+
+sudo pacman -Rs --noconfirm p7zip
+paru -S --aur --noconfirm 7-zip-full
+
 # splash
 
 sudo pacman -S --noconfirm plymouth

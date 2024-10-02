@@ -84,7 +84,6 @@ sudo pacman -S --noconfirm \
   mdcat \
   nushell \
   nvtop \
-  p7zip \
   ripgrep \
   rsync \
   silicon \
@@ -106,9 +105,11 @@ sudo pacman -S --noconfirm \
   # dua-cli gdu
   # gopass-jsonapi
   # imwheel
+  # p7zip
   # tmux
 
 paru -S --aur --noconfirm \
+  7-zip-full \
   cava \
   tmux-git
 
