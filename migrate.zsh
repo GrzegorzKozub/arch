@@ -12,6 +12,10 @@ paru -S --aur --noconfirm 7-zip-full
 cp `dirname $0`/home/$USER/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable fetch.service
 
+# node
+
+npm uninstall -g autocannon
+
 # splash
 
 sudo pacman -S --noconfirm plymouth
