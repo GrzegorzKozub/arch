@@ -83,7 +83,7 @@ Automated Arch Linux installation
   - Set display scale on drifter to 300% and on player & worker to 200%
   - Select the sound device and set volume to 50%
 6. Run `clean.zsh`
-7. Prepare the `$XDG_CONFIG_HOME/zsh/.zshenv` file
+7. Prepare the `~/.config/zsh/.zshenv` and `~/code/arch/fetch.env` files
 8. Fix window sizes and positions
 
 ## Wayland

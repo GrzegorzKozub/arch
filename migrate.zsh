@@ -7,6 +7,11 @@ set -o verbose
 sudo pacman -Rs --noconfirm p7zip
 paru -S --aur --noconfirm 7-zip-full
 
+# fetch
+
+cp `dirname $0`/home/$USER/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable fetch.service
+
 # splash
 
 sudo pacman -S --noconfirm plymouth

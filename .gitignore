@@ -1,2 +1,3 @@
-archiso
 *.compiled
+archiso
+fetch.env
