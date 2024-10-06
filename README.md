@@ -176,8 +176,6 @@ For clipboard sharing using spice install `virt-viewer` on host and [guest tools
 
 For folder sharing using spice install `virt-viewer` on host and [webdav daemon](https://www.spice-space.org/download.html) on guest. Run `c:\Program Files (x86)\SPICE webdavd\map-drive.bat` on guest.
 
-To install Windows with a local account, when the wizard starts, press `Shift+F10` to bring up the command prompt. Type `OOBE\BYPASSNRO`. The wizard restarts. Enter the command prompt again. Type `ipconfig /release` to disconnect from the Internet.
-
 To reduce the image size after freeing up space on guest, first defragment the drives and run `sdelete -z` on guest, then run `qemu-img convert -O qcow2 from.cow to.cow`.
 
 ## Gaming
