@@ -39,38 +39,38 @@ Automated Arch Linux installation
 ### Manual config
 
 1. Brave
+  - Join the Sync Chain and sync everything
   - Setup your profiles
   - Sign in to your sites
   - Set as default browser
+  - Disable everything except background images on the dashboard
   - Hide bookmarks
   - Hide side panel button
   - Hide bookmarks button
   - Hide Brave News button in address bar
-  - Only allow suggestions from top sites, history and bookmarks (not Leo)
+  - Don't allow suggestions Leo AI Assistant
   - Hide Leo AI button
   - Hide Brave Rewards button
   - Hide VPN button
   - Hide tab search button
+  - Set fixed-width font to Cascadia Code
   - Cycle through the most recently used tabs with Ctrl-Tab
-  - Disable everything except background images on the dashboard
-  - Enable search and URL autocompletion
-  - Disable EasyList Cookie content filter
-  - Don't show the number of blocked items on the Shields icon
-  - Disable product analytics, daily usage ping and diagnostic reports
-  - Enable Safe Browsing
-  - Don't allow sites to send notifications
-  - Join the Sync Chain and sync everything
-  - Set the default search engine
-  - Install your extensions
-  - Disable wallets and hide the button
-  - Don't offer to save passwords and don't sign in automatically
-  - Add Polish and enable spell check for it
-  - Don't offer to translate pages
-  - Don't ask where to save downloaded files
   - Don't show Wayback Machine prompts on 404 pages
-  - Don't continue running background apps
-  - Disable Brave VPN
+  - Don't show the number of blocked items on the Shields icon
+  - Disable EasyList Cookie content filter
+  - Don't allow sites to send notifications
+  - Disable data collection
+  - Don't show Leo icon in the sidebar
+  - Don't show Leo in the context menu on websites
+  - Don't offer to save passwords and passkeys
+  - Don't sign in automatically
+  - Add Polish and enable spell check for it
+  - Don't use Brave Translate
+  - Don't ask where to save downloaded files
+  - Don't continue running background apps when Brave is closed
+  - Don't warn me before closing window with multiple tabs
   - Enable Memory Saver
+  - Disable Brave VPN
 2. KeePassXC
   - Open your databases
   - Only show attachment, title and username columns
