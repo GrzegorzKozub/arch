@@ -59,13 +59,11 @@ rm $PROFILE/efiboot/loader/entries/*archiso-x86_64*.conf
 
 sed -i \
   -e 's/^title   .*$/title   Archiso/' \
-  -e 's/archisodevice=UUID=%ARCHISO_UUID%/archisodevice=LABEL=ARCHISO/' \
   -e '/^options/ s/$/ nomodeset/' \
   $PROFILE/efiboot/loader/entries/01-archiso.conf
 
 sed -i \
   -e 's/^title   .*$/title   Archiso LTS/' \
-  -e 's/archisodevice=UUID=%ARCHISO_UUID%/archisodevice=LABEL=ARCHISO/' \
   -e '/^options/ s/$/ nomodeset/' \
   -e 's/vmlinuz-linux/vmlinuz-linux-lts/' \
   -e 's/initramfs-linux/initramfs-linux-lts/' \
