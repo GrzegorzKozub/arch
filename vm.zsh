@@ -35,7 +35,7 @@ DRIVERS=virtio-win-0.1.240.iso
 
 # image
 
-[[ ! -f $DIR/$DISK ]] && qemu-img create -f qcow2 $DIR/$DISK 128G
+[[ ! -f $DIR/$DISK ]] && qemu-img create -f qcow2 $DIR/$DISK 96G
 
 # options
 
