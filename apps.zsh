@@ -84,6 +84,7 @@ sudo pacman -S --noconfirm \
   mdcat \
   nushell \
   nvtop \
+  procs \
   ripgrep \
   rsync \
   silicon \
