@@ -4,16 +4,11 @@ set -e
 
 # screenshot
 
-if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
-
-  FILE=/tmp/screenshot.png
-  gnome-screenshot --area --file $FILE
-  satty --filename $FILE
-  rm $FILE
-
-else
-
-  flameshot gui
-
-fi
+FILE=/tmp/screenshot.png
+FILE2=/tmp/screenshot2.png
+gnome-screenshot --area --file $FILE
+magick $FILE -resize 50% $FILE2
+satty --filename $FILE2
+rm $FILE
+rm $FILE2
 
