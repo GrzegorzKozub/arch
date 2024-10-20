@@ -4,11 +4,11 @@ set -e
 
 # screenshot
 
+[[ $HOST = 'drifter' ]] && RESIZE=33 || RESIZE=50
+
 FILE=/tmp/screenshot.png
-FILE2=/tmp/screenshot2.png
 gnome-screenshot --area --file $FILE
-magick $FILE -resize 50% $FILE2
-satty --filename $FILE2
+magick $FILE -filter lanczos -resize $RESIZE% -unsharp 0x0.75 $FILE
+satty --filename $FILE
 rm $FILE
-rm $FILE2
 
