@@ -11,6 +11,7 @@ for APP in \
   bvnc \
   cmake-gui \
   electron30 \
+  electron31 \
   htop \
   mpv \
   nvtop \
