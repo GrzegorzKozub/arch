@@ -23,9 +23,6 @@ sudo pacman -S --noconfirm \
   git-credential-gopass \
   openssh
 
-paru -S --aur --noconfirm \
-  git-extras
-
 # dotfiles init
 
 sudo pacman -S --noconfirm \
