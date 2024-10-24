@@ -78,8 +78,6 @@ sed -i \
   -e 's/^Exec=/Exec=env QT_QPA_PLATFORM=wayland /' \
   $XDG_DATA_HOME/applications/org.keepassxc.KeePassXC.desktop
 
-  # QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough
-
 # nvidia
 
 if [[ $HOST = 'player' ]]; then

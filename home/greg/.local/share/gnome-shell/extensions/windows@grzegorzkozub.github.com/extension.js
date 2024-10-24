@@ -31,6 +31,7 @@ export default class Windows extends Extension {
       { title: /^Foliate.?/ },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
+      { title: /.?KeePassXC$/ },
       { title: /.?LibreOffice.?/ },
       { class: /^obsidian$/ },
       { title: /.?Slack$/, auto: true },
@@ -41,7 +42,6 @@ export default class Windows extends Extension {
       { class: /.?drawing.?/ },
       { class: /.?evince$/, auto: true },
       { class: /^Gnome-system-monitor$/ },
-      { title: /.?KeePassXC$/ },
       { title: /^Settings$/ },
     ];
     const initial = [
