@@ -8,7 +8,7 @@ paru -Rs --noconfirm git-extras
 
 # zed
 
-sudo pacman -S --noconfirm zed
+sudo pacman -S --noconfirm direnv zed
 
 # cleanup
 

@@ -66,6 +66,7 @@ sudo pacman -S --noconfirm \
   bat \
   btop \
   cpupower \
+  direnv \
   dust \
   eza \
   fd \
