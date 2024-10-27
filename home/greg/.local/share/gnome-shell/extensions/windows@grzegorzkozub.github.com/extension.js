@@ -23,6 +23,7 @@ export default class Windows extends Extension {
       { class: /^Postman$/, auto: true, noRole: 'GtkFileChooserDialog' },
       { title: /.?Shotcut$/ },
       { title: /.?Visual Studio Code$/ },
+      { class: /^dev.zed.Zed$/ },
     ];
     const medium = [
       { title: /^calibre.?/ },

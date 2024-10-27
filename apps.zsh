@@ -203,7 +203,8 @@ sudo pacman -S --noconfirm \
   keepassxc \
   mpv \
   obsidian \
-  satty
+  satty \
+  zed
 
   # flameshot
 

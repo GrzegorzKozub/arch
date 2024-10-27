@@ -6,6 +6,10 @@ set -o verbose
 
 paru -Rs --noconfirm git-extras
 
+# zed
+
+sudo pacman -S --noconfirm zed
+
 # cleanup
 
 . `dirname $0`/packages.zsh
