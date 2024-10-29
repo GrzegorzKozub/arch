@@ -187,7 +187,8 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   golangci-lint-bin \
-  fnm-bin
+  fnm-bin \
+  shellcheck-bin
 
   # nvm
 

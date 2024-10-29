@@ -2,13 +2,9 @@
 
 set -o verbose
 
-# git-extras
+# shellcheck
 
-paru -Rs --noconfirm git-extras
-
-# zed
-
-sudo pacman -S --noconfirm direnv zed
+paru -S --aur --noconfirm shellcheck-bin
 
 # cleanup
 
