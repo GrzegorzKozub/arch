@@ -2,6 +2,11 @@
 
 set -o verbose
 
+# cleanup
+
+rm -f ~/.local/share/mimeapps.list
+rm -f ~/.config/monitors.xml\~
+
 # shellcheck
 
 paru -S --aur --noconfirm shellcheck-bin
