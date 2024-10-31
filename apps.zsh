@@ -227,6 +227,8 @@ paru -S --aur --noconfirm \
 [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && . `dirname $0`/gnome.zsh
 [[ $XDG_CURRENT_DESKTOP = 'KDE' ]] && . `dirname $0`/plasma.zsh
 
+. `dirname $0`/mime.zsh
+
 # cleanup
 
 . `dirname $0`/packages.zsh
