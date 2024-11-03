@@ -309,7 +309,7 @@ set +e
 gsettings set org.gnome.shell favorite-apps "[
   'org.gnome.Nautilus.desktop',
   'kitty.desktop',
-  $([[ $XDG_SESSION_TYPE = 'wayland' ]] && echo "'code-url-handler.desktop'," || echo "'code.desktop',")
+  'code.desktop',
   'postman.desktop',
   'brave-browser.desktop',
   'teams-for-linux.desktop',

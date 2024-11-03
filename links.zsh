@@ -146,10 +146,3 @@ do
   sed -i -e 's/^Name=.*/Name=Code/' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
-if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
-
-  sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/code.desktop
-  sed -i -e '/NoDisplay=true/d' $XDG_DATA_HOME/applications/code-url-handler.desktop
-
-fi
-
