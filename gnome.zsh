@@ -79,10 +79,10 @@ pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && p
 
 gsettings set org.gnome.shell enabled-extensions "[
   'appindicatorsupport@rgcjonas.gmail.com',
-  'blur-my-shell@aunetx',
+  $([[ $HOST != 'drifter' ]] && echo "'blur-my-shell@aunetx',")
   'user-theme@gnome-shell-extensions.gcampax.github.com',
   'panel@grzegorzkozub.github.com',
-  'rounded-window-corners@fxgn',
+  $([[ $HOST != 'drifter' ]] && echo "'rounded-window-corners@fxgn',")
   'windows@grzegorzkozub.github.com'
 ]"
 
