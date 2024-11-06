@@ -16,6 +16,15 @@ rm -f $SDG_CONFIG_HOME/monitors.xml\~
 
 paru -S --aur --noconfirm shellcheck-bin
 
+# vscode
+
+for EXTENSION in \
+  GitHub.copilot \
+  GitHub.copilot-chat
+do
+  code --install-extension $EXTENSION --force
+done
+
 # cleanup
 
 . `dirname $0`/packages.zsh
