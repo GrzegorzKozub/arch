@@ -5,8 +5,9 @@ set -o verbose
 # cleanup
 
 rm -f $XDG_DATA_HOME/applications/electron30.desktop
+rm -f $XDG_DATA_HOME/applications/electron31.desktop
 rm -f $XDG_DATA_HOME/applications/redshift-gtk.desktop
-rm -f $XDG_DATA_HOME/applications/redshift.deskto
+rm -f $XDG_DATA_HOME/applications/redshift.desktop
 
 rm -f $XDG_DATA_HOME/mimeapps.list
 

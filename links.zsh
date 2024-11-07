@@ -10,9 +10,9 @@ for APP in \
   btop \
   bvnc \
   cmake-gui \
-  electron30 \
-  electron31 \
+  electron32 \
   htop \
+  lstopo \
   mpv \
   nvtop \
   org.freedesktop.MalcontentControl \
