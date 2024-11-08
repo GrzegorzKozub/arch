@@ -19,6 +19,8 @@ paru -S --aur --noconfirm shellcheck-bin
 
 # vscode
 
+code --uninstall-extension antfu.icons-carbon
+
 for EXTENSION in \
   GitHub.copilot \
   GitHub.copilot-chat
