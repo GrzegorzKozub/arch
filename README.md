@@ -38,7 +38,11 @@ Automated Arch Linux installation
 
 ### Manual config
 
-1. Brave
+1. GNOME
+  - Set display refresh rate on player to variable 144 Hz
+  - Set display scale on drifter to 300% and on player & worker to 200%
+  - Select the sound device and set volume to 50%
+2. Brave
   - Join the Sync Chain and sync everything
   - Setup your profiles
   - Sign in to your sites
@@ -71,20 +75,17 @@ Automated Arch Linux installation
   - Don't warn me before closing window with multiple tabs
   - Enable Memory Saver
   - Disable Brave VPN
-2. KeePassXC
+3. KeePassXC
   - Open your databases
   - Only show attachment, title and username columns
   - Hide folders panel & fit columns to window
   - Configure Brave extension
-3. Change font to `Cascadia Code`, font size to `14` and tab size to `2` in Postman
-4. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
-5. GNOME
-  - Set display refresh rate on player to variable 144 Hz
-  - Set display scale on drifter to 300% and on player & worker to 200%
-  - Select the sound device and set volume to 50%
-6. Run `clean.zsh`
-7. Prepare the `~/.config/zsh/.zshenv` and `~/code/arch/fetch.env` files
-8. Fix window sizes and positions
+4. Change font to `Cascadia Code`, font size to `14` and tab size to `2` in Postman
+5. Hide recommended extensions and disable tweet feedback icon in Visual Studio Code
+6. Sign in for Neovim, Postman, Visual Studio Code & Zed
+7. Run `clean.zsh`
+8. Prepare the `~/.config/zsh/.zshenv` and `~/code/arch/fetch.env` files
+9. Fix window sizes and positions
 
 ## Wayland
 
