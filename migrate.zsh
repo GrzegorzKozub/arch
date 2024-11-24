@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# bat
+
+bat cache --build
+
 # cleanup
 
 . `dirname $0`/packages.zsh
