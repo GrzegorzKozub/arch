@@ -14,7 +14,7 @@ local backup=/mnt/backup
 [[ -d $backup ]] || mkdir -p $backup
 
 while [[ \
-  $(df -h /dev/mapper/vg1-data --output=avail | grep -v Avail | sed -E 's/ |G//g') -lt 10 && \
+  $(df -h /dev/mapper/vg1-data --output=avail | grep -v Avail | sed -E 's/ |G//g') -lt 16 && \
   $(ls -d $backup/[0-9]* | wc -l) -gt 3 \
 ]]; do
   local oldest="$backup/$(ls -t $backup | grep '^[0-9]*$' | tail -n1)"

@@ -15,7 +15,7 @@ local target=$mount/arch
 [[ -d $target ]] || mkdir $target
 
 local free=$(df -h $disk --output=avail | grep -v Avail | sed -E 's/ |G//g' )
-[[ $free -lt 50 ]] && echo "only ${free}G free on $disk"
+[[ $free -lt 64 ]] && echo "only ${free}G free on $disk"
 
 rsync \
   --archive \
