@@ -11,6 +11,7 @@ HOSTS=(
   'WAWNLB2-LB-BFAMMO58AJC7-ac1f28233c0b6fc5.elb.eu-west-1.amazonaws.com'
   'alb-int.aud-stage.apsis.cloud'
   'api.stage.ma'
+  'audienceproxy.ecs-stage.webscript'
   'capturetool.ecs-stage.webscript'
   'dev.apsis'
   'formtoolbackend.ecs-stage.webscript'
