@@ -253,7 +253,10 @@ gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
 
 # keyboard > keyboard shortcuts > windows
 
-dconf write $DIR/toggle-fullscreen "['<Alt>F11']"
+dconf write $DIR/begin-move "['<Super>F7']"
+dconf write $DIR/begin-resize "['<Super>F8']"
+
+dconf write $DIR/toggle-fullscreen "['<Super>F11']"
 
 dconf write $DIR/move-to-center "['<Super><Control>C']"
 
