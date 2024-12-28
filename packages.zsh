@@ -2,14 +2,12 @@
 
 set -e -o verbose
 
-# cleanup after teams-for-linux
+# cleanup after teams-for-linux (now nodejs is required by zed)
 
-set +e
-
-sudo pacman -Rs --noconfirm \
-  node-gyp nodejs npm
-
-set -e
+# set +e
+# sudo pacman -Rs --noconfirm \
+#   node-gyp nodejs npm
+# set -e
 
 # remove unused packages
 
