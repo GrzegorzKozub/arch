@@ -63,6 +63,7 @@ sudo pacman -S --noconfirm \
 # common
 
 sudo pacman -S --noconfirm \
+  7zip \
   bat \
   btop \
   cpupower \
@@ -103,11 +104,9 @@ sudo pacman -S --noconfirm \
   # dua-cli gdu
   # gopass-jsonapi
   # imwheel
-  # p7zip
   # tmux
 
 paru -S --aur --noconfirm \
-  7-zip-full \
   cava \
   tmux-git
 
