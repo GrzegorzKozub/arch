@@ -4,6 +4,7 @@ set -e -o verbose
 
 # default apps
 
+xdg-mime default nvim.desktop application/x-zerosize
 xdg-mime default nvim.desktop text/plain
 
 xdg-mime default mpv.desktop audio/mpeg
