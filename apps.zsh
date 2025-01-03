@@ -80,7 +80,6 @@ sudo pacman -S --noconfirm \
   htop \
   hyperfine \
   jq \
-  mdcat \
   nushell \
   nvtop \
   ripgrep \
