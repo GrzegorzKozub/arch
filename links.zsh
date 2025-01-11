@@ -52,24 +52,24 @@ done
 # foot
 
 # for APP in \
-#   org.codeberg.dnkl.foot-server \
-#   org.codeberg.dnkl.foot \
-#   org.codeberg.dnkl.footclient
+#   foot \
+#   foot-server \
+#   footclient
 # do
 #   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
 #   sed -i '2iStartupWMClass=foot' $XDG_DATA_HOME/applications/$APP.desktop
 # done
 
 # for APP in \
-#   org.codeberg.dnkl.foot-server \
-#   org.codeberg.dnkl.footclient
+#   foot-server \
+#   footclient
 # do
 #   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
 # done
 
 # sed -i \
 #   -e "s/^Exec=foot$/Exec=foot --override=include=~\/.config\/foot\/$HOST.ini/" \
-#   $XDG_DATA_HOME/applications/org.codeberg.dnkl.foot.desktop
+#   $XDG_DATA_HOME/applications/foot.desktop
 
 # keepassxc
 
