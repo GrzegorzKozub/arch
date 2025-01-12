@@ -22,6 +22,9 @@ sudo pacman -Rs --noconfirm mdcat
 # yazi
 
 rm -f ~/.config/yazi/package.toml
+rm -rf ~/.config/yazi/plugins/compress.yazi
+rm -rf ~/.config/yazi/plugins/git.yazi
+rm -rf ~/.config/yazi/plugins/jump-to-char.yazi
 rm -rf ~/.config/yazi/plugins/mdcat.yazi
 rm -rf ~/.config/yazi/plugins/video-ffmpeg.yazi
 rm -rf ~/.local/state/yazi
