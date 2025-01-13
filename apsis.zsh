@@ -20,6 +20,7 @@ HOSTS=(
   'int.email-stage.apsis.cloud'
   'int.folders-stage.apsis.cloud'
   'integrations-stage.apsis.cloud'
+  'vpce-0d42f60518b6200ca-t05wvrwd.vpce-svc-0e2cc8023f4c8b06f.eu-west-1.vpce.amazonaws.com'
 )
 
 for HOST in $HOSTS; do
