@@ -3,7 +3,7 @@
 set -o verbose
 
 # apsis
-#
+
 . `dirname $0`/apsis.zsh
 
 # cleanup

@@ -44,6 +44,7 @@ Automated Arch Linux installation
   - Sign in to your sites
   - Set as default browser
   - Disable everything except background images on the dashboard
+  - Don't show tab groups in bookmarks
   - Hide bookmarks
   - Hide side panel button
   - Hide bookmarks button
