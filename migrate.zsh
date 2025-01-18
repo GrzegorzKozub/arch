@@ -11,6 +11,10 @@ set -o verbose
 rm -f ~/.config/dust
 sudo pacman -Rs --noconfirm dust
 
+# freerdp
+
+sudo pacman -Rs --noconfirm freerdp
+
 # cleanup
 
 . `dirname $0`/packages.zsh

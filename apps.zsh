@@ -71,7 +71,6 @@ sudo pacman -S --noconfirm \
   eza \
   fd \
   ffmpeg \
-  freerdp \
   fzf \
   git-delta \
   go-yq \
