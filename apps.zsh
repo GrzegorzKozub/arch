@@ -68,7 +68,6 @@ sudo pacman -S --noconfirm \
   btop \
   cpupower \
   direnv \
-  dust \
   eza \
   fd \
   ffmpeg \
@@ -100,7 +99,7 @@ sudo pacman -S --noconfirm \
 
   # xclip, wl-clipboard - for keepassxc, neovim and pass
 
-  # dua-cli gdu
+  # dua-cli dust gdu
   # gopass-jsonapi
   # imwheel
   # tmux

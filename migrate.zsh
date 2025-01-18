@@ -6,6 +6,11 @@ set -o verbose
 
 . `dirname $0`/apsis.zsh
 
+# dust
+
+rm -f ~/.config/dust
+sudo pacman -Rs --noconfirm dust
+
 # cleanup
 
 . `dirname $0`/packages.zsh
