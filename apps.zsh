@@ -208,12 +208,13 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   brave-bin gnome-browser-connector \
+  mission-center \
   postman-bin \
   refine \
   teams-for-linux \
   visual-studio-code-bin
 
-  # mission-center slack-desktop
+  # slack-desktop
 
 # settings
 

@@ -15,6 +15,11 @@ sudo pacman -Rs --noconfirm dust
 
 sudo pacman -Rs --noconfirm freerdp
 
+# mission-center
+
+paru -S --aur --noconfirm \
+  mission-center
+
 # refine
 
 paru -S --aur --noconfirm \
