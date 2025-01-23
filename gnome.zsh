@@ -17,8 +17,8 @@ gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-autom
 [[ $XDG_SESSION_TYPE = 'wayland' ]] &&
   gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"
 
-# [[ $XDG_SESSION_TYPE = 'wayland' ]] &&
-#   gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+# scale-monitor-framebuffer - fractional scaling
+# xwayland-native-scaling - https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3567
 
 # power
 

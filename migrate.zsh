@@ -15,6 +15,11 @@ sudo pacman -Rs --noconfirm dust
 
 sudo pacman -Rs --noconfirm freerdp
 
+# refine
+
+paru -S --aur --noconfirm \
+  refine
+
 # cleanup
 
 . `dirname $0`/packages.zsh
