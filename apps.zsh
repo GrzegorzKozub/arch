@@ -207,14 +207,21 @@ sudo pacman -S --noconfirm \
   # flameshot
 
 paru -S --aur --noconfirm \
-  brave-bin gnome-browser-connector \
+  brave-bin \
   mission-center \
   postman-bin \
-  refine \
   teams-for-linux \
   visual-studio-code-bin
 
   # slack-desktop
+
+if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
+
+  paru -S --aur --noconfirm \
+    gnome-browser-connector \
+    refine
+
+fi
 
 # settings
 
