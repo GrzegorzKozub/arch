@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# argyllcms
+
+sudo pacman -S --noconfirm argyllcms
+
 # apsis
 
 . `dirname $0`/apsis.zsh
