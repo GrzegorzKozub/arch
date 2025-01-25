@@ -21,7 +21,10 @@ sudo pacman -S --noconfirm mission-center
 
 # refine
 
-paru -S --aur --noconfirm refine
+# https://aur.archlinux.org/packages/refine
+# https://gitlab.gnome.org/TheEvilSkeleton/Refine/-/issues/43
+
+# paru -S --aur --noconfirm refine
 
 # cleanup
 
