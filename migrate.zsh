@@ -15,15 +15,17 @@ sudo pacman -Rs --noconfirm dust
 
 sudo pacman -Rs --noconfirm freerdp
 
+# intel
+
+sudo pacman -Rs --noconfirm libva-vdpau-driver
+
 # mission-center
 
-paru -S --aur --noconfirm \
-  mission-center
+paru -S --aur --noconfirm mission-center
 
 # refine
 
-paru -S --aur --noconfirm \
-  refine
+paru -S --aur --noconfirm refine
 
 # cleanup
 
