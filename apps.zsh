@@ -199,6 +199,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify
 
 sudo pacman -S --noconfirm \
   keepassxc \
+  mission-center \
   mpv \
   obsidian \
   satty \
@@ -208,7 +209,6 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   brave-bin \
-  mission-center \
   postman-bin \
   teams-for-linux \
   visual-studio-code-bin

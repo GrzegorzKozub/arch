@@ -11,17 +11,13 @@ set -o verbose
 rm -f ~/.config/dust
 sudo pacman -Rs --noconfirm dust
 
-# freerdp
-
-sudo pacman -Rs --noconfirm freerdp
-
 # intel
 
 sudo pacman -Rs --noconfirm libva-vdpau-driver
 
 # mission-center
 
-paru -S --aur --noconfirm mission-center
+sudo pacman -S --noconfirm mission-center
 
 # refine
 
