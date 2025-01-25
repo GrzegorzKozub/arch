@@ -86,6 +86,8 @@ gsettings set org.gnome.shell enabled-extensions "[
   'windows@grzegorzkozub.github.com'
 ]"
 
+gsettings set org.gnome.shell.extensions.appindicator legacy-tray-enabled false
+
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
 
 [[ $XDG_SESSION_TYPE = 'wayland' ]] && RADIUS=12 || RADIUS=16
