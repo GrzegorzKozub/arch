@@ -116,10 +116,12 @@ fi
 
 if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 
+  # temporarily on xwayland due to window border issue
+
   cp /usr/share/applications/postman.desktop $XDG_DATA_HOME/applications
-  sed -i \
-    -e 's/\/opt\/postman\/Postman/\/opt\/postman\/Postman --disable-features=WaylandFractionalScaleV1 --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto/' \
-    $XDG_DATA_HOME/applications/postman.desktop
+  # sed -i \
+  #   -e 's/\/opt\/postman\/Postman/\/opt\/postman\/Postman --disable-features=WaylandFractionalScaleV1 --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto/' \
+  #   $XDG_DATA_HOME/applications/postman.desktop
 
 fi
 
