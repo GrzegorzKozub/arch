@@ -50,6 +50,10 @@ sudo pacman -Rs --noconfirm dust
 
 sudo pacman -Rs --noconfirm libva-vdpau-driver
 
+# jwt-cli
+
+sudo pacman -S --noconfirm jwt-cli
+
 # mission-center
 
 sudo pacman -S --noconfirm mission-center
@@ -60,6 +64,18 @@ sudo pacman -S --noconfirm mission-center
 # https://gitlab.gnome.org/TheEvilSkeleton/Refine/-/issues/43
 
 # paru -S --aur --noconfirm refine
+
+# rust
+
+export RUSTUP_HOME=$XDG_DATA_HOME/rustup
+export CARGO_HOME=$XDG_DATA_HOME/cargo
+
+rm -rf $RUSTUP_HOME
+rm -rf $CARGO_HOME
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path -y
+
+cargo install cargo-update
 
 # cleanup
 
