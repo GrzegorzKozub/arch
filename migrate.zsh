@@ -14,6 +14,12 @@ sudo pacman -S --noconfirm argyllcms
 
 dconf reset -f /io/github/
 
+# docker
+
+echo 'options overlay metacopy=off redirect_dir=off' | \
+  sudo tee /etc/modprobe.d/disable-overlay-redirect-dir.conf > \
+  /dev/null
+
 # dust
 
 rm -f ~/.config/dust

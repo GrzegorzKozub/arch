@@ -12,11 +12,17 @@ sudo pacman -S --noconfirm \
 paru -S --aur --noconfirm \
   docker-credential-pass-bin
 
-# grant non-root user cli access
+# non-root user cli access
 
 sudo usermod -aG docker $USER
 
-# enable and start the service
+# native overlay diff
+
+echo 'options overlay metacopy=off redirect_dir=off' | \
+  sudo tee /etc/modprobe.d/disable-overlay-redirect-dir.conf > \
+  /dev/null
+
+# service
 
 sudo systemctl enable docker.service
 sudo systemctl start docker.service
