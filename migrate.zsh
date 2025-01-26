@@ -10,6 +10,10 @@ sudo pacman -S --noconfirm argyllcms
 
 . `dirname $0`/apsis.zsh
 
+# dconf
+
+dconf reset -f /io/github/
+
 # dust
 
 rm -f ~/.config/dust
