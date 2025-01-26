@@ -143,18 +143,7 @@ paru -S --aur --noconfirm \
 
 # docker
 
-sudo pacman -S --noconfirm \
-  docker \
-  docker-buildx \
-  docker-compose
-
-sudo usermod -aG docker $USER
-
-sudo systemctl enable docker.service
-sudo systemctl start docker.service
-
-paru -S --aur --noconfirm \
-  docker-credential-pass-bin
+. `dirname $0`/docker.zsh
 
 # aws
 
