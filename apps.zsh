@@ -78,6 +78,7 @@ sudo pacman -S --noconfirm \
   htop \
   hyperfine \
   jq \
+  jwt-cli \
   nushell \
   nvtop \
   ripgrep \
