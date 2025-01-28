@@ -330,6 +330,10 @@ set -e
 # file pickers
 
 if [[ $HOST = 'drifter' ]]; then
+
+  dconf write /org/gnome/nautilus/window-state/initial-size-file-chooser '(800, 504)'
+  dconf write /org/gtk/settings/file-chooser/window-size '(800, 457)'
+
 fi
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
