@@ -14,7 +14,6 @@ export default class Windows extends Extension {
   constructor(metadata) {
     super(metadata);
     const big = [
-      { title: /.?Azure Data Studio$/ },
       { title: /.?Brave$/, noRole: 'pop-up' },
       { class: /^DBeaver$/ },
       { class: /^draw.io$/, auto: true },
@@ -28,8 +27,8 @@ export default class Windows extends Extension {
     ];
     const medium = [
       { title: /^calibre.?/ },
-      { title: /^Cemu.?/ },
       { title: /^DevTools.?/ },
+      { class: /.?evince$/, auto: true },
       { title: /^Foliate.?/ },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
@@ -43,7 +42,8 @@ export default class Windows extends Extension {
     ];
     const small = [
       { class: /.?drawing.?/ },
-      { class: /.?evince$/, auto: true },
+      // { title: /^Open/ }, // file pickers
+      { class: /^org.gnome.Extensions$/ },
       { class: /^org.gnome.SystemMonitor$/ },
       { title: /^Settings$/ },
     ];

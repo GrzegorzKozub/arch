@@ -327,3 +327,15 @@ gsettings set org.gnome.shell favorite-apps "[
 
 set -e
 
+# file pickers
+
+if [[ $HOST = 'drifter' ]]; then
+fi
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  dconf write /org/gnome/nautilus/window-state/initial-size-file-chooser '(720, 655)'
+  dconf write /org/gtk/settings/file-chooser/window-size '(720, 608)'
+
+fi
+
