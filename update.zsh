@@ -12,8 +12,7 @@ git pull
 
 sudo pacman --noconfirm -Syu
 
-# --nocheck skips tests in https://aur.archlinux.org/packages/aws-cli-v2
-paru --aur --noconfirm --nocheck -Syu
+paru --aur --noconfirm -Syu
 
 paru -S --aur --noconfirm \
   neovim-nightly-bin \
