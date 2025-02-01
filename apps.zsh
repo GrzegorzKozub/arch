@@ -92,6 +92,7 @@ sudo pacman -S --noconfirm \
   wl-clipboard \
   xclip \
   xcolor \
+  xh \
   python-secretstorage yt-dlp \
   zip \
   zsh zsh-completions \
