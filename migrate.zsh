@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# electron
+
+sudo pacman -Rs --noconfirm electron32
+
 # pacman
 
 sudo sed -i 's/^OPTIONS=\(.*\) debug\(.*\)$/OPTIONS=\1 !debug\2/' /etc/makepkg.conf
