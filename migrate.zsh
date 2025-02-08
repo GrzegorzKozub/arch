@@ -5,6 +5,7 @@ set -o verbose
 # electron
 
 sudo pacman -Rs --noconfirm electron32
+rm ~/.local/share/applications/electron32.desktop
 
 # pacman
 
