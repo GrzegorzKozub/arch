@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# cleanup
+
+rm -rf ~/.local/share/icons
+
 # electron
 
 sudo pacman -Rs --noconfirm electron32
