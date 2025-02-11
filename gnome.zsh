@@ -315,6 +315,7 @@ gsettings set org.gnome.shell favorite-apps "[
   'org.gnome.Nautilus.desktop',
   'kitty.desktop',
   'code.desktop',
+  'dev.zed.Zed.desktop',
   'postman.desktop',
   'brave-browser.desktop',
   'teams-for-linux.desktop',
