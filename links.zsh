@@ -116,7 +116,8 @@ fi
 
 if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 
-  # temporarily on xwayland due to window border issue
+  # https://github.com/postmanlabs/postman-app-support/issues/13451
+  # https://github.com/electron/electron/issues/42894
 
   cp /usr/share/applications/postman.desktop $XDG_DATA_HOME/applications
   # sed -i \
