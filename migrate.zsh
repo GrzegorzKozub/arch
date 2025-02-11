@@ -2,14 +2,17 @@
 
 set -o verbose
 
-# cleanup
-
-rm -rf ~/.local/share/icons
-
 # electron
 
 sudo pacman -Rs --noconfirm electron32
 rm ~/.local/share/applications/electron32.desktop
+
+# icons
+
+rm -rf ~/.local/share/icons
+
+sudo pacman -Rs --noconfirm papirus-icon-theme
+paru -S --aur --needed --noconfirm papirus-icon-theme-git
 
 # pacman
 

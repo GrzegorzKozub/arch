@@ -50,8 +50,11 @@ paru -S --aur --noconfirm \
 
 # themes
 
-sudo pacman -S --needed --noconfirm \
-  papirus-icon-theme
+# sudo pacman -S --needed --noconfirm \
+#   papirus-icon-theme
+
+paru -S --aur --needed --noconfirm \
+  papirus-icon-theme-git
 
 # terminal
 
