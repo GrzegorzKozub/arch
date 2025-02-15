@@ -26,6 +26,10 @@ paru -S --aur --noconfirm refine
 
 sudo pacman -S --noconfirm xh
 
+# yazi
+
+ya pack --delete yazi-rs/plugins:jump-to-char
+
 # cleanup
 
 . `dirname $0`/packages.zsh
