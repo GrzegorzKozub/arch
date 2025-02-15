@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# debug
+
+sudo sed -i 's/^OPTIONS=\(.*\) debug\(.*\)$/OPTIONS=\1 !debug\2/' /etc/makepkg.conf
+
 # icons
 
 rm -rf ~/.local/share/icons
@@ -13,10 +17,6 @@ paru -S --aur --needed --noconfirm papirus-icon-theme-git
 
 sudo pacman -Rs --noconfirm electron32
 rm ~/.local/share/applications/electron32.desktop
-
-# pacman
-
-sudo sed -i 's/^OPTIONS=\(.*\) debug\(.*\)$/OPTIONS=\1 !debug\2/' /etc/makepkg.conf
 
 # refine
 
