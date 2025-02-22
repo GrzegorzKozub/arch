@@ -92,12 +92,12 @@ gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background
 
 [[ $XDG_SESSION_TYPE = 'wayland' ]] && RADIUS=12 || RADIUS=16
 gsettings set org.gnome.shell.extensions.rounded-window-corners-reborn global-rounded-corner-settings \
-  "{'padding': <{'left': <uint32 1>, 'right': <uint32 1>, 'top': <uint32 1>, 'bottom': <uint32 1>}>,
-    'keep_rounded_corners': <{'maximized': <false>, 'fullscreen': <false>}>,
-    'border_radius': <uint32 $RADIUS>,
-    'smoothing': <uint32 0>,
-    'enabled': <true>
-  }"
+  "{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>,
+    'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>,
+    'borderRadius': <uint32 $RADIUS>,
+    'smoothing': <0.0>,
+    'borderColor': <(0.5, 0.5, 0.5, 1.0)>,
+    'enabled': <true>}"
 
 # apps > files
 
