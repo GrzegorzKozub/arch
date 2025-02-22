@@ -119,19 +119,29 @@ bind -n C-BTab previous-window
 bind r split-window -h -c '#{pane_current_path}' # right
 bind d split-window -v -c '#{pane_current_path}' # down
 
-bind -n M-Up select-pane -U
-bind -n M-Down select-pane -D
 bind -n M-Left select-pane -L
+bind -n M-Down select-pane -D
+bind -n M-Up select-pane -U
 bind -n M-Right select-pane -R
 
-bind -r C-Up resize-pane -U 4
-bind -r C-Down resize-pane -D 4
+bind -r h select-pane -L
+bind -r j select-pane -D
+bind -r k select-pane -U
+bind -r l select-pane -R
+
 bind -r C-Left resize-pane -L 16
+bind -r C-Down resize-pane -D 4
+bind -r C-Up resize-pane -U 4
 bind -r C-Right resize-pane -R 16
 
-bind -r S-Up swap-pane -d -t '{up-of}'
-bind -r S-Down swap-pane -d -t '{down-of}'
+bind -r C-h resize-pane -L 16
+bind -r C-j resize-pane -D 4
+bind -r C-k resize-pane -U 4
+bind -r C-l resize-pane -R 16
+
 bind -r S-Left swap-pane -d -t '{left-of}'
+bind -r S-Down swap-pane -d -t '{down-of}'
+bind -r S-Up swap-pane -d -t '{up-of}'
 bind -r S-Right swap-pane -d -t '{right-of}'
 
 set -g mode-keys vi
