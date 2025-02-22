@@ -107,18 +107,40 @@ unbind C-b
 set -g prefix C-x
 bind C-x send-prefix
 
-bind v split-window -h -c '#{pane_current_path}'
-bind h split-window -v -c '#{pane_current_path}'
+bind t new-window -c '#{pane_current_path}'
+bind -n C-S-t new-window -c '#{pane_current_path}'
 
-bind -r C-Up resize-pane -U 1
-bind -r C-Down resize-pane -D 1
-bind -r C-Left resize-pane -L 4
-bind -r C-Right resize-pane -R 4
+bind ] next-window
+bind [ previous-window
+
+bind -n C-Tab next-window
+bind -n C-BTab previous-window
+
+bind r split-window -h -c '#{pane_current_path}' # right
+bind d split-window -v -c '#{pane_current_path}' # down
+
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+
+bind -r C-Up resize-pane -U 4
+bind -r C-Down resize-pane -D 4
+bind -r C-Left resize-pane -L 16
+bind -r C-Right resize-pane -R 16
+
+bind -r S-Up swap-pane -d -t '{up-of}'
+bind -r S-Down swap-pane -d -t '{down-of}'
+bind -r S-Left swap-pane -d -t '{left-of}'
+bind -r S-Right swap-pane -d -t '{right-of}'
 
 set -g mode-keys vi
 
+bind c copy-mode
+
 bind -T copy-mode-vi v send-keys -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
 bind -T copy-mode-vi C-q send-keys -X rectangle-toggle
 EOF
 
