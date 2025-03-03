@@ -85,6 +85,7 @@ sudo pacman -S --noconfirm \
   nushell \
   nvtop \
   ripgrep \
+  ripgrep-all \
   rsync \
   silicon \
   stress \
