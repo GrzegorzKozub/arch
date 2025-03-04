@@ -6,7 +6,7 @@ Automated Arch Linux installation
 
 * Windows, along with the EFI partition are already installed. EFI partition size is increased to 512 MB
 * There's at least 80 GB unassigned space on the disk for Arch
-* In Windows, real time is set to UTC following [this guide](https://wiki.archlinux.org/index.php/Time#UTC_in_Windows)
+* In Windows, real time is set to UTC
 
 ### Archiso
 
