@@ -8,8 +8,14 @@ sudo pacman -S --noconfirm ripgrep-all
 
 # tmux
 
-rm -rf $XDG_DATA_HOME/tmux/plugins/tmux-battery
-rm -rf $XDG_DATA_HOME/tmux/resurrect/*
+for DIR in \
+  plugins/tmux-battery \
+  plugins/tmux-continuum \
+  plugins/tmux-resurrect \
+  resurrect
+do
+  rm -rf $XDG_DATA_HOME/tmux/$DIR
+done
 
 $XDG_DATA_HOME/tmux/plugins/tpm/bindings/install_plugins
 
