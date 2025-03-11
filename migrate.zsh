@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# electron
+
+rm $XDG_DATA_HOME/applications/electron33.desktop
+
 # rga
 
 sudo pacman -S --noconfirm ripgrep-all
