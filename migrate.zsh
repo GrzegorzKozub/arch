@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# apsis
+
+. `dirname $0`/apsis.zsh
+
 # electron
 
 rm $XDG_DATA_HOME/applications/electron33.desktop
