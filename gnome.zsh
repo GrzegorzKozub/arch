@@ -195,6 +195,10 @@ gsettings set org.gnome.desktop.search-providers disabled "[
 
 gsettings set org.gnome.desktop.search-providers disable-external false
 
+# digital wellbeing
+
+gsettings set org.gnome.desktop.screen-time-limits history-enabled false
+
 # mouse & touchpad
 
 if [[ $HOST = 'drifter' ]]; then
