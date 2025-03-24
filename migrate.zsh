@@ -2,30 +2,19 @@
 
 set -o verbose
 
-# apsis
+# bluez
 
-. `dirname $0`/apsis.zsh
-
-# electron
-
-rm $XDG_DATA_HOME/applications/electron33.desktop
-
-# rga
-
-sudo pacman -S --noconfirm ripgrep-all
+sudo chmod 555 /etc/bluetooth
 
 # tmux
 
-for DIR in \
-  plugins/tmux-battery \
-  plugins/tmux-continuum \
-  plugins/tmux-resurrect \
-  resurrect
-do
-  rm -rf $XDG_DATA_HOME/tmux/$DIR
-done
+# for DIR in \
+#   plugins/tmux-fzf-links
+# do
+#   rm -rf $XDG_DATA_HOME/tmux/$DIR
+# done
 
-$XDG_DATA_HOME/tmux/plugins/tpm/bindings/install_plugins
+# $XDG_DATA_HOME/tmux/plugins/tpm/bindings/install_plugins
 
 # cleanup
 

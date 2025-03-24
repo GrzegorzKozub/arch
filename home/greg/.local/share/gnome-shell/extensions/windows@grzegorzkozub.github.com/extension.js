@@ -14,7 +14,7 @@ export default class Windows extends Extension {
   constructor(metadata) {
     super(metadata);
     const big = [
-      { title: /.?Brave$/, noRole: 'pop-up' },
+      { title: /.?Brave$/, auto: true, noRole: 'pop-up' },
       { class: /^DBeaver$/ },
       { class: /^draw.io$/, auto: true },
       { title: /.?Inkscape$/ },
