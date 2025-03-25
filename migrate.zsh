@@ -2,10 +2,6 @@
 
 set -o verbose
 
-# bluez
-
-sudo chmod 555 /etc/bluetooth
-
 # tmux
 
 # for DIR in \
