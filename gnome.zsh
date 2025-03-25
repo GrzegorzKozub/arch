@@ -61,18 +61,7 @@ gsettings set org.gnome.desktop.screensaver picture-uri $FILE
 # apps > brave
 
 dconf write /org/gnome/settings-daemon/global-shortcuts/brave-browser/shortcuts \
-  "[
-    ('choose_credential_fields', {'description': <'Choose Custom Login Fields'>}),
-    ('fill_password', {'shortcuts': <['<Shift><Alt>p']>, 'description': <'Fill Password Only'>}),
-    ('fill_totp', {'shortcuts': <['<Shift><Alt>o']>, 'description': <'Fill TOTP'>}),
-    ('fill_username_password', {'shortcuts': <['<Shift><Alt>u']>, 'description': <'Fill Username and Password'>}),
-    ('redetect_fields', {'description': <'Redetect login fields'>}),
-    ('reload_extension', {'description': <'Reload'>}),
-    ('request_autotype', {'description': <'Request Global Auto-Type'>}),
-    ('retrive_credentials_forced', {'description': <'Reopen database'>}),
-    ('save_credentials', {'description': <'Save Credentials'>}),
-    ('show_password_generator', {'shortcuts': <['<Shift><Alt>g']>, 'description': <'Show Password Generator'>})
-  ]"
+  "[('choose_credential_fields', {'description': <'Choose Custom Login Fields'>}), ('fill_password', {'description': <'Fill Password Only'>}), ('fill_totp', {'description': <'Fill TOTP'>}), ('fill_username_password', {'description': <'Fill Username and Password'>}), ('redetect_fields', {'description': <'Redetect login fields'>}), ('reload_extension', {'description': <'Reload'>}), ('request_autotype', {'description': <'Request Global Auto-Type'>}), ('retrive_credentials_forced', {'description': <'Reopen database'>}), ('save_credentials', {'description': <'Save Credentials'>}), ('show_password_generator', {'description': <'Show Password Generator'>})]"
 
 # apps > document viewer
 
