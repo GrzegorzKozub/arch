@@ -2,6 +2,11 @@
 
 set -o verbose
 
+# cleanup
+
+rm -rf $XDG_CONFIG_HOME/.org.chromium.Chromium.W6m8Be
+rm -rf $XDG_CONFIG_HOME/monitors.xml~
+
 # tmux
 
 # for DIR in \
