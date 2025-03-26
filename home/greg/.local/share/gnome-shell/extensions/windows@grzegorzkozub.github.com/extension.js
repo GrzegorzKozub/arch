@@ -15,7 +15,7 @@ export default class Windows extends Extension {
     super(metadata);
     const big = [
       { title: /.?Brave$/, auto: true, noRole: 'pop-up' },
-      { class: /^DBeaver$/ },
+      { class: /^DBeaver$/, auto: true },
       { class: /^draw.io$/, auto: true },
       { title: /.?Inkscape$/ },
       { title: /.?MySQL Workbench$/ },
