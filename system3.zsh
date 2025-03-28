@@ -109,6 +109,9 @@ if [[ $MY_HOSTNAME = 'worker' ]]; then
   paru -S --aur --noconfirm \
     amdfand-bin
 
+  # getting 'amdgpu 0000:03:00.0: amdgpu: Failed to set manual fan control mode'
+  # after suspend and then resume but the fan control still works
+
 fi
 
 # desktop
