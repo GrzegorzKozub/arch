@@ -51,8 +51,9 @@ pactl set-source-volume @DEFAULT_SOURCE@ 50%
 
 if [[ $HOST = 'player' ]]; then
   nmcli radio wifi off
-  rfkill block bluetooth
 fi
+
+rfkill block bluetooth # causes 'bluetoothd[...]: Failed to set mode: Failed (0x03)' which is fine
 
 # power
 
