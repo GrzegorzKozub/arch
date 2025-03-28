@@ -1,5 +1,0 @@
-# Microsoft Corp. LifeCam HD-3000
-# lsusb | grep HD-3000
-
-SUBSYSTEM=="video4linux", KERNEL=="video[0-9]*", ATTR{index}=="0", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="0779", RUN+="/usr/bin/v4l2-ctl --device $devnode --set-fmt-video width=1280,height=720,pixelformat=MJPG"
-

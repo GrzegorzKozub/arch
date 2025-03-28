@@ -78,9 +78,6 @@ cp `dirname $0`/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
 
 # webcam video format
 
-[[ $MY_HOSTNAME = 'drifter' ]] &&
-  cp `dirname $0`/etc/udev/rules.d/10-hd-3000.rules /etc/udev/rules.d/10-hd-3000.rules
-
 [[ $MY_HOSTNAME = 'worker' ]] &&
   cp `dirname $0`/etc/udev/rules.d/10-c922.rules /etc/udev/rules.d/10-c922.rules
 
