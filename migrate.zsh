@@ -7,6 +7,10 @@ set -o verbose
 rm -rf $XDG_CONFIG_HOME/.org.chromium.Chromium.W6m8Be
 rm -rf $XDG_CONFIG_HOME/monitors.xml~
 
+# firmware
+
+[[ $HOST = 'worker' ]] && sudo pacman -S --noconfirm sof-firmware
+
 # hosts
 
 sudo sed -i -e "/.*integrations-stage.apsis.cloud.*/d" /etc/hosts

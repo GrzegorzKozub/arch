@@ -55,8 +55,7 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
   # firmware
 
   sudo pacman -S --noconfirm \
-    alsa-firmware alsa-ucm-conf \
-    sof-firmware
+    alsa-firmware sof-firmware
 
   # intel gpu
 
@@ -94,6 +93,11 @@ if [[ $MY_HOSTNAME = 'worker' ]]; then
 
   sudo pacman -S --noconfirm \
     intel-ucode
+
+  # firmware
+
+  sudo pacman -S --noconfirm \
+    sof-firmware # fixes 'wireplumber[...]: spa.alsa: can't open control for card hw:...: No such file or directory'
 
   # amd gpu
 
