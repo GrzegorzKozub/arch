@@ -85,7 +85,7 @@ cp `dirname $0`/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
 
 if [[ $MY_HOSTNAME = 'player' ]]; then
 
-  # don't wake up immediately after going to sleep
+  # don't resume (wake up) immediately after suspend (sleep)
   echo 'w /proc/acpi/wakeup - - - - GPP0' > /usr/lib/tmpfiles.d/wakeup.conf
 
   # don't wake up with usb keyboard or mouse
