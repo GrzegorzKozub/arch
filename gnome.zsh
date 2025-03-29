@@ -83,13 +83,14 @@ for NAME ('panel' 'windows')
 pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 
 gsettings set org.gnome.shell enabled-extensions "[
-  'appindicatorsupport@rgcjonas.gmail.com',
   $([[ $HOST != 'drifter' ]] && echo "'blur-my-shell@aunetx',")
-  'user-theme@gnome-shell-extensions.gcampax.github.com',
   'panel@grzegorzkozub.github.com',
   $([[ $HOST != 'drifter' ]] && echo "'rounded-window-corners@fxgn',")
   'windows@grzegorzkozub.github.com'
 ]"
+
+  # 'appindicatorsupport@rgcjonas.gmail.com',
+  # 'user-theme@gnome-shell-extensions.gcampax.github.com',
 
 gsettings set org.gnome.shell.extensions.appindicator legacy-tray-enabled false
 
