@@ -15,7 +15,6 @@ HOSTS=(
   'capturetool.ecs-stage.webscript'
   'dev.apsis'
   'formtoolbackend.ecs-stage.webscript'
-  'hls.aud-stage.apsis.cloud'
   'int.aud-stage.apsis.cloud'
   'int.email-stage.apsis.cloud'
   'int.folders-stage.apsis.cloud'

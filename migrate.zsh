@@ -16,6 +16,7 @@ rm -rf $XDG_CONFIG_HOME/monitors.xml~
 # hosts
 
 sudo sed -i -e "/.*integrations-stage.apsis.cloud.*/d" /etc/hosts
+sudo sed -i -e "/.*hls.aud-stage.apsis.cloud.*/d" /etc/hosts
 
 # tmux
 
