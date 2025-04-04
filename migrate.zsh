@@ -20,13 +20,13 @@ sudo sed -i -e "/.*hls.aud-stage.apsis.cloud.*/d" /etc/hosts
 
 # tmux
 
-# for DIR in \
-#   plugins/tmux-fzf-links
-# do
-#   rm -rf $XDG_DATA_HOME/tmux/$DIR
-# done
+for DIR in \
+  plugins/tmux-fzf-links
+do
+  rm -rf $XDG_DATA_HOME/tmux/$DIR
+done
 
-# $XDG_DATA_HOME/tmux/plugins/tpm/bindings/install_plugins
+$XDG_DATA_HOME/tmux/plugins/tpm/bindings/install_plugins
 
 # cleanup
 
