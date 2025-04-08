@@ -30,10 +30,11 @@ mkdir -p $USB
 
 cp -r /usr/share/archiso/configs/releng $PROFILE
 
-# lts kernel
+# packages
 
 [[ $(grep 'linux-lts' $PROFILE/packages.x86_64) ]] || echo 'linux-lts' >> $PROFILE/packages.x86_64
-echo 'tmux' >> $PROFILE/packages.x86_64
+
+for PACKAGE in neovim tmux; do echo $PACKAGE >> $PROFILE/packages.x86_64; done
 
 # systemd-boot
 
@@ -46,8 +47,6 @@ sed -i \
 sed -i \
   -e "s/'uefi-ia32.grub.eltorito' 'uefi-x64.grub.eltorito'/'uefi-x64.systemd-boot.eltorito' 'uefi-x64.systemd-boot.esp'/" \
   $PROFILE/profiledef.sh
-
-# config systemd-boot
 
 cp $PROFILE/efiboot/loader/entries/01-archiso-x86_64-linux.conf \
   $PROFILE/efiboot/loader/entries/01-archiso.conf
@@ -93,6 +92,13 @@ cat << 'EOF' > $PROFILE/airootfs/root/.zshrc
 typeset -U path
 path=(~/arch $path[@])
 
+export EDITOR='nvim'
+export DIFFPROG='nvim -d'
+export VISUAL='nvim'
+
+alias v='nvim'
+alias vim='nvim'
+
 alias b='backup.zsh'
 alias r='restore.zsh'
 
@@ -100,59 +106,17 @@ alias tmux='tmux -f ~/tmux.conf'
 [[ ! -z $TMUX ]] || tmux attach || tmux new
 EOF
 
-cat << 'EOF' > $PROFILE/airootfs/root/tmux.conf
-set -g mouse on
+cp $XDG_CONFIG_HOME/tmux/tmux.conf $PROFILE/airootfs/root/tmux.conf
 
-unbind C-b
-set -g prefix C-x
-bind C-x send-prefix
-
-bind t new-window -c '#{pane_current_path}'
-bind -n C-S-t new-window -c '#{pane_current_path}'
-
-bind ] next-window
-bind [ previous-window
-
-bind -n C-Tab next-window
-bind -n C-BTab previous-window
-
-bind r split-window -h -c '#{pane_current_path}' # right
-bind d split-window -v -c '#{pane_current_path}' # down
-
-bind -n M-Left select-pane -L
-bind -n M-Down select-pane -D
-bind -n M-Up select-pane -U
-bind -n M-Right select-pane -R
-
-bind -r h select-pane -L
-bind -r j select-pane -D
-bind -r k select-pane -U
-bind -r l select-pane -R
-
-bind -r C-Left resize-pane -L 16
-bind -r C-Down resize-pane -D 4
-bind -r C-Up resize-pane -U 4
-bind -r C-Right resize-pane -R 16
-
-bind -r C-h resize-pane -L 16
-bind -r C-j resize-pane -D 4
-bind -r C-k resize-pane -U 4
-bind -r C-l resize-pane -R 16
-
-bind -r S-Left swap-pane -d -t '{left-of}'
-bind -r S-Down swap-pane -d -t '{down-of}'
-bind -r S-Up swap-pane -d -t '{up-of}'
-bind -r S-Right swap-pane -d -t '{right-of}'
-
-set -g mode-keys vi
-
-bind c copy-mode
-
-bind -T copy-mode-vi v send-keys -X begin-selection
-bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-
-bind -T copy-mode-vi C-q send-keys -X rectangle-toggle
-EOF
+sed -i \
+  -e 's//█/g' -e 's//█/g' \
+  -e 's/󰞷/n/g' -e 's//p/g' -e 's/󰁝/c/g' -e 's/󰣖/t/g' \
+  -e 's/ [󰓦]//g' \
+  -e 's/󰇘//g' \
+  -e 's/$XDG_CONFIG_HOME\/tmux/$HOME/g' \
+  -e '/^# no archiso begin/,/^# no archiso end/{//!d}' \
+  -e '/^.*# no archiso.*/{//d}' \
+  $PROFILE/airootfs/root/tmux.conf
 
 # build
 
