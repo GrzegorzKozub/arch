@@ -32,13 +32,14 @@ cp -r /usr/share/archiso/configs/releng $PROFILE
 
 # packages
 
-[[ $(grep 'linux-lts' $PROFILE/packages.x86_64) ]] || echo 'linux-lts' >> $PROFILE/packages.x86_64
-
-for PACKAGE in neovim tmux; do echo $PACKAGE >> $PROFILE/packages.x86_64; done
+for PACKAGE in \
+  linux-lts \
+  neovim
+do
+  [[ $(grep $PACKAGE $PROFILE/packages.x86_64) ]] || echo $PACKAGE >> $PROFILE/packages.x86_64
+done
 
 # systemd-boot
-
-# sed -i -e '/grub/d' $PROFILE/packages.x86_64
 
 sed -i \
   -e "/^.*'uefi-ia32.grub.esp' 'uefi-x64.grub.esp'.*$/d" \
@@ -58,21 +59,29 @@ rm $PROFILE/efiboot/loader/entries/*archiso-x86_64*.conf
 
 sed -i \
   -e 's/^title   .*$/title   Archiso/' \
-  -e '/^options/ s/$/ nomodeset/' \
   $PROFILE/efiboot/loader/entries/01-archiso.conf
+
+  # -e 's/\(archisosearchuuid=\)[^ ]*/\1archiso/' \
+  # -e '/^options/ s/$/ nomodeset/' \
 
 sed -i \
   -e 's/^title   .*$/title   Archiso LTS/' \
-  -e '/^options/ s/$/ nomodeset/' \
   -e 's/vmlinuz-linux/vmlinuz-linux-lts/' \
   -e 's/initramfs-linux/initramfs-linux-lts/' \
   $PROFILE/efiboot/loader/entries/02-archiso-lts.conf
+
+  # -e 's/\(archisosearchuuid=\)[^ ]*/\1archiso/' \
+  # -e '/^options/ s/$/ nomodeset/' \
 
 sed -i \
   -e 's/^timeout 15$/timeout 1/' \
   -e 's/^default.*$/default 01-archiso.conf/' \
   -e '/beep on/d' \
   $PROFILE/efiboot/loader/loader.conf
+
+# console
+
+echo 'FONT=ter-232b' >> $PROFILE/airootfs/etc/vconsole.conf
 
 # scripts
 
@@ -101,22 +110,7 @@ alias vim='nvim'
 
 alias b='backup.zsh'
 alias r='restore.zsh'
-
-alias tmux='tmux -f ~/tmux.conf'
-[[ ! -z $TMUX ]] || tmux attach || tmux new
 EOF
-
-cp $XDG_CONFIG_HOME/tmux/tmux.conf $PROFILE/airootfs/root/tmux.conf
-
-sed -i \
-  -e 's//█/g' -e 's//█/g' \
-  -e 's/󰞷/n/g' -e 's//p/g' -e 's/󰁝/c/g' -e 's/󰣖/t/g' \
-  -e 's/ [󰓦]//g' \
-  -e 's/󰇘//g' \
-  -e 's/$XDG_CONFIG_HOME\/tmux/$HOME/g' \
-  -e '/^# no archiso begin/,/^# no archiso end/{//!d}' \
-  -e '/^.*# no archiso.*/{//d}' \
-  $PROFILE/airootfs/root/tmux.conf
 
 # build
 
