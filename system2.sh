@@ -142,14 +142,9 @@ rm /home/greg/system3.zsh
 
 # virtual console (before mkinitcpio)
 
-if [[ $MY_HOSTNAME = 'drifter' || $MY_ARCH_PART = 'worker' ]]; then
-  echo 'FONT=ter-232b' >> /etc/vconsole.conf
-else
-  echo 'FONT=ter-216b' >> /etc/vconsole.conf
-fi
-
+echo 'FONT=ter-232b' >> /etc/vconsole.conf
 echo 'FONT_MAP=8859-2' >> /etc/vconsole.conf
-echo 'KEYMAP=pl2' > /etc/vconsole.conf
+echo 'KEYMAP=pl2' >> /etc/vconsole.conf
 
 # busybox based initial ramdisk (before mkinitcpio)
 
