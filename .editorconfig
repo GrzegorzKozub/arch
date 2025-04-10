@@ -8,3 +8,7 @@ insert_final_newline = true
 quote_type = single
 trim_trailing_whitespace = true
 
+[*.sh]
+# https://github.com/mvdan/sh
+space_redirects = true
+
