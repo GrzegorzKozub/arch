@@ -17,6 +17,7 @@ PROFILE=$ARCHISO/profile
 ISO=$ARCHISO/iso
 USB=$ARCHISO/usb
 WORK=/tmp/archiso
+UUID=1234-5678 # archisosearchuuid
 
 # dirs
 
@@ -59,18 +60,18 @@ rm $PROFILE/efiboot/loader/entries/*archiso-x86_64*.conf
 
 sed -i \
   -e 's/^title   .*$/title   Archiso/' \
+  -e "s/\(archisosearchuuid=\)[^ ]*/\1$UUID/" \
   $PROFILE/efiboot/loader/entries/01-archiso.conf
 
-  # -e 's/\(archisosearchuuid=\)[^ ]*/\1archiso/' \
   # -e '/^options/ s/$/ nomodeset/' \
 
 sed -i \
   -e 's/^title   .*$/title   Archiso LTS/' \
   -e 's/vmlinuz-linux/vmlinuz-linux-lts/' \
   -e 's/initramfs-linux/initramfs-linux-lts/' \
+  -e "s/\(archisosearchuuid=\)[^ ]*/\1$UUID/" \
   $PROFILE/efiboot/loader/entries/02-archiso-lts.conf
 
-  # -e 's/\(archisosearchuuid=\)[^ ]*/\1archiso/' \
   # -e '/^options/ s/$/ nomodeset/' \
 
 sed -i \
@@ -121,6 +122,10 @@ sudo mkarchiso -v -L ARCHISO -w $WORK -o $ISO $PROFILE
 sudo mount --read-only $(ls $ISO/*.iso) /mnt
 cp -r /mnt/* $USB
 sudo umount /mnt
+
+# archisosearchfilename
+
+sudo mv $USB/boot/*.uuid $USB/boot/$UUID.uuid
 
 # secure boot support using PreLoader
 

@@ -12,7 +12,10 @@ Automated Arch Linux installation
 
 1. Create a DOS partition table on the pendrive
 2. Add a FAT32 partition with the boot flag
-3. Label the partition with `sudo mlabel -i /dev/sda1 ::archiso`
+3. Prepare the partition for `archisosearchuuid` param
+  - Set the UUID to a known value with `sudo mlabel -i /dev/sdb1 :: -N 12345678`
+  - Label with `sudo mlabel -i /dev/sdb1 ::archiso`
+  - Verify with `lsblk -lno PATH,FSTYPE,UUID`
 4. Build with `~/code/arch/archiso.zsh`
 5. Copy with
   ```bash
