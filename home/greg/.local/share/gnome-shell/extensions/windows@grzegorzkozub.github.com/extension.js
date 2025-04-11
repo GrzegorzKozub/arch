@@ -18,7 +18,7 @@ export default class Windows extends Extension {
       { title: /.?Inkscape$/ },
       { title: /.?MySQL Workbench$/ },
       { title: /^OBS.?/ },
-      { class: /^Postman$/, auto: true, noRole: 'GtkFileChooserDialog' },
+      { class: /^Postman$/, auto: true },
       { title: /.?Shotcut$/ },
       { title: /.?Visual Studio Code$/ },
       { class: /^dev.zed.Zed$/, auto: true },
