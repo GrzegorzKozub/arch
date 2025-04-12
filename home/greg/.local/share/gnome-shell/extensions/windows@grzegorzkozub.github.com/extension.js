@@ -16,19 +16,16 @@ export default class Windows extends Extension {
       { title: /^DBeaver.?/, auto: true },
       { class: /^draw.io$/, auto: true },
       { title: /.?Inkscape$/ },
-      { title: /.?MySQL Workbench$/ },
       { title: /^OBS.?/ },
       { class: /^Postman$/, auto: true },
       { title: /.?Shotcut$/ },
-      { title: /.?Visual Studio Code$/ },
+      { title: /.?Visual Studio Code$/, auto: true },
       { class: /^dev.zed.Zed$/, auto: true },
     ];
     const medium = [
-      { title: /^calibre.?/ },
       { title: /^DevTools.?/ },
       { class: /.?evince$/, auto: true },
       { title: /^Foliate.?/ },
-      { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
       { title: /.?KeePassXC$/ },
       { class: /^io.missioncenter.MissionCenter$/ },
@@ -39,7 +36,6 @@ export default class Windows extends Extension {
       { class: /^teams-for-linux$/, auto: true },
     ];
     const small = [
-      { class: /.?drawing.?/ },
       // { title: /^Open/ }, // file pickers
       { class: /^org.gnome.Extensions$/ },
       { class: /^org.gnome.SystemMonitor$/ },
