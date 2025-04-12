@@ -12,7 +12,7 @@ export default class Windows extends Extension {
   constructor(metadata) {
     super(metadata);
     const big = [
-      { title: /.?Brave$/, auto: true, noRole: 'pop-up' },
+      { title: /.?Brave$/, auto: true, largerThan: { width: 2000, height: 1500 } },
       { title: /^DBeaver.?/, auto: true },
       { class: /^draw.io$/, auto: true },
       { title: /.?Inkscape$/ },
@@ -124,8 +124,19 @@ export default class Windows extends Extension {
 
   findConfig(config, win) {
     return config.find(cfg =>
-      (cfg.title && cfg.title.test(win.title) || cfg.class && cfg.class.test(win.wm_class)) &&
-      (!cfg.noRole || cfg.noRole !== win.get_role()));
+      (this.matchTitle(cfg, win) || this.matchClass(cfg, win)) &&
+      this.matchRole(cfg, win) &&
+      this.matchSize(cfg, win));
+  }
+
+  matchTitle(cfg, win) { return cfg.title && cfg.title.test(win.title); }
+  matchClass(cfg, win) { return cfg.class && cfg.class.test(win.wm_class); }
+  matchRole(cfg, win) { return !cfg.exceptRole || cfg.exceptRole !== win.get_role(); }
+  matchSize(cfg, win) {
+    if (!cfg.largerThan) { return true; }
+    const { width, height } = win.get_frame_rect();
+    return (!cfg.largerThan.width || cfg.largerThan.width < width) &&
+      (!cfg.largerThan.height || cfg.largerThan.height < height);
   }
 
   activate(win) {
