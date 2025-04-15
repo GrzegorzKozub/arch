@@ -59,6 +59,7 @@ paru -S --aur --needed --noconfirm \
 # terminal
 
 sudo pacman -S --noconfirm \
+  ghostty \
   kitty
 
   # alacritty foot

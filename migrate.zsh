@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# ghostty
+
+sudo pacman -S --noconfirm ghostty
+
 # vconsole
 
 [[ $HOST = 'player' ]] &&

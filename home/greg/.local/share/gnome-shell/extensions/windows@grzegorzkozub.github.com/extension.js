@@ -47,6 +47,7 @@ export default class Windows extends Extension {
     ];
     const initial = [
       { class: /^Alacritty$/, initial: true },
+      { class: /^com.mitchellh.ghostty$/, initial: true },
       { class: /^foot$/, initial: true },
       { class: /^kitty$/, initial: true },
       { class: /^org.gnome.Nautilus$/, initial: true },

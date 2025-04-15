@@ -324,6 +324,7 @@ set +e
 gsettings set org.gnome.shell favorite-apps "[
   'org.gnome.Nautilus.desktop',
   'kitty.desktop',
+  'com.mitchellh.ghostty.desktop',
   'code.desktop',
   'dev.zed.Zed.desktop',
   'postman.desktop',
