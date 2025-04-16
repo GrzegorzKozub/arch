@@ -71,6 +71,17 @@ done
 #   -e "s/^Exec=foot$/Exec=foot --override=include=~\/.config\/foot\/$HOST.ini/" \
 #   $XDG_DATA_HOME/applications/foot.desktop
 
+# ghostty
+
+if [[ $HOST = 'drifter' ]]; then
+
+  cp /usr/share/applications/com.mitchellh.ghostty.desktop $XDG_DATA_HOME/applications
+  sed -i \
+    -e "s/^Exec=ghostty$/Exec=ghostty --window-height=30 --window-width=120/" \
+    $XDG_DATA_HOME/applications/com.mitchellh.ghostty.desktop
+
+fi
+
 # keepassxc
 
 cp /usr/share/applications/org.keepassxc.KeePassXC.desktop $XDG_DATA_HOME/applications
