@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# docker
+
+code --uninstall-extension docker.docker
+
 # ghostty
 
 sudo pacman -S --noconfirm ghostty
