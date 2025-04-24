@@ -29,8 +29,8 @@ git clone git@github.com:GrzegorzKozub/arch.git ~/code/arch
 [[ -d ~/code/walls ]] && rm -rf ~/code/walls
 git clone git@github.com:GrzegorzKozub/walls.git ~/code/walls
 
-[[ -d ~/code/dotfiles ]] && rm -rf ~/code/dotfiles
-git clone --recursive git@github.com:GrzegorzKozub/dotfiles.git ~/code/dotfiles
+[[ -d ~/code/dot ]] && rm -rf ~/code/dot
+git clone --recursive git@github.com:GrzegorzKozub/dot.git ~/code/dot
 
 [[ -d ~/code/history ]] && rm -rf ~/code/history
 git clone git@github.com:GrzegorzKozub/history.git ~/code/history

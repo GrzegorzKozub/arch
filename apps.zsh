@@ -28,9 +28,9 @@ sudo pacman -S --noconfirm \
 sudo pacman -S --noconfirm \
   stow
 
-. `dirname $0`/dotfiles.zsh
+. `dirname $0`/dot.zsh
 
-. ~/code/dotfiles/init.zsh
+. ~/code/dot/init.zsh
 . ~/code/keys/init.zsh
 
 # fonts
@@ -234,5 +234,5 @@ fi
 
 # dotfiles install
 
-. ~/code/dotfiles/install.zsh
+. ~/code/dot/install.zsh
 

@@ -37,7 +37,7 @@ done
 
 # cp /usr/share/applications/Alacritty.desktop $XDG_DATA_HOME/applications
 # sed -i \
-#   -e "s/^Exec=alacritty$/Exec=alacritty --option=font.size=$(~/code/dotfiles/alacritty/alacritty/font.sh)/" \
+#   -e "s/^Exec=alacritty$/Exec=alacritty --option=font.size=$(~/code/dot/alacritty/alacritty/font.sh)/" \
 #   $XDG_DATA_HOME/applications/Alacritty.desktop
 
 # flameshot

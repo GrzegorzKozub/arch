@@ -137,5 +137,5 @@ systemctl --user enable pci.service
 
 # dotfiles
 
-. ~/code/dotfiles/games.zsh
+. ~/code/dot/games.zsh
 

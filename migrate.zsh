@@ -2,9 +2,17 @@
 
 set -o verbose
 
-# docker
+# first update arch & dotfiles
 
-code --uninstall-extension docker.docker
+# dotfiles
+
+[[ -d ~/code/dotfiles ]] && mv ~/code/dotfiles ~/code/dot
+
+pushd ~/code/dot
+git remote set-url origin git@github.com:GrzegorzKozub/dot.git
+popd
+
+. ~/dot/migrate.zsh
 
 # ghostty
 
@@ -24,6 +32,10 @@ nvim \
 
 [[ $HOST = 'player' ]] &&
   sudo sed -i -e 's/216b/232b/' /etc/vconsole.conf
+
+# vscode
+
+code --uninstall-extension docker.docker
 
 # cleanup
 

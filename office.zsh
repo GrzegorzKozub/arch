@@ -40,5 +40,5 @@ done
 
 # dotfiles
 
-. ~/code/dotfiles/office.zsh
+. ~/code/dot/office.zsh
 

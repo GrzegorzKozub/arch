@@ -108,5 +108,5 @@ sudo pacman -Rs --noconfirm \
 
 # dotfiles
 
-. ~/code/dotfiles/hyprland.zsh
+. ~/code/dot/hyprland.zsh
 
