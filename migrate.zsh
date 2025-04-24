@@ -4,7 +4,7 @@ set -o verbose
 
 # first update arch & dotfiles
 
-# dotfiles
+# dotfiles -> dot
 
 [[ -d ~/code/dotfiles ]] && mv ~/code/dotfiles ~/code/dot
 
@@ -13,6 +13,16 @@ git remote set-url origin git@github.com:GrzegorzKozub/dot.git
 popd
 
 . ~/dot/migrate.zsh
+
+# passwords -> pass
+
+[[ -d ~/code/passwords ]] && mv ~/code/passwords ~/code/pass
+
+pushd ~/code/pass
+git remote set-url origin git@github.com:GrzegorzKozub/pass.git
+popd
+
+sed -i -e 's/passwords/pass/g' $XDG_CACHE_HOME/keepassxc/keepassxc.ini
 
 # ghostty
 

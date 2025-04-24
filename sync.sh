@@ -7,8 +7,8 @@ set -e
 wait_net() {
   until [[
     $(ping -c 1 -t 32 'github.com' 2> /dev/null |
-      grep '1 received') \
-  ]]; do
+      grep '1 received') ]] \
+    ; do
     local waited=1
     sleep 15
   done
@@ -20,8 +20,7 @@ wait_net
 pushd ~/code/walls && ./sync.sh && popd &
 pushd ~/code/history && ./sync.sh && popd &
 pushd ~/code/keys && ./sync.sh && popd &
-pushd ~/code/passwords && ./sync.sh && popd &
+pushd ~/code/pass && ./sync.sh && popd &
 pushd ~/code/notes && ./sync.sh && popd &
 
 wait
-
