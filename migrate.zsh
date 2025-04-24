@@ -12,7 +12,16 @@ pushd ~/code/dot
 git remote set-url origin git@github.com:GrzegorzKozub/dot.git
 popd
 
-. ~/dot/migrate.zsh
+. ~/code/dot/migrate.zsh
+
+# history -> hist
+
+[[ -d ~/code/hist ]] && rm -rf ~/code/hist
+[[ -d ~/code/history ]] && rm -rf ~/code/history
+
+pushd ~/code
+git clone git@github.com:GrzegorzKozub/hist.git
+popd
 
 # passwords -> pass
 
