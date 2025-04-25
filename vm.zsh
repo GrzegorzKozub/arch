@@ -17,7 +17,7 @@ VARS=$NAME.fd
 TPM=$NAME-tpm
 
 OS=$NAME.iso
-DRIVERS=virtio-win-0.1.240.iso
+DRIVERS=virtio-win-0.1.271.iso
 
 # packages
 
@@ -89,9 +89,9 @@ if [[ $UEFI = 1 ]]; then
   OPTS+=('-tpmdev emulator,chardev=chardev0,id=tpmdev0')
   OPTS+=('-device tpm-tis,tpmdev=tpmdev0')
 
-  [[ -f $DIR/$VARS ]] || cp /usr/share/edk2-ovmf/x64/OVMF_VARS.fd $DIR/$VARS
+  [[ -f $DIR/$VARS ]] || cp /usr/share/edk2/x64/OVMF_VARS.4m.fd $DIR/$VARS
 
-  OPTS+=('-drive if=pflash,format=raw,unit=0,file=/usr/share/edk2-ovmf/x64/OVMF_CODE.secboot.fd,readonly=on')
+  OPTS+=('-drive if=pflash,format=raw,unit=0,file=/usr/share/edk2/x64/OVMF_CODE.secboot.4m.fd,readonly=on')
   OPTS+=("-drive if=pflash,format=raw,unit=1,file=$DIR/$VARS")
 
 fi
