@@ -112,17 +112,6 @@ sed -i \
   $XDG_DATA_HOME/applications/nvim.desktop
 sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/nvim.desktop
 
-# obsidian
-
-if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
-
-  cp /usr/share/applications/obsidian.desktop $XDG_DATA_HOME/applications
-  sed -i \
-    -e 's/\/usr\/bin\/obsidian/\/usr\/bin\/obsidian --disable-features=WaylandFractionalScaleV1 --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto/' \
-    $XDG_DATA_HOME/applications/obsidian.desktop
-
-fi
-
 # postman
 
 if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
