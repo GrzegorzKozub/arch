@@ -131,7 +131,7 @@ sed -i -e 's/^Name=.*/Name=Teams/' $XDG_DATA_HOME/applications/teams-for-linux.d
 if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 
   sed -i \
-    -e 's/^Exec=teams-for-linux/Exec=teams-for-linux --enable-features=WebRTCPipeWireCapturer --ozone-platform-hint=auto/' \
+    -e 's/^Exec=teams-for-linux/Exec=teams-for-linux --ozone-platform-hint=auto/' \
     $XDG_DATA_HOME/applications/teams-for-linux.desktop
 
 fi
