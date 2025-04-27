@@ -81,8 +81,9 @@ Automated Arch Linux installation
   - Select the sound device and set volume to 50%
 3. KeePassXC
   - Open your databases
-  - Only show attachment, title and username columns
-  - Hide folders panel & fit columns to window
+  - Hide folders panel
+  - Only show title and username columns, also in search
+  - Fit to window, also in search
   - Configure Brave extension
 4. Postman
   - Change font to `Cascadia Code`
@@ -102,24 +103,11 @@ Automated Arch Linux installation
 
 ## Wayland
 
-Brave, Code, Alacritty, Foot, Kitty, Obsidian & Postman run in native Wayland.
-
-### Problems
-
-- Fractorial scaling makes the text blurry for native Wayland apps and [the whole interface blurry for XWayland apps](https://gitlab.gnome.org/GNOME/mutter/-/issues/2328)
-- GNOME text scaling factor not supported by the apps in native Wayland
-- [KeePassXC auto-type not supported in native Wayland](https://github.com/keepassxreboot/keepassxc/issues/2281)
-
-### Enabling on NVIDIA
+To enable Wayland on NVIDIA
 
 - Add `nvidia_drm.modeset=1` kernel module setting
 - Ensure no `WaylandEnable=false` in `/etc/gdm/custom.conf`
 - Ensure [video memory is preserved during suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
-
-### Forcing native Wayland
-
-Force native Wayland for QT apps with `QT_QPA_PLATFORM=wayland`
-
 ### XDG Desktop Portal
 
 XDP implementations conflict each other so only one should be installed at the same time:
@@ -151,25 +139,19 @@ For these reasons `dispwin` and `redshift` were removed in commit [f78146b](http
 
 ## Fonts
 
-Comfortable settings for display scale & font scaling factor given the screen size and resolution:
+Comfortable settings for display scale on Wayland given the screen size and resolution:
 
-- drifter
-  - Wayland - 300% & 1
-  - X11 - 200% & 1.25
-- player & worker
-  - Wayland - 200% & 1
-  - X11 - 100% & 1.75
+- drifter: 300%
+- player & worker: 200%
 
-The aim is to standardize on the font size of `1em` or `12pt` or `16px` ([converter](https://simplecss.eu/pxtoems.html)) and achieve about 50 lines (or 40 lines on drifter) of full screen text across all apps.
+Font scaling factor is always at 1.
+
+The aim is to standardize on the font size of `1em` or `12pt` or `16px` ([converter](https://simplecss.eu/pxtoems.html)) and achieve about 50 lines (or 40 lines on drifter) of full screen text in terminal and code editors.
 
 Current settings:
 
-- Alacritty, Foot & Kitty: `12pt` (or `1em` or `16px`)
+- Alacritty, Foot, Ghostty & Kitty: `12pt` (or `1em` or `16px`)
 - Brave, Code, Obsidian & Postman: `16px` (or `1em` or `12pt`)
-
-### Font scaling factor
-
-Apps running on X11 or XWayland respect font scaling factor. For native Wayland apps, the font size can be adjusted to simulate font scaling factor.
 
 ## GNOME Shell extensions
 
@@ -214,10 +196,6 @@ To reduce the image size after freeing up space on guest, first defragment the d
   ```
 
 ### Launch options
-
-- Cemu, VULKAN
-
-`LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" PROTON_ENABLE_NGX_UPDATER=1 PROTON_ENABLE_NVAPI=1 python3 ./save_sync mangohud gamemoderun %command% -f -g "<game file>"`
 
 - Elden Ring, VKD3D
 
