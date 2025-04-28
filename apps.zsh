@@ -85,6 +85,7 @@ sudo pacman -S --noconfirm \
   jwt-cli \
   nushell \
   nvtop \
+  pastel \
   ripgrep \
   ripgrep-all \
   rsync \

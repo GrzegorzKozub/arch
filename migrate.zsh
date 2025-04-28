@@ -18,6 +18,10 @@ set -o verbose
   rm -f $XDG_DATA_HOME/applications/obsidian.desktop
 }
 
+# pastel
+
+sudo pacman -S --noconfirm pastel
+
 # cleanup
 
 . `dirname $0`/packages.zsh
