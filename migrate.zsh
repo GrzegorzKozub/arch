@@ -2,6 +2,12 @@
 
 set -o verbose
 
+# btop
+
+pushd ~/code/dot
+git update-index --assume-unchanged btop/btop/btop.conf
+popd
+
 # nvim
 
 rm -rf $XDG_CACHE_HOME/nvim
