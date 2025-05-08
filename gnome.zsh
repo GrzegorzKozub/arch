@@ -65,10 +65,8 @@ dconf write /org/gnome/settings-daemon/global-shortcuts/brave-browser/shortcuts 
 
 # apps > document viewer
 
-gsettings set org.gnome.Evince.Default show-sidebar false
-gsettings set org.gnome.Evince.Default sizing-mode 'fit-width'
-
-xdg-mime default org.gnome.Evince.desktop application/pdf
+# gsettings set org.gnome.Evince.Default show-sidebar false
+# gsettings set org.gnome.Evince.Default sizing-mode 'fit-width'
 
 # apps > extensions
 
@@ -118,6 +116,12 @@ xdg-mime default org.gnome.Nautilus.desktop inode/directory
 
 xdg-mime default org.gnome.Loupe.desktop image/jpeg
 xdg-mime default org.gnome.Loupe.desktop image/png
+
+# apps > papers
+
+gsettings set org.gnome.Papers.Default show-sidebar false
+
+xdg-mime default org.gnome.Papers.desktop application/pdf
 
 # apps > software
 

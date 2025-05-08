@@ -36,6 +36,11 @@ pushd ~/code/dot && git pull && popd
   rm -f $XDG_DATA_HOME/applications/obsidian.desktop
 }
 
+# papers
+
+sudo pacman --noconfirm -R evince
+sudo pacman --noconfirm -S papers
+
 # pastel
 
 sudo pacman -S --noconfirm pastel

@@ -28,13 +28,13 @@ export default class Windows extends Extension {
     ];
     const medium = [
       { title: /^DevTools.?/ },
-      { class: /.?evince$/, auto: true },
       { title: /^Foliate.?/ },
       { title: /^GNU Image Manipulation Program$/ },
       { title: /.?KeePassXC$/ },
       { class: /^io.missioncenter.MissionCenter$/ },
       { title: /.?LibreOffice.?/ },
       { class: /^obsidian$/ },
+      { class: /^org.gnome.Papers$/, auto: true },
       { title: /.?Slack$/, auto: true },
       { title: /.?Steam$/ },
       { class: /^teams-for-linux$/, auto: true },
