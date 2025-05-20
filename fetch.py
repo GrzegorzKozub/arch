@@ -4,20 +4,27 @@
 
 import os
 import re
+from typing import Any
 
 import requests
 
-repos: list[str] = []
+repos: list[Any] = []
 
 url = "https://api.github.com/orgs/ApsisInternational/repos?per_page=100&page=1&type=private"
 headers = {"Authorization": f"Bearer {os.environ.get('GITHUB_PAT')}"}
 
 while url:
     res = requests.get(url, headers=headers, timeout=15)
-    repos = repos + list(map(lambda repo: repo["name"], res.json()))
+    repos = repos + res.json()
     url = res.links["next"]["url"] if "next" in res.links else None
 
-repos = list(filter(lambda repo: not re.match(r"^-|\.", repo), repos))
+repos = list(
+    filter(
+        lambda repo: not repo["archived"] and not re.match(r"^-|\.", repo["name"]),
+        repos,
+    )
+)
+repos = list(map(lambda repo: repo["name"], repos))
 repos.sort()
 
 DIR = f"{os.environ.get('XDG_CACHE_HOME')}/fetch"
