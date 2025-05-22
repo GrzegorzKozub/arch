@@ -2,13 +2,7 @@
 
 Automated Arch Linux installation
 
-## Prerequisites
-
-* Windows, along with the EFI partition are already installed. EFI partition size is increased to 512 MB
-* There's at least 80 GB unassigned space on the disk for Arch
-* In Windows, real time is set to UTC
-
-### Archiso
+## Archiso
 
 1. Create a DOS partition table on the pendrive
 2. Add a FAT32 partition with the boot flag
@@ -100,6 +94,28 @@ Automated Arch Linux installation
 7. Run `clean.zsh`
 8. Prepare the `~/.config/zsh/.zshenv` and `~/code/arch/fetch.env` files
 9. Fix window sizes and positions
+
+## New disk
+
+Existing backup can be used when changing disks or moving partitions
+
+1. Boot from archiso
+2. Use `disk.sh` to encrypt Linux partition with LUKS and create LVM volumes inside
+3. Use `restore.zsh` to restore `/boot` and `/` from latest backup
+4. Use `boot.zsh` to add Linux Boot Manager to EFI
+5. Change root to the restored installation
+  ```bash
+  mount /dev/mapper/vg1-root /mnt
+  mount /dev/nvme0n1p2 /mnt/boot # EFI partition
+  arch-chroot /mnt
+  ```
+6. Use `blkid` to get the partition UUIDs and update them in `/etc/fstab`
+7. Update Linux partition UUID in `/etc/crypttab.initramfs` and re-create initial ramdisk
+  ```bash
+  mkinitcpio -p linux && mkinitcpio -p linux-lts
+  ```
+8. Exit, unmount and reboot
+9. Use `crypt.zsh` to unlock Linux partition using TPM and save recovery key
 
 ## Wayland
 
