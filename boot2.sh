@@ -6,8 +6,8 @@ set -e -o verbose
 
 bootctl --path=/boot install
 
-cp `dirname $0`/boot/loader/loader.conf /boot/loader
-cp `dirname $0`/boot/loader/entries/*.conf /boot/loader/entries
+cp $(dirname $0)/boot/loader/loader.conf /boot/loader
+cp $(dirname $0)/boot/loader/entries/*.conf /boot/loader/entries
 
 # ucode
 
@@ -52,14 +52,14 @@ sed -i 's/ <params>//g' /boot/loader/entries/*.conf
 
 # secure boot support using PreLoader
 
-cp `dirname $0`/boot3.zsh /home/greg
+cp $(dirname $0)/boot3.zsh /home/greg
 su greg --command '~/boot3.zsh'
 rm /home/greg/boot3.zsh
 
 cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
 cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
 
-cp `dirname $0`/boot4.zsh /home/greg
+cp $(dirname $0)/boot4.zsh /home/greg
 su greg --command '~/boot4.zsh'
 rm /home/greg/boot4.zsh
 
@@ -70,9 +70,3 @@ for BOOTNUM in $(efibootmgr | grep 'Linux Boot Manager' | sed -E 's/^Boot(.+)\* 
 done
 
 efibootmgr --disk $MY_DISK --part $MY_EFI_PART_NBR --create --label 'Linux Boot Manager' --loader /EFI/systemd/PreLoader.efi
-
-WINDOWS=$(efibootmgr | grep 'Windows Boot Manager' | head -n1 | sed -E 's/^Boot(.+)\* Windows Boot Manager$/\1/')
-LINUX=$(efibootmgr | grep 'Linux Boot Manager' | sed -E 's/^Boot(.+)\* Linux Boot Manager$/\1/')
-
-efibootmgr --bootorder $WINDOWS,$LINUX
-
