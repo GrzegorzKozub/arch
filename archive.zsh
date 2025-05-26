@@ -4,18 +4,16 @@ set -e
 
 # archive
 
-() {
+DISK=/dev/sda1
+MOUNT=/mnt
+SOURCE=/run/media/$USER/data/
+TARGET=$MOUNT/arch
 
-local disk=/dev/sda1
-local mount=/mnt
-local source=/run/media/$USER/data/
-local target=$mount/arch
+[[ $(MOUNT | grep "$DISK on $MOUNT") ]] || sudo mount $DISK $MOUNT
+[[ -d $TARGET ]] || mkdir $TARGET
 
-[[ $(mount | grep "$disk on $mount") ]] || sudo mount $disk $mount
-[[ -d $target ]] || mkdir $target
-
-local free=$(df -h $disk --output=avail | grep -v Avail | sed -E 's/ |G//g' )
-[[ $free -lt 64 ]] && echo "only ${free}G free on $disk"
+FREE=$(df -h $DISK --output=avail | grep -v Avail | sed -E 's/ |G//g' )
+[[ $FREE -lt 64 ]] && echo "only ${FREE}G free on $DISK"
 
 rsync \
   --archive \
@@ -23,9 +21,7 @@ rsync \
   --exclude 'boot' \
   --exclude 'lost+found' \
   --human-readable --progress \
-  $source $target
+  $SOURCE $TARGET
 
-sudo umount -R $mount
-
-}
+sudo umount -R $MOUNT
 
