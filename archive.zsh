@@ -4,12 +4,13 @@ set -e
 
 # archive
 
-DISK=/dev/sda1
+[[ $HOST = 'player' ]] && DISK=/dev/nvme1n1p1 || DISK=/dev/sda1
+
 MOUNT=/mnt
 SOURCE=/run/media/$USER/data/
 TARGET=$MOUNT/arch
 
-[[ $(MOUNT | grep "$DISK on $MOUNT") ]] || sudo mount $DISK $MOUNT
+[[ $(mount | grep "$DISK on $MOUNT") ]] || sudo mount $DISK $MOUNT
 [[ -d $TARGET ]] || mkdir $TARGET
 
 FREE=$(df -h $DISK --output=avail | grep -v Avail | sed -E 's/ |G//g' )
