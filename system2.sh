@@ -155,8 +155,10 @@ echo 'KEYMAP=pl2' >> /etc/vconsole.conf
 # systemd based initial ramdisk (before mkinitcpio)
 
 sed -Ei \
-  's/^HOOKS=.+$/HOOKS=(base systemd plymouth autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)/' \
+  's/^HOOKS=.+$/HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)/' \
   /etc/mkinitcpio.conf
+
+  # plymouth (splash, after systemd)
 
 # dm-crypt with systemd based initial ramdisk (before mkinitcpio)
 

@@ -58,7 +58,6 @@ pacstrap /mnt \
   efibootmgr sbctl \
   tpm2-tss \
   fwupd \
-  plymouth \
   lvm2 \
   ntfs-3g \
   avahi nss-mdns \
@@ -78,7 +77,7 @@ pacstrap /mnt \
   gdm glib2-devel \
   argyllcms
 
-  # nftables
+  # nftables plymouth (splash)
 
 # fstab file
 

@@ -16,6 +16,18 @@ nvim \
   -c 'autocmd User MasonToolsUpdateCompleted quitall' \
   -c 'autocmd User VeryLazy MasonToolsUpdate'
 
+# splash
+
+for FILE in 01-arch 02-arch-lts; do
+  sudo sed -i 's/ splash//' /boot/loader/entries/$FILE.conf
+done
+
+sudo sed -i 's/ plymouth//' /etc/mkinitcpio.conf
+sudo rm -rf /etc/plymouth
+
+paru -Rs --noconfirm plymouth-theme-neat
+sudo pacman -Rs --noconfirm plymouth
+
 # cleanup
 
 . `dirname $0`/packages.zsh

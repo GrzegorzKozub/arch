@@ -44,7 +44,7 @@ sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader
 
 # splash
 
-sed -i 's/<params>/splash <params>/g' /boot/loader/entries/*.conf
+# sed -i 's/<params>/splash <params>/g' /boot/loader/entries/*.conf
 
 # remove kernel params placeholder
 
