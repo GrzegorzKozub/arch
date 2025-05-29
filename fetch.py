@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# pylint: disable=C0103
+# pylint: disable=C0103,W0621
 
 import os
 import re
@@ -10,13 +10,23 @@ import requests
 
 repos: list[Any] = []
 
-url = "https://api.github.com/orgs/ApsisInternational/repos?per_page=100&page=1&type=private"
-headers = {"Authorization": f"Bearer {os.environ.get('GITHUB_PAT')}"}
 
-while url:
-    res = requests.get(url, headers=headers, timeout=15)
-    repos = repos + res.json()
-    url = res.links["next"]["url"] if "next" in res.links else None
+def fetch(owner: str, token: str, private: bool = True) -> list[Any]:
+    url = f"https://api.github.com/{owner}/repos?per_page=100&page=1"
+    if private:
+        url += "&type=private"
+    headers = {"Authorization": f"Bearer {os.environ.get(token)}"}
+    repos: list[Any] = []
+    while url:
+        res = requests.get(url, headers=headers, timeout=15)
+        repos += res.json()
+        url = res.links["next"]["url"] if "next" in res.links else None
+    return repos
+
+
+repos += fetch("orgs/ApsisInternational", "GITHUB_PAT")  # _APSIS
+# repos += fetch("orgs/efficy-sa", "GITHUB_PAT_EFFICY")
+# repos += fetch("user", "GITHUB_PAT_GREG", False)
 
 repos = list(
     filter(
