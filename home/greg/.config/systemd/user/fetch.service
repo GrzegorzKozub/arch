@@ -5,7 +5,7 @@ After=graphical-session.target
 [Service]
 Type=simple
 EnvironmentFile=%h/code/arch/fetch.env
-PassEnvironment=GITHUB_PAT
+PassEnvironment=GITHUB_PAT_APSIS GITHUB_PAT_EFFICY GITHUB_PAT_GREG
 ExecStart=%h/code/arch/fetch.py
 
 [Install]

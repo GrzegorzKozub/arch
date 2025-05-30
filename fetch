@@ -2,18 +2,18 @@
 
 set -e
 
-while read -r repo; do
+while read -r name owner; do
 
-  [[ $2 = '' ]] && local dir=~/code/$repo || local dir=~/code/$2
+  [[ $2 = '' ]] && local dir=~/code/$name || local dir=~/code/$2
 
-  if [[ $1 = $repo ]]; then
+  if [[ $1 = $name ]]; then
 
-    echo "fetching $repo"
+    echo "\e[37m fetching to \e[36m${dir/~/~}\e[0m"
 
     if [[ -d $dir ]]; then
       pushd -q $dir && (git checkout master || git checkout main) && git pull --prune && popd -q
     else
-      git clone "git@github.com:ApsisInternational/$repo.git" $dir
+      git clone "git@github.com:$owner/$name.git" $dir
     fi
 
   fi

@@ -11,9 +11,9 @@ import requests
 repos: list[Any] = []
 
 
-def fetch(owner: str, token: str, private: bool = True) -> list[Any]:
+def fetch(owner: str, token: str, public: bool = False) -> list[Any]:
     url = f"https://api.github.com/{owner}/repos?per_page=100&page=1"
-    if private:
+    if not public:
         url += "&type=private"
     headers = {"Authorization": f"Bearer {os.environ.get(token)}"}
     repos: list[Any] = []
@@ -24,9 +24,9 @@ def fetch(owner: str, token: str, private: bool = True) -> list[Any]:
     return repos
 
 
-repos += fetch("orgs/ApsisInternational", "GITHUB_PAT")  # _APSIS
+repos += fetch("orgs/ApsisInternational", "GITHUB_PAT_APSIS")
 # repos += fetch("orgs/efficy-sa", "GITHUB_PAT_EFFICY")
-# repos += fetch("user", "GITHUB_PAT_GREG", False)
+repos += fetch("user", "GITHUB_PAT_GREG", True)
 
 repos = list(
     filter(
@@ -34,7 +34,7 @@ repos = list(
         repos,
     )
 )
-repos = list(map(lambda repo: repo["name"], repos))
+repos = list(map(lambda repo: f"{repo["name"]} {repo["owner"]["login"]}", repos))
 repos.sort()
 
 DIR = f"{os.environ.get('XDG_CACHE_HOME')}/fetch"

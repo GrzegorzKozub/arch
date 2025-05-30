@@ -6,6 +6,11 @@ set -o verbose
 
 sudo sed -i -e 's/^IgnorePkg.*$/#IgnorePkg   =/' /etc/pacman.conf # aws-cli-v2 python-prompt_toolkit
 
+# fetch
+
+cp `dirname $0`/home/$USER/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable fetch.service
+
 # nvim
 
 rm -rf $XDG_CACHE_HOME/nvim

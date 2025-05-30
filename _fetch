@@ -8,7 +8,7 @@ zstyle ':completion:*:*:fetch:*:*' \
 local -a repos
 
 while read -r name; do
-  repos=($repos[@] "$name\:'https://github.com/ApsisInternational/$name'")
+  repos=($repos[@] "$name")
 done < $XDG_CACHE_HOME/fetch/repos
 
 _alternative "repos:repos:(($repos))"
