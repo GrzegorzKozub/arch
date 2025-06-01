@@ -25,7 +25,7 @@ def fetch(owner: str, token: str, public: bool = False) -> list[Any]:
 
 
 repos += fetch("orgs/ApsisInternational", "GITHUB_PAT_APSIS")
-# repos += fetch("orgs/efficy-sa", "GITHUB_PAT_EFFICY")
+repos += fetch("orgs/efficy-sa", "GITHUB_PAT_EFFICY")
 repos += fetch("user", "GITHUB_PAT_GREG", True)
 
 repos = list(
