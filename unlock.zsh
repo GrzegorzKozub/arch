@@ -2,8 +2,6 @@
 
 set -e
 
-# unlock
-
 [[ $(lsblk -lno NAME | grep 'vg1') ]] && exit 0
 
 ARCH_PART="$(

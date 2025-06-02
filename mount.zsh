@@ -2,8 +2,6 @@
 
 set -e
 
-# mount
-
 EFI_PART="$(
   lsblk -lno PATH,PARTTYPE,FSTYPE |
   grep -i 'C12A7328-F81F-11D2-BA4B-00A0C93EC93B' |

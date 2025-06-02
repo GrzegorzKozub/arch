@@ -2,8 +2,6 @@
 
 set -e
 
-# restore
-
 . `dirname $0`/unlock.zsh
 . `dirname $0`/mount.zsh
 
