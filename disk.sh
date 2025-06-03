@@ -21,7 +21,7 @@ ARCH_PART="$(
 
 # encryption
 
-cryptsetup luksFormat --type luks2 $MY_ARCH_PART
+cryptsetup luksFormat --type luks2 --sector-size 4096 $MY_ARCH_PART
 cryptsetup \
   --allow-discards \
   --perf-no_read_workqueue --perf-no_write_workqueue \
