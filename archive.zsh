@@ -2,12 +2,12 @@
 
 set -e
 
-# find data partition by uuid (nvme devices are numbered as they init)
+# find backup partition by uuid (nvme devices are numbered as they init)
 
 [[ $HOST = 'player' ]] &&
   DISK="$(
     lsblk -lno PATH,UUID |
-    grep -i '1fbc6b00-f28c-476a-9319-6640fb52d976' |
+    grep -i '5587CEC71012FFFA' |
     cut -d' ' -f1
   )" \
 || DISK=/dev/sda1
