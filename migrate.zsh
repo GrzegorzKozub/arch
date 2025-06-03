@@ -2,36 +2,18 @@
 
 set -o verbose
 
-# aws-cli-v2
+# gnome-disk-utility
 
-sudo sed -i -e 's/^IgnorePkg.*$/#IgnorePkg   =/' /etc/pacman.conf # aws-cli-v2 python-prompt_toolkit
-
-# fetch
-
-cp `dirname $0`/home/$USER/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable fetch.service
+sudo pacman -R --noconfirm gnome-disk-utility
 
 # nvim
 
-rm -rf $XDG_CACHE_HOME/nvim
-rm -rf $XDG_DATA_HOME/nvim
-rm -rf ~/.local/state/nvim
-
-nvim \
-  -c 'autocmd User MasonToolsUpdateCompleted quitall' \
-  -c 'autocmd User VeryLazy MasonToolsUpdate'
-
-# splash
-
-for FILE in 01-arch 02-arch-lts; do
-  sudo sed -i 's/ splash//' /boot/loader/entries/$FILE.conf
-done
-
-sudo sed -i 's/ plymouth//' /etc/mkinitcpio.conf
-sudo rm -rf /etc/plymouth
-
-paru -Rs --noconfirm plymouth-theme-neat
-sudo pacman -Rs --noconfirm plymouth
+# rm -rf $XDG_CACHE_HOME/nvim
+# rm -rf $XDG_DATA_HOME/nvim
+# rm -rf ~/.local/state/nvim
+# nvim \
+#   -c 'autocmd User MasonToolsUpdateCompleted quitall' \
+#   -c 'autocmd User VeryLazy MasonToolsUpdate'
 
 # cleanup
 
