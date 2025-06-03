@@ -6,6 +6,13 @@ set -o verbose
 
 sudo pacman -R --noconfirm gnome-disk-utility
 
+# noatime
+
+sudo sed -i \
+  -e "s/ext4      	rw,relatime/ext4      	rw,noatime/" \
+  -e "s/ext4    defaults /ext4    defaults,noatime /" \
+  /etc/fstab
+
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim

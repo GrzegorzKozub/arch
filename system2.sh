@@ -69,7 +69,7 @@ chown greg:users /home/greg/.zshrc
 
 # increase the highest requested rtc interrupt frequency
 
-cp `dirname $0`/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
+cp $(dirname $0)/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
 
 # nvidia gpu
 
@@ -79,7 +79,7 @@ cp `dirname $0`/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
 # webcam video format
 
 [[ $MY_HOSTNAME = 'worker' ]] &&
-  cp `dirname $0`/etc/udev/rules.d/10-c922.rules /etc/udev/rules.d/10-c922.rules
+  cp $(dirname $0)/etc/udev/rules.d/10-c922.rules /etc/udev/rules.d/10-c922.rules
 
 # sleep fixes
 
@@ -116,7 +116,7 @@ fi
 [[ -d /run/media/greg/data ]] || mkdir -p /run/media/greg/data
 
 echo '# /dev/mapper/vg1-data' >> /etc/fstab
-echo '/dev/mapper/vg1-data	/run/media/greg/data	ext4	defaults	0 2' >> /etc/fstab
+echo '/dev/mapper/vg1-data	/run/media/greg/data	ext4	defaults,noatime	0 2' >> /etc/fstab
 echo '' >> /etc/fstab
 
 # reflector
@@ -136,7 +136,7 @@ sed -i "s/^PKGEXT='.pkg.tar.zst'\$/PKGEXT='.pkg.tar'/" /etc/makepkg.conf
 
 # continue as regular user
 
-cp `dirname $0`/system3.zsh /home/greg
+cp $(dirname $0)/system3.zsh /home/greg
 su greg --command '~/system3.zsh'
 rm /home/greg/system3.zsh
 
@@ -158,11 +158,11 @@ sed -Ei \
   's/^HOOKS=.+$/HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)/' \
   /etc/mkinitcpio.conf
 
-  # plymouth (splash, after systemd)
+# plymouth (splash, after systemd)
 
 # dm-crypt with systemd based initial ramdisk (before mkinitcpio)
 
-cp `dirname $0`/etc/crypttab.initramfs /etc/crypttab.initramfs
+cp $(dirname $0)/etc/crypttab.initramfs /etc/crypttab.initramfs
 sed -i \
   "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" \
   /etc/crypttab.initramfs
@@ -175,4 +175,3 @@ mkinitcpio -p linux-lts
 # scripts
 
 su greg --command 'mkdir ~/code; git clone https://github.com/GrzegorzKozub/arch.git ~/code/arch'
-
