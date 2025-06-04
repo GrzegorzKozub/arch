@@ -79,7 +79,7 @@ pacstrap /mnt \
 
   # nftables plymouth (splash)
 
-# fstab file
+# fstab
 
 genfstab -U /mnt > /mnt/etc/fstab
 

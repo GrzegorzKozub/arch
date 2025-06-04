@@ -25,6 +25,8 @@ MOUNT=/run/media/$USER/games
   echo '' | sudo tee --append /etc/fstab > /dev/null
 }
 
+sudo `dirname $0`/fstab.sh
+
 # multilib
 
 LINE=$(grep -n '#\[multilib\]' /etc/pacman.conf | awk '{print $1}' FS=':')
