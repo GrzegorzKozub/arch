@@ -18,6 +18,10 @@ sudo sed -i \
 sudo sed -i '/^# \/dev\/mapper\/vg1-data/d' /etc/fstab
 sudo `dirname $0`/fstab.sh
 
+# rclone & restic
+
+sudo pacman -S --noconfirm rclone restic
+
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim

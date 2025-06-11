@@ -86,6 +86,8 @@ sudo pacman -S --noconfirm \
   nushell \
   nvtop \
   pastel \
+  rclone \
+  restic \
   ripgrep \
   ripgrep-all \
   rsync \
