@@ -19,15 +19,20 @@ TARGET=$MOUNT/arch
 [[ $(mount | grep "$DISK on $MOUNT") ]] || sudo mount $DISK $MOUNT
 [[ -d $TARGET ]] || mkdir $TARGET
 
-FREE=$(df -h $DISK --output=avail | grep -v Avail | sed -E 's/ |G//g' )
+FREE=$(df --human-readable $DISK --output=avail | grep -v Avail | sed -E 's/ |G//g' )
 [[ $FREE -lt 64 ]] && echo "only ${FREE}G free on $DISK"
 
-rsync \
-  --archive \
-  --delete \
-  --exclude 'boot' \
-  --exclude 'lost+found' \
-  --human-readable --progress \
+# rsync \
+#   --archive \
+#   --delete \
+#   --exclude 'lost+found' \
+#   --human-readable --progress \
+#   $SOURCE $TARGET
+
+rclone sync \
+  --exclude 'lost+found/**' \
+  --modify-window 100ns \
+  --progress \
   $SOURCE $TARGET
 
 sudo umount -R $MOUNT
