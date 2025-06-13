@@ -29,6 +29,7 @@ export default class Windows extends Extension {
     const medium = [
       { title: /^DevTools.?/ },
       { title: /^Foliate.?/ },
+      { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
       { title: /.?KeePassXC$/ },
       { class: /^io.missioncenter.MissionCenter$/ },
