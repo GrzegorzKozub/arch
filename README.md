@@ -115,7 +115,7 @@ Existing backup can be used when changing disks or moving partitions
   mkinitcpio -p linux && mkinitcpio -p linux-lts
   ```
 8. Exit, unmount and reboot
-9. Use `crypt.zsh` to unlock Linux partition using TPM and save recovery key
+9. Use `crypt.zsh` to enable unlocking Linux partition using TPM and save recovery key
 
 ## Wayland
 
@@ -124,6 +124,7 @@ To enable Wayland on NVIDIA
 - Add `nvidia_drm.modeset=1` kernel module setting
 - Ensure no `WaylandEnable=false` in `/etc/gdm/custom.conf`
 - Ensure [video memory is preserved during suspend](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend)
+
 ### XDG Desktop Portal
 
 XDP implementations conflict each other so only one should be installed at the same time:
