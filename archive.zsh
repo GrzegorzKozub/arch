@@ -25,11 +25,13 @@ FREE=$(df --human-readable $DISK --output=avail | grep -v Avail | sed -E 's/ |G/
 # rsync \
 #   --archive \
 #   --delete \
+#   --exclude 'boot' \
 #   --exclude 'lost+found' \
 #   --human-readable --progress \
 #   $SOURCE $TARGET
 
 rclone sync \
+  --exclude 'boot/**' \
   --exclude 'lost+found/**' \
   --modify-window 100ns \
   --progress \
