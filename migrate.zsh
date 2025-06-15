@@ -26,6 +26,11 @@ npm uninstall --global tsx
 
 sudo pacman -S --noconfirm rclone restic
 
+pushd ~/code/dot
+git pull
+git update-index --assume-unchanged rclone/rclone/rclone.conf
+popd
+
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim
