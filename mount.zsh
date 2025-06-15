@@ -4,7 +4,7 @@ set -e
 
 EFI_PART="$(
   lsblk -lno PATH,PARTTYPE,FSTYPE |
-  grep -i 'C12A7328-F81F-11D2-BA4B-00A0C93EC93B' |
+  grep -i 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b' |
   grep 'vfat' |
   cut -d' ' -f1
 )"

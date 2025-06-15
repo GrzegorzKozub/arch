@@ -7,7 +7,7 @@ set -e
 [[ $HOST = 'player' ]] &&
   DISK="$(
     lsblk -lno PATH,UUID |
-    grep -i '5587CEC71012FFFA' |
+    grep -i '5587cec71012fffa' |
     cut -d' ' -f1
   )" \
 || DISK=/dev/sda1

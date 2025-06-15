@@ -6,14 +6,14 @@ set -e -o verbose
 
 EFI_PART="$(
   lsblk -lno PATH,PARTTYPE,FSTYPE |
-  grep -i 'C12A7328-F81F-11D2-BA4B-00A0C93EC93B' |
+  grep -i 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b' |
   grep 'vfat' |
   cut -d' ' -f1
 )"
 
 ARCH_PART="$(
   lsblk -lno PATH,PARTTYPE,FSTYPE |
-  grep -i '0FC63DAF-8483-4772-8E79-3D69D8477DE4' |
+  grep -i '0fc63daf-8483-4772-8e79-3d69d8477de4' |
   grep 'crypto_LUKS' |
   cut -d' ' -f1
 )"

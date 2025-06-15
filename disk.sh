@@ -13,7 +13,8 @@ cfdisk $MY_DISK
 
 ARCH_PART="$(
   lsblk -lno PATH,PARTTYPE,FSTYPE |
-    grep -i '0FC63DAF-8483-4772-8E79-3D69D8477DE4' |
+    grep -i '0fc63daf-8483-4772-8e79-3d69d8477de4' |
+    grep -v 'ext4' |
     cut -d' ' -f1
 )"
 
