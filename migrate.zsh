@@ -2,29 +2,7 @@
 
 set -o verbose
 
-# fstab
-
-sudo sed -i '/^# \/dev\/mapper\/vg1-data/d' /etc/fstab
-sudo `dirname $0`/fstab.sh
-
-# gnome-disk-utility
-
-sudo pacman -R --noconfirm gnome-disk-utility
-
-# noatime
-
-sudo sed -i \
-  -e "s/ext4      	rw,relatime/ext4      	rw,noatime/" \
-  -e "s/ext4    defaults /ext4    defaults,noatime /" \
-  /etc/fstab
-
-# node
-
-npm uninstall --global tsx
-
-# rclone & restic
-
-sudo pacman -S --noconfirm rclone restic
+# rclone
 
 pushd ~/code/dot
 git pull
