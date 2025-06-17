@@ -101,7 +101,7 @@ Existing backup can be used when changing disks or moving partitions
 
 1. Boot from archiso
 2. Use `disk.sh` to encrypt Linux partition with LUKS and create LVM volumes inside
-3. Use `restore.zsh` to restore `/boot` and `/` from latest backup
+3. Use `r.zsh` to restore `/boot` and `/` from latest backup
 4. Use `boot.zsh` to add Linux Boot Manager to EFI
 5. Change root to the restored installation
   ```bash

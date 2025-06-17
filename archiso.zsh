@@ -109,8 +109,8 @@ export VISUAL='nvim'
 alias v='nvim'
 alias vim='nvim'
 
-alias b='backup.zsh'
-alias r='restore.zsh'
+alias b='b.zsh'
+alias r='r.zsh'
 EOF
 
 # build

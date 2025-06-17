@@ -2,28 +2,40 @@
 
 set -e
 
-. `dirname $0`/unlock.zsh
-. `dirname $0`/mount.zsh
+# find backup partition by uuid (nvme devices are numbered as they init)
 
-BACKUP=/mnt/backup
+[[ $HOST = 'player' ]] &&
+  DISK="$(
+    lsblk -lno PATH,UUID |
+    grep -i '5587cec71012fffa' |
+    cut -d' ' -f1
+  )" \
+|| DISK=/dev/sda1
 
-[[ -d $BACKUP ]] || mkdir -p $BACKUP
+MOUNT=/mnt
+SOURCE=/run/media/$USER/data/
+TARGET=$MOUNT/arch
 
-while [[ \
-  $(df -h /dev/mapper/vg1-data --output=avail | grep -v Avail | sed -E 's/ |G//g') -lt 16 && \
-  $(ls -d $BACKUP/[0-9]* | wc -l) -gt 3 \
-]]; do
-  OLDEST="$BACKUP/$(ls -t $BACKUP | grep '^[0-9]*$' | tail -n1)"
-  echo "removing $OLDEST"
-  rm -rf $OLDEST
-done
+[[ $(mount | grep "$DISK on $MOUNT") ]] || sudo mount $DISK $MOUNT
+[[ -d $TARGET ]] || mkdir $TARGET
 
-DIR=$BACKUP/$(date +%Y%m%d%H%M)
-echo "backing up to $DIR"
-mkdir $DIR
+FREE=$(df --human-readable $DISK --output=avail | grep -v Avail | sed -E 's/ |G//g' )
+[[ $FREE -lt 64 ]] && echo "only ${FREE}G free on $DISK"
 
-fsarchiver savefs -j4 -c - $DIR/root.fsa /dev/mapper/vg1-root
-cp /mnt/boot/*.img /mnt/boot/vmlinuz-linux* $DIR/
+# rsync \
+#   --archive \
+#   --delete \
+#   --exclude 'boot' \
+#   --exclude 'lost+found' \
+#   --human-readable --progress \
+#   $SOURCE $TARGET
 
-umount -R /mnt
+rclone sync \
+  --exclude 'boot/**' \
+  --exclude 'lost+found/**' \
+  --modify-window 100ns \
+  --progress \
+  $SOURCE $TARGET
+
+sudo umount -R $MOUNT
 
