@@ -133,8 +133,10 @@ sed -i -e 's/^Name=.*/Name=Teams/' $XDG_DATA_HOME/applications/teams-for-linux.d
 
 if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 
+  # https://github.com/IsmaelMartinez/teams-for-linux/issues/1731
+
   sed -i \
-    -e 's/^Exec=teams-for-linux/Exec=teams-for-linux --ozone-platform-hint=auto/' \
+    -e 's/^Exec=teams-for-linux/Exec=teams-for-linux --ozone-platform-hint=auto --gtk-version=3/' \
     $XDG_DATA_HOME/applications/teams-for-linux.desktop
 
 fi
