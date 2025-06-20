@@ -4,17 +4,19 @@ set -e
 
 while read -r name owner; do
 
-  [[ $2 = '' ]] && local dir=~/code/$name || local dir=~/code/$2
+  [[ $2 = '' ]] && DIR=~/code/$name || local DIR=~/code/$2
 
   if [[ $1 = $name ]]; then
 
-    echo "\e[37m fetching to \e[36m${dir/~/~}\e[0m"
+    echo "\e[37m fetching \e[36m${DIR/~/~} \e[37m· \e[35m<C-f> \e[37mcd\e[0m"
 
-    if [[ -d $dir ]]; then
-      pushd -q $dir && (git checkout master || git checkout main) && git pull --prune && popd -q
+    if [[ -d $DIR ]]; then
+      pushd -q $DIR && (git checkout master || git checkout main) && git pull --prune && popd -q
     else
-      git clone "git@github.com:$owner/$name.git" $dir
+      git clone "git@github.com:$owner/$name.git" $DIR
     fi
+
+    echo $DIR > /tmp/fetch-dir # my-fetch-cd
 
   fi
 
