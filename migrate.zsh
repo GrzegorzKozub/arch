@@ -2,6 +2,11 @@
 
 set -o verbose
 
+# linux-firmware
+
+sudo pacman --noconfirm -Rdd linux-firmware
+sudo pacman --noconfirm -Syu linux-firmware
+
 # rclone
 
 pushd ~/code/dot
