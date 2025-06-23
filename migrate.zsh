@@ -2,18 +2,6 @@
 
 set -o verbose
 
-# linux-firmware
-
-sudo pacman --noconfirm -Rdd linux-firmware
-sudo pacman --noconfirm -Syu linux-firmware
-
-# rclone
-
-pushd ~/code/dot
-git pull
-git update-index --assume-unchanged rclone/rclone/rclone.conf
-popd
-
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim
