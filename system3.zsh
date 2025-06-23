@@ -59,7 +59,7 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
 fi
 
-if [[ $MY_HOSTNAME = 'player' ]]; then
+if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
 
   # ucode
 
@@ -80,7 +80,7 @@ if [[ $MY_HOSTNAME = 'player' ]]; then
 
 fi
 
-if [[ $MY_HOSTNAME = 'worker' ]]; then
+if [[ $MY_HOSTNAME = 'sacrifice' ]]; then
 
   # ucode
 

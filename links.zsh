@@ -91,7 +91,7 @@ sed -i \
 
 # nvidia
 
-if [[ $HOST = 'player' ]]; then
+if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   [[ -d $XDG_DATA_HOME/nvidia-settings ]] || mkdir $XDG_DATA_HOME/nvidia-settings
 

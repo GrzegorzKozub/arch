@@ -4,7 +4,7 @@ set -e -o verbose
 
 # nvidia
 
-if [[ $HOST = 'player' ]]; then
+if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   # wayland
 
@@ -29,7 +29,7 @@ fi
 
 # packages
 
-if [[ $HOST = 'player' ]]; then
+if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   paru -S --aur --noconfirm \
     hyprland-nvidia

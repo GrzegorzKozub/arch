@@ -23,9 +23,9 @@ add_color_profile() {
   set -e
 }
 
-[[ $HOST = 'player' ]] && add_color_profile '27gp950-b' 'LG ULTRAGEAR+'
+[[ $HOST =~ ^(player|worker)$ ]] && add_color_profile '27gp950-b' 'LG ULTRAGEAR+'
 
-if [[ $HOST = 'worker' ]]; then
+if [[ $HOST = 'sacrifice' ]]; then
 
   add_color_profile '27ul850-w' 'LG HDR 4K'
   add_color_profile '27ud88-w' 'LG Ultra HD'
@@ -49,7 +49,7 @@ pactl set-source-volume @DEFAULT_SOURCE@ 50%
 
 # network
 
-if [[ $HOST = 'player' ]]; then
+if [[ $HOST =~ ^(player|worker)$ ]]; then
   nmcli radio wifi off
 fi
 

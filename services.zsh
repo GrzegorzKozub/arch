@@ -61,7 +61,7 @@ systemctl --user enable sync-session.service
 
 # amd gpu fan speed
 
-if [[ $HOST = 'worker' ]]; then
+if [[ $HOST = 'sacrifice' ]]; then
 
   [[ -d /etc/amdfand ]] || sudo mkdir /etc/amdfand
   sudo cp `dirname $0`/etc/amdfand/config.toml /etc/amdfand/config.toml
@@ -71,7 +71,7 @@ fi
 
 # preserve nvidia video during suspend
 
-if [[ $HOST = 'player' ]]; then
+if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   sudo systemctl enable nvidia-hibernate.service
   sudo systemctl enable nvidia-resume.service
@@ -134,7 +134,7 @@ systemctl --user enable fetch.service
 
 # aws iam access key refresh
 
-if [[ $HOST = 'worker' ]]; then
+if [[ $HOST = 'sacrifice' ]]; then
 
   cp `dirname $0`/home/$USER/.config/systemd/user/iam.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable iam.service

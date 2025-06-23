@@ -4,7 +4,7 @@ set -e
 
 # find backup partition by uuid (nvme devices are numbered as they init)
 
-[[ $HOST = 'player' ]] &&
+[[ $HOST =~ ^(player|worker)$ ]] &&
   DISK="$(
     lsblk -lno PATH,UUID |
     grep -i '5587cec71012fffa' |

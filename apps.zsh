@@ -124,7 +124,7 @@ paru -S --aur --noconfirm \
 #
 # fi
 
-if [[ $HOST = 'worker' ]]; then
+if [[ $HOST = 'sacrifice' ]]; then
 
   # btop amd gpu monitoring
   sudo pacman -S --noconfirm \

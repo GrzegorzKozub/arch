@@ -73,17 +73,17 @@ cp $(dirname $0)/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
 
 # nvidia gpu
 
-[[ $MY_HOSTNAME = 'player' ]] &&
+[[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
   echo 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia.conf
 
 # webcam video format
 
-[[ $MY_HOSTNAME = 'worker' ]] &&
+[[ $MY_HOSTNAME = 'sacrifice' ]] &&
   cp $(dirname $0)/etc/udev/rules.d/10-c922.rules /etc/udev/rules.d/10-c922.rules
 
 # sleep fixes
 
-if [[ $MY_HOSTNAME = 'player' ]]; then
+if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
 
   # don't resume (wake up) immediately after suspend (sleep)
   echo 'w /proc/acpi/wakeup - - - - GPP0' > /usr/lib/tmpfiles.d/wakeup.conf

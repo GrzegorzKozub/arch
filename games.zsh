@@ -4,7 +4,7 @@ set -e -o verbose
 
 # validation
 
-[[ $HOST = 'player' ]] || exit 1
+[[ $HOST =~ ^(player|worker)$ ]] || exit 1
 
 # mount
 

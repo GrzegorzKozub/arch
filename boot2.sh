@@ -11,10 +11,10 @@ cp $(dirname $0)/boot/loader/entries/*.conf /boot/loader/entries
 
 # ucode
 
-[[ $MY_HOSTNAME =~ ^(drifter|worker)$ ]] &&
+[[ $MY_HOSTNAME =~ ^(drifter|sacrifice)$ ]] &&
   sed -i 's/<ucode>/intel-ucode/g' /boot/loader/entries/*.conf
 
-[[ $MY_HOSTNAME = 'player' ]] &&
+[[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
   sed -i 's/<ucode>/amd-ucode/g' /boot/loader/entries/*.conf
 
 # dm-crypt with busybox based initial ramdisk
@@ -25,12 +25,12 @@ cp $(dirname $0)/boot/loader/entries/*.conf /boot/loader/entries
 
 # enable amd p-state in active mode (amd_pstate_epp driver)
 
-[[ $MY_HOSTNAME = 'player' ]] &&
+[[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
   sed -i 's/<params>/amd_pstate=active <params>/g' /boot/loader/entries/*.conf
 
 # enable kernel mode setting (kms) for nvidia (required for gdm to start rootless xorg & for wayland)
 
-[[ $MY_HOSTNAME = 'player' ]] &&
+[[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
   sed -i 's/<params>/nvidia-drm.modeset=1 <params>/g' /boot/loader/entries/*.conf
 
 # force s3 sleep (https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Changing_suspend_method)
