@@ -20,7 +20,7 @@ Automated Arch Linux installation
 ## Installation
 
 1. Boot from archiso
-2. Run `source ~/arch/player.zsh`, `source ~/arch/drifter.zsh` or `source ~/arch/worker.zsh`
+2. Run `source ~/arch/drifter.zsh`, `source ~/arch/player.zsh` or `source ~/arch/worker.zsh`
 3. Once per machine, run `~/arch/disk.sh`, otherwise run `~/arch/unlock.zsh`
 4. Run `~/arch/system.zsh`
 5. Once per machine, run `~/arch/boot.zsh`
@@ -70,7 +70,7 @@ Automated Arch Linux installation
   - Enable Memory Saver
   - Disable Brave VPN
 2. GNOME
-  - Set display refresh rate on player to variable 144 Hz
+  - Set display refresh rate on player to variable 144 Hz and on worker to variable 60 Hz
   - Set display scale on drifter to 300% and on player & worker to 200%
   - Select the sound device and set volume to 50%
 3. KeePassXC

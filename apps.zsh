@@ -117,7 +117,7 @@ paru -S --aur --noconfirm \
   cava \
   tmux-git
 
-# if [[ $HOST = 'player' ]]; then
+# if [[ $HOST =~ ^(player|worker)$ ]]; then
 #
 #   sudo pacman -S --noconfirm \
 #     redshift

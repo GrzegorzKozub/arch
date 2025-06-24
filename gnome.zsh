@@ -295,7 +295,7 @@ add_shortcut 0 'Print' 'screenshot' "/home/$USER/code/arch/screenshot.zsh"
 add_shortcut 1 '<Control><Super>a' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 add_shortcut 2 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 
-# [[ $HOST = 'player' ]] &&
+# [[ $HOST =~ ^(player|worker)$ ]] &&
 #   add_shortcut 3 '<Control><Super>n' 'night light' 'pkill -USR1 redshift'
 
 gsettings set \
