@@ -4,9 +4,11 @@ set -e
 
 while read -r name owner; do
 
-  [[ $2 = '' ]] && DIR=~/code/$name || local DIR=~/code/$2
-
   if [[ $1 = $name ]]; then
+
+    [[ ! $2 = '' ]] && DIR=~/code/$2 ||
+      [[ $name =~ ^(apsis)(-)(.*)$ ]] && DIR=~/code/apsis/${match[3]} ||
+        DIR=~/code/$name
 
     echo "\e[37m fetching \e[36m${DIR/~/~} \e[37m· \e[35m<C-f> \e[37mcd\e[0m"
 
