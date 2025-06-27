@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# fastfetch
+
+sudo pacman -S --noconfirm fastfetch
+
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim

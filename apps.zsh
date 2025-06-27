@@ -73,6 +73,7 @@ sudo pacman -S --noconfirm \
   cpupower \
   direnv \
   eza \
+  fastfetch \
   fd \
   ffmpeg \
   fzf \
