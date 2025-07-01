@@ -47,6 +47,7 @@ Automated Arch Linux installation
   - Hide bookmarks button
   - Hide Brave News button in address bar
   - Don't allow suggestions Leo AI Assistant
+  - Use wide address bar
   - Hide Leo AI button
   - Hide Brave Rewards button
   - Hide VPN button
@@ -55,7 +56,7 @@ Automated Arch Linux installation
   - Cycle through the most recently used tabs with Ctrl-Tab
   - Don't show Wayback Machine prompts on 404 pages
   - Don't show the number of blocked items on the Shields icon
-  - Disable EasyList Cookie content filter
+  - (Questionable) Disable EasyList Cookie content filter
   - Don't allow sites to send notifications
   - Disable data collection
   - Don't show Leo icon in the sidebar
