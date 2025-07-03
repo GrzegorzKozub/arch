@@ -70,6 +70,7 @@ Automated Arch Linux installation
   - Don't warn me before closing window with multiple tabs
   - Enable Memory Saver
   - Disable Brave VPN
+  - Import KeePassXC extension settings from `dot/keepassxc-browser.json`
 2. GNOME
   - Set display refresh rate on player to variable 144 Hz and on worker to variable 60 Hz
   - Set display scale on drifter to 300% and on player & worker to 200%
@@ -79,7 +80,6 @@ Automated Arch Linux installation
   - Hide folders panel
   - Only show title and username columns, also in search
   - Fit to window, also in search
-  - Configure Brave extension
 4. Postman
   - Change font to `Cascadia Code`
   - Change font size to `14`
