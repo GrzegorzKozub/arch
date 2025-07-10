@@ -116,13 +116,10 @@ sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/nvim.desktop
 
 if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 
-  # https://github.com/postmanlabs/postman-app-support/issues/13451
-  # https://github.com/electron/electron/issues/42894
-
   cp /usr/share/applications/postman.desktop $XDG_DATA_HOME/applications
-  # sed -i \
-  #   -e 's/\/opt\/postman\/Postman/\/opt\/postman\/Postman --ozone-platform-hint=auto/' \
-  #   $XDG_DATA_HOME/applications/postman.desktop
+  sed -i \
+    -e 's/\/opt\/postman\/Postman/\/opt\/postman\/Postman --ozone-platform-hint=auto/' \
+    $XDG_DATA_HOME/applications/postman.desktop
 
 fi
 
