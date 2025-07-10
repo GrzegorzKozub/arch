@@ -126,7 +126,11 @@ fi
 # teams
 
 cp /usr/share/applications/teams-for-linux.desktop $XDG_DATA_HOME/applications
-sed -i -e 's/^Name=.*/Name=Teams/' $XDG_DATA_HOME/applications/teams-for-linux.desktop
+sed -i \
+  -e 's/^Name=.*/Name=Teams/' \
+  -e '/^Exec=/s/--gtk-version=3//' \
+  -e '/^Exec=/s/teams-for-linux/teams-for-linux --ozone-platform-hint=auto/' \
+  $XDG_DATA_HOME/applications/teams-for-linux.desktop
 
 # utilities
 
