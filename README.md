@@ -56,6 +56,7 @@ Automated Arch Linux installation
   - Cycle through the most recently used tabs with Ctrl-Tab
   - Don't show Wayback Machine prompts on 404 pages
   - Don't show the number of blocked items on the Shields icon
+  - Enable YouTube Anti-Shorts content filter
   - (Questionable) Disable EasyList Cookie content filter
   - Don't allow sites to send notifications
   - Disable data collection
