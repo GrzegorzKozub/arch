@@ -23,9 +23,9 @@ add_color_profile() {
   set -e
 }
 
-[[ $HOST =~ ^(player|worker)$ ]] && add_color_profile '27gp950-b' 'LG ULTRAGEAR+'
+[[ $HOST = 'player' ]] && add_color_profile '27gp950-b' 'LG ULTRAGEAR+'
 
-if [[ $HOST = 'sacrifice' ]]; then
+if [[ $HOST = 'worker' ]]; then
 
   add_color_profile '27ul850-w' 'LG HDR 4K'
   add_color_profile '27ud88-w' 'LG Ultra HD'

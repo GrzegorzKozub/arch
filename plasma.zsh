@@ -150,7 +150,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-if [[ $HOST =~ ^(player|worker)$ ]]; then
+if [[ $HOST = 'player' ]]; then
 
   kscreen-doctor output.DP-4.scale.1.5
 
@@ -158,7 +158,7 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
 
 fi
 
-if [[ $HOST = 'sacrifice' ]]; then
+if [[ $HOST = 'worker' ]]; then
 
   kscreen-doctor output.DP-2.scale.1.5
   kscreen-doctor output.DP-3.scale.1.5

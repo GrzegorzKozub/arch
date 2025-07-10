@@ -134,7 +134,7 @@ systemctl --user enable fetch.service
 
 # aws iam access key refresh
 
-if [[ $HOST = 'sacrifice' ]]; then
+if [[ $HOST = 'worker' ]]; then
 
   cp `dirname $0`/home/$USER/.config/systemd/user/iam.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable iam.service
