@@ -12,7 +12,7 @@ ARCH_PART="$(
 # disk unlock via tpm 2.0
 # enroll again after updating secure boot keys via secboot.zsh and after windows updates
 
-if [[ $HOST =~ ^(player|sacrifice|worker)$ ]]; then
+if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   SLOT=$(sudo systemd-cryptenroll $ARCH_PART | grep tpm2 | awk '{print $1}')
 

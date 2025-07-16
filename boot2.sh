@@ -11,7 +11,7 @@ cp $(dirname $0)/boot/loader/entries/*.conf /boot/loader/entries
 
 # ucode
 
-[[ $MY_HOSTNAME =~ ^(drifter|sacrifice)$ ]] &&
+[[ $MY_HOSTNAME = 'drifter' ]] &&
   sed -i 's/<ucode>/intel-ucode/g' /boot/loader/entries/*.conf
 
 [[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&

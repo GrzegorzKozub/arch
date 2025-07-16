@@ -30,7 +30,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-[[ $HOST =~ ^(player|sacrifice|worker)$ ]] &&
+[[ $HOST =~ ^(player|worker)$ ]] &&
   gsettings set org.gnome.desktop.session idle-delay 600
 
 gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 25
@@ -218,7 +218,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-[[ $HOST =~ ^(player|sacrifice|worker)$ ]] &&
+[[ $HOST =~ ^(player|worker)$ ]] &&
   gsettings set org.gnome.desktop.peripherals.mouse speed -0.75
 
 # keyboard > input sources
@@ -352,7 +352,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-if [[ $HOST =~ ^(player|sacrifice|worker)$ ]]; then
+if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   dconf write /org/gnome/nautilus/window-state/initial-size-file-chooser '(720, 655)'
   dconf write /org/gtk/settings/file-chooser/window-size '(720, 608)'

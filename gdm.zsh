@@ -86,7 +86,7 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
-[[ $HOST =~ ^(player|sacrifice|worker)$ ]] &&
+[[ $HOST =~ ^(player|worker)$ ]] &&
   sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.peripherals.mouse speed -0.75'
 
 # apps > tweaks > fonts

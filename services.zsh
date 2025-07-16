@@ -46,7 +46,7 @@ sudo systemctl enable ip6tables.service
 
 # imwheel
 
-# if [[ $HOST =~ ^(player|sacrifice|worker)$ ]]; then
+# if [[ $HOST =~ ^(player|worker)$ ]]; then
 #
 #   cp `dirname $0`/home/$USER/.config/systemd/user/imwheel.service $XDG_CONFIG_HOME/systemd/user
 #   systemctl --user enable imwheel.service
@@ -81,7 +81,7 @@ fi
 
 # colors & night light
 
-# if [[ $HOST =~ ^(player|sacrifice|worker)$ ]]; then
+# if [[ $HOST =~ ^(player|worker)$ ]]; then
 #
 #   # conflicts with dispwin
 #   sudo systemctl mask colord.service
@@ -100,7 +100,7 @@ fi
 #
 # fi
 #
-# if [[ $HOST =~ ^(sacrifice|worker)$ ]]; then
+# if [[ $HOST = 'worker' ]]; then
 #
 #   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ul850-w.icm
 #   dispwin -d2 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ud88-w.icm
