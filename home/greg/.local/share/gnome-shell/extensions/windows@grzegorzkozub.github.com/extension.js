@@ -28,6 +28,7 @@ export default class Windows extends Extension {
     ];
     const medium = [
       { title: /^DevTools.?/ },
+      { class: /^com.github.wwmm.easyeffects$/ },
       { title: /^Foliate.?/ },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
