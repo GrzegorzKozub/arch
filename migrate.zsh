@@ -2,28 +2,13 @@
 
 set -o verbose
 
-# worker
+# lact
 
-if [[ $HOST = 'worker' ]]; then
+[[ $HOST =~ ^(player|worker)$ ]] && sudo pacman -S --noconfirm lact
 
-  for NAME in \
-    27gp950-b \
-    edid-a22164af5b8f1d511579d86156ddcf41
-  do
-    ID=$(colormgr find-profile-by-filename $NAME.icm | grep 'Profile ID' | sed -e 's/Profile ID:    //')
-    echo "$NAME -> $ID"
-    [[ $ID ]] && colormgr delete-profile $ID
-    rm -f $XDG_DATA_HOME/icc/$NAME.ic*
-  done
+# tidal
 
-  rm -f $XDG_CONFIG_HOME/color.jcnf
-
-  sudo cp $(dirname $0)/etc/udev/rules.d/10-c922.rules /etc/udev/rules.d/10-c922.rules
-
-  cp `dirname $0`/home/$USER/.config/systemd/user/iam.service $XDG_CONFIG_HOME/systemd/user
-  systemctl --user enable iam.service
-
-fi
+paru -S --aur --noconfirm tidal-hifi-bin
 
 # nvim
 

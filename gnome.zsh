@@ -333,6 +333,7 @@ gsettings set org.gnome.shell favorite-apps "[
   'dev.zed.Zed.desktop',
   'postman.desktop',
   'brave-browser.desktop',
+  'tidal-hifi.desktop',
   'teams-for-linux.desktop',
   'org.keepassxc.KeePassXC.desktop'
   $([[ $(sudo pacman -Qq teams-for-linux 2> /dev/null) ]] && echo ",'teams-for-linux.desktop'")

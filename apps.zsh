@@ -208,9 +208,17 @@ paru -S --aur --noconfirm \
   brave-bin \
   postman-bin \
   teams-for-linux \
+  tidal-hifi-bin \
   visual-studio-code-bin
 
   # slack-desktop
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  sudo pacman -S --noconfirm \
+    lact
+
+fi
 
 if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
 

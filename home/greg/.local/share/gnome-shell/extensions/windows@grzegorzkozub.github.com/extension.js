@@ -40,6 +40,7 @@ export default class Windows extends Extension {
       { title: /.?Slack$/, auto: true },
       { title: /.?Steam$/ },
       { class: /^teams-for-linux$/, auto: true },
+      { class: /^tidal-hifi$/ },
     ];
     const small = [
       // { title: /^Open/ }, // file pickers

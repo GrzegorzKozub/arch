@@ -132,6 +132,13 @@ sed -i \
   -e '/^Exec=/s/teams-for-linux/teams-for-linux --ozone-platform-hint=auto/' \
   $XDG_DATA_HOME/applications/teams-for-linux.desktop
 
+# tidal
+
+cp /usr/share/applications/tidal-hifi.desktop $XDG_DATA_HOME/applications
+sed -i \
+  -e 's/^Name=.*/Name=TIDAL/' \
+  $XDG_DATA_HOME/applications/tidal-hifi.desktop
+
 # utilities
 
 for APP in \
