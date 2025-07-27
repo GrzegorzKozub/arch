@@ -8,7 +8,7 @@ set -o verbose
 
 # tidal
 
-paru -S --aur --noconfirm tidal-hifi-bin
+[[ $HOST =~ ^(player|worker)$ ]] && paru -S --aur --noconfirm tidal-hifi-bin
 
 # nvim
 

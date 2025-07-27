@@ -208,7 +208,6 @@ paru -S --aur --noconfirm \
   brave-bin \
   postman-bin \
   teams-for-linux \
-  tidal-hifi-bin \
   visual-studio-code-bin
 
   # slack-desktop
@@ -217,6 +216,9 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   sudo pacman -S --noconfirm \
     lact
+
+  paru -S --aur --noconfirm \
+    tidal-hifi-bin
 
 fi
 

@@ -134,10 +134,14 @@ sed -i \
 
 # tidal
 
-cp /usr/share/applications/tidal-hifi.desktop $XDG_DATA_HOME/applications
-sed -i \
-  -e 's/^Name=.*/Name=TIDAL/' \
-  $XDG_DATA_HOME/applications/tidal-hifi.desktop
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  cp /usr/share/applications/tidal-hifi.desktop $XDG_DATA_HOME/applications
+  sed -i \
+    -e 's/^Name=.*/Name=TIDAL/' \
+    $XDG_DATA_HOME/applications/tidal-hifi.desktop
+
+fi
 
 # utilities
 
