@@ -93,9 +93,11 @@ Automated Arch Linux installation
 6. Zed
   - Configure the assistant
   - Sign in
-7. Run `clean.zsh`
-8. Prepare the `~/.config/zsh/.zshenv` and `~/code/arch/fetch.env` files
-9. Fix window sizes and positions
+7. Tidal
+  - Sign in & configure on player & worker
+8. Run `clean.zsh`
+9. Prepare the `~/.config/zsh/.zshenv` and `~/code/arch/fetch.env` files
+10. Fix window sizes and positions
 
 ## New disk
 
