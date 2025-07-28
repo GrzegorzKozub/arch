@@ -6,10 +6,6 @@ set -o verbose
 
 [[ $HOST =~ ^(player|worker)$ ]] && sudo pacman -S --noconfirm lact
 
-# tidal
-
-[[ $HOST =~ ^(player|worker)$ ]] && paru -S --aur --noconfirm tidal-hifi-bin
-
 # nvim
 
 rm -rf $XDG_CACHE_HOME/nvim

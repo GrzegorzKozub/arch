@@ -132,17 +132,6 @@ sed -i \
   -e '/^Exec=/s/teams-for-linux/teams-for-linux --ozone-platform-hint=auto/' \
   $XDG_DATA_HOME/applications/teams-for-linux.desktop
 
-# tidal
-
-if [[ $HOST =~ ^(player|worker)$ ]]; then
-
-  cp /usr/share/applications/tidal-hifi.desktop $XDG_DATA_HOME/applications
-  sed -i \
-    -e 's/^Name=.*/Name=TIDAL/' \
-    $XDG_DATA_HOME/applications/tidal-hifi.desktop
-
-fi
-
 # utilities
 
 for APP in \

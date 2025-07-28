@@ -217,9 +217,6 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
   sudo pacman -S --noconfirm \
     lact
 
-  paru -S --aur --noconfirm \
-    tidal-hifi-bin
-
 fi
 
 if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
