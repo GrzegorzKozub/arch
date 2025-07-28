@@ -69,7 +69,9 @@ if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
   # nvidia gpu
 
   sudo pacman -S --noconfirm \
-    nvidia nvidia-lts nvidia-settings nvidia-utils \
+    nvidia-open nvidia-open-lts \
+    nvidia-utils \
+    nvidia-settings \
     libva-nvidia-driver
 
   # enable nvidia overclocking

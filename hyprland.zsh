@@ -14,8 +14,8 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   # hyprland
 
-  [[ $(sudo pacman -Qs nvidia) ]] && sudo pacman -Rs --noconfirm nvidia
-  [[ $(sudo pacman -Qs nvidia-lts) ]] && sudo pacman -Rs --noconfirm nvidia-lts
+  [[ $(sudo pacman -Qs nvidia-open) ]] && sudo pacman -Rs --noconfirm nvidia-open
+  [[ $(sudo pacman -Qs nvidia-open-lts) ]] && sudo pacman -Rs --noconfirm nvidia-open-lts
 
   sudo pacman -S --noconfirm \
     linux-headers nvidia-dkms

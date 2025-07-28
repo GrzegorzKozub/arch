@@ -11,6 +11,18 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
 
 fi
 
+# nvidia
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  sudo pacman --noconfirm -Rs nvidia nvidia-lts
+  sudo pacman --noconfirm -S nvidia-open nvidia-open-lts
+
+  sudo mkinitcpio -p linux
+  sudo mkinitcpio -p linux-lts
+
+fi
+
 # nvim
 
 rm -rf $XDG_CACHE_HOME/nvim
