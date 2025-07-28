@@ -59,6 +59,14 @@ cp `dirname $0`/home/$USER/.config/systemd/user/sync-* $XDG_CONFIG_HOME/systemd/
 systemctl --user enable sync-periodic.timer
 systemctl --user enable sync-session.service
 
+# lact
+
+if [[ $HOST =~ ^(player|sacrifice|worker)$ ]]; then
+
+  sudo systemctl enable lactd.service
+
+fi
+
 # amd gpu fan speed
 
 if [[ $HOST = 'sacrifice' ]]; then

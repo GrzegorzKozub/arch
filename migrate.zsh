@@ -4,7 +4,12 @@ set -o verbose
 
 # lact
 
-[[ $HOST =~ ^(player|worker)$ ]] && sudo pacman -S --noconfirm lact
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  sudo pacman -S --noconfirm lact
+  sudo systemctl enable --now lactd.service
+
+fi
 
 # nvim
 
