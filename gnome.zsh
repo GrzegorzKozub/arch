@@ -58,6 +58,10 @@ gsettings set org.gnome.desktop.background picture-uri-dark $FILE
 
 gsettings set org.gnome.desktop.screensaver picture-uri $FILE
 
+# apps > amberol
+
+gsettings set io.bassi.Amberol background-play false
+
 # apps > brave
 
 dconf write /org/gnome/settings-daemon/global-shortcuts/brave-browser/shortcuts \
@@ -335,7 +339,8 @@ gsettings set org.gnome.shell favorite-apps "[
   'brave-browser.desktop',
   $([[ $(sudo pacman -Qq tidal-hifi 2> /dev/null) ]] && echo "'tidal-hifi.desktop',")
   'teams-for-linux.desktop',
-  'org.keepassxc.KeePassXC.desktop'
+  'org.keepassxc.KeePassXC.desktop',
+  'io.bassi.Amberol.desktop'
   $([[ $(sudo pacman -Qq teams-for-linux 2> /dev/null) ]] && echo ",'teams-for-linux.desktop'")
   $([[ $(sudo pacman -Qq steam 2> /dev/null) ]] && echo ",'steam.desktop'")
 ]"

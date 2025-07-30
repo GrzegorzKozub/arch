@@ -21,7 +21,7 @@ sed -i \
   [[ $(echo $FAVS | grep 'tidal-hifi.desktop') ]] || {
     FAVS=$(
       echo $FAVS |
-      sed -e "s/'brave-browser.desktop'/'brave-browser.desktop', 'tidal-hifi.desktop'/"
+      sed -e "s/'io.bassi.Amberol.desktop'/'io.bassi.Amberol.desktop', 'tidal-hifi.desktop'/"
     )
     gsettings set org.gnome.shell favorite-apps $FAVS
   }

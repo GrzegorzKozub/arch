@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# amberol
+
+sudo pacman -S --noconfirm amberol
+
 # pipx
 
 sudo pacman -S --noconfirm python-pipx

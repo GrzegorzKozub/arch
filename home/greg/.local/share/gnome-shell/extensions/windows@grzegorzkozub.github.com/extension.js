@@ -44,6 +44,7 @@ export default class Windows extends Extension {
     ];
     const small = [
       // { title: /^Open/ }, // file pickers
+      { class: /^io.bassi.Amberol$/ },
       { class: /^org.gnome.Extensions$/ },
       { class: /^org.gnome.SystemMonitor$/ },
       { title: /^Settings$/ },
