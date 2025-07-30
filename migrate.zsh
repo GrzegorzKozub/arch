@@ -2,6 +2,14 @@
 
 set -o verbose
 
+# pipx
+
+sudo pacman -S --noconfirm python-pipx
+
+# tidal-dl-ng
+
+pipx install tidal-dl-ng
+
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim
