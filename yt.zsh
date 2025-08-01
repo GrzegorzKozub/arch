@@ -12,11 +12,12 @@ rm -rf ~/Downloads/*
 yt-dlp \
   --skip-download \
   --write-thumbnail \
+  --convert-thumbnail png \
   --parse-metadata "title:%(artist)s - %(title)s" \
   --output "%(artist)s - %(title)s.%(ext)s" \
   'https://www.youtube.com/watch?v=aY-LU9SpEvE'
 
-THUMB=$(find *.webp | head -n 1)
+THUMB=$(find *.png | head -n 1)
 echo $THUMB
 mv $THUMB o$THUMB
 
@@ -32,8 +33,13 @@ yt-dlp \
   --parse-metadata "title:%(artist)s - %(title)s" \
   --parse-metadata "%(album|Games)s:%(album)s" \
   --embed-metadata \
-  --embed-thumbnail \
+  --keep-fragments \
   --paths ~/Downloads \
   --output "%(artist)s - %(title)s.%(ext)s" \
   'https://www.youtube.com/watch?v=aY-LU9SpEvE'
+  # --embed-thumbnail \
 
+V=$(find *.flac | head -n 1)
+T=$(find *.png | head -n 1)
+
+ffmpeg -y -i "$V" -i "$T" -map 0 -map 1 -c copy -disposition:v attached_pic output.flac
