@@ -2,44 +2,47 @@
 
 # set -e
 
-GAMES=/run/media/greg/data/music/Games
+TMP="$(mktemp)"
 
-[[ -d $GAMES ]] || mkdir $GAMES
+YT=/run/media/$USER/data/music/YouTube
+[[ -d $YT ]] || mkdir $YT
 
+rm -rf $YT/*
 
-rm -rf ~/Downloads/*
-
-yt-dlp \
-  --skip-download \
-  --write-thumbnail \
-  --convert-thumbnail png \
-  --parse-metadata "title:%(artist)s - %(title)s" \
-  --output "%(artist)s - %(title)s.%(ext)s" \
-  'https://www.youtube.com/watch?v=aY-LU9SpEvE'
-
-THUMB=$(find *.png | head -n 1)
-echo $THUMB
-mv $THUMB o$THUMB
-
-ffmpeg \
-  -y \
-  -i o$THUMB \
-  -vf "crop='min(in_w\,in_h)':'min(in_w\,in_h)':(in_w-min(in_w\,in_h))/2:(in_h-min(in_w\,in_h))/2" \
-  $THUMB
+pushd $YT
 
 yt-dlp \
   --format bestaudio \
   --extract-audio --audio-format flac --audio-quality 0 \
   --parse-metadata "title:%(artist)s - %(title)s" \
-  --parse-metadata "%(album|Games)s:%(album)s" \
+  --parse-metadata "%(album|YouTube)s:%(album)s" \
   --embed-metadata \
-  --keep-fragments \
-  --paths ~/Downloads \
-  --output "%(artist)s - %(title)s.%(ext)s" \
-  'https://www.youtube.com/watch?v=aY-LU9SpEvE'
-  # --embed-thumbnail \
+  --convert-thumbnail png --write-thumbnail \
+  --no-write-playlist-metafiles \
+  --print-to-file fulltitle $TMP \
+  --paths $YT --output "%(artist)s - %(title)s.%(ext)s" \
+  'https://music.youtube.com/playlist?list=LM'
 
-V=$(find *.flac | head -n 1)
-T=$(find *.png | head -n 1)
+cat $TMP
 
-ffmpeg -y -i "$V" -i "$T" -map 0 -map 1 -c copy -disposition:v attached_pic output.flac
+while read -r title; do
+
+  mv "$title.png" original.png
+  mv "$title.flac" original.flac
+
+  ffmpeg \
+    -i original.png \
+    -vf "crop='min(in_w\,in_h)':'min(in_w\,in_h)':(in_w-min(in_w\,in_h))/2:(in_h-min(in_w\,in_h))/2" \
+    square.png
+
+  ffmpeg \
+    -i original.flac -i square.png \
+    -map 0 -map 1 -c copy -disposition:v attached_pic \
+    "$title.flac"
+
+  rm original.flac original.png square.png
+
+done < $TMP
+
+popd
+
