@@ -32,7 +32,7 @@ while read -r title; do
 
   ffmpeg \
     -i original.png \
-    -vf "crop='min(in_w\,in_h)':'min(in_w\,in_h)':(in_w-min(in_w\,in_h))/2:(in_h-min(in_w\,in_h))/2" \
+    -vf "crop='min(in_w\,in_h)':'min(in_w\,in_h)':(in_w-min(in_w\,in_h))/2:(in_h-min(in_w\,in_h))/2,scale=1280:1280" \
     square.png
 
   ffmpeg \
