@@ -19,7 +19,8 @@ yt-dlp \
   --no-write-playlist-metafiles \
   --paths $YT --output '%(artist)s - %(title)s.%(ext)s' --windows-filenames \
   --print-to-file filename $TMP \
-  'https://music.youtube.com/playlist?list=LM'
+  'https://music.youtube.com/browse/VLPLm6VwE4tgUkXEcczHuW9xiwGJwHvq69ri'
+  # 'https://music.youtube.com/playlist?list=LM'
 
 sed -i -e "s#$YT/##" -e 's/\.webm//' $TMP
 
