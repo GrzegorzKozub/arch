@@ -19,10 +19,17 @@ yt-dlp \
   --embed-metadata \
   --convert-thumbnail png --write-thumbnail \
   --no-write-playlist-metafiles \
-  --print-to-file fulltitle $TMP \
-  --paths $YT --output "%(artist)s - %(title)s.%(ext)s" \
-  'https://music.youtube.com/playlist?list=LM'
+  --print-to-file filename $TMP \
+  --paths $YT --output "%(artist)s - %(title)s.%(ext)s" --windows-filenames \
+  'https://music.youtube.com/watch?v=pyZLUGcYJx8'
+  # 'https://music.youtube.com/watch?v=qR9kvbXt4tk'
+  # 'https://music.youtube.com/playlist?list=LM'
+  # --print-to-file fulltitle $TMP \
 
+# for file in *; do [[ $file == *⧸* ]] && mv -- "$file" "${file//⧸/ }"; done
+# sed -ie "s/$(echo -e "\xE2\xA7\xB8")/ /g" $TMP
+
+echo $TMP
 cat $TMP
 
 while read -r title; do
@@ -40,7 +47,7 @@ while read -r title; do
     -map 0 -map 1 -c copy -disposition:v attached_pic \
     "$title.flac"
 
-  rm original.flac original.png square.png
+  # rm original.flac original.png square.png
 
 done < $TMP
 
