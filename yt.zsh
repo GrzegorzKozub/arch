@@ -2,28 +2,26 @@
 
 # set -e
 
-TMP="$(mktemp)"
-
 YT=/run/media/$USER/data/music/YouTube
 [[ -d $YT ]] || mkdir $YT
-
 rm -rf $YT/*
-
 pushd $YT
+
+TMP="$(mktemp)"
 
 yt-dlp \
   --format bestaudio \
   --extract-audio --audio-format flac --audio-quality 0 \
-  --parse-metadata "title:%(artist)s - %(title)s" \
-  --parse-metadata "%(album|YouTube)s:%(album)s" \
+  --parse-metadata 'title:%(artist)s - %(title)s' \
+  --parse-metadata '%(album|YouTube)s:%(album)s' \
   --embed-metadata \
   --convert-thumbnail png --write-thumbnail \
   --no-write-playlist-metafiles \
-  --paths $YT --output "%(artist)s - %(title)s.%(ext)s" --windows-filenames \
+  --paths $YT --output '%(artist)s - %(title)s.%(ext)s' --windows-filenames \
   --print-to-file filename $TMP \
   'https://music.youtube.com/playlist?list=LM'
 
-sed -i -e "s#$YT/##" -e "s/\.webm//" $TMP
+sed -i -e "s#$YT/##" -e 's/\.webm//' $TMP
 
 while read -r title; do
 
@@ -43,6 +41,8 @@ while read -r title; do
   rm original.flac original.png square.png
 
 done < $TMP
+
+rm $TMP
 
 popd
 
