@@ -335,7 +335,6 @@ gsettings set org.gnome.shell favorite-apps "[
   'com.mitchellh.ghostty.desktop',
   'code.desktop',
   'dev.zed.Zed.desktop',
-  'postman.desktop',
   'brave-browser.desktop',
   'teams-for-linux.desktop',
   'org.keepassxc.KeePassXC.desktop',
@@ -344,7 +343,7 @@ gsettings set org.gnome.shell favorite-apps "[
   $([[ $(sudo pacman -Qq steam 2> /dev/null) ]] && echo ",'steam.desktop'")
 ]"
 
-  # 'Alacritty.desktop', 'org.codeberg.dnkl.foot.desktop'
+  # 'Alacritty.desktop', 'org.codeberg.dnkl.foot.desktop', 'postman.desktop'
 
 set -e
 
