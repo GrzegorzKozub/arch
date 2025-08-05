@@ -14,6 +14,7 @@ yt-dlp \
   --extract-audio --audio-format flac --audio-quality 0 \
   --parse-metadata 'title:%(artist)s - %(title)s' \
   --parse-metadata '%(album|YouTube)s:%(album)s' \
+  --parse-metadata ':(?P<meta_synopsis>)' \
   --embed-metadata \
   --convert-thumbnail png --write-thumbnail \
   --no-write-playlist-metafiles \
