@@ -17,7 +17,6 @@ TRAPINT() { }
 TRAPEXIT() { sleep 3 && fusermount -u $PHONE && rm -rf $PHONE }
 
 rclone sync \
-  --exclude 'Games/**' \
   --progress \
   $MUSIC "$PHONE/Internal shared storage/Music"
 
