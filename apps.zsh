@@ -169,7 +169,7 @@ sudo pacman -S --noconfirm \
   go \
   lua luacheck luarocks stylua \
   perl \
-  python python-pip python-pipx \
+  python python-pip python-pipx python-pynvim \
   taplo \
   tree-sitter
 

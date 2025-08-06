@@ -6,13 +6,24 @@ set -o verbose
 
 sudo pacman -S --noconfirm amberol
 
-# pipx
+# python
 
-sudo pacman -S --noconfirm python-pipx
+rm -rf $XDG_CONFIG_HOME/ipython
 
-# tidal-dl-ng
+rm -rf $XDG_CACHE_HOME/pip
+rm -rf $XDG_CACHE_HOME/pipx
 
-pipx install tidal-dl-ng
+rm -rf ~/.local/bin
+rm -rf ~/.local/include
+rm -rf ~/.local/lib
+
+sudo pacman -S --noconfirm python-pipx python-pynvim
+
+pipx install --force \
+  awscli-local \
+  cfn-lint \
+  lastversion \
+  tidal-dl-ng
 
 # nvim
 
