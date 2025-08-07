@@ -37,6 +37,7 @@ export default class Windows extends Extension {
       { title: /.?LibreOffice.?/ },
       { class: /^obsidian$/ },
       { class: /^org.gnome.Papers$/ },
+      { class: /^com.github.PintaProject.Pinta$/ },
       { title: /.?Slack$/, auto: true },
       { title: /.?Steam$/ },
       { class: /^teams-for-linux$/, auto: true },
