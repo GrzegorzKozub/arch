@@ -157,14 +157,17 @@ paru -S --aur --noconfirm \
 
 # aws
 
-paru -S --aur --noconfirm \
-  aws-cli-v2 \
-  aws-sam-cli-bin
+if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
+
+  paru -S --aur --noconfirm \
+    aws-cli-v2 \
+    aws-sam-cli-bin
+
+fi
 
 # dev
 
 sudo pacman -S --noconfirm \
-  dotnet-sdk aspnet-runtime \
   go \
   lua luacheck luarocks stylua \
   perl \
@@ -176,6 +179,13 @@ sudo pacman -S --noconfirm \
   # nodejs npm
   # ruby
   # rust
+
+if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
+
+  sudo pacman -S --noconfirm \
+    dotnet-sdk aspnet-runtime
+
+fi
 
 paru -S --aur --noconfirm \
   golangci-lint-bin \
@@ -206,11 +216,17 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   brave-bin \
-  postman-bin \
-  teams-for-linux \
   visual-studio-code-bin
 
   # slack-desktop
+
+if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
+
+  paru -S --aur --noconfirm \
+    postman-bin \
+    teams-for-linux
+
+fi
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 

@@ -170,7 +170,7 @@ The aim is to standardize on the font size of `1em` or `12pt` or `16px` ([conver
 Current settings:
 
 - Alacritty, Foot, Ghostty & Kitty: `12pt` (or `1em` or `16px`)
-- Brave, Code, Obsidian & Postman: `16px` (or `1em` or `12pt`)
+- Brave, Code, Obsidian, Postman, Zed: `16px` (or `1em` or `12pt`)
 
 ## GNOME Shell extensions
 

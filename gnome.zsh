@@ -337,7 +337,7 @@ gsettings set org.gnome.shell favorite-apps "[
   'code.desktop',
   'dev.zed.Zed.desktop',
   'brave-browser.desktop',
-  'teams-for-linux.desktop',
+  $([[ $HOST =~ ^(drifter|worker)$ ]] && echo "'teams-for-linux.desktop',")
   'org.keepassxc.KeePassXC.desktop',
   'io.bassi.Amberol.desktop'
   $([[ $(sudo pacman -Qq steam 2> /dev/null) ]] && echo ",'steam.desktop'")

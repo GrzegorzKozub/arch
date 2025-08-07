@@ -112,25 +112,29 @@ sed -i \
   $XDG_DATA_HOME/applications/nvim.desktop
 sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/nvim.desktop
 
-# postman
+if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 
-if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
+  # postman
 
-  cp /usr/share/applications/postman.desktop $XDG_DATA_HOME/applications
+  if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
+
+    cp /usr/share/applications/postman.desktop $XDG_DATA_HOME/applications
+    sed -i \
+      -e 's/\/opt\/postman\/Postman/\/opt\/postman\/Postman --ozone-platform-hint=auto/' \
+      $XDG_DATA_HOME/applications/postman.desktop
+
+  fi
+
+  # teams
+
+  cp /usr/share/applications/teams-for-linux.desktop $XDG_DATA_HOME/applications
   sed -i \
-    -e 's/\/opt\/postman\/Postman/\/opt\/postman\/Postman --ozone-platform-hint=auto/' \
-    $XDG_DATA_HOME/applications/postman.desktop
+    -e 's/^Name=.*/Name=Teams/' \
+    -e '/^Exec=/s/--gtk-version=3//' \
+    -e '/^Exec=/s/teams-for-linux/teams-for-linux --ozone-platform-hint=auto/' \
+    $XDG_DATA_HOME/applications/teams-for-linux.desktop
 
 fi
-
-# teams
-
-cp /usr/share/applications/teams-for-linux.desktop $XDG_DATA_HOME/applications
-sed -i \
-  -e 's/^Name=.*/Name=Teams/' \
-  -e '/^Exec=/s/--gtk-version=3//' \
-  -e '/^Exec=/s/teams-for-linux/teams-for-linux --ozone-platform-hint=auto/' \
-  $XDG_DATA_HOME/applications/teams-for-linux.desktop
 
 # utilities
 
