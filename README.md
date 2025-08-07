@@ -143,7 +143,7 @@ Monitors were calibrated as described in the [toys](https://github.com/GrzegorzK
 To test if a profile is loaded use this `dispwin` command from `argyllcms` package:
 
 ```zsh
-dispwin -d1 -V ~/code/arch/home/greg/.local/share/icc/27gp950-b.icm
+dispwin -d1 -V ~/code/arch/home/greg/.local/share/icc/mpg321urx.icm
 ```
 
 ### NVIDIA
