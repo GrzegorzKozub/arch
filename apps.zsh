@@ -89,8 +89,7 @@ sudo pacman -S --noconfirm \
   pastel \
   rclone \
   restic \
-  ripgrep \
-  ripgrep-all \
+  ripgrep ripgrep-all \
   rsync \
   silicon \
   stress \
@@ -238,6 +237,8 @@ fi
 [[ $XDG_CURRENT_DESKTOP = 'KDE' ]] && . `dirname $0`/plasma.zsh
 
 . `dirname $0`/mime.zsh
+
+[[ $HOST == 'worker' ]] && . `dirname $0`/work.zsh
 
 # cleanup
 
