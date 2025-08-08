@@ -254,8 +254,6 @@ fi
 
 . `dirname $0`/mime.zsh
 
-[[ $HOST == 'worker' ]] && . `dirname $0`/work.zsh
-
 # cleanup
 
 . `dirname $0`/packages.zsh

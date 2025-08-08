@@ -115,6 +115,23 @@ fi
 #
 # fi
 
+# audio
+
+[[ -d $XDG_CONFIG_HOME/pipewire/pipewire.conf.d ]] || mkdir -p $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
+cp `dirname $0`/home/$USER/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
+
+if [[ -f `dirname $0`/home/$USER/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]]; then
+
+  [[ -d $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d ]] || mkdir -p $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d
+  cp `dirname $0`/home/$USER/.config/wireplumber/wireplumber.conf.d/$HOST.conf $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d/audio.conf
+
+fi
+
+# random wallpaper every hour
+
+cp `dirname $0`/home/$USER/.config/systemd/user/wall.* $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable wall.timer
+
 # do not disturb
 
 if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
@@ -123,11 +140,6 @@ if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
   systemctl --user enable dnd.service
 
 fi
-
-# random wallpaper every hour
-
-cp `dirname $0`/home/$USER/.config/systemd/user/wall.* $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable wall.timer
 
 # fonts
 
@@ -146,6 +158,8 @@ if [[ $HOST = 'worker' ]]; then
 
   cp `dirname $0`/home/$USER/.config/systemd/user/iam.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable iam.service
+
+  . `dirname $0`/work.zsh
 
 fi
 
