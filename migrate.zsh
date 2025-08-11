@@ -7,13 +7,6 @@ set -o verbose
 [[ -d $XDG_CONFIG_HOME/pipewire/pipewire.conf.d ]] || mkdir -p $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
 cp `dirname $0`/home/$USER/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
 
-if [[ -f `dirname $0`/home/$USER/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]]; then
-
-  [[ -d $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d ]] || mkdir -p $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d
-  cp `dirname $0`/home/$USER/.config/wireplumber/wireplumber.conf.d/$HOST.conf $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d/audio.conf
-
-fi
-
 # amberol
 
 sudo pacman -S --noconfirm amberol
