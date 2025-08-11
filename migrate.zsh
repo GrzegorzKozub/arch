@@ -2,33 +2,37 @@
 
 set -o verbose
 
-# audio
+if [[ $HOST = 'drifter' ]]; then
 
-[[ -d $XDG_CONFIG_HOME/pipewire/pipewire.conf.d ]] || mkdir -p $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
-cp `dirname $0`/home/$USER/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
+  # audio
 
-# amberol
+  [[ -d $XDG_CONFIG_HOME/pipewire/pipewire.conf.d ]] || mkdir -p $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
+  cp `dirname $0`/home/$USER/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
 
-sudo pacman -S --noconfirm amberol
+  # amberol
 
-# python
+  sudo pacman -S --noconfirm amberol
 
-rm -rf $XDG_CONFIG_HOME/ipython
+  # python
 
-rm -rf $XDG_CACHE_HOME/pip
-rm -rf $XDG_CACHE_HOME/pipx
+  rm -rf $XDG_CONFIG_HOME/ipython
 
-rm -rf ~/.local/bin
-rm -rf ~/.local/include
-rm -rf ~/.local/lib
+  rm -rf $XDG_CACHE_HOME/pip
+  rm -rf $XDG_CACHE_HOME/pipx
 
-sudo pacman -S --noconfirm python-pipx python-pynvim
+  rm -rf ~/.local/bin
+  rm -rf ~/.local/include
+  rm -rf ~/.local/lib
 
-pipx install --force \
-  awscli-local \
-  cfn-lint \
-  lastversion \
-  tidal-dl-ng
+  sudo pacman -S --noconfirm python-pipx python-pynvim
+
+  pipx install --force \
+    awscli-local \
+    cfn-lint \
+    lastversion \
+    tidal-dl-ng
+
+fi
 
 # nvim
 
