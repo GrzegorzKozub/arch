@@ -27,9 +27,8 @@ add_color_profile() {
 
 if [[ $HOST = 'worker' ]]; then
 
-  # add_color_profile '27gp950-b' 'LG ULTRAGEAR+'
+  add_color_profile '27gp950-b' 'LG ULTRAGEAR+'
   add_color_profile '27ul850-w' 'LG HDR 4K'
-  add_color_profile '27ud88-w' 'LG Ultra HD'
 
 fi
 
