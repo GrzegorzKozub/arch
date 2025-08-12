@@ -104,14 +104,14 @@ fi
 #
 # if [[ $HOST = 'player' ]]; then
 #
-#   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27gp950-b.icm
+#   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/mpg321urx.icm
 #
 # fi
 #
 # if [[ $HOST = 'worker' ]]; then
 #
-#   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ul850-w.icm
-#   dispwin -d2 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ud88-w.icm
+#   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27gp950-b.icm
+#   dispwin -d2 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ul850-w.icm
 #
 # fi
 
