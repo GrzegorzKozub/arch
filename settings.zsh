@@ -38,9 +38,22 @@ pactl list short sinks | cut -f1 | while read -r id; do
   pactl set-sink-volume $id 50%
 done
 
-pactl list short sources | grep -v 'monitor' | cut -f1 | while read -r id; do
+pactl list short sources | cut -f1 | while read -r id; do
   pactl set-source-volume $id 50%
 done
+
+find() {
+  pactl list sinks | grep --before-context 1 "Description: $1" | head -n1 | sed 's/.*Name: //'
+}
+
+# [[ $HOST = 'drifter' ]] &&
+#   pactl set-default-sink $(find '...')
+
+# [[ $HOST = 'player' ]] &&
+#   pactl set-default-sink $(find '...')
+
+[[ $HOST == 'worker' ]] &&
+  pactl set-default-sink $(find 'Starship/Matisse HD Audio Controller Analog Stereo')
 
 pactl set-sink-volume @DEFAULT_SINK@ 50%
 pactl set-source-volume @DEFAULT_SOURCE@ 50%
