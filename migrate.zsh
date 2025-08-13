@@ -34,6 +34,11 @@ if [[ $HOST = 'drifter' ]]; then
 
 fi
 
+# pavucontrol
+
+sudo pacman -S --noconfirm \
+  pavucontrol
+
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim

@@ -209,6 +209,7 @@ sudo pacman -S --noconfirm \
   mission-center \
   mpv \
   obsidian \
+  pavucontrol \
   satty \
   zed
 

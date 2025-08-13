@@ -47,7 +47,6 @@ sudo pacman -S --noconfirm \
   swayidle swaylock \
   waybar wofi dunst \
   gammastep brightnessctl \
-  pavucontrol \
   grim slurp \
   swayimg \
   foot
@@ -68,8 +67,7 @@ paru -S --aur --noconfirm \
 
 for APP in \
   gammastep \
-  gammastep-indicator \
-  pavucontrol
+  gammastep-indicator
 do
   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop

@@ -46,6 +46,7 @@ export default class Windows extends Extension {
       // { title: /^Open/ }, // file pickers
       { class: /^io.bassi.Amberol$/ },
       { class: /^org.gnome.Extensions$/ },
+      { class: /^org.pulseaudio.pavucontrol$/ },
       { class: /^org.gnome.SystemMonitor$/ },
       { title: /^Settings$/ },
     ];
