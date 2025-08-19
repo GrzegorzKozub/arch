@@ -159,3 +159,14 @@ do
   sed -i -e 's/^Name=.*/Name=Code/' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
+# zed issue https://github.com/zed-industries/zed/issues/35948
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  cp /usr/share/applications/dev.zed.Zed.desktop $XDG_DATA_HOME/applications
+  sed -i \
+    -e 's/^Exec=/Exec=env WAYLAND_DISPLAY= /' \
+    $XDG_DATA_HOME/applications/dev.zed.Zed.desktop
+
+fi
+
