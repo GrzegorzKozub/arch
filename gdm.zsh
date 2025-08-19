@@ -39,7 +39,7 @@ cat <<EOF > $TMP/theme/$GST.xml
   <gresource prefix="/org/gnome/shell/theme">
 EOF
 
-for RES in `find $TMP/theme -type f`; do
+for RES in `find $TMP/theme -type f -not -name '*.xml'`; do
   echo "    <file>${RES/$TMP\/theme\//}</file>" >> $TMP/theme/$GST.xml
 done
 
