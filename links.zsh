@@ -10,7 +10,6 @@ for APP in \
   btop \
   bvnc \
   cmake-gui \
-  electron34 \
   htop \
   lstopo \
   mpv \
@@ -32,6 +31,10 @@ do
 done
 
   # redshift redshift-gtk
+
+# rm -rf $XDG_DATA_HOME/applications/electron*.desktop || true
+# find /usr/share/applications -maxdepth 1 -type f -name 'electron*.desktop' -printf '%f\n'
+# fd -d 1 -g 'electron*.desktop' /usr/share/applications
 
 # alacritty
 
