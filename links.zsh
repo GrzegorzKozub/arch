@@ -25,16 +25,22 @@ for APP in \
   yazi \
   zellij
 do
-  [[ ! -f /usr/share/applications/$APP.desktop ]] && continue
+  if [[ ! -f /usr/share/applications/$APP.desktop ]]; then
+    rm -rf $XDG_DATA_HOME/applications/$APP.desktop || true
+    continue
+  fi
   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
   # redshift redshift-gtk
 
-# rm -rf $XDG_DATA_HOME/applications/electron*.desktop || true
-# find /usr/share/applications -maxdepth 1 -type f -name 'electron*.desktop' -printf '%f\n'
-# fd -d 1 -g 'electron*.desktop' /usr/share/applications
+rm -rf $XDG_DATA_HOME/applications/electron*.desktop || true
+
+for LINK in `fd --glob 'electron*.desktop' /usr/share/applications --exec basename {}`; do
+  cp /usr/share/applications/$LINK $XDG_DATA_HOME/applications
+  sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$LINK
+done
 
 # alacritty
 
