@@ -171,6 +171,7 @@ sudo pacman -S --noconfirm \
   go \
   lua luacheck luarocks stylua \
   perl \
+  prettier \
   python python-pip python-pipx python-pynvim \
   taplo \
   tree-sitter

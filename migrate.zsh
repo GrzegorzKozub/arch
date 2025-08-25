@@ -2,47 +2,10 @@
 
 set -o verbose
 
-if [[ $HOST = 'drifter' ]]; then
+# zed
 
-  # audio
-
-  [[ -d $XDG_CONFIG_HOME/pipewire/pipewire.conf.d ]] || mkdir -p $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
-  cp `dirname $0`/home/$USER/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
-
-  # amberol
-
-  sudo pacman -S --noconfirm amberol
-
-  # python
-
-  rm -rf $XDG_CONFIG_HOME/ipython
-
-  rm -rf $XDG_CACHE_HOME/pip
-  rm -rf $XDG_CACHE_HOME/pipx
-
-  rm -rf ~/.local/bin
-  rm -rf ~/.local/include
-  rm -rf ~/.local/lib
-
-  sudo pacman -S --noconfirm python-pipx python-pynvim
-
-  pipx install --force \
-    awscli-local \
-    cfn-lint \
-    lastversion \
-    tidal-dl-ng
-
-fi
-
-# fetch
-
-cp `dirname $0`/home/$USER/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable fetch.service
-
-# pavucontrol
-
-sudo pacman -S --noconfirm \
-  pavucontrol
+sudo pacman -S --noconfirm prettier
+pipx install --force black isort
 
 # nvim
 
