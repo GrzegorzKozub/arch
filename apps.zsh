@@ -173,6 +173,7 @@ sudo pacman -S --noconfirm \
   perl \
   prettier \
   python python-pip python-pipx python-pynvim \
+  shfmt \
   taplo \
   tree-sitter
 

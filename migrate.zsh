@@ -4,7 +4,7 @@ set -o verbose
 
 # zed
 
-sudo pacman -S --noconfirm prettier
+sudo pacman -S --noconfirm prettier shfmt
 pipx install --force black isort
 
 # nvim
