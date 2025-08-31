@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# gemini
+
+paru -S --aur --noconfirm gemini-cli-bin
+
 # zed
 
 sudo pacman -S --noconfirm prettier shfmt

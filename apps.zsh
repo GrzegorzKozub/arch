@@ -190,6 +190,7 @@ if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 fi
 
 paru -S --aur --noconfirm \
+  gemini-cli-bin \
   golangci-lint-bin \
   fnm-bin \
   shellcheck-bin
