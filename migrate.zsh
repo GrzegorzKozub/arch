@@ -4,7 +4,7 @@ set -o verbose
 
 # gemini
 
-paru -S --aur --noconfirm gemini-cli-bin
+npm install --global @google/gemini-cli
 
 # zed
 
