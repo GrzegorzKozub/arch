@@ -2,10 +2,6 @@
 
 set -o verbose
 
-# gemini
-
-npm install --global @google/gemini-cli
-
 # zed
 
 sudo pacman -S --noconfirm prettier shfmt
