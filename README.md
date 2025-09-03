@@ -35,7 +35,10 @@ Automated Arch Linux installation
 
 ### Manual config
 
-1. Brave
+1. Secrets
+  - `~/code/arch/fetch.env`: `GITHUB_PAT_EFFICY`, `GITHUB_PAT_GREG`
+  - `~/code/dot/zsh/zsh/.zshenv`: `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, `GITHUB_TOKEN`, `OPENAI_API_KEY`, `RCLONE_DRIVE_CLIENT_SECRET`
+2. Brave
   - Join the Sync Chain and sync everything
   - Setup your profiles
   - Sign in to your sites
@@ -71,30 +74,28 @@ Automated Arch Linux installation
   - Don't warn me before closing window with multiple tabs
   - Enable Memory Saver
   - Disable Brave VPN
-  - Import KeePassXC extension settings from `dot/keepassxc-browser.json`
-2. GNOME
+  - Import KeePassXC extension settings from `~/code/dot/keepassxc-browser.json`
+3. GNOME
   - Set display refresh rate on player to variable 144 Hz and on worker to variable 60 Hz
   - Set display scale on drifter to 300% and on player & worker to 200%
   - Select the sound device and set volume to 50%
-3. KeePassXC
+4. KeePassXC
   - Open your databases
   - Hide folders panel
   - Only show title and username columns, also in search
   - Fit to window, also in search
-4. Postman
+5. Postman
   - Change font to `Cascadia Code`
   - Change font size to `14`
   - Change tab size to `2`
   - Sign in
-5. Visual Studio Code
+6. Visual Studio Code
   - Hide recommended extensions
   - Disable tweet feedback icon
-  - Sign in
-6. Zed
-  - Configure the assistant
-  - Sign in
-7. Run `clean.zsh`
-8. Prepare the `~/.config/zsh/.zshenv` and `~/code/arch/fetch.env` files
+7. Zed
+  - Sign in: Zed, GitHub
+  - Configure LLM providers: Zed, Anthropic, GitHub Copilot Chat, Google AI, OpenAI
+8. Run `clean.zsh`
 9. Fix window sizes and positions
 
 ## New disk
