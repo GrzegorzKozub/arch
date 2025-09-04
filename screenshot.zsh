@@ -9,7 +9,7 @@ set -e
 
 FILE=/tmp/screenshot.png
 gnome-screenshot --area --file $FILE --delay $DELAY
-magick $FILE -filter lanczos -resize $RESIZE% -unsharp 0x0.75 $FILE
+# magick $FILE -filter lanczos -resize $RESIZE% -unsharp 0x0.75 $FILE
 satty --filename $FILE
 rm $FILE
 
