@@ -41,20 +41,13 @@ Automated Arch Linux installation
 2. Brave
   - Join the Sync Chain and sync everything
   - Setup your profiles
-  - Sign in to your sites
+  - Sign in into your sites
   - Set as default browser
   - Disable everything except background images on the dashboard
+  - Hide all buttons except Forward in toolbar customization
   - Don't show tab groups in bookmarks
-  - Hide bookmarks
-  - Hide side panel button
-  - Hide bookmarks button
-  - Hide Brave News button in address bar
   - Don't allow suggestions Leo AI Assistant
   - Use wide address bar
-  - Hide Leo AI button
-  - Hide Brave Rewards button
-  - Hide VPN button
-  - Hide tab search button
   - Set fixed-width font to Cascadia Code
   - Cycle through the most recently used tabs with Ctrl-Tab
   - Don't show Wayback Machine prompts on 404 pages
@@ -65,6 +58,7 @@ Automated Arch Linux installation
   - Disable data collection
   - Don't show Leo icon in the sidebar
   - Don't show Leo in the context menu on websites
+  - Disable Tab Focus Mode
   - Don't offer to save passwords and passkeys
   - Don't sign in automatically
   - Add Polish and enable spell check for it
