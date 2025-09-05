@@ -2,10 +2,11 @@
 
 set -o verbose
 
-# zed
+# vscode
 
-sudo pacman -S --noconfirm prettier shfmt
-pipx install --force black isort
+code --uninstall-extension PKief.material-icon-theme
+code --install-extension Catppuccin.catppuccin-vsc-icons --force
+code --install-extension miguelsolorio.symbols --force
 
 # nvim
 
