@@ -8,6 +8,10 @@ code --uninstall-extension PKief.material-icon-theme
 code --install-extension Catppuccin.catppuccin-vsc-icons --force
 code --install-extension miguelsolorio.symbols --force
 
+# zed
+
+rm -rf ~/.local/share/applications/dev.zed.Zed.desktop
+
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim
