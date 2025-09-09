@@ -1,13 +1,14 @@
-import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
-import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import GLib from 'gi://GLib';
 import Meta from 'gi://Meta';
 import Shell from 'gi://Shell';
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 export default class Windows extends Extension {
   windowCreatedHandler;
   config = [];
   initial = {};
+  hostname = '';
 
   constructor(metadata) {
     super(metadata);
@@ -20,6 +21,7 @@ export default class Windows extends Extension {
       { title: /^DBeaver.?/, auto: true },
       { class: /^draw.io$/, auto: true },
       { title: /.?Inkscape$/ },
+      { title: /.?KeePassXC$/, on: 'drifter' },
       { title: /^OBS.?/ },
       { class: /^Postman$/, auto: true },
       { title: /.?Shotcut$/ },
@@ -32,7 +34,7 @@ export default class Windows extends Extension {
       { title: /^Foliate.?/ },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
-      { title: /.?KeePassXC$/ },
+      { title: /.?KeePassXC$/, on: ['player', 'worker'] },
       { class: /^io.missioncenter.MissionCenter$/ },
       { title: /.?LibreOffice.?/ },
       { class: /^obsidian$/ },
@@ -67,6 +69,7 @@ export default class Windows extends Extension {
   }
 
   enable() {
+    this.hostname = this.getHostname();
     this.windowCreatedHandler = global.display.connect(
       'window-created',
       this.windowCreated.bind(this),
@@ -163,7 +166,8 @@ export default class Windows extends Extension {
       (cfg) =>
         (this.matchTitle(cfg, win) || this.matchClass(cfg, win)) &&
         this.matchRole(cfg, win) &&
-        this.matchSize(cfg, win),
+        this.matchSize(cfg, win) &&
+        this.matchHostname(cfg),
     );
 
   matchTitle = (cfg, win) => cfg.title && cfg.title.test(win.title);
@@ -181,6 +185,29 @@ export default class Windows extends Extension {
       (!cfg.largerThan.height || cfg.largerThan.height < height)
     );
   };
+
+  matchHostname = (cfg) => {
+    if (!cfg.on) {
+      return true;
+    }
+    if (Array.isArray(cfg.on)) {
+      return cfg.on.includes(this.hostname);
+    }
+    return cfg.on === this.hostname;
+  };
+
+  getHostname() {
+    try {
+      const [success, stdout] =
+        GLib.spawn_command_line_sync('cat /etc/hostname');
+      if (success) {
+        return new TextDecoder().decode(stdout).trim();
+      }
+    } catch (error) {
+      console.warn('Failed to get hostname:', error);
+    }
+    return '';
+  }
 
   activate(win) {
     // https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
