@@ -123,17 +123,6 @@ sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/nvim.desktop
 
 if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 
-  # postman
-
-  if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
-
-    cp /usr/share/applications/postman.desktop $XDG_DATA_HOME/applications
-    sed -i \
-      -e 's/\/opt\/postman\/Postman/\/opt\/postman\/Postman --ozone-platform-hint=auto/' \
-      $XDG_DATA_HOME/applications/postman.desktop
-
-  fi
-
   # teams
 
   cp /usr/share/applications/teams-for-linux.desktop $XDG_DATA_HOME/applications
