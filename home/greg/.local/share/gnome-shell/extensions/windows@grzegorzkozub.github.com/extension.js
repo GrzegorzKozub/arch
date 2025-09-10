@@ -5,10 +5,10 @@ import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 export default class Windows extends Extension {
+  host = null;
   windowCreatedHandler;
   config = [];
   initial = {};
-  hostname = '';
 
   constructor(metadata) {
     super(metadata);
@@ -21,7 +21,7 @@ export default class Windows extends Extension {
       { title: /^DBeaver.?/, auto: true },
       { class: /^draw.io$/, auto: true },
       { title: /.?Inkscape$/ },
-      { title: /.?KeePassXC$/, on: 'drifter' },
+      { title: /.?KeePassXC$/, host: 'drifter' },
       { title: /^OBS.?/ },
       { class: /^Postman$/, auto: true },
       { title: /.?Shotcut$/ },
@@ -34,8 +34,8 @@ export default class Windows extends Extension {
       { title: /^Foliate.?/ },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
-      { title: /.?KeePassXC$/, on: ['player', 'worker'] },
       { class: /^io.missioncenter.MissionCenter$/ },
+      { title: /.?KeePassXC$/, host: ['player', 'worker'] },
       { title: /.?LibreOffice.?/ },
       { class: /^obsidian$/ },
       { class: /^org.gnome.Papers$/ },
@@ -69,7 +69,14 @@ export default class Windows extends Extension {
   }
 
   enable() {
-    this.hostname = this.getHostname();
+    const getHost = () => {
+      try {
+        return GLib.file_get_contents('/etc/hostname')[1].toString().trim();
+      } catch {
+        return null;
+      }
+    };
+    this.host = getHost();
     this.windowCreatedHandler = global.display.connect(
       'window-created',
       this.windowCreated.bind(this),
@@ -167,7 +174,7 @@ export default class Windows extends Extension {
         (this.matchTitle(cfg, win) || this.matchClass(cfg, win)) &&
         this.matchRole(cfg, win) &&
         this.matchSize(cfg, win) &&
-        this.matchHostname(cfg),
+        this.matchHost(cfg),
     );
 
   matchTitle = (cfg, win) => cfg.title && cfg.title.test(win.title);
@@ -186,28 +193,15 @@ export default class Windows extends Extension {
     );
   };
 
-  matchHostname = (cfg) => {
-    if (!cfg.on) {
+  matchHost = (cfg) => {
+    if (!cfg.host) {
       return true;
     }
-    if (Array.isArray(cfg.on)) {
-      return cfg.on.includes(this.hostname);
+    if (Array.isArray(cfg.host)) {
+      return cfg.host.includes(this.host);
     }
-    return cfg.on === this.hostname;
+    return cfg.host === this.host;
   };
-
-  getHostname() {
-    try {
-      const [success, stdout] =
-        GLib.spawn_command_line_sync('cat /etc/hostname');
-      if (success) {
-        return new TextDecoder().decode(stdout).trim();
-      }
-    } catch (error) {
-      console.warn('Failed to get hostname:', error);
-    }
-    return '';
-  }
 
   activate(win) {
     // https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
