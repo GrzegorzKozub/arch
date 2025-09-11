@@ -21,7 +21,7 @@ export default class Windows extends Extension {
       { title: /^DBeaver.?/, auto: true },
       { class: /^draw.io$/, auto: true },
       { title: /.?Inkscape$/ },
-      { title: /.?KeePassXC$/, host: 'drifter' },
+      { title: /.?KeePassXC$/, host: 'drifter', auto: true },
       { title: /^OBS.?/ },
       { class: /^Postman$/, auto: true },
       { title: /.?Shotcut$/ },

@@ -41,7 +41,6 @@ Automated Arch Linux installation
 2. Brave
   - Join the Sync Chain and sync everything
   - Setup your profiles
-  - Sign in into your sites
   - Set as default browser
   - Disable everything except background images on the dashboard
   - Hide all buttons except Forward in toolbar customization
@@ -69,6 +68,7 @@ Automated Arch Linux installation
   - Enable Memory Saver
   - Disable Brave VPN
   - Import KeePassXC extension settings from `~/code/dot/keepassxc-browser.json`
+  - Sign in into your sites and setup passkeys
 3. GNOME
   - Set display refresh rate on player to variable 144 Hz and on worker to variable 60 Hz
   - Set display scale on drifter to 300% and on player & worker to 200%

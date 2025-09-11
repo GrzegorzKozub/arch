@@ -2,10 +2,6 @@
 
 set -o verbose
 
-# wayland
-
-rm -rf $XDG_DATA_HOME/applications/postman.desktop
-
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim
