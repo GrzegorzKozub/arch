@@ -61,7 +61,7 @@ systemctl --user enable sync-session.service
 
 # lact
 
-if [[ $HOST =~ ^(player|sacrifice|worker)$ ]]; then
+if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   sudo systemctl enable lactd.service
 

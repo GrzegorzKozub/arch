@@ -73,8 +73,17 @@ cp $(dirname $0)/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
 
 # nvidia gpu
 
-[[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
+if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
+
   echo 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia.conf
+
+  # enable nvidia overclocking
+  sudo cp $(dirname $0)/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
+
+  # disable rootless xorg to allow nvidia overclocking
+  # sudo cp `dirname $0`/etc/X11/Xwrapper.config /etc/X11/Xwrapper.config
+
+fi
 
 # webcam video format
 

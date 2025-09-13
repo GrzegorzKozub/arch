@@ -231,13 +231,6 @@ if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 
 fi
 
-if [[ $HOST =~ ^(player|worker)$ ]]; then
-
-  sudo pacman -S --noconfirm \
-    lact
-
-fi
-
 if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
 
   paru -S --aur --noconfirm \

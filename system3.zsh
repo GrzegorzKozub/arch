@@ -72,13 +72,8 @@ if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
     nvidia-open nvidia-open-lts \
     nvidia-utils \
     nvidia-settings \
-    libva-nvidia-driver
-
-  # enable nvidia overclocking
-  sudo cp `dirname $0`/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
-
-  # disable rootless xorg to allow nvidia overclocking
-  # sudo cp `dirname $0`/etc/X11/Xwrapper.config /etc/X11/Xwrapper.config
+    libva-nvidia-driver \
+    lact
 
 fi
 
@@ -118,7 +113,7 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
     gvfs gvfs-smb \
     xdg-user-dirs-gtk \
     xdg-desktop-portal-gnome xdg-desktop-portal-gtk \
-    gnome-calculator gnome-characters gnome-control-center gnome-font-viewer gnome-remote-desktop gnome-screenshot gnome-system-monitor gnome-terminal gnome-tweak-tool loupe nautilus papers \
+    gnome-calculator gnome-characters gnome-control-center gnome-font-viewer gnome-remote-desktop gnome-screenshot gnome-system-monitor gnome-terminal gnome-tweaks loupe nautilus papers \
     gnome-shell-extension-appindicator
 
     # gnome-software

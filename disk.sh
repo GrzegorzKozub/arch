@@ -4,12 +4,9 @@ set -e -o verbose
 
 # validation
 
-[[ ! $MY_DISK || ! $MY_ARCH_PART || ! $MY_HOSTNAME ]] && exit 1
+[[ ! $MY_ARCH_PART || ! $MY_HOSTNAME ]] && exit 1
 
 # linux partition
-
-read -p "Ensure a partition of type Linux filesystem is created as $MY_ARCH_PART"
-cfdisk $MY_DISK
 
 ARCH_PART="$(
   lsblk -lno PATH,PARTTYPE,FSTYPE |

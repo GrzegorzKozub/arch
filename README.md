@@ -21,17 +21,18 @@ Automated Arch Linux installation
 
 1. Boot from archiso
 2. Run `source ~/arch/drifter.zsh`, `source ~/arch/player.zsh` or `source ~/arch/worker.zsh`
-3. Once per machine, run `~/arch/disk.sh`, otherwise run `~/arch/unlock.zsh`
-4. Run `~/arch/system.zsh`
-5. Once per machine, run `~/arch/boot.zsh`
-6. Reboot to Arch and login as normal user
-7. Run `~/code/arch/services.zsh`
-8. Reboot to GNOME, login as normal user and connect to internet
-9. Run `~/code/arch/apps.zsh`
-10. Reboot
-11. Once per machine, run `~/code/arch/secboot.zsh` and back up afterwards
-12. Once per machine and after each `secboot.zsh` run, run `~/code/arch/crypt.zsh`
-13. Reboot & backup
+3. Use `cfdisk` to create Linux filesystem partition as `$MY_ARCH_PART` (`cfdisk` can sort partitions)
+4. Once per machine, run `~/arch/disk.sh`, otherwise run `~/arch/unlock.zsh`
+5. Run `~/arch/system.zsh`
+6. Once per machine, run `~/arch/boot.zsh`
+7. Reboot to Arch and login as normal user
+8. Run `~/code/arch/services.zsh`
+9. Reboot to GNOME, login as normal user and connect to internet
+10. Run `~/code/arch/apps.zsh`
+11. Reboot
+12. Once per machine, run `~/code/arch/secboot.zsh` and back up afterwards
+13. Once per machine and after each `secboot.zsh` run, run `~/code/arch/crypt.zsh`
+14. Reboot & backup
 
 ### Manual config
 
