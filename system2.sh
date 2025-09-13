@@ -136,11 +136,21 @@ sed -i 's/#Color/Color/' /etc/pacman.conf
 sed -i 's/^OPTIONS=\(.*\) debug\(.*\)$/OPTIONS=\1 !debug\2/' /etc/makepkg.conf
 sed -i "s/^PKGEXT='.pkg.tar.zst'\$/PKGEXT='.pkg.tar'/" /etc/makepkg.conf
 
+# disable mkinitcpio pacman hook
+
+# DIR=/etc/pacman.d/hooks
+# [[ -d $DIR ]] || mkdir -p $DIR
+# ln -sf /dev/null $DIR/90-mkinitcpio-install.hook
+
 # continue as regular user
 
 cp $(dirname $0)/system3.zsh /home/greg
 su greg --command '~/system3.zsh'
 rm /home/greg/system3.zsh
+
+# restore mkinitcpio pacman hook
+
+# rm -f $DIR/90-mkinitcpio-install.hook
 
 # virtual console (before mkinitcpio)
 
