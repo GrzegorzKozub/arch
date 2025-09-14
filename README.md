@@ -207,7 +207,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
 5. Once per machine, move Steam to games disk with
   ```bash
   mv $XDG_DATA_HOME/Steam /run/media/$USER/games/
-  ln -sf /run/media/$USER/games/Steam $XDG_DATA_HOME/Steam
+  ln -s /run/media/$USER/games/Steam $XDG_DATA_HOME/Steam
   ```
 
 ### Launch options
