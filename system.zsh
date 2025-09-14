@@ -54,6 +54,7 @@ done
 pacstrap /mnt \
   base base-devel \
   linux linux-lts linux-firmware \
+  power-profiles-daemon \
   terminus-font \
   efibootmgr sbctl \
   tpm2-tss \
