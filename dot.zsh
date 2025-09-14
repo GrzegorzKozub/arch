@@ -14,7 +14,7 @@ sudo mount $PENDRIVE /mnt
 mkdir ~/.ssh
 
 cp /mnt/.arch/keys/openssh/.ssh/config ~/.ssh
-cp -r /mnt/.arch/keys/openssh/.ssh/github.com ~/.ssh
+cp -r /mnt/.arch/keys/openssh/.ssh/(github|github.pub) ~/.ssh
 chmod 600 ~/.ssh/github*
 
 sudo umount -R /mnt

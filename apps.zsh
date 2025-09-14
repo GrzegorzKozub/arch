@@ -70,6 +70,7 @@ sudo pacman -S --noconfirm \
   7zip \
   bat \
   btop \
+  cava \
   cpupower \
   direnv \
   eza \
@@ -114,7 +115,6 @@ sudo pacman -S --noconfirm \
   # tmux
 
 paru -S --aur --noconfirm \
-  cava \
   tmux-git
 
 # if [[ $HOST =~ ^(player|worker)$ ]]; then
@@ -130,7 +130,7 @@ if [[ $HOST = 'sacrifice' ]]; then
   sudo pacman -S --noconfirm \
     rocm-smi-lib
 
-end
+fi
 
 # yazi
 
