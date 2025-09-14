@@ -2,10 +2,16 @@
 
 set -o verbose
 
-# shell
+# bash
 
 rm -f ~/.bash_history
-rm -f ~/.zshrc
+rm -f ~/.bash_logout
+rm -f ~/.bash_profile
+rm -f ~/.bashrc
+
+# electron
+
+rm -rf ~/.cache/electron
 
 # gnome
 
@@ -23,9 +29,19 @@ rm -rf ~/.cache/node
 rm -rf ~/.cache/node-gyp
 rm -rf ~/.cache/yarn
 
-# electron
+# nvidia
 
-rm -rf ~/.cache/electron
+rm -f ~/.nvidia-settings-rc
+
+rm -rf ~/.nv
+
+# vim
+
+rm -f ~/.viminfo
+
+# zsh
+
+rm -f ~/.zshrc
 
 (exit 0)
 
