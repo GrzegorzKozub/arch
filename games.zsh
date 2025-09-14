@@ -80,7 +80,7 @@ sudo pacman -S --noconfirm \
 
 [[ -d $MOUNT/Steam ]] && {
   rm -f $XDG_DATA_HOME/Steam
-  ln -s $MOUNT/Steam $XDG_DATA_HOME/Steam
+  ln -sf $MOUNT/Steam $XDG_DATA_HOME/Steam
 }
 
 cp /usr/share/applications/steam.desktop $XDG_DATA_HOME/applications

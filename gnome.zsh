@@ -49,7 +49,7 @@ gsettings set org.gnome.desktop.interface enable-hot-corners false
 DIR=$XDG_DATA_HOME/backgrounds
 
 [[ -L $DIR ]] && rm -rf $DIR
-ln -s ~/code/walls $DIR
+ln -sf ~/code/walls $DIR
 
 FILE="file:///home/$USER/.local/share/backgrounds/women.jpg"
 

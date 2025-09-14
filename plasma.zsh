@@ -245,7 +245,7 @@ kwriteconfig6 --file $FILE --group 'WM' --key 'activeFont' 'Noto Sans,11,-1,5,50
 DIR=$XDG_DATA_HOME/wallpapers
 
 [[ -L $DIR ]] && rm -rf $DIR
-ln -s ~/code/walls $DIR
+ln -sf ~/code/walls $DIR
 
 plasma-apply-wallpaperimage $DIR/women.jpg
 
