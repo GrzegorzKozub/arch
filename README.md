@@ -86,6 +86,7 @@ Automated Arch Linux installation
   - Sign in
 6. Visual Studio Code
   - Hide recommended extensions
+  - Collapse MCP servers
   - Disable tweet feedback icon
 7. Zed
   - Sign in: Zed, GitHub
