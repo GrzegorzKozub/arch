@@ -80,13 +80,13 @@ Automated Arch Linux installation
   - Only show title and username columns, also in search
   - Fit to window, also in search
 5. Postman
-  - Change font to `Cascadia Code`
-  - Change font size to `14`
-  - Change tab size to `2`
   - Sign in
+  - Change font family to `Cascadia Code`
+  - Change font size to `16`
+  - Change indentation count to `2`
+  - Don't send anonymous usage data
 6. Visual Studio Code
   - Hide recommended extensions
-  - Collapse MCP servers
   - Disable tweet feedback icon
 7. Zed
   - Sign in: Zed, GitHub
