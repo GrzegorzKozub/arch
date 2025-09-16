@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# heic
+
+sudo pacman -S --noconfirm libheif
+
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim

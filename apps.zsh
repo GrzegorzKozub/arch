@@ -85,6 +85,7 @@ sudo pacman -S --noconfirm \
   hyperfine \
   jq \
   jwt-cli \
+  libheif \
   nushell \
   nvtop \
   pastel \
@@ -107,7 +108,8 @@ sudo pacman -S --noconfirm \
   zsh zsh-completions \
   zoxide
 
-  # xclip, wl-clipboard - for keepassxc, neovim and pass
+  # libheif - for loupe & yazi to support heic images
+  # xclip, wl-clipboard - for keepassxc, neovim & pass
 
   # dua-cli dust gdu
   # gopass-jsonapi
@@ -137,6 +139,8 @@ fi
 sudo pacman -S --noconfirm \
   imagemagick \
   poppler
+
+  # poppler - pdf
 
 paru -S --aur --noconfirm \
   yazi-nightly-bin
