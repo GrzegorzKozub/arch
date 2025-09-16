@@ -6,6 +6,10 @@ set -o verbose
 
 sudo pacman -S --noconfirm libheif
 
+# vscode
+
+code --uninstall-extension ms-python.vscode-python-envs --force
+
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim
