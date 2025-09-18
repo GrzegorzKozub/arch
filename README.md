@@ -194,22 +194,21 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 1. Run `~/code/arch/games.zsh`
 2. Reboot
-3. Start Steam
-4. Once per machine, configure Steam, and specifically
-  - Don't sign in to friends when Steam starts
-  - Disable non-critical notifications and hide non-critical notifications while in game
-  - Set start up location to Library
-  - Disable community content and hide game icons in Library
-  - Enable shader pre-caching and allow background processing of Vulkan shaders
-  - Disable Steam overlay and remove screenshot shortcut
-  - Enable Steam Play for supported and all other titles
-  - Disable Remote Play
-  - For each game, set game compatibility to Proton-GE
-5. Once per machine, move Steam to games disk with
+3. Once per machine, move Steam to games disk with
   ```bash
   mv $XDG_DATA_HOME/Steam /run/media/$USER/games/
   ln -s /run/media/$USER/games/Steam $XDG_DATA_HOME/Steam
   ```
+4. Start Steam
+5. Once per machine, configure Steam
+  - Don't sign in to Friends when Steam starts
+  - Never show notification toasts
+  - Enable 24-hour clock, enable Beta, set start up location to Library, don't run Steam on startup and disable update notifications
+  - Leave only Store, Library, Settings and Exit Steam in taskbar preferences
+  - Disable community content, hide game icons and show Steam Deck compatibility in Library
+  - Allow background processing of Vulkan shaders
+  - Disable Steam overlay, remove overlay shortcut key, set performance monitor key to `F9` and remove screenshot key
+  - Disable Remote Play
 
 ### Launch options
 
@@ -225,8 +224,4 @@ To reduce the image size after freeing up space on guest, first defragment the d
 - [MangoHud](https://github.com/flightlessmango/MangoHud)
 - [proton-ge-custom](https://github.com/GloriousEggroll/proton-ge-custom)
 - [vkd3d-proton](https://github.com/HansKristian-Work/vkd3d-proton)
-
-## Discussions
-
-- [Hardware video acceleration with VA-API](https://bbs.archlinux.org/viewtopic.php?id=244031)
 
