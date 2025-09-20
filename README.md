@@ -39,7 +39,11 @@ Automated Arch Linux installation
 1. Secrets
   - `~/code/arch/fetch.env`: `GITHUB_PAT_EFFICY`, `GITHUB_PAT_GREG`
   - `~/code/dot/zsh/zsh/.zshenv`: `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, `GITHUB_TOKEN`, `OPENAI_API_KEY`, `RCLONE_DRIVE_CLIENT_SECRET`
-2. Brave
+2. GNOME
+  - Set display refresh rate on player to variable 144 Hz and on worker to variable 60 Hz
+  - Set display scale on drifter to 300% and on player & worker to 200%
+  - Select the sound device and set volume to 50%
+3. Brave
   - Join the Sync Chain and sync everything
   - Setup your profiles
   - Set as default browser
@@ -70,29 +74,30 @@ Automated Arch Linux installation
   - Disable Brave VPN
   - Import KeePassXC extension settings from `~/code/dot/keepassxc-browser.json`
   - Sign in into your sites and setup passkeys
-3. GNOME
-  - Set display refresh rate on player to variable 144 Hz and on worker to variable 60 Hz
-  - Set display scale on drifter to 300% and on player & worker to 200%
-  - Select the sound device and set volume to 50%
 4. KeePassXC
   - Open your databases
   - Hide folders panel
   - Only show title and username columns, also in search
   - Fit to window, also in search
-5. Postman
+5. Visual Studio Code
+  - Hide recommended extensions
+  - Disable tweet feedback icon
+6. Zed
+  - Sign in: Zed, GitHub
+  - Configure LLM providers: Zed, Anthropic, GitHub Copilot Chat, Google AI, OpenAI
+7. Postman
   - Sign in
   - Change font family to `Cascadia Code`
   - Change font size to `16`
   - Change indentation count to `2`
   - Don't send anonymous usage data
-6. Visual Studio Code
-  - Hide recommended extensions
-  - Disable tweet feedback icon
-7. Zed
-  - Sign in: Zed, GitHub
-  - Configure LLM providers: Zed, Anthropic, GitHub Copilot Chat, Google AI, OpenAI
-8. Run `clean.zsh`
-9. Fix window sizes and positions
+8. Teams
+  - Follow operating system theme
+  - Switch to compact chat message density
+  - Disable notification display
+  - Disable all apps
+9. Run `clean.zsh`
+10. Fix window sizes and positions
 
 ## New disk
 
