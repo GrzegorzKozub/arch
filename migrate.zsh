@@ -2,6 +2,11 @@
 
 set -o verbose
 
+# gnome
+
+rm -rf $XDG_DATA_HOME/gnome-shell/extensions/panel@grzegorzkozub.github.com
+[[ $HOST = 'drifter' ]] && sudo pacman -S --noconfirm brightnessctl && brightnessctl set 25%
+
 # heic
 
 sudo pacman -S --noconfirm libheif

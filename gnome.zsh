@@ -7,12 +7,7 @@ set -e -o verbose
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true # depends on colord.service
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
-[[ $HOST = 'drifter' ]] &&
-  gdbus call \
-    --session \
-    --dest org.gnome.SettingsDaemon.Power \
-    --object-path /org/gnome/SettingsDaemon/Power \
-    --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness '<int32 25>'
+[[ $HOST = 'drifter' ]] && brightnessctl set 25%
 
 [[ $XDG_SESSION_TYPE = 'wayland' ]] &&
   gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"
@@ -79,15 +74,13 @@ gsettings set org.gnome.shell disable-extension-version-validation true
 DIR=$XDG_DATA_HOME/gnome-shell/extensions
 [[ -d $DIR ]] || mkdir -p $DIR
 
-for NAME ('panel' 'windows')
+for NAME ('windows')
   cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/$NAME@grzegorzkozub.github.com $DIR
 
 pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 
 gsettings set org.gnome.shell enabled-extensions "[
-  $([[ $HOST != 'drifter' ]] && echo "'blur-my-shell@aunetx',")
-  'panel@grzegorzkozub.github.com',
-  $([[ $HOST != 'drifter' ]] && echo "'rounded-window-corners@fxgn',")
+  $([[ $HOST != 'drifter' ]] && echo "'blur-my-shell@aunetx','rounded-window-corners@fxgn',")
   'windows@grzegorzkozub.github.com'
 ]"
 

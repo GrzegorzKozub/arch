@@ -119,6 +119,13 @@ sudo pacman -S --noconfirm \
 paru -S --aur --noconfirm \
   tmux-git
 
+if [[ $HOST = 'drifter' ]]; then
+
+  sudo pacman -S --noconfirm \
+    brightnessctl
+
+fi
+
 # if [[ $HOST =~ ^(player|worker)$ ]]; then
 #
 #   sudo pacman -S --noconfirm \

@@ -1,5 +1,6 @@
 import GLib from 'gi://GLib';
 import Meta from 'gi://Meta';
+import Mtk from 'gi://Mtk';
 import Shell from 'gi://Shell';
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
@@ -450,9 +451,8 @@ export default class Windows extends Extension {
 
   unmax = (win) =>
     new Promise((resolve) => {
-      const max = win.get_maximized();
-      if (max) {
-        win.unmaximize(max);
+      if (win.is_maximized()) {
+        win.unmaximize();
         GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
           resolve();
           return GLib.SOURCE_REMOVE;
@@ -481,7 +481,7 @@ export default class Windows extends Extension {
 
 class Tile {
   constructor(...params) {
-    this.rect = new Meta.Rectangle();
+    this.rect = new Mtk.Rectangle();
     this.rect.x = params[0];
     this.rect.y = params[1];
     this.rect.width = params[2];

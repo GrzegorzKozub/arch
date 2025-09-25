@@ -176,7 +176,7 @@ Current settings:
 
 ## GNOME Shell extensions
 
-To test on Wayland run `dbus-run-session -- env MUTTER_DEBUG_DUMMY_MODE_SPECS=2560x1440 gnome-shell --nested --wayland`.
+Install `mutter-devkit` and run `dbus-run-session -- gnome-shell --devkit` to test & debug.
 
 ### References
 
