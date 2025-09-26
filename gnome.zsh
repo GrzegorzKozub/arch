@@ -7,11 +7,18 @@ set -e -o verbose
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true # depends on colord.service
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
-[[ $XDG_SESSION_TYPE = 'wayland' ]] &&
-  gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"
+if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 
-# scale-monitor-framebuffer - fractional scaling
-# xwayland-native-scaling - https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3567
+  # scale-monitor-framebuffer - fractional scaling
+  # xwayland-native-scaling - https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3567
+
+  [[ $HOST = 'drifter' ]] &&
+    gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer', 'variable-refresh-rate']"
+
+  [[ $HOST =~ ^(player|worker)$ ]] &&
+    gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"
+
+fi
 
 # power
 
@@ -77,10 +84,13 @@ for NAME ('windows')
 
 pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 
-gsettings set org.gnome.shell enabled-extensions "[
-  $([[ $HOST != 'drifter' ]] && echo "'blur-my-shell@aunetx','rounded-window-corners@fxgn',")
-  'windows@grzegorzkozub.github.com'
-]"
+# gsettings set org.gnome.shell enabled-extensions "[
+#   $([[ $HOST != 'drifter' ]] && echo "'blur-my-shell@aunetx','rounded-window-corners@fxgn',")
+#   'windows@grzegorzkozub.github.com'
+# ]"
+
+for NAME ('blur-my-shell@aunetx' 'rounded-window-corners@fxgn' 'windows@grzegorzkozub.github.com')
+  gnome-extensions enable $NAME
 
   # 'appindicatorsupport@rgcjonas.gmail.com',
   # 'user-theme@gnome-shell-extensions.gcampax.github.com',

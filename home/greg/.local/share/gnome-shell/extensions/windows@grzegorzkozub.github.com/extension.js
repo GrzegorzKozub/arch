@@ -15,9 +15,9 @@ export default class Windows extends Extension {
     super(metadata);
     const big = [
       {
-        title: /.?Brave$/,
+        class: /^brave-browser$/,
         auto: true,
-        largerThan: { width: 2000, height: 1500 },
+        largerThan: { width: 800, height: 600 }, // works on drifter with fractional scaling enabled
       },
       { title: /^DBeaver.?/, auto: true },
       { class: /^draw.io$/, auto: true },
@@ -30,7 +30,7 @@ export default class Windows extends Extension {
       { class: /^dev.zed.Zed$/, auto: true },
     ];
     const medium = [
-      { title: /^DevTools.?/ },
+      // { title: /^DevTools.?/ },
       { class: /^com.github.wwmm.easyeffects$/ },
       { title: /^Foliate.?/ },
       { title: /.?GIMP$/ },
@@ -188,6 +188,7 @@ export default class Windows extends Extension {
       return true;
     }
     const { width, height } = win.get_frame_rect();
+    console.log(`window ${win.wm_class} size: ${width}x${height}`);
     return (
       (!cfg.largerThan.width || cfg.largerThan.width < width) &&
       (!cfg.largerThan.height || cfg.largerThan.height < height)
