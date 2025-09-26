@@ -7,8 +7,6 @@ set -e -o verbose
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true # depends on colord.service
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
-[[ $HOST = 'drifter' ]] && brightnessctl set 25%
-
 [[ $XDG_SESSION_TYPE = 'wayland' ]] &&
   gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"
 

@@ -2,6 +2,10 @@
 
 set -e -o verbose
 
+# brightness
+
+[[ $HOST = 'drifter' ]] && brightnessctl set 25%
+
 # color
 
 add_color_profile() {
