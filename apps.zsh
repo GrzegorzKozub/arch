@@ -145,7 +145,8 @@ fi
 
 sudo pacman -S --noconfirm \
   imagemagick \
-  poppler
+  poppler \
+  resvg
 
   # poppler - pdf
 

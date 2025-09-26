@@ -19,6 +19,10 @@ sudo pacman -S --noconfirm libheif
 
 code --uninstall-extension ms-python.vscode-python-envs --force
 
+# yazi
+
+sudo pacman -S --noconfirm resvg
+
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim
