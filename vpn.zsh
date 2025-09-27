@@ -40,7 +40,7 @@ for FILE in $DIR/*.ovpn; do
 
   [[ $CONN = 'apsis' ]] && continue
 
-  [[ $(nmcli connection | grep $CONN) ]] && nmcli connection delete $CONN
+  [[ $(nmcli connection | grep "$CONN ") ]] && nmcli connection delete $CONN
 
   nmcli connection import type openvpn file $FILE
   nmcli connection modify $CONN +vpn.data password-flags=2
