@@ -17,6 +17,7 @@ sudo pacman -S --noconfirm libheif
 
 # vscode
 
+code --uninstall-extension ms-azuretools.vscode-docker --force
 code --uninstall-extension ms-python.vscode-python-envs --force
 
 # yazi
