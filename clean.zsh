@@ -39,6 +39,10 @@ rm -rf ~/.nv
 
 rm -f ~/.viminfo
 
+# wget
+
+rm -f ~/.wget-hsts
+
 # zsh
 
 rm -f ~/.zshrc
