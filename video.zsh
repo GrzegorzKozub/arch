@@ -5,19 +5,13 @@ set -e -o verbose
 # packages
 
 sudo pacman -S --noconfirm \
-  obs-studio \
-  shotcut
+  obs-studio
 
-# sudo pacman -S --noconfirm \
-#   libjpeg6-turbo \
-#   jre-openjdk \
-#   opencl-nvidia
-
-# paru -S --aur --noconfirm \
-#   davinci-resolve
+  # linux-headers v4l2loopback-dkms
 
 # links
 
-cp /usr/share/applications/org.shotcut.Shotcut.desktop $XDG_DATA_HOME/applications
-sed -i -e 's/^Exec=/Exec=env QT_SCALE_FACTOR_ROUNDING_POLICY=PassThrough /' $XDG_DATA_HOME/applications/org.shotcut.Shotcut.desktop
-
+cp /usr/share/applications/com.obsproject.Studio.desktop $XDG_DATA_HOME/applications
+sed -i \
+  -e 's/^Exec=/Exec=env QT_QPA_PLATFORM=wayland /' \
+  $XDG_DATA_HOME/applications/com.obsproject.Studio.desktop

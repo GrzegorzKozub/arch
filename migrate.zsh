@@ -27,6 +27,10 @@ secret-tool clear application Slack
 rm -rf $XDG_DATA_HOME/doc
 rm -rf $XDG_DATA_HOME/jupyter
 
+# qt
+
+sudo pacman -S --noconfirm qt6-wayland
+
 # settings
 
 [[ $HOST = 'drifter' ]] && sudo pacman -S --noconfirm brightnessctl && brightnessctl set 25%

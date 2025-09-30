@@ -22,9 +22,8 @@ export default class Windows extends Extension {
       { title: /^DBeaver.?/, auto: true },
       { class: /^draw.io$/, auto: true },
       { title: /.?Inkscape$/ },
-      { title: /^OBS.?/ },
+      { class: /^com.obsproject.Studio$/ },
       { class: /^Postman$/, auto: true },
-      { title: /.?Shotcut$/ },
       { title: /.?Visual Studio Code$/, auto: true },
       { class: /^dev.zed.Zed$/, auto: true },
     ];

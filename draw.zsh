@@ -9,11 +9,11 @@ paru -S --aur --noconfirm \
 
 # links
 
-cp /usr/share/applications/drawio.desktop $XDG_DATA_HOME/applications
-sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/drawio.desktop
-
-cp /usr/share/applications/drawio.desktop $XDG_DATA_HOME/applications/draw.io.desktop
-sed -i -e 's/^Name=.*/Name=draw.io/' $XDG_DATA_HOME/applications/draw.io.desktop
+cp /usr/share/applications/drawio-desktop.desktop $XDG_DATA_HOME/applications
+sed -i \
+  -e 's/^Name=.*/Name=draw.io/' \
+  -e 's/\/opt\/drawio-desktop\/drawio/\/opt\/drawio-desktop\/drawio --ozone-platform-hint=auto/' \
+  $XDG_DATA_HOME/applications/drawio-desktop.desktop
 
 # file types
 

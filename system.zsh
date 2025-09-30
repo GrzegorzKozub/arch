@@ -70,7 +70,7 @@ pacstrap /mnt \
   realtime-privileges \
   gst-plugins-good \
   xdg-desktop-portal xdg-utils \
-  qt5-wayland \
+  qt5-wayland qt6-wayland \
   pacman-contrib \
   git go pkgfile reflector sudo zsh \
   man-db man-pages \
