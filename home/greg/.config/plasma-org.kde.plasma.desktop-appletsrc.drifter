@@ -6,7 +6,7 @@ wheel:Vertical;NoModifier=org.kde.switchdesktop
 RightButton;NoModifier=org.kde.contextmenu
 
 [Containments][1]
-ItemGeometries-1920x1200=
+ItemGeometries-1280x800=
 ItemGeometriesHorizontal=
 activityId=e629e9a9-f612-47e7-8d28-067dd3d1fd57
 formfactor=0
@@ -39,7 +39,7 @@ autoFontAndSize=false
 customDateFormat=d MMM
 dateFormat=custom
 fontFamily=Noto Sans
-fontSize=8
+fontSize=12
 fontStyleName=Regular
 fontWeight=400
 

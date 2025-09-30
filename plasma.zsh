@@ -79,56 +79,8 @@ count() {
   echo $(grep --after-context=1 '\[Data\]' $FILE | grep 'DataCount' | cut -d= -f2)
 }
 
-rem_shortcut() {
-  local nbr=$(grep --before-context=3 "Name=$1" $FILE | grep '\[Data_' | sed -r 's/[^0-9]*//g')
-  if [[ $nbr ]]; then
-    local id=$(grep --after-context=3 "\[Data_${nbr}Triggers0\]" $FILE | grep 'Uuid' | cut -d= -f2)
-    kwriteconfig6 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key $id --delete
-    sed -i -r -f - $FILE << END
-      /^\[Data_${nbr}\]/,+5d
-      /^\[Data_${nbr}Actions\]/,+2d
-      /^\[Data_${nbr}Actions0\]/,+3d
-      /^\[Data_${nbr}Conditions\]/,+3d
-      /^\[Data_${nbr}Triggers\]/,+3d
-      /^\[Data_${nbr}Triggers0\]/,+4d
-END
-    kwriteconfig6 --file $FILE --group 'Data' --key 'DataCount' $[$(count) - 1]
-  fi
-}
-
-add_shortcut() {
-  local nbr=$[$(count) + 1]
-  local id="{$(uuidgen)}"
-
-  kwriteconfig6 --file $XDG_CONFIG_HOME/kglobalshortcutsrc --group 'khotkeys' --key $id "$1,none,$2"
-
-  typeset -A OPTS=(
-    'Comment' ''
-    'Enabled' 'true'
-    'Name' $2
-    'Type' 'SIMPLE_ACTION_DATA'
-  )
-
-  for KEY VAL ("${(@kv)OPTS}")
-    kwriteconfig6 --file $FILE --group "Data_$nbr" --key $KEY "$VAL"
-
-  kwriteconfig6 --file $FILE --group "Data_${nbr}Actions" --key 'ActionsCount' '1'
-
-  kwriteconfig6 --file $FILE --group "Data_${nbr}Actions0" --key 'CommandURL' $3
-  kwriteconfig6 --file $FILE --group "Data_${nbr}Actions0" --key 'Type' 'COMMAND_URL'
-
-  kwriteconfig6 --file $FILE --group "Data_${nbr}Conditions" --key 'Comment' ''
-  kwriteconfig6 --file $FILE --group "Data_${nbr}Conditions" --key 'ConditionsCount' '0'
-
-  kwriteconfig6 --file $FILE --group "Data_${nbr}Triggers" --key 'Comment' ''
-  kwriteconfig6 --file $FILE --group "Data_${nbr}Triggers" --key 'TriggersCount' '1'
-
-  kwriteconfig6 --file $FILE --group "Data_${nbr}Triggers0" --key 'Key' $1
-  kwriteconfig6 --file $FILE --group "Data_${nbr}Triggers0" --key 'Type' 'SHORTCUT'
-  kwriteconfig6 --file $FILE --group "Data_${nbr}Triggers0" --key 'Uuid' $id
-
-  kwriteconfig6 --file $FILE --group 'Data' --key 'DataCount' $nbr
-}
+rem_shortcut() {}
+add_shortcut() {}
 
 for NAME ('screenshot' 'audio output' 'audio input') rem_shortcut $NAME
 
@@ -140,31 +92,29 @@ add_shortcut 'Meta+Ctrl+M' 'audio input' "/home/$USER/code/arch/audio.zsh source
 # [[ $HOST =~ ^(player|worker)$ ]] &&
 #   add_shortcut 'Meta+Ctrl+N' 'night light' 'pkill -USR1 redshift'
 
-qdbus6 org.kde.KWin /KWin reconfigure
-
 # input & output > display & monitor
 
 if [[ $HOST = 'drifter' ]]; then
 
-  kscreen-doctor output.eDP-1.scale.2.0
-  kwriteconfig6 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 2.0
+  kscreen-doctor output.eDP-1.scale.3.0
+  kwriteconfig6 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 3.0
 
 fi
 
 if [[ $HOST = 'player' ]]; then
 
-  kscreen-doctor output.DP-4.scale.1.5
+  kscreen-doctor output.DP-4.scale.2.0
 
-  kwriteconfig6 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 1.5
+  kwriteconfig6 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 2.0
 
 fi
 
 if [[ $HOST = 'worker' ]]; then
 
-  kscreen-doctor output.DP-2.scale.1.5
-  kscreen-doctor output.DP-3.scale.1.5
+  kscreen-doctor output.DP-2.scale.2.0
+  kscreen-doctor output.DP-3.scale.2.0
 
-  kwriteconfig6 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 1.5
+  kwriteconfig6 --file $XDG_CONFIG_HOME/kdeglobals --group 'KScreen' --key 'ScaleFactor' 2.0
 
 fi
 
@@ -267,30 +217,6 @@ kwriteconfig6 --file $XDG_CONFIG_HOME/plasmanotifyrc \
 # FILE=$XDG_CONFIG_HOME/kwinrc
 #
 # kwriteconfig6 --file $FILE --group 'TabBox' --key 'ShowTabBox' 'false'
-
-# apps & windows > window management > window rules
-
-if [[ $HOST = 'drifter' ]]; then
-
-FILE=$XDG_CONFIG_HOME/kwinrulesrc
-
-ID=$(uuidgen)
-
-typeset -A OPTS=(
-  'Description' 'kitty'
-  'noborder' 'true'
-  'noborderrule' '3'
-  'wmclass' 'kitty'
-  'wmclassmatch' '1'
-)
-
-for KEY VAL ("${(@kv)OPTS}")
-  kwriteconfig6 --file $FILE --group $ID --key $KEY $VAL
-
-kwriteconfig6 --file $FILE --group 'General' --key 'count' '1'
-kwriteconfig6 --file $FILE --group 'General' --key 'rules' $ID
-
-fi
 
 # workspace > search > file search
 
