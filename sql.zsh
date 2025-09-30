@@ -4,9 +4,6 @@ set -e -o verbose
 
 # packages
 
-# sudo pacman -S --noconfirm \
-#   mysql-workbench
-
 sudo pacman -S --noconfirm \
   jre-openjdk \
   dbeaver
@@ -17,12 +14,7 @@ OPT=-Dosgi.configuration.area
   echo "$OPT=@user.home/.local/share/DBeaver" | sudo tee --append $CFG > /dev/null
 }
 
-# https://github.com/dbeaver/dbeaver/issues/20704
-
 # links
-
-# cp /usr/share/applications/mysql-workbench.desktop $XDG_DATA_HOME/applications
-# sed -i -e 's/^Name=.*/Name=MySQL/' $XDG_DATA_HOME/applications/mysql-workbench.desktop
 
 cp /usr/share/applications/io.dbeaver.DBeaver.desktop $XDG_DATA_HOME/applications
 sed -i -e 's/^Name=.*/Name=DBeaver/' $XDG_DATA_HOME/applications/io.dbeaver.DBeaver.desktop
