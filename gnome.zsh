@@ -332,6 +332,7 @@ gsettings set org.gnome.shell app-picker-layout '[]'
 set +e
 
 gsettings set org.gnome.shell favorite-apps "[
+  'org.gnome.Settings.desktop',
   'org.gnome.Nautilus.desktop',
   'kitty.desktop',
   'com.mitchellh.ghostty.desktop',
