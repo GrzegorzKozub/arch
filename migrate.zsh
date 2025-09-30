@@ -14,10 +14,9 @@ sudo pacman -S --noconfirm libheif
 # keyring
 
 secret-tool clear app_id ""
+secret-tool clear app_id brave-browser
+secret-tool clear app_id org.chromium.Chromium
 secret-tool clear application Slack
-
-# app_id brave-browser
-# app_id org.chromium.Chromium
 
 # python
 
@@ -33,7 +32,7 @@ rm -rf $XDG_DATA_HOME/jupyter
 code --uninstall-extension ms-azuretools.vscode-docker --force
 code --uninstall-extension ms-python.vscode-python-envs --force
 
-rm -rf $XDG_DATA_HOME/typescript
+rm -rf $XDG_CACHE_HOME/typescript
 
 # yazi
 
