@@ -5,7 +5,11 @@ set -o verbose
 # gnome
 
 rm -rf $XDG_DATA_HOME/gnome-shell/extensions/panel@grzegorzkozub.github.com
+
 gsettings reset org.gnome.shell enabled-extensions
+
+for NAME ('blur-my-shell@aunetx' 'rounded-window-corners@fxgn' 'windows@grzegorzkozub.github.com')
+  gnome-extensions enable $NAME
 
 # heic
 
