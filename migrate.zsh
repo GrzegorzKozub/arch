@@ -35,6 +35,10 @@ sudo pacman -S --noconfirm qt6-wayland
 
 [[ $HOST = 'drifter' ]] && sudo pacman -S --noconfirm brightnessctl && brightnessctl set 25%
 
+# shortcut
+
+sudo pacman -Rs --noconfirm gnome-screenshot
+
 # vscode
 
 code --uninstall-extension ms-azuretools.vscode-docker --force

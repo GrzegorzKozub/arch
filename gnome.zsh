@@ -232,6 +232,8 @@ gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'pl')]"
 
 # keyboard > keyboard shortcuts
 
+dconf write /org/gnome/mutter/overlay-key "'Super_L'"
+
 DIR='/org/gnome/desktop/wm/keybindings'
 
 for KEY in $(dconf list $DIR/)
@@ -302,7 +304,7 @@ add_shortcut 2 '<Control><Super>a' 'audio output' "/home/$USER/code/arch/audio.z
 add_shortcut 3 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 
 # [[ $HOST =~ ^(player|worker)$ ]] &&
-#   add_shortcut 3 '<Control><Super>n' 'night light' 'pkill -USR1 redshift'
+#   add_shortcut 4 '<Control><Super>n' 'night light' 'pkill -USR1 redshift'
 
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
