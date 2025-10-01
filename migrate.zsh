@@ -35,9 +35,10 @@ sudo pacman -S --noconfirm qt6-wayland
 
 [[ $HOST = 'drifter' ]] && sudo pacman -S --noconfirm brightnessctl && brightnessctl set 25%
 
-# shortcut
+# screenshot
 
 sudo pacman -Rs --noconfirm gnome-screenshot
+rm -rf $XDG_DATA_HOME/applications/org.gnome.Screenshot.desktop
 
 # vscode
 
