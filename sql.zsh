@@ -19,6 +19,10 @@ OPT=-Dosgi.configuration.area
 cp /usr/share/applications/io.dbeaver.DBeaver.desktop $XDG_DATA_HOME/applications
 sed -i -e 's/^Name=.*/Name=DBeaver/' $XDG_DATA_HOME/applications/io.dbeaver.DBeaver.desktop
 
+# cleanup
+
+. `dirname $0`/packages.zsh
+
 # dotfiles
 
 . ~/code/dot/sql.zsh

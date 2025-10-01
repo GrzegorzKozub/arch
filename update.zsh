@@ -43,5 +43,4 @@ zsh `dirname $0`/gdm.zsh
 sudo journalctl --vacuum-time=1months
 
 . `dirname $0`/packages.zsh
-. `dirname $0`/clean.zsh
 

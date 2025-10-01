@@ -5,13 +5,24 @@ set -e -o verbose
 # packages
 
 sudo pacman -S --noconfirm \
-  obs-studio
+  obs-studio \
+  shotcut
 
   # linux-headers v4l2loopback-dkms
 
 # links
 
-cp /usr/share/applications/com.obsproject.Studio.desktop $XDG_DATA_HOME/applications
-sed -i \
-  -e 's/^Exec=/Exec=env QT_QPA_PLATFORM=wayland /' \
-  $XDG_DATA_HOME/applications/com.obsproject.Studio.desktop
+for APP in \
+  com.obsproject.Studio \
+  org.shotcut.Shotcut
+do
+  cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
+  sed -i \
+    -e 's/^Exec=/Exec=env QT_QPA_PLATFORM=wayland /' \
+    $XDG_DATA_HOME/applications/$APP.desktop
+done
+
+# cleanup
+
+. `dirname $0`/packages.zsh
+

@@ -7,6 +7,9 @@ set -e -o verbose
 paru -S --aur --noconfirm \
   drawio-desktop-bin
 
+sudo pacman -S --noconfirm \
+  inkscape
+
 # links
 
 cp /usr/share/applications/drawio-desktop.desktop $XDG_DATA_HOME/applications
@@ -19,3 +22,6 @@ sed -i \
 
 xdg-mime default draw.io.desktop application/vnd.jgraph.mxfile
 
+# cleanup
+
+. `dirname $0`/packages.zsh

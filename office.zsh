@@ -38,6 +38,10 @@ do
   sed -i -e 's/^Name=LibreOffice /Name=/' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
+# cleanup
+
+. `dirname $0`/packages.zsh
+
 # dotfiles
 
 . ~/code/dot/office.zsh
