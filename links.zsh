@@ -148,7 +148,6 @@ fi
 # utilities
 
 for APP in \
-  org.gnome.Screenshot \
   org.gnome.tweaks
 do
   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
