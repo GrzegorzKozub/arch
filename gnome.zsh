@@ -274,6 +274,15 @@ dconf write $DIR/always-on-top "['<Super>T']"
 
 gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
 
+# keyboard > keyboard shortcuts > system
+
+gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>w']"
+
+# keyboard > keyboard shortcuts > typing
+
+dconf write $DIR/switch-input-source '@as []'
+dconf write $DIR/switch-input-source-backward '@as []'
+
 # keyboard > keyboard shortcuts > windows
 
 dconf write $DIR/begin-move "['<Super>F7']"
