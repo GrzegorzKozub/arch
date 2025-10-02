@@ -7,7 +7,7 @@ set -e -o verbose
 sudo pacman -S --noconfirm \
   gnome-shell
 
-# displays
+# display scale factor
 
 SCHEMAS=/usr/share/glib-2.0/schemas
 OVERRIDE=10_screen-scale.gschema.override
@@ -19,7 +19,7 @@ echo "scaling-factor=$FACTOR" | sudo tee --append $SCHEMAS/$OVERRIDE > /dev/null
 
 sudo glib-compile-schemas $SCHEMAS
 
-# appearance
+# wallpaper
 
 GS=/usr/share/gnome-shell
 GST=gnome-shell-theme.gresource
@@ -77,21 +77,12 @@ popd
 
 sudo cp $TMP/theme/$GST $GS/$GST
 
-# mouse & touchpad
+# settings
 
-if [[ $HOST = 'drifter' ]]; then
+sudo cp `dirname $0`/etc/dconf/profile/gdm /etc/dconf/profile/gdm
 
-  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.peripherals.touchpad speed 0.25'
-  sudo machinectl shell gdm@ /bin/bash -c "gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click 'true'"
+sudo cp `dirname $0`/etc/dconf/db/gdm.d/10-common /etc/dconf/db/gdm.d/10-common
+sudo cp `dirname $0`/etc/dconf/db/gdm.d/20-$HOST /etc/dconf/db/gdm.d/20-machine
 
-fi
-
-[[ $HOST =~ ^(player|worker)$ ]] &&
-  sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.peripherals.mouse speed -0.75'
-
-# apps > tweaks > fonts
-
-sudo machinectl shell gdm@ /bin/bash -c 'gsettings set org.gnome.desktop.interface text-scaling-factor 1'
-
-(exit 0)
+sudo dconf update
 

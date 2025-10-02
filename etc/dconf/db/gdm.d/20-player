@@ -1,0 +1,6 @@
+[org/gnome/desktop/session]
+idle-delay=600
+
+[org/gnome/desktop/peripherals/mouse]
+speed=-0.75
+

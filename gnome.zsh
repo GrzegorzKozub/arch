@@ -189,7 +189,7 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code NF 
 
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
-gsettings set org.gnome.desktop.interface text-scaling-factor 1
+# gsettings set org.gnome.desktop.interface text-scaling-factor 1
 
 # apps > tweaks > windows
 
@@ -334,7 +334,6 @@ gsettings set org.gnome.shell app-picker-layout '[]'
 set +e
 
 gsettings set org.gnome.shell favorite-apps "[
-  'org.gnome.Settings.desktop',
   'org.gnome.Nautilus.desktop',
   'kitty.desktop',
   'com.mitchellh.ghostty.desktop',
@@ -347,7 +346,7 @@ gsettings set org.gnome.shell favorite-apps "[
   $([[ $(sudo pacman -Qq steam 2> /dev/null) ]] && echo ",'steam.desktop'")
 ]"
 
-  # 'Alacritty.desktop', 'org.codeberg.dnkl.foot.desktop', 'postman.desktop'
+  # 'org.gnome.Settings.desktop', 'Alacritty.desktop', 'org.codeberg.dnkl.foot.desktop', 'postman.desktop'
 
 set -e
 
