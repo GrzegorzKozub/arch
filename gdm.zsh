@@ -7,6 +7,56 @@ set -e -o verbose
 sudo pacman -S --noconfirm \
   gnome-shell
 
+# dconf
+
+cat <<EOF | sudo tee /etc/dconf/profile/gdm
+user-db:user
+system-db:gdm
+file-db:/usr/share/gdm/greeter-dconf-defaults
+EOF
+
+DIR=/etc/dconf/db/gdm.d
+[[ -d $DIR ]] || mkdir -p $DIR
+
+cat <<EOF | sudo tee $DIR/10-gdm
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=true
+night-light-schedule-automatic=true
+
+[org/gnome/settings-daemon/plugins/power]
+power-button-action='interactive'
+sleep-inactive-ac-timeout=3600
+sleep-inactive-battery-timeout=600
+
+[org/gnome/desktop/sound]
+event-sounds=false
+
+[org/gnome/desktop/interface]
+font-antialiasing='rgba'
+icon-theme='Papirus'
+EOF
+
+[[ $HOST = 'drifter' ]] && cat <<EOF | sudo tee --append $DIR/10-gdm
+
+[org/gnome/desktop/session]
+idle-delay=300
+
+[org/gnome/desktop/peripherals/touchpad]
+speed=0.25
+tap-to-click=true
+EOF
+
+[[ $HOST =~ ^(player|worker)$ ]] && cat <<EOF | sudo tee --append $DIR/10-gdm
+
+[org/gnome/desktop/session]
+idle-delay=600
+
+[org/gnome/desktop/peripherals/mouse]
+speed=-0.75
+EOF
+
+sudo dconf update
+
 # display scale factor
 
 SCHEMAS=/usr/share/glib-2.0/schemas
@@ -76,13 +126,4 @@ glib-compile-resources $GST.xml
 popd
 
 sudo cp $TMP/theme/$GST $GS/$GST
-
-# settings
-
-sudo cp `dirname $0`/etc/dconf/profile/gdm /etc/dconf/profile/gdm
-
-sudo cp `dirname $0`/etc/dconf/db/gdm.d/10-common /etc/dconf/db/gdm.d/10-common
-sudo cp `dirname $0`/etc/dconf/db/gdm.d/20-$HOST /etc/dconf/db/gdm.d/20-machine
-
-sudo dconf update
 
