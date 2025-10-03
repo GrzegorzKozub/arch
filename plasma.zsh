@@ -83,7 +83,6 @@ for KEY VAL ("${(@kv)OPTS}")
 # for NAME ('screenshot' 'audio output' 'audio input') rem_shortcut $NAME
 #
 # add_shortcut 'Print' 'screenshot' "/home/$USER/code/arch/screenshot.zsh"
-# add_shortcut 'Ctrl+Print' 'screenshot delay' "/home/$USER/code/arch/screenshot.zsh delay"
 # add_shortcut 'Meta+Ctrl+A' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 # add_shortcut 'Meta+Ctrl+M' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 #
