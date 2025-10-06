@@ -16,7 +16,7 @@ file-db:/usr/share/gdm/greeter-dconf-defaults
 EOF
 
 DIR=/etc/dconf/db/gdm.d
-[[ -d $DIR ]] || mkdir -p $DIR
+[[ -d $DIR ]] || sudo mkdir -p $DIR
 
 cat <<EOF | sudo tee $DIR/10-gdm
 [org/gnome/settings-daemon/plugins/color]
