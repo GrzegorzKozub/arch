@@ -50,13 +50,13 @@ sed -i \
   -e "s/'uefi-ia32.grub.eltorito' 'uefi-x64.grub.eltorito'/'uefi-x64.systemd-boot.eltorito' 'uefi-x64.systemd-boot.esp'/" \
   $PROFILE/profiledef.sh
 
-cp $PROFILE/efiboot/loader/entries/01-archiso-x86_64-linux.conf \
+cp $PROFILE/efiboot/loader/entries/01-archiso-linux.conf \
   $PROFILE/efiboot/loader/entries/01-archiso.conf
 
-cp $PROFILE/efiboot/loader/entries/01-archiso-x86_64-linux.conf \
+cp $PROFILE/efiboot/loader/entries/01-archiso-linux.conf \
   $PROFILE/efiboot/loader/entries/02-archiso-lts.conf
 
-rm $PROFILE/efiboot/loader/entries/*archiso-x86_64*.conf
+rm $PROFILE/efiboot/loader/entries/*archiso-{linux,memtest,speech}*.conf
 
 sed -i \
   -e 's/^title   .*$/title   Archiso/' \
