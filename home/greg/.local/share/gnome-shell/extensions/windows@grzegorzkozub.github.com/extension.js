@@ -24,6 +24,7 @@ export default class Windows extends Extension {
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
       { class: /^org.inkscape.Inkscape$/ },
+      { class: /^jetbrains-idea-ce$/ },
       { class: /^com.obsproject.Studio$/ },
       { class: /^com.github.PintaProject.Pinta$/ },
       { class: /^Postman$/, auto: true },
