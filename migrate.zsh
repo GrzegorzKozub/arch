@@ -2,6 +2,14 @@
 
 set -o verbose
 
+# gnome
+
+DIR='/org/gnome/desktop/wm/keybindings'
+
+dconf reset $DIR/begin-move
+dconf reset $DIR/begin-resize
+dconf reset $DIR/toggle-fullscreen
+
 # nvim
 
 # rm -rf $XDG_CACHE_HOME/nvim

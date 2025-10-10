@@ -246,17 +246,17 @@ dconf write $DIR/show-desktop "['<Super>d']"
 dconf write $DIR/switch-applications '@as []'
 dconf write $DIR/switch-applications-backward '@as []'
 
-dconf write $DIR/switch-windows "['<Super>Tab']"
-dconf write $DIR/switch-windows-backward "['<Shift><Super>Tab']"
+dconf write $DIR/switch-windows "['<Alt>Tab']"
+dconf write $DIR/switch-windows-backward "['<Shift><Alt>Tab']"
 
-dconf write $DIR/cycle-windows "['<Alt>Tab']"
-dconf write $DIR/cycle-windows-backward "['<Shift><Alt>Tab']"
+dconf write $DIR/cycle-windows "['<Super>Tab']"
+dconf write $DIR/cycle-windows-backward "['<Shift><Super>Tab']"
 
-dconf write $DIR/cycle-group "['<Alt>grave']"
-dconf write $DIR/cycle-group-backward "['<Shift><Alt>grave']"
+dconf write $DIR/cycle-group "['<Super>grave']"
+dconf write $DIR/cycle-group-backward "['<Shift><Super>grave']"
 
-dconf write $DIR/switch-group '@as []'
-dconf write $DIR/switch-group-backward '@as []'
+dconf write $DIR/switch-group "['<Alt>grave']"
+dconf write $DIR/switch-group-backward "['<Shift><Alt>grave']"
 
 dconf write $DIR/switch-to-workspace-1 "['<Control><Super>Home']"
 dconf write $DIR/switch-to-workspace-left "['<Control><Super>Left']"
@@ -284,11 +284,6 @@ dconf write $DIR/switch-input-source '@as []'
 dconf write $DIR/switch-input-source-backward '@as []'
 
 # keyboard > keyboard shortcuts > windows
-
-dconf write $DIR/begin-move "['<Super>F7']"
-dconf write $DIR/begin-resize "['<Super>F8']"
-
-dconf write $DIR/toggle-fullscreen "['<Super>F11']"
 
 dconf write $DIR/move-to-center "['<Super><Control>C']"
 
