@@ -30,7 +30,7 @@ Automated Arch Linux installation
 9. Reboot to GNOME, login as normal user and connect to internet
 10. Run `~/code/arch/apps.zsh`
 11. Reboot
-12. Once per machine, run `~/code/arch/secboot.zsh` and back up afterwards
+12. Once per machine, run `~/code/arch/secboot.zsh` (backup required after)
 13. Once per machine and after each `secboot.zsh` run, run `~/code/arch/crypt.zsh`
 14. Reboot & backup
 
