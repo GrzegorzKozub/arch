@@ -2,6 +2,16 @@
 
 set -o verbose
 
+# fstab
+
+sed -i \
+  -e "s/ext4[[:space:]]\+rw,relatime/ext4 rw,noatime/" \
+  -e "s/fmask=0022/fmask=0077/" \
+  -e "s/dmask=0022/dmask=0077/" \
+  /etc/fstab
+
+sudo `dirname $0`/fstab.sh
+
 # gnome
 
 DIR='/org/gnome/desktop/wm/keybindings'
