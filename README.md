@@ -27,7 +27,7 @@ Automated Arch Linux installation
 6. Once per machine, run `~/arch/boot.zsh`
 7. Reboot to Arch and login as normal user
 8. Run `~/code/arch/services.zsh`
-9. Reboot to GNOME, login as normal user and connect to internet
+9. Reboot to GNOME, login as normal user (connect to internet on drifter)
 10. Run `~/code/arch/apps.zsh`
 11. Reboot
 12. Once per machine, run `~/code/arch/secboot.zsh` (backup required after)
@@ -40,9 +40,9 @@ Automated Arch Linux installation
   - `~/code/arch/fetch.env`: `GITHUB_PAT_EFFICY`, `GITHUB_PAT_GREG`
   - `~/code/dot/zsh/zsh/.zshenv`: `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, `GITHUB_TOKEN`, `OPENAI_API_KEY`, `RCLONE_DRIVE_CLIENT_SECRET`
 2. GNOME
-  - Set display refresh rate on player to variable 144 Hz and on worker to variable 60 Hz
-  - Set display scale on drifter to 300% and on player & worker to 200%
-  - Select the sound device and set volume to 50%
+  - Set variable display refresh rate: player 240 Hz, worker 144 & 60 Hz
+  - Set display scale: drifter 300%, player & worker 200%
+  - Remove all folders from dash
 3. Brave
   - Join the Sync Chain and sync everything
   - Setup your profiles

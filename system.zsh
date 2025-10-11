@@ -85,7 +85,7 @@ pacstrap /mnt \
 genfstab -U /mnt > /mnt/etc/fstab
 
 sed -i \
-  -e "s/ext4      	rw,relatime/ext4      	rw,noatime/" \
+  -e "s/ext4[[:space:]]\+rw,relatime/ext4 rw,noatime/" \
   -e "s/fmask=0022/fmask=0077/" \
   -e "s/dmask=0022/dmask=0077/" \
   /etc/fstab

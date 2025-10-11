@@ -27,7 +27,7 @@ add_color_profile() {
   set -e
 }
 
-# [[ $HOST = 'player' ]] && add_color_profile 'mpg321urx' '...'
+[[ $HOST = 'player' ]] && add_color_profile 'mpg321urx' 'MPG321UX OLED'
 
 if [[ $HOST = 'worker' ]]; then
 
@@ -53,8 +53,8 @@ find() {
 # [[ $HOST = 'drifter' ]] &&
 #   pactl set-default-sink $(find '...')
 
-# [[ $HOST = 'player' ]] &&
-#   pactl set-default-sink $(find '...')
+[[ $HOST = 'player' ]] &&
+  pactl set-default-sink $(find 'Schiit Magni Unity Analog Stereo')
 
 [[ $HOST == 'worker' ]] &&
   pactl set-default-sink $(find 'Starship/Matisse HD Audio Controller Analog Stereo')
