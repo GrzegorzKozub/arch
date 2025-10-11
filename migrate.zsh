@@ -4,7 +4,7 @@ set -o verbose
 
 # fstab
 
-sed -i \
+sudo sed -i \
   -e "s/ext4[[:space:]]\+rw,relatime/ext4 rw,noatime/" \
   -e "s/fmask=0022/fmask=0077/" \
   -e "s/dmask=0022/dmask=0077/" \
