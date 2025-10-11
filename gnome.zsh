@@ -90,10 +90,17 @@ pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && p
 # ]"
 
 for NAME ('blur-my-shell@aunetx' 'rounded-window-corners@fxgn' 'windows@grzegorzkozub.github.com')
-  gnome-extensions enable $NAME
+  gnome-extensions enable $NAME || FRESH=1
 
   # 'appindicatorsupport@rgcjonas.gmail.com',
   # 'user-theme@gnome-shell-extensions.gcampax.github.com',
+
+[[ $FRESH == 1 ]] &&
+  gsettings set org.gnome.shell enabled-extensions "[
+    'blur-my-shell@aunetx',
+    'rounded-window-corners@fxgn',
+    'windows@grzegorzkozub.github.com'
+  ]"
 
 gsettings set org.gnome.shell.extensions.appindicator legacy-tray-enabled false
 
