@@ -90,12 +90,12 @@ pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && p
 # ]"
 
 for NAME ('blur-my-shell@aunetx' 'rounded-window-corners@fxgn' 'windows@grzegorzkozub.github.com')
-  gnome-extensions enable $NAME || FRESH=1
+  gnome-extensions enable $NAME || FRESH=true
 
   # 'appindicatorsupport@rgcjonas.gmail.com',
   # 'user-theme@gnome-shell-extensions.gcampax.github.com',
 
-[[ $FRESH == 1 ]] &&
+[[ $FRESH == true ]] &&
   gsettings set org.gnome.shell enabled-extensions "[
     'blur-my-shell@aunetx',
     'rounded-window-corners@fxgn',
