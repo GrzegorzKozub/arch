@@ -11,6 +11,8 @@ for PROFILE in 'au_stage' 'audience_stage' 'waw_stage' 'webscript_stage'; do
     grep aws_access_key_id |
     cut -d' ' -f3)
 
+  [[ -z ${ID-} ]] && continue
+
   export AWS_PROFILE=$PROFILE
   aws iam get-access-key-last-used --access-key-id $ID
 

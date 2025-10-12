@@ -8,6 +8,10 @@ sudo pacman -S --noconfirm \
   ansible-core ansible \
   python-boto3
 
+# settings
+
+sudo chfn -f greg greg # gecos
+
 # cleanup
 
 . `dirname $0`/packages.zsh

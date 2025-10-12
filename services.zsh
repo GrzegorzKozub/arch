@@ -152,12 +152,14 @@ fc-cache -f
 cp `dirname $0`/home/$USER/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable fetch.service
 
-# aws iam access key refresh
+if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 
-if [[ $HOST = 'worker' ]]; then
+  # aws iam access key refresh
 
   cp `dirname $0`/home/$USER/.config/systemd/user/iam.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable iam.service
+
+  # hosts
 
   . `dirname $0`/work.zsh
 

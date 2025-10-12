@@ -50,7 +50,6 @@ set -e
 # normal user
 
 useradd -m -g users -G wheel,realtime -s /bin/zsh greg
-chfn -f greg greg # gecos
 
 set +e
 

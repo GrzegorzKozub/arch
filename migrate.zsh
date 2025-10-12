@@ -20,14 +20,20 @@ dconf reset $DIR/begin-move
 dconf reset $DIR/begin-resize
 dconf reset $DIR/toggle-fullscreen
 
-# nvim
+# work
 
-# rm -rf $XDG_CACHE_HOME/nvim
-# rm -rf $XDG_DATA_HOME/nvim
-# rm -rf ~/.local/state/nvim
-# nvim \
-#   -c 'autocmd User MasonToolsUpdateCompleted quitall' \
-#   -c 'autocmd User VeryLazy MasonToolsUpdate'
+if [[ $HOST = 'drifter' ]]; then
+
+  cp `dirname $0`/home/$USER/.config/systemd/user/iam.service $XDG_CONFIG_HOME/systemd/user
+  systemctl --user enable iam.service
+
+  . `dirname $0`/work.zsh
+
+fi
+
+# reset
+
+# . `dirname $0`/reset.zsh
 
 # cleanup
 
