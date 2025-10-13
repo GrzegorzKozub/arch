@@ -171,6 +171,12 @@ paru -S --aur --noconfirm \
 
 if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 
+  sudo pacman -S --noconfirm \
+    ansible-core ansible \
+    python-boto3
+
+  sudo chfn -f $USER $USER # gecos for ansible
+
   paru -S --aur --noconfirm \
     aws-cli-v2 \
     aws-sam-cli-bin
