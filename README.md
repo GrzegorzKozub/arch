@@ -52,7 +52,7 @@ Automated Arch Linux installation
   - Don't show tab groups in bookmarks
   - Don't allow suggestions Leo AI Assistant
   - Use wide address bar
-  - Set fixed-width font to Cascadia Code
+  - Set fixed-width font to Cascadia Code (on Windows)
   - Cycle through the most recently used tabs with Ctrl-Tab
   - Don't show Wayback Machine prompts on 404 pages
   - Don't show the number of blocked items on the Shields icon
@@ -71,20 +71,20 @@ Automated Arch Linux installation
   - Don't continue running background apps when Brave is closed
   - Don't warn me before closing window with multiple tabs
   - Enable Memory Saver
-  - Disable Brave VPN
+  - Disable Brave VPN (on Windows)
   - Import KeePassXC extension settings from `~/code/dot/keepassxc-browser.json`
+  - Connect KeePassXC databases
   - Sign in into your sites and setup passkeys
 4. KeePassXC
   - Open your databases
-  - Hide folders panel
   - Only show title and username columns, also in search
   - Fit to window, also in search
 5. Visual Studio Code
   - Hide recommended extensions
-  - Disable tweet feedback icon
 6. Zed
-  - Sign in: Zed, GitHub
+  - Sign in: Zed, collab panel
   - Configure LLM providers: Zed, Anthropic, GitHub Copilot Chat, Google AI, OpenAI
+  - Configure edit predictions
 7. Postman
   - Sign in
   - Change font family to `Cascadia Code`
@@ -96,8 +96,7 @@ Automated Arch Linux installation
   - Switch to compact chat message density
   - Disable notification display
   - Disable all apps
-9. Run `clean.zsh`
-10. Fix window sizes and positions
+9. Fix window sizes and positions
 
 ## New disk
 

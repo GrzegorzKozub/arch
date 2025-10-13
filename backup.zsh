@@ -2,15 +2,14 @@
 
 set -e
 
-# find backup partition by uuid (nvme devices are numbered as they init)
-
-[[ $HOST =~ ^(player|worker)$ ]] &&
-  DISK="$(
-    lsblk -lno PATH,UUID |
-    grep -i '5587cec71012fffa' |
-    cut -d' ' -f1
-  )" \
-|| DISK=/dev/sda1
+if [[ $HOST == 'drifter' ]]; then
+  DISK=/dev/sda1
+else
+  # find backup partition by uuid (nvme devices are numbered as they init)
+  [[ $HOST == 'player' ]] && UUID='a41afb701afb3dbc'
+  [[ $HOST == 'worker' ]] && UUID='5587cec71012fffa'
+  DISK="$(lsblk -lno PATH,UUID | grep -i $UUID | cut -d' ' -f1)"
+fi
 
 MOUNT=/mnt
 SOURCE=/run/media/$USER/data/
@@ -21,14 +20,6 @@ TARGET=$MOUNT/arch
 
 FREE=$(df --human-readable $DISK --output=avail | grep -v Avail | sed -E 's/ |G//g' )
 [[ $FREE -lt 64 ]] && echo "only ${FREE}G free on $DISK"
-
-# rsync \
-#   --archive \
-#   --delete \
-#   --exclude 'boot' \
-#   --exclude 'lost+found' \
-#   --human-readable --progress \
-#   $SOURCE $TARGET
 
 rclone sync \
   --exclude 'boot/**' \
