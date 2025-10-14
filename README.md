@@ -43,7 +43,11 @@ Automated Arch Linux installation
   - Set variable display refresh rate: player 240 Hz, worker 144 & 60 Hz
   - Set display scale: drifter 300%, player & worker 200%
   - Remove all folders from dash
-3. Brave
+3. KeePassXC
+  - Open your databases
+  - Only show title and username columns, also in search
+  - Fit to window, also in search
+4. Brave
   - Join the Sync Chain and sync everything
   - Setup your profiles
   - Set as default browser
@@ -63,6 +67,7 @@ Automated Arch Linux installation
   - Don't show Leo icon in the sidebar
   - Don't show Leo in the context menu on websites
   - Disable Tab Focus Mode
+  - Set normal window search engine to Google
   - Don't offer to save passwords and passkeys
   - Don't sign in automatically
   - Add Polish and enable spell check for it
@@ -75,10 +80,6 @@ Automated Arch Linux installation
   - Import KeePassXC extension settings from `~/code/dot/keepassxc-browser.json`
   - Connect KeePassXC databases
   - Sign in into your sites and setup passkeys
-4. KeePassXC
-  - Open your databases
-  - Only show title and username columns, also in search
-  - Fit to window, also in search
 5. Visual Studio Code
   - Hide recommended extensions
 6. Zed
