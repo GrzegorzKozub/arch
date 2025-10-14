@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# malcontent
+
+sudo pacman -S --noconfirm malcontent
+
 # reset
 
 # . `dirname $0`/reset.zsh

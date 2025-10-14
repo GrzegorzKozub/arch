@@ -71,7 +71,7 @@ pacstrap /mnt \
   gst-plugins-good \
   xdg-desktop-portal xdg-utils \
   qt5-wayland qt6-wayland \
-  pacman-contrib \
+  pacman-contrib flatpak \
   git go pkgfile reflector sudo zsh \
   man-db man-pages \
   xorg-server \

@@ -114,14 +114,16 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
     xdg-user-dirs-gtk \
     xdg-desktop-portal-gnome xdg-desktop-portal-gtk \
     gnome-calculator gnome-characters gnome-control-center gnome-font-viewer gnome-remote-desktop gnome-system-monitor gnome-terminal gnome-tweaks loupe nautilus papers \
-    gnome-shell-extension-appindicator
+    gnome-shell-extension-appindicator \
+    malcontent
 
     # gnome-software
 
   paru -S --aur --noconfirm \
     gnome-browser-connector \
     gnome-shell-extension-blur-my-shell \
-    gnome-shell-extension-rounded-window-corners-reborn
+    gnome-shell-extension-rounded-window-corners-reborn \
+    refine
 
 fi
 

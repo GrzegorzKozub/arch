@@ -167,15 +167,17 @@ paru -S --aur --noconfirm \
 
 . `dirname $0`/docker.zsh
 
-# aws
-
 if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
+
+  # ansible
 
   sudo pacman -S --noconfirm \
     ansible-core ansible \
     python-boto3
 
   sudo chfn -f $USER $USER # gecos for ansible
+
+  # aws
 
   paru -S --aur --noconfirm \
     aws-cli-v2 \
@@ -246,14 +248,6 @@ if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
   paru -S --aur --noconfirm \
     postman-bin \
     teams-for-linux
-
-fi
-
-if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
-
-  paru -S --aur --noconfirm \
-    gnome-browser-connector \
-    refine
 
 fi
 
