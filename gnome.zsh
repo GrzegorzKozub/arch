@@ -2,6 +2,10 @@
 
 set -e -o verbose
 
+# privacy & security > location (here for night light)
+
+gsettings set org.gnome.system.location enabled true
+
 # displays
 
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true # depends on colord.service
