@@ -58,7 +58,7 @@ if [[ $1 == 'audience' ]]; then
 
     nmcli connection modify $CONN +vpn.data virtual=yes
 
-    nmcli connection modify $CONN ipv4.dns '10.103.11.212, 8.8.8.8'
+    nmcli connection modify $CONN ipv4.dns '10.103.11.234'
 
   done
 
