@@ -20,6 +20,12 @@ if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 
 fi
 
+SOURCE=`dirname $0`/home/$USER/.config/monitors.$HOST.xml
+TARGET=$XDG_CONFIG_HOME/monitors.xml
+
+[[ -f $SOURCE ]] && cp $SOURCE $TARGET
+[[ -f $TARGET~ ]] && rm $TARGET~
+
 # power
 
 if [[ $HOST = 'drifter' ]]; then

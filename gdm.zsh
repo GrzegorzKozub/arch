@@ -57,6 +57,15 @@ EOF
 
 sudo dconf update
 
+# displays
+
+SOURCE=`dirname $0`/home/$USER/.config/monitors.$HOST.xml
+TARGET=/var/lib/gdm/seat0/config/monitors.xml
+
+[[ -f $SOURCE ]] &&
+  sudo cp $SOURCE $TARGET &&
+  sudo sed -i '/ratemode/d' $TARGET
+
 # display scale factor
 
 SCHEMAS=/usr/share/glib-2.0/schemas

@@ -1,0 +1,44 @@
+<monitors version="2">
+  <configuration>
+    <layoutmode>physical</layoutmode>
+    <logicalmonitor>
+      <x>3840</x>
+      <y>0</y>
+      <scale>2</scale>
+      <monitor>
+        <monitorspec>
+          <connector>DP-2</connector>
+          <vendor>GSM</vendor>
+          <product>LG HDR 4K</product>
+          <serial>0x00081471</serial>
+        </monitorspec>
+        <mode>
+          <width>3840</width>
+          <height>2160</height>
+          <rate>59.997</rate>
+          <ratemode>variable</ratemode>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>2</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-1</connector>
+          <vendor>GSM</vendor>
+          <product>LG ULTRAGEAR+</product>
+          <serial>105NTNH17527</serial>
+        </monitorspec>
+        <mode>
+          <width>3840</width>
+          <height>2160</height>
+          <rate>143.999</rate>
+          <ratemode>variable</ratemode>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+</monitors>
