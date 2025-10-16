@@ -39,7 +39,9 @@ if [[ $1 == 'audience' ]]; then
 
   typeset -A ENVS=(
     'stage' 'ec2-54-217-117-208.eu-west-1.compute.amazonaws.com'
+    'beta' 'ec2-176-34-136-50.eu-west-1.compute.amazonaws.com'
     'prod' 'ec2-18-203-8-221.eu-west-1.compute.amazonaws.com'
+    'prod-apac' 'ec2-52-221-141-135.ap-southeast-1.compute.amazonaws.com'
   )
 
   for ENV ADDR ("${(@kv)ENVS}"); do
@@ -60,7 +62,9 @@ if [[ $1 == 'audience' ]]; then
     nmcli connection modify $CONN +vpn.data virtual=yes
 
     [[ $ENV == 'stage' ]] && nmcli connection modify $CONN ipv4.dns '10.103.11.234'
+    [[ $ENV == 'beta' ]] && nmcli connection modify $CONN ipv4.dns '10.104.11.228'
     [[ $ENV == 'prod' ]] && nmcli connection modify $CONN ipv4.dns '10.105.11.249'
+    [[ $ENV == 'prod-apac' ]] && nmcli connection modify $CONN ipv4.dns '10.107.11.60'
 
   done
 
