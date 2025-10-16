@@ -2,9 +2,9 @@
 
 set -o verbose
 
-# malcontent
+# gdm
 
-sudo pacman -S --noconfirm malcontent
+sudo rm -rf /var/lib/gdm/seat0/config/monitors.xml
 
 # reset
 
