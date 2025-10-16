@@ -38,21 +38,21 @@ if [[ $1 == 'audience' ]]; then
   DIR=~/code/keys/strongswan
 
   typeset -A ENVS=(
-    'stage' 'ec2-54-217-117-208.eu-west-1.compute.amazonaws.com'
-    'beta' 'ec2-176-34-136-50.eu-west-1.compute.amazonaws.com'
-    'prod' 'ec2-18-203-8-221.eu-west-1.compute.amazonaws.com'
-    'prod-apac' 'ec2-52-221-141-135.ap-southeast-1.compute.amazonaws.com'
+    'stage' 'ec2-54-217-117-208.eu-west-1.compute.amazonaws.com 10.103.11.234'
+    'beta' 'ec2-176-34-136-50.eu-west-1.compute.amazonaws.com 10.104.11.228'
+    'prod' 'ec2-18-203-8-221.eu-west-1.compute.amazonaws.com 10.105.11.249'
+    'prod-apac' 'ec2-52-221-141-135.ap-southeast-1.compute.amazonaws.com 10.107.11.60'
   )
 
-  for ENV ADDR ("${(@kv)ENVS}"); do
+  for ENV DATA ("${(@kv)ENVS}"); do
 
-    CONN="audience-$ENV"
+    CONN="audience-$ENV" && PROPS=($=DATA)
 
     [[ $(nmcli connection | grep "$CONN ") ]] && nmcli connection delete $CONN
 
     nmcli connection add type vpn vpn-type strongswan con-name $CONN
 
-    nmcli connection modify $CONN +vpn.data address=$ADDR
+    nmcli connection modify $CONN +vpn.data address=$PROPS[1]
     nmcli connection modify $CONN +vpn.data certificate=$DIR/$CONN-ca.pem
 
     nmcli connection modify $CONN +vpn.data method=cert
@@ -61,10 +61,7 @@ if [[ $1 == 'audience' ]]; then
 
     nmcli connection modify $CONN +vpn.data virtual=yes
 
-    [[ $ENV == 'stage' ]] && nmcli connection modify $CONN ipv4.dns '10.103.11.234'
-    [[ $ENV == 'beta' ]] && nmcli connection modify $CONN ipv4.dns '10.104.11.228'
-    [[ $ENV == 'prod' ]] && nmcli connection modify $CONN ipv4.dns '10.105.11.249'
-    [[ $ENV == 'prod-apac' ]] && nmcli connection modify $CONN ipv4.dns '10.107.11.60'
+    nmcli connection modify $CONN ipv4.dns $PROPS[2]
 
   done
 
