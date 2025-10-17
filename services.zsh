@@ -159,10 +159,6 @@ if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
   cp `dirname $0`/home/$USER/.config/systemd/user/iam.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable iam.service
 
-  # hosts
-
-  . `dirname $0`/work.zsh
-
 fi
 
 # group check
