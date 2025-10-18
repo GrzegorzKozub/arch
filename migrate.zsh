@@ -30,6 +30,11 @@ for HOST in $HOSTS; do
   sudo sed -i -e "/.*$HOST.*/d" /etc/hosts
 done
 
+# tree-sitter
+
+sudo pacman -Rs --noconfirm tree-sitter
+sudo pacman -S --noconfirm tree-sitter-cli
+
 # reset
 
 # . `dirname $0`/reset.zsh
