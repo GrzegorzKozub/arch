@@ -35,6 +35,10 @@ done
 sudo pacman -Rs --noconfirm tree-sitter
 sudo pacman -S --noconfirm tree-sitter-cli
 
+# weather
+
+sudo pacman -S --noconfirm gnome-weather
+
 # reset
 
 # . `dirname $0`/reset.zsh

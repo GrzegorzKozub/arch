@@ -212,6 +212,15 @@ gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 
 gsettings set org.gnome.mutter center-new-windows true
 
+# apps > weather
+
+LOC="[<(uint32 2, <('Warsaw', 'EPWA', true, [(0.91048009894147275, 0.36593737231924195)], [(0.91193453416703718, 0.36651914291880922)])>)>]"
+
+gsettings set org.gnome.Weather locations $LOC
+gsettings set org.gnome.shell.weather locations $LOC
+
+gsettings set org.gnome.shell.weather automatic-location true
+
 # notifications
 
 gsettings set org.gnome.desktop.notifications show-banners false
