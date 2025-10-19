@@ -35,6 +35,11 @@ done
 sudo pacman -Rs --noconfirm tree-sitter
 sudo pacman -S --noconfirm tree-sitter-cli
 
+# vscode
+
+[[ $HOST =~ ^(drifter|worker)$ ]] &&
+  code --install-extension redhat.java --force
+
 # weather
 
 sudo pacman -S --noconfirm gnome-weather
