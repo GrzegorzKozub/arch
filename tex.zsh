@@ -9,7 +9,8 @@ sudo pacman -S --noconfirm \
   texlive-latex \
   texlive-latexrecommended texlive-latexextra \
   texlive-fontsrecommended texlive-fontsextra \
-  texlive-luatex
+  texlive-luatex \
+  texlive-plaingeneric
 
 # links
 
