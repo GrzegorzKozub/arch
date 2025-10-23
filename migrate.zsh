@@ -17,6 +17,10 @@ sudo pacman -S --noconfirm tree-sitter-cli
 
 [[ $HOST =~ ^(drifter|worker)$ ]] && code --install-extension redhat.java --force
 
+# uv
+
+sudo pacman -S --noconfirm uv
+
 # weather
 
 sudo pacman -S --noconfirm gnome-weather

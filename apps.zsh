@@ -192,7 +192,7 @@ sudo pacman -S --noconfirm \
   lua luacheck luarocks stylua \
   perl \
   prettier \
-  python python-pip python-pipx python-pynvim \
+  python python-pip python-pipx python-pynvim uv \
   shfmt \
   taplo \
   tree-sitter-cli
