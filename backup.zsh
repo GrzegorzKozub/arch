@@ -22,6 +22,7 @@ FREE=$(df --human-readable $DISK --output=avail | grep -v Avail | sed -E 's/ |G/
 [[ $FREE -lt 64 ]] && echo "only ${FREE}G free on $DISK"
 
 rclone sync \
+  --exclude '.cache/**' \
   --exclude '.secrets/**' \
   --exclude 'boot/**' \
   --exclude 'lost+found/**' \
