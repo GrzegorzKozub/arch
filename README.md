@@ -39,7 +39,7 @@ Automated Arch Linux installation
 1. Secrets
   - `~/code/arch/fetch.env`: `GITHUB_PAT_EFFICY`, `GITHUB_PAT_GREG`
   - `~/code/dot/zsh/zsh/.zshenv`: `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, `GITHUB_TOKEN`, `OPENAI_API_KEY`, `RCLONE_DRIVE_CLIENT_SECRET`
-  - Maven, SSH
+  - Ansible, Maven, SSH
 2. GNOME
   - Set variable display refresh rate: player 240 Hz, worker 144 & 60 Hz
   - Set display scale: drifter 300%, player & worker 200%

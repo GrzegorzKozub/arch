@@ -2,6 +2,12 @@
 
 set -o verbose
 
+# rclone
+
+pushd ~/code/dot
+git update-index --no-assume-unchanged rclone/rclone/rclone.conf
+popd
+
 # tree-sitter
 
 sudo pacman -Rs --noconfirm tree-sitter
