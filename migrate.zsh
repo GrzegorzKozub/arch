@@ -15,7 +15,17 @@ sudo pacman -S --noconfirm tree-sitter-cli
 
 # vscode
 
-[[ $HOST =~ ^(drifter|worker)$ ]] && code --install-extension redhat.java --force
+if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
+
+  for EXTENSION in \
+    github.copilot \
+    github.copilot-chat \
+    redhat.java
+  do
+    code --install-extension $EXTENSION --force
+  done
+
+fi
 
 # uv
 

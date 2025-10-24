@@ -82,6 +82,7 @@ Automated Arch Linux installation
   - Connect KeePassXC databases
   - Sign in into your sites and setup passkeys
 5. Visual Studio Code
+  - Sign in: GitHub
   - Hide recommended extensions
 6. Zed
   - Sign in: Zed, collab panel
