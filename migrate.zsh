@@ -2,16 +2,9 @@
 
 set -o verbose
 
-# rclone
+# bat
 
-pushd ~/code/dot
-git update-index --no-assume-unchanged rclone/rclone/rclone.conf
-popd
-
-# tree-sitter
-
-sudo pacman -Rs --noconfirm tree-sitter
-sudo pacman -S --noconfirm tree-sitter-cli
+bat cache --build
 
 # vscode
 
@@ -30,10 +23,6 @@ fi
 # uv
 
 sudo pacman -S --noconfirm uv
-
-# weather
-
-sudo pacman -S --noconfirm gnome-weather
 
 # reset
 
