@@ -226,6 +226,8 @@ gsettings set org.gnome.shell.weather automatic-location true
 gsettings set org.gnome.desktop.notifications show-banners false
 gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
+gsettings set org.gnome.settings-daemon.plugins.housekeeping donation-reminder-enabled false
+
 # search
 
 gsettings set org.gnome.desktop.search-providers disabled "[
