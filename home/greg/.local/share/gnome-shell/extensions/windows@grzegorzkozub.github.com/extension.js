@@ -21,6 +21,10 @@ export default class Windows extends Extension {
       },
       { title: /^DBeaver.?/, auto: true },
       { class: /^draw.io$/ },
+      {
+        class: /^microsoft-edge$/,
+        largerThan: { width: 800, height: 600 }, // works on drifter with fractional scaling enabled
+      },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
       { class: /^org.inkscape.Inkscape$/ },
