@@ -16,3 +16,7 @@ sed -i -e 's/^Name=.*/Name=Edge/' $XDG_DATA_HOME/applications/microsoft-edge.des
 
 . `dirname $0`/packages.zsh
 
+# dotfiles
+
+. ~/code/dot/edge.zsh
+
