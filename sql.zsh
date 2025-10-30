@@ -4,10 +4,8 @@ set -e -o verbose
 
 # packages
 
-[[ $(pacman -Qs jdk-openjdk) || $(pacman -Qs jre-openjdk) ]] ||
-  sudo pacman -S --noconfirm jre-openjdk
-
 sudo pacman -S --noconfirm \
+  jdk-openjdk \
   dbeaver
 
 CFG=/usr/share/dbeaver/dbeaver.ini

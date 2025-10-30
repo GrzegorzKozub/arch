@@ -4,8 +4,6 @@ set -e -o verbose
 
 # packages
 
-[[ $(pacman -Qs jre-openjdk) ]] && sudo pacman -Rs --noconfirm jre-openjdk
-
 sudo pacman -S --noconfirm \
   jdk-openjdk \
   maven
