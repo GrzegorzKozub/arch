@@ -193,7 +193,10 @@ export default class Windows extends Extension {
       return true;
     }
     const { width, height } = win.get_frame_rect();
-    console.log(`window ${win.wm_class} size: ${width}x${height}`);
+    console.log(`matchSize() window ${win.wm_class} size=${width}x${height}`);
+    if (width == 0 && height == 0) {
+      return true; // auto
+    }
     return (
       (!cfg.largerThan.width || cfg.largerThan.width < width) &&
       (!cfg.largerThan.height || cfg.largerThan.height < height)
@@ -253,6 +256,9 @@ export default class Windows extends Extension {
 
   center(win, width, height) {
     const center = this.getCenterTile(win, width, height);
+    console.log(
+      `center() center size=${center.width}x${center.height} position=${center.x}x${center.y}`,
+    );
     if (center.equal(win.get_frame_rect())) {
       return;
     }
@@ -262,6 +268,9 @@ export default class Windows extends Extension {
   getCenterTile(win, width, height) {
     const step = 16;
     const desktop = this.getDesktop(win);
+    console.log(
+      `getCenterTile() desktop size=${desktop.width}x${desktop.height} position=${desktop.x}x${desktop.y}`,
+    );
     return new Tile(
       (desktop.width / step) * ((step - width) / 2) + desktop.x,
       (desktop.height / step) * ((step - height) / 2) + desktop.y,
