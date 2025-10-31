@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# seahorse
+
+sudo pacman -S --noconfirm seahorse
+
 # reset
 
 # . `dirname $0`/reset.zsh

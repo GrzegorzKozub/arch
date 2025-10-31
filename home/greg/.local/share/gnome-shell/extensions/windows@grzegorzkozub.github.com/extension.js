@@ -54,6 +54,7 @@ export default class Windows extends Extension {
       { class: /^io.bassi.Amberol$/ },
       { class: /^org.gnome.Extensions$/ },
       { title: /^Settings$/ },
+      { class: /^org.gnome.seahorse.Application$/ },
       { class: /^org.gnome.SystemMonitor$/ },
       { class: /^org.pulseaudio.pavucontrol$/ },
       { class: /^org.gnome.Weather$/ },
