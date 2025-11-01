@@ -73,11 +73,6 @@ sudo pacman -S --noconfirm \
   }
 }
 
-[[ $XDG_CURRENT_DESKTOP = 'KDE' ]] && {
-  sed -i '/^launchers=/ s/$/,applications:steam.desktop/' $XDG_CONFIG_HOME/plasma-org.kde.plasma.desktop-appletsrc
-  kquitapp5 plasmashell && kstart5 plasmashell &
-}
-
 [[ -d $MOUNT/Steam ]] && {
   rm -f $XDG_DATA_HOME/Steam
   ln -s $MOUNT/Steam $XDG_DATA_HOME/Steam

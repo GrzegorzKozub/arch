@@ -188,19 +188,9 @@ gsettings set org.gnome.tweaks show-extensions-notice false
 
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
-# when kde-gtk-config is installed
-# gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
-# gsettings set org.gnome.desktop.sound theme-name 'freedesktop'
-# gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
-
 gsettings set org.gnome.desktop.sound event-sounds false
 
 # apps > tweaks > fonts
-
-# when kde-gtk-config is installed
-# gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
-# gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
-# gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
 
 gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code NF Regular 10'
 

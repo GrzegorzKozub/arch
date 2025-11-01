@@ -138,7 +138,6 @@ XDP implementations conflict each other so only one should be installed at the s
 - GNOME - `xdg-desktop-portal-gnome` and `xdg-desktop-portal-gtk`
 - KDE - `xdg-desktop-portal-kde`
 - Hyprland - `xdg-desktop-portal-hyprland`
-- Sway - `xdg-desktop-portal-wlr`
 
 ## Colors
 
