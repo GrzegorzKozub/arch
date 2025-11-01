@@ -11,6 +11,9 @@ for APP in \
   bvnc \
   cmake-gui \
   htop \
+  java-java-openjdk \
+  jconsole-java-openjdk \
+  jshell-java-openjdk \
   lstopo \
   mpv \
   nvtop \

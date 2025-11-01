@@ -2,6 +2,18 @@
 
 set -o verbose
 
+# java
+
+if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
+
+  sudo pacman -S --noconfirm jdk-openjdk maven
+
+  pushd ~/code/dot
+  git update-index --assume-unchanged maven/maven/settings.xml
+  popd
+
+fi
+
 # seahorse
 
 sudo pacman -S --noconfirm seahorse

@@ -4,11 +4,11 @@ set -e -o verbose
 
 # packages
 
-# sudo pacman -S --noconfirm \
-#   gimp
-#
-# paru -S --aur --noconfirm \
-#   pinta
+sudo pacman -S --noconfirm \
+  gimp
+
+paru -S --aur --noconfirm \
+  pinta
 
 # links
 

@@ -205,7 +205,8 @@ sudo pacman -S --noconfirm \
 if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 
   sudo pacman -S --noconfirm \
-    dotnet-sdk aspnet-runtime
+    dotnet-sdk aspnet-runtime \
+    jdk-openjdk maven
 
 fi
 
