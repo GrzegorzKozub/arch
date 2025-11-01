@@ -231,10 +231,14 @@ gsettings set org.gnome.settings-daemon.plugins.housekeeping donation-reminder-e
 # search
 
 gsettings set org.gnome.desktop.search-providers disabled "[
+  'org.gnome.Calculator.desktop',
+  'org.gnome.Characters.desktop',
   'org.gnome.Nautilus.desktop',
   'org.gnome.Terminal.desktop',
-  'org.gnome.Characters.desktop'
+  'org.gnome.seahorse.Application.desktop'
 ]"
+
+gsettings set org.gnome.desktop.search-providers enabled '[]'
 
 gsettings set org.gnome.desktop.search-providers disable-external false
 
