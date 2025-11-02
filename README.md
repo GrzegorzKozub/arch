@@ -104,6 +104,23 @@ Automated Arch Linux installation
   - Sign in
   - Register device
 10. Edge (work)
+  - Sign in
+  - Disable Microsoft Rewards
+  - Disable everything under Passwords and autofill
+  - Block notifications
+  - Disable everything under Search and connected experiences
+  - Switch search engine used in address bar to Google
+  - Hide favorites on toolbar
+  - Don't show mini menu when selecting text
+  - Disable visual search
+  - Disable everything under Copilot and sidebar
+  - Don't show tab actions menu
+  - Open tabs from previous session on startup
+  - Switch to international edition and disable everything on new tab page
+  - Don't preload your new tab page
+  - Don't offer to translate pages
+  - Don't use text prediction
+  - Enable efficiency mode
 11. Fix window sizes and positions
 
 ## New disk

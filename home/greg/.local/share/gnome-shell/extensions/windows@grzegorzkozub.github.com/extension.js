@@ -23,6 +23,7 @@ export default class Windows extends Extension {
       { class: /^draw.io$/ },
       {
         class: /^microsoft-edge$/,
+        auto: true,
         largerThan: { width: 800, height: 600 }, // works on drifter with fractional scaling enabled
       },
       { title: /.?GIMP$/ },
