@@ -32,6 +32,7 @@ Automated Arch Linux installation
 11. Reboot
 12. Once per machine, run `~/code/arch/secboot.zsh` (backup required after)
 13. Once per machine and after each `secboot.zsh` run, run `~/code/arch/crypt.zsh`
+14. If required, run `~/code/arch/intune.zsh` and `~/code/arch/edge.zsh` (work)
 14. Reboot & backup
 
 ### Manual config
@@ -88,18 +89,22 @@ Automated Arch Linux installation
   - Sign in: Zed, collab panel
   - Configure LLM providers: Zed, Anthropic, GitHub Copilot Chat, Google AI, OpenAI
   - Configure edit predictions
-7. Postman
+7. Postman (work)
   - Sign in
   - Change font family to `Cascadia Code`
   - Change font size to `16`
   - Change indentation count to `2`
   - Don't send anonymous usage data
-8. Teams
+8. Teams (work)
   - Follow operating system theme
   - Switch to compact chat message density
   - Disable notification display
   - Disable all apps
-9. Fix window sizes and positions
+9. Intune (work)
+  - Sign in
+  - Register device
+10. Edge (work)
+11. Fix window sizes and positions
 
 ## New disk
 
