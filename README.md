@@ -104,23 +104,31 @@ Automated Arch Linux installation
   - Sign in
   - Register device
 10. Edge (work)
-  - Sign in
+  - Disable everything during the first launch wizard
+  - Switch to international edition and disable everything on new tab page
+  - Name your profile or sign in
   - Disable Microsoft Rewards
-  - Disable everything under Passwords and autofill
+  - Don't share browsing data with other Windows features
+  - Disable everything except showing Reveal password button under Passwords and autofill
   - Block notifications
   - Disable everything under Search and connected experiences
   - Switch search engine used in address bar to Google
   - Hide favorites on toolbar
   - Don't show mini menu when selecting text
   - Disable visual search
+  - Set fixed-width font to Cascadia Code (on Windows)
   - Disable everything under Copilot and sidebar
   - Don't show tab actions menu
-  - Open tabs from previous session on startup
-  - Switch to international edition and disable everything on new tab page
-  - Don't preload your new tab page
-  - Don't offer to translate pages
+  - Don't show tab preview on hover
+  - Open tabs from the previous session on startup
+  - Add Polish
+  - Don't offer to translate pages that aren't in a language I read
+  - Don't offer to translate videos on supported sites
+  - Don't use Copilot for writing on the web
   - Don't use text prediction
-  - Enable efficiency mode
+  - Switch to Microsoft Editor under Writing assistance
+  - Disable startup boost
+  - Don't continue running background extensions and apps when Edge is closed
 11. Fix window sizes and positions
 
 ## New disk
