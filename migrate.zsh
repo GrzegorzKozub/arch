@@ -2,6 +2,15 @@
 
 set -o verbose
 
+# iam
+
+if [[ $HOST == 'drifter' ]]; then
+
+  systemctl --user disable iam.service || true
+  rm -f $XDG_CONFIG_HOME/systemd/user/iam.service
+
+fi
+
 # uv
 
 sudo pacman -Rs --noconfirm python-pipx

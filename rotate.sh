@@ -40,4 +40,11 @@ grep '^\[' "$AWS_SHARED_CREDENTIALS_FILE" | sed 's/[][]//g' | while read -r PROF
 
 done
 
-cp --update "$AWS_SHARED_CREDENTIALS_FILE" /run/media/"$USER"/data/.secrets/
+BACKUP=/run/media/"$USER"/data/.secrets
+[[ -d $BACKUP ]] || {
+  sudo mkdir "$BACKUP"
+  sudo chown "$USER" "$BACKUP"
+  sudo chgrp users "$BACKUP"
+}
+
+cp --update "$AWS_SHARED_CREDENTIALS_FILE" "$BACKUP"
