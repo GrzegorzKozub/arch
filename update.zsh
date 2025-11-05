@@ -37,6 +37,8 @@ zsh `dirname $0`/gdm.zsh
 
 . `dirname $0`/mime.zsh
 
+. `dirname $0`/secrets.sh || true
+
 # cleanup
 
 sudo journalctl --vacuum-time=1months
