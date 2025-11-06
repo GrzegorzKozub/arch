@@ -16,12 +16,13 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 # sudo pacman --noconfirm -Sy archlinux-keyring
 sudo pacman --noconfirm -Sy
 
-# git and openssh
+# git & openssh
 
 sudo pacman -S --noconfirm \
   git git-lfs \
   git-credential-gopass \
-  openssh
+  openssh \
+  github-cli
 
 # dotfiles init
 

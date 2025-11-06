@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# github
+
+sudo pacman -S --noconfirm github-cli
+
 # iam
 
 if [[ $HOST == 'drifter' ]]; then
