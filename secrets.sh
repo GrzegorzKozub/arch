@@ -2,11 +2,25 @@
 
 set -e -o verbose
 
-[[ $HOSTNAME == 'worker' ]] || return # work
+DIR=/run/media/"$USER"/data/.secrets
 
-# restore rotated aws access keys
+# restore updated env vars
 
-BACKUP=/run/media/"$USER"/data/.secrets/credentials
+BACKUP=$DIR/.zshenv
+[[ -f $BACKUP ]] && cp --update "$BACKUP" ~/code/dot/zsh/zsh/.zshenv
 
-[[ -f $BACKUP && -f $AWS_SHARED_CREDENTIALS_FILE ]] &&
-  cp --update "$BACKUP" "$AWS_SHARED_CREDENTIALS_FILE"
+# restore updated fetch tokens
+
+BACKUP=$DIR/fetch.env
+[[ -f $BACKUP ]] && cp --update "$BACKUP" ~/code/arch/fetch.env
+
+if [[ $HOSTNAME == 'worker' ]]; then # work
+
+  # restore rotated aws access keys
+
+  BACKUP=$DIR/credentials
+
+  [[ -f $BACKUP && -f $AWS_SHARED_CREDENTIALS_FILE ]] &&
+    cp --update "$BACKUP" "$AWS_SHARED_CREDENTIALS_FILE"
+
+fi
