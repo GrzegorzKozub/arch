@@ -36,7 +36,6 @@ zsh `dirname $0`/gdm.zsh
 [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && . `dirname $0`/gnome.zsh
 
 . `dirname $0`/mime.zsh
-
 . `dirname $0`/secrets.sh || true
 
 # cleanup
