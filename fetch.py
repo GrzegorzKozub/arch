@@ -33,7 +33,7 @@ repos = list(
         repos,
     )
 )
-repos = list(map(lambda repo: f"{repo["name"]} {repo["owner"]["login"]}", repos))
+repos = list(map(lambda repo: f"{repo['name']} {repo['owner']['login']}", repos))
 repos.sort()
 
 DIR = f"{os.environ.get('XDG_CACHE_HOME')}/fetch"

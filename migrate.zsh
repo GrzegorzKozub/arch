@@ -28,12 +28,22 @@ rm -rf ~/.local/state/pipx
 rm -rf $XDG_CACHE_HOME/uv
 rm -rf $XDG_DATA_HOME/uv
 
-for TOOL in black isort lastversion tidal-dl-ng; do
+for TOOL in lastversion tidal-dl-ng; do
   uv tool install $TOOL; done
 
 if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
   for TOOL in awscli-local cfn-lint; do uv tool install $TOOL; done
 fi
+
+# vscode
+
+for EXTENSION in \
+  ms-python.black-formatter \
+  ms-python.isort \
+  ms-python.pylint
+do
+  code --uninstall-extension $EXTENSION --force
+done
 
 # reset
 
