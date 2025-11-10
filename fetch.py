@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-# pylint: disable=C0103,W0621
-
 import os
 import re
 from typing import Any
