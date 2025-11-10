@@ -40,9 +40,17 @@ fi
 for EXTENSION in \
   ms-python.black-formatter \
   ms-python.isort \
-  ms-python.pylint
+  ms-python.pylint \
+  ms-python.vscode-pylance
 do
   code --uninstall-extension $EXTENSION --force
+done
+
+for EXTENSION in \
+  charliermarsh.ruff \
+  detachhead.basedpyright \
+do
+  code --install-extension $EXTENSION --force
 done
 
 # reset
