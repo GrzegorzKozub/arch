@@ -21,6 +21,7 @@ sudo pacman -Rs --noconfirm python-pipx
 
 rm -rf $XDG_CACHE_HOME/pip
 rm -rf $XDG_CACHE_HOME/pipx
+rm -rf $XDG_CACHE_HOME/pylint
 rm -rf $XDG_DATA_HOME/pipx
 rm -rf ~/.local/bin
 rm -rf ~/.local/state/pipx
