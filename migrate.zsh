@@ -49,7 +49,7 @@ done
 
 for EXTENSION in \
   charliermarsh.ruff \
-  detachhead.basedpyright \
+  detachhead.basedpyright
 do
   code --install-extension $EXTENSION --force
 done
