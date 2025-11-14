@@ -2,11 +2,11 @@
 
 set -e
 
-if [[ $HOSTNAME = 'player' ]]; then
+if [[ $HOST = 'player' ]]; then
   dispwin -d1 -L
 fi
 
-if [[ $HOSTNAME = 'worker' ]]; then
+if [[ $HOST = 'worker' ]]; then
   dispwin -d1 -L
   dispwin -d2 -L
 fi

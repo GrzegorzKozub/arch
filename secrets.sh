@@ -14,7 +14,7 @@ BACKUP=$DIR/.zshenv
 BACKUP=$DIR/fetch.env
 [[ -f $BACKUP ]] && cp --update "$BACKUP" ~/code/arch/fetch.env
 
-if [[ $HOSTNAME == 'worker' ]]; then # work
+if [[ $HOST == 'worker' ]]; then # work
 
   # restore rotated aws access keys
 
