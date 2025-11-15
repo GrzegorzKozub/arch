@@ -17,14 +17,28 @@ export default class Windows extends Extension {
       {
         class: /^brave-browser$/,
         auto: true,
-        largerThan: { width: 800, height: 600 }, // works on drifter with fractional scaling enabled
+        host: 'drifter', // with fractional scaling
+        largerThan: { width: 800, height: 600 },
+      },
+      {
+        class: /^brave-browser$/,
+        auto: true,
+        host: ['player', 'worker'],
+        largerThan: { width: 1920, height: 1080 },
       },
       { title: /^DBeaver.?/, auto: true },
       { class: /^draw.io$/ },
       {
         class: /^microsoft-edge$/,
         auto: true,
-        largerThan: { width: 800, height: 600 }, // works on drifter with fractional scaling enabled
+        host: 'drifter', // with fractional scaling
+        largerThan: { width: 800, height: 600 },
+      },
+      {
+        class: /^microsoft-edge$/,
+        auto: true,
+        host: ['player', 'worker'],
+        largerThan: { width: 1920, height: 1080 },
       },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
