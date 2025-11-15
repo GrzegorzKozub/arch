@@ -44,7 +44,7 @@ export default class Windows extends Extension {
       { class: /^io.missioncenter.MissionCenter$/ },
       { title: /.?KeePassXC$/, auto: true },
       { title: /.?LibreOffice.?/, auto: true },
-      { class: /^obsidian$/ },
+      { class: /^obsidian$/, auto: true },
       { class: /^org.gnome.Papers$/ },
       { title: /.?Slack$/ },
       { title: /.?Steam$/ },
