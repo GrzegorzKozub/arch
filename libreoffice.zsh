@@ -44,5 +44,5 @@ done
 
 # dotfiles
 
-. ~/code/dot/office.zsh
+. ~/code/dot/libreoffice.zsh
 

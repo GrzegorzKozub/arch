@@ -18,5 +18,5 @@ sed -i -e 's/^Name=.*/Name=IntelliJ/' $XDG_DATA_HOME/applications/intellij-idea-
 
 # dotfiles
 
-. ~/code/dot/java.zsh
+. ~/code/dot/intellij.zsh
 

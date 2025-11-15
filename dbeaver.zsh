@@ -25,5 +25,5 @@ sed -i -e 's/^Name=.*/Name=DBeaver/' $XDG_DATA_HOME/applications/io.dbeaver.DBea
 
 # dotfiles
 
-. ~/code/dot/sql.zsh
+. ~/code/dot/dbeaver.zsh
 

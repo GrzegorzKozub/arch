@@ -7,9 +7,6 @@ set -e -o verbose
 sudo pacman -S --noconfirm \
   gimp
 
-paru -S --aur --noconfirm \
-  pinta
-
 # links
 
 cp /usr/share/applications/gimp.desktop $XDG_DATA_HOME/applications

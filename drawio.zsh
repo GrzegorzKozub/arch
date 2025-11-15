@@ -7,9 +7,6 @@ set -e -o verbose
 paru -S --aur --noconfirm \
   drawio-desktop-bin
 
-sudo pacman -S --noconfirm \
-  inkscape
-
 # links
 
 cp /usr/share/applications/drawio-desktop.desktop $XDG_DATA_HOME/applications

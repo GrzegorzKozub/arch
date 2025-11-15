@@ -59,6 +59,7 @@ export default class Windows extends Extension {
       { title: /.?KeePassXC$/, auto: true },
       { title: /.?LibreOffice.?/, auto: true },
       { class: /^obsidian$/, auto: true },
+      { class: /^ONLYOFFICE$/ },
       { class: /^org.gnome.Papers$/ },
       { title: /.?Slack$/ },
       { title: /.?Steam$/ },
