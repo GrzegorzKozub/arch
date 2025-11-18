@@ -61,7 +61,7 @@ pacstrap /mnt \
   fwupd \
   lvm2 \
   ntfs-3g \
-  avahi nss-mdns \
+  avahi \
   lm_sensors \
   v4l-utils \
   networkmanager \
@@ -78,7 +78,7 @@ pacstrap /mnt \
   gdm glib2-devel \
   argyllcms
 
-  # nftables plymouth (splash)
+  # nftables nss-mdns plymouth (splash)
 
 # fstab
 

@@ -59,7 +59,7 @@ sudo iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 
 sudo iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
 
-# avahi
+# mdns with avahi (nss-mdns) or systemd-resolved
 
 sudo iptables -A INPUT -p udp --dport 5353 --sport 5353 -j ACCEPT
 

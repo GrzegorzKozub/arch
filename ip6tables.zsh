@@ -59,7 +59,7 @@ sudo ip6tables -A INPUT -m conntrack --ctstate INVALID -j DROP
 
 sudo ip6tables -A INPUT -p ipv6-icmp -j ACCEPT
 
-# avahi
+# mdns with avahi (nss-mdns) or systemd-resolved
 
 sudo ip6tables -A INPUT -p udp --dport 5353 --sport 5353 -j ACCEPT
 

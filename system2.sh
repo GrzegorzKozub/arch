@@ -30,7 +30,8 @@ echo '::1       localhost' >> /etc/hosts
 echo "127.0.0.1 $MY_HOSTNAME.localdomain $MY_HOSTNAME" >> /etc/hosts
 echo "::1       $MY_HOSTNAME.localdomain $MY_HOSTNAME" >> /etc/hosts
 
-sed -i 's/myhostname resolve/myhostname mdns_minimal [NOTFOUND=return] resolve/' /etc/nsswitch.conf
+# mdns with avahi (nss-mdns) or systemd-resolved
+# sed -i 's/mymachines resolve/mymachines mdns_minimal [NOTFOUND=return] resolve/' /etc/nsswitch.conf
 
 # global host environment variable
 

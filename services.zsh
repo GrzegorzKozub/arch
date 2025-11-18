@@ -14,7 +14,9 @@ sudo timedatectl set-ntp true
 
 sudo systemctl enable fstrim.timer
 
-sudo systemctl enable avahi-daemon.service
+# mdns with avahi (nss-mdns) or systemd-resolved
+# sudo systemctl enable avahi-daemon.service
+
 sudo systemctl enable NetworkManager.service
 
 sudo systemctl enable bluetooth.service
