@@ -64,11 +64,24 @@ pactl set-source-volume @DEFAULT_SOURCE@ 50%
 
 [[ $HOST = 'drifter' ]] && pactl set-sink-mute @DEFAULT_SINK@ 1
 
-# network
+# dns with systemd-resolved
+
+while IFS= read -r conn; do
+
+  nmcli connection modify "$conn" ipv4.ignore-auto-dns yes
+  nmcli connection modify "$conn" ipv6.ignore-auto-dns yes
+
+  nmcli connection modify "$conn" connection.dns-over-tls 2
+
+done < <(nmcli --terse --fields NAME,TYPE connection show | awk -F: '$2 ~ /ethernet|wireless/ {print $1}')
+
+# wifi
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
   nmcli radio wifi off
 fi
+
+# bluetooth
 
 rfkill block bluetooth # causes 'bluetoothd[...]: Failed to set mode: Failed (0x03)' which is fine
 

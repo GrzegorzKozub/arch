@@ -6,27 +6,45 @@ set -e -o verbose
 
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
+# dirs
+
+[[ -d $XDG_CONFIG_HOME/systemd/user ]] || mkdir -p $XDG_CONFIG_HOME/systemd/user
+
 # time sync
 
 sudo timedatectl set-ntp true
 
-# system services
-
-sudo systemctl enable fstrim.timer
-
-# mdns with avahi (nss-mdns) or systemd-resolved
-# sudo systemctl enable avahi-daemon.service
-
-sudo systemctl enable NetworkManager.service
-
-sudo systemctl enable bluetooth.service
-
-systemctl --user enable pipewire-pulse.service
-
-sudo systemctl enable gdm.service
+# package management
 
 sudo systemctl enable pkgfile-update.timer
 sudo systemctl enable reflector.timer
+
+# ssd
+
+sudo systemctl enable fstrim.timer
+
+# mdns with avahi (nss-mdns)
+
+# sudo sed -i \
+#   -e 's/mymachines resolve/mymachines mdns_minimal [NOTFOUND=return] resolve/' \
+#   /etc/nsswitch.conf
+# sudo systemctl enable avahi-daemon.service
+
+# dns with systemd-resolved
+
+[[ -d /etc/systemd/resolved.conf.d ]] || sudo mkdir /etc/systemd/resolved.conf.d
+sudo cp `dirname $0`/etc/systemd/resolved.conf.d/dns.conf /etc/systemd/resolved.conf.d/dns.conf
+
+[[ -d /etc/NetworkManager/conf.d ]] || sudo mkdir /etc/NetworkManager/conf.d
+sudo cp `dirname $0`/etc/NetworkManager/conf.d/dns.conf /etc/NetworkManager/conf.d/dns.conf
+
+sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
+sudo systemctl enable systemd-resolved
+
+# network
+
+sudo systemctl enable NetworkManager.service
 
 # firewall
 
@@ -42,9 +60,13 @@ sudo systemctl enable ip6tables.service
 # sudo cp `dirname $0`/etc/nftables.rules /etc/nftables.rules
 # sudo systemctl enable nftables.service
 
-# dirs
+# bluetooth
 
-[[ -d $XDG_CONFIG_HOME/systemd/user ]] || mkdir -p $XDG_CONFIG_HOME/systemd/user
+sudo systemctl enable bluetooth.service
+
+# gdm
+
+sudo systemctl enable gdm.service
 
 # imwheel
 
@@ -54,12 +76,6 @@ sudo systemctl enable ip6tables.service
 #   systemctl --user enable imwheel.service
 #
 # fi
-
-# sync
-
-cp `dirname $0`/home/$USER/.config/systemd/user/sync-* $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable sync-periodic.timer
-systemctl --user enable sync-session.service
 
 # lact
 
@@ -129,6 +145,19 @@ cp `dirname $0`/home/$USER/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $
 #
 # fi
 
+systemctl --user enable pipewire-pulse.service
+
+# sync
+
+cp `dirname $0`/home/$USER/.config/systemd/user/sync-* $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable sync-periodic.timer
+systemctl --user enable sync-session.service
+
+# fetch cache refresh
+
+cp `dirname $0`/home/$USER/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable fetch.service
+
 # random wallpaper every hour
 
 cp `dirname $0`/home/$USER/.config/systemd/user/wall.* $XDG_CONFIG_HOME/systemd/user
@@ -148,11 +177,6 @@ fi
 [[ -d $XDG_CONFIG_HOME/fontconfig ]] || mkdir -p $XDG_CONFIG_HOME/fontconfig
 cp `dirname $0`/home/$USER/.config/fontconfig/fonts.conf $XDG_CONFIG_HOME/fontconfig
 fc-cache -f
-
-# fetch cache refresh
-
-cp `dirname $0`/home/$USER/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable fetch.service
 
 if [[ $HOST == 'worker' ]]; then # work
 
