@@ -6,14 +6,6 @@ set -e -o verbose
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 
-  # wayland
-
-  FILE=/boot/loader/entries/01-arch.conf
-  OPT=nvidia-drm.modeset=1
-  [[ $(sudo grep $OPT $FILE) ]] || sudo sed -i "/^options/ s/$/ $OPT/" $FILE
-
-  # hyprland
-
   [[ $(sudo pacman -Qs nvidia-open) ]] && sudo pacman -Rs --noconfirm nvidia-open
   [[ $(sudo pacman -Qs nvidia-open-lts) ]] && sudo pacman -Rs --noconfirm nvidia-open-lts
 

@@ -16,6 +16,7 @@ ARCHISO=`dirname $0`/archiso
 PROFILE=$ARCHISO/profile
 ISO=$ARCHISO/iso
 USB=$ARCHISO/usb
+ESP=/boot/achiso
 WORK=/tmp/archiso
 UUID=1234-5678 # archisosearchuuid
 
@@ -122,6 +123,11 @@ sudo mkarchiso -v -L ARCHISO -w $WORK -o $ISO $PROFILE
 sudo mount --read-only $(ls $ISO/*.iso) /mnt
 cp -r /mnt/* $USB
 sudo umount /mnt
+
+# copy to esp
+
+sudo [ -d $ESP/x86_64 ] || sudo mkdir -p $ESP/x86_64
+sudo cp $USB/...
 
 # archisosearchfilename
 

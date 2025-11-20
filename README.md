@@ -10,8 +10,8 @@ Automated Arch Linux installation
   - Set the UUID to a known value with `sudo mlabel -i /dev/sdb1 :: -N 12345678`
   - Label with `sudo mlabel -i /dev/sdb1 ::archiso`
   - Verify with `lsblk -lno PATH,FSTYPE,UUID`
-4. Build with `~/code/arch/archiso.zsh`
-5. Copy with
+4. Build and copy to ESP with `~/code/arch/archiso.zsh`
+5. Copy to pendrive with
   ```bash
   rm -rf /run/media/$USER/ARCHISO/(arch|boot|EFI|loader|shellia32.efi|shellx64.efi)
   cp -r ~/code/arch/archiso/usb/* /run/media/$USER/ARCHISO
