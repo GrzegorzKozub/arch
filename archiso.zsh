@@ -12,18 +12,20 @@ paru -S --aur --noconfirm \
 
 # config
 
+WORK=/tmp/archiso
 ARCHISO=`dirname $0`/archiso
+
 PROFILE=$ARCHISO/profile
+UUID=1234-5678 # archisosearchuuid
+
 ISO=$ARCHISO/iso
 USB=$ARCHISO/usb
-ESP=/boot/achiso
-WORK=/tmp/archiso
-UUID=1234-5678 # archisosearchuuid
+ESP=/boot/archiso
 
 # dirs
 
-sudo rm -rf $ARCHISO
 sudo rm -rf $WORK
+sudo rm -rf $ARCHISO
 
 mkdir -p $ARCHISO
 mkdir -p $USB
@@ -52,32 +54,30 @@ sed -i \
   $PROFILE/profiledef.sh
 
 cp $PROFILE/efiboot/loader/entries/01-archiso-linux.conf \
-  $PROFILE/efiboot/loader/entries/01-archiso.conf
+  $PROFILE/efiboot/loader/entries/archiso.conf
 
 cp $PROFILE/efiboot/loader/entries/01-archiso-linux.conf \
-  $PROFILE/efiboot/loader/entries/02-archiso-lts.conf
+  $PROFILE/efiboot/loader/entries/archiso-lts.conf
 
 rm $PROFILE/efiboot/loader/entries/*archiso-{linux,memtest,speech}*.conf
 
 sed -i \
-  -e 's/^title   .*$/title   Archiso/' \
+  -e 's/^title.*$/title    Archiso/' \
+  -e 's/^sort-key.*$/sort-key 01/' \
   -e "s/\(archisosearchuuid=\)[^ ]*/\1$UUID/" \
-  $PROFILE/efiboot/loader/entries/01-archiso.conf
-
-  # -e '/^options/ s/$/ nomodeset/' \
+  $PROFILE/efiboot/loader/entries/archiso.conf
 
 sed -i \
-  -e 's/^title   .*$/title   Archiso LTS/' \
+  -e 's/^title.*$/title    Archiso LTS/' \
+  -e 's/^sort-key.*$/sort-key 02/' \
   -e 's/vmlinuz-linux/vmlinuz-linux-lts/' \
   -e 's/initramfs-linux/initramfs-linux-lts/' \
   -e "s/\(archisosearchuuid=\)[^ ]*/\1$UUID/" \
-  $PROFILE/efiboot/loader/entries/02-archiso-lts.conf
-
-  # -e '/^options/ s/$/ nomodeset/' \
+  $PROFILE/efiboot/loader/entries/archiso-lts.conf
 
 sed -i \
   -e 's/^timeout 15$/timeout 1/' \
-  -e 's/^default.*$/default 01-archiso.conf/' \
+  -e 's/^default.*$/default archiso.conf/' \
   -e '/beep on/d' \
   $PROFILE/efiboot/loader/loader.conf
 
@@ -124,11 +124,6 @@ sudo mount --read-only $(ls $ISO/*.iso) /mnt
 cp -r /mnt/* $USB
 sudo umount /mnt
 
-# copy to esp
-
-sudo [ -d $ESP/x86_64 ] || sudo mkdir -p $ESP/x86_64
-sudo cp $USB/...
-
 # archisosearchfilename
 
 sudo mv $USB/boot/*.uuid $USB/boot/$UUID.uuid
@@ -139,6 +134,23 @@ sudo chmod --recursive u+w $USB/EFI/BOOT
 cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi $USB/EFI/BOOT
 mv $USB/EFI/BOOT/BOOTx64.EFI $USB/EFI/BOOT/loader.efi
 mv $USB/EFI/BOOT/PreLoader.efi $USB/EFI/BOOT/BOOTx64.EFI
+
+# update on esp
+
+sudo [ -d $ESP ] && sudo rm -rf $ESP
+sudo mkdir $ESP
+
+sudo cp -r $USB/arch/boot/x86_64/* $ESP
+sudo cp -r $USB/arch/x86_64 $ESP
+
+# update on pendrive
+
+if [ -d /run/media/$USER/ARCHISO ]; then
+
+  rm -rf /run/media/$USER/ARCHISO/(arch|boot|EFI|loader|shellia32.efi|shellx64.efi)
+  cp -r $USB/* /run/media/$USER/ARCHISO
+
+fi
 
 # cleanup
 
