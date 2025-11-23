@@ -18,8 +18,6 @@ sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 sudo systemctl enable systemd-resolved
 
-. `dirname $0`/settings.zsh
-
 # reset
 
 # . `dirname $0`/reset.zsh
