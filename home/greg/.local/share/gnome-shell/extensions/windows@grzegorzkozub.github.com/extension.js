@@ -76,9 +76,10 @@ export default class Windows extends Extension {
       { class: /^org.pulseaudio.pavucontrol$/ },
       { class: /^org.gnome.Weather$/ },
     ];
+    const center = [{ class: /^com.mitchellh.ghostty$/, auto: true }];
     const initial = [
       { class: /^Alacritty$/, initial: true },
-      { class: /^com.mitchellh.ghostty$/, initial: true },
+      // { class: /^com.mitchellh.ghostty$/, initial: true },
       { class: /^foot$/, initial: true },
       { class: /^kitty$/, initial: true },
       { class: /^org.gnome.Nautilus$/, initial: true },
@@ -89,6 +90,7 @@ export default class Windows extends Extension {
     addConfig(big, this.big.bind(this));
     addConfig(medium, this.medium.bind(this));
     addConfig(small, this.small.bind(this));
+    addConfig(center, this.center.bind(this));
     addConfig(initial, this.restore.bind(this));
   }
 
@@ -159,7 +161,6 @@ export default class Windows extends Extension {
         this.config.filter((cfg) => cfg.initial),
         win,
       );
-      // this.activate(win);
       return GLib.SOURCE_REMOVE;
     });
   }
@@ -242,25 +243,25 @@ export default class Windows extends Extension {
 
   big(win) {
     if (this.onUhd(win)) {
-      this.center(win, 12, 14);
+      this.adjust(win, 12, 14);
     } else {
-      this.center(win, 14, 14.5);
+      this.adjust(win, 14, 14.5);
     }
   }
 
   medium(win) {
     if (this.onUhd(win)) {
-      this.center(win, 9, 12);
+      this.adjust(win, 9, 12);
     } else {
-      this.center(win, 12, 12.5);
+      this.adjust(win, 12, 12.5);
     }
   }
 
   small(win) {
     if (this.onUhd(win)) {
-      this.center(win, 6, 10);
+      this.adjust(win, 6, 10);
     } else {
-      this.center(win, 10, 10.5);
+      this.adjust(win, 10, 10.5);
     }
   }
 
@@ -269,15 +270,15 @@ export default class Windows extends Extension {
     return monitor.width === 3840 && monitor.height === 2160;
   }
 
-  center(win, width, height) {
-    const center = this.getCenterTile(win, width, height);
-    if (center.equal(win.get_frame_rect())) {
+  adjust(win, width, height) {
+    const tile = this.getAdjustment(win, width, height);
+    if (tile.equal(win.get_frame_rect())) {
       return;
     }
-    this.move(win, center);
+    this.move(win, tile);
   }
 
-  getCenterTile(win, width, height) {
+  getAdjustment(win, width, height) {
     const step = 16;
     const desktop = this.getDesktop(win);
     return new Tile(
@@ -286,6 +287,25 @@ export default class Windows extends Extension {
       (desktop.width / step) * width,
       (desktop.height / step) * height,
     );
+  }
+
+  center(win) {
+    const tile = this.getCentered(win);
+    if (tile) {
+      this.move(win, tile, false);
+    }
+  }
+
+  getCentered(win) {
+    const rect = win.get_frame_rect();
+    const desktop = this.getDesktop(win);
+    const tile = new Tile(
+      (desktop.width - rect.width) / 2 + desktop.x,
+      (desktop.height - rect.height) / 2 + desktop.y,
+      rect.width,
+      rect.height,
+    );
+    return tile.equal(rect) ? false : tile;
   }
 
   restore(win) {
@@ -464,13 +484,17 @@ export default class Windows extends Extension {
     };
   }
 
-  async move(win, tile) {
+  async move(win, tile, resize = true) {
     await this.unmax(win);
     if (!win.allows_move() || !win.allows_resize() || win.is_skip_taskbar()) {
       return;
     }
     this.animate(win);
-    win.move_resize_frame(false, tile.x, tile.y, tile.width, tile.height);
+    if (resize) {
+      win.move_resize_frame(false, tile.x, tile.y, tile.width, tile.height);
+    } else {
+      win.move_frame(false, tile.x, tile.y);
+    }
   }
 
   unmax = (win) =>
