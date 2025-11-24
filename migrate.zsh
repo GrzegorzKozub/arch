@@ -17,7 +17,7 @@ sudo cp `dirname $0`/etc/NetworkManager/conf.d/dns.conf /etc/NetworkManager/conf
 
 sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
-sudo systemctl enable systemd-resolved
+sudo systemctl enable --now systemd-resolved
 sudo systemctl restart NetworkManager
 
 # reset
