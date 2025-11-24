@@ -6,6 +6,7 @@ set -o verbose
 
 sudo sed -i 's/hosts.*/hosts: mymachines resolve [!UNAVAIL=return] files myhostname dns/' /etc/nsswitch.conf
 sudo systemctl disable avahi-daemon.service
+sudo systemctl disable avahi-daemon.socket
 sudo pacman -Rs --noconfirm nss-mdns
 
 [[ -d /etc/systemd/resolved.conf.d ]] || sudo mkdir /etc/systemd/resolved.conf.d
@@ -17,6 +18,7 @@ sudo cp `dirname $0`/etc/NetworkManager/conf.d/dns.conf /etc/NetworkManager/conf
 sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 sudo systemctl enable systemd-resolved
+sudo systemctl restart NetworkManager
 
 # reset
 
