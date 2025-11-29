@@ -2,13 +2,24 @@
 
 set -e -o verbose
 
-# validation
+# todo
+# - https://github.com/GloriousEggroll/proton-ge-custom
+# - https://wiki.archlinux.org/title/Gamescope
+# - https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks & nvidia.sh
+# - https://wiki.archlinux.org/title/Steam
+# - https://wiki.archlinux.org/title/Steam/Troubleshooting
+# - worker option: disk, fps limit, ...
 
-[[ $HOST =~ ^(player|worker)$ ]] || exit 1
+# partition lookup
 
-# mount
+[[ $HOST == 'player' ]] && UUID='59881a75-9eac-482a-bcbf-94ce252d9f6b'
+[[ $HOST == 'worker' ]] && UUID='...'
 
-DISK=/dev/nvme1n1p2
+DISK="$(lsblk -lno PATH,UUID | grep -i $UUID | cut -d' ' -f1)"
+[[ -z $DISK ]] && exit 1
+
+# auto-mount
+
 MOUNT=/run/media/$USER/games
 
 [[ -d $MOUNT ]] || {
@@ -21,7 +32,7 @@ MOUNT=/run/media/$USER/games
 
 [[ $(grep "# $DISK" /etc/fstab) ]] || {
   echo "# $DISK" | sudo tee --append /etc/fstab > /dev/null
-  echo "$DISK	$MOUNT	ext4	defaults,noatime	0 2" | sudo tee --append /etc/fstab > /dev/null
+  echo "UUID=$UUID	$MOUNT	ext4	defaults,noatime	0 2" | sudo tee --append /etc/fstab > /dev/null
   echo '' | sudo tee --append /etc/fstab > /dev/null
 }
 
@@ -37,6 +48,8 @@ LINE=$(grep -n '#\[multilib\]' /etc/pacman.conf | awk '{print $1}' FS=':')
 }
 
 sudo pacman -Sy
+
+exit 0
 
 # pipewire
 
@@ -56,10 +69,6 @@ sudo pacman -S --noconfirm \
   lib32-vulkan-validation-layers
 
 # steam
-
-# https://github.com/ValveSoftware/steam-for-linux/issues/9805
-# sudo pacman -S --noconfirm \
-#   lib32-libnm
 
 sudo pacman -S --noconfirm \
   lib32-nvidia-utils \
@@ -96,29 +105,20 @@ paru -S --aur --noconfirm \
 
 # gamemode
 
-[[ $(grep gamemode /etc/group) ]] || sudo groupadd gamemode
-sudo usermod -a -G gamemode $(whoami)
-
 sudo pacman -S --noconfirm \
-  gamemode \
-  lib32-gamemode
+  gamemode
+  # lib32-gamemode
 
-systemctl --user enable gamemoded.service
-systemctl --user start gamemoded.service
+sudo usermod -a -G gamemode $(whoami)
 
 # mangohud
 
 sudo pacman -S --noconfirm \
-  lib32-mangohud \
   mangohud
+  # lib32-mangohud
 
 [[ -d $XDG_DATA_HOME/mangohud ]] || mkdir -p $XDG_DATA_HOME/mangohud
 cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
-
-# libstrangle
-
-# paru -S --aur --noconfirm \
-#   libstrangle-git
 
 # optimization
 
