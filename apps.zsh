@@ -104,7 +104,6 @@ sudo pacman -S --noconfirm \
   xclip \
   xcolor \
   xh \
-  python-secretstorage yt-dlp \
   zip \
   zsh zsh-completions \
   zoxide
