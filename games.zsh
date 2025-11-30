@@ -2,13 +2,16 @@
 
 set -e -o verbose
 
-# todo
-# - https://github.com/GloriousEggroll/proton-ge-custom
-# - https://wiki.archlinux.org/title/Gamescope
-# - https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks & nvidia.sh
-# - https://wiki.archlinux.org/title/Steam
-# - https://wiki.archlinux.org/title/Steam/Troubleshooting
-# - worker option: disk, fps limit, ...
+# https://github.com/GloriousEggroll/proton-ge-custom
+#   Consider adding yourself to the games group to make this work by issuing: usermod -a -G games
+# https://github.com/doitsujin/dxvk
+# https://github.com/HansKristian-Work/vkd3d-proton
+# env LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" PROTON_ENABLE_NGX_UPDATER=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=dxr11,dxr WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 mangohud gamemoderun %command%`
+#
+# https://wiki.archlinux.org/title/Gamescope
+#
+# https://forum.foldingathome.org/viewtopic.php?p=372040
+# https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Lowering_GPU_boost_clocks
 
 # partition lookup
 
@@ -49,30 +52,38 @@ LINE=$(grep -n '#\[multilib\]' /etc/pacman.conf | awk '{print $1}' FS=':')
 
 sudo pacman -Sy
 
-exit 0
+# performance optimization
 
-# pipewire
+sudo cp `dirname $0`/etc/sysctl.d/80-gaming.conf /etc/sysctl.d
+sudo cp `dirname $0`/etc/tmpfiles.d/gaming.conf /etc/tmpfiles.d
 
-sudo pacman -S --noconfirm \
-  lib32-pipewire
+cp `dirname $0`/home/$USER/.config/systemd/user/pci.service $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable pci.service
 
 # nvidia
 
-cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.service $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable nvidia.service
+cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.{service,timer} $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable nvidia.timer
 
 sudo systemctl enable nvidia-persistenced.service
 
 # vulkan
 
-sudo pacman -S --noconfirm \
-  lib32-vulkan-validation-layers
+# sudo pacman -S --noconfirm \
+#   lib32-vulkan-validation-layers
+
+# pipewire
+
+# sudo pacman -S --noconfirm \
+#   lib32-pipewire
 
 # steam
 
 sudo pacman -S --noconfirm \
   lib32-nvidia-utils \
   steam
+
+rm -rf ~/Desktop/steam.desktop
 
 [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && {
   FAVS=$(gsettings get org.gnome.shell favorite-apps)
@@ -87,18 +98,10 @@ sudo pacman -S --noconfirm \
   ln -s $MOUNT/Steam $XDG_DATA_HOME/Steam
 }
 
-cp /usr/share/applications/steam.desktop $XDG_DATA_HOME/applications
-sed -i \
-  -e 's/^Name=.*$/Name=Steam/' \
-  -e 's/steam-runtime/env STEAM_FORCE_DESKTOPUI_SCALING=2 steam-runtime/' \
-  $XDG_DATA_HOME/applications/steam.desktop
-
-  # -e 's/steam-runtime/steam-runtime -forcedesktopscaling 2/' \
-
 # proton-ge-custom
 
-sudo pacman -S --noconfirm \
-  lib32-at-spi2-core
+# sudo pacman -S --noconfirm \
+#   lib32-at-spi2-core
 
 paru -S --aur --noconfirm \
   proton-ge-custom-bin
@@ -119,14 +122,6 @@ sudo pacman -S --noconfirm \
 
 [[ -d $XDG_DATA_HOME/mangohud ]] || mkdir -p $XDG_DATA_HOME/mangohud
 cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
-
-# optimization
-
-sudo cp `dirname $0`/etc/sysctl.d/80-gaming.conf /etc/sysctl.d
-sudo cp `dirname $0`/etc/tmpfiles.d/gaming.conf /etc/tmpfiles.d
-
-cp `dirname $0`/home/$USER/.config/systemd/user/pci.service $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable pci.service
 
 # cleanup
 

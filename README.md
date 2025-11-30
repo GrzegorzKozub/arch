@@ -225,13 +225,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 1. Run `~/code/arch/games.zsh`
 2. Reboot
-3. Once per machine, move Steam to games disk with
-  ```bash
-  mv $XDG_DATA_HOME/Steam /run/media/$USER/games/
-  ln -s /run/media/$USER/games/Steam $XDG_DATA_HOME/Steam
-  ```
-4. Start Steam
-5. Once per machine, configure Steam
+3. Once per machine, start and configure Steam
   - Don't sign in to Friends when Steam starts
   - Never show notification toasts
   - Enable 24-hour clock, enable Beta, set start up location to Library, don't run Steam on startup and disable update notifications
@@ -239,19 +233,26 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - Disable community content, hide game icons and show Steam Deck compatibility in Library
   - Allow background processing of Vulkan shaders
   - Disable Steam overlay, remove overlay shortcut key, set performance monitor key to `F9` and remove screenshot key
+  - Set default compatibility tool to Proton-GE
   - Disable Remote Play
+4. Once per machine, move Steam to games disk with
+  ```bash
+  sudo mv $XDG_DATA_HOME/Steam /run/media/$USER/games/
+  ln -s /run/media/$USER/games/Steam $XDG_DATA_HOME/Steam
+  ```
 
 ### Launch options
 
-- Elden Ring, VKD3D
+Game launch options for use in Steam
 
-`./er-patcher --rate 144 -vcas -- env LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" PROTON_ENABLE_NGX_UPDATER=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=dxr11,dxr WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 mangohud gamemoderun %command%`
+```
+mangohud gamemoderun %command%
+```
 
 ### References
 
 - [dxvk](https://github.com/doitsujin/dxvk)
 - [gamescope](https://github.com/Plagman/gamescope)
-- [libstrangle](https://gitlab.com/torkel104/libstrangle)
 - [MangoHud](https://github.com/flightlessmango/MangoHud)
 - [proton-ge-custom](https://github.com/GloriousEggroll/proton-ge-custom)
 - [vkd3d-proton](https://github.com/HansKristian-Work/vkd3d-proton)

@@ -1,0 +1,8 @@
+[Unit]
+Description=nvidia
+
+[Timer]
+OnBootSec=15
+
+[Install]
+WantedBy=timers.target
