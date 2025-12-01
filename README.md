@@ -237,7 +237,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - Disable Remote Play
 4. Once per machine, move Steam to games disk with
   ```bash
-  sudo mv $XDG_DATA_HOME/Steam /run/media/$USER/games/
+  mv $XDG_DATA_HOME/Steam /run/media/$USER/games/
   ln -s /run/media/$USER/games/Steam $XDG_DATA_HOME/Steam
   ```
 
