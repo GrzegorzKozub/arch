@@ -16,7 +16,7 @@ set -e -o verbose
 # partition lookup
 
 [[ $HOST == 'player' ]] && UUID='59881a75-9eac-482a-bcbf-94ce252d9f6b'
-[[ $HOST == 'worker' ]] && UUID='...'
+[[ $HOST == 'worker' ]] && UUID='1fbc6b00-f28c-476a-9319-6640fb52d976'
 
 DISK="$(lsblk -lno PATH,UUID | grep -i $UUID | cut -d' ' -f1)"
 [[ -z $DISK ]] && exit 1
