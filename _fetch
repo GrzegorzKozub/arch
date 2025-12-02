@@ -1,9 +1,10 @@
 #compdef fetch
 
+# https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
+# if the repos are missing in completion, rm -f $XDG_CACHE_HOME/zsh/zcompdump
+
 zstyle ':completion:*:*:fetch:*:*' \
   matcher 'm:{[:lower:]}={[:upper:]} l:|=* r:|=*'
-
-# https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
 
 local -a repos
 

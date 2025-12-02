@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# fetch
+
+rm -f $XDG_CACHE_HOME/zsh/zcompdump
+
 # yt-dlp
 
 sudo pacman -Rs --noconfirm python-secretstorage yt-dlp
