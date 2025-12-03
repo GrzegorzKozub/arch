@@ -246,14 +246,25 @@ To reduce the image size after freeing up space on guest, first defragment the d
 Game launch options for use in Steam
 
 ```
+PROTON_DLSS_UPGRADE=1 PROTON_DLSS_INDICATOR=1 \
+PROTON_NVIDIA_LIBS_NO_32BIT=1 \
+PROTON_ENABLE_WAYLAND=1 PROTON_NO_WM_DECORATION=1 PROTON_ENABLE_HDR=1 \
+PROTON_USE_NTSYNC=1 \
+PROTON_LOCAL_SHADER_CACHE=1 \
+PROTON_PREFER_SDL=1 PROTON_NO_STEAMINPUT=1 \
 mangohud gamemoderun %command%
 ```
 
 ### References
 
-- [dxvk](https://github.com/doitsujin/dxvk)
-- [gamescope](https://github.com/Plagman/gamescope)
-- [MangoHud](https://github.com/flightlessmango/MangoHud)
+Primarily
+
+- [Gaming with CachyOS Guide](https://wiki.cachyos.org/configuration/gaming/)
 - [proton-ge-custom](https://github.com/GloriousEggroll/proton-ge-custom)
+
+Additional tweaks
+
+- [dxvk](https://github.com/doitsujin/dxvk)
+- [dxvk-nvapi](https://github.com/jp7677/dxvk-nvapi)
 - [vkd3d-proton](https://github.com/HansKristian-Work/vkd3d-proton)
 

@@ -2,16 +2,8 @@
 
 set -e -o verbose
 
-# https://github.com/GloriousEggroll/proton-ge-custom
-#   Consider adding yourself to the games group to make this work by issuing: usermod -a -G games
-# https://github.com/doitsujin/dxvk
-# https://github.com/HansKristian-Work/vkd3d-proton
-# env LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgamemode.so.0" PROTON_ENABLE_NGX_UPDATER=1 PROTON_ENABLE_NVAPI=1 VKD3D_CONFIG=dxr11,dxr WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_MODE=ultra WINE_FULLSCREEN_FSR_STRENGTH=2 mangohud gamemoderun %command%`
-#
-# https://wiki.archlinux.org/title/Gamescope
-#
-# https://forum.foldingathome.org/viewtopic.php?p=372040
-# https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Lowering_GPU_boost_clocks
+# todo: gamescope per https://wiki.archlinux.org/title/Gamescope
+# todo: undervolt 5090 per https://forum.foldingathome.org/viewtopic.php?p=372040 and https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Lowering_GPU_boost_clocks
 
 # partition lookup
 
@@ -41,17 +33,6 @@ MOUNT=/run/media/$USER/games
 
 sudo `dirname $0`/fstab.sh
 
-# multilib
-
-LINE=$(grep -n '#\[multilib\]' /etc/pacman.conf | awk '{print $1}' FS=':')
-
-[[ $LINE ]] && {
-  sudo sed -i "${LINE}s/#//" /etc/pacman.conf
-  sudo sed -i "${$(($LINE + 1))}s/#//" /etc/pacman.conf
-}
-
-sudo pacman -Sy
-
 # performance optimization
 
 sudo cp `dirname $0`/etc/sysctl.d/80-gaming.conf /etc/sysctl.d
@@ -67,15 +48,16 @@ systemctl --user enable nvidia.timer
 
 sudo systemctl enable nvidia-persistenced.service
 
-# vulkan
+# multilib
 
-# sudo pacman -S --noconfirm \
-#   lib32-vulkan-validation-layers
+LINE=$(grep -n '#\[multilib\]' /etc/pacman.conf | awk '{print $1}' FS=':')
 
-# pipewire
+[[ $LINE ]] && {
+  sudo sed -i "${LINE}s/#//" /etc/pacman.conf
+  sudo sed -i "${$(($LINE + 1))}s/#//" /etc/pacman.conf
+}
 
-# sudo pacman -S --noconfirm \
-#   lib32-pipewire
+sudo pacman -Sy
 
 # steam
 
@@ -98,19 +80,10 @@ rm -rf ~/Desktop/steam.desktop
   ln -s $MOUNT/Steam $XDG_DATA_HOME/Steam
 }
 
-# proton-ge-custom
-
-# sudo pacman -S --noconfirm \
-#   lib32-at-spi2-core
-
-paru -S --aur --noconfirm \
-  proton-ge-custom-bin
-
 # gamemode
 
 sudo pacman -S --noconfirm \
   gamemode
-  # lib32-gamemode
 
 sudo usermod -a -G gamemode $(whoami)
 
@@ -118,10 +91,16 @@ sudo usermod -a -G gamemode $(whoami)
 
 sudo pacman -S --noconfirm \
   mangohud
-  # lib32-mangohud
 
 [[ -d $XDG_DATA_HOME/mangohud ]] || mkdir -p $XDG_DATA_HOME/mangohud
 cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
+
+# proton-ge-custom
+
+paru -S --aur --noconfirm \
+  proton-ge-custom-bin
+
+sudo cp `dirname $0`/etc/modules-load.d/ntsync.conf /etc/modules-load.d
 
 # cleanup
 
