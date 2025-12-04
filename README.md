@@ -246,7 +246,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
 ```
 PROTON_DLSS_UPGRADE=1 PROTON_DLSS_INDICATOR=1 \
 PROTON_NVIDIA_LIBS_NO_32BIT=1 \
-PROTON_ENABLE_WAYLAND=1 PROTON_NO_WM_DECORATION=1 PROTON_ENABLE_HDR=1 \
+PROTON_ENABLE_WAYLAND=0 PROTON_NO_WM_DECORATION=1 PROTON_ENABLE_HDR=1 \
 PROTON_USE_NTSYNC=1 \
 PROTON_LOCAL_SHADER_CACHE=1 \
 PROTON_PREFER_SDL=1 PROTON_NO_STEAMINPUT=1 \
@@ -256,7 +256,7 @@ mangohud gamemoderun %command%
 To use `gamescope`, the final line is changed
 
 ```
-mangohud gamemoderun gamescope -W 3840 -H 2160 -r 240 --expose-wayland --hdr-enabled --mangoapp --adaptive-sync --fullscreen -- env LD_PRELOAD='' %command%
+gamemoderun gamescope -W 3840 -H 2160 -r 239.99 --hdr-enabled --mangoapp --adaptive-sync --fullscreen --force-grab-cursor -- %command%
 ```
 
 References

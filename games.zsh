@@ -2,8 +2,8 @@
 
 set -e -o verbose
 
-# todo: gamescope per https://wiki.archlinux.org/title/Gamescope
-# todo: undervolt 5090 per https://forum.foldingathome.org/viewtopic.php?p=372040 and https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Lowering_GPU_boost_clocks
+# TODO undervolt 5090 following https://forum.foldingathome.org/viewtopic.php?p=372040
+# and https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Lowering_GPU_boost_clocks
 
 # partition lookup
 
@@ -104,11 +104,11 @@ sudo cp `dirname $0`/etc/modules-load.d/ntsync.conf /etc/modules-load.d
 
 # gamescope
 
-paru -S --aur --noconfirm \
-  gamescope-git
-
-sudo pacman -Rs --noconfirm \
-  cmake
+# paru -S --aur --noconfirm \
+#   gamescope-git
+#
+# sudo pacman -Rs --noconfirm \
+#   cmake
 
 # cleanup
 
