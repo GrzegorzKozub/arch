@@ -204,7 +204,7 @@ Current settings:
 
 Install `mutter-devkit` and run `dbus-run-session -- gnome-shell --devkit` to test & debug.
 
-### References
+References
 
 - [GJS](https://gjs.guide/)
 - [GNOME JavaScript Docs](https://gjs-docs.gnome.org/)
@@ -243,8 +243,6 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 ### Launch options
 
-Game launch options for use in Steam
-
 ```
 PROTON_DLSS_UPGRADE=1 PROTON_DLSS_INDICATOR=1 \
 PROTON_NVIDIA_LIBS_NO_32BIT=1 \
@@ -255,15 +253,17 @@ PROTON_PREFER_SDL=1 PROTON_NO_STEAMINPUT=1 \
 mangohud gamemoderun %command%
 ```
 
-### References
+To use `gamescope`, the final line is changed
 
-Primarily
+```
+mangohud gamemoderun gamescope -W 3840 -H 2160 -r 240 --expose-wayland --hdr-enabled --mangoapp --adaptive-sync --fullscreen -- env LD_PRELOAD='' %command%
+```
+
+References
 
 - [Gaming with CachyOS Guide](https://wiki.cachyos.org/configuration/gaming/)
 - [proton-ge-custom](https://github.com/GloriousEggroll/proton-ge-custom)
-
-Additional tweaks
-
+- [gamescope](https://github.com/ValveSoftware/gamescope)
 - [dxvk](https://github.com/doitsujin/dxvk)
 - [dxvk-nvapi](https://github.com/jp7677/dxvk-nvapi)
 - [vkd3d-proton](https://github.com/HansKristian-Work/vkd3d-proton)

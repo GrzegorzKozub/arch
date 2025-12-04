@@ -102,6 +102,14 @@ paru -S --aur --noconfirm \
 
 sudo cp `dirname $0`/etc/modules-load.d/ntsync.conf /etc/modules-load.d
 
+# gamescope
+
+paru -S --aur --noconfirm \
+  gamescope-git
+
+sudo pacman -Rs --noconfirm \
+  cmake
+
 # cleanup
 
 . `dirname $0`/packages.zsh
