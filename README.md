@@ -204,7 +204,7 @@ Current settings:
 
 Install `mutter-devkit` and run `dbus-run-session -- gnome-shell --devkit` to test & debug.
 
-References
+### References
 
 - [GJS](https://gjs.guide/)
 - [GNOME JavaScript Docs](https://gjs-docs.gnome.org/)
@@ -243,23 +243,25 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 ### Launch options
 
+`PROTON_ENABLE_WAYLAND` is required for HDR without `gamescope` but causes stuttering when VRR is enabled.
+
 ```
 PROTON_DLSS_UPGRADE=1 PROTON_DLSS_INDICATOR=1 \
 PROTON_NVIDIA_LIBS_NO_32BIT=1 \
-PROTON_ENABLE_WAYLAND=0 PROTON_NO_WM_DECORATION=1 PROTON_ENABLE_HDR=1 \
+PROTON_ENABLE_WAYLAND=0 PROTON_NO_WM_DECORATION=1 PROTON_ENABLE_HDR=1 ENABLE_HDR_WSI=1 \
 PROTON_USE_NTSYNC=1 \
 PROTON_LOCAL_SHADER_CACHE=1 \
 PROTON_PREFER_SDL=1 PROTON_NO_STEAMINPUT=1 \
 mangohud gamemoderun %command%
 ```
 
-To use `gamescope`, the final line is changed
+To use `gamescope`, keep the env vars and update the command. Frame limit from MangoHud doesn't work with `gamescope` and the one provided by `gamescope` is broken.
 
 ```
 gamemoderun gamescope -W 3840 -H 2160 -r 239.99 --hdr-enabled --mangoapp --adaptive-sync --fullscreen --force-grab-cursor -- %command%
 ```
 
-References
+### References
 
 - [Gaming with CachyOS Guide](https://wiki.cachyos.org/configuration/gaming/)
 - [proton-ge-custom](https://github.com/GloriousEggroll/proton-ge-custom)
