@@ -2,9 +2,6 @@
 
 set -e -o verbose
 
-# TODO undervolt 5090 following https://forum.foldingathome.org/viewtopic.php?p=372040
-# and https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Lowering_GPU_boost_clocks
-
 # partition lookup
 
 [[ $HOST == 'player' ]] && UUID='59881a75-9eac-482a-bcbf-94ce252d9f6b'

@@ -2,7 +2,7 @@
 Description=nvidia
 
 [Timer]
-OnBootSec=15
+OnBootSec=60
 
 [Install]
 WantedBy=timers.target
