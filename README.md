@@ -255,14 +255,17 @@ PROTON_PREFER_SDL=1 PROTON_NO_STEAMINPUT=1 \
 mangohud gamemoderun %command%
 ```
 
-To use `gamescope`, keep the env vars and update the command. Frame limit from MangoHud doesn't work with `gamescope` and the one provided by `gamescope` is broken.
+To use `gamescope`, keep the env vars and update the command. Frame limit provided by `gamescope` is currently broken.
 
 ```
 gamemoderun gamescope -W 3840 -H 2160 -r 239.99 --hdr-enabled --mangoapp --adaptive-sync --fullscreen --force-grab-cursor -- %command%
 ```
 
+MangoHud frame limit doesn't work over 100 fps so we're using `VKD3D_FRAME_RATE=120` instead per [this article](https://docs.bazzite.gg/Gaming/Common_gaming_issues/#frame-rate-limiting-issues-and-inconsistency).
+
 ### References
 
+- [Bazzite Gaming Guide](https://docs.bazzite.gg/Gaming/)
 - [Gaming with CachyOS Guide](https://wiki.cachyos.org/configuration/gaming/)
 - [proton-ge-custom](https://github.com/GloriousEggroll/proton-ge-custom)
 - [gamescope](https://github.com/ValveSoftware/gamescope)
