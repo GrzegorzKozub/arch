@@ -9,6 +9,9 @@ bootctl --path=/boot install
 cp $(dirname $0)/boot/loader/loader.conf /boot/loader
 cp $(dirname $0)/boot/loader/entries/*.conf /boot/loader/entries
 
+[[ $MY_HOSTNAME = 'drifter' ]] &&
+  sed -i 's/^reboot-for-bitlocker no$/reboot-for-bitlocker yes/' /boot/loader/loader.conf
+
 # ucode
 
 [[ $MY_HOSTNAME = 'drifter' ]] &&
