@@ -15,6 +15,13 @@ sudo sed -i 's/^ALL_microcode/#ALL_microcode/' /etc/mkinitcpio.d/linux-lts.prese
 sudo pacman -Rs --noconfirm python-secretstorage yt-dlp
 uv tool install --with yt-dlp-ejs 'yt-dlp[secretstorage]'
 
+# zellij
+
+sudo pacman -Rs --noconfirm zelij
+rm -rf $XDG_CACHE_HOME/zellij
+rm -rf $XDG_CONFIG_HOME/zellij
+rm -rf $XDG_DATA_HOME/applications/zellij.desktop
+
 # reset
 
 # . `dirname $0`/reset.zsh

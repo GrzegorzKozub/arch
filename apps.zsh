@@ -97,7 +97,6 @@ sudo pacman -S --noconfirm \
   silicon \
   stress \
   time \
-  zellij \
   trash-cli \
   wget \
   wl-clipboard \
@@ -114,7 +113,7 @@ sudo pacman -S --noconfirm \
   # dua-cli dust gdu
   # gopass-jsonapi
   # imwheel
-  # tmux
+  # tmux zellij
 
 paru -S --aur --noconfirm \
   tmux-git

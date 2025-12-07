@@ -25,8 +25,7 @@ for APP in \
   stoken-gui \
   stoken-gui-small \
   xcolor \
-  yazi \
-  zellij
+  yazi
 do
   if [[ ! -f /usr/share/applications/$APP.desktop ]]; then
     rm -rf $XDG_DATA_HOME/applications/$APP.desktop || true
@@ -36,7 +35,7 @@ do
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
-  # redshift redshift-gtk
+  # redshift redshift-gtk zellij
 
 rm -rf $XDG_DATA_HOME/applications/electron*.desktop || true
 
