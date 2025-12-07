@@ -6,6 +6,10 @@ set -o verbose
 
 rm -f $XDG_CACHE_HOME/zsh/zcompdump
 
+# mkinitcpio
+
+sudo sed -i 's/^ALL_microcode/#ALL_microcode/' /etc/mkinitcpio.d/linux-lts.preset
+
 # yt-dlp
 
 sudo pacman -Rs --noconfirm python-secretstorage yt-dlp
