@@ -17,7 +17,7 @@ uv tool install --with yt-dlp-ejs 'yt-dlp[secretstorage]'
 
 # zellij
 
-sudo pacman -Rs --noconfirm zelij
+sudo pacman -Rs --noconfirm zellij
 rm -rf $XDG_CACHE_HOME/zellij
 rm -rf $XDG_CONFIG_HOME/zellij
 rm -rf $XDG_DATA_HOME/applications/zellij.desktop
