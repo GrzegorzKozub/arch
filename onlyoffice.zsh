@@ -13,3 +13,7 @@ paru -S --aur --noconfirm \
 # cleanup
 
 . `dirname $0`/packages.zsh
+
+# dotfiles
+
+. ~/code/dot/onlyoffice.zsh
