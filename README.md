@@ -231,9 +231,9 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - Enable 24-hour clock, enable Beta, set start up location to Library, don't run Steam on startup and disable update notifications
   - Leave only Store, Library, Settings and Exit Steam in taskbar preferences
   - Disable community content, hide game icons and show Steam Deck compatibility in Library
-  - Allow background processing of Vulkan shaders
+  - Disable shader pre-caching
   - Disable Steam overlay, remove overlay shortcut key, set performance monitor key to `F9` and remove screenshot key
-  - Set default compatibility tool to Proton-GE
+  - Set default compatibility tool to Proton-CachyOS or Proton-GE
   - Disable Remote Play
 4. Once per machine, move Steam to games disk with
   ```bash
@@ -246,7 +246,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
 `PROTON_ENABLE_WAYLAND` is required for HDR without `gamescope` but causes stuttering when VRR is enabled.
 
 ```
-PROTON_DLSS_UPGRADE=1 PROTON_DLSS_INDICATOR=1 \
+PROTON_DLSS_UPGRADE=1 PROTON_DLSS_INDICATOR=0 \
 PROTON_NVIDIA_LIBS_NO_32BIT=1 \
 PROTON_ENABLE_WAYLAND=0 PROTON_NO_WM_DECORATION=1 PROTON_ENABLE_HDR=1 ENABLE_HDR_WSI=1 \
 PROTON_USE_NTSYNC=1 \

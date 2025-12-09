@@ -92,9 +92,10 @@ sudo pacman -S --noconfirm \
 [[ -d $XDG_DATA_HOME/mangohud ]] || mkdir -p $XDG_DATA_HOME/mangohud
 cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
 
-# proton-ge-custom
+# proton
 
 paru -S --aur --noconfirm \
+  proton-cachyos-slr \
   proton-ge-custom-bin
 
 sudo cp `dirname $0`/etc/modules-load.d/ntsync.conf /etc/modules-load.d
