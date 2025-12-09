@@ -205,7 +205,9 @@ if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 
   sudo pacman -S --noconfirm \
     dotnet-sdk aspnet-runtime \
-    jdk-openjdk maven
+    jdk-openjdk jdk21-openjdk maven
+
+  sudo archlinux-java set java-21-openjdk
 
 fi
 

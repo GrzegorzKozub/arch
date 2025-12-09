@@ -12,8 +12,11 @@ for APP in \
   cmake-gui \
   htop \
   java-java-openjdk \
+  java-java21-openjdk \
   jconsole-java-openjdk \
+  jconsole-java21-openjdk \
   jshell-java-openjdk \
+  jshell-java21-openjdk \
   lstopo \
   mpv \
   nvtop \

@@ -2,25 +2,10 @@
 
 set -o verbose
 
-# fetch
+# java
 
-rm -f $XDG_CACHE_HOME/zsh/zcompdump
-
-# mkinitcpio
-
-sudo sed -i 's/^ALL_microcode/#ALL_microcode/' /etc/mkinitcpio.d/linux-lts.preset
-
-# yt-dlp
-
-sudo pacman -Rs --noconfirm python-secretstorage yt-dlp
-uv tool install --with yt-dlp-ejs 'yt-dlp[secretstorage]'
-
-# zellij
-
-sudo pacman -Rs --noconfirm zellij
-rm -rf $XDG_CACHE_HOME/zellij
-rm -rf $XDG_CONFIG_HOME/zellij
-rm -rf $XDG_DATA_HOME/applications/zellij.desktop
+sudo pacman -S --noconfirm jdk21-openjdk
+sudo archlinux-java set java-21-openjdk
 
 # reset
 
