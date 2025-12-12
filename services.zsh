@@ -33,10 +33,10 @@ sudo systemctl enable fstrim.timer
 # dns with systemd-resolved
 
 [[ -d /etc/systemd/resolved.conf.d ]] || sudo mkdir /etc/systemd/resolved.conf.d
-sudo cp `dirname $0`/etc/systemd/resolved.conf.d/dns.conf /etc/systemd/resolved.conf.d/dns.conf
+sudo cp `dirname $0`/etc/systemd/resolved.conf.d/dns.conf /etc/systemd/resolved.conf.d
 
 [[ -d /etc/NetworkManager/conf.d ]] || sudo mkdir /etc/NetworkManager/conf.d
-sudo cp `dirname $0`/etc/NetworkManager/conf.d/dns.conf /etc/NetworkManager/conf.d/dns.conf
+sudo cp `dirname $0`/etc/NetworkManager/conf.d/dns.conf /etc/NetworkManager/conf.d
 
 sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
@@ -49,15 +49,15 @@ sudo systemctl enable NetworkManager.service
 # firewall
 
 sudo cp /etc/iptables/iptables.rules /etc/iptables/iptables.rules.backup
-sudo cp `dirname $0`/etc/iptables/iptables.rules /etc/iptables/iptables.rules
+sudo cp `dirname $0`/etc/iptables/iptables.rules /etc/iptables
 sudo systemctl enable iptables.service
 
 sudo cp /etc/iptables/ip6tables.rules /etc/iptables/ip6tables.rules.backup
-sudo cp `dirname $0`/etc/iptables/ip6tables.rules /etc/iptables/ip6tables.rules
+sudo cp `dirname $0`/etc/iptables/ip6tables.rules /etc/iptables
 sudo systemctl enable ip6tables.service
 
 # sudo cp /etc/nftables.conf /etc/nftables.conf.backup
-# sudo cp `dirname $0`/etc/nftables.rules /etc/nftables.rules
+# sudo cp `dirname $0`/etc/nftables.rules /etc
 # sudo systemctl enable nftables.service
 
 # bluetooth
@@ -90,7 +90,7 @@ fi
 if [[ $HOST = 'sacrifice' ]]; then
 
   [[ -d /etc/amdfand ]] || sudo mkdir /etc/amdfand
-  sudo cp `dirname $0`/etc/amdfand/config.toml /etc/amdfand/config.toml
+  sudo cp `dirname $0`/etc/amdfand/config.toml /etc/amdfand
   sudo systemctl enable amdfand.service
 
 fi
@@ -105,7 +105,7 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
   sudo systemctl enable nvidia-resume.service
   sudo systemctl enable nvidia-suspend.service
 
-  # nvidia undervolt
+  # nvidia overclocking
 
   cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.{service,timer} $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable nvidia.timer

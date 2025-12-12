@@ -75,6 +75,16 @@ cp $(dirname $0)/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
 
 cp $(dirname $0)/etc/tmpfiles.d/coredump.conf /etc/tmpfiles.d
 
+# limit journal size to 64 MB
+
+[[ -d /etc/systemd/journald.conf.d ]] || mkdir /etc/systemd/journald.conf.d
+cp $(dirname $0)/etc/systemd/journald.conf.d/00-journal-size.conf /etc/systemd/journald.conf.d
+
+# limit journal entries
+
+[[ -d /etc/systemd/system/rtkit-daemon.service.d ]] || mkdir /etc/systemd/system/rtkit-daemon.service.d
+cp $(dirname $0)/etc/systemd/system/rtkit-daemon.service.d/log.conf /etc/systemd/system/rtkit-daemon.service.d
+
 # performance optimization
 
 cp $(dirname $0)/etc/sysctl.d/70-perf.conf /etc/sysctl.d
@@ -86,17 +96,17 @@ if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
   echo 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia.conf
 
   # enable nvidia overclocking
-  sudo cp $(dirname $0)/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d/20-nvidia.conf
+  cp $(dirname $0)/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d
 
   # disable rootless xorg to allow nvidia overclocking
-  # sudo cp `dirname $0`/etc/X11/Xwrapper.config /etc/X11/Xwrapper.config
+  # cp `dirname $0`/etc/X11/Xwrapper.config /etc/X11
 
 fi
 
 # webcam video format
 
 [[ $MY_HOSTNAME = 'worker' ]] &&
-  cp $(dirname $0)/etc/udev/rules.d/10-c922.rules /etc/udev/rules.d/10-c922.rules
+  cp $(dirname $0)/etc/udev/rules.d/10-c922.rules /etc/udev/rules.d
 
 # sleep fixes
 
@@ -182,7 +192,7 @@ sed -Ei \
 
 # dm-crypt with systemd based initial ramdisk (before mkinitcpio)
 
-cp $(dirname $0)/etc/crypttab.initramfs /etc/crypttab.initramfs
+cp $(dirname $0)/etc/crypttab.initramfs /etc
 sed -i \
   "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" \
   /etc/crypttab.initramfs

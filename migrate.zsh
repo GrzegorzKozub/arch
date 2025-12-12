@@ -2,18 +2,26 @@
 
 set -o verbose
 
-# java
+# limit journal size to 64 MB
 
-if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
+[[ -d /etc/systemd/journald.conf.d ]] || sudo mkdir /etc/systemd/journald.conf.d
+sudo cp `dirname $0`/etc/systemd/journald.conf.d/00-journal-size.conf /etc/systemd/journald.conf.d
 
-  sudo pacman -S --noconfirm jdk21-openjdk
-  sudo archlinux-java set java-21-openjdk
+# limit journal entries
 
-fi
+[[ -d /etc/systemd/system/rtkit-daemon.service.d ]] || sudo mkdir /etc/systemd/system/rtkit-daemon.service.d
+sudo cp $(dirname $0)/etc/systemd/system/rtkit-daemon.service.d/log.conf /etc/systemd/system/rtkit-daemon.service.d
 
 # only keep coredumps from last 3 days
 
 sudo cp `dirname $0`/etc/tmpfiles.d/coredump.conf /etc/tmpfiles.d
+
+# performance optimization
+
+sudo cp `dirname $0`/etc/sysctl.d/70-perf.conf /etc/sysctl.d
+
+cp `dirname $0`/home/$USER/.config/systemd/user/perf.service $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable perf.service
 
 # nvidia undervolt
 
@@ -26,12 +34,14 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
 
 fi
 
-# performance optimization
+# java
 
-sudo cp `dirname $0`/etc/sysctl.d/70-perf.conf /etc/sysctl.d
+if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 
-cp `dirname $0`/home/$USER/.config/systemd/user/perf.service $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable perf.service
+  sudo pacman -S --noconfirm jdk21-openjdk
+  sudo archlinux-java set java-21-openjdk
+
+fi
 
 # reset
 
