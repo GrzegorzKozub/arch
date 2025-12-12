@@ -4,8 +4,12 @@ set -o verbose
 
 # java
 
-sudo pacman -S --noconfirm jdk21-openjdk
-sudo archlinux-java set java-21-openjdk
+if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
+
+  sudo pacman -S --noconfirm jdk21-openjdk
+  sudo archlinux-java set java-21-openjdk
+
+fi
 
 # only keep coredumps from last 3 days
 
