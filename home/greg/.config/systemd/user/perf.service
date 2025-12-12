@@ -1,10 +1,10 @@
 [Unit]
-Description=sysfs
+Description=perf
 After=graphical-session.target
 
 [Service]
 Type=oneshot
-ExecStart=%h/code/arch/sysfs.sh
+ExecStart=%h/code/arch/perf.sh
 
 [Install]
 WantedBy=graphical-session.target

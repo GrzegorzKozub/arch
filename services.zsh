@@ -95,13 +95,22 @@ if [[ $HOST = 'sacrifice' ]]; then
 
 fi
 
-# preserve nvidia video during suspend
+# nvidia gpu
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  # preserve nvidia video memory during suspend
 
   sudo systemctl enable nvidia-hibernate.service
   sudo systemctl enable nvidia-resume.service
   sudo systemctl enable nvidia-suspend.service
+
+  # nvidia undervolt
+
+  cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.{service,timer} $XDG_CONFIG_HOME/systemd/user
+  systemctl --user enable nvidia.timer
+
+  sudo systemctl enable nvidia-persistenced.service
 
 fi
 
@@ -147,15 +156,10 @@ cp `dirname $0`/home/$USER/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $
 
 systemctl --user enable pipewire-pulse.service
 
-# pci latency
+# performance optimization
 
-cp `dirname $0`/home/$USER/.config/systemd/user/pci.service $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable pci.service
-
-# delayed sysfs settings
-
-cp `dirname $0`/home/$USER/.config/systemd/user/sysfs.service $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable sysfs.service
+cp `dirname $0`/home/$USER/.config/systemd/user/perf.service $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable perf.service
 
 # sync
 

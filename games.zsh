@@ -30,18 +30,6 @@ MOUNT=/run/media/$USER/games
 
 sudo `dirname $0`/fstab.sh
 
-# performance optimization
-
-sudo cp `dirname $0`/etc/sysctl.d/80-gaming.conf /etc/sysctl.d
-sudo cp `dirname $0`/etc/tmpfiles.d/gaming.conf /etc/tmpfiles.d
-
-# nvidia
-
-cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.{service,timer} $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable nvidia.timer
-
-sudo systemctl enable nvidia-persistenced.service
-
 # multilib
 
 LINE=$(grep -n '#\[multilib\]' /etc/pacman.conf | awk '{print $1}' FS=':')

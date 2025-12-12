@@ -71,6 +71,14 @@ chown greg:users /home/greg/.zshrc
 
 cp $(dirname $0)/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
 
+# only keep coredumps from last 3 days
+
+cp $(dirname $0)/etc/tmpfiles.d/coredump.conf /etc/tmpfiles.d
+
+# performance optimization
+
+cp $(dirname $0)/etc/sysctl.d/70-perf.conf /etc/sysctl.d
+
 # nvidia gpu
 
 if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
