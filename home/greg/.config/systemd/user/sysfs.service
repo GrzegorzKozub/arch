@@ -1,0 +1,10 @@
+[Unit]
+Description=sysfs
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/code/arch/sysfs.sh
+
+[Install]
+WantedBy=graphical-session.target

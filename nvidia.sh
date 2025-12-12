@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# https://forum.foldingathome.org/viewtopic.php?p=372040
-
 set -e
+
+# https://forum.foldingathome.org/viewtopic.php?p=372040
 
 if [[ $HOST == 'player' ]]; then # 5090
 

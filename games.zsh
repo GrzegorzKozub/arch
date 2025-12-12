@@ -35,9 +35,6 @@ sudo `dirname $0`/fstab.sh
 sudo cp `dirname $0`/etc/sysctl.d/80-gaming.conf /etc/sysctl.d
 sudo cp `dirname $0`/etc/tmpfiles.d/gaming.conf /etc/tmpfiles.d
 
-cp `dirname $0`/home/$USER/.config/systemd/user/pci.service $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable pci.service
-
 # nvidia
 
 cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.{service,timer} $XDG_CONFIG_HOME/systemd/user

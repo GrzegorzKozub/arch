@@ -147,6 +147,16 @@ cp `dirname $0`/home/$USER/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $
 
 systemctl --user enable pipewire-pulse.service
 
+# pci latency
+
+cp `dirname $0`/home/$USER/.config/systemd/user/pci.service $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable pci.service
+
+# delayed sysfs settings
+
+cp `dirname $0`/home/$USER/.config/systemd/user/sysfs.service $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable sysfs.service
+
 # sync
 
 cp `dirname $0`/home/$USER/.config/systemd/user/sync-* $XDG_CONFIG_HOME/systemd/user
