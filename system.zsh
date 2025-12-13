@@ -60,7 +60,6 @@ pacstrap /mnt \
   tpm2-tss \
   fwupd \
   lvm2 \
-  zram-generator \
   ntfs-3g \
   avahi \
   lm_sensors \
@@ -79,7 +78,7 @@ pacstrap /mnt \
   gdm glib2-devel \
   argyllcms
 
-  # nftables nss-mdns plymouth (splash)
+  # nftables nss-mdns plymouth (splash) zram-generator
 
 # fstab
 
