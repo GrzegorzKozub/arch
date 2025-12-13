@@ -19,16 +19,21 @@ fi
 # limit journal size to 64 MB
 
 [[ -d /etc/systemd/journald.conf.d ]] || sudo mkdir /etc/systemd/journald.conf.d
-sudo cp `dirname $0`/etc/systemd/journald.conf.d/00-journal-size.conf /etc/systemd/journald.conf.d
+sudo cp `dirname $0`/etc/systemd/journald.conf.d/00-size.conf /etc/systemd/journald.conf.d
 
 # limit journal entries
 
 [[ -d /etc/systemd/system/rtkit-daemon.service.d ]] || sudo mkdir /etc/systemd/system/rtkit-daemon.service.d
-sudo cp $(dirname $0)/etc/systemd/system/rtkit-daemon.service.d/log.conf /etc/systemd/system/rtkit-daemon.service.d
+sudo cp `dirname $0`/etc/systemd/system/rtkit-daemon.service.d/log.conf /etc/systemd/system/rtkit-daemon.service.d
 
 # only keep coredumps from last 3 days
 
 sudo cp `dirname $0`/etc/tmpfiles.d/coredump.conf /etc/tmpfiles.d
+
+# change systemd start & stop timeouts from 90 to 15 seconds
+
+[[ -d /etc/systemd/system.conf.d ]] || sudo mkdir /etc/systemd/system.conf.d
+sudo cp `dirname $0`/etc/systemd/system.conf.d/00-timeout.conf /etc/systemd/system.conf.d
 
 # performance optimization
 

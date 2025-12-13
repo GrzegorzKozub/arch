@@ -72,10 +72,15 @@ cp $(dirname $0)/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
 
 cp $(dirname $0)/etc/tmpfiles.d/coredump.conf /etc/tmpfiles.d
 
+# change systemd start & stop timeouts from 90 to 15 seconds
+
+[[ -d /etc/systemd/system.conf.d ]] || mkdir /etc/systemd/system.conf.d
+cp $(dirname $0)/etc/systemd/system.conf.d/00-timeout.conf /etc/systemd/system.conf.d
+
 # limit journal size to 64 MB
 
 [[ -d /etc/systemd/journald.conf.d ]] || mkdir /etc/systemd/journald.conf.d
-cp $(dirname $0)/etc/systemd/journald.conf.d/00-journal-size.conf /etc/systemd/journald.conf.d
+cp $(dirname $0)/etc/systemd/journald.conf.d/00-size.conf /etc/systemd/journald.conf.d
 
 # limit journal entries
 
