@@ -1,0 +1,4 @@
+# https://github.com/CachyOS/CachyOS-Settings/blob/master/usr/lib/udev/rules.d/30-zram.rules
+
+ACTION=="change", KERNEL=="zram0", ATTR{initstate}=="1", RUN+="/bin/sh -c 'echo N > /sys/module/zswap/parameters/enabled'"
+

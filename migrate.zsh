@@ -68,6 +68,13 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
 
 fi
 
+# zram
+
+sudo pacman -S --noconfirm zram-generator
+
+sudo cp `dirname $0`/etc/systemd/zram-generator.conf /etc/systemd
+sudo cp `dirname $0`/etc/udev/rules.d/20-zram.rules /etc/udev/rules.d
+
 # java
 
 if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work

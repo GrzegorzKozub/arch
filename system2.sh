@@ -92,6 +92,11 @@ cp $(dirname $0)/etc/systemd/journald.conf.d/00-size.conf /etc/systemd/journald.
 [[ -d /etc/systemd/system/rtkit-daemon.service.d ]] || mkdir -p /etc/systemd/system/rtkit-daemon.service.d
 cp $(dirname $0)/etc/systemd/system/rtkit-daemon.service.d/log.conf /etc/systemd/system/rtkit-daemon.service.d
 
+# zram
+
+cp $(dirname $0)/etc/systemd/zram-generator.conf /etc/systemd
+cp $(dirname $0)/etc/udev/rules.d/20-zram.rules /etc/udev/rules.d
+
 # performance optimization
 
 cp $(dirname $0)/etc/sysctl.d/70-perf.conf /etc/sysctl.d

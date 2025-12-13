@@ -60,6 +60,7 @@ pacstrap /mnt \
   tpm2-tss \
   fwupd \
   lvm2 \
+  zram-generator \
   ntfs-3g \
   avahi \
   lm_sensors \
