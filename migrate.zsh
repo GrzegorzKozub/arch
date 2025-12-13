@@ -16,39 +16,25 @@ if [[ $HOST = 'player' ]]; then
 
 fi
 
-# limit journal size to 64 MB
-
-[[ -d /etc/systemd/journald.conf.d ]] || sudo mkdir /etc/systemd/journald.conf.d
-sudo cp `dirname $0`/etc/systemd/journald.conf.d/00-size.conf /etc/systemd/journald.conf.d
-
-# ntp
-
-[[ -d /etc/systemd/timesyncd.conf.d ]] || sudo mkdir /etc/systemd/timesyncd.conf.d
-sudo cp $(dirname $0)/etc/systemd/timesyncd.conf.d/ntp.conf /etc/systemd/timesyncd.conf.d
-
-# limit journal entries
-
-[[ -d /etc/systemd/system/rtkit-daemon.service.d ]] || sudo mkdir /etc/systemd/system/rtkit-daemon.service.d
-sudo cp `dirname $0`/etc/systemd/system/rtkit-daemon.service.d/log.conf /etc/systemd/system/rtkit-daemon.service.d
-
-# only keep coredumps from last 3 days
+# cleanup & tweaks
 
 sudo cp `dirname $0`/etc/tmpfiles.d/coredump.conf /etc/tmpfiles.d
-
-# change systemd start & stop timeouts from 90 to 15 seconds
 
 [[ -d /etc/systemd/system.conf.d ]] || sudo mkdir /etc/systemd/system.conf.d
 sudo cp `dirname $0`/etc/systemd/system.conf.d/00-timeout.conf /etc/systemd/system.conf.d
 
-# performance optimization
+[[ -d /etc/systemd/timesyncd.conf.d ]] || sudo mkdir /etc/systemd/timesyncd.conf.d
+sudo cp $(dirname $0)/etc/systemd/timesyncd.conf.d/ntp.conf /etc/systemd/timesyncd.conf.d
+
+[[ -d /etc/systemd/journald.conf.d ]] || sudo mkdir /etc/systemd/journald.conf.d
+sudo cp `dirname $0`/etc/systemd/journald.conf.d/00-size.conf /etc/systemd/journald.conf.d
+
+[[ -d /etc/systemd/system/rtkit-daemon.service.d ]] || sudo mkdir /etc/systemd/system/rtkit-daemon.service.d
+sudo cp `dirname $0`/etc/systemd/system/rtkit-daemon.service.d/log.conf /etc/systemd/system/rtkit-daemon.service.d
 
 sudo cp `dirname $0`/etc/sysctl.d/70-perf.conf /etc/sysctl.d
 sudo cp `dirname $0`/etc/udev/rules.d/60-ioschedulers.rules /etc/udev/rules.d
 
-cp `dirname $0`/home/$USER/.config/systemd/user/perf.service $XDG_CONFIG_HOME/systemd/user
-systemctl --user enable perf.service
-
-# nvidia
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 
@@ -59,7 +45,8 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
 
 fi
 
-# sleep fixes
+[[ $HOST = 'worker' ]] &&
+  sudo mv /etc/udev/rules.d/10-c922.rules /etc/udev/rules.d/90-c922.rules
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 
@@ -67,6 +54,9 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
   sudo cp $(dirname $0)/etc/tmpfiles.d/wakeup.conf /etc/tmpfiles.d
 
 fi
+
+cp `dirname $0`/home/$USER/.config/systemd/user/perf.service $XDG_CONFIG_HOME/systemd/user
+systemctl --user enable perf.service
 
 # java
 
