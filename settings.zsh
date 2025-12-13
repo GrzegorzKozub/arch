@@ -50,9 +50,6 @@ find() {
   pactl list sinks | grep --before-context 1 "Description: $1" | head -n1 | sed 's/.*Name: //'
 }
 
-# [[ $HOST = 'drifter' ]] &&
-#   pactl set-default-sink $(find '...')
-
 [[ $HOST = 'player' ]] &&
   pactl set-default-sink $(find 'Schiit Magni Unity Analog Stereo')
 

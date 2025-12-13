@@ -35,11 +35,8 @@ for FILE in subuid subgid; do
     sudo tee /etc/$FILE > /dev/null
 done
 
-DIR=/etc/systemd/system/user@.service.d
-[[ -d $DIR ]] || sudo mkdir -p $DIR
-
-echo '[Service]\nDelegate=cpu cpuset io memory pids' | \
-  sudo tee $DIR/delegate.conf > /dev/null
+[[ -d /etc/systemd/system/user@.service.d ]] || sudo mkdir -p /etc/systemd/system/user@.service.d
+cp $(dirname $0)/etc/systemd/system/user@.service.d/delegate.conf /etc/systemd/system/user@.service.d
 
 # systemctl --user enable docker.service
 # systemctl --user start docker.service

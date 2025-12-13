@@ -18,3 +18,6 @@ do
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
+# cleanup
+
+. `dirname $0`/packages.zsh

@@ -2,6 +2,20 @@
 
 set -o verbose
 
+# hosts
+
+if [[ $HOST = 'player' ]]; then
+
+  sudo sed -i -e "/.*localhost.*/d" /etc/hosts
+  sudo sed -i -e "/.*$HOST.*/d" /etc/hosts
+
+  echo '127.0.0.1 localhost' | sudo tee --append /etc/hosts
+  echo '::1       localhost' | sudo tee --append /etc/hosts
+  echo "127.0.0.1 $HOST.localdomain $HOST" | sudo tee --append /etc/hosts
+  echo "::1       $HOST.localdomain $HOST" | sudo tee --append /etc/hosts
+
+fi
+
 # limit journal size to 64 MB
 
 [[ -d /etc/systemd/journald.conf.d ]] || sudo mkdir /etc/systemd/journald.conf.d
@@ -31,6 +45,15 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
   systemctl --user enable nvidia.timer
 
   sudo systemctl enable nvidia-persistenced.service
+
+fi
+
+# sleep fixes
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  sudo rm -f /usr/lib/tmpfiles.d/wakeup.conf
+  sudo cp $(dirname $0)/etc/tmpfiles.d/wakeup.conf /etc/tmpfiles.d
 
 fi
 

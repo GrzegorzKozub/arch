@@ -14,18 +14,15 @@ sed -i 's/#pl_PL.UTF-8 UTF-8/pl_PL.UTF-8 UTF-8/' /etc/locale.gen
 
 locale-gen
 
-echo 'LANG=en_US.UTF-8' > /etc/locale.conf
-echo 'LC_MEASUREMENT=pl_PL.UTF-8' >> /etc/locale.conf
-echo 'LC_MONETARY=pl_PL.UTF-8' >> /etc/locale.conf
-echo 'LC_NUMERIC=pl_PL.UTF-8' >> /etc/locale.conf
-echo 'LC_PAPER=pl_PL.UTF-8' >> /etc/locale.conf
-echo 'LC_TIME=pl_PL.UTF-8' >> /etc/locale.conf
+cp $(dirname $0)/etc/locale.conf /etc
 
 # hostname
 
 echo $MY_HOSTNAME > /etc/hostname
 
 # hosts
+
+sed -i -e "/.*localhost.*/d" /etc/hosts
 
 echo '127.0.0.1 localhost' >> /etc/hosts
 echo '::1       localhost' >> /etc/hosts
@@ -82,7 +79,7 @@ cp $(dirname $0)/etc/systemd/journald.conf.d/00-journal-size.conf /etc/systemd/j
 
 # limit journal entries
 
-[[ -d /etc/systemd/system/rtkit-daemon.service.d ]] || mkdir /etc/systemd/system/rtkit-daemon.service.d
+[[ -d /etc/systemd/system/rtkit-daemon.service.d ]] || mkdir -p /etc/systemd/system/rtkit-daemon.service.d
 cp $(dirname $0)/etc/systemd/system/rtkit-daemon.service.d/log.conf /etc/systemd/system/rtkit-daemon.service.d
 
 # performance optimization
@@ -93,7 +90,7 @@ cp $(dirname $0)/etc/sysctl.d/70-perf.conf /etc/sysctl.d
 
 if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
 
-  echo 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp' > /etc/modprobe.d/nvidia.conf
+  cp $(dirname $0)/etc/modprobe.d/nvidia.conf /etc/modprobe.d
 
   # enable nvidia overclocking
   cp $(dirname $0)/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d
@@ -110,23 +107,16 @@ fi
 
 # sleep fixes
 
-if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
+[[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
+  cp $(dirname $0)/etc/tmpfiles.d/wakeup.conf /etc/tmpfiles.d
 
-  # don't resume (wake up) immediately after suspend (sleep)
-  echo 'w /proc/acpi/wakeup - - - - GPP0' > /usr/lib/tmpfiles.d/wakeup.conf
-
-  # don't wake up with usb keyboard or mouse
-  # echo 'w /proc/acpi/wakeup - - - - XHC0' > /usr/lib/tmpfiles.d/wakeup.conf
-
-fi
-
-# drifter power saving
+# laptop power saving
 
 if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
-  echo 'options snd_hda_intel power_save=1' > /etc/modprobe.d/audio_powersave.conf
-  echo 'options iwlwifi power_save=1' > /etc/modprobe.d/iwlwifi.conf
-  echo 'vm.dirty_writeback_centisecs = 6000' > /etc/sysctl.d/dirty.conf
+  echo 'options snd_hda_intel power_save=1' > /etc/modprobe.d/laptop-power.conf
+  echo 'options iwlwifi power_save=1' > /etc/modprobe.d/laptop-power.conf
+  echo 'vm.dirty_writeback_centisecs = 6000' > /etc/sysctl.d/laptop-power.conf
 
 fi
 
@@ -172,9 +162,7 @@ rm /home/greg/system3.zsh
 
 # virtual console (before mkinitcpio)
 
-echo 'FONT=ter-232b' >> /etc/vconsole.conf
-echo 'FONT_MAP=8859-2' >> /etc/vconsole.conf
-echo 'KEYMAP=pl2' >> /etc/vconsole.conf
+cp $(dirname $0)/etc/vconsole.conf /etc
 
 # busybox based initial ramdisk (before mkinitcpio)
 
