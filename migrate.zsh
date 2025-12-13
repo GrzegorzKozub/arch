@@ -21,6 +21,11 @@ fi
 [[ -d /etc/systemd/journald.conf.d ]] || sudo mkdir /etc/systemd/journald.conf.d
 sudo cp `dirname $0`/etc/systemd/journald.conf.d/00-size.conf /etc/systemd/journald.conf.d
 
+# ntp
+
+[[ -d /etc/systemd/timesyncd.conf.d ]] || sudo mkdir /etc/systemd/timesyncd.conf.d
+sudo cp $(dirname $0)/etc/systemd/timesyncd.conf.d/ntp.conf /etc/systemd/timesyncd.conf.d
+
 # limit journal entries
 
 [[ -d /etc/systemd/system/rtkit-daemon.service.d ]] || sudo mkdir /etc/systemd/system/rtkit-daemon.service.d
@@ -38,11 +43,12 @@ sudo cp `dirname $0`/etc/systemd/system.conf.d/00-timeout.conf /etc/systemd/syst
 # performance optimization
 
 sudo cp `dirname $0`/etc/sysctl.d/70-perf.conf /etc/sysctl.d
+sudo cp `dirname $0`/etc/udev/rules.d/60-ioschedulers.rules /etc/udev/rules.d
 
 cp `dirname $0`/home/$USER/.config/systemd/user/perf.service $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable perf.service
 
-# nvidia undervolt
+# nvidia
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 

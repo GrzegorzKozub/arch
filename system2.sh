@@ -77,6 +77,11 @@ cp $(dirname $0)/etc/tmpfiles.d/coredump.conf /etc/tmpfiles.d
 [[ -d /etc/systemd/system.conf.d ]] || mkdir /etc/systemd/system.conf.d
 cp $(dirname $0)/etc/systemd/system.conf.d/00-timeout.conf /etc/systemd/system.conf.d
 
+# ntp
+
+[[ -d /etc/systemd/timesyncd.conf.d ]] || mkdir /etc/systemd/timesyncd.conf.d
+cp $(dirname $0)/etc/systemd/timesyncd.conf.d/ntp.conf /etc/systemd/timesyncd.conf.d
+
 # limit journal size to 64 MB
 
 [[ -d /etc/systemd/journald.conf.d ]] || mkdir /etc/systemd/journald.conf.d
@@ -90,12 +95,16 @@ cp $(dirname $0)/etc/systemd/system/rtkit-daemon.service.d/log.conf /etc/systemd
 # performance optimization
 
 cp $(dirname $0)/etc/sysctl.d/70-perf.conf /etc/sysctl.d
+cp $(dirname $0)/etc/udev/rules.d/60-ioschedulers.rules /etc/udev/rules.d
 
 # nvidia gpu
 
 if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
 
   cp $(dirname $0)/etc/modprobe.d/nvidia.conf /etc/modprobe.d
+
+  # enable/disable runtime power management for nvidia on driver bind/unbind
+  # cp $(dirname $0)/etc/udev/rules.d/71-nvidia.rules /etc/udev/rules.d
 
   # enable nvidia overclocking
   cp $(dirname $0)/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d
