@@ -41,6 +41,11 @@ cp $(dirname $0)/boot/loader/entries/*.conf /boot/loader/entries
 # [[ $MY_HOSTNAME = 'drifter' ]] &&
 #   sed -i 's/<params>/mem_sleep_default=deep <params>/g' /boot/loader/entries/*.conf
 
+# enable rcu lazy to save power
+
+[[ $MY_HOSTNAME = 'drifter' ]] &&
+  sed -i 's/<params>/rcutree.enable_rcu_lazy=1 <params>/g' /boot/loader/entries/*.conf
+
 # silent boot
 
 sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader/entries/*.conf
