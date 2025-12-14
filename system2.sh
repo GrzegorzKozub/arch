@@ -140,6 +140,10 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
 fi
 
+# wifi regulatory domain
+
+sed -i 's/#WIRELESS_REGDOM="PL"/WIRELESS_REGDOM="PL"/' /etc/conf.d/wireless-regdom
+
 # always mount data
 
 [[ -d /run/media/greg/data ]] || mkdir -p /run/media/greg/data

@@ -63,8 +63,8 @@ pacstrap /mnt \
   ntfs-3g \
   avahi \
   lm_sensors \
-  v4l-utils \
   networkmanager \
+  wireless-regdb \
   usbutils bluez-utils v4l-utils \
   pipewire pipewire-alsa pipewire-pulse wireplumber \
   realtime-privileges \

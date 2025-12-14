@@ -67,6 +67,11 @@ if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 
 fi
 
+# wifi regulatory domain
+
+sudo pacman -S --noconfirm wireless-regdb
+sed -i 's/#WIRELESS_REGDOM="PL"/WIRELESS_REGDOM="PL"/' /etc/conf.d/wireless-regdom
+
 # reset
 
 # . `dirname $0`/reset.zsh
