@@ -240,28 +240,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
   mv $XDG_DATA_HOME/Steam /run/media/$USER/games/
   ln -s /run/media/$USER/games/Steam $XDG_DATA_HOME/Steam
   ```
-
-### Launch options
-
-`PROTON_ENABLE_WAYLAND` is required for HDR without `gamescope` but causes stuttering when VRR is enabled.
-
-```
-PROTON_DLSS_UPGRADE=1 PROTON_DLSS_INDICATOR=0 \
-PROTON_NVIDIA_LIBS_NO_32BIT=1 \
-PROTON_ENABLE_WAYLAND=0 PROTON_NO_WM_DECORATION=1 PROTON_ENABLE_HDR=1 ENABLE_HDR_WSI=1 \
-PROTON_USE_NTSYNC=1 \
-PROTON_LOCAL_SHADER_CACHE=1 \
-PROTON_PREFER_SDL=1 PROTON_NO_STEAMINPUT=1 \
-mangohud gamemoderun %command%
-```
-
-To use `gamescope`, keep the env vars and update the command. Frame limit provided by `gamescope` is currently broken.
-
-```
-gamemoderun gamescope -W 3840 -H 2160 -r 239.99 --hdr-enabled --mangoapp --adaptive-sync --fullscreen --force-grab-cursor -- %command%
-```
-
-MangoHud frame limit doesn't work over 100 fps so we're using `VKD3D_FRAME_RATE=120` instead per [this article](https://docs.bazzite.gg/Gaming/Common_gaming_issues/#frame-rate-limiting-issues-and-inconsistency).
+5. Set game launch options to `~/code/arch/game.sh %command%`
 
 ### References
 
