@@ -74,15 +74,19 @@ sed -i 's/#WIRELESS_REGDOM="PL"/WIRELESS_REGDOM="PL"/' /etc/conf.d/wireless-regd
 
 # apparmor
 
-sudo pacman -S --noconfirm apparmor
-paru -S --aur --noconfirm apparmor.d-git
-
-sudo sed -i \
-  -e 's/#write-cache/write-cache/' \
-  -e 's/#Optimize=compress-fast/Optimize=compress-fast/' \
-  /etc/apparmor/parser.conf
-
-sudo systemctl enable apparmor.service
+# sudo pacman -S --noconfirm apparmor
+# paru -S --aur --noconfirm apparmor.d-git
+#
+# sudo sed -i \
+#   -e 's/log_level=3.*/log_level=3 lsm=landlock,lockdown,yama,integrity,apparmor,bpf/' \
+#   /boot/loader/entries/{arch,arch-lts}.conf
+#
+# sudo sed -i \
+#   -e 's/#write-cache/write-cache/' \
+#   -e 's/#Optimize=compress-fast/Optimize=compress-fast/' \
+#   /etc/apparmor/parser.conf
+#
+# sudo systemctl enable apparmor.service
 
 # reset
 

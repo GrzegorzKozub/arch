@@ -50,6 +50,10 @@ cp $(dirname $0)/boot/loader/entries/*.conf /boot/loader/entries
 
 sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader/entries/*.conf
 
+# apparmor
+
+sed -i 's/<params>/lsm=landlock,lockdown,yama,integrity,apparmor,bpf <params>/g' /boot/loader/entries/*.conf
+
 # splash
 
 # sed -i 's/<params>/splash <params>/g' /boot/loader/entries/*.conf
