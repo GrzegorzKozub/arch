@@ -57,6 +57,7 @@ pacstrap /mnt \
   power-profiles-daemon \
   terminus-font \
   efibootmgr sbctl \
+  apparmor \
   tpm2-tss \
   fwupd \
   lvm2 \

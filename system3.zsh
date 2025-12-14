@@ -104,6 +104,11 @@ if [[ $MY_HOSTNAME = 'sacrifice' ]]; then
 
 fi
 
+# apparmor
+
+paru -S --aur --noconfirm \
+  apparmor.d-git
+
 # desktop
 
 if [[ $MY_DESKTOP = 'GNOME' ]]; then
@@ -116,8 +121,6 @@ if [[ $MY_DESKTOP = 'GNOME' ]]; then
     gnome-calculator gnome-characters gnome-control-center gnome-font-viewer gnome-remote-desktop gnome-system-monitor gnome-terminal gnome-tweaks gnome-weather loupe nautilus papers seahorse \
     gnome-shell-extension-appindicator \
     malcontent
-
-    # gnome-software
 
   paru -S --aur --noconfirm \
     gnome-browser-connector \

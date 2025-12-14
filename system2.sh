@@ -140,6 +140,13 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
 fi
 
+# apparmor
+
+sed -i \
+  -e 's/#write-cache/write-cache/' \
+  -e 's/#Optimize=compress-fast/Optimize=compress-fast/' \
+  /etc/apparmor/parser.conf
+
 # wifi regulatory domain
 
 sed -i 's/#WIRELESS_REGDOM="PL"/WIRELESS_REGDOM="PL"/' /etc/conf.d/wireless-regdom

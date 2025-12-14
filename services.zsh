@@ -60,6 +60,10 @@ sudo systemctl enable ip6tables.service
 # sudo cp `dirname $0`/etc/nftables.rules /etc
 # sudo systemctl enable nftables.service
 
+# apparmor
+
+sudo systemctl enable apparmor.service
+
 # bluetooth
 
 sudo systemctl enable bluetooth.service

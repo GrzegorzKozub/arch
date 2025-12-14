@@ -72,6 +72,18 @@ fi
 sudo pacman -S --noconfirm wireless-regdb
 sed -i 's/#WIRELESS_REGDOM="PL"/WIRELESS_REGDOM="PL"/' /etc/conf.d/wireless-regdom
 
+# apparmor
+
+sudo pacman -S --noconfirm apparmor
+paru -S --aur --noconfirm apparmor.d-git
+
+sudo sed -i \
+  -e 's/#write-cache/write-cache/' \
+  -e 's/#Optimize=compress-fast/Optimize=compress-fast/' \
+  /etc/apparmor/parser.conf
+
+sudo systemctl enable apparmor.service
+
 # reset
 
 # . `dirname $0`/reset.zsh
