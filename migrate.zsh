@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# !
+#sudo rm -rf /var/lib/systemd/coredump/*
+#pacman, auto size missioncen, auto center lact, auto size intellij, intellij default sdk
+
 # hosts
 
 if [[ $HOST = 'player' ]]; then
@@ -34,7 +38,6 @@ sudo cp `dirname $0`/etc/systemd/system/rtkit-daemon.service.d/log.conf /etc/sys
 
 sudo cp `dirname $0`/etc/sysctl.d/70-perf.conf /etc/sysctl.d
 sudo cp `dirname $0`/etc/udev/rules.d/60-ioschedulers.rules /etc/udev/rules.d
-
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 
