@@ -70,7 +70,7 @@ fi
 # wifi regulatory domain
 
 sudo pacman -S --noconfirm wireless-regdb
-sed -i 's/#WIRELESS_REGDOM="PL"/WIRELESS_REGDOM="PL"/' /etc/conf.d/wireless-regdom
+sudo sed -i 's/#WIRELESS_REGDOM="PL"/WIRELESS_REGDOM="PL"/' /etc/conf.d/wireless-regdom
 
 # apparmor
 
