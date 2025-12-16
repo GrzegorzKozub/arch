@@ -43,7 +43,11 @@ export default class Windows extends Extension {
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
       { class: /^org.inkscape.Inkscape$/ },
-      { class: /^jetbrains-idea-ce$/ },
+      {
+        class: /^jetbrains-idea-ce$/,
+        exceptTitle: /^Welcome to IntelliJ IDEA$/,
+        auto: true,
+      },
       { class: /^com.obsproject.Studio$/ },
       { class: /^com.github.PintaProject.Pinta$/ },
       { class: /^Postman$/, auto: true },
@@ -55,9 +59,11 @@ export default class Windows extends Extension {
       // { title: /^DevTools.?/ },
       { class: /^com.github.wwmm.easyeffects$/ },
       { class: /^com.github.johnfactotum.Foliate$/ },
-      { class: /^io.missioncenter.MissionCenter$/ },
+      { title: /^Welcome to IntelliJ IDEA$/, auto: true },
       { title: /.?KeePassXC$/, auto: true },
+      { class: /^io.github.ilya_zlobintsev.LACT$/, auto: true },
       { title: /.?LibreOffice.?/, auto: true },
+      { class: /^io.missioncenter.MissionCenter$/ },
       { class: /^obsidian$/, auto: true },
       { class: /^ONLYOFFICE$/ },
       { class: /^org.gnome.Papers$/ },
@@ -204,7 +210,10 @@ export default class Windows extends Extension {
     );
 
   matchTitle = (cfg, win) => cfg.title && cfg.title.test(win.title);
-  matchClass = (cfg, win) => cfg.class && cfg.class.test(win.wm_class);
+  matchClass = (cfg, win) =>
+    cfg.class &&
+    cfg.class.test(win.wm_class) &&
+    (!cfg.exceptTitle || !cfg.exceptTitle.test(win.title));
   matchRole = (cfg, win) =>
     !cfg.exceptRole || cfg.exceptRole !== win.get_role();
 
