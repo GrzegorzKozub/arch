@@ -9,9 +9,7 @@ git pull
 # update all packages
 
 # sudo pacman --noconfirm -Sy archlinux-keyring
-
 sudo pacman --noconfirm -Syu
-
 paru --aur --noconfirm -Syu
 
 set +e

@@ -9,23 +9,7 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 
 # paru
 
-CARGO_HOME=
-
-[[ -d ~/paru ]] && rm -rf ~/paru
-
-pushd ~
-
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si --noconfirm
-
-popd
-
-rm -rf ~/paru
-rm -rf ~/.cargo
-
-sudo pacman -Rs --noconfirm \
-  rust
+. `dirname $0`/paru.zsh
 
 # firmware
 
