@@ -4,7 +4,11 @@ set -o verbose
 
 # pacman (paru)
 
-# sudo sed -ie 's/IgnorePkg   = pacman/#IgnorePkg   =/' /etc/pacman.conf
+sudo sed -ie 's/IgnorePkg   = pacman/#IgnorePkg   =/' /etc/pacman.conf
+
+# rust
+
+reset.zsh rust
 
 # coredump
 

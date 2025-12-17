@@ -220,11 +220,6 @@ paru -S --aur --noconfirm \
 
 # NVM_DIR=$XDG_DATA_HOME/nvm source /usr/share/nvm/init-nvm.sh
 
-export CARGO_HOME=$XDG_DATA_HOME/cargo
-export RUSTUP_HOME=$XDG_DATA_HOME/rustup
-
-curl --proto '=https' --tlsv1.3 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path -y
-
 # apps
 
 sudo pacman -S --noconfirm \
