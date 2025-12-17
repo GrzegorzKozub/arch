@@ -4,7 +4,8 @@ set -e
 
 # mangohud frame limit doesn't work over 100 fps
 # https://docs.bazzite.gg/Gaming/Common_gaming_issues/#frame-rate-limiting-issues-and-inconsistency
-export VKD3D_FRAME_RATE=120
+[[ $HOST == 'player' ]] && export VKD3D_FRAME_RATE=120
+[[ $HOST == 'worker' ]] && export VKD3D_FRAME_RATE=60
 
 export PROTON_DLSS_UPGRADE=1
 export PROTON_DLSS_INDICATOR=0
