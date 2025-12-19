@@ -20,7 +20,7 @@ fi
 if [[ $HOST == 'worker' ]]; then # 3080
 
   # default 210,2100 per nvidia-smi --query-supported-clocks=gr
-  sudo nvidia-smi -lgc 210,1900
+  sudo nvidia-smi -lgc 210,1905
 
   sudo nvidia-settings -a '[gpu:0]/GPUGraphicsClockOffsetAllPerformanceLevels=100'
 
