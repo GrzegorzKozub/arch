@@ -82,6 +82,7 @@ sudo pacman -S --noconfirm \
   git-delta \
   go-yq \
   gopass pass \
+  hl \
   htop \
   hyperfine \
   jq \

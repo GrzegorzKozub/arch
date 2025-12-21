@@ -20,6 +20,10 @@ sudo rm -rf /var/lib/systemd/coredump/*
 
 sudo sed -i -e 's/num_logs.*/num_logs = 8/' /etc/audit/auditd.conf
 
+# hl
+
+sudo pacman -S --noconfirm hl
+
 # cleanup
 
 . `dirname $0`/packages.zsh
