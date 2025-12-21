@@ -18,11 +18,20 @@ sudo rm -rf /var/lib/systemd/coredump/*
 
 # auditd
 
-sudo sed -i -e 's/num_logs.*/num_logs = 8/' /etc/audit/auditd.conf
+sudo sed -i 's/num_logs.*/num_logs = 8/' /etc/audit/auditd.conf
 
 # hl
 
 sudo pacman -S --noconfirm hl
+
+# claude
+
+for FILE in \
+  ~/code/dot/zsh/zsh/.zshenv \
+  /run/media/greg/data/.secrets/.zshenv
+do
+  sed -i 's/export ANTHROPIC_API_KEY.*/export ANTHROPIC_API_KEY=/' $FILE
+done
 
 # cleanup
 

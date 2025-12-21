@@ -4,12 +4,7 @@ set -e -o verbose
 
 # packages
 
-paru -S --aur --noconfirm \
-  claude-code
-
-# cleanup
-
-. `dirname $0`/packages.zsh
+curl -fsSL https://claude.ai/install.sh | bash
 
 # dotfiles
 
