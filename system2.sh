@@ -140,12 +140,16 @@ if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
 fi
 
+# auditd
+
+sed -i 's/num_logs.*/num_logs = 8/' /etc/audit/auditd.conf
+
 # apparmor
 
-sed -i \
-  -e 's/#write-cache/write-cache/' \
-  -e 's/#Optimize=compress-fast/Optimize=compress-fast/' \
-  /etc/apparmor/parser.conf
+# sed -i \
+#   -e 's/#write-cache/write-cache/' \
+#   -e 's/#Optimize=compress-fast/Optimize=compress-fast/' \
+#   /etc/apparmor/parser.conf
 
 # wifi regulatory domain
 

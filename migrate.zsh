@@ -2,37 +2,23 @@
 
 set -o verbose
 
-# pacman (paru)
+# paru
 
 sudo sed -ie 's/IgnorePkg   = pacman/#IgnorePkg   =/' /etc/pacman.conf
-
-# rust
-
+sudo pacman -Syu --noconfirm
+sudo pacman -Rs --noconfirm paru-git
+. `dirname $0`/paru.zsh
 reset.zsh rust
 
 # coredump
 
 sudo rm -rf /var/lib/systemd/coredump/*
 
-# apparmor
+# ^ done on drifter & player
 
-# sudo pacman -S --noconfirm apparmor
-# paru -S --aur --noconfirm apparmor.d-git
-#
-# sudo sed -i \
-#   -e 's/log_level=3.*/log_level=3 lsm=landlock,lockdown,yama,integrity,apparmor,bpf/' \
-#   /boot/loader/entries/{arch,arch-lts}.conf
-#
-# sudo sed -i \
-#   -e 's/#write-cache/write-cache/' \
-#   -e 's/#Optimize=compress-fast/Optimize=compress-fast/' \
-#   /etc/apparmor/parser.conf
-#
-# sudo systemctl enable apparmor.service
+# auditd
 
-# reset
-
-# . `dirname $0`/reset.zsh
+sudo sed -i -e 's/num_logs.*/num_logs = 8/' /etc/audit/auditd.conf
 
 # cleanup
 

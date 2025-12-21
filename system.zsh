@@ -57,7 +57,6 @@ pacstrap /mnt \
   power-profiles-daemon \
   terminus-font \
   efibootmgr sbctl \
-  apparmor \
   tpm2-tss \
   fwupd \
   lvm2 \
@@ -79,7 +78,7 @@ pacstrap /mnt \
   gdm glib2-devel \
   argyllcms
 
-  # nftables nss-mdns plymouth (splash) zram-generator
+  # apparmor nftables nss-mdns plymouth (splash) zram-generator
 
 # fstab
 

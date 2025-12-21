@@ -88,11 +88,6 @@ if [[ $MY_HOSTNAME = 'sacrifice' ]]; then
 
 fi
 
-# apparmor
-
-paru -S --aur --noconfirm \
-  apparmor.d-git
-
 # desktop
 
 if [[ $MY_DESKTOP = 'GNOME' ]]; then
