@@ -3,6 +3,9 @@
 set -o verbose
 
 # shutdown bug: https://bbs.archlinux.org/viewtopic.php?pid=2278862
+#
+# pacman bug: https://forum.endeavouros.com/t/solved-latest-pacman-update-breaks-aur-and-yay/76959/92
+# sudo rm -rf /var/cache/pacman/pkg/download-*
 
 if [[ $HOST = 'worker' ]]; then
 
