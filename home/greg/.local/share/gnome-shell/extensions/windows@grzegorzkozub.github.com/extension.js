@@ -75,6 +75,7 @@ export default class Windows extends Extension {
       // { title: /^Open/ }, // file pickers
       { class: /^io.bassi.Amberol$/ },
       { class: /^org.gnome.Extensions$/ },
+      { class: /^Gufw.py$/ },
       { class: /^localsend$/, auto: true },
       { title: /^Settings$/ },
       { class: /^org.gnome.seahorse.Application$/ },
