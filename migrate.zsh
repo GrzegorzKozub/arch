@@ -2,19 +2,21 @@
 
 set -o verbose
 
-# paru
+if [[ $HOST = 'worker' ]]; then
 
-sudo sed -ie 's/IgnorePkg   = pacman/#IgnorePkg   =/' /etc/pacman.conf
-sudo pacman -Syu --noconfirm
-sudo pacman -Rs --noconfirm paru-git
-. `dirname $0`/paru.zsh
-reset.zsh rust
+  # paru
 
-# coredump
+  sudo sed -ie 's/IgnorePkg   = pacman/#IgnorePkg   =/' /etc/pacman.conf
+  sudo pacman -Syu --noconfirm
+  sudo pacman -Rs --noconfirm paru-git
+  . `dirname $0`/paru.zsh
+  reset.zsh rust
 
-sudo rm -rf /var/lib/systemd/coredump/*
+  # coredump
 
-# ^ done on drifter & player
+  sudo rm -rf /var/lib/systemd/coredump/*
+
+fi
 
 # auditd
 
