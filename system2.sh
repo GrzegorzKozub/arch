@@ -103,6 +103,11 @@ cp $(dirname $0)/etc/udev/rules.d/60-ioschedulers.rules /etc/udev/rules.d
 # cp $(dirname $0)/etc/sysctl.d/71-zram.conf /etc/sysctl.d
 # cp $(dirname $0)/etc/udev/rules.d/30-zram.rules /etc/udev/rules.d
 
+# amd chipset
+
+[[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
+  cp $(dirname $0)/etc/modprobe.d/amd.conf /etc/modprobe.d
+
 # nvidia gpu
 
 if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then

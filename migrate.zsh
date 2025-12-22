@@ -2,6 +2,8 @@
 
 set -o verbose
 
+# shutdown bug: https://bbs.archlinux.org/viewtopic.php?pid=2278862
+
 if [[ $HOST = 'worker' ]]; then
 
   # paru
@@ -17,6 +19,11 @@ if [[ $HOST = 'worker' ]]; then
   sudo rm -rf /var/lib/systemd/coredump/*
 
 fi
+
+# amd chipset
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo cp `dirname $0`/etc/modprobe.d/amd.conf /etc/modprobe.d
 
 # auditd
 
