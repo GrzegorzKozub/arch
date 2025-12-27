@@ -2,8 +2,6 @@
 
 set -o verbose
 
-# disable anthropic in zed
-#
 # shutdown bug: https://bbs.archlinux.org/viewtopic.php?pid=2278862
 #
 # pacman bug: https://forum.endeavouros.com/t/solved-latest-pacman-update-breaks-aur-and-yay/76959/92
@@ -38,14 +36,14 @@ sudo sed -i 's/num_logs.*/num_logs = 8/' /etc/audit/auditd.conf
 
 sudo pacman -S --noconfirm hl
 
-# claude
+# keys
 
-for FILE in \
-  ~/code/dot/zsh/zsh/.zshenv \
-  /run/media/greg/data/.secrets/.zshenv
-do
-  sed -i 's/export ANTHROPIC_API_KEY.*/export ANTHROPIC_API_KEY=/' $FILE
-done
+pushd ~/code/keys
+
+for ITEM ('pubring.kbx' 'pubring.kbx~' 'random_seed')
+  git update-index --assume-unchanged gnupg/gnupg/$ITEM
+
+popd
 
 # cleanup
 
