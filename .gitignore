@@ -1,4 +1,3 @@
-*.compiled
 archiso
 fetch.env
 node_modules
