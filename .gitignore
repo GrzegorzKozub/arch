@@ -1,3 +1,4 @@
-archiso
+archiso/
+node_modules/
+
 fetch.env
-node_modules
