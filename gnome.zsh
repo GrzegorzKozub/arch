@@ -77,11 +77,6 @@ gsettings set io.bassi.Amberol background-play false
 dconf write /org/gnome/settings-daemon/global-shortcuts/brave-browser/shortcuts \
   "[('choose_credential_fields', {'description': <'Choose Custom Login Fields'>}), ('fill_password', {'description': <'Fill Password Only'>}), ('fill_totp', {'description': <'Fill TOTP'>}), ('fill_username_password', {'description': <'Fill Username and Password'>}), ('redetect_fields', {'description': <'Redetect login fields'>}), ('reload_extension', {'description': <'Reload'>}), ('request_autotype', {'description': <'Request Global Auto-Type'>}), ('retrive_credentials_forced', {'description': <'Reopen database'>}), ('save_credentials', {'description': <'Save Credentials'>}), ('show_password_generator', {'description': <'Show Password Generator'>})]"
 
-# apps > document viewer
-
-# gsettings set org.gnome.Evince.Default show-sidebar false
-# gsettings set org.gnome.Evince.Default sizing-mode 'fit-width'
-
 # apps > extensions
 
 gsettings set org.gnome.shell disable-extension-version-validation true
@@ -93,11 +88,6 @@ for NAME ('windows')
   cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/$NAME@grzegorzkozub.github.com $DIR
 
 pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
-
-# gsettings set org.gnome.shell enabled-extensions "[
-#   $([[ $HOST != 'drifter' ]] && echo "'blur-my-shell@aunetx','rounded-window-corners@fxgn',")
-#   'windows@grzegorzkozub.github.com'
-# ]"
 
 for NAME ('blur-my-shell@aunetx' 'rounded-window-corners@fxgn' 'windows@grzegorzkozub.github.com')
   gnome-extensions enable $NAME || FRESH=true
@@ -144,10 +134,6 @@ xdg-mime default org.gnome.Loupe.desktop image/png
 gsettings set org.gnome.Papers.Default show-sidebar false
 
 xdg-mime default org.gnome.Papers.desktop application/pdf
-
-# apps > software
-
-# gsettings set org.gnome.software download-updates false
 
 # apps > terminal
 
@@ -328,9 +314,6 @@ add_shortcut 0 'Print' 'screenshot' "/home/$USER/code/arch/screenshot.zsh"
 add_shortcut 1 '<Control><Super>a' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
 add_shortcut 2 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio.zsh source"
 
-# [[ $HOST =~ ^(player|worker)$ ]] &&
-#   add_shortcut 3 '<Control><Super>n' 'night light' 'pkill -USR1 redshift'
-
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
   "[${(j., .)CUSTOM_KEYBINDINGS}]"
@@ -370,8 +353,6 @@ gsettings set org.gnome.shell favorite-apps "[
   'io.bassi.Amberol.desktop'
   $([[ $(sudo pacman -Qq steam 2> /dev/null) ]] && echo ",'steam.desktop'")
 ]"
-
-  # 'org.gnome.Settings.desktop', 'Alacritty.desktop', 'org.codeberg.dnkl.foot.desktop', 'postman.desktop'
 
 set -e
 

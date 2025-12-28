@@ -24,8 +24,6 @@ if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 
 fi
 
-# xdg-mime default slack.desktop x-scheme-handler/slack
-
 # mime dbs update
 
 sudo update-mime-database -V /usr/share/mime

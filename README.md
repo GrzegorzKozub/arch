@@ -174,16 +174,6 @@ To test if a profile is loaded use this `dispwin` command from `argyllcms` packa
 dispwin -d1 -V ~/code/arch/home/greg/.local/share/icc/mpg321urx.icm
 ```
 
-### NVIDIA
-
-[The wiki states](https://wiki.archlinux.org/title/ICC_profiles#Loading_ICC_profiles) that NVIDIA is not compatible with `colord` so previously `dispwin` was used to load the color profiles. This required disabling `colord.service` which made it necessary to use `redshift` for night light.
-
-Neither `dispwin` nor `redshift` are compatible with Wayland.
-
-Testing with `dispwin` showed that the only visible problem is that launching NVIDIA settings breaks the colors. This can be fixed by either turning the color profile off and on again in GNOME settings or loading it using `dispwin`.
-
-For these reasons `dispwin` and `redshift` were removed in commit [f78146b](https://github.com/GrzegorzKozub/arch/commit/f78146b51d2523dffbbbb770391d63141942a985).
-
 ## Fonts
 
 Comfortable settings for display scale on Wayland given the screen size and resolution:
@@ -197,7 +187,7 @@ The aim is to standardize on the font size of `1em` or `12pt` or `16px` ([conver
 
 Current settings:
 
-- Alacritty, Foot, Ghostty & Kitty: `12pt` (or `1em` or `16px`)
+- Ghostty & Kitty: `12pt` (or `1em` or `16px`)
 - Brave, Code, Obsidian, Postman, Zed: `16px` (or `1em` or `12pt`)
 
 ## GNOME Shell extensions

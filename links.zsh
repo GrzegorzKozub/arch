@@ -21,7 +21,6 @@ for APP in \
   mpv \
   nvtop \
   org.freedesktop.MalcontentControl \
-  org.gnome.ColorProfileViewer \
   org.gnome.Terminal \
   qv4l2 \
   qvidcap \
@@ -38,7 +37,7 @@ do
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
-  # redshift redshift-gtk zellij
+  # org.gnome.ColorProfileViewer zellij
 
 rm -rf $XDG_DATA_HOME/applications/electron*.desktop || true
 
@@ -46,44 +45,6 @@ for LINK in `fd --glob 'electron*.desktop' /usr/share/applications --exec basena
   cp /usr/share/applications/$LINK $XDG_DATA_HOME/applications
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$LINK
 done
-
-# alacritty
-
-# cp /usr/share/applications/Alacritty.desktop $XDG_DATA_HOME/applications
-# sed -i \
-#   -e "s/^Exec=alacritty$/Exec=alacritty --option=font.size=$(~/code/dot/alacritty/alacritty/font.sh)/" \
-#   $XDG_DATA_HOME/applications/Alacritty.desktop
-
-# flameshot
-
-# if [[ $HOST = 'worker' ]]; then
-#
-#   cp /usr/share/applications/org.flameshot.Flameshot.desktop $XDG_DATA_HOME/applications
-#   sed -i -e "s/^Exec=/Exec=env QT_SCREEN_SCALE_FACTORS='1.5,1.5' /" $XDG_DATA_HOME/applications/org.flameshot.Flameshot.desktop
-#
-# fi
-
-# foot
-
-# for APP in \
-#   foot \
-#   foot-server \
-#   footclient
-# do
-#   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
-#   sed -i '2iStartupWMClass=foot' $XDG_DATA_HOME/applications/$APP.desktop
-# done
-
-# for APP in \
-#   foot-server \
-#   footclient
-# do
-#   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
-# done
-
-# sed -i \
-#   -e "s/^Exec=foot$/Exec=foot --override=include=~\/.config\/foot\/$HOST.ini/" \
-#   $XDG_DATA_HOME/applications/foot.desktop
 
 # ghostty
 

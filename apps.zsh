@@ -63,8 +63,6 @@ sudo pacman -S --noconfirm \
   ghostty \
   kitty
 
-  # alacritty foot
-
 # common
 
 sudo pacman -S --noconfirm \
@@ -111,9 +109,6 @@ sudo pacman -S --noconfirm \
   # libheif - for loupe & yazi to support heic images
   # xclip, wl-clipboard - for keepassxc, neovim & pass
 
-  # dua-cli dust gdu
-  # gopass-jsonapi
-  # imwheel
   # tmux zellij
 
 paru -S --aur --noconfirm \
@@ -125,13 +120,6 @@ if [[ $HOST = 'drifter' ]]; then
     brightnessctl
 
 fi
-
-# if [[ $HOST =~ ^(player|worker)$ ]]; then
-#
-#   sudo pacman -S --noconfirm \
-#     redshift
-#
-# fi
 
 if [[ $HOST = 'sacrifice' ]]; then
 
@@ -217,10 +205,6 @@ paru -S --aur --noconfirm \
   fnm-bin \
   shellcheck-bin
 
-  # nvm
-
-# NVM_DIR=$XDG_DATA_HOME/nvm source /usr/share/nvm/init-nvm.sh
-
 # apps
 
 sudo pacman -S --noconfirm \
@@ -233,13 +217,9 @@ sudo pacman -S --noconfirm \
   satty \
   zed
 
-  # flameshot
-
 paru -S --aur --noconfirm \
   brave-bin \
   visual-studio-code-bin
-
-  # slack-desktop
 
 if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 

@@ -76,15 +76,6 @@ sudo systemctl enable bluetooth.service
 
 sudo systemctl enable gdm.service
 
-# imwheel
-
-# if [[ $HOST =~ ^(player|worker)$ ]]; then
-#
-#   cp `dirname $0`/home/$USER/.config/systemd/user/imwheel.service $XDG_CONFIG_HOME/systemd/user
-#   systemctl --user enable imwheel.service
-#
-# fi
-
 # lact
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
@@ -121,34 +112,6 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
   sudo systemctl enable nvidia-persistenced.service
 
 fi
-
-# colors & night light
-
-# if [[ $HOST =~ ^(player|worker)$ ]]; then
-#
-#   # conflicts with dispwin
-#   sudo systemctl mask colord.service
-#
-#   cp `dirname $0`/home/$USER/.config/systemd/user/colors.service $XDG_CONFIG_HOME/systemd/user
-#   systemctl --user enable colors.service
-#
-#   cp `dirname $0`/home/$USER/.config/systemd/user/redshift.service $XDG_CONFIG_HOME/systemd/user
-#   systemctl --user enable redshift.service
-#
-# fi
-#
-# if [[ $HOST = 'player' ]]; then
-#
-#   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/mpg321urx.icm
-#
-# fi
-#
-# if [[ $HOST = 'worker' ]]; then
-#
-#   dispwin -d1 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27gp950-b.icm
-#   dispwin -d2 -I `dirname $0`/home/$USER/.config/color/icc/devices/display/27ul850-w.icm
-#
-# fi
 
 # audio
 

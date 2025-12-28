@@ -2,7 +2,7 @@
 
 set -e -o verbose
 
-# cleanup after teams-for-linux (nodejs is required by zed)
+# cleanup after teams-for-linux (disabled ad nodejs is required by zed)
 
 # set +e
 # sudo pacman -Rs --noconfirm \

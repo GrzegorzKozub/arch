@@ -45,6 +45,10 @@ for ITEM ('pubring.kbx' 'pubring.kbx~' 'random_seed')
 
 popd
 
+# links
+
+rm -rf $XDG_DATA_HOME/applications/org.gnome.ColorProfileViewer.desktop
+
 # cleanup
 
 . `dirname $0`/packages.zsh

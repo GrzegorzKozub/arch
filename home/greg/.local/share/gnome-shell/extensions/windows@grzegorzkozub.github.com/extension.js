@@ -51,7 +51,6 @@ export default class Windows extends Extension {
       { class: /^com.obsproject.Studio$/ },
       { class: /^com.github.PintaProject.Pinta$/ },
       { class: /^Postman$/, auto: true },
-      { class: /^org.shotcut.Shotcut$/ },
       { title: /.?Visual Studio Code$/, auto: true },
       { class: /^dev.zed.Zed$/, auto: true },
     ];
@@ -67,7 +66,6 @@ export default class Windows extends Extension {
       { class: /^obsidian$/, auto: true },
       { class: /^ONLYOFFICE$/ },
       { class: /^org.gnome.Papers$/ },
-      { title: /.?Slack$/ },
       { title: /.?Steam$/ },
       { class: /^teams-for-linux$/, auto: true },
     ];
@@ -85,9 +83,7 @@ export default class Windows extends Extension {
     ];
     const center = [{ class: /^com.mitchellh.ghostty$/, auto: true }];
     const initial = [
-      { class: /^Alacritty$/, initial: true },
       // { class: /^com.mitchellh.ghostty$/, initial: true },
-      { class: /^foot$/, initial: true },
       { class: /^kitty$/, initial: true },
       { class: /^org.gnome.Nautilus$/, initial: true },
     ];
