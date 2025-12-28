@@ -49,6 +49,16 @@ popd
 
 rm -rf $XDG_DATA_HOME/applications/org.gnome.ColorProfileViewer.desktop
 
+# firewall
+
+[[ -f /etc/iptables/iptables.rules.backup ]] &&
+  sudo mv /etc/iptables/iptables.rules.backup /etc/iptables/iptables.rules
+[[ -f /etc/iptables/ip6tables.rules.backup ]] &&
+  sudo mv /etc/iptables/ip6tables.rules.backup /etc/iptables/ip6tables.rules
+sudo systemctl disable --now iptables.service ip6tables.service
+
+# ...
+
 # cleanup
 
 . `dirname $0`/packages.zsh
