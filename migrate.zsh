@@ -79,6 +79,10 @@ paru -S --aur --noconfirm docker-scout
 PAT=/run/media/$USER/data/.secrets/docker.secret
 [[ -f $PAT ]] && cat $PAT | docker login --username grzegorzkozub --password-stdin
 
+# ansible
+
+[[ -f ~/.config/ansible/vault ]] && mv ~/.config/ansible/vault ~/.config/ansible/ansible.secret
+
 # cleanup
 
 . `dirname $0`/packages.zsh
