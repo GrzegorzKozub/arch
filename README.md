@@ -79,6 +79,7 @@ Automated Arch Linux installation
   - Sign in into your sites and setup passkeys
 5. Visual Studio Code
   - Sign in: GitHub
+  - Pick LLM
   - Hide recommended extensions
 6. Zed
   - Sign in: Zed, collab panel

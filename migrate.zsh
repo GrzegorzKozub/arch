@@ -59,6 +59,19 @@ sudo systemctl disable --now iptables.service ip6tables.service
 
 # ...
 
+# vscode
+
+set +e
+
+for EXTENSION in \
+  docker.docker \
+  github.copilot-chat
+do
+  code --install-extension $EXTENSION --force
+done
+
+set -e
+
 # cleanup
 
 . `dirname $0`/packages.zsh

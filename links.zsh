@@ -37,7 +37,7 @@ do
   sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
 done
 
-  # org.gnome.ColorProfileViewer zellij
+  # zellij
 
 rm -rf $XDG_DATA_HOME/applications/electron*.desktop || true
 
