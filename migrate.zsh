@@ -72,6 +72,13 @@ done
 
 set -e
 
+# docker
+
+paru -S --aur --noconfirm docker-scout
+
+PAT=/run/media/$USER/data/.secrets/docker.secret
+[[ -f $PAT ]] && cat $PAT | docker login --username grzegorzkozub --password-stdin
+
 # cleanup
 
 . `dirname $0`/packages.zsh

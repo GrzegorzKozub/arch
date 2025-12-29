@@ -10,7 +10,8 @@ sudo pacman -S --noconfirm \
   docker-compose
 
 paru -S --aur --noconfirm \
-  docker-credential-pass-bin
+  docker-credential-pass-bin \
+  docker-scout
 
 # native overlay diff
 
@@ -43,4 +44,9 @@ cp $(dirname $0)/etc/systemd/system/user@.service.d/delegate.conf /etc/systemd/s
 
 systemctl --user enable docker.socket
 systemctl --user start docker.socket
+
+# login
+
+PAT=/run/media/$USER/data/.secrets/docker.secret
+[[ -f $PAT ]] && cat $PAT | docker login --username grzegorzkozub --password-stdin
 
