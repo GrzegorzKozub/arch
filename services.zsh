@@ -64,7 +64,8 @@ sudo systemctl enable NetworkManager.service
 
 # firewall with ufw
 
-# ...
+sudo systemctl enable --now ufw.service
+sudo ufw enable
 
 # auditd
 

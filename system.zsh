@@ -55,16 +55,12 @@ pacstrap /mnt \
   base base-devel \
   linux linux-lts linux-firmware \
   power-profiles-daemon \
-  terminus-font \
-  efibootmgr sbctl \
-  tpm2-tss \
-  fwupd \
-  lvm2 \
-  ntfs-3g \
-  avahi \
   lm_sensors \
-  networkmanager \
-  wireless-regdb \
+  terminus-font \
+  efibootmgr sbctl tpm2-tss \
+  fwupd \
+  lvm2 ntfs-3g \
+  networkmanager avahi ufw wireless-regdb \
   usbutils bluez-utils v4l-utils \
   pipewire pipewire-alsa pipewire-pulse wireplumber \
   realtime-privileges \
@@ -78,7 +74,7 @@ pacstrap /mnt \
   gdm glib2-devel \
   argyllcms
 
-  # apparmor nftables nss-mdns plymouth (splash) zram-generator
+  # apparmor gufw nftables nss-mdns plymouth (splash) zram-generator
 
 # fstab
 
