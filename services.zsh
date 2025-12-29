@@ -113,8 +113,8 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   # nvidia overclocking
 
-  cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.{service,timer} $XDG_CONFIG_HOME/systemd/user
-  systemctl --user enable nvidia.timer
+  cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.service $XDG_CONFIG_HOME/systemd/user
+  systemctl --user enable nvidia.service
 
   sudo systemctl enable nvidia-persistenced.service
 

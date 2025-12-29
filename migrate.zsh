@@ -82,6 +82,17 @@ PAT=/run/media/$USER/data/.secrets/docker.secret
 
 [[ -f ~/.config/ansible/vault ]] && mv ~/.config/ansible/vault ~/.config/ansible/ansible.secret
 
+# nvidia
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  systemctl --user disable --now nvidia.timer
+  rm -rf ~/.config/systemd/user/nvidia.timer
+  cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.service $XDG_CONFIG_HOME/systemd/user
+  systemctl --user enable nvidia.service
+
+fi
+
 # cleanup
 
 . `dirname $0`/packages.zsh
