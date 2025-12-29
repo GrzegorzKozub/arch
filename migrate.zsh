@@ -12,7 +12,7 @@ if [[ $HOST = 'worker' ]]; then
   sudo pacman -Syu --noconfirm
   sudo pacman -Rs --noconfirm paru-git
   . `dirname $0`/paru.zsh
-  reset.zsh rust
+  # reset.zsh rust
 
   # coredump
 
