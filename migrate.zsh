@@ -61,16 +61,16 @@ sudo systemctl disable --now iptables.service ip6tables.service
 
 # vscode
 
-set +e
+if [[ $HOST = 'player' ]]; then
 
-for EXTENSION in \
-  docker.docker \
-  github.copilot-chat
-do
-  code --install-extension $EXTENSION --force
-done
+  set +e
 
-set -e
+  # code --uninstall-extension ms-azuretools.vscode-containers --force
+  code --install-extension github.copilot-chat --force
+
+  set -e
+
+fi
 
 # docker
 
