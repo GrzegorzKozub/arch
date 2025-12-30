@@ -7,6 +7,7 @@ set -o verbose
   rm -rf $XDG_DATA_HOME/nvim
   rm -rf ~/.local/state/nvim
   nvim \
+    -c 'lua vim.opt.messagesopt = "wait:100,history:500"' \
     -c 'autocmd User MasonToolsUpdateCompleted quitall' \
     -c 'autocmd User VeryLazy MasonToolsUpdate'
 }
