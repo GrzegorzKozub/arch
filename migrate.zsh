@@ -4,13 +4,21 @@ set -o verbose
 
 # shutdown bug: https://bbs.archlinux.org/viewtopic.php?pid=2278862
 
+# fetch
+
+sudo pacman -S --noconfirm python-requests
+
 # secrets
+
+pushd ~/code/dot
+git update-index --no-assume-unchanged maven/maven/settings.xml
+popd
 
 if [[ $HOST = 'player' ]]; then
 
   rm -rf ~/.config/aws
   pushd ~/code/keys
-  git update-index --assume-unchanged aws/aws/credentials
+  git update-index --no-assume-unchanged aws/aws/credentials
   popd
 
 fi

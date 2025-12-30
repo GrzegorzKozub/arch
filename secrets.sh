@@ -2,19 +2,35 @@
 
 set -e -o verbose
 
-DIR=/run/media/"$USER"/data/.secrets
+SECRETS=/run/media/"$USER"/data/.secrets
 
-# restore updated env vars
+lnk() {
+  if [[ -f $1 ]]; then
+    ln -sf "$1" "$2"
+  else rm -f "$2"; fi
+}
 
-BACKUP=$DIR/.zshenv
-[[ -f $BACKUP ]] && cp --update "$BACKUP" ~/code/dot/zsh/zsh/.zshenv
+# env: ANTHROPIC_API_KEY, GEMINI_API_KEY, GITHUB_TOKEN, OPENAI_API_KEY, RCLONE_DRIVE_CLIENT_SECRET
 
-# restore updated fetch tokens
+lnk "$SECRETS"/.zshenv ~/code/dot/zsh/zsh/.zshenv
 
-BACKUP=$DIR/fetch.env
-[[ -f $BACKUP ]] && cp --update "$BACKUP" ~/code/arch/fetch.env
+# fetch env: GITHUB_PAT_EFFICY, GITHUB_PAT_GREG
+
+lnk "$SECRETS"/fetch.env ~/code/arch/fetch.env
+
+# ansible
+
+lnk "$SECRETS"/ansible.secret ~/code/dot/ansible/ansible/ansible.secret
+
+# docker: $SECRETS/docker.secret
+
+# maven
+
+lnk "$SECRETS"/settings.xml ~/code/dot/maven/maven/settings.xml
 
 if [[ $HOST == 'worker' ]]; then # work
+
+  # TODO: aws (including rotation), ssh
 
   # restore rotated aws access keys
 

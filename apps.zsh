@@ -180,15 +180,13 @@ sudo pacman -S --noconfirm \
   lua luacheck luarocks stylua \
   perl \
   prettier \
-  python python-pip python-pynvim uv \
+  python python-pip python-pynvim python-requests uv \
   shfmt \
   taplo \
   tree-sitter-cli
 
-  # elixir
-  # nodejs npm
-  # ruby
-  # rust
+  # python-requests for fetch.py
+  # elixir nodejs npm ruby rust
 
 if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
 
@@ -239,7 +237,7 @@ zsh `dirname $0`/gdm.zsh
 [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && . `dirname $0`/gnome.zsh
 
 . `dirname $0`/mime.zsh
-. `dirname $0`/secrets.sh || true
+. `dirname $0`/secrets.sh
 
 # cleanup
 

@@ -22,29 +22,26 @@ Automated Arch Linux installation
 6. Once per machine, run `~/arch/boot.zsh`
 7. Reboot to Arch and login as normal user
 8. Run `~/code/arch/services.zsh`
-9. Reboot to GNOME, login as normal user (connect to internet on drifter)
-10. Run `~/code/arch/apps.zsh`
-11. Reboot
-12. Once per machine, run `~/code/arch/secboot.zsh` (backup required after)
-13. Once per machine and after each `secboot.zsh` run, run `~/code/arch/crypt.zsh`
-14. If required, run `~/code/arch/intune.zsh` and `~/code/arch/edge.zsh` (work)
-14. Reboot & backup
+9. Reboot to GNOME, login as normal user and connect to internet on drifter
+10. Once per machine, prepare secrets
+11. Run `~/code/arch/apps.zsh`
+12. Reboot
+13. Once per machine, run `~/code/arch/secboot.zsh` (backup required after)
+14. Once per machine and after each `secboot.zsh` run, run `~/code/arch/crypt.zsh`
+15. If required, run `~/code/arch/intune.zsh` and `~/code/arch/edge.zsh` (work)
+16. Reboot & backup
 
 ### Manual config
 
-1. Secrets
-  - `~/code/arch/fetch.env`: `GITHUB_PAT_EFFICY`, `GITHUB_PAT_GREG`
-  - `~/code/dot/zsh/zsh/.zshenv`: `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, `GITHUB_TOKEN`, `OPENAI_API_KEY`, `RCLONE_DRIVE_CLIENT_SECRET`
-  - Ansible, Maven, SSH
-2. GNOME
+1. GNOME
   - Set variable display refresh rate: player 240 Hz, worker 144 & 60 Hz
   - Set display scale: drifter 300%, player & worker 200%
   - Remove all folders from dash
-3. KeePassXC
+2. KeePassXC
   - Open your databases
   - Only show title and username columns, also in search
   - Fit to window, also in search
-4. Brave
+3. Brave
   - Join the Sync Chain and sync everything
   - Setup your profiles
   - Set as default browser
@@ -77,29 +74,29 @@ Automated Arch Linux installation
   - Import KeePassXC extension settings from `~/code/dot/keepassxc-browser.json`
   - Connect KeePassXC databases
   - Sign in into your sites and setup passkeys
-5. Visual Studio Code
+4. Visual Studio Code
   - Sign in: GitHub
   - Pick LLM
   - Hide recommended extensions
-6. Zed
+5. Zed
   - Sign in: Zed, collab panel
   - Configure LLM providers: Zed, Anthropic, GitHub Copilot Chat, Google AI, OpenAI
   - Configure edit predictions
-7. Postman (work)
+6. Postman (work)
   - Sign in
   - Change font family to `Cascadia Code`
   - Change font size to `16`
   - Change indentation count to `2`
   - Don't send anonymous usage data
-8. Teams (work)
+7. Teams (work)
   - Follow operating system theme
   - Switch to compact chat message density
   - Disable notification display
   - Disable all apps
-9. Intune (work)
+8. Intune (work)
   - Sign in
   - Register device
-10. Edge (work)
+9. Edge (work)
   - Disable everything during the first launch wizard
   - Switch to international edition and disable everything on new tab page
   - Name your profile or sign in
@@ -125,7 +122,7 @@ Automated Arch Linux installation
   - Switch to Microsoft Editor under Writing assistance
   - Disable startup boost
   - Don't continue running background extensions and apps when Edge is closed
-11. Fix window sizes and positions
+10. Fix window sizes and positions
 
 ## New disk
 
