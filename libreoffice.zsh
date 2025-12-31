@@ -10,11 +10,9 @@ sudo pacman -S --noconfirm \
   hyphen hyphen-en \
   libmythes mythes-en
 
-sudo sed -i -e 's/Logo=1/Logo=0/' /etc/libreoffice/sofficerc
+# config
 
-xdg-mime default libreoffice-calc.desktop application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-xdg-mime default libreoffice-impress.desktop application/vnd.openxmlformats-officedocument.presentationml.presentation
-xdg-mime default libreoffice-writer.desktop application/vnd.openxmlformats-officedocument.wordprocessingml.document
+sudo sed -i -e 's/Logo=1/Logo=0/' /etc/libreoffice/sofficerc
 
 # links
 
@@ -37,6 +35,12 @@ do
   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
   sed -i -e 's/^Name=LibreOffice /Name=/' $XDG_DATA_HOME/applications/$APP.desktop
 done
+
+# default apps
+
+xdg-mime default libreoffice-calc.desktop application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+xdg-mime default libreoffice-impress.desktop application/vnd.openxmlformats-officedocument.presentationml.presentation
+xdg-mime default libreoffice-writer.desktop application/vnd.openxmlformats-officedocument.wordprocessingml.document
 
 # cleanup
 

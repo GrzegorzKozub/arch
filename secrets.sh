@@ -28,7 +28,7 @@ lnk "$SECRETS"/ansible.secret ~/code/dot/ansible/ansible/ansible.secret
 
 lnk "$SECRETS"/settings.xml ~/code/dot/maven/maven/settings.xml
 
-if [[ $HOST == 'worker' ]]; then # work
+if [[ $HOST == 'worker' ]]; then
 
   # TODO: aws (including rotation), ssh
 

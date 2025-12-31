@@ -2,50 +2,6 @@
 
 set -e -o verbose
 
-# hidden apps
-
-for APP in \
-  avahi-discover \
-  bssh \
-  btop \
-  bvnc \
-  cmake-gui \
-  htop \
-  java-java-openjdk \
-  java-java21-openjdk \
-  jconsole-java-openjdk \
-  jconsole-java21-openjdk \
-  jshell-java-openjdk \
-  jshell-java21-openjdk \
-  lstopo \
-  mpv \
-  nvtop \
-  org.freedesktop.MalcontentControl \
-  org.gnome.Terminal \
-  qv4l2 \
-  qvidcap \
-  stoken-gui \
-  stoken-gui-small \
-  xcolor \
-  yazi
-do
-  if [[ ! -f /usr/share/applications/$APP.desktop ]]; then
-    rm -rf $XDG_DATA_HOME/applications/$APP.desktop || true
-    continue
-  fi
-  cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
-  sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
-done
-
-  # zellij
-
-rm -rf $XDG_DATA_HOME/applications/electron*.desktop || true
-
-for LINK in `fd --glob 'electron*.desktop' /usr/share/applications --exec basename {}`; do
-  cp /usr/share/applications/$LINK $XDG_DATA_HOME/applications
-  sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$LINK
-done
-
 # ghostty
 
 if [[ $HOST = 'drifter' ]]; then
@@ -87,30 +43,6 @@ sed -i \
   $XDG_DATA_HOME/applications/nvim.desktop
 sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/nvim.desktop
 
-if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
-
-  # postman
-
-  if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
-
-    cp /usr/share/applications/postman.desktop $XDG_DATA_HOME/applications
-    sed -i \
-      -e 's/\/opt\/postman\/Postman/\/opt\/postman\/Postman --ozone-platform-hint=auto/' \
-      $XDG_DATA_HOME/applications/postman.desktop
-
-  fi
-
-  # teams
-
-  cp /usr/share/applications/teams-for-linux.desktop $XDG_DATA_HOME/applications
-  sed -i \
-    -e 's/^Name=.*/Name=Teams/' \
-    -e '/^Exec=/s/--gtk-version=3//' \
-    -e '/^Exec=/s/teams-for-linux/teams-for-linux --ozone-platform-hint=auto/' \
-    $XDG_DATA_HOME/applications/teams-for-linux.desktop
-
-fi
-
 # utilities
 
 for APP in \
@@ -132,4 +64,8 @@ do
   cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
   sed -i -e 's/^Name=.*/Name=Code/' $XDG_DATA_HOME/applications/$APP.desktop
 done
+
+# hidden links
+
+. `dirname $0`/nodisplay.zsh
 

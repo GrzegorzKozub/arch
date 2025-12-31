@@ -10,9 +10,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
 [[ -d $XDG_CONFIG_HOME/systemd/user ]] || mkdir -p $XDG_CONFIG_HOME/systemd/user
 
-# time sync
-
-sudo timedatectl set-ntp true
+. `dirname $0`/data.sh
 
 # package management
 
@@ -170,16 +168,11 @@ fi
 cp `dirname $0`/home/$USER/.config/fontconfig/fonts.conf $XDG_CONFIG_HOME/fontconfig
 fc-cache -f
 
-if [[ $HOST == 'worker' ]]; then # work
-
-  # aws iam access key refresh
-
-  cp `dirname $0`/home/$USER/.config/systemd/user/iam.service $XDG_CONFIG_HOME/systemd/user
-  systemctl --user enable iam.service
-
-fi
-
 # group check
 
 sudo grpck
+
+# time sync
+
+sudo timedatectl set-ntp true
 

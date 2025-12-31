@@ -7,7 +7,7 @@ set -e -o verbose
 sudo pacman -Sy --noconfirm \
   pam-u2f
 
-# settings
+# config
 
 DIR=$XDG_CONFIG_HOME/Yubico
 

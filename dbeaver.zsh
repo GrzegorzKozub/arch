@@ -8,6 +8,8 @@ sudo pacman -S --noconfirm \
   jdk-openjdk \
   dbeaver
 
+# config
+
 CFG=/usr/share/dbeaver/dbeaver.ini
 OPT=-Dosgi.configuration.area
 [[ $(grep $OPT $CFG) ]] || {

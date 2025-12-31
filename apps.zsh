@@ -155,24 +155,6 @@ paru -S --aur --noconfirm \
 
 . `dirname $0`/docker.zsh
 
-if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
-
-  # ansible
-
-  sudo pacman -S --noconfirm \
-    ansible-core ansible \
-    python-boto3
-
-  sudo chfn -f $USER $USER # gecos for ansible
-
-  # aws
-
-  paru -S --aur --noconfirm \
-    aws-cli-v2 \
-    aws-sam-cli-bin
-
-fi
-
 # dev
 
 sudo pacman -S --noconfirm \
@@ -187,16 +169,6 @@ sudo pacman -S --noconfirm \
 
   # python-requests for fetch.py
   # elixir nodejs npm ruby rust
-
-if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
-
-  sudo pacman -S --noconfirm \
-    dotnet-sdk aspnet-runtime \
-    jdk-openjdk jdk21-openjdk maven
-
-  sudo archlinux-java set java-21-openjdk
-
-fi
 
 paru -S --aur --noconfirm \
   golangci-lint-bin \
@@ -218,14 +190,6 @@ sudo pacman -S --noconfirm \
 paru -S --aur --noconfirm \
   brave-bin \
   visual-studio-code-bin
-
-if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
-
-  paru -S --aur --noconfirm \
-    postman-bin \
-    teams-for-linux
-
-fi
 
 # settings
 

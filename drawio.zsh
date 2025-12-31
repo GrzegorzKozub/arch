@@ -15,7 +15,7 @@ sed -i \
   -e 's/\/opt\/drawio-desktop\/drawio/\/opt\/drawio-desktop\/drawio --ozone-platform-hint=auto/' \
   $XDG_DATA_HOME/applications/drawio-desktop.desktop
 
-# file types
+# default apps
 
 xdg-mime default draw.io.desktop application/vnd.jgraph.mxfile
 

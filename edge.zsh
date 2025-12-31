@@ -8,6 +8,7 @@ paru -S --aur --noconfirm \
   microsoft-edge-stable-bin
 
 # https://github.com/MicrosoftEdge/DevTools/issues/278
+
 DIR=microsoft-edge/Default
 [[ -d $XDG_CONFIG_HOME/$DIR ]] || mkdir -p $XDG_CONFIG_HOME/$DIR
 cp `dirname $0`/home/$USER/.config/$DIR/HubApps $XDG_CONFIG_HOME/$DIR/

@@ -17,13 +17,6 @@ xdg-mime default mpv.desktop video/x-matroska
 xdg-mime default brave-browser.desktop x-scheme-handler/mailto
 xdg-mime default brave-browser.desktop text/calendar
 
-if [[ $HOST =~ ^(drifter|worker)$ ]]; then # work
-
-  xdg-mime default teams-for-linux.desktop x-scheme-handler/msteams
-  xdg-settings set default-url-scheme-handler msteams teams-for-linux.desktop
-
-fi
-
 # mime dbs update
 
 sudo update-mime-database -V /usr/share/mime

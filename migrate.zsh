@@ -23,6 +23,20 @@ if [[ $HOST = 'player' ]]; then
 
 fi
 
+# work
+
+[[ $HOST =~ ^(drifter|worker)$ ]] &&
+  sed -ie '/.*msteams.*/d' ~/.config/mimeapps.list
+
+if [[ $HOST == 'worker' ]]; then
+
+  systemctl --user disable iam.service
+  rm -rf ~/.config/systemd/user/iam.service
+
+fi
+
+[[ $HOST =~ ^(player|worker)$ ]] && . ~/code/dot/aws.zsh
+
 # cleanup
 
 . `dirname $0`/packages.zsh

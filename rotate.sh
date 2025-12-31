@@ -2,7 +2,7 @@
 
 set -e
 
-[[ $HOST == 'worker' ]] || exit 1 # work
+[[ $HOST == 'worker' ]] || exit 1
 
 grep '^\[' "$AWS_SHARED_CREDENTIALS_FILE" | sed 's/[][]//g' | while read -r PROFILE; do
 
