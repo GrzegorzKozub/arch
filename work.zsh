@@ -4,14 +4,19 @@ set -e -o verbose
 
 # dev
 
-. `dirname $0`/ansible.zsh
-. `dirname $0`/aws.zsh
-. `dirname $0`/dotnet.zsh
-. `dirname $0`/java.zsh
+if [[ $HOST == 'worker' ]]; then
+
+  . `dirname $0`/ansible.zsh
+  . `dirname $0`/aws.zsh
+  . `dirname $0`/dotnet.zsh
+  . `dirname $0`/java.zsh
+
+fi
 
 # apps
 
-. `dirname $0`/postman.zsh
+[[ $HOST == 'worker' ]] && . `dirname $0`/postman.zsh
+
 . `dirname $0`/teams.zsh
 
 # hidden links
@@ -20,8 +25,8 @@ set -e -o verbose
 
 # hosts
 
-# . `dirname $0`/hosts.zsh
+[[ $HOST == 'worker' ]] && . `dirname $0`/hosts.zsh
 
 # dotfiles
 
-. ~/code/dot/work.zsh
+[[ $HOST == 'worker' ]] &&. ~/code/dot/work.zsh
