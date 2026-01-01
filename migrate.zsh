@@ -8,25 +8,14 @@ set -o verbose
 
 sudo pacman -S --noconfirm python-requests
 
-# secrets
+# aws
 
-pushd ~/code/dot
-git update-index --no-assume-unchanged maven/maven/settings.xml
-popd
-
-if [[ $HOST = 'player' ]]; then
+if [[ $HOST =~ ^(drifter|worker)$ ]]; then
 
   rm -rf ~/.config/aws
-  pushd ~/code/keys
-  git update-index --no-assume-unchanged aws/aws/credentials
-  popd
+  . ~/code/dot/aws.zsh
 
 fi
-
-# work
-
-[[ $HOST =~ ^(drifter|worker)$ ]] &&
-  sed -ie '/.*msteams.*/d' ~/.config/mimeapps.list
 
 if [[ $HOST == 'worker' ]]; then
 
@@ -35,7 +24,20 @@ if [[ $HOST == 'worker' ]]; then
 
 fi
 
-[[ $HOST =~ ^(player|worker)$ ]] && . ~/code/dot/aws.zsh
+# java
+
+if [[ $HOST =~ ^(drifter|worker)$ ]]; then
+
+  pushd ~/code/dot
+  git update-index --no-assume-unchanged maven/maven/settings.xml
+  popd
+
+fi
+
+# teams
+
+[[ $HOST =~ ^(drifter|worker)$ ]] &&
+  sed -ie '/.*msteams.*/d' ~/.config/mimeapps.list
 
 # cleanup
 

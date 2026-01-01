@@ -22,21 +22,12 @@ lnk "$SECRETS"/fetch.env ~/code/arch/fetch.env
 
 lnk "$SECRETS"/ansible.secret ~/code/dot/ansible/ansible/ansible.secret
 
+# aws
+
+lnk "$SECRETS"/credentials ~/code/dot/aws/aws/credentials
+
 # docker: $SECRETS/docker.secret
 
 # maven
 
 lnk "$SECRETS"/settings.xml ~/code/dot/maven/maven/settings.xml
-
-if [[ $HOST == 'worker' ]]; then
-
-  # TODO: aws (including rotation), ssh
-
-  # restore rotated aws access keys
-
-  BACKUP=$DIR/credentials
-
-  [[ -f $BACKUP && -f $AWS_SHARED_CREDENTIALS_FILE ]] &&
-    cp --update "$BACKUP" "$AWS_SHARED_CREDENTIALS_FILE"
-
-fi

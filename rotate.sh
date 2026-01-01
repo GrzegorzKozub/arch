@@ -2,7 +2,7 @@
 
 set -e
 
-[[ $HOST == 'worker' ]] || exit 1
+# [[ $HOST == 'worker' ]] || exit 1
 
 grep '^\[' "$AWS_SHARED_CREDENTIALS_FILE" | sed 's/[][]//g' | while read -r PROFILE; do
 
@@ -39,12 +39,3 @@ grep '^\[' "$AWS_SHARED_CREDENTIALS_FILE" | sed 's/[][]//g' | while read -r PROF
   aws configure set aws_secret_access_key "$NEW_KEY" --profile "$PROFILE"
 
 done
-
-BACKUP=/run/media/"$USER"/data/.secrets
-[[ -d $BACKUP ]] || {
-  sudo mkdir "$BACKUP"
-  sudo chown "$USER" "$BACKUP"
-  sudo chgrp users "$BACKUP"
-}
-
-cp --update "$AWS_SHARED_CREDENTIALS_FILE" "$BACKUP"
