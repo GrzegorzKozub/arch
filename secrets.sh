@@ -31,3 +31,13 @@ lnk "$SECRETS"/credentials ~/code/dot/aws/aws/credentials
 # maven
 
 lnk "$SECRETS"/settings.xml ~/code/dot/maven/maven/settings.xml
+
+# ssh
+
+for PEM in "$SECRETS"/*.pem; do
+  lnk "$PEM" ~/.ssh/"${PEM##*/}"
+done
+
+for PEM in ~/.ssh/*.pem; do
+  [[ -L "$PEM" ]] && [[ ! -e "$PEM" ]] && rm "$PEM"
+done

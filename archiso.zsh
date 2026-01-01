@@ -91,8 +91,8 @@ git clone https://github.com/GrzegorzKozub/arch.git $PROFILE/airootfs/root/arch
 
 sed -i -e "/^)$/d" $PROFILE/profiledef.sh
 
-for script in $(ls $PROFILE/airootfs/root/arch/*.*sh); do
-  echo $script | sed -n -e "s/.*\/arch\/\(.*\)/  ['\/root\/arch\/\1']='0:0:755'/p" >> $PROFILE/profiledef.sh
+for SCRIPT in "$PROFILE"/airootfs/root/arch/*.*sh; do
+  echo $SCRIPT | sed -n -e "s/.*\/arch\/\(.*\)/  ['\/root\/arch\/\1']='0:0:755'/p" >> $PROFILE/profiledef.sh
 done
 
 echo ')' >> $PROFILE/profiledef.sh
