@@ -108,6 +108,11 @@ cp $(dirname $0)/etc/udev/rules.d/60-ioschedulers.rules /etc/udev/rules.d
 [[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
   cp $(dirname $0)/etc/modprobe.d/amd.conf /etc/modprobe.d
 
+# intel chipset
+
+[[ $MY_HOSTNAME = 'drifter' ]] &&
+  cp $(dirname $0)/etc/modprobe.d/intel.conf /etc/modprobe.d
+
 # nvidia gpu
 
 if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
