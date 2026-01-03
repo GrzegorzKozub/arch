@@ -90,7 +90,7 @@ fi
 
 # desktop
 
-if [[ $MY_DESKTOP = 'GNOME' ]]; then
+if [[ $MY_DESKTOP == 'GNOME' ]]; then
 
   sudo pacman -S --noconfirm \
     gnome-menus gnome-shell gnome-shell-extensions gnome-keyring \

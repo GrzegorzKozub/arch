@@ -155,7 +155,7 @@ systemctl --user enable wall.timer
 
 # do not disturb
 
-if [[ $XDG_CURRENT_DESKTOP = 'GNOME' ]]; then
+if [[ $XDG_CURRENT_DESKTOP == 'GNOME' ]]; then
 
   cp `dirname $0`/home/$USER/.config/systemd/user/dnd.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable dnd.service

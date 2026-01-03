@@ -49,7 +49,7 @@ sudo pacman -S --noconfirm \
 
 rm -rf ~/Desktop/steam.desktop
 
-[[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && {
+[[ $XDG_CURRENT_DESKTOP == 'GNOME' ]] && {
   FAVS=$(gsettings get org.gnome.shell favorite-apps)
   [[ $(echo $FAVS | grep 'steam.desktop') ]] || {
     FAVS=$(echo $FAVS | sed "s/\]/, 'steam.desktop']/")

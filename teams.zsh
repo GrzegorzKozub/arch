@@ -16,7 +16,7 @@ sed -i \
   -e '/^Exec=/s/teams-for-linux/teams-for-linux --ozone-platform-hint=auto/' \
   $XDG_DATA_HOME/applications/teams-for-linux.desktop
 
-[[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && {
+[[ $XDG_CURRENT_DESKTOP == 'GNOME' ]] && {
   FAVS=$(gsettings get org.gnome.shell favorite-apps)
   [[ $(echo $FAVS | grep 'teams-for-linux.desktop') ]] || {
     FAVS=$(echo $FAVS | sed "s/'brave-browser.desktop'/'brave-browser.desktop', 'teams-for-linux.desktop'/")
