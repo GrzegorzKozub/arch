@@ -8,5 +8,5 @@ npm install -g @google/gemini-cli
 
 # dotfiles
 
-. ~/code/dot/gemini.zsh
+~/code/dot/gemini.zsh
 

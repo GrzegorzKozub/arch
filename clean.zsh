@@ -47,5 +47,3 @@ rm -f ~/.wget-hsts
 
 rm -f ~/.zshrc
 
-(exit 0)
-

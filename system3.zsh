@@ -9,7 +9,7 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 
 # paru
 
-. `dirname $0`/paru.zsh
+`dirname $0`/paru.zsh
 
 # firmware
 

@@ -14,4 +14,4 @@ sed -i -e 's/^Name=.*/Name=GIMP/' $XDG_DATA_HOME/applications/gimp.desktop
 
 # cleanup
 
-. `dirname $0`/packages.zsh
+`dirname $0`/packages.zsh

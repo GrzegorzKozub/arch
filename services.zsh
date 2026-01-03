@@ -10,7 +10,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
 [[ -d $XDG_CONFIG_HOME/systemd/user ]] || mkdir -p $XDG_CONFIG_HOME/systemd/user
 
-. `dirname $0`/data.sh
+`dirname $0`/data.sh
 
 # package management
 

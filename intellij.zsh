@@ -14,9 +14,9 @@ sed -i -e 's/^Name=.*/Name=IntelliJ/' $XDG_DATA_HOME/applications/intellij-idea-
 
 # cleanup
 
-. `dirname $0`/packages.zsh
+`dirname $0`/packages.zsh
 
 # dotfiles
 
-. ~/code/dot/intellij.zsh
+~/code/dot/intellij.zsh
 

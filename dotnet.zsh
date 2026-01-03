@@ -9,9 +9,9 @@ sudo pacman -S --noconfirm \
 
 # cleanup
 
-. `dirname $0`/packages.zsh
+`dirname $0`/packages.zsh
 
 # dotfiles
 
-. ~/code/dot/dotnet.zsh
+~/code/dot/dotnet.zsh
 

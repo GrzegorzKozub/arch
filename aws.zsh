@@ -12,9 +12,9 @@ paru -S --aur --noconfirm \
 
 # cleanup
 
-. `dirname $0`/packages.zsh
+`dirname $0`/packages.zsh
 
 # dotfiles
 
-. ~/code/dot/aws.zsh
+~/code/dot/aws.zsh
 

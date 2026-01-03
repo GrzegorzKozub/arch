@@ -9,9 +9,9 @@ paru -S --aur --noconfirm \
 
 # cleanup
 
-. `dirname $0`/packages.zsh
+`dirname $0`/packages.zsh
 
 # dotfiles
 
-. ~/code/dot/localsend.zsh
+~/code/dot/localsend.zsh
 

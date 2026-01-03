@@ -14,9 +14,9 @@ sudo chfn -f $USER $USER # gecos
 
 # cleanup
 
-. `dirname $0`/packages.zsh
+`dirname $0`/packages.zsh
 
 # dotfiles
 
-. ~/code/dot/ansible.zsh
+~/code/dot/ansible.zsh
 

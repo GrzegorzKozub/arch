@@ -29,10 +29,10 @@ sudo pacman -S --noconfirm \
 sudo pacman -S --noconfirm \
   stow
 
-. `dirname $0`/dot.zsh
+`dirname $0`/dot.zsh
 
-. ~/code/dot/init.zsh
-. ~/code/keys/init.zsh
+~/code/dot/init.zsh
+~/code/keys/init.zsh
 
 # fonts
 
@@ -153,7 +153,7 @@ paru -S --aur --noconfirm \
 
 # docker
 
-. `dirname $0`/docker.zsh
+`dirname $0`/docker.zsh
 
 # dev
 
@@ -193,22 +193,22 @@ paru -S --aur --noconfirm \
 
 # settings
 
-. `dirname $0`/settings.zsh
-. `dirname $0`/links.zsh
+`dirname $0`/settings.zsh
+`dirname $0`/links.zsh
 
-zsh `dirname $0`/gdm.zsh
+`dirname $0`/gdm.zsh
 
-[[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && . `dirname $0`/gnome.zsh
+[[ $XDG_CURRENT_DESKTOP = 'GNOME' ]] && `dirname $0`/gnome.zsh
 
-. `dirname $0`/mime.zsh
+`dirname $0`/mime.zsh
 `dirname $0`/secrets.sh
 
 # cleanup
 
-. `dirname $0`/packages.zsh
-. `dirname $0`/clean.zsh
+`dirname $0`/packages.zsh
+`dirname $0`/clean.zsh
 
 # dotfiles install
 
-. ~/code/dot/install.zsh
+~/code/dot/install.zsh
 

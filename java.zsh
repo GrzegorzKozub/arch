@@ -13,9 +13,9 @@ sudo archlinux-java set java-21-openjdk
 
 # cleanup
 
-. `dirname $0`/packages.zsh
+`dirname $0`/packages.zsh
 
 # dotfiles
 
-. ~/code/dot/java.zsh
+~/code/dot/java.zsh
 

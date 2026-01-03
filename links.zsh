@@ -67,5 +67,5 @@ done
 
 # hidden links
 
-. `dirname $0`/nodisplay.zsh
+`dirname $0`/nodisplay.zsh
 

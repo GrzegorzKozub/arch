@@ -15,8 +15,6 @@ fswatch --one-event --event Created $DIR | while read FILE; do
   # rm $FILE
 done &
 
-# sleep 0.25
-
 gdbus call \
   --session \
   --dest org.freedesktop.portal.Desktop \

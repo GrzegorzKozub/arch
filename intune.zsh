@@ -9,11 +9,11 @@ DIR=/tmp/intune
 
 git clone git@github.com:GrzegorzKozub/intune.git $DIR
 
-. $DIR/install.zsh
+$DIR/install.zsh
 
 rm -rf $DIR
 
 # cleanup
 
-. `dirname $0`/packages.zsh
+`dirname $0`/packages.zsh
 

@@ -95,9 +95,9 @@ sudo cp `dirname $0`/etc/modules-load.d/ntsync.conf /etc/modules-load.d
 
 # cleanup
 
-. `dirname $0`/packages.zsh
+`dirname $0`/packages.zsh
 
 # dotfiles
 
-. ~/code/dot/games.zsh
+~/code/dot/games.zsh
 

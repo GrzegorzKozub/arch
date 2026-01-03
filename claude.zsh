@@ -11,5 +11,5 @@ sudo pacman -S --noconfirm \
 
 # dotfiles
 
-. ~/code/dot/claude.zsh
+~/code/dot/claude.zsh
 

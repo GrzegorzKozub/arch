@@ -34,6 +34,8 @@ lnk "$SECRETS"/settings.xml ~/code/dot/maven/maven/settings.xml
 
 # ssh
 
+shopt -s nullglob
+
 for PEM in "$SECRETS"/*.pem; do
   lnk "$PEM" ~/.ssh/"${PEM##*/}"
 done
@@ -41,3 +43,5 @@ done
 for PEM in ~/.ssh/*.pem; do
   [[ -L "$PEM" ]] && [[ ! -e "$PEM" ]] && rm "$PEM"
 done
+
+shopt -u nullglob
