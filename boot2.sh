@@ -22,56 +22,56 @@ cp $(dirname $0)/boot/EFI/limine/limine.conf /boot/EFI/limine/
 # ucode
 
 [[ $MY_HOSTNAME = 'drifter' ]] &&
-  sed -i 's/<ucode>/intel-ucode/g' /boot/loader/entries/*.conf
+  sed -i 's/<ucode>/intel-ucode/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 [[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
-  sed -i 's/<ucode>/amd-ucode/g' /boot/loader/entries/*.conf
+  sed -i 's/<ucode>/amd-ucode/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 # dm-crypt with busybox based initial ramdisk
 
 # sed -i \
 #   "s/<params>/cryptdevice=UUID=$(blkid -s UUID -o value $MY_ARCH_PART):vg1:allow-discards <params>/g" \
-#   /boot/loader/entries/*.conf
+#   /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 # enable amd p-state in active mode (amd_pstate_epp driver)
 
 [[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
-  sed -i 's/<params>/amd_pstate=active <params>/g' /boot/loader/entries/*.conf
+  sed -i 's/<params>/amd_pstate=active <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 # enable kernel mode setting (kms) for nvidia (required for gdm to start rootless xorg & for wayland)
 
 [[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
-  sed -i 's/<params>/nvidia-drm.modeset=1 <params>/g' /boot/loader/entries/*.conf
+  sed -i 's/<params>/nvidia-drm.modeset=1 <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 # force s3 sleep (https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Changing_suspend_method)
 
 # [[ $MY_HOSTNAME = 'drifter' ]] &&
-#   sed -i 's/<params>/mem_sleep_default=deep <params>/g' /boot/loader/entries/*.conf
+#   sed -i 's/<params>/mem_sleep_default=deep <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 # enable rcu lazy to save power
 
 [[ $MY_HOSTNAME = 'drifter' ]] &&
-  sed -i 's/<params>/rcutree.enable_rcu_lazy=1 <params>/g' /boot/loader/entries/*.conf
+  sed -i 's/<params>/rcutree.enable_rcu_lazy=1 <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 # silent boot
 
-sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader/entries/*.conf
+sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 # auditd
 
-# sed -i 's/<params>/audit=1 <params>/g' /boot/loader/entries/*.conf
+# sed -i 's/<params>/audit=1 <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 # apparmor
 
-# sed -i 's/<params>/lsm=landlock,lockdown,yama,integrity,apparmor,bpf <params>/g' /boot/loader/entries/*.conf
+# sed -i 's/<params>/lsm=landlock,lockdown,yama,integrity,apparmor,bpf <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 # splash
 
-# sed -i 's/<params>/splash <params>/g' /boot/loader/entries/*.conf
+# sed -i 's/<params>/splash <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 # remove kernel params placeholder
 
-sed -i 's/ <params>//g' /boot/loader/entries/*.conf
+sed -i 's/ <params>//g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 # secure boot support for systemd-boot using PreLoader
 

@@ -17,6 +17,24 @@ sudo pacman -S --noconfirm limine
 
 sudo cp $(dirname $0)/boot/EFI/limine/limine.conf /boot/EFI/limine/
 
+[[ $HOST = 'drifter' ]] &&
+  sudo sed -i 's/<ucode>/intel-ucode/g' /boot/EFI/limine/limine.conf
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo sed -i 's/<ucode>/amd-ucode/g' /boot/EFI/limine/limine.conf
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo sed -i 's/<params>/amd_pstate=active <params>/g' /boot/EFI/limine/limine.conf
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo sed -i 's/<params>/nvidia-drm.modeset=1 <params>/g' /boot/EFI/limine/limine.conf
+
+[[ $HOST = 'drifter' ]] &&
+  sudo sed -i 's/<params>/rcutree.enable_rcu_lazy=1 <params>/g' /boot/EFI/limine/limine.conf
+
+sudo sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/EFI/limine/limine.conf
+sudo sed -i 's/ <params>//g' /boot/EFI/limine/limine.conf
+
 # efi boot menu
 
 BOOTNUM=$(efibootmgr | grep 'Linux Boot Manager' | awk '{print $1}' | grep -o '[0-9]*')
