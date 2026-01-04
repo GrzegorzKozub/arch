@@ -57,7 +57,8 @@ pacstrap /mnt \
   power-profiles-daemon \
   lm_sensors \
   terminus-font \
-  efibootmgr sbctl tpm2-tss \
+  efibootmgr limine \
+  sbctl tpm2-tss \
   fwupd \
   lvm2 ntfs-3g \
   networkmanager avahi ufw wireless-regdb \

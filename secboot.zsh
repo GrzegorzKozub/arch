@@ -24,6 +24,8 @@ sudo sbctl enroll-keys --firmware-builtin --microsoft
 # sign efi binaries
 
 for FILE in \
+  EFI/limine/liminex64.efi \
+  \
   EFI/systemd/systemd-bootx64.efi \
   \
   EFI/systemd/loader.efi \

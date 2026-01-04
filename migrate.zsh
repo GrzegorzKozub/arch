@@ -8,9 +8,37 @@ set -o verbose
 
 sudo pacman -S --noconfirm python-requests
 
+# limine
+
+[[ -d /etc/pacman.d/hooks ]] || sudo mkdir -p /etc/pacman.d/hooks
+sudo cp $(dirname $0)/etc/pacman.d/hooks/90-limine-update.hook /etc/pacman.d/hooks/
+
+sudo pacman -S --noconfirm limine
+
+sudo cp $(dirname $0)/boot/EFI/limine/limine.conf /boot/EFI/limine/
+
+# efi boot menu
+
+BOOTNUM=$(efibootmgr | grep 'Linux Boot Manager' | awk '{print $1}' | grep -o '[0-9]*')
+[[ $BOOTNUM ]] && sudo efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
+
+BOOTNUM=$(efibootmgr | grep 'limine' | awk '{print $1}' | grep -o '[0-9]*')
+[[ $BOOTNUM ]] && sudo efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
+
+. `dirname $0`/$HOST.zsh
+
+[[ $(efibootmgr | grep 'systemd-boot') ]] || \
+  sudo efibootmgr --create --label 'systemd-boot' \
+    --disk $MY_DISK --part $MY_EFI_PART_NBR --loader /EFI/systemd/PreLoader.efi
+
+[[ $(efibootmgr | grep 'limine') ]] || \
+  sudo efibootmgr --create --label 'limine' \
+    --disk $MY_DISK --part $MY_EFI_PART_NBR --loader /EFI/limine/liminex64.efi \
+    --unicode
+
 # work
 
-if [[ $HOST =~ ^(drifter|worker)$ ]]; then
+if [[ $HOST == 'worker' ]]; then
 
   rm -rf ~/.config/aws
   . ~/code/dot/aws.zsh

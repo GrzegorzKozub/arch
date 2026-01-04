@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = limine
+
+[Action]
+Description = Deploying limine after update...
+When = PostTransaction
+Exec = /home/greg/code/arch/limine.sh update

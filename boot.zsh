@@ -30,7 +30,7 @@ ARCH_PART="$(
 [[ -d /mnt/boot ]] || mkdir /mnt/boot
 [[ $(mount | grep "$MY_EFI_PART on /mnt/boot") ]] || mount $MY_EFI_PART /mnt/boot
 
-# boot manager with secure boot support
+# boot manager deployment & config
 
 cp -r `dirname $0`/../arch /mnt/root
 arch-chroot /mnt ~/arch/boot2.sh

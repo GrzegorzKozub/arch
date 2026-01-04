@@ -2,7 +2,7 @@
 
 set -e -o verbose
 
-# boot manager
+# systemd-boot deployment to esp & config init
 
 bootctl --path=/boot install
 
@@ -11,6 +11,13 @@ cp $(dirname $0)/boot/loader/entries/*.conf /boot/loader/entries
 
 [[ $MY_HOSTNAME = 'drifter' ]] &&
   sed -i 's/^reboot-for-bitlocker no$/reboot-for-bitlocker yes/' /boot/loader/loader.conf
+
+# limine deployment to esp & config init
+
+[[ -d /boot/EFI/limine ]] || mkdir -p /boot/EFI/limine
+cp /usr/share/limine/BOOTX64.EFI /boot/EFI/limine/
+
+cp $(dirname $0)/boot/EFI/limine/limine.conf /boot/EFI/limine/
 
 # ucode
 
@@ -66,7 +73,7 @@ sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader
 
 sed -i 's/ <params>//g' /boot/loader/entries/*.conf
 
-# secure boot support using PreLoader
+# secure boot support for systemd-boot using PreLoader
 
 cp $(dirname $0)/boot3.zsh /home/greg
 su greg --command '~/boot3.zsh'
@@ -79,10 +86,19 @@ cp $(dirname $0)/boot4.zsh /home/greg
 su greg --command '~/boot4.zsh'
 rm /home/greg/boot4.zsh
 
-# efi boot menu using PreLoader
+# systemd-boot efi boot menu item using PreLoader
 
-for BOOTNUM in $(efibootmgr | grep 'Linux Boot Manager' | sed -E 's/^Boot(.+)\* Linux.*$/\1/'); do
-  efibootmgr --delete-bootnum --bootnum $BOOTNUM
-done
+BOOTNUM=$(efibootmgr | grep 'systemd-boot' | awk '{print $1}' | grep -o '[0-9]*')
+[[ $BOOTNUM ]] && efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
 
-efibootmgr --disk $MY_DISK --part $MY_EFI_PART_NBR --create --label 'Linux Boot Manager' --loader /EFI/systemd/PreLoader.efi
+efibootmgr --create --label 'systemd-boot' \
+  --disk $MY_DISK --part $MY_EFI_PART_NBR --loader /EFI/systemd/PreLoader.efi
+
+# limine efi boot menu item
+
+BOOTNUM=$(efibootmgr | grep 'limine' | awk '{print $1}' | grep -o '[0-9]*')
+[[ $BOOTNUM ]] && efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
+
+efibootmgr --create --label 'limine' \
+  --disk $MY_DISK --part $MY_EFI_PART_NBR --loader /EFI/limine/liminex64.efi \
+  --unicode
