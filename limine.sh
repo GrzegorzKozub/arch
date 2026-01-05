@@ -8,6 +8,8 @@ chk() {
 
 [[ $1 == 'update' ]] && {
 
+  # update limine on esp
+
   DIR=/boot/EFI/limine
   [[ -d $DIR ]] || mkdir $DIR
 

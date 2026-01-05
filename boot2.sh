@@ -2,22 +2,26 @@
 
 set -e -o verbose
 
-# systemd-boot deployment to esp & config init
+# systemd-boot on esp
 
 bootctl --path=/boot install
 
 cp $(dirname $0)/boot/loader/loader.conf /boot/loader
 cp $(dirname $0)/boot/loader/entries/*.conf /boot/loader/entries
 
-[[ $MY_HOSTNAME = 'drifter' ]] &&
-  sed -i 's/^reboot-for-bitlocker no$/reboot-for-bitlocker yes/' /boot/loader/loader.conf
-
-# limine deployment to esp & config init
+# limine on esp
 
 [[ -d /boot/EFI/limine ]] || mkdir -p /boot/EFI/limine
 cp /usr/share/limine/BOOTX64.EFI /boot/EFI/limine/
 
 cp $(dirname $0)/boot/EFI/limine/limine.conf /boot/EFI/limine/
+
+# bitlocker
+
+[[ $MY_HOSTNAME = 'drifter' ]] &&
+  sed -i 's/^reboot-for-bitlocker no$/reboot-for-bitlocker yes/' /boot/loader/loader.conf
+
+  # https://codeberg.org/Limine/Limine/issues/12
 
 # ucode
 
@@ -53,10 +57,6 @@ cp $(dirname $0)/boot/EFI/limine/limine.conf /boot/EFI/limine/
 [[ $MY_HOSTNAME = 'drifter' ]] &&
   sed -i 's/<params>/rcutree.enable_rcu_lazy=1 <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
-# silent boot
-
-sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
-
 # auditd
 
 # sed -i 's/<params>/audit=1 <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
@@ -64,6 +64,10 @@ sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader
 # apparmor
 
 # sed -i 's/<params>/lsm=landlock,lockdown,yama,integrity,apparmor,bpf <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
+
+# silent boot
+
+sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
 # splash
 
@@ -73,32 +77,25 @@ sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader
 
 sed -i 's/ <params>//g' /boot/loader/entries/*.conf /boot/EFI/limine/limine.conf
 
-# secure boot support for systemd-boot using PreLoader
+# systemd-boot efi boot menu item
 
-cp $(dirname $0)/boot3.zsh /home/greg
-su greg --command '~/boot3.zsh'
-rm /home/greg/boot3.zsh
-
-cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
-cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
-
-cp $(dirname $0)/boot4.zsh /home/greg
-su greg --command '~/boot4.zsh'
-rm /home/greg/boot4.zsh
-
-# systemd-boot efi boot menu item using PreLoader
-
-BOOTNUM=$(efibootmgr | grep 'systemd-boot' | awk '{print $1}' | grep -o '[0-9]*')
+BOOTNUM=$(efibootmgr | grep 'systemd-boot' | awk '{print $1}' | grep -o '[0-9]*' || true)
 [[ $BOOTNUM ]] && efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
 
 efibootmgr --create --label 'systemd-boot' \
-  --disk $MY_DISK --part $MY_EFI_PART_NBR --loader /EFI/systemd/PreLoader.efi
+  --disk "$MY_DISK" --part "$MY_EFI_PART_NBR" --loader /EFI/systemd/systemd-bootx64.efi
 
 # limine efi boot menu item
 
-BOOTNUM=$(efibootmgr | grep 'limine' | awk '{print $1}' | grep -o '[0-9]*')
+BOOTNUM=$(efibootmgr | grep 'limine' | awk '{print $1}' | grep -o '[0-9]*' || true)
 [[ $BOOTNUM ]] && efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
 
 efibootmgr --create --label 'limine' \
-  --disk $MY_DISK --part $MY_EFI_PART_NBR --loader /EFI/limine/liminex64.efi \
+  --disk "$MY_DISK" --part "$MY_EFI_PART_NBR" --loader /EFI/limine/liminex64.efi \
   --unicode
+
+# systemd-boot secure boot support using preloader
+
+cp $(dirname $0)/preloader.sh /home/greg
+su greg --command '~/preloader.sh enable'
+rm /home/greg/preloader.sh

@@ -128,10 +128,10 @@ sudo umount /mnt
 
 sudo mv $USB/boot/*.uuid $USB/boot/$UUID.uuid
 
-# secure boot support using PreLoader
+# systemd-boot secure boot support using preloader
 
 sudo chmod --recursive u+w $USB/EFI/BOOT
-cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi $USB/EFI/BOOT
+cp /usr/share/preloader-signed/{HashTool,PreLoader}.efi $USB/EFI/BOOT
 mv $USB/EFI/BOOT/BOOTx64.EFI $USB/EFI/BOOT/loader.efi
 mv $USB/EFI/BOOT/PreLoader.efi $USB/EFI/BOOT/BOOTx64.EFI
 

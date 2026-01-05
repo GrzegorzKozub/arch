@@ -10,5 +10,6 @@ trim_trailing_whitespace = true
 
 [*.sh]
 # https://github.com/mvdan/sh
+keep_padding = true
 space_redirects = true
 

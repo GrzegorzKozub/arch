@@ -37,17 +37,17 @@ sudo sed -i 's/ <params>//g' /boot/EFI/limine/limine.conf
 
 # efi boot menu
 
-BOOTNUM=$(efibootmgr | grep 'Linux Boot Manager' | awk '{print $1}' | grep -o '[0-9]*')
+BOOTNUM=$(efibootmgr | grep 'Linux Boot Manager' | awk '{print $1}' | grep -o '[0-9]*' || true)
 [[ $BOOTNUM ]] && sudo efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
 
-BOOTNUM=$(efibootmgr | grep 'limine' | awk '{print $1}' | grep -o '[0-9]*')
+BOOTNUM=$(efibootmgr | grep 'limine' | awk '{print $1}' | grep -o '[0-9]*' || true)
 [[ $BOOTNUM ]] && sudo efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
 
 . `dirname $0`/$HOST.zsh
 
 [[ $(efibootmgr | grep 'systemd-boot') ]] || \
   sudo efibootmgr --create --label 'systemd-boot' \
-    --disk $MY_DISK --part $MY_EFI_PART_NBR --loader /EFI/systemd/PreLoader.efi
+    --disk $MY_DISK --part $MY_EFI_PART_NBR --loader /EFI/systemd/systemd-bootx64.efi
 
 [[ $(efibootmgr | grep 'limine') ]] || \
   sudo efibootmgr --create --label 'limine' \

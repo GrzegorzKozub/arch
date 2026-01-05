@@ -209,7 +209,9 @@ cp $(dirname $0)/etc/vconsole.conf /etc
 
 sed -Ei \
   's/^HOOKS=.+$/HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)/' \
-  /etc/mkinitcpio.conf # plymouth (splash, after systemd)
+  /etc/mkinitcpio.conf
+
+  # plymouth (splash, after systemd)
 
 # limine (before mkinitcpio)
 
