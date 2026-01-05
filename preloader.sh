@@ -36,4 +36,11 @@ efi-boot-menu() {
   sudo rm -rf /boot/EFI/systemd/{loader,HashTool,PreLoader}.efi
 
   efi-boot-menu 'systemd-bootx64'
+
+  for FILE in \
+    loader.efi \
+    HashTool.efi \
+    PreLoader.efi; do
+      sudo sbctl remove-file /boot/EFI/systemd/$FILE || true
+  done
 }

@@ -8,6 +8,13 @@ set -o verbose
 
 sudo pacman -S --noconfirm python-requests
 
+# systemd-boot
+
+BOOTNUM=$(efibootmgr | grep 'Linux Boot Manager' | awk '{print $1}' | grep -o '[0-9]*' || true)
+[[ $BOOTNUM ]] && sudo efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
+
+`dirname $0`/preloader.sh disable
+
 # limine
 
 [[ -d /etc/pacman.d/hooks ]] || sudo mkdir -p /etc/pacman.d/hooks
@@ -42,24 +49,14 @@ sudo cp ~/code/walls/women.jpg /boot/EFI/limine/wall.jpg
 sudo sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/EFI/limine/limine.conf
 sudo sed -i 's/ <params>//g' /boot/EFI/limine/limine.conf
 
-# efi boot menu
-
-BOOTNUM=$(efibootmgr | grep 'Linux Boot Manager' | awk '{print $1}' | grep -o '[0-9]*' || true)
-[[ $BOOTNUM ]] && sudo efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
-
 BOOTNUM=$(efibootmgr | grep 'limine' | awk '{print $1}' | grep -o '[0-9]*' || true)
 [[ $BOOTNUM ]] && sudo efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
 
 . `dirname $0`/$HOST.zsh
 
-[[ $(efibootmgr | grep 'systemd-boot') ]] || \
-  sudo efibootmgr --create --label 'systemd-boot' \
-    --disk $MY_DISK --part $MY_EFI_PART_NBR --loader /EFI/systemd/systemd-bootx64.efi
-
-[[ $(efibootmgr | grep 'limine') ]] || \
-  sudo efibootmgr --create --label 'limine' \
-    --disk $MY_DISK --part $MY_EFI_PART_NBR --loader /EFI/limine/liminex64.efi \
-    --unicode
+sudo efibootmgr --create --label 'limine' \
+  --disk $MY_DISK --part $MY_EFI_PART_NBR --loader /EFI/limine/liminex64.efi \
+  --unicode
 
 # work
 
