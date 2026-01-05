@@ -16,6 +16,13 @@ sudo cp $(dirname $0)/etc/pacman.d/hooks/90-limine-update.hook /etc/pacman.d/hoo
 sudo pacman -S --noconfirm limine
 
 sudo cp $(dirname $0)/boot/EFI/limine/limine.conf /boot/EFI/limine/
+sudo cp ~/code/walls/women.jpg /boot/EFI/limine/wall.jpg
+
+[[ $HOST = 'drifter' ]] &&
+  sudo sed -i 's/<font>/3x3/g' /boot/EFI/limine/limine.conf
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo sed -i 's/<font>/2x2/g' /boot/EFI/limine/limine.conf
 
 [[ $HOST = 'drifter' ]] &&
   sudo sed -i 's/<ucode>/intel-ucode/g' /boot/EFI/limine/limine.conf

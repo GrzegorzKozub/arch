@@ -16,6 +16,14 @@ cp /usr/share/limine/BOOTX64.EFI /boot/EFI/limine/
 
 cp $(dirname $0)/boot/EFI/limine/limine.conf /boot/EFI/limine/
 
+wget -O /boot/EFI/limine/wall.jpg "https://github.com/GrzegorzKozub/walls/blob/master/women.jpg?raw=true"
+
+[[ $MY_HOSTNAME = 'drifter' ]] &&
+  sed -i 's/<font>/3x3/g' /boot/EFI/limine/limine.conf
+
+[[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
+  sed -i 's/<font>/2x2/g' /boot/EFI/limine/limine.conf
+
 # bitlocker
 
 [[ $MY_HOSTNAME = 'drifter' ]] &&
