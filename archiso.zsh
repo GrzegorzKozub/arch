@@ -143,6 +143,17 @@ sudo mkdir $ESP
 sudo cp -r $USB/arch/boot/x86_64/* $ESP
 sudo cp -r $USB/arch/x86_64 $ESP
 
+if [ $(sudo sbctl status --json | jq .installed) == 'true' ]; then
+
+  for FILE in \
+    vmlinuz-linux \
+    vmlinuz-linux-lts
+  do
+    sudo sbctl sign --save /boot/archiso/$FILE
+  done
+
+fi
+
 # update on pendrive
 
 if [ -d /run/media/$USER/ARCHISO ]; then

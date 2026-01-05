@@ -17,6 +17,19 @@ efi-boot-menu() {
     --disk "$DISK" --part "$EFI_PART_NBR" --loader /EFI/systemd/"$1".efi
 }
 
+secure-boot-signature() {
+
+  [[ $(sudo sbctl status --json | jq .installed) == 'false' ]] && return
+
+  for FILE in \
+    loader.efi \
+    HashTool.efi \
+    PreLoader.efi; do
+      [[ $1 == 'enable' ]] && sudo sbctl sign --save /boot/EFI/systemd/$FILE
+      [[ $1 == 'disable' ]] && sudo sbctl remove-file /boot/EFI/systemd/$FILE
+  done
+}
+
 [[ $1 == 'enable' ]] && {
 
   paru -S --aur --noconfirm \
@@ -29,18 +42,15 @@ efi-boot-menu() {
     preloader-signed
 
   efi-boot-menu 'PreLoader'
-}
+  secure-boot-signature "$@"
+
+} || true
 
 [[ $1 == 'disable' ]] && {
 
   sudo rm -rf /boot/EFI/systemd/{loader,HashTool,PreLoader}.efi
 
   efi-boot-menu 'systemd-bootx64'
+  secure-boot-signature "$@"
 
-  for FILE in \
-    loader.efi \
-    HashTool.efi \
-    PreLoader.efi; do
-      sudo sbctl remove-file /boot/EFI/systemd/$FILE || true
-  done
-}
+} || true

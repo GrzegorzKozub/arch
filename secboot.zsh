@@ -19,7 +19,7 @@ sudo sbctl enroll-keys --firmware-builtin --microsoft
 
 # checkpoint
 
-[[ $(sudo sbctl status --json | jq .installed) = 'false' ]] && exit 1
+[[ $(sudo sbctl status --json | jq .installed) == 'false' ]] && exit 1
 
 # sign efi binaries
 
@@ -40,7 +40,10 @@ for FILE in \
   EFI/Boot/bootx64.efi \
   \
   vmlinuz-linux \
-  vmlinuz-linux-lts
+  vmlinuz-linux-lts \
+  \
+  archiso/vmlinuz-linux \
+  archiso/vmlinuz-linux-lts
 do
   sudo test -f /boot/$FILE || continue
   sudo sbctl sign --save /boot/$FILE
