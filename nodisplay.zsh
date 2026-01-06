@@ -21,7 +21,6 @@ for APP in \
   mpv \
   nvtop \
   org.freedesktop.MalcontentControl \
-  org.gnome.Terminal \
   qv4l2 \
   qvidcap \
   stoken-gui \

@@ -57,12 +57,6 @@ paru -S --aur --noconfirm \
 paru -S --aur --needed --noconfirm \
   papirus-icon-theme-git
 
-# terminal
-
-sudo pacman -S --noconfirm \
-  ghostty \
-  kitty
-
 # common
 
 sudo pacman -S --noconfirm \

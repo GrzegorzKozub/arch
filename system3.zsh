@@ -88,6 +88,12 @@ if [[ $MY_HOSTNAME = 'sacrifice' ]]; then
 
 fi
 
+# terminal
+
+sudo pacman -S --noconfirm \
+  ghostty \
+  kitty
+
 # desktop
 
 if [[ $MY_DESKTOP == 'GNOME' ]]; then
@@ -97,7 +103,7 @@ if [[ $MY_DESKTOP == 'GNOME' ]]; then
     gvfs gvfs-smb \
     xdg-user-dirs-gtk \
     xdg-desktop-portal-gnome xdg-desktop-portal-gtk \
-    gnome-calculator gnome-characters gnome-control-center gnome-font-viewer gnome-remote-desktop gnome-system-monitor gnome-terminal gnome-tweaks gnome-weather loupe nautilus papers seahorse \
+    gnome-calculator gnome-characters gnome-control-center gnome-font-viewer gnome-remote-desktop gnome-system-monitor gnome-tweaks gnome-weather loupe nautilus papers seahorse \
     gnome-shell-extension-appindicator \
     malcontent
 

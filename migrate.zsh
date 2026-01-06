@@ -14,6 +14,12 @@ do
   sudo sbctl sign --save /boot/$FILE
 done
 
+# gnome terminal
+
+sudo pacman -Rs gnome-terminal
+dconf reset -f '/org/gnome/terminal/'
+rm -f ~/.local/share/applications/org.gnome.Terminal.desktop
+
 if [[ $HOST == 'worker' ]]; then
 
   # work
