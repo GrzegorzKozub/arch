@@ -59,7 +59,9 @@ set -e
 
 echo 'greg ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
 
-# temp zsh profile
+# zsh env & temp profile
+
+cp $(dirname $0)/etc/zsh/zshenv /etc/zsh
 
 touch /home/greg/.zshrc
 chown greg:users /home/greg/.zshrc

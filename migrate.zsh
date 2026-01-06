@@ -20,6 +20,11 @@ sudo pacman -Rs gnome-terminal
 dconf reset -f '/org/gnome/terminal/'
 rm -f ~/.local/share/applications/org.gnome.Terminal.desktop
 
+# env
+
+sudo cp $(dirname $0)/etc/zsh/zshenv /etc/zsh
+rm -f ~/.zprofile
+
 if [[ $HOST == 'worker' ]]; then
 
   # work

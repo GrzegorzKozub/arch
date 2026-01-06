@@ -4,7 +4,7 @@ set -e -o verbose
 
 # env
 
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 
 # dirs
 

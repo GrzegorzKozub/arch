@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
 set -e -o verbose
-HERE="${BASH_SOURCE%/*}"
 
 # update self
 
-pushd "$HERE" && git pull && popd
+pushd "${BASH_SOURCE%/*}" && git pull && popd
 
 # update all packages
 
@@ -26,18 +25,18 @@ sudo DIFFPROG='nvim -d' pacdiff
 
 # settings
 
-"$HERE"/settings.zsh
-"$HERE"/links.zsh
+"${BASH_SOURCE%/*}"/settings.zsh
+"${BASH_SOURCE%/*}"/links.zsh
 
-"$HERE"/gdm.zsh
+"${BASH_SOURCE%/*}"/gdm.zsh
 
-[[ $XDG_CURRENT_DESKTOP == 'GNOME' ]] && "$HERE"/gnome.zsh
+[[ $XDG_CURRENT_DESKTOP == 'GNOME' ]] && "${BASH_SOURCE%/*}"/gnome.zsh
 
-"$HERE"/mime.zsh
-"$HERE"/secrets.sh
+"${BASH_SOURCE%/*}"/mime.zsh
+"${BASH_SOURCE%/*}"/secrets.sh
 
 # cleanup
 
 sudo journalctl --vacuum-time=1months
 
-"$HERE"/packages.zsh
+"${BASH_SOURCE%/*}"/packages.zsh
