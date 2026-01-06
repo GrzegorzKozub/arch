@@ -36,6 +36,13 @@ if [[ $HOST == 'worker' ]]; then
 
   # systemd-boot
 
+  for FILE in \
+    loader.efi \
+    HashTool.efi \
+    PreLoader.efi; do
+      sudo sbctl remove-file /boot/EFI/systemd/$FILE
+  done
+
   BOOTNUM=$(efibootmgr | grep 'Linux Boot Manager' | awk '{print $1}' | grep -o '[0-9]*' || true)
   [[ $BOOTNUM ]] && sudo efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
 

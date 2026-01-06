@@ -28,10 +28,6 @@ for FILE in \
   \
   EFI/systemd/systemd-bootx64.efi \
   \
-  EFI/systemd/loader.efi \
-  EFI/systemd/HashTool.efi \
-  EFI/systemd/PreLoader.efi \
-  \
   EFI/Microsoft/Boot/bootmgfw.efi \
   EFI/Microsoft/Boot/bootmgr.efi \
   EFI/Microsoft/Boot/memtest.efi \
