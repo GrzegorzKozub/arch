@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e -o verbose
+set -o verbose
 
 # shutdown bug: https://bbs.archlinux.org/viewtopic.php?pid=2278862
 
@@ -17,7 +17,7 @@ if [[ $HOST == 'worker' ]]; then
 
   # gnome terminal
 
-  sudo pacman -Rs gnome-terminal
+  sudo pacman -Rs --noconfirm gnome-terminal
   dconf reset -f '/org/gnome/terminal/'
   rm -f ~/.local/share/applications/org.gnome.Terminal.desktop
 
@@ -29,8 +29,11 @@ if [[ $HOST == 'worker' ]]; then
   # work
 
   rm -rf ~/.config/aws
+  pushd ~/code/dot
   . ~/code/dot/aws.zsh
+  popd
 
+  set +e
   systemctl --user disable iam.service
   rm -rf ~/.config/systemd/user/iam.service
 
@@ -53,55 +56,12 @@ if [[ $HOST == 'worker' ]]; then
       sudo sbctl remove-file /boot/EFI/systemd/$FILE
   done
 
-  BOOTNUM=$(efibootmgr | grep 'Linux Boot Manager' | awk '{print $1}' | grep -o '[0-9]*' || true)
-  [[ $BOOTNUM ]] && sudo efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
-
-  "${BASH_SOURCE%/*}"/preloader.sh disable
-
   # limine
 
   [[ -d /etc/pacman.d/hooks ]] || sudo mkdir -p /etc/pacman.d/hooks
   sudo cp "${BASH_SOURCE%/*}"/etc/pacman.d/hooks/90-limine-update.hook /etc/pacman.d/hooks/
 
   sudo pacman -S --noconfirm limine
-
-  sudo cp "${BASH_SOURCE%/*}"/boot/EFI/limine/limine.conf /boot/EFI/limine/
-  sudo cp ~/code/walls/women.jpg /boot/EFI/limine/wall.jpg
-
-  sudo sed -i "s/<host>/$HOST/g" /boot/EFI/limine/limine.conf
-
-  [[ $HOST = 'drifter' ]] &&
-    sudo sed -i 's/<font>/3x3/g' /boot/EFI/limine/limine.conf
-
-  [[ $HOST =~ ^(player|worker)$ ]] &&
-    sudo sed -i 's/<font>/2x2/g' /boot/EFI/limine/limine.conf
-
-  [[ $HOST = 'drifter' ]] &&
-    sudo sed -i 's/<ucode>/intel-ucode/g' /boot/EFI/limine/limine.conf
-
-  [[ $HOST =~ ^(player|worker)$ ]] &&
-    sudo sed -i 's/<ucode>/amd-ucode/g' /boot/EFI/limine/limine.conf
-
-  [[ $HOST =~ ^(player|worker)$ ]] &&
-    sudo sed -i 's/<params>/amd_pstate=active <params>/g' /boot/EFI/limine/limine.conf
-
-  [[ $HOST =~ ^(player|worker)$ ]] &&
-    sudo sed -i 's/<params>/nvidia-drm.modeset=1 <params>/g' /boot/EFI/limine/limine.conf
-
-  [[ $HOST = 'drifter' ]] &&
-    sudo sed -i 's/<params>/rcutree.enable_rcu_lazy=1 <params>/g' /boot/EFI/limine/limine.conf
-
-  sudo sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/EFI/limine/limine.conf
-  sudo sed -i 's/ <params>//g' /boot/EFI/limine/limine.conf
-
-  BOOTNUM=$(efibootmgr | grep 'limine' | awk '{print $1}' | grep -o '[0-9]*' || true)
-  [[ $BOOTNUM ]] && sudo efibootmgr --delete-bootnum --bootnum "$BOOTNUM"
-
-  . "${BASH_SOURCE%/*}"/"$HOST".zsh
-
-  sudo efibootmgr --create --label 'limine' \
-    --disk "$MY_DISK" --part "$MY_EFI_PART_NBR" --loader /EFI/limine/liminex64.efi \
-    --unicode
 
 fi
 

@@ -12,7 +12,7 @@ cp $(dirname $0)/boot/loader/entries/*.conf /boot/loader/entries
 # limine on esp
 
 [[ -d /boot/EFI/limine ]] || mkdir -p /boot/EFI/limine
-cp /usr/share/limine/BOOTX64.EFI /boot/EFI/limine/
+cp /usr/share/limine/BOOTX64.EFI /boot/EFI/limine/limine/liminex64.efi
 
 cp $(dirname $0)/boot/EFI/limine/limine.conf /boot/EFI/limine/
 
