@@ -143,7 +143,7 @@ sudo mkdir $ESP
 sudo cp -r $USB/arch/boot/x86_64/* $ESP
 sudo cp -r $USB/arch/x86_64 $ESP
 
-if [ $(sudo sbctl status --json | jq .installed) == 'true' ]; then
+if [[ $(sudo sbctl status --json | jq .installed) == 'true' ]]; then
 
   for FILE in \
     vmlinuz-linux \
