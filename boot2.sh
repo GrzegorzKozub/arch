@@ -12,11 +12,11 @@ cp $(dirname $0)/boot/loader/entries/*.conf /boot/loader/entries
 # limine on esp
 
 [[ -d /boot/EFI/limine ]] || mkdir -p /boot/EFI/limine
-cp /usr/share/limine/BOOTX64.EFI /boot/EFI/limine/limine/liminex64.efi
+cp /usr/share/limine/BOOTX64.EFI /boot/EFI/limine/liminex64.efi
 
-cp $(dirname $0)/boot/EFI/limine/limine.conf /boot/EFI/limine/
+cp $(dirname $0)/boot/EFI/limine/limine.conf /boot/EFI/limine
 
-wget -O /boot/EFI/limine/wall.jpg "https://github.com/GrzegorzKozub/walls/blob/master/women.jpg?raw=true"
+wget -O /boot/EFI/limine/wall.jpg 'https://github.com/GrzegorzKozub/walls/blob/master/women.jpg?raw=true'
 
 sed -i "s/<host>/$MY_HOSTNAME/g" /boot/EFI/limine/limine.conf
 
