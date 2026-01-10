@@ -18,16 +18,22 @@ cp $(dirname $0)/boot/EFI/limine/limine.conf /boot/EFI/limine
 
 wget -O /boot/EFI/limine/wall.jpg 'https://github.com/GrzegorzKozub/walls/blob/master/women.jpg?raw=true'
 
-[[ $MY_HOSTNAME = 'worker' ]] ||
-  sed -i '/^interface_resolution.*/d' /boot/EFI/limine/limine.conf
-
 sed -i "s/<host>/$MY_HOSTNAME/g" /boot/EFI/limine/limine.conf
 
-[[ $MY_HOSTNAME = 'drifter' ]] &&
+[[ $MY_HOSTNAME = 'drifter' ]] && {
+  sed -i '/^interface_resolution.*/d' /boot/EFI/limine/limine.conf
   sed -i 's/<font>/3x3/g' /boot/EFI/limine/limine.conf
+}
 
-[[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
+[[ $MY_HOSTNAME = 'player' ]] && {
+  sed -i '/^interface_resolution.*/d' /boot/EFI/limine/limine.conf
   sed -i 's/<font>/2x2/g' /boot/EFI/limine/limine.conf
+}
+
+[[ $MY_HOSTNAME = 'worker' ]] && {
+  sed -i 's/<res>/1280x720/g' /boot/EFI/limine/limine.conf
+  sed -i '^term_font_scale.*/d' /boot/EFI/limine/limine.conf
+}
 
 # bitlocker
 
