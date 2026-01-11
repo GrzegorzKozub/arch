@@ -13,6 +13,10 @@ set -o verbose
 sudo rm -f /etc/pacman.d/hooks/90-limine-update.hook
 sudo cp "${BASH_SOURCE%/*}"/etc/pacman.d/hooks/91-limine.hook /etc/pacman.d/hooks/
 
+# vscode
+
+code --install-extension ms-vscode-remote.remote-containers --force
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.zsh
