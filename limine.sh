@@ -3,59 +3,48 @@
 set -e
 
 DIR=/boot/EFI/limine
+[[ -d $DIR ]] || mkdir $DIR
 
-enroll-config-and-sign() {
-  limine enroll-config \
-    $DIR/liminex64.efi \
-    "$(b2sum $DIR/limine.conf | awk '{print $1}')"
+# update limine on esp
 
-  [[ $(sbctl status --json | jq .installed) == 'true' ]] &&
-    sbctl sign --save $DIR/liminex64.efi
-}
+cp /usr/share/limine/BOOTX64.EFI $DIR/liminex64.efi
 
-[[ $1 == 'update' ]] && {
+# update resource file checksums in the config file
 
-  # update limine on esp
+CFG=$DIR/limine.conf
+TMP=$(mktemp)
 
-  [[ -d $DIR ]] || mkdir $DIR
+cp $CFG $CFG.backup
 
-  cp /usr/share/limine/BOOTX64.EFI $DIR/liminex64.efi
+while IFS= read -r line; do
 
-  enroll-config-and-sign
+  if [[ $line =~ boot\(\): ]]; then
 
-} || true
+    CFG_PATH=${line#*boot():} && CFG_PATH=${CFG_PATH%%#*}
+    DISK_PATH="/boot$CFG_PATH"
 
-[[ $1 == 'hash' ]] && {
-
-  # update checksums
-
-  CFG=$DIR/limine.conf
-  TMP=$(mktemp)
-
-  cp $CFG $CFG.backup
-
-  while IFS= read -r line; do
-
-    if [[ $line =~ boot\(\): ]]; then
-
-      CFG_PATH=${line#*boot():} && CFG_PATH=${CFG_PATH%%#*}
-      DISK_PATH="/boot$CFG_PATH"
-
-      if [[ -f "$DISK_PATH" ]]; then
-        echo "${line/$CFG_PATH*/}$CFG_PATH#$(b2sum "$DISK_PATH" | awk '{print $1}')"
-      else
-        echo "$line"
-      fi
-
+    if [[ -f "$DISK_PATH" ]]; then
+      echo "${line/$CFG_PATH*/}$CFG_PATH#$(b2sum "$DISK_PATH" | awk '{print $1}')"
     else
       echo "$line"
     fi
 
-  done < $CFG > "$TMP"
+  else
+    echo "$line"
+  fi
 
-  mv "$TMP" $CFG
-  rm $CFG.backup
+done < $CFG > "$TMP"
 
-  enroll-config-and-sign
+mv "$TMP" $CFG
+# rm $CFG.backup
 
-} || true
+# embded config file checksum in the executable
+
+limine enroll-config \
+  $DIR/liminex64.efi \
+  "$(b2sum $DIR/limine.conf | awk '{print $1}')"
+
+# sign the executable
+
+[[ $(sbctl status --json | jq .installed) == 'true' ]] &&
+  sbctl sign --save $DIR/liminex64.efi

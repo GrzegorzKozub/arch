@@ -218,7 +218,7 @@ sed -Ei \
 # limine (before mkinitcpio)
 
 [[ -d /etc/pacman.d/hooks ]] || mkdir -p /etc/pacman.d/hooks
-cp $(dirname $0)/etc/pacman.d/hooks/90-limine-update.hook /etc/pacman.d/hooks/
+cp $(dirname $0)/etc/pacman.d/hooks/91-limine.hook /etc/pacman.d/hooks/
 
 # dm-crypt with systemd based initial ramdisk (before mkinitcpio)
 
