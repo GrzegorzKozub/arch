@@ -20,7 +20,7 @@ sed -i -e 's/^Name=.*/Name=Edge/' $XDG_DATA_HOME/applications/microsoft-edge.des
 
 # cleanup
 
-`dirname $0`/packages.zsh
+`dirname $0`/packages.sh
 
 # dotfiles
 

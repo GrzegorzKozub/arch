@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # bash
 
@@ -46,4 +45,3 @@ rm -f ~/.wget-hsts
 # zsh
 
 rm -f ~/.zshrc
-

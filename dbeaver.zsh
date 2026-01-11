@@ -23,7 +23,7 @@ sed -i -e 's/^Name=.*/Name=DBeaver/' $XDG_DATA_HOME/applications/io.dbeaver.DBea
 
 # cleanup
 
-`dirname $0`/packages.zsh
+`dirname $0`/packages.sh
 
 # dotfiles
 

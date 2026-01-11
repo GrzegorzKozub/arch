@@ -44,7 +44,7 @@ xdg-mime default libreoffice-writer.desktop application/vnd.openxmlformats-offic
 
 # cleanup
 
-`dirname $0`/packages.zsh
+`dirname $0`/packages.sh
 
 # dotfiles
 

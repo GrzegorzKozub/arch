@@ -154,6 +154,7 @@ paru -S --aur --noconfirm \
 sudo pacman -S --noconfirm \
   go \
   lua luacheck luarocks stylua \
+  nodejs npm \
   perl \
   prettier \
   python python-pip python-pynvim python-requests uv \
@@ -162,7 +163,7 @@ sudo pacman -S --noconfirm \
   tree-sitter-cli
 
   # python-requests for fetch.py
-  # elixir nodejs npm ruby rust
+  # elixir ruby rust
 
 paru -S --aur --noconfirm \
   golangci-lint-bin \
@@ -199,8 +200,8 @@ paru -S --aur --noconfirm \
 
 # cleanup
 
-`dirname $0`/packages.zsh
-`dirname $0`/clean.zsh
+`dirname $0`/packages.sh
+`dirname $0`/clean.sh
 
 # dotfiles install
 

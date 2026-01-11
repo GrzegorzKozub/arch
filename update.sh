@@ -39,4 +39,4 @@ sudo DIFFPROG='nvim -d' pacdiff
 
 sudo journalctl --vacuum-time=1months
 
-"${BASH_SOURCE%/*}"/packages.zsh
+"${BASH_SOURCE%/*}"/packages.sh

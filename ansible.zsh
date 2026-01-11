@@ -14,7 +14,7 @@ sudo chfn -f $USER $USER # gecos
 
 # cleanup
 
-`dirname $0`/packages.zsh
+`dirname $0`/packages.sh
 
 # dotfiles
 

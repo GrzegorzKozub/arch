@@ -73,7 +73,7 @@ systemctl --user mask xdg-desktop-portal-gnome xdg-desktop-portal-gtk
 sudo pacman -Rs --noconfirm \
   cmake
 
-`dirname $0`/packages.zsh
+`dirname $0`/packages.sh
 
 # dotfiles
 

@@ -21,4 +21,4 @@ xdg-mime default draw.io.desktop application/vnd.jgraph.mxfile
 
 # cleanup
 
-`dirname $0`/packages.zsh
+`dirname $0`/packages.sh

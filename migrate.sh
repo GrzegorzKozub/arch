@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -o verbose
+set -eo pipefail -ux
 
 # shutdown bug: https://bbs.archlinux.org/viewtopic.php?pid=2278862
 
@@ -19,5 +18,5 @@ code --install-extension ms-vscode-remote.remote-containers --force
 
 # cleanup
 
-"${BASH_SOURCE%/*}"/packages.zsh
-"${BASH_SOURCE%/*}"/clean.zsh
+"${BASH_SOURCE%/*}"/packages.sh
+"${BASH_SOURCE%/*}"/clean.sh

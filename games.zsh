@@ -95,7 +95,7 @@ sudo cp `dirname $0`/etc/modules-load.d/ntsync.conf /etc/modules-load.d
 
 # cleanup
 
-`dirname $0`/packages.zsh
+`dirname $0`/packages.sh
 
 # dotfiles
 
