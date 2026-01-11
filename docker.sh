@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 set -e -o verbose
 
@@ -15,9 +15,9 @@ paru -S --aur --noconfirm \
 
 # native overlay diff
 
-echo 'options overlay metacopy=off redirect_dir=off' | \
+echo 'options overlay metacopy=off redirect_dir=off' |
   sudo tee /etc/modprobe.d/disable-overlay-redirect-dir.conf > \
-  /dev/null
+    /dev/null
 
 # service as root
 
@@ -32,12 +32,11 @@ paru -S --aur --noconfirm \
   docker-rootless-extras
 
 for FILE in subuid subgid; do
-  echo "$USER:231072:65536" | \
-    sudo tee /etc/$FILE > /dev/null
+  echo "$USER:231072:65536" | sudo tee /etc/$FILE > /dev/null
 done
 
 [[ -d /etc/systemd/system/user@.service.d ]] || sudo mkdir -p /etc/systemd/system/user@.service.d
-cp $(dirname $0)/etc/systemd/system/user@.service.d/delegate.conf /etc/systemd/system/user@.service.d
+sudo cp "${BASH_SOURCE%/*}"/etc/systemd/system/user@.service.d/delegate.conf /etc/systemd/system/user@.service.d
 
 # systemctl --user enable docker.service
 # systemctl --user start docker.service
@@ -48,5 +47,4 @@ systemctl --user start docker.socket
 # login
 
 PAT=/run/media/$USER/data/.secrets/docker.secret
-[[ -f $PAT ]] && cat $PAT | docker login --username grzegorzkozub --password-stdin
-
+[[ -f $PAT ]] && cat "$PAT" | docker login --username grzegorzkozub --password-stdin

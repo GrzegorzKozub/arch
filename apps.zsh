@@ -147,7 +147,7 @@ paru -S --aur --noconfirm \
 
 # docker
 
-`dirname $0`/docker.zsh
+`dirname $0`/docker.sh
 
 # dev
 
