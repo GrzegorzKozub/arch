@@ -3,6 +3,11 @@ set -eo pipefail -ux
 
 # shutdown bug: https://bbs.archlinux.org/viewtopic.php?pid=2278862
 
+# docker & podman
+
+sudo sed -i '/231072/d' /etc/subgid /etc/subuid
+sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$USER"
+
 # hosts
 
 [[ $HOST == 'worker' ]] && "${BASH_SOURCE%/*}"/hosts.zsh

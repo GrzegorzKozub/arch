@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e -o verbose
+set -eo pipefail -ux
 
 # packages
 
@@ -31,9 +30,7 @@ echo 'options overlay metacopy=off redirect_dir=off' |
 paru -S --aur --noconfirm \
   docker-rootless-extras
 
-for FILE in subuid subgid; do
-  echo "$USER:231072:65536" | sudo tee /etc/$FILE > /dev/null
-done
+sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$USER"
 
 [[ -d /etc/systemd/system/user@.service.d ]] || sudo mkdir -p /etc/systemd/system/user@.service.d
 sudo cp "${BASH_SOURCE%/*}"/etc/systemd/system/user@.service.d/delegate.conf /etc/systemd/system/user@.service.d
