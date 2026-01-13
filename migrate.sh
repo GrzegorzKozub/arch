@@ -21,6 +21,11 @@ sudo cp "${BASH_SOURCE%/*}"/etc/pacman.d/hooks/91-limine.hook /etc/pacman.d/hook
 
 code --install-extension ms-vscode-remote.remote-containers --force
 
+# webcam
+
+[[ $HOST == 'worker' ]] &&
+  sudo cp "${BASH_SOURCE%/*}"/etc/udev/rules.d/90-c922.rules /etc/udev/rules.d
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
