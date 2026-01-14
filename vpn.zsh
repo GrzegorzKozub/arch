@@ -62,6 +62,7 @@ if [[ $1 == 'audience' ]]; then
     nmcli connection modify $CONN +vpn.data virtual=yes
 
     nmcli connection modify $CONN ipv4.dns $PROPS[2]
+    nmcli connection modify $CONN ipv4.dns-search "$ENV.aud, $ENV.email, $ENV.ma, $ENV.mta, $ENV.sms, $ENV.webscript, internal, redshift.amazonaws.com"
 
   done
 
