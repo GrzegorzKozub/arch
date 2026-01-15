@@ -279,9 +279,9 @@ add_shortcut() {
   CUSTOM_KEYBINDINGS+="'$dir'"
 }
 
-add_shortcut 0 'Print' 'screenshot' "/home/$USER/code/arch/screenshot.zsh"
-add_shortcut 1 '<Control><Super>a' 'audio output' "/home/$USER/code/arch/audio.zsh sink"
-add_shortcut 2 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio.zsh source"
+add_shortcut 0 'Print' 'screenshot' "/home/$USER/code/arch/screenshot.sh"
+add_shortcut 1 '<Control><Super>a' 'audio output' "/home/$USER/code/arch/audio.sh sink"
+add_shortcut 2 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio.sh source"
 
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
