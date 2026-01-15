@@ -11,34 +11,38 @@ volume() {
 }
 
 [[ ${1:-} == 'up' ]] && {
-  [[ "$(volume)" -lt 100 ]] && pactl set-sink-volume @DEFAULT_SINK@ +5%
+  [[ $(volume) -lt 100 ]] && pactl set-sink-volume @DEFAULT_SINK@ +5%
   volume
 }
 
-[[ ${1:-} =~ ^(source|sink)$ ]] && {
-  [[ $1 == 'sink' ]] && snk=true
-  [[ $1 == 'source' ]] && src=true
+[[ ${1:-} =~ ^(sink|source)$ ]] && {
+  [[ $1 == 'sink' ]] && SINK=1
+  [[ $1 == 'source' ]] && SOURCE=1
 
-  [[ $snk ]] && all=$(pactl list short sinks | cut -f2) && default='Default Sink'
-  [[ $src ]] && all=$(pactl list short sources | cut -f2) && default='Default Source'
+  [[ ${SINK:-} ]] && ALL=$(pactl list short sinks | cut -f2) && DEFAULT='Default Sink'
+  [[ ${SOURCE:-} ]] && ALL=$(pactl list short sources | cut -f2) && DEFAULT='Default Source'
+
+  default() {
+    pactl info | grep "$DEFAULT" | cut -d' ' -f3
+  }
 
   show() {
     pactl list "$1" | grep --context=1 "$2" | grep 'Description' | sed -e 's/.*Description: //'
   }
 
   while true; do
-    echo "$all" | while read -r current; do
-      if [[ $switch ]]; then
-        [[ $snk ]] && pactl set-default-sink "$current"
-        [[ $src ]] && pactl set-default-source $current
-        if [[ $(pactl info | grep $default | cut -d' ' -f3) = $current ]]; then
-          [[ $snk ]] && show 'sinks' $current
-          [[ $src ]] && show 'sources' $current
-          return
+    while IFS= read -r current; do
+      if [[ ${SWITCH:-} ]]; then
+        [[ ${SINK:-} ]] && pactl set-default-sink "$current"
+        [[ ${SOURCE:-} ]] && pactl set-default-source "$current"
+        if [[ $(default) == "$current" ]]; then
+          [[ ${SINK:-} ]] && show 'sinks' "$current"
+          [[ ${SOURCE:-} ]] && show 'sources' "$current"
+          exit
         fi
       fi
-      [[ $(pactl info | grep $default | cut -d' ' -f3) = $current ]] && switch=true
-    done
+      [[ $(default) == "$current" ]] && SWITCH=1
+    done < <(echo "$ALL")
   done
 }
 
