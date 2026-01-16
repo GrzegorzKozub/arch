@@ -11,7 +11,9 @@ volume() {
 }
 
 [[ ${1:-} == 'up' ]] && {
-  [[ $(volume) -lt 100 ]] && pactl set-sink-volume @DEFAULT_SINK@ +5%
+  VOL=$(volume)
+  ((DELTA = VOL <= 95 ? 5 : 100 - VOL))
+  pactl set-sink-volume @DEFAULT_SINK@ +$DELTA%
   volume
 }
 

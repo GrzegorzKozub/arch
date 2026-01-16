@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -o pipefail -ux
 
 # packages
 
@@ -11,5 +10,4 @@ sudo pacman -S --noconfirm \
 
 # dotfiles
 
-~/code/dot/claude.zsh
-
+~/code/dot/claude.sh

@@ -3,7 +3,8 @@ set -o pipefail -ux
 
 # remove unused packages
 
-sudo pacman --noconfirm -Rsn "$(pacman -Qdtq)"
+# shellcheck disable=SC2046
+sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
 
 # workaround https://forum.endeavouros.com/t/solved-latest-pacman-update-breaks-aur-and-yay/76959
 
