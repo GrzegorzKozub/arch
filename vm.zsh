@@ -21,8 +21,8 @@ DRIVERS=virtio-win-0.1.271.iso
 
 # packages
 
-[[ $(pacman -Qs qemu-desktop) ]] || sudo pacman -S --noconfirm qemu-desktop
-[[ $(pacman -Qs samba) ]] || sudo pacman -S --noconfirm samba
+[[ $(pacman -Qqs qemu-desktop) ]] || sudo pacman -S --noconfirm qemu-desktop
+[[ $(pacman -Qqs samba) ]] || sudo pacman -S --noconfirm samba
 
 # mount
 
@@ -74,8 +74,8 @@ OPTS+=("-drive file=$DIR/$DISK,if=virtio,aio=native,cache.direct=on")
 
 if [[ $UEFI = 1 ]]; then
 
-  [[ $(pacman -Qs swtpm) ]] || sudo pacman -S --noconfirm swtpm
-  [[ $(pacman -Qs edk2-ovmf) ]] || sudo pacman -S --noconfirm edk2-ovmf
+  [[ $(pacman -Qqs swtpm) ]] || sudo pacman -S --noconfirm swtpm
+  [[ $(pacman -Qqs edk2-ovmf) ]] || sudo pacman -S --noconfirm edk2-ovmf
 
   [[ -d $DIR/$TPM ]] || mkdir $DIR/$TPM
 
@@ -98,7 +98,7 @@ fi
 
 if [[ $SPICE = 1 ]]; then
 
-  [[ $(pacman -Qs virt-viewer) ]] || {
+  [[ $(pacman -Qqs virt-viewer) ]] || {
 
     # packages
 

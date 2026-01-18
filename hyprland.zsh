@@ -6,8 +6,8 @@ set -e -o verbose
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 
-  [[ $(sudo pacman -Qs nvidia-open) ]] && sudo pacman -Rs --noconfirm nvidia-open
-  [[ $(sudo pacman -Qs nvidia-open-lts) ]] && sudo pacman -Rs --noconfirm nvidia-open-lts
+  [[ $(sudo pacman -Qqs nvidia-open) ]] && sudo pacman -Rs --noconfirm nvidia-open
+  [[ $(sudo pacman -Qqs nvidia-open-lts) ]] && sudo pacman -Rs --noconfirm nvidia-open-lts
 
   sudo pacman -S --noconfirm \
     linux-headers nvidia-dkms

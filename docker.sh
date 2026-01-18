@@ -12,19 +12,6 @@ paru -S --aur --noconfirm \
   docker-credential-pass-bin \
   docker-scout
 
-# native overlay diff
-
-echo 'options overlay metacopy=off redirect_dir=off' |
-  sudo tee /etc/modprobe.d/disable-overlay-redirect-dir.conf > \
-    /dev/null
-
-# service as root
-
-# sudo usermod -aG docker $USER # non-root user cli access
-
-# sudo systemctl enable docker.service
-# sudo systemctl start docker.service
-
 # rootless
 
 paru -S --aur --noconfirm \
@@ -35,11 +22,12 @@ sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$USER"
 [[ -d /etc/systemd/system/user@.service.d ]] || sudo mkdir -p /etc/systemd/system/user@.service.d
 sudo cp "${BASH_SOURCE%/*}"/etc/systemd/system/user@.service.d/delegate.conf /etc/systemd/system/user@.service.d
 
-# systemctl --user enable docker.service
-# systemctl --user start docker.service
+systemctl --user enable --now docker.socket
 
-systemctl --user enable docker.socket
-systemctl --user start docker.socket
+# native overlay diff engine
+
+echo 'options overlay metacopy=off redirect_dir=off' |
+  sudo tee /etc/modprobe.d/disable-overlay-redirect-dir.conf > /dev/null
 
 # login
 

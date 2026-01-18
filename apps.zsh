@@ -145,9 +145,10 @@ paru -S --aur --noconfirm \
   neovim-nightly-bin \
   vivify-bin
 
-# docker
+# containers
 
 `dirname $0`/docker.sh
+`dirname $0`/podman.sh
 
 # dev
 

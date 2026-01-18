@@ -146,9 +146,8 @@ SOURCE=$(dirname $0)/etc/udev/rules.d/90-webcam.$MY_HOSTNAME.rules
 
 if [[ $MY_HOSTNAME = 'drifter' ]]; then
 
-  echo 'options snd_hda_intel power_save=1' > /etc/modprobe.d/laptop-power.conf
-  echo 'options iwlwifi power_save=1' > /etc/modprobe.d/laptop-power.conf
-  echo 'vm.dirty_writeback_centisecs = 6000' > /etc/sysctl.d/laptop-power.conf
+  cp $(dirname $0)/etc/modprobe.d/laptop.conf /etc/modprobe.d
+  cp $(dirname $0)/etc/sysctl.d/80-laptop.conf /etc/sysctl.d
 
 fi
 

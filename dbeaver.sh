@@ -3,7 +3,7 @@ set -eo pipefail -u
 
 # packages
 
-[[ $(pacman -Qs jre-openjdk) || $(pacman -Qs jdk-openjdk) ]] ||
+[[ $(pacman -Qqs jre-openjdk) || $(pacman -Qqs jdk-openjdk) ]] ||
   sudo pacman -S --noconfirm \
     jre-openjdk
 

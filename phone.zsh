@@ -2,9 +2,9 @@
 
 set -e
 
-[[ $(pacman -Qs gvfs-mtp) ]] || sudo pacman -S --noconfirm gvfs-mtp
-[[ $(pacman -Qs mtpfs) ]] || sudo pacman -S --noconfirm mtpfs
-[[ $(pacman -Qs jmtpfs) ]] || paru -S --aur --noconfirm jmtpfs
+[[ $(pacman -Qqs gvfs-mtp) ]] || sudo pacman -S --noconfirm gvfs-mtp
+[[ $(pacman -Qqs mtpfs) ]] || sudo pacman -S --noconfirm mtpfs
+[[ $(pacman -Qqs jmtpfs) ]] || paru -S --aur --noconfirm jmtpfs
 
 MUSIC=/run/media/greg/data/music
 PHONE=~/phone

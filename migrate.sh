@@ -6,11 +6,21 @@ set -eo pipefail -ux
 # docker & podman
 
 sudo sed -i '/231072/d' /etc/subgid /etc/subuid
-sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$USER"
+# sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$USER"
+
+"${BASH_SOURCE%/*}"/podman.sh
 
 # hosts
 
 [[ $HOST == 'worker' ]] && "${BASH_SOURCE%/*}"/hosts.zsh
+
+# laptop power saving
+
+[[ $HOST == 'drifter' ]] && {
+  rm -rf /etc/sysctl.d/dirty.conf /etc/modprobe.d/iwlwifi.conf
+  sudo cp "${BASH_SOURCE%/*}"/etc/modprobe.d/laptop.conf /etc/modprobe.d
+  sudo cp "${BASH_SOURCE%/*}"/etc/sysctl.d/80-laptop.conf /etc/sysctl.d
+}
 
 # limine
 
