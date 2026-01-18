@@ -1,0 +1,5 @@
+# lsusb | grep -i webcam
+# 0c45:672a Microdia Integrated_Webcam_HD
+
+SUBSYSTEM=="video4linux", KERNEL=="video[0-9]*", ATTR{index}=="0", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="672a", RUN+="/usr/bin/v4l2-ctl --device $devnode --set-fmt-video width=1280,height=720,pixelformat=MJPG"
+

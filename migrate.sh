@@ -23,8 +23,10 @@ code --install-extension ms-vscode-remote.remote-containers --force
 
 # webcam
 
-[[ $HOST == 'worker' ]] &&
-  sudo cp "${BASH_SOURCE%/*}"/etc/udev/rules.d/90-c922.rules /etc/udev/rules.d
+sudo rm -rf /etc/udev/rules.d/*c922*.rules
+
+SOURCE="${BASH_SOURCE%/*}"/etc/udev/rules.d/90-webcam.$HOST.rules
+[[ -f $SOURCE ]] && sudo cp "$SOURCE" /etc/udev/rules.d/90-webcam.rules
 
 # cleanup
 

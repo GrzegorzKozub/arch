@@ -132,10 +132,10 @@ if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
 
 fi
 
-# webcam video format
+# webcam
 
-[[ $MY_HOSTNAME = 'worker' ]] &&
-  cp $(dirname $0)/etc/udev/rules.d/90-c922.rules /etc/udev/rules.d
+SOURCE=$(dirname $0)/etc/udev/rules.d/90-webcam.$MY_HOSTNAME.rules
+[[ -f $SOURCE ]] && cp $SOURCE /etc/udev/rules.d/90-webcam.rules
 
 # sleep fixes
 
