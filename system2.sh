@@ -70,10 +70,6 @@ chown greg:users /home/greg/.zshrc
 
 cp $(dirname $0)/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
 
-# only keep coredumps from last 3 days
-
-cp $(dirname $0)/etc/tmpfiles.d/coredump.conf /etc/tmpfiles.d
-
 # change systemd start & stop timeouts from 90 to 15 seconds
 
 [[ -d /etc/systemd/system.conf.d ]] || mkdir /etc/systemd/system.conf.d

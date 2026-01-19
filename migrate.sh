@@ -3,6 +3,10 @@ set -eo pipefail -ux
 
 # shutdown bug: https://bbs.archlinux.org/viewtopic.php?pid=2278862
 
+# coredump
+
+sudo rm -f /etc/tmpfiles.d/coredump.conf
+
 # docker & podman
 
 sudo sed -i '/231072/d' /etc/subgid /etc/subuid
