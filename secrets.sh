@@ -37,7 +37,9 @@ lnk "$SECRETS"/settings.xml ~/code/dot/maven/maven/settings.xml
 shopt -s nullglob
 
 for PEM in "$SECRETS"/*.pem; do
-  lnk "$PEM" ~/.ssh/"${PEM##*/}"
+  LNK=~/.ssh/"${PEM##*/}"
+  lnk "$PEM" "$LNK"
+  chmod 600 "$LNK"
 done
 
 for PEM in ~/.ssh/*.pem; do
