@@ -32,12 +32,12 @@ podman system migrate
 
 # login
 
-PAT=/run/media/$USER/data/.secrets/docker.secret
-
-[[ -f $PAT ]] &&
-  for REGISTRY in docker.io registry-1.docker.io; do
-    cat "$PAT" | docker login --username grzegorzkozub --password-stdin $REGISTRY
-  done
+# PAT=/run/media/$USER/data/.secrets/docker.secret
+#
+# [[ -f $PAT ]] &&
+#   for REGISTRY in docker.io registry-1.docker.io; do
+#     cat "$PAT" | podman login --username grzegorzkozub --password-stdin $REGISTRY
+#   done
 
 # to be continued
 # https://wiki.archlinux.org/title/Podman#Docker_Compose
