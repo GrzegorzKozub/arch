@@ -38,7 +38,3 @@ podman system migrate
 #   for REGISTRY in docker.io registry-1.docker.io; do
 #     cat "$PAT" | podman login --username grzegorzkozub --password-stdin $REGISTRY
 #   done
-
-# to be continued
-# https://wiki.archlinux.org/title/Podman#Docker_Compose
-# https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md
