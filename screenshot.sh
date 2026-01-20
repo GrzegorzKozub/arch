@@ -13,6 +13,7 @@ DIR=~/Pictures/Screenshots
 fswatch --one-event --event Created $DIR | while IFS= read -r FILE; do
   magick "$FILE" -filter lanczos -resize "$RESIZE"% -unsharp 0x0.75 "$FILE"
   satty --filename "$FILE" > /dev/null 2>&1
+  rm "$FILE"
 done &
 
 gdbus call \
