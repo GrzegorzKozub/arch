@@ -11,8 +11,8 @@ DIR=~/Pictures/Screenshots
 [[ -d $DIR ]] || mkdir $DIR
 
 fswatch --one-event --event Created $DIR | while IFS= read -r FILE; do
-  magick "$FILE" -filter lanczos -resize $RESIZE% -unsharp 0x0.75 "$FILE"
-  satty --filename "$FILE" >/dev/null 2>&1
+  magick "$FILE" -filter lanczos -resize "$RESIZE"% -unsharp 0x0.75 "$FILE"
+  satty --filename "$FILE" > /dev/null 2>&1
 done &
 
 gdbus call \
@@ -22,4 +22,3 @@ gdbus call \
   --method org.freedesktop.portal.Screenshot.Screenshot \
   '' "{'interactive':<true>}" \
   > /dev/null
-
