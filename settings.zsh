@@ -43,21 +43,30 @@ pactl list short sinks | cut -f1 | while read -r id; do
 done
 
 pactl list short sources | cut -f1 | while read -r id; do
-  pactl set-source-volume $id 50%
+  pactl set-source-volume $id 100%
 done
 
 find() {
-  pactl list sinks | grep --before-context 1 "Description: $1" | head -n1 | sed 's/.*Name: //'
+  pactl list "$1"s | grep --before-context 1 "Description: $2" | head -n1 | sed 's/.*Name: //'
 }
 
 [[ $HOST = 'player' ]] &&
-  pactl set-default-sink $(find 'Schiit Magni Unity Analog Stereo')
+  pactl set-default-sink $(find sink 'Schiit Magni Unity Analog Stereo')
 
-[[ $HOST == 'worker' ]] &&
-  pactl set-default-sink $(find 'Starship/Matisse HD Audio Controller Analog Stereo')
+[[ $HOST == 'worker' ]] && {
+
+  pactl set-default-sink $(find sink 'Starship/Matisse HD Audio Controller Analog Stereo')
+
+  MIC=$(find source 'Wireless microphone Analog Stereo') # Hollyland Lark M2
+
+  [[ $MIC ]] &&
+    pactl set-default-source $MIC ||
+    pactl set-default-source $(find source 'C922 Pro Stream Webcam Analog Stereo')
+
+}
 
 pactl set-sink-volume @DEFAULT_SINK@ 50%
-pactl set-source-volume @DEFAULT_SOURCE@ 50%
+pactl set-source-volume @DEFAULT_SOURCE@ 100%
 
 [[ $HOST = 'drifter' ]] && pactl set-sink-mute @DEFAULT_SINK@ 1
 
