@@ -52,3 +52,5 @@ volume() {
   pactl set-sink-mute @DEFAULT_SINK@ toggle
   pactl get-sink-mute @DEFAULT_SINK@ | sed -e 's/Mute: //'
 }
+
+true

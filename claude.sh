@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -o pipefail -ux
+set -eo pipefail -ux
 
 # packages
 

@@ -33,3 +33,5 @@ CAM=$(v4l2-ctl --list-devices | grep -m1 '/dev' | tr -d '\t')
 [[ -z ${1:-} || ${1:-} == 'preview' ]] && {
   ffplay -input_format mjpeg -video_size "$RES" -framerate 30 "$CAM" &> /dev/null
 }
+
+true
