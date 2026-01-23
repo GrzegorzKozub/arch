@@ -45,3 +45,7 @@ rm -f ~/.wget-hsts
 # zsh
 
 rm -f ~/.zshrc
+
+# root
+
+sudo find /root -mindepth 1 -delete
