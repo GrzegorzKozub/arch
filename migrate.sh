@@ -21,7 +21,7 @@ sudo sed -i '/231072/d' /etc/subgid /etc/subuid
 # laptop power saving
 
 [[ $HOST == 'drifter' ]] && {
-  rm -rf /etc/sysctl.d/dirty.conf /etc/modprobe.d/iwlwifi.conf
+  sudo rm -rf /etc/sysctl.d/dirty.conf /etc/modprobe.d/iwlwifi.conf
   sudo cp "${BASH_SOURCE%/*}"/etc/modprobe.d/laptop.conf /etc/modprobe.d
   sudo cp "${BASH_SOURCE%/*}"/etc/sysctl.d/80-laptop.conf /etc/sysctl.d
 }
