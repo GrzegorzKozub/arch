@@ -40,5 +40,4 @@ sudo systemctl enable auditd.service apparmor.service
 # cleanup
 
 `dirname $0`/packages.sh
-`dirname $0`/clean.sh
 
