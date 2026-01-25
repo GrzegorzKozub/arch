@@ -61,6 +61,13 @@ if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
 
 fi
 
+if [[ $MY_HOSTNAME = 'worker' ]]; then
+
+  sudo pacman -S --noconfirm \
+    noise-suppression-for-voice
+
+fi
+
 if [[ $MY_HOSTNAME = 'sacrifice' ]]; then
 
   # ucode
