@@ -63,7 +63,7 @@ pacstrap /mnt \
   lvm2 ntfs-3g \
   networkmanager avahi ufw wireless-regdb \
   usbutils bluez-utils v4l-utils \
-  pipewire pipewire-alsa pipewire-pulse wireplumber \
+  pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber \
   realtime-privileges \
   gst-plugins-good \
   xdg-desktop-portal xdg-utils \

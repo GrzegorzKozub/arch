@@ -42,6 +42,12 @@ sudo rm -rf /etc/udev/rules.d/*c922*.rules
 SOURCE="${BASH_SOURCE%/*}"/etc/udev/rules.d/90-webcam.$HOST.rules
 [[ -f $SOURCE ]] && sudo cp "$SOURCE" /etc/udev/rules.d/90-webcam.rules
 
+# jan 25th
+
+# jack
+
+yes | sudo pacman -S pipewire-jack
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
