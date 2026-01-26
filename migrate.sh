@@ -18,14 +18,6 @@ sudo sed -i '/231072/d' /etc/subgid /etc/subuid
 
 [[ $HOST == 'worker' ]] && "${BASH_SOURCE%/*}"/hosts.zsh
 
-# laptop power saving
-
-[[ $HOST == 'drifter' ]] && {
-  sudo rm -rf /etc/sysctl.d/dirty.conf /etc/modprobe.d/iwlwifi.conf
-  sudo cp "${BASH_SOURCE%/*}"/etc/modprobe.d/laptop.conf /etc/modprobe.d
-  sudo cp "${BASH_SOURCE%/*}"/etc/sysctl.d/80-laptop.conf /etc/sysctl.d
-}
-
 # limine
 
 sudo rm -f /etc/pacman.d/hooks/90-limine-update.hook
@@ -44,18 +36,18 @@ SOURCE="${BASH_SOURCE%/*}"/etc/udev/rules.d/90-webcam.$HOST.rules
 
 # jan 25th
 
-# jack
-
-set +e
-yes | sudo pacman -S pipewire-jack
-set -e
-
-# noise-suppression-for-voice
-
-[[ $HOST == 'worker' ]] && {
-  sudo pacman -S --noconfirm noise-suppression-for-voice
-  sudo cp "${BASH_SOURCE%/*}"/home/"$USER"/.config/pipewire/pipewire.conf.d/99-rnnoise.conf "$XDG_CONFIG_HOME"/pipewire/pipewire.conf.d
-}
+# # jack
+#
+# set +e
+# yes | sudo pacman -S pipewire-jack
+# set -e
+#
+# # noise-suppression-for-voice
+#
+# [[ $HOST == 'worker' ]] && {
+#   sudo pacman -S --noconfirm noise-suppression-for-voice
+#   sudo cp "${BASH_SOURCE%/*}"/home/"$USER"/.config/pipewire/pipewire.conf.d/99-rnnoise.conf "$XDG_CONFIG_HOME"/pipewire/pipewire.conf.d
+# }
 
 # cleanup
 
