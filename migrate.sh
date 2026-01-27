@@ -17,6 +17,10 @@ set -e
   cp "${BASH_SOURCE%/*}"/home/"$USER"/.config/pipewire/pipewire.conf.d/99-rnnoise.conf "$XDG_CONFIG_HOME"/pipewire/pipewire.conf.d
 }
 
+# wireplumber
+
+# ...
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
