@@ -12,7 +12,14 @@ set -e
 
 # wireplumber
 
-# ...
+if [[ -f "${BASH_SOURCE%/*}"/home/$USER/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]]; then
+
+  [[ -d $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d ]] || mkdir -p "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d
+  cp "${BASH_SOURCE%/*}"/home/"$USER"/.config/wireplumber/wireplumber.conf.d/"$HOST".conf "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d/audio.conf
+
+  systemctl --user restart wireplumber
+
+fi
 
 # cleanup
 

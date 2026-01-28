@@ -55,7 +55,7 @@ find() {
 
 [[ $HOST == 'worker' ]] && {
 
-  pactl set-default-sink $(find sink 'Starship/Matisse HD Audio Controller Analog Stereo')
+  pactl set-default-sink $(find sink 'Edifier M60 Analog Stereo')
 
   MIC=$(find source 'Wireless microphone Analog Stereo') # Hollyland Lark M2
 
