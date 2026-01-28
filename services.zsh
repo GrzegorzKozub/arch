@@ -121,11 +121,7 @@ fi
 # audio
 
 [[ -d $XDG_CONFIG_HOME/pipewire/pipewire.conf.d ]] || mkdir -p $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
-
 cp `dirname $0`/home/$USER/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
-
-[[ $HOST == 'worker' ]] &&
-  cp `dirname $0`/home/$USER/.config/pipewire/pipewire.conf.d/99-rnnoise.conf $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
 
 # if [[ -f `dirname $0`/home/$USER/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]]; then
 #

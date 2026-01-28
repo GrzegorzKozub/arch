@@ -10,13 +10,6 @@ set +e
 yes | sudo pacman -S pipewire-jack
 set -e
 
-# noise-suppression-for-voice
-
-[[ $HOST == 'worker' ]] && {
-  sudo pacman -S --noconfirm noise-suppression-for-voice
-  cp "${BASH_SOURCE%/*}"/home/"$USER"/.config/pipewire/pipewire.conf.d/99-rnnoise.conf "$XDG_CONFIG_HOME"/pipewire/pipewire.conf.d
-}
-
 # wireplumber
 
 # ...
