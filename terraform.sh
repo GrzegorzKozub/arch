@@ -5,3 +5,11 @@ set -eo pipefail -ux
 
 sudo pacman -S --noconfirm \
   terraform
+
+# cleanup
+
+"${BASH_SOURCE%/*}"/packages.sh
+
+# dotfiles
+
+~/code/dot/terraform.sh
