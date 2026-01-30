@@ -67,7 +67,7 @@ rm -rf ~/Desktop/steam.desktop
 sudo pacman -S --noconfirm \
   gamemode
 
-sudo usermod -a -G gamemode $(whoami)
+sudo usermod -aG gamemode $USER
 
 # mangohud
 
