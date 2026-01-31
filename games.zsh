@@ -16,7 +16,7 @@ MOUNT=/run/media/$USER/games
 
 [[ -d $MOUNT ]] || {
   sudo mkdir -p $MOUNT
-  sudo chown $USER $MOUNT
+  sudo chown "$USER" $MOUNT
   sudo chgrp users $MOUNT
 }
 
@@ -67,7 +67,7 @@ rm -rf ~/Desktop/steam.desktop
 sudo pacman -S --noconfirm \
   gamemode
 
-sudo usermod -aG gamemode $USER
+sudo usermod -aG gamemode "$USER"
 
 # mangohud
 

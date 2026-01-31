@@ -1,49 +1,33 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# in progress: https://github.com/peteonrails/voxtype/tree/main/docs
-
 # packages
 
 paru -S --aur --noconfirm \
   voxtype-bin
 
-# config
+# type mode
 
-voxtype setup --download
+sudo usermod -aG input "$USER"
 
-# real time keyboard
+cargo install eitype # https://github.com/Adam-D-Lewis/eitype
 
-paru -S --aur --noconfirm \
-  dotool
-sudo usermod -aG input $USER
-echo "uinput" | sudo tee /etc/modules-load.d/uinput.conf
-
-# gpu acceleration
-
-# sudo pacman -S --noconfirm \
-#   cuda
+# paru -S --aur --noconfirm \
+#   dotool
 #
-# sudo voxtype setup gpu --enable
+# sudo cp "${BASH_SOURCE%/*}"/etc/modules-load.d/uinput.conf /etc/modules-load.d
 
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
 
-# For GPU acceleration, run:
-#   sudo voxtype setup gpu --enable
-# Parakeet: requires cuda package
-#
-# 1. Add your user to the 'input' group:
-#    sudo usermod -aG input $USER
-#
-# 2. Log out and back in for group changes to take effect
-#
-# 3. Download a model (Whisper or Parakeet):
-#    voxtype setup model
-#
-# 4. Start voxtype:
-#    systemctl --user enable --now voxtype
-#
-# Optional: Switch to Parakeet engine (faster, lower memory):
-#    voxtype setup parakeet --enable
+# dotfiles
+
+~/code/dot/voxtype.sh
+
+# config
+
+sudo voxtype setup gpu --enable
+
+voxtype setup --download
+voxtype setup systemd

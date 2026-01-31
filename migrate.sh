@@ -21,6 +21,10 @@ if [[ -f "${BASH_SOURCE%/*}"/home/$USER/.config/wireplumber/wireplumber.conf.d/$
 
 fi
 
+# xorg
+
+rm -rf ~/.local/share/Xorg
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
