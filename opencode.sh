@@ -3,10 +3,8 @@ set -eo pipefail -ux
 
 # packages
 
-curl -fsSL https://claude.ai/install.sh | bash
-
-sudo pacman -S --noconfirm \
-  socat
+paru -S --aur --noconfirm \
+  opencode-bin
 
 # cleanup
 
@@ -14,4 +12,4 @@ sudo pacman -S --noconfirm \
 
 # dotfiles
 
-~/code/dot/claude.sh
+~/code/dot/opencode.sh
