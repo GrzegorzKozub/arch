@@ -13,3 +13,7 @@ paru -S --aur --noconfirm \
 # dotfiles
 
 ~/code/dot/lmstudio.sh
+
+# daemon (after dotfiles)
+
+curl -fsSL https://lmstudio.ai/install.sh | bash
