@@ -23,7 +23,7 @@ fi
 
 # xorg
 
-rm -rf ~/.local/share/Xorg
+rm -rf ~/.local/share/xorg
 
 # cleanup
 
