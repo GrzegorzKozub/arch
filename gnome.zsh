@@ -89,7 +89,7 @@ for NAME ('windows')
 
 pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 
-for NAME ('blur-my-shell@aunetx' 'rounded-window-corners@fxgn' 'windows@grzegorzkozub.github.com')
+for NAME ('appindicatorsupport@rgcjonas.gmail.com' 'blur-my-shell@aunetx' 'rounded-window-corners@fxgn' 'windows@grzegorzkozub.github.com')
   gnome-extensions enable $NAME || FRESH=true
 
   # 'appindicatorsupport@rgcjonas.gmail.com',
@@ -97,6 +97,7 @@ for NAME ('blur-my-shell@aunetx' 'rounded-window-corners@fxgn' 'windows@grzegorz
 
 [[ $FRESH == true ]] &&
   gsettings set org.gnome.shell enabled-extensions "[
+    'appindicatorsupport@rgcjonas.gmail.com',
     'blur-my-shell@aunetx',
     'rounded-window-corners@fxgn',
     'windows@grzegorzkozub.github.com'
