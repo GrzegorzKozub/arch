@@ -48,6 +48,7 @@ export default class Windows extends Extension {
         exceptTitle: /^Welcome to IntelliJ IDEA$/,
         auto: true,
       },
+      { class: /^LM Studio$/, auto: true },
       { class: /^com.obsproject.Studio$/ },
       { class: /^com.github.PintaProject.Pinta$/ },
       { class: /^Postman$/, auto: true },
