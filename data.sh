@@ -11,6 +11,7 @@ create() {
 }
 
 create '.cache'
+create '.data'
 create '.secrets'
 create 'music'
 create 'vm'
