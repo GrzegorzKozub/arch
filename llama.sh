@@ -9,7 +9,7 @@ DIR=/tmp/llama
 git clone git@github.com:GrzegorzKozub/llama.cpp-vulkan-bin.git $DIR
 
 pushd $DIR
-makepkg --force --install --noconfirm
+makepkg --force --install --noconfirm --syncdeps
 popd
 
 rm -rf $DIR

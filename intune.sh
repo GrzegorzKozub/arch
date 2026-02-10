@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # packages
 
@@ -9,11 +8,10 @@ DIR=/tmp/intune
 
 git clone git@github.com:GrzegorzKozub/intune.git $DIR
 
-$DIR/install.zsh
+$DIR/install.sh
 
 rm -rf $DIR
 
 # cleanup
 
-`dirname $0`/packages.sh
-
+"${BASH_SOURCE%/*}"/packages.sh
