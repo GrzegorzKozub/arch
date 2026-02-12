@@ -8,7 +8,7 @@ if [[ $HOST == 'worker' ]]; then
 
   `dirname $0`/ansible.zsh
   `dirname $0`/aws.zsh
-  `dirname $0`/dotnet.zsh
+  `dirname $0`/dotnet.sh
   `dirname $0`/java.zsh
 
 fi

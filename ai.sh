@@ -6,6 +6,7 @@ set -eo pipefail -ux
 
 llama-server \
   --ctx-size 32768 \
+  --fit on \
   --flash-attn on \
   --gpu-layers all \
   --n-cpu-moe 0 \
@@ -17,3 +18,4 @@ llama-server \
   # unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF:Q4_K_M
   # unsloth/GLM-4.6V-Flash-GGUF:Q4_K_M
   # unsloth/GLM-4.7-Flash-GGUF:Q4_K_M
+  # unsloth/Qwen3-Coder-Next-GGUF:Q4_K_M
