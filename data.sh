@@ -10,6 +10,7 @@ create() {
   sudo chgrp users "$dir"
 }
 
+create ".Trash-$(id -u)"
 create '.cache'
 create '.data'
 create '.secrets'
