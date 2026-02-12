@@ -13,7 +13,7 @@ paru -S --aur --noconfirm \
 # config
 
 WORK=/tmp/archiso
-ARCHISO=`dirname $0`/archiso
+ARCHISO=~/Downloads/archiso
 
 PROFILE=$ARCHISO/profile
 UUID=1234-5678 # archisosearchuuid
