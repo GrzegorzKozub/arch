@@ -8,9 +8,15 @@ set -eo pipefail -ux
 
 "${BASH_SOURCE%/*}"/data.sh
 
-# ai
+# llama
 
 "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan.sh
+
+CACHE=/run/media/$USER/data/.cache
+
+[[ -d $CACHE/llama.cpp ]] || mkdir "$CACHE"/llama.cpp
+[[ -e $XDG_CACHE_HOME/llama.cpp ]] && rm -rf "$XDG_CACHE_HOME"/llama.cpp
+ln -s "$CACHE"/llama.cpp "$XDG_CACHE_HOME"/llama.cpp
 
 # cleanup
 
