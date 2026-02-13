@@ -1,7 +1,9 @@
 pkg/**/pkg
 pkg/**/src
+
 pkg/**/*.deb
 pkg/**/*.gz
+pkg/**/*.part
 pkg/**/*.tar
 
 node_modules
