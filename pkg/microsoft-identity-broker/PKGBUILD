@@ -1,0 +1,18 @@
+# shellcheck shell=bash disable=SC2034,SC2154
+
+pkgname=microsoft-identity-broker
+pkgver=2.0.3
+pkgrel=1
+pkgdesc='Microsoft Identity Broker'
+arch=(x86_64)
+url=https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/microsoft-identity-broker
+depends=(dbus gnome-keyring opensc openssl systemd)
+install="$pkgname".install
+source=("source.deb::$url/${pkgname}_${pkgver}_amd64.deb")
+sha256sums=(be8acf7f9a6f34b001c27b620dd7c34a2b9b8358db1da28afe8d1f1646d9d34d)
+
+package() {
+  ar x source.deb
+  tar xzf data.tar.gz
+  cp -r "$srcdir"/usr "$pkgdir"/
+}

@@ -171,6 +171,10 @@ paru -S --aur --noconfirm \
   fnm-bin \
   shellcheck-bin
 
+# ai
+
+`dirname $0`/pkg/llama-cpp-vulkan.sh
+
 # apps
 
 sudo pacman -S --noconfirm \

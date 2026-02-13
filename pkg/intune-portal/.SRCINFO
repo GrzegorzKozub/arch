@@ -1,0 +1,21 @@
+pkgbase = intune-portal
+	pkgdesc = Intune Portal
+	pkgver = 1.2511.7
+	pkgrel = 1
+	url = https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/intune-portal
+	install = intune-portal.install
+	arch = x86_64
+	depends = dbus
+	depends = gnome-keyring
+	depends = libsecret
+	depends = microsoft-identity-broker
+	depends = opensc
+	depends = openssl
+	depends = systemd
+	depends = webkit2gtk-4.1
+	source = source.deb::https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/intune-portal/intune-portal_1.2511.7-noble_amd64.deb
+	source = os-release
+	sha256sums = 307bc09a47a6c76f1935c565a05371274dd86f1ae054fbc1ece38c611e8eca8f
+	sha256sums = 66bac031d7251861f0f4d878a2c38f103510a74ee6435674594c67fac58ea31b
+
+pkgname = intune-portal

@@ -3,14 +3,20 @@ set -eo pipefail -ux
 
 # packages
 
-DIR=/tmp/intune
-[[ -d $DIR ]] && rm -rf $DIR
+"${BASH_SOURCE%/*}"/pkg/microsoft-identity-broker.sh
+"${BASH_SOURCE%/*}"/pkg/intune-portal.sh
 
-git clone git@github.com:GrzegorzKozub/intune.git $DIR
+# services
 
-$DIR/install.sh
+systemctl --user enable --now intune-agent.timer
 
-rm -rf $DIR
+# links
+
+cp /usr/share/applications/intune-portal.desktop "$XDG_DATA_HOME"/applications
+sed -i \
+  -e 's/^Name=Microsoft Intune$/Name=Intune/' \
+  -e 's/^Exec=env /Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 /' \
+  "$XDG_DATA_HOME"/applications/intune-portal.desktop
 
 # cleanup
 

@@ -8,6 +8,10 @@ set -eo pipefail -ux
 
 "${BASH_SOURCE%/*}"/data.sh
 
+# ai
+
+"${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan.sh
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh

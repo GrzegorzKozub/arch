@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -eo pipefail -ux
+
+post_install() {
+  systemctl daemon-reload
+  systemctl enable --now intune-daemon.socket
+  systemctl restart polkit.service
+  echo '>>> Run: systemctl --user enable --now intune-agent.timer'
+  # [[ -f /etc/os-release.original ]] || cp /etc/os-release /etc/os-release.original
+  # cp /opt/microsoft/intune/share/os-release /etc/os-release
+}
+
+post_upgrade() {
+  systemctl restart polkit.service
+}
+
+pre_remove() {
+  systemctl disable --now intune-daemon.socket
+}
+
+post_remove() {
+  systemctl daemon-reload
+  # [[ -f /etc/os-release.original ]] && mv /etc/os-release.original /etc/os-release
+}

@@ -1,0 +1,35 @@
+# shellcheck shell=bash disable=SC2034,SC2154
+
+pkgname=intune-portal
+pkgver=1.2511.7
+pkgrel=1
+pkgdesc='Intune Portal'
+arch=(x86_64)
+url=https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/intune-portal
+depends=(
+  dbus
+  gnome-keyring
+  libsecret
+  microsoft-identity-broker
+  opensc
+  openssl
+  systemd
+  webkit2gtk-4.1
+)
+install="$pkgname".install
+source=(
+  "source.deb::$url/${pkgname}_$pkgver-noble_amd64.deb"
+  os-release
+)
+sha256sums=(
+  307bc09a47a6c76f1935c565a05371274dd86f1ae054fbc1ece38c611e8eca8f
+  66bac031d7251861f0f4d878a2c38f103510a74ee6435674594c67fac58ea31b
+)
+
+package() {
+  ar x source.deb
+  tar xJf data.tar.xz
+  cp -r "$srcdir"/usr "$srcdir"/opt "$pkgdir"/
+  cp -r "$srcdir"/lib "$pkgdir"/usr/
+  cp os-release "$pkgdir"/opt/microsoft/intune/share/
+}

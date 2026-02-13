@@ -1,2 +1,10 @@
-node_modules/
+pkg/**/pkg
+pkg/**/src
+pkg/**/*.deb
+pkg/**/*.gz
+pkg/**/*.tar
+
+node_modules
+
 fetch.env
+

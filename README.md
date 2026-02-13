@@ -157,7 +157,7 @@ To enable Wayland on NVIDIA
 
 ### XDG Desktop Portal
 
-XDP implementations conflict each other so only one should be installed at the same time:
+XDP implementations conflict each other so only one should be installed at the same time
 
 - GNOME - `xdg-desktop-portal-gnome` and `xdg-desktop-portal-gtk`
 - KDE - `xdg-desktop-portal-kde`
@@ -167,7 +167,7 @@ XDP implementations conflict each other so only one should be installed at the s
 
 Monitors were calibrated as described in the [toys](https://github.com/GrzegorzKozub/toys) repo. Color profiles are loaded using `colord` via `settings.zsh`.
 
-To test if a profile is loaded use this `dispwin` command from `argyllcms` package:
+To test if a profile is loaded use this `dispwin` command from `argyllcms` package
 
 ```zsh
 dispwin -d1 -V ~/code/arch/home/greg/.local/share/icc/mpg321urx.icm
@@ -175,7 +175,7 @@ dispwin -d1 -V ~/code/arch/home/greg/.local/share/icc/mpg321urx.icm
 
 ## Fonts
 
-Comfortable settings for display scale on Wayland given the screen size and resolution:
+Comfortable settings for display scale on Wayland given the screen size and resolution
 
 - drifter: 300%
 - player & worker: 200%
@@ -184,7 +184,7 @@ Font scaling factor is always at 1.
 
 The aim is to standardize on the font size of `1em` or `12pt` or `16px` ([converter](https://simplecss.eu/pxtoems.html)) and achieve about 50 lines (or 40 lines on drifter) of full screen text in terminal and code editors.
 
-Current settings:
+Current settings
 
 - Ghostty & Kitty: `12pt` (or `1em` or `16px`)
 - Brave, Code, Obsidian, Postman, Zed: `16px` (or `1em` or `12pt`)
@@ -197,6 +197,19 @@ Install `mutter-devkit` and run `dbus-run-session -- gnome-shell --devkit` to te
 
 - [GJS](https://gjs.guide/)
 - [GNOME JavaScript Docs](https://gjs-docs.gnome.org/)
+
+## Intune
+
+Based on [Intune for Arch Linux](https://git.recolic.net/root/microsoft-intune-archlinux) and these AUR packages
+
+- [microsoft-identity-broker-bin](https://aur.archlinux.org/packages/microsoft-identity-broker-bin) ([sources](https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/microsoft-identity-broker/))
+- [intune-portal-bin](https://aur.archlinux.org/packages/intune-portal-bin) ([sources](https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/intune-portal/))
+
+Known issues
+
+- [libgobject-2.0.so.0 coredump](https://git.recolic.net/root/microsoft-intune-archlinux/-/issues/3)
+
+Use Entra SSO with Brave via [linux-entra-sso](https://github.com/siemens/linux-entra-sso)
 
 ## Windows VM
 

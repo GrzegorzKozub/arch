@@ -1,0 +1,27 @@
+# shellcheck shell=bash disable=SC2034,SC2154
+
+pkgname=llama-cpp-vulkan
+pkgver=b7981
+pkgrel=1
+pkgdesc='LLM inference in C/C++'
+arch=(x86_64)
+url=https://github.com/ggerganov/llama.cpp
+depends=()
+makedepends=(curl jq)
+sha256sums=(SKIP)
+
+pkgver() {
+  curl -sL https://api.github.com/repos/ggerganov/llama.cpp/releases/latest |
+    jq -r '.tag_name'
+}
+
+source=("$url"/releases/download/"$(pkgver)"/llama-"$(pkgver)"-bin-ubuntu-vulkan-x64.tar.gz)
+
+package() {
+  install -dm755 "$pkgdir"/opt/llama.cpp
+  cp -a "$srcdir"/llama-"$pkgver"/* "$pkgdir"/opt/llama.cpp
+  install -dm755 "$pkgdir"/usr/bin
+  for BIN in "$pkgdir"/opt/llama.cpp/{llama,rpc}-*; do
+    ln -s /opt/llama.cpp/"$(basename "$BIN")" "$pkgdir"/usr/bin/"$(basename "$BIN")"
+  done
+}

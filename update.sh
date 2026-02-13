@@ -18,6 +18,8 @@ paru -S --aur --noconfirm \
 
 set -e
 
+"${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan.sh
+
 # merge *.pacnew and *.pacsave files
 
 sudo DIFFPROG='nvim -d' pacdiff
