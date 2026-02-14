@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # dynamodb
 
@@ -22,4 +21,3 @@ else
     localstack/localstack
 
 fi
-
