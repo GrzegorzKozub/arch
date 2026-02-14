@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # packages
 
@@ -9,11 +8,11 @@ paru -S --aur --noconfirm \
 
 # links
 
-cp /usr/share/applications/drawio-desktop.desktop $XDG_DATA_HOME/applications
+cp /usr/share/applications/drawio-desktop.desktop "$XDG_DATA_HOME"/applications
 sed -i \
   -e 's/^Name=.*/Name=draw.io/' \
   -e 's/\/opt\/drawio-desktop\/drawio/\/opt\/drawio-desktop\/drawio --ozone-platform-hint=auto/' \
-  $XDG_DATA_HOME/applications/drawio-desktop.desktop
+  "$XDG_DATA_HOME"/applications/drawio-desktop.desktop
 
 # default apps
 
@@ -21,4 +20,4 @@ xdg-mime default draw.io.desktop application/vnd.jgraph.mxfile
 
 # cleanup
 
-`dirname $0`/packages.sh
+"${BASH_SOURCE%/*}"/packages.sh
