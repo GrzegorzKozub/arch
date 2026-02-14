@@ -16,7 +16,7 @@ fi
 # apps
 
 [[ $HOST == 'worker' ]] && `dirname $0`/postman.zsh
-[[ $HOST =~ ^(drifter|worker)$ ]] && `dirname $0`/teams.zsh
+[[ $HOST =~ ^(drifter|worker)$ ]] && `dirname $0`/teams.sh
 
 # hidden links
 
