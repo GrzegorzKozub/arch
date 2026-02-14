@@ -111,7 +111,7 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   # nvidia overclocking
 
-  cp `dirname $0`/home/$USER/.config/systemd/user/nvidia.service $XDG_CONFIG_HOME/systemd/user
+  cp `dirname $0`/home/.config/systemd/user/nvidia.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable nvidia.service
 
   sudo systemctl enable nvidia-persistenced.service
@@ -121,12 +121,12 @@ fi
 # audio
 
 [[ -d $XDG_CONFIG_HOME/pipewire/pipewire.conf.d ]] || mkdir -p $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
-cp `dirname $0`/home/$USER/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
+cp `dirname $0`/home/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
 
-if [[ -f `dirname $0`/home/$USER/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]]; then
+if [[ -f `dirname $0`/home/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]]; then
 
   [[ -d $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d ]] || mkdir -p $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d
-  cp `dirname $0`/home/$USER/.config/wireplumber/wireplumber.conf.d/$HOST.conf $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d/audio.conf
+  cp `dirname $0`/home/.config/wireplumber/wireplumber.conf.d/$HOST.conf $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d/audio.conf
 
 fi
 
@@ -134,30 +134,30 @@ systemctl --user enable pipewire-pulse.service
 
 # performance optimization
 
-cp `dirname $0`/home/$USER/.config/systemd/user/perf.service $XDG_CONFIG_HOME/systemd/user
+cp `dirname $0`/home/.config/systemd/user/perf.service $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable perf.service
 
 # sync
 
-cp `dirname $0`/home/$USER/.config/systemd/user/sync-* $XDG_CONFIG_HOME/systemd/user
+cp `dirname $0`/home/.config/systemd/user/sync-* $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable sync-periodic.timer
 systemctl --user enable sync-session.service
 
 # fetch cache refresh
 
-cp `dirname $0`/home/$USER/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
+cp `dirname $0`/home/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable fetch.service
 
 # random wallpaper every hour
 
-cp `dirname $0`/home/$USER/.config/systemd/user/wall.* $XDG_CONFIG_HOME/systemd/user
+cp `dirname $0`/home/.config/systemd/user/wall.* $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable wall.timer
 
 # do not disturb
 
 if [[ $XDG_CURRENT_DESKTOP == 'GNOME' ]]; then
 
-  cp `dirname $0`/home/$USER/.config/systemd/user/dnd.service $XDG_CONFIG_HOME/systemd/user
+  cp `dirname $0`/home/.config/systemd/user/dnd.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable dnd.service
 
 fi
@@ -165,7 +165,7 @@ fi
 # fonts
 
 [[ -d $XDG_CONFIG_HOME/fontconfig ]] || mkdir -p $XDG_CONFIG_HOME/fontconfig
-cp `dirname $0`/home/$USER/.config/fontconfig/fonts.conf $XDG_CONFIG_HOME/fontconfig
+cp `dirname $0`/home/.config/fontconfig/fonts.conf $XDG_CONFIG_HOME/fontconfig
 fc-cache -f
 
 # group check

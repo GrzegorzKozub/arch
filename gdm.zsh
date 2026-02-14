@@ -62,7 +62,7 @@ sudo dconf update
 # https://bbs.archlinux.org/viewtopic.php?id=308479
 # https://github.com/gdm-settings/gdm-settings/issues/285
 
-# SOURCE=`dirname $0`/home/$USER/.config/monitors.$HOST.xml
+# SOURCE=`dirname $0`/home/.config/monitors.$HOST.xml
 # TARGET=/var/lib/gdm/seat0/config/monitors.xml
 #
 # [[ -f $SOURCE ]] &&

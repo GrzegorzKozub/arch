@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e -o verbose
+set -eo pipefail -ux
 
 create() {
   local dir=/run/media/"$USER"/data/"$1"

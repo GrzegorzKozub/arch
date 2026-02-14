@@ -19,7 +19,7 @@ add_color_profile() {
     (exit 1)
     while [[ ! $? = 0 ]]; do
       PROFILE=$(
-        colormgr import-profile `dirname $0`/home/$USER/.local/share/icc/$1.icm |
+        colormgr import-profile `dirname $0`/home/.local/share/icc/$1.icm |
           grep 'Profile ID' | sed -e 's/Profile ID:    //')
     done
   fi

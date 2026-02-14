@@ -24,7 +24,7 @@ if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 
 fi
 
-SOURCE=`dirname $0`/home/$USER/.config/monitors.$HOST.xml
+SOURCE=`dirname $0`/home/.config/monitors.$HOST.xml
 TARGET=$XDG_CONFIG_HOME/monitors.xml
 
 [[ -f $SOURCE ]] && cp $SOURCE $TARGET
@@ -85,7 +85,7 @@ DIR=$XDG_DATA_HOME/gnome-shell/extensions
 [[ -d $DIR ]] || mkdir -p $DIR
 
 for NAME ('windows')
-  cp -r `dirname $0`/home/$USER/.local/share/gnome-shell/extensions/$NAME@grzegorzkozub.github.com $DIR
+  cp -r `dirname $0`/home/.local/share/gnome-shell/extensions/$NAME@grzegorzkozub.github.com $DIR
 
 pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 

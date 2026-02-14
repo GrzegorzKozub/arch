@@ -18,6 +18,10 @@ CACHE=/run/media/$USER/data/.cache
 [[ -e $XDG_CACHE_HOME/llama.cpp ]] && rm -rf "$XDG_CACHE_HOME"/llama.cpp
 ln -s "$CACHE"/llama.cpp "$XDG_CACHE_HOME"/llama.cpp
 
+# docker
+
+sudo rm -rf /opt/containerd
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
