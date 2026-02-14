@@ -4,14 +4,24 @@ set -eo pipefail -ux
 # https://github.com/ggml-org/llama.cpp/discussions/14758
 # https://github.com/ggml-org/llama.cpp/discussions/15396
 
+export LLAMA_ARG_CTX_SIZE=32768
+export LLAMA_ARG_FLASH_ATTN=on
+export LLAMA_ARG_N_CPU_MOE=22
+export LLAMA_ARG_MLOCK=on
+export LLAMA_ARG_N_GPU_LAYERS=all
+
 llama-server \
-  --ctx-size 32768 \
-  --fit on \
-  --flash-attn on \
-  --gpu-layers all \
-  --n-cpu-moe 0 \
-  --no-kv-offload \
-  -hf Qwen/Qwen3-8B-GGUF:Q4_K_M
+  --hf-repo unsloth/Qwen3-Coder-Next-GGUF:Q4_K_M
+# llama-server \
+#   --ctx-size 32768 \
+#   --flash-attn on \
+#   --n-cpu-moe 22 \
+#   --mlock \
+#   --hf-repo unsloth/Qwen3-Coder-Next-GGUF:Q4_K_M
+
+  # -hf Qwen/Qwen3-8B-GGUF:Q4_K_M
+
+  # --gpu-layers all \
 
   # Qwen/Qwen3-8B-GGUF:Q4_K_M
   # ggml-org/gpt-oss-20b-GGUF
