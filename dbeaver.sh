@@ -16,7 +16,7 @@ CFG=/usr/share/dbeaver/dbeaver.ini
 OPT=-Dosgi.configuration.area
 
 grep -q $OPT $CFG || {
-  echo "$OPT=@user.home/.local/share/DBeaver" | sudo tee --append $CFG > /dev/null
+  echo $OPT=@user.home/.local/share/DBeaver | sudo tee --append $CFG > /dev/null
 }
 
 # links
