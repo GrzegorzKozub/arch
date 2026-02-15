@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # packages
 
@@ -13,9 +12,8 @@ sudo archlinux-java set java-21-openjdk
 
 # cleanup
 
-`dirname $0`/packages.sh
+"${BASH_SOURCE%/*}"/packages.sh
 
 # dotfiles
 
-~/code/dot/java.zsh
-
+~/code/dot/java.sh
