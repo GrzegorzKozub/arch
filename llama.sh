@@ -4,14 +4,16 @@ set -eo pipefail -ux
 # https://github.com/ggml-org/llama.cpp/discussions/14758
 # https://github.com/ggml-org/llama.cpp/discussions/15396
 
-export LLAMA_ARG_CTX_SIZE=32768
+# export LLAMA_ARG_CTX_SIZE=32768
+export LLAMA_ARG_CTX_SIZE=65536
 export LLAMA_ARG_FLASH_ATTN=on
 export LLAMA_ARG_N_CPU_MOE=22
 export LLAMA_ARG_MLOCK=on
 export LLAMA_ARG_N_GPU_LAYERS=all
 
 llama-server \
-  --hf-repo unsloth/Qwen3-Coder-Next-GGUF:Q4_K_M
+  -hf unsloth/GLM-4.7-Flash-GGUF:Q4_K_M
+  # --hf-repo unsloth/Qwen3-Coder-Next-GGUF:Q4_K_M
 # llama-server \
 #   --ctx-size 32768 \
 #   --flash-attn on \

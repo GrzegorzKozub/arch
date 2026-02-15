@@ -18,7 +18,3 @@ sed -i \
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
-
-# dotfiles
-
-~/code/dot/obs.sh
