@@ -23,7 +23,9 @@ FREE=$(df --human-readable $DISK --output=avail | grep -v Avail | sed -E 's/ |G/
 
 rclone sync \
   --exclude '.cache/**' \
+  --exclude '.data/**' \
   --exclude '.secrets/**' \
+  --exclude ".Trash-$(id -u)" \
   --exclude 'boot/**' \
   --exclude 'lost+found/**' \
   --modify-window 100ns \
