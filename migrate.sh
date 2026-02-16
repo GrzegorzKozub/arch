@@ -4,27 +4,14 @@ set -eo pipefail -ux
 # claude code sandbox bug: https://github.com/anthropics/claude-code/issues/17087
 # shutdown bug: https://bbs.archlinux.org/viewtopic.php?pid=2278862
 
-# data
+# teams
 
-"${BASH_SOURCE%/*}"/data.sh
-
-# llama
-
-if [[ $HOST =~ ^(player|worker)$ ]]; then
-
-  "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan.sh
-
-  CACHE=/run/media/$USER/data/.cache
-
-  [[ -d $CACHE/llama.cpp ]] || mkdir "$CACHE"/llama.cpp
-  [[ -e $XDG_CACHE_HOME/llama.cpp ]] && rm -rf "$XDG_CACHE_HOME"/llama.cpp
-  ln -s "$CACHE"/llama.cpp "$XDG_CACHE_HOME"/llama.cpp
-
-fi
-
-# docker
-
-sudo rm -rf /opt/containerd
+cp /usr/share/applications/teams-for-linux.desktop "$XDG_DATA_HOME"/applications
+sed -i \
+  -e 's/^Name=.*/Name=Teams/' \
+  -e '/^Exec=/s/--gtk-version=3 //' \
+  -e '/^Exec=/s/teams-for-linux/teams-for-linux --ozone-platform-hint=auto/' \
+  "$XDG_DATA_HOME"/applications/teams-for-linux.desktop
 
 # cleanup
 
