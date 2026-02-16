@@ -10,13 +10,17 @@ set -eo pipefail -ux
 
 # llama
 
-"${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan.sh
+if [[ $HOST =~ ^(player|worker)$ ]]; then
 
-CACHE=/run/media/$USER/data/.cache
+  "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan.sh
 
-[[ -d $CACHE/llama.cpp ]] || mkdir "$CACHE"/llama.cpp
-[[ -e $XDG_CACHE_HOME/llama.cpp ]] && rm -rf "$XDG_CACHE_HOME"/llama.cpp
-ln -s "$CACHE"/llama.cpp "$XDG_CACHE_HOME"/llama.cpp
+  CACHE=/run/media/$USER/data/.cache
+
+  [[ -d $CACHE/llama.cpp ]] || mkdir "$CACHE"/llama.cpp
+  [[ -e $XDG_CACHE_HOME/llama.cpp ]] && rm -rf "$XDG_CACHE_HOME"/llama.cpp
+  ln -s "$CACHE"/llama.cpp "$XDG_CACHE_HOME"/llama.cpp
+
+fi
 
 # docker
 
