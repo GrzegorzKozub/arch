@@ -13,6 +13,10 @@ sed -i \
   -e '/^Exec=/s/teams-for-linux/teams-for-linux --ozone-platform-hint=auto/' \
   "$XDG_DATA_HOME"/applications/teams-for-linux.desktop
 
+# tidal
+
+paru -S --aur --noconfirm tidal-hifi-bin
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh

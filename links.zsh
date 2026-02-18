@@ -55,6 +55,14 @@ do
     $XDG_DATA_HOME/applications/$APP.desktop
 done
 
+# tidal
+
+  cp /usr/share/applications/tidal-hifi.desktop $XDG_DATA_HOME/applications
+  sed -i \
+    -e 's/^Exec=.*$/Exec=tidal-hifi %U/' \
+    -e 's/^Name=.*$/Name=TIDAL/' \
+    $XDG_DATA_HOME/applications/tidal-hifi.desktop
+
 # vscode
 
 for APP in \

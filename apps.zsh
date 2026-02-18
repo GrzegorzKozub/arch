@@ -189,6 +189,7 @@ sudo pacman -S --noconfirm \
 
 paru -S --aur --noconfirm \
   brave-bin \
+  tidal-hifi-bin \
   visual-studio-code-bin
 
 # settings
