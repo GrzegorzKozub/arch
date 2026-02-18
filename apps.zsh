@@ -173,11 +173,7 @@ paru -S --aur --noconfirm \
 
 # ai
 
-if [[ $HOST =~ ^(player|worker)$ ]]; then
-
-  `dirname $0`/pkg/llama-cpp-vulkan.sh
-
-fi
+[[ $HOST =~ ^(player|worker)$ ]] && `dirname $0`/pkg/llama-cpp-vulkan.sh
 
 # apps
 
