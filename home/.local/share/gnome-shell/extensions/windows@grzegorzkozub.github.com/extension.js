@@ -69,7 +69,7 @@ export default class Windows extends Extension {
       { class: /^org.gnome.Papers$/ },
       { title: /.?Steam$/ },
       { class: /^teams-for-linux$/, auto: true },
-      { class: /^tidal-hifi$/ },
+      { class: /^tidal-hifi$/, auto: true },
     ];
     const small = [
       // { title: /^Open/ }, // file pickers
