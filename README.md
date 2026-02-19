@@ -75,29 +75,31 @@ Automated Arch Linux installation
   - Import KeePassXC extension settings from `~/code/dot/keepassxc-browser.json`
   - Connect KeePassXC databases
   - Sign in into your sites and setup passkeys
-4. Visual Studio Code
+4. Tidal
+  - Sign in
+5. Visual Studio Code
   - Sign in: GitHub
   - Pick LLM
   - Hide recommended extensions
-5. Zed
+6. Zed
   - Sign in: Zed, collab panel
   - Configure LLM providers: Zed, Anthropic, GitHub Copilot Chat, Google AI, OpenAI
   - Configure edit predictions
-6. Postman (work)
+7. Postman (work)
   - Sign in
   - Change font family to `Cascadia Code`
   - Change font size to `16`
   - Change indentation count to `2`
   - Don't send anonymous usage data
-7. Teams (work)
+8. Teams (work)
   - Follow operating system theme
   - Switch to compact chat message density
   - Disable notification display
   - Disable all apps
-8. Intune (work)
+9. Intune (work)
   - Sign in
   - Register device
-9. Edge (work)
+10. Edge (work)
   - Disable everything during the first launch wizard
   - Switch to international edition and disable everything on new tab page
   - Name your profile or sign in
@@ -123,7 +125,7 @@ Automated Arch Linux installation
   - Switch to Microsoft Editor under Writing assistance
   - Disable startup boost
   - Don't continue running background extensions and apps when Edge is closed
-10. Fix window sizes and positions
+11. Fix window sizes and positions
 
 ## New disk
 
