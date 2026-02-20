@@ -16,8 +16,8 @@ sed -i \
 
 [[ "$XDG_CURRENT_DESKTOP" == 'GNOME' ]] && {
   FAVS=$(gsettings get org.gnome.shell favorite-apps)
-  [[ $(echo "$FAVS" | grep 'teams-for-linux.desktop') ]] || {
-    FAVS=$(echo "$FAVS" | sed "s/'brave-browser.desktop'/'brave-browser.desktop', 'teams-for-linux.desktop'/")
+  echo "$FAVS" | grep -q 'teams-for-linux.desktop' || {
+    FAVS=${FAVS/"'brave-browser.desktop'"/"'brave-browser.desktop', 'teams-for-linux.desktop'"}
     gsettings set org.gnome.shell favorite-apps "$FAVS"
   }
 }

@@ -1,13 +1,12 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # partition lookup
 
 [[ $HOST == 'player' ]] && UUID='59881a75-9eac-482a-bcbf-94ce252d9f6b'
 [[ $HOST == 'worker' ]] && UUID='1fbc6b00-f28c-476a-9319-6640fb52d976'
 
-DISK="$(lsblk -lno PATH,UUID | grep -i $UUID | cut -d' ' -f1)"
+DISK="$(lsblk -lno PATH,UUID | grep -i "$UUID" | cut -d' ' -f1)"
 [[ -z $DISK ]] && exit 1
 
 # auto-mount
@@ -15,20 +14,20 @@ DISK="$(lsblk -lno PATH,UUID | grep -i $UUID | cut -d' ' -f1)"
 MOUNT=/run/media/$USER/games
 
 [[ -d $MOUNT ]] || {
-  sudo mkdir -p $MOUNT
-  sudo chown "$USER" $MOUNT
-  sudo chgrp users $MOUNT
+  sudo mkdir -p "$MOUNT"
+  sudo chown "$USER" "$MOUNT"
+  sudo chgrp users "$MOUNT"
 }
 
-[[ $(mount | grep "$DISK on $MOUNT") ]] || sudo mount $DISK $MOUNT
+mount | grep "$DISK on $MOUNT" || sudo mount "$DISK" "$MOUNT"
 
-[[ $(grep "# $DISK" /etc/fstab) ]] || {
+grep "# $DISK" /etc/fstab || {
   echo "# $DISK" | sudo tee --append /etc/fstab > /dev/null
   echo "UUID=$UUID	$MOUNT	ext4	defaults,noatime	0 2" | sudo tee --append /etc/fstab > /dev/null
   echo '' | sudo tee --append /etc/fstab > /dev/null
 }
 
-sudo `dirname $0`/fstab.sh
+sudo "${BASH_SOURCE%/*}"/fstab.sh
 
 # multilib
 
@@ -36,7 +35,7 @@ LINE=$(grep -n '#\[multilib\]' /etc/pacman.conf | awk '{print $1}' FS=':')
 
 [[ $LINE ]] && {
   sudo sed -i "${LINE}s/#//" /etc/pacman.conf
-  sudo sed -i "${$(($LINE + 1))}s/#//" /etc/pacman.conf
+  sudo sed -i "$((LINE + 1))s/#//" /etc/pacman.conf
 }
 
 sudo pacman -Sy
@@ -51,15 +50,15 @@ rm -rf ~/Desktop/steam.desktop
 
 [[ $XDG_CURRENT_DESKTOP == 'GNOME' ]] && {
   FAVS=$(gsettings get org.gnome.shell favorite-apps)
-  [[ $(echo $FAVS | grep 'steam.desktop') ]] || {
-    FAVS=$(echo $FAVS | sed "s/\]/, 'steam.desktop']/")
-    gsettings set org.gnome.shell favorite-apps $FAVS
+  echo "$FAVS" | grep -q 'steam.desktop' || {
+    FAVS=${FAVS/]/, \'steam.desktop\']}
+    gsettings set org.gnome.shell favorite-apps "$FAVS"
   }
 }
 
 [[ -d $MOUNT/Steam ]] && {
-  rm -f $XDG_DATA_HOME/Steam
-  ln -s $MOUNT/Steam $XDG_DATA_HOME/Steam
+  rm -f "$XDG_DATA_HOME"/Steam
+  ln -s "$MOUNT"/Steam "$XDG_DATA_HOME"/Steam
 }
 
 # gamemode
@@ -74,8 +73,8 @@ sudo usermod -aG gamemode "$USER"
 sudo pacman -S --noconfirm \
   mangohud
 
-[[ -d $XDG_DATA_HOME/mangohud ]] || mkdir -p $XDG_DATA_HOME/mangohud
-cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf $XDG_DATA_HOME/mangohud
+[[ -d $XDG_DATA_HOME/mangohud ]] || mkdir -p "$XDG_DATA_HOME"/mangohud
+cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf "$XDG_DATA_HOME"/mangohud
 
 # proton
 
@@ -83,7 +82,7 @@ paru -S --aur --noconfirm \
   proton-cachyos-slr \
   proton-ge-custom-bin
 
-sudo cp `dirname $0`/etc/modules-load.d/ntsync.conf /etc/modules-load.d
+sudo cp "${BASH_SOURCE%/*}"/etc/modules-load.d/ntsync.conf /etc/modules-load.d
 
 # gamescope
 
@@ -95,9 +94,8 @@ sudo cp `dirname $0`/etc/modules-load.d/ntsync.conf /etc/modules-load.d
 
 # cleanup
 
-`dirname $0`/packages.sh
+"${BASH_SOURCE%/*}"/packages.sh
 
 # dotfiles
 
-~/code/dot/games.zsh
-
+~/code/dot/games.sh

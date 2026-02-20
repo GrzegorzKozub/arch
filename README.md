@@ -227,7 +227,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 ## Gaming
 
-1. Run `~/code/arch/games.zsh`
+1. Run `~/code/arch/games.sh`
 2. Reboot
 3. Once per machine, start and configure Steam
   - Don't sign in to Friends when Steam starts
