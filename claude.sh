@@ -5,8 +5,10 @@ set -eo pipefail -ux
 
 [[ ${1:-} == 'update' ]] && {
   claude --update
-  # cd ~/.local/share/claude/versions
-  # find . -maxdepth 1 -mindepth 1 -printf '%T@ %p\n' | sort -rn | tail -n +2 | cut -d' ' -f2- | xargs -r rm
+  find "$XDG_DATA_HOME"/claude/versions -mindepth 1 |
+    sort --numeric-sort --reverse |
+    tail --lines=+2 |
+    xargs --no-run-if-empty rm
   exit
 }
 
