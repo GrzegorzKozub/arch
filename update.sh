@@ -19,6 +19,7 @@ paru -S --aur --noconfirm \
 set -e
 
 [[ $HOST =~ ^(player|worker)$ ]] && "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan.sh
+[[ $HOST =~ ^(drifter|worker)$ ]] && "${BASH_SOURCE%/*}"/claude.sh update
 
 # merge *.pacnew and *.pacsave files
 

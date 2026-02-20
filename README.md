@@ -85,21 +85,23 @@ Automated Arch Linux installation
   - Sign in: Zed, collab panel
   - Configure LLM providers: Zed, Anthropic, GitHub Copilot Chat, Google AI, OpenAI
   - Configure edit predictions
-7. Postman (work)
+7. Claude Code (work)
+  - Sign in
+8. Postman (work)
   - Sign in
   - Change font family to `Cascadia Code`
   - Change font size to `16`
   - Change indentation count to `2`
   - Don't send anonymous usage data
-8. Teams (work)
+9. Teams (work)
   - Follow operating system theme
   - Switch to compact chat message density
   - Disable notification display
   - Disable all apps
-9. Intune (work)
+10. Intune (work)
   - Sign in
   - Register device
-10. Edge (work)
+11. Edge (work)
   - Disable everything during the first launch wizard
   - Switch to international edition and disable everything on new tab page
   - Name your profile or sign in
@@ -125,7 +127,7 @@ Automated Arch Linux installation
   - Switch to Microsoft Editor under Writing assistance
   - Disable startup boost
   - Don't continue running background extensions and apps when Edge is closed
-11. Fix window sizes and positions
+12. Fix window sizes and positions
 
 ## New disk
 

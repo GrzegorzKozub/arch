@@ -13,6 +13,10 @@ if [[ $HOST == 'worker' ]]; then
 
 fi
 
+# ai
+
+[[ $HOST =~ ^(drifter|worker)$ ]] && `dirname $0`/claude.sh
+
 # apps
 
 [[ $HOST == 'worker' ]] && `dirname $0`/postman.zsh
