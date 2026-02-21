@@ -8,14 +8,11 @@ if [[ $HOST == 'worker' ]]; then
 
   `dirname $0`/ansible.zsh
   `dirname $0`/aws.zsh
+  `dirname $0`/claude.sh
   `dirname $0`/dotnet.sh
   `dirname $0`/java.zsh
 
 fi
-
-# ai
-
-[[ $HOST =~ ^(drifter|worker)$ ]] && `dirname $0`/claude.sh
 
 # apps
 

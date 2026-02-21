@@ -6,12 +6,12 @@ set -eo pipefail -ux
 
 # ai
 
-[[ $HOST =~ ^(drifter|worker)$ ]] && "${BASH_SOURCE%/*}"/claude.sh
+[[ $HOST == 'worker' ]] && "${BASH_SOURCE%/*}"/claude.sh
 
 # teams
 
 if [[ $HOST =~ ^(drifter|worker)$ ]]; then
-  sudo pacman -Rs teams-for-linux
+  sudo pacman -Rs --noconfirm teams-for-linux
   "${BASH_SOURCE%/*}"/teams.sh
 fi
 
