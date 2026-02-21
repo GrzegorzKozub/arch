@@ -1,33 +1,21 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# https://github.com/ggml-org/llama.cpp/discussions/14758
-# https://github.com/ggml-org/llama.cpp/discussions/15396
-
-# export LLAMA_ARG_CTX_SIZE=32768
-export LLAMA_ARG_CTX_SIZE=65536
-export LLAMA_ARG_FLASH_ATTN=on
-export LLAMA_ARG_N_CPU_MOE=22
-export LLAMA_ARG_MLOCK=on
-export LLAMA_ARG_N_GPU_LAYERS=all
+# export LLAMA_ARG_CTX_SIZE=65536
+# export LLAMA_ARG_FLASH_ATTN=on
+# export LLAMA_ARG_MLOCK=on
+# export LLAMA_ARG_N_CPU_MOE=0
+# export LLAMA_ARG_N_GPU_LAYERS=all
 
 llama-server \
-  -hf unsloth/GLM-4.7-Flash-GGUF:Q4_K_M
+  --ctx-size 65536 \
+  --flash-attn on \
+  --mlock \
+  --n-cpu-moe 0 \
+  --n-gpu-layers all \
+  --hf-repo unsloth/GLM-4.7-Flash-GGUF:Q4_K_M
+
+  # --hf-repo Qwen/Qwen3-8B-GGUF:Q4_K_M
+  # --hf-repo ggml-org/gpt-oss-20b-GGUF
+  # --hf-repo unsloth/GLM-4.7-Flash-GGUF:Q4_K_M
   # --hf-repo unsloth/Qwen3-Coder-Next-GGUF:Q4_K_M
-# llama-server \
-#   --ctx-size 32768 \
-#   --flash-attn on \
-#   --n-cpu-moe 22 \
-#   --mlock \
-#   --hf-repo unsloth/Qwen3-Coder-Next-GGUF:Q4_K_M
-
-  # -hf Qwen/Qwen3-8B-GGUF:Q4_K_M
-
-  # --gpu-layers all \
-
-  # Qwen/Qwen3-8B-GGUF:Q4_K_M
-  # ggml-org/gpt-oss-20b-GGUF
-  # unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF:Q4_K_M
-  # unsloth/GLM-4.6V-Flash-GGUF:Q4_K_M
-  # unsloth/GLM-4.7-Flash-GGUF:Q4_K_M
-  # unsloth/Qwen3-Coder-Next-GGUF:Q4_K_M
