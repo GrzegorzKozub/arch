@@ -11,13 +11,17 @@ set -eo pipefail -ux
 # teams
 
 if [[ $HOST =~ ^(drifter|worker)$ ]]; then
-  sudo pacman -Rs --noconfirm teams-for-linux
+  sudo pacman -Rs --noconfirm teams-for-linux || true
   "${BASH_SOURCE%/*}"/teams.sh
 fi
 
 # tidal
 
 paru -S --aur --noconfirm tidal-hifi-bin
+pushd ~/code/dot/
+git update-index --assume-unchanged tidal-hifi/tidal-hifi/config.json
+./links.zsh
+popd
 
 # cleanup
 
