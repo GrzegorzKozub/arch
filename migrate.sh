@@ -23,6 +23,10 @@ git update-index --assume-unchanged tidal-hifi/tidal-hifi/config.json
 ./links.zsh
 popd
 
+# sandboxing
+
+sudo pacman -S --noconfirm bubblewrap socat
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh

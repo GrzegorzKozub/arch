@@ -17,9 +17,6 @@ set -eo pipefail -ux
 curl -fsSL https://claude.ai/install.sh | bash
 rm -rf ~/.claude
 
-sudo pacman -S --noconfirm \
-  socat
-
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh

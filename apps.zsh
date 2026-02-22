@@ -63,6 +63,7 @@ sudo pacman -S --noconfirm \
   7zip \
   bat \
   btop \
+  bubblewrap socat \
   cava \
   cpupower \
   direnv \
