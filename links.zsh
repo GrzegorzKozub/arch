@@ -57,9 +57,11 @@ done
 
 # tidal
 
+  # https://github.com/Mastermindzh/tidal-hifi/blob/master/docs/known-issues.md#white-screen-on-loginlaunch
+
   cp /usr/share/applications/tidal-hifi.desktop $XDG_DATA_HOME/applications
   sed -i \
-    -e 's/^Exec=.*$/Exec=tidal-hifi %U/' \
+    -e 's/^Exec=.*$/Exec=tidal-hifi --disable-seccomp-filter-sandbox %U/' \
     -e 's/^Name=.*$/Name=TIDAL/' \
     $XDG_DATA_HOME/applications/tidal-hifi.desktop
 
