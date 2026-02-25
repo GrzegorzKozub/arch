@@ -32,7 +32,7 @@ sudo pacman -S --noconfirm \
 `dirname $0`/dot.zsh
 
 ~/code/dot/init.zsh
-~/code/keys/init.zsh
+~/code/keys/init.sh
 
 # fonts
 
