@@ -51,11 +51,11 @@ paru -S --aur --noconfirm \
 
 # themes
 
-# sudo pacman -S --needed --noconfirm \
-#   papirus-icon-theme
+sudo pacman -S --noconfirm \
+  papirus-icon-theme
 
-paru -S --aur --needed --noconfirm \
-  papirus-icon-theme-git
+# paru -S --aur --noconfirm \
+#   papirus-icon-theme-git
 
 # common
 

@@ -36,6 +36,11 @@ sed -i \
 
 # [[ $HOST == 'worker' ]] && sudo rm -f /var/lib/systemd/coredump/*
 
+# papirus
+
+# paru -Rs --noconfirm papirus-icon-theme-git
+# sudo pacman -S --noconfirm papirus-icon-theme
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
