@@ -6,8 +6,8 @@ set -eo pipefail -ux
 
 # papirus
 
-paru -Rs --noconfirm papirus-icon-theme-git
-sudo pacman -S --noconfirm papirus-icon-theme
+[[ $(pacman -Q papirus-icon-theme-git) ]] && paru -Rs --noconfirm papirus-icon-theme-git
+[[ $(pacman -Q papirus-icon-theme) ]] || sudo pacman -S --noconfirm papirus-icon-theme
 
 # cleanup
 
