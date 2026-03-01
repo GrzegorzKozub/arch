@@ -12,14 +12,10 @@ set -eo pipefail -ux
   exit
 }
 
-# packages
+# install
 
 curl -fsSL https://claude.ai/install.sh | bash
 rm -rf ~/.claude
-
-# cleanup
-
-"${BASH_SOURCE%/*}"/packages.sh
 
 # dotfiles
 

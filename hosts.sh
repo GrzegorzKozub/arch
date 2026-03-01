@@ -19,10 +19,10 @@ LIST=(
   vpce-0d42f60518b6200ca-t05wvrwd.vpce-svc-0e2cc8023f4c8b06f.eu-west-1.vpce.amazonaws.com
 )
 
-for ITEM in $LIST; do
+for ITEM in "${LIST[@]}"; do
   sudo sed -i -e "/.*$ITEM.*/d" /etc/hosts
 done
 
-for ITEM in $LIST; do
-  echo "127.0.0.1 $ITEM\n::1       $ITEM" | sudo tee --append /etc/hosts > /dev/null
+for ITEM in "${LIST[@]}"; do
+  printf "127.0.0.1 %s\n::1       %s\n" "$ITEM" "$ITEM" | sudo tee --append /etc/hosts > /dev/null
 done
