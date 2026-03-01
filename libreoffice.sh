@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # packages
 
@@ -22,18 +21,16 @@ for APP in \
   libreoffice-impress \
   libreoffice-math \
   libreoffice-startcenter \
-  libreoffice-xsltfilter
-do
-  cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
-  sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
+  libreoffice-xsltfilter; do
+  cp /usr/share/applications/$APP.desktop "$XDG_DATA_HOME"/applications
+  sed -i '2iNoDisplay=true' "$XDG_DATA_HOME"/applications/$APP.desktop
 done
 
 for APP in \
   libreoffice-calc \
-  libreoffice-writer
-do
-  cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
-  sed -i -e 's/^Name=LibreOffice /Name=/' $XDG_DATA_HOME/applications/$APP.desktop
+  libreoffice-writer; do
+  cp /usr/share/applications/$APP.desktop "$XDG_DATA_HOME"/applications
+  sed -i -e 's/^Name=LibreOffice /Name=/' "$XDG_DATA_HOME"/applications/$APP.desktop
 done
 
 # default apps
@@ -44,9 +41,8 @@ xdg-mime default libreoffice-writer.desktop application/vnd.openxmlformats-offic
 
 # cleanup
 
-`dirname $0`/packages.sh
+"${BASH_SOURCE%/*}"/packages.sh
 
 # dotfiles
 
-~/code/dot/libreoffice.zsh
-
+~/code/dot/libreoffice.sh

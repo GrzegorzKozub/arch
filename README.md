@@ -24,7 +24,7 @@ Automated Arch Linux installation
 8. Run `~/code/arch/services.zsh`
 9. Reboot to GNOME, login as normal user and connect to internet on drifter
 10. Once per machine, prepare secrets
-11. Run `~/code/arch/apps.zsh` and `~/code/arch/work.zsh` on drifter and worker
+11. Run `~/code/arch/apps.zsh` and `~/code/arch/work.sh` on drifter and worker
 12. Reboot
 13. Once per machine, run `~/code/arch/secboot.zsh` (backup required after)
 14. Once per machine, run `~/code/arch/preloader.sh disable` (after `secboot.zsh`)

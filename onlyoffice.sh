@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # packages
 
@@ -12,8 +11,8 @@ paru -S --aur --noconfirm \
 
 # cleanup
 
-`dirname $0`/packages.sh
+"${BASH_SOURCE%/*}"/packages.sh
 
 # dotfiles
 
-~/code/dot/onlyoffice.zsh
+~/code/dot/onlyoffice.sh
