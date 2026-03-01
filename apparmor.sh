@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # https://github.com/Neo23x0/auditd https://github.com/roddhjav/apparmor.d
 
@@ -21,7 +20,7 @@ for FILE in /boot/loader/entries/{arch,arch-lts}.conf; do
   sudo sed -i '/^options / {
     /audit=1/! s/$/ audit=1/
     /lsm=/! s/$/ lsm=landlock,lockdown,yama,integrity,apparmor,bpf/
-  }' $FILE
+  }' "$FILE"
 done
 
 sudo systemctl enable auditd.service apparmor.service
@@ -32,12 +31,11 @@ sudo systemctl enable auditd.service apparmor.service
 #   sudo sed -i '/^options / {
 #     s/ audit=1//g
 #     s/ lsm=[^ ]*//g
-#   }' $FILE
+#   }' "$FILE"
 # done
 #
 # sudo systemctl disable auditd.service apparmor.service
 
 # cleanup
 
-`dirname $0`/packages.sh
-
+"${BASH_SOURCE%/*}"/packages.sh
