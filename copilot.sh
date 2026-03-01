@@ -4,3 +4,7 @@ set -eo pipefail -ux
 # install
 
 curl -fsSL https://gh.io/copilot-install | bash
+
+# dotfiles
+
+~/code/dot/copilot.sh
