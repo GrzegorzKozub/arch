@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-set -e -o verbose
+set -e -x
 
 # ghostty
 
