@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # default apps
 
@@ -20,5 +19,4 @@ xdg-mime default brave-browser.desktop text/calendar
 # mime dbs update
 
 sudo update-mime-database -V /usr/share/mime
-update-desktop-database -v $XDG_DATA_HOME/applications
-
+update-desktop-database -v "$XDG_DATA_HOME"/applications

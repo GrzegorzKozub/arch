@@ -1,20 +1,19 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # temporary keys
 
 PENDRIVE=$(lsblk -r -o PATH,LABEL | grep ARCHISO | sed -e 's/\s.*$//')
 [[ $PENDRIVE ]] || exit 1
 
-[[ $(mount | grep $PENDRIVE) ]] && sudo umount $PENDRIVE
-sudo mount $PENDRIVE /mnt
+mount | grep -q "$PENDRIVE" && sudo umount "$PENDRIVE"
+sudo mount "$PENDRIVE" /mnt
 
-[[ -d ~/.ssh || -n ~/.ssh ]] && rm -rf ~/.ssh
+[[ -d ~/.ssh || -L ~/.ssh ]] && rm -rf ~/.ssh
 mkdir ~/.ssh
 
 cp /mnt/.keys/openssh/.ssh/config ~/.ssh
-cp -r /mnt/.keys/openssh/.ssh/(github|github.pub) ~/.ssh
+cp -r /mnt/.keys/openssh/.ssh/{github,github.pub} ~/.ssh
 chmod 600 ~/.ssh/github*
 
 sudo umount -R /mnt
@@ -43,4 +42,3 @@ git clone git@github.com:GrzegorzKozub/pass.git ~/code/pass
 
 [[ -d ~/code/notes ]] && rm -rf ~/code/notes
 git clone git@github.com:GrzegorzKozub/notes.git ~/code/notes
-

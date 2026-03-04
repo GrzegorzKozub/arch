@@ -1,10 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
-
-# validation
-
-[[ . = `dirname $0` ]] && exit 1
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # env
 
@@ -31,9 +26,9 @@ sudo pacman -S --noconfirm \
 sudo pacman -S --noconfirm \
   stow
 
-`dirname $0`/dot.zsh
+"${BASH_SOURCE%/*}"/dot.sh
 
-~/code/dot/init.zsh
+~/code/dot/init.sh
 ~/code/keys/init.sh
 
 # fonts
@@ -111,14 +106,14 @@ sudo pacman -S --noconfirm \
 paru -S --aur --noconfirm \
   tmux-git
 
-if [[ $HOST = 'drifter' ]]; then
+if [[ $HOST == 'drifter' ]]; then
 
   sudo pacman -S --noconfirm \
     brightnessctl
 
 fi
 
-if [[ $HOST = 'sacrifice' ]]; then
+if [[ $HOST == 'sacrifice' ]]; then
 
   # btop amd gpu monitoring
   sudo pacman -S --noconfirm \
@@ -150,8 +145,8 @@ paru -S --aur --noconfirm \
 
 # containers
 
-`dirname $0`/docker.sh
-`dirname $0`/podman.sh
+"${BASH_SOURCE%/*}"/docker.sh
+"${BASH_SOURCE%/*}"/podman.sh
 
 # dev
 
@@ -176,7 +171,7 @@ paru -S --aur --noconfirm \
 
 # ai
 
-[[ $HOST =~ ^(player|worker)$ ]] && `dirname $0`/pkg/llama-cpp-vulkan.sh
+[[ $HOST =~ ^(player|worker)$ ]] && "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan.sh
 
 # apps
 
@@ -197,22 +192,21 @@ paru -S --aur --noconfirm \
 
 # settings
 
-`dirname $0`/settings.zsh
-`dirname $0`/links.zsh
+"${BASH_SOURCE%/*}"/settings.sh
+"${BASH_SOURCE%/*}"/links.sh
 
-`dirname $0`/gdm.zsh
+"${BASH_SOURCE%/*}"/gdm.zsh
 
-[[ $XDG_CURRENT_DESKTOP == 'GNOME' ]] && `dirname $0`/gnome.zsh
+[[ $XDG_CURRENT_DESKTOP == 'GNOME' ]] && "${BASH_SOURCE%/*}"/gnome.zsh
 
-`dirname $0`/mime.zsh
-`dirname $0`/secrets.sh
+"${BASH_SOURCE%/*}"/mime.sh
+"${BASH_SOURCE%/*}"/secrets.sh
 
 # cleanup
 
-`dirname $0`/packages.sh
-`dirname $0`/clean.sh
+"${BASH_SOURCE%/*}"/packages.sh
+"${BASH_SOURCE%/*}"/clean.sh
 
 # dotfiles install
 
-~/code/dot/install.zsh
-
+~/code/dot/install.sh
