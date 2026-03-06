@@ -14,7 +14,7 @@ ARCH_PART="$(
     cut -d' ' -f1
 )"
 
-[[ $ARCH_PART = "$MY_ARCH_PART" ]] || exit 1
+[[ $ARCH_PART == "$MY_ARCH_PART" ]] || exit 1
 
 # encryption
 
@@ -30,7 +30,7 @@ cryptsetup \
 pvcreate /dev/mapper/lvm
 vgcreate vg1 /dev/mapper/lvm
 
-[[ $MY_HOSTNAME = 'drifter' ]] && SIZE=128G || SIZE=256G
+[[ $MY_HOSTNAME == 'drifter' ]] && SIZE=128G || SIZE=256G
 
 lvcreate --size 8G vg1 --name swap
 lvcreate --size "$SIZE" vg1 -n root

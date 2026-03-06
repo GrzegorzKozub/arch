@@ -8,11 +8,12 @@ BACKUP=/mnt/backup
 
 [[ -d $BACKUP ]] || mkdir -p $BACKUP
 
-while [[ 
+backups() { find "$BACKUP" -maxdepth 1 -name '[0-9]*' -type d; }
+
+while [[
   $(df -h /dev/mapper/vg1-data --output=avail | grep -v Avail | sed -E 's/ |G//g') -lt 32 &&
-  $(ls -d $BACKUP/[0-9]* | wc -l) -gt 3 ]] \
-  ; do
-  OLDEST="$BACKUP/$(ls -t $BACKUP | grep '^[0-9]*$' | tail -n1)"
+  $(backups | wc -l) -gt 3 ]]; do
+  OLDEST=$(backups | sort | head -n1)
   echo "removing $OLDEST"
   rm -rf "$OLDEST"
 done

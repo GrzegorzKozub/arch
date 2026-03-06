@@ -6,9 +6,11 @@ set -eo pipefail -ux
 
 BACKUP=/mnt/backup
 
+backups() { find "$BACKUP" -maxdepth 1 -name '[0-9]*' -type d; }
+
 [[ $1 && -d $1 ]] &&
   DIR=$1 ||
-  DIR="$BACKUP/$(ls -t $BACKUP | grep '^[0-9]*$' | head -n1)"
+  DIR=$(backups | sort | tail -n1)
 
 echo "restoring from $DIR"
 
