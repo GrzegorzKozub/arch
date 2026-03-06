@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e -o verbose
+set -eo pipefail -ux
 
 # validation
 
@@ -15,16 +14,16 @@ ARCH_PART="$(
     cut -d' ' -f1
 )"
 
-[[ $ARCH_PART = $MY_ARCH_PART ]] || exit 1
+[[ $ARCH_PART = "$MY_ARCH_PART" ]] || exit 1
 
 # encryption
 
-cryptsetup luksFormat --type luks2 --key-size 256 --sector-size 4096 $MY_ARCH_PART
+cryptsetup luksFormat --type luks2 --key-size 256 --sector-size 4096 "$MY_ARCH_PART"
 cryptsetup \
   --allow-discards \
   --perf-no_read_workqueue --perf-no_write_workqueue \
   --persistent \
-  luksOpen $MY_ARCH_PART lvm
+  luksOpen "$MY_ARCH_PART" lvm
 
 # logical volumes
 
@@ -34,7 +33,7 @@ vgcreate vg1 /dev/mapper/lvm
 [[ $MY_HOSTNAME = 'drifter' ]] && SIZE=128G || SIZE=256G
 
 lvcreate --size 8G vg1 --name swap
-lvcreate --size $SIZE vg1 -n root
+lvcreate --size "$SIZE" vg1 -n root
 lvcreate -l 100%FREE vg1 -n data
 
 # format

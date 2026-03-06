@@ -17,9 +17,9 @@ Automated Arch Linux installation
 1. Boot from archiso
 2. Run `source ~/arch/drifter.zsh`, `source ~/arch/player.zsh` or `source ~/arch/worker.zsh`
 3. Use `cfdisk` to create Linux filesystem partition as `$MY_ARCH_PART` (`cfdisk` can sort partitions)
-4. Once per machine, run `~/arch/disk.sh`, otherwise run `~/arch/unlock.zsh`
+4. Once per machine, run `~/arch/disk.sh`, otherwise run `~/arch/unlock.sh`
 5. Run `~/arch/system.zsh`
-6. Once per machine, run `~/arch/boot.zsh`
+6. Once per machine, run `~/arch/boot.sh`
 7. Reboot to Arch and login as normal user
 8. Run `~/code/arch/services.zsh`
 9. Reboot to GNOME, login as normal user and connect to internet on drifter
@@ -136,7 +136,7 @@ Existing backup can be used when changing disks or moving partitions
 1. Boot from archiso
 2. Use `disk.sh` to encrypt Linux partition with LUKS and create LVM volumes inside
 3. Use `r.zsh` to restore `/boot` and `/` from latest backup
-4. Use `boot.zsh` to add Linux Boot Manager to EFI
+4. Use `boot.sh` to add Linux Boot Manager to EFI
 5. Change root to the restored installation
   ```bash
   mount /dev/mapper/vg1-root /mnt

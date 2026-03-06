@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # dependencies
 
@@ -38,9 +37,8 @@ cp -r /usr/share/archiso/configs/releng $PROFILE
 
 for PACKAGE in \
   linux-lts \
-  neovim
-do
-  [[ $(grep $PACKAGE $PROFILE/packages.x86_64) ]] || echo $PACKAGE >> $PROFILE/packages.x86_64
+  neovim; do
+  grep -q "$PACKAGE" "$PROFILE"/packages.x86_64 || echo "$PACKAGE" >> "$PROFILE"/packages.x86_64
 done
 
 # systemd-boot
@@ -92,7 +90,7 @@ git clone https://github.com/GrzegorzKozub/arch.git $PROFILE/airootfs/root/arch
 sed -i -e "/^)$/d" $PROFILE/profiledef.sh
 
 for SCRIPT in "$PROFILE"/airootfs/root/arch/*.*sh; do
-  echo $SCRIPT | sed -n -e "s/.*\/arch\/\(.*\)/  ['\/root\/arch\/\1']='0:0:755'/p" >> $PROFILE/profiledef.sh
+  echo "$SCRIPT" | sed -n -e "s/.*\/arch\/\(.*\)/  ['\/root\/arch\/\1']='0:0:755'/p" >> $PROFILE/profiledef.sh
 done
 
 echo ')' >> $PROFILE/profiledef.sh
@@ -120,7 +118,7 @@ sudo mkarchiso -v -L ARCHISO -w $WORK -o $ISO $PROFILE
 
 # extract
 
-sudo mount --read-only $(ls $ISO/*.iso) /mnt
+sudo mount --read-only "$(ls "$ISO"/*.iso)" /mnt
 cp -r /mnt/* $USB
 sudo umount /mnt
 
@@ -147,8 +145,7 @@ if [[ $(sudo sbctl status --json | jq .installed) == 'true' ]]; then
 
   for FILE in \
     vmlinuz-linux \
-    vmlinuz-linux-lts
-  do
+    vmlinuz-linux-lts; do
     sudo sbctl sign --save /boot/archiso/$FILE
   done
 
@@ -156,10 +153,10 @@ fi
 
 # update on pendrive
 
-if [ -d /run/media/$USER/ARCHISO ]; then
+if [ -d /run/media/"$USER"/ARCHISO ]; then
 
-  rm -rf /run/media/$USER/ARCHISO/(arch|boot|EFI|loader|shellia32.efi|shellx64.efi)
-  cp -r $USB/* /run/media/$USER/ARCHISO
+  rm -rf /run/media/"$USER"/ARCHISO/{arch,boot,EFI,loader,shellia32.efi,shellx64.efi}
+  cp -r $USB/* /run/media/"$USER"/ARCHISO
 
 fi
 
@@ -170,4 +167,3 @@ sudo pacman -Rs --noconfirm \
 
 paru -Rs --aur --noconfirm \
   preloader-signed
-

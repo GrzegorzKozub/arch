@@ -6,13 +6,13 @@
 zstyle ':completion:*:*:fetch:*:*' \
   matcher 'm:{[:lower:]}={[:upper:]} l:|=* r:|=*'
 
-local -a repos
+typeset -a REPOS
 
-while read -r name; do
-  repos=($repos[@] "$name")
+while read -r NAME; do
+  REPOS=($REPOS[@] "$NAME")
 done < $XDG_CACHE_HOME/fetch/repos
 
-_alternative "repos:repos:(($repos))"
+_alternative "repos:repos:(($REPOS))"
 
 # https://github.com/zdharma-continuum/fast-syntax-highlighting/
 FAST_HIGHLIGHT+=(chroma-fetch →chroma/-subcommand.ch)
