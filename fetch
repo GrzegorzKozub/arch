@@ -1,26 +1,30 @@
-#!/usr/bin/env zsh
-
-set -e
+#!/usr/bin/env bash
+set -eo pipefail -u
 
 while read -r name owner; do
 
-  if [[ $1 = $name ]]; then
+  if [[ ${1:-} == "$name" ]]; then
 
-    [[ ! $2 = '' ]] && DIR=~/code/$2 ||
-      [[ $name =~ ^(apsis)(-)(.*)$ ]] && DIR=~/code/apsis/${match[3]} ||
-        DIR=~/code/$name
-
-    echo "\e[37m fetching \e[36m${DIR/~/~} \e[37m· \e[35m<C-f> \e[37mcd\e[0m"
-
-    if [[ -d $DIR ]]; then
-      pushd -q $DIR && (git checkout master || git checkout main) && git pull --prune && popd -q
+    if [[ ${2:-} != '' ]]; then
+      DIR=~/code/$2
+    elif [[ $name =~ ^(apsis)(-)(.*)$ ]]; then
+      DIR=~/code/apsis/${BASH_REMATCH[3]}
     else
-      git clone "git@github.com:$owner/$name.git" $DIR
+      DIR=~/code/$name
     fi
 
-    echo $DIR > /tmp/fetch-dir # my-fetch-cd
+    printf '\e[37m fetching \e[36m%s \e[37m· \e[35m<C-f> \e[37mcd\e[0m\n' "${DIR/#$HOME/\~}"
+
+    if [[ -d $DIR ]]; then
+      pushd "$DIR" >/dev/null
+      (git checkout master || git checkout main) && git pull --prune
+      popd >/dev/null
+    else
+      git clone "git@github.com:$owner/$name.git" "$DIR"
+    fi
+
+    echo "$DIR" >/tmp/fetch-dir # my-fetch-cd
 
   fi
 
-done < $XDG_CACHE_HOME/fetch/repos
-
+done <"$XDG_CACHE_HOME/fetch/repos"

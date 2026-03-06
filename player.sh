@@ -1,4 +1,5 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # player
 
@@ -11,4 +12,3 @@ export MY_ARCH_PART=/dev/nvme0n1p5
 export MY_HOSTNAME=player
 
 export MY_DESKTOP=GNOME
-

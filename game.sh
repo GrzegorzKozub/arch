@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e
+set -eo pipefail -ux
 
 # mangohud frame limit doesn't work over 100 fps
 # https://docs.bazzite.gg/Gaming/Common_gaming_issues/#frame-rate-limiting-issues-and-inconsistency

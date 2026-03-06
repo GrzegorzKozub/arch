@@ -15,7 +15,7 @@ Automated Arch Linux installation
 ## Installation
 
 1. Boot from archiso
-2. Run `source ~/arch/drifter.zsh`, `source ~/arch/player.zsh` or `source ~/arch/worker.zsh`
+2. Run `source ~/arch/drifter.sh`, `source ~/arch/player.sh` or `source ~/arch/worker.sh`
 3. Use `cfdisk` to create Linux filesystem partition as `$MY_ARCH_PART` (`cfdisk` can sort partitions)
 4. Once per machine, run `~/arch/disk.sh`, otherwise run `~/arch/unlock.sh`
 5. Run `~/arch/system.zsh`
@@ -28,7 +28,7 @@ Automated Arch Linux installation
 12. Reboot
 13. Once per machine, run `~/code/arch/secboot.zsh` (backup required after)
 14. Once per machine, run `~/code/arch/preloader.sh disable` (after `secboot.zsh`)
-15. Once per machine and after each `secboot.zsh` run, run `~/code/arch/crypt.zsh`
+15. Once per machine and after each `secboot.zsh` run, run `~/code/arch/crypt.sh`
 16. If required, run `~/code/arch/intune.sh` and `~/code/arch/edge.sh` on drifter and worker
 17. Reboot & backup
 
@@ -149,7 +149,7 @@ Existing backup can be used when changing disks or moving partitions
   mkinitcpio -p linux && mkinitcpio -p linux-lts
   ```
 8. Exit, unmount and reboot
-9. Use `crypt.zsh` to enable unlocking Linux partition using TPM and save recovery key
+9. Use `crypt.sh` to enable unlocking Linux partition using TPM and save recovery key
 
 ## Wayland
 
