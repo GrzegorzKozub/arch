@@ -5,9 +5,13 @@ set -eo pipefail -ux
 # shutdown bug: https://bbs.archlinux.org/viewtopic.php?pid=2278862
 # teams bug: https://github.com/IsmaelMartinez/teams-for-linux/issues/2169
 
-# state home
+# copilot
 
 rm -rf ~/.copilot
+
+# duckdb
+
+sudo pacman -S --noconfirm duckdb
 
 # papirus
 
