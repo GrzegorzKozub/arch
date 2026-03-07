@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # privacy & security > location (here for night light)
 
@@ -11,12 +10,12 @@ gsettings set org.gnome.system.location enabled true
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true # depends on colord.service
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
-if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
+if [[ $XDG_SESSION_TYPE == 'wayland' ]]; then
 
   # scale-monitor-framebuffer - fractional scaling
   # xwayland-native-scaling - https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3567
 
-  [[ $HOST = 'drifter' ]] &&
+  [[ $HOST == 'drifter' ]] &&
     gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer', 'variable-refresh-rate']"
 
   [[ $HOST =~ ^(player|worker)$ ]] &&
@@ -24,15 +23,15 @@ if [[ $XDG_SESSION_TYPE = 'wayland' ]]; then
 
 fi
 
-SOURCE=`dirname $0`/home/.config/monitors.$HOST.xml
+SOURCE=$(dirname "${BASH_SOURCE[0]}")/home/.config/monitors.$HOST.xml
 TARGET=$XDG_CONFIG_HOME/monitors.xml
 
-[[ -f $SOURCE ]] && cp $SOURCE $TARGET
-[[ -f $TARGET~ ]] && rm $TARGET~
+[[ -f $SOURCE ]] && cp "$SOURCE" "$TARGET"
+[[ -f ${TARGET}~ ]] && rm "${TARGET}"~
 
 # power
 
-if [[ $HOST = 'drifter' ]]; then
+if [[ $HOST == 'drifter' ]]; then
 
   gsettings set org.gnome.desktop.session idle-delay 300
   gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
@@ -58,15 +57,15 @@ gsettings set org.gnome.desktop.interface enable-hot-corners false
 
 DIR=$XDG_DATA_HOME/backgrounds
 
-[[ -e $DIR ]] && rm -rf $DIR
-ln -s ~/code/walls $DIR
+[[ -e $DIR ]] && rm -rf "$DIR"
+ln -s ~/code/walls "$DIR"
 
 FILE="file:///home/$USER/.local/share/backgrounds/women.jpg"
 
-gsettings set org.gnome.desktop.background picture-uri $FILE
-gsettings set org.gnome.desktop.background picture-uri-dark $FILE
+gsettings set org.gnome.desktop.background picture-uri "$FILE"
+gsettings set org.gnome.desktop.background picture-uri-dark "$FILE"
 
-gsettings set org.gnome.desktop.screensaver picture-uri $FILE
+gsettings set org.gnome.desktop.screensaver picture-uri "$FILE"
 
 # apps > amberol
 
@@ -82,20 +81,22 @@ dconf write /org/gnome/settings-daemon/global-shortcuts/brave-browser/shortcuts 
 gsettings set org.gnome.shell disable-extension-version-validation true
 
 DIR=$XDG_DATA_HOME/gnome-shell/extensions
-[[ -d $DIR ]] || mkdir -p $DIR
+[[ -d $DIR ]] || mkdir -p "$DIR"
 
-for NAME ('windows')
-  cp -r `dirname $0`/home/.local/share/gnome-shell/extensions/$NAME@grzegorzkozub.github.com $DIR
+cp -r "${BASH_SOURCE%/*}"/home/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com "$DIR"
 
-pushd $DIR/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
+pushd "$DIR"/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 
-for NAME ('appindicatorsupport@rgcjonas.gmail.com' 'blur-my-shell@aunetx' 'rounded-window-corners@fxgn' 'windows@grzegorzkozub.github.com')
-  gnome-extensions enable $NAME || FRESH=true
+FRESH=0
+
+for NAME in 'appindicatorsupport@rgcjonas.gmail.com' 'blur-my-shell@aunetx' 'rounded-window-corners@fxgn' 'windows@grzegorzkozub.github.com'; do
+  gnome-extensions enable $NAME || FRESH=1
+done
 
   # 'appindicatorsupport@rgcjonas.gmail.com',
   # 'user-theme@gnome-shell-extensions.gcampax.github.com',
 
-[[ $FRESH == true ]] &&
+[[ $FRESH == 1 ]] &&
   gsettings set org.gnome.shell enabled-extensions "[
     'appindicatorsupport@rgcjonas.gmail.com',
     'blur-my-shell@aunetx',
@@ -107,7 +108,7 @@ gsettings set org.gnome.shell.extensions.appindicator legacy-tray-enabled false
 
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
 
-[[ $XDG_SESSION_TYPE = 'wayland' ]] && RADIUS=12 || RADIUS=16
+[[ $XDG_SESSION_TYPE == 'wayland' ]] && RADIUS=12 || RADIUS=16
 gsettings set org.gnome.shell.extensions.rounded-window-corners-reborn global-rounded-corner-settings \
   "{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>,
     'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>,
@@ -162,8 +163,8 @@ gsettings set org.gnome.mutter center-new-windows true
 
 LOC="[<(uint32 2, <('Warsaw', 'EPWA', true, [(0.91048009894147275, 0.36593737231924195)], [(0.91193453416703718, 0.36651914291880922)])>)>]"
 
-gsettings set org.gnome.Weather locations $LOC
-gsettings set org.gnome.shell.weather locations $LOC
+gsettings set org.gnome.Weather locations "$LOC"
+gsettings set org.gnome.shell.weather locations "$LOC"
 
 gsettings set org.gnome.shell.weather automatic-location true
 
@@ -194,7 +195,7 @@ gsettings set org.gnome.desktop.screen-time-limits history-enabled false
 
 # mouse & touchpad
 
-if [[ $HOST = 'drifter' ]]; then
+if [[ $HOST == 'drifter' ]]; then
 
   gsettings set org.gnome.desktop.peripherals.touchpad speed 0.25
   gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
@@ -214,8 +215,9 @@ dconf write /org/gnome/mutter/overlay-key "'Super_L'"
 
 DIR='/org/gnome/desktop/wm/keybindings'
 
-for KEY in $(dconf list $DIR/)
-  dconf reset $DIR/$KEY
+for KEY in $(dconf list $DIR/); do
+  dconf reset "$DIR"/"$KEY"
+done
 
 # keyboard > keyboard shortcuts > navigation
 
@@ -273,11 +275,11 @@ add_shortcut() {
   local schema="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding"
   local dir="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$1/"
 
-  gsettings set "$schema:$dir" 'binding' $2
-  gsettings set "$schema:$dir" 'name' $3
-  gsettings set "$schema:$dir" 'command' $4
+  gsettings set "$schema:$dir" 'binding' "$2"
+  gsettings set "$schema:$dir" 'name' "$3"
+  gsettings set "$schema:$dir" 'command' "$4"
 
-  CUSTOM_KEYBINDINGS+="'$dir'"
+  CUSTOM_KEYBINDINGS+=("'$dir'")
 }
 
 add_shortcut 0 'Print' 'screenshot' "/home/$USER/code/arch/screenshot.sh"
@@ -286,7 +288,10 @@ add_shortcut 2 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio.sh
 
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-  "[${(j., .)CUSTOM_KEYBINDINGS}]"
+  "[$(
+      IFS=', '
+                echo "${CUSTOM_KEYBINDINGS[*]}"
+  )]"
 
 # accessibility > seeing
 
@@ -297,7 +302,7 @@ gsettings set \
 # gsettings set org.gnome.desktop.privacy remember-recent-files false
 
 FILE=$XDG_DATA_HOME/recently-used.xbel
-[[ -f $FILE ]] && rm $FILE
+[[ -f $FILE ]] && rm "$FILE"
 
 # system > region & language
 
@@ -328,7 +333,7 @@ set -e
 
 # file pickers
 
-if [[ $HOST = 'drifter' ]]; then
+if [[ $HOST == 'drifter' ]]; then
 
   dconf write /org/gnome/nautilus/window-state/initial-size-file-chooser '(800, 504)'
   dconf write /org/gtk/settings/file-chooser/window-size '(800, 457)'
@@ -341,4 +346,3 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
   dconf write /org/gtk/settings/file-chooser/window-size '(720, 608)'
 
 fi
-

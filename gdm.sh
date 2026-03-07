@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # reset
 
@@ -9,7 +8,7 @@ sudo pacman -S --noconfirm \
 
 # dconf
 
-cat <<EOF | sudo tee /etc/dconf/profile/gdm
+cat << EOF | sudo tee /etc/dconf/profile/gdm
 user-db:user
 system-db:gdm
 file-db:/usr/share/gdm/greeter-dconf-defaults
@@ -18,7 +17,7 @@ EOF
 DIR=/etc/dconf/db/gdm.d
 [[ -d $DIR ]] || sudo mkdir -p $DIR
 
-cat <<EOF | sudo tee $DIR/10-gdm
+cat << EOF | sudo tee $DIR/10-gdm
 [org/gnome/settings-daemon/plugins/color]
 night-light-enabled=true
 night-light-schedule-automatic=true
@@ -36,7 +35,7 @@ font-antialiasing='rgba'
 icon-theme='Papirus'
 EOF
 
-[[ $HOST = 'drifter' ]] && cat <<EOF | sudo tee --append $DIR/10-gdm
+[[ $HOST == 'drifter' ]] && cat << EOF | sudo tee --append $DIR/10-gdm
 
 [org/gnome/desktop/session]
 idle-delay=300
@@ -46,7 +45,7 @@ speed=0.25
 tap-to-click=true
 EOF
 
-[[ $HOST =~ ^(player|worker)$ ]] && cat <<EOF | sudo tee --append $DIR/10-gdm
+[[ $HOST =~ ^(player|worker)$ ]] && cat << EOF | sudo tee --append $DIR/10-gdm
 
 [org/gnome/desktop/session]
 idle-delay=600
@@ -62,11 +61,11 @@ sudo dconf update
 # https://bbs.archlinux.org/viewtopic.php?id=308479
 # https://github.com/gdm-settings/gdm-settings/issues/285
 
-# SOURCE=`dirname $0`/home/.config/monitors.$HOST.xml
+# SOURCE="${BASH_SOURCE%/*}"/home/.config/monitors.$HOST.xml
 # TARGET=/var/lib/gdm/seat0/config/monitors.xml
 #
 # [[ -f $SOURCE ]] &&
-#   sudo cp $SOURCE $TARGET &&
+#   sudo cp "$SOURCE" $TARGET &&
 #   sudo sed -i '/ratemode/d' $TARGET
 
 # display scale factor
@@ -74,7 +73,7 @@ sudo dconf update
 SCHEMAS=/usr/share/glib-2.0/schemas
 OVERRIDE=10_screen-scale.gschema.override
 
-[[ $HOST = 'drifter' ]] && FACTOR=3 || FACTOR=2
+[[ $HOST == 'drifter' ]] && FACTOR=3 || FACTOR=2
 
 echo '[org.gnome.desktop.interface]' | sudo tee $SCHEMAS/$OVERRIDE > /dev/null
 echo "scaling-factor=$FACTOR" | sudo tee --append $SCHEMAS/$OVERRIDE > /dev/null
@@ -87,30 +86,30 @@ GS=/usr/share/gnome-shell
 GST=gnome-shell-theme.gresource
 TMP="$(mktemp -d)"
 
-mkdir -p $TMP/theme/icons/scalable/actions
-mkdir -p $TMP/theme/icons/scalable/status
-cp ~/code/walls/women.jpg $TMP/theme/
+mkdir -p "$TMP"/theme/icons/scalable/actions
+mkdir -p "$TMP"/theme/icons/scalable/status
+cp ~/code/walls/women.jpg "$TMP"/theme/
 
-for RES in `gresource list $GS/$GST`; do
-  gresource extract $GS/$GST $RES > $TMP/${RES#\/org\/gnome\/shell/}
+for RES in $(gresource list $GS/$GST); do
+  gresource extract $GS/$GST "$RES" > "$TMP"/"${RES#\/org\/gnome\/shell/}"
 done
 
-cat <<EOF > $TMP/theme/$GST.xml
+cat << EOF > "$TMP"/theme/$GST.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/org/gnome/shell/theme">
 EOF
 
-for RES in `find $TMP/theme -type f -not -name '*.xml'`; do
-  echo "    <file>${RES/$TMP\/theme\//}</file>" >> $TMP/theme/$GST.xml
-done
+while IFS= read -r RES; do
+  echo "    <file>${RES#"$TMP"/theme/}</file>" >> "$TMP"/theme/"$GST".xml
+done < <(find "$TMP/theme" -type f -not -name '*.xml')
 
-cat <<EOF >> $TMP/theme/$GST.xml
+cat << EOF >> "$TMP"/theme/$GST.xml
   </gresource>
 </gresources>
 EOF
 
-[[ $HOST =~ ^(drifter|player)$ ]] && cat <<EOF >> $TMP/theme/gnome-shell-dark.css
+[[ $HOST =~ ^(drifter|player)$ ]] && cat << EOF >> "$TMP"/theme/gnome-shell-dark.css
 #lockDialogGroup {
   background: url(resource:///org/gnome/shell/theme/women.jpg);
   background-repeat: no-repeat;
@@ -121,7 +120,7 @@ EOF
 }
 EOF
 
-[[ $HOST = 'worker' ]] && cat <<EOF >> $TMP/theme/gnome-shell-dark.css
+[[ $HOST == 'worker' ]] && cat << EOF >> "$TMP"/theme/gnome-shell-dark.css
 #lockDialogGroup {
   background: url(resource:///org/gnome/shell/theme/women.jpg);
   background-position: 0 0;
@@ -133,9 +132,8 @@ EOF
 }
 EOF
 
-pushd $TMP/theme
+pushd "$TMP"/theme
 glib-compile-resources $GST.xml
 popd
 
-sudo cp $TMP/theme/$GST $GS/$GST
-
+sudo cp "$TMP"/theme/"$GST" "$GS"/"$GST"
