@@ -21,12 +21,17 @@ echo "$MY_HOSTNAME" > /etc/hostname
 
 # hosts
 
-sed -i -e "/.*localhost.*/d" /etc/hosts
+sed -i \
+  -e "/.*localhost.*/d" \
+  -e "/.*localdomain.*/d" \
+  /etc/hosts
 
-echo '127.0.0.1 localhost' >> /etc/hosts
-echo '::1       localhost' >> /etc/hosts
-echo "127.0.0.1 $MY_HOSTNAME.localdomain $MY_HOSTNAME" >> /etc/hosts
-echo "::1       $MY_HOSTNAME.localdomain $MY_HOSTNAME" >> /etc/hosts
+{
+  echo '127.0.0.1 localhost'
+  echo '::1       localhost'
+  echo "127.0.0.1 $MY_HOSTNAME.localdomain $MY_HOSTNAME"
+  echo "::1       $MY_HOSTNAME.localdomain $MY_HOSTNAME"
+} >> /etc/hosts
 
 # global host environment variable
 

@@ -3,7 +3,7 @@ set -eo pipefail -ux
 
 YT=/run/media/$USER/data/music/YouTube
 [[ -d $YT ]] || mkdir "$YT"
-rm -rf "$YT"/*
+rm -rf "${YT:?}"/*
 pushd "$YT"
 
 TMP="$(mktemp)"
@@ -25,20 +25,22 @@ yt-dlp \
 
 sed -i -e "s#$YT/##" -e 's/\.webm//' "$TMP"
 
-while read -r title; do
+while read -r TITLE; do
 
-  mv "$title.png" original.png
-  mv "$title.flac" original.flac
+  mv "$TITLE".png original.png
+  mv "$TITLE".flac original.flac
 
   ffmpeg \
+    -nostdin \
     -i original.png \
     -vf "crop='min(in_w\,in_h)':'min(in_w\,in_h)':(in_w-min(in_w\,in_h))/2:(in_h-min(in_w\,in_h))/2,scale=1280:1280" \
     square.png
 
   ffmpeg \
+    -nostdin \
     -i original.flac -i square.png \
     -map 0 -map 1 -c copy -disposition:v attached_pic \
-    "$title.flac"
+    "$TITLE".flac
 
   rm original.flac original.png square.png
 
