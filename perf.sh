@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eo pipefail -u
+set -eo pipefail -ux
 
 # https://wiki.archlinux.org/title/Gaming#Tweaking_kernel_parameters_for_response_time_consistency
 

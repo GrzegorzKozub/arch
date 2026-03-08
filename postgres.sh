@@ -1,8 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
-
-# postgres
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 NAME=postgres
 

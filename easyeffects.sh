@@ -11,7 +11,7 @@ sudo pacman -S --noconfirm \
 
 for APP in \
   jalv \
-   lstopo; do
+  lstopo; do
   cp /usr/share/applications/$APP.desktop "$XDG_DATA_HOME"/applications
   sed -i '2iNoDisplay=true' "$XDG_DATA_HOME"/applications/$APP.desktop
 done

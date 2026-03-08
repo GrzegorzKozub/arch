@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e
+set -eo pipefail -u
 
 [[ $HOST == 'worker' ]] || exit 1
 

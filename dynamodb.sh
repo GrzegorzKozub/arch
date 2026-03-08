@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# dynamodb
-
 NAME=dynamodb
 
 if [[ $(docker ps --all --filter name=$NAME --quiet) ]]; then

@@ -18,20 +18,18 @@ set-zoom() {
 CAM=$(v4l2-ctl --list-devices | grep -m1 '/dev' | tr -d '\t')
 [[ -z $CAM ]] && exit 1
 
-[[ ${1:-} == 'zoom-out' ]] && {
+if [[ ${1:-} == 'zoom-out' ]]; then
   ZOOM=$(get-zoom)
   ((ZOOM = ZOOM > 100 ? ZOOM - 10 : ZOOM))
   set-zoom $ZOOM
-}
+fi
 
-[[ ${1:-} == 'zoom-in' ]] && {
+if [[ ${1:-} == 'zoom-in' ]]; then
   ZOOM=$(get-zoom)
   ((ZOOM = ZOOM < 180 ? ZOOM + 10 : ZOOM))
   set-zoom $ZOOM
-}
+fi
 
-[[ -z ${1:-} || ${1:-} == 'preview' ]] && {
+if [[ -z ${1:-} || ${1:-} == 'preview' ]]; then
   ffplay -input_format mjpeg -video_size "$RES" -framerate 30 "$CAM" &> /dev/null
-}
-
-true
+fi

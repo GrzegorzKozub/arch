@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e
+set -eo pipefail -ux
 
 if [[ $XDG_CURRENT_DESKTOP == 'GNOME' ]]; then
 

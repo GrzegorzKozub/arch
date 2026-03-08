@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eo pipefail -u
+set -eo pipefail -ux
 
 YT=/run/media/$USER/data/music/YouTube
 [[ -d $YT ]] || mkdir "$YT"

@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # packages
 
@@ -17,15 +16,14 @@ paru -S --aur --noconfirm \
 
 for APP in \
   ipython \
-  jupyterlab
-do
-  cp /usr/share/applications/$APP.desktop $XDG_DATA_HOME/applications
-  sed -i '2iNoDisplay=true' $XDG_DATA_HOME/applications/$APP.desktop
+  jupyterlab; do
+  cp /usr/share/applications/$APP.desktop "$XDG_DATA_HOME"/applications
+  sed -i '2iNoDisplay=true' "$XDG_DATA_HOME"/applications/$APP.desktop
 done
 
 # cleanup
 
-`dirname $0`/packages.sh
+$(dirname $0)/packages.sh
 
 # dotfiles
 

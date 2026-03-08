@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e -o verbose
+set -eo pipefail -ux
 
 # systemd-boot secure boot support using preloader
 
@@ -17,7 +16,7 @@ efi-boot-menu() {
     --disk "$DISK" --part "$EFI_PART_NBR" --loader /EFI/systemd/"$1".efi
 }
 
-[[ $1 == 'enable' ]] && {
+if [[ $1 == 'enable' ]]; then
 
   paru -S --aur --noconfirm \
     preloader-signed
@@ -30,12 +29,12 @@ efi-boot-menu() {
 
   efi-boot-menu 'PreLoader'
 
-} || true
+fi
 
-[[ $1 == 'disable' ]] && {
+if [[ $1 == 'disable' ]]; then
 
   sudo rm -rf /boot/EFI/systemd/{loader,HashTool,PreLoader}.efi
 
   efi-boot-menu 'systemd-bootx64'
 
-} || true
+fi
