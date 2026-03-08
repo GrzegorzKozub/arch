@@ -17,7 +17,7 @@ add_color_profile() {
   if [[ -z $PROFILE ]]; then
     (exit 1)
     # shellcheck disable=SC2181
-    while [[ ! $? = 0 ]]; do
+    while [[ ! $? == 0 ]]; do
       PROFILE=$(
         colormgr import-profile "${BASH_SOURCE%/*}"/home/.local/share/icc/"$1".icm |
           grep 'Profile ID' | sed -e 's/Profile ID:    //'

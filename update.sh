@@ -27,14 +27,14 @@ sudo DIFFPROG='nvim -d' pacdiff
 
 # settings
 
-"${BASH_SOURCE%/*}"/settings.zsh
-"${BASH_SOURCE%/*}"/links.zsh
+"${BASH_SOURCE%/*}"/settings.sh
+"${BASH_SOURCE%/*}"/links.sh
 
-"${BASH_SOURCE%/*}"/gdm.zsh
+"${BASH_SOURCE%/*}"/gdm.sh
 
-[[ $XDG_CURRENT_DESKTOP == 'GNOME' ]] && "${BASH_SOURCE%/*}"/gnome.zsh
+[[ $XDG_CURRENT_DESKTOP == 'GNOME' ]] && "${BASH_SOURCE%/*}"/gnome.sh
 
-"${BASH_SOURCE%/*}"/mime.zsh
+"${BASH_SOURCE%/*}"/mime.sh
 "${BASH_SOURCE%/*}"/secrets.sh
 
 # cleanup

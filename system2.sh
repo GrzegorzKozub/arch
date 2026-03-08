@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e -o verbose
+set -eo pipefail -ux
 
 # timezone
 
@@ -14,11 +13,11 @@ sed -i 's/#pl_PL.UTF-8 UTF-8/pl_PL.UTF-8 UTF-8/' /etc/locale.gen
 
 locale-gen
 
-cp $(dirname $0)/etc/locale.conf /etc
+cp "${BASH_SOURCE%/*}"/etc/locale.conf /etc
 
 # hostname
 
-echo $MY_HOSTNAME > /etc/hostname
+echo "$MY_HOSTNAME" > /etc/hostname
 
 # hosts
 
@@ -38,7 +37,8 @@ echo "HOST=$MY_HOSTNAME" >> /etc/environment
 set +e
 
 (exit 1)
-while [[ ! $? = 0 ]]; do
+# shellcheck disable=SC2181
+while [[ ! $? == 0 ]]; do
   passwd
 done
 
@@ -51,7 +51,8 @@ useradd -m -g users -G wheel,realtime -s /bin/zsh greg
 set +e
 
 (exit 1)
-while [[ ! $? = 0 ]]; do
+# shellcheck disable=SC2181
+while [[ ! $? == 0 ]]; do
   passwd greg
 done
 
@@ -61,67 +62,67 @@ echo 'greg ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
 
 # zsh env & temp profile
 
-cp $(dirname $0)/etc/zsh/zshenv /etc/zsh
+cp "${BASH_SOURCE%/*}"/etc/zsh/zshenv /etc/zsh
 
 touch /home/greg/.zshrc
 chown greg:users /home/greg/.zshrc
 
 # increase the highest requested rtc interrupt frequency
 
-cp $(dirname $0)/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
+cp "${BASH_SOURCE%/*}"/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
 
 # change systemd start & stop timeouts from 90 to 15 seconds
 
 [[ -d /etc/systemd/system.conf.d ]] || mkdir /etc/systemd/system.conf.d
-cp $(dirname $0)/etc/systemd/system.conf.d/00-timeout.conf /etc/systemd/system.conf.d
+cp "${BASH_SOURCE%/*}"/etc/systemd/system.conf.d/00-timeout.conf /etc/systemd/system.conf.d
 
 # ntp
 
 [[ -d /etc/systemd/timesyncd.conf.d ]] || mkdir /etc/systemd/timesyncd.conf.d
-cp $(dirname $0)/etc/systemd/timesyncd.conf.d/ntp.conf /etc/systemd/timesyncd.conf.d
+cp "${BASH_SOURCE%/*}"/etc/systemd/timesyncd.conf.d/ntp.conf /etc/systemd/timesyncd.conf.d
 
 # limit journal size to 64 MB
 
 [[ -d /etc/systemd/journald.conf.d ]] || mkdir /etc/systemd/journald.conf.d
-cp $(dirname $0)/etc/systemd/journald.conf.d/00-size.conf /etc/systemd/journald.conf.d
+cp "${BASH_SOURCE%/*}"/etc/systemd/journald.conf.d/00-size.conf /etc/systemd/journald.conf.d
 
 # limit journal entries
 
 [[ -d /etc/systemd/system/rtkit-daemon.service.d ]] || mkdir -p /etc/systemd/system/rtkit-daemon.service.d
-cp $(dirname $0)/etc/systemd/system/rtkit-daemon.service.d/log.conf /etc/systemd/system/rtkit-daemon.service.d
+cp "${BASH_SOURCE%/*}"/etc/systemd/system/rtkit-daemon.service.d/log.conf /etc/systemd/system/rtkit-daemon.service.d
 
 # performance optimization
 
-cp $(dirname $0)/etc/sysctl.d/70-perf.conf /etc/sysctl.d
-cp $(dirname $0)/etc/udev/rules.d/60-ioschedulers.rules /etc/udev/rules.d
+cp "${BASH_SOURCE%/*}"/etc/sysctl.d/70-perf.conf /etc/sysctl.d
+cp "${BASH_SOURCE%/*}"/etc/udev/rules.d/60-ioschedulers.rules /etc/udev/rules.d
 
 # zram
 
-# cp $(dirname $0)/etc/systemd/zram-generator.conf /etc/systemd
-# cp $(dirname $0)/etc/sysctl.d/71-zram.conf /etc/sysctl.d
-# cp $(dirname $0)/etc/udev/rules.d/30-zram.rules /etc/udev/rules.d
+# cp "${BASH_SOURCE%/*}"/etc/systemd/zram-generator.conf /etc/systemd
+# cp "${BASH_SOURCE%/*}"/etc/sysctl.d/71-zram.conf /etc/sysctl.d
+# cp "${BASH_SOURCE%/*}"/etc/udev/rules.d/30-zram.rules /etc/udev/rules.d
 
 # amd chipset
 
 [[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
-  cp $(dirname $0)/etc/modprobe.d/amd.conf /etc/modprobe.d
+  cp "${BASH_SOURCE%/*}"/etc/modprobe.d/amd.conf /etc/modprobe.d
 
 # intel chipset
 
-[[ $MY_HOSTNAME = 'drifter' ]] &&
-  cp $(dirname $0)/etc/modprobe.d/intel.conf /etc/modprobe.d
+[[ $MY_HOSTNAME == 'drifter' ]] &&
+  cp "${BASH_SOURCE%/*}"/etc/modprobe.d/intel.conf /etc/modprobe.d
 
 # nvidia gpu
 
 if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
 
-  cp $(dirname $0)/etc/modprobe.d/nvidia.conf /etc/modprobe.d
+  cp "${BASH_SOURCE%/*}"/etc/modprobe.d/nvidia.conf /etc/modprobe.d
 
   # enable/disable runtime power management for nvidia on driver bind/unbind
-  # cp $(dirname $0)/etc/udev/rules.d/71-nvidia.rules /etc/udev/rules.d
+  # cp "${BASH_SOURCE%/*}"/etc/udev/rules.d/71-nvidia.rules /etc/udev/rules.d
 
   # enable nvidia overclocking
-  cp $(dirname $0)/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d
+  cp "${BASH_SOURCE%/*}"/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d
 
   # disable rootless xorg to allow nvidia overclocking
   # cp `dirname $0`/etc/X11/Xwrapper.config /etc/X11
@@ -130,20 +131,20 @@ fi
 
 # webcam
 
-SOURCE=$(dirname $0)/etc/udev/rules.d/90-webcam.$MY_HOSTNAME.rules
-[[ -f $SOURCE ]] && cp $SOURCE /etc/udev/rules.d/90-webcam.rules
+SOURCE="${BASH_SOURCE%/*}"/etc/udev/rules.d/90-webcam.$MY_HOSTNAME.rules
+[[ -f $SOURCE ]] && cp "$SOURCE" /etc/udev/rules.d/90-webcam.rules
 
 # sleep fixes
 
 [[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
-  cp $(dirname $0)/etc/tmpfiles.d/wakeup.conf /etc/tmpfiles.d
+  cp "${BASH_SOURCE%/*}"/etc/tmpfiles.d/wakeup.conf /etc/tmpfiles.d
 
 # laptop power saving
 
-if [[ $MY_HOSTNAME = 'drifter' ]]; then
+if [[ $MY_HOSTNAME == 'drifter' ]]; then
 
-  cp $(dirname $0)/etc/modprobe.d/laptop.conf /etc/modprobe.d
-  cp $(dirname $0)/etc/sysctl.d/80-laptop.conf /etc/sysctl.d
+  cp "${BASH_SOURCE%/*}"/etc/modprobe.d/laptop.conf /etc/modprobe.d
+  cp "${BASH_SOURCE%/*}"/etc/sysctl.d/80-laptop.conf /etc/sysctl.d
 
 fi
 
@@ -169,7 +170,7 @@ sed -i 's/#WIRELESS_REGDOM="PL"/WIRELESS_REGDOM="PL"/' /etc/conf.d/wireless-regd
 echo '/dev/mapper/vg1-data	/run/media/greg/data	ext4	defaults,noatime	0 2' >> /etc/fstab
 echo '' >> /etc/fstab
 
-$(dirname $0)/fstab.sh
+"${BASH_SOURCE%/*}"/fstab.sh
 
 # reflector
 
@@ -188,13 +189,14 @@ sed -i "s/^PKGEXT='.pkg.tar.zst'\$/PKGEXT='.pkg.tar'/" /etc/makepkg.conf
 
 # continue as regular user
 
-cp $(dirname $0)/system3.zsh /home/greg
-su greg --command '~/system3.zsh'
-rm /home/greg/system3.zsh
+cp "${BASH_SOURCE%/*}"/system3.sh /home/greg
+# shellcheck disable=SC2088
+su greg --command '~/system3.sh'
+rm /home/greg/system3.sh
 
 # virtual console (before mkinitcpio)
 
-cp $(dirname $0)/etc/vconsole.conf /etc
+cp "${BASH_SOURCE%/*}"/etc/vconsole.conf /etc
 
 # busybox based initial ramdisk (before mkinitcpio)
 
@@ -213,13 +215,13 @@ sed -Ei \
 # limine (before mkinitcpio)
 
 [[ -d /etc/pacman.d/hooks ]] || mkdir -p /etc/pacman.d/hooks
-cp $(dirname $0)/etc/pacman.d/hooks/91-limine.hook /etc/pacman.d/hooks/
+cp "${BASH_SOURCE%/*}"/etc/pacman.d/hooks/91-limine.hook /etc/pacman.d/hooks/
 
 # dm-crypt with systemd based initial ramdisk (before mkinitcpio)
 
-cp $(dirname $0)/etc/crypttab.initramfs /etc
+cp "${BASH_SOURCE%/*}"/etc/crypttab.initramfs /etc
 sed -i \
-  "s/<uuid>/$(blkid -s UUID -o value $MY_ARCH_PART)/g" \
+  "s/<uuid>/$(blkid -s UUID -o value "$MY_ARCH_PART")/g" \
   /etc/crypttab.initramfs
 
 # initial ramdisk

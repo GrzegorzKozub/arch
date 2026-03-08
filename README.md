@@ -10,7 +10,7 @@ Automated Arch Linux installation
   - Set the UUID to a known value with `sudo mlabel -i /dev/sdb1 :: -N 12345678`
   - Verify with `lsblk -lno PATH,FSTYPE,UUID`
 4. Label the partition with `sudo mlabel -i /dev/sdb1 ::archiso`
-5. Build with `~/code/arch/archiso.zsh`
+5. Build with `~/code/arch/archiso.sh`
 
 ## Installation
 
@@ -18,13 +18,13 @@ Automated Arch Linux installation
 2. Run `source ~/arch/drifter.sh`, `source ~/arch/player.sh` or `source ~/arch/worker.sh`
 3. Use `cfdisk` to create Linux filesystem partition as `$MY_ARCH_PART` (`cfdisk` can sort partitions)
 4. Once per machine, run `~/arch/disk.sh`, otherwise run `~/arch/unlock.sh`
-5. Run `~/arch/system.zsh`
+5. Run `~/arch/system.sh`
 6. Once per machine, run `~/arch/boot.sh`
 7. Reboot to Arch and login as normal user
-8. Run `~/code/arch/services.zsh`
+8. Run `~/code/arch/services.sh`
 9. Reboot to GNOME, login as normal user and connect to internet on drifter
 10. Once per machine, prepare secrets
-11. Run `~/code/arch/apps.zsh` and `~/code/arch/work.sh` on drifter and worker
+11. Run `~/code/arch/apps.sh` and `~/code/arch/work.sh` on drifter and worker
 12. Reboot
 13. Once per machine, run `~/code/arch/secboot.sh` (backup required after)
 14. Once per machine, run `~/code/arch/preloader.sh disable` (after `secboot.sh`)
@@ -135,7 +135,7 @@ Existing backup can be used when changing disks or moving partitions
 
 1. Boot from archiso
 2. Use `disk.sh` to encrypt Linux partition with LUKS and create LVM volumes inside
-3. Use `r.zsh` to restore `/boot` and `/` from latest backup
+3. Use `r.sh` to restore `/boot` and `/` from latest backup
 4. Use `boot.sh` to add Linux Boot Manager to EFI
 5. Change root to the restored installation
   ```bash
@@ -169,11 +169,11 @@ XDP implementations conflict each other so only one should be installed at the s
 
 ## Colors
 
-Monitors were calibrated as described in the [toys](https://github.com/GrzegorzKozub/toys) repo. Color profiles are loaded using `colord` via `settings.zsh`.
+Monitors were calibrated as described in the [toys](https://github.com/GrzegorzKozub/toys) repo. Color profiles are loaded using `colord` via `settings.sh`.
 
 To test if a profile is loaded use this `dispwin` command from `argyllcms` package
 
-```zsh
+```bash
 dispwin -d1 -V ~/code/arch/home/.local/share/icc/mpg321urx.icm
 ```
 

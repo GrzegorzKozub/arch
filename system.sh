@@ -1,18 +1,17 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # validation
 
 EFI_PART="$(
   lsblk -lno PATH,PARTTYPE,FSTYPE |
-  grep -i 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b' |
-  grep 'vfat' |
-  cut -d' ' -f1
+    grep -i 'c12a7328-f81f-11d2-ba4b-00a0c93ec93b' |
+    grep 'vfat' |
+    cut -d' ' -f1
 )"
 
 [[ $MY_HOSTNAME ]] || exit 1
-[[ $MY_EFI_PART && $EFI_PART = $MY_EFI_PART ]] || exit 1
+[[ $MY_EFI_PART && $EFI_PART = "$MY_EFI_PART" ]] || exit 1
 
 # time sync
 
@@ -24,29 +23,28 @@ ping -c 1 8.8.8.8 || exit 1
 
 # format
 
-[[ $(mount | grep 'vg1-root on /mnt') ]] && umount -R /mnt
+mount | grep 'vg1-root on /mnt' && umount -R /mnt
 mkfs.ext4 /dev/mapper/vg1-root
 
 # mount
 
 [[ $(swapon) ]] || swapon /dev/mapper/vg1-swap
-[[ $(mount | grep 'vg1-root on /mnt') ]] || mount /dev/mapper/vg1-root /mnt
+mount | grep -q 'vg1-root on /mnt' || mount /dev/mapper/vg1-root /mnt
 [[ -d /mnt/boot ]] || mkdir /mnt/boot
-[[ $(mount | grep "$MY_EFI_PART on /mnt/boot") ]] || mount $MY_EFI_PART /mnt/boot
+mount | grep -q "$MY_EFI_PART on /mnt/boot" || mount "$MY_EFI_PART" /mnt/boot
 
 # previous linux kernels
 
 for FILE in \
-  /mnt/boot/initramfs-linux.img \
-  /mnt/boot/initramfs-linux-fallback.img \
-  /mnt/boot/initramfs-linux-lts.img \
-  /mnt/boot/initramfs-linux-lts-fallback.img \
-  /mnt/boot/amd-ucode.img \
-  /mnt/boot/intel-ucode.img \
-  /mnt/boot/vmlinuz-linux \
-  /mnt/boot/vmlinuz-linux-lts
-do
-  [[ -f $FILE ]] && rm $FILE
+  initramfs-linux.img \
+  initramfs-linux-fallback.img \
+  initramfs-linux-lts.img \
+  initramfs-linux-lts-fallback.img \
+  amd-ucode.img \
+  intel-ucode.img \
+  vmlinuz-linux \
+  vmlinuz-linux-lts; do
+  [[ -f $FILE ]] && rm /mnt/boot/$FILE
 done
 
 # operating system
@@ -89,7 +87,7 @@ sed -i \
 
 # continue as root
 
-cp -r `dirname $0`/../arch /mnt/root
+cp -r "${BASH_SOURCE%/*}"/../arch /mnt/root
 arch-chroot /mnt ~/arch/system2.sh
 rm -rf /mnt/root/arch
 
@@ -97,4 +95,3 @@ rm -rf /mnt/root/arch
 
 swapoff /dev/mapper/vg1-swap
 umount -R /mnt
-

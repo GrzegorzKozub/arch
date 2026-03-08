@@ -108,8 +108,8 @@ export VISUAL='nvim'
 alias v='nvim'
 alias vim='nvim'
 
-alias b='b.zsh'
-alias r='r.zsh'
+alias b='b.sh'
+alias r='r.sh'
 EOF
 
 # build

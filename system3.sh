@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # env
 
@@ -11,7 +10,7 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 
 # paru
 
-`dirname $0`/paru.sh
+"${BASH_SOURCE%/*}"/paru.sh
 
 # firmware
 
@@ -24,7 +23,7 @@ paru -S --aur --noconfirm \
   wd719x-firmware \
   upd72020x-fw
 
-if [[ $MY_HOSTNAME = 'drifter' ]]; then
+if [[ $MY_HOSTNAME == 'drifter' ]]; then
 
   # ucode
 
@@ -63,7 +62,7 @@ if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
 
 fi
 
-if [[ $MY_HOSTNAME = 'sacrifice' ]]; then
+if [[ $MY_HOSTNAME == 'sacrifice' ]]; then
 
   # ucode
 
@@ -116,4 +115,3 @@ if [[ $MY_DESKTOP == 'GNOME' ]]; then
     refine
 
 fi
-
