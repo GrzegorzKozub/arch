@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # env
 
@@ -11,9 +10,9 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 
 # dirs
 
-[[ -d $XDG_CONFIG_HOME/systemd/user ]] || mkdir -p $XDG_CONFIG_HOME/systemd/user
+[[ -d $XDG_CONFIG_HOME/systemd/user ]] || mkdir -p "$XDG_CONFIG_HOME"/systemd/user
 
-`dirname $0`/data.sh
+"${BASH_SOURCE%/*}"/data.sh
 
 # package management
 
@@ -34,10 +33,10 @@ sudo systemctl enable fstrim.timer
 # dns with systemd-resolved
 
 [[ -d /etc/systemd/resolved.conf.d ]] || sudo mkdir /etc/systemd/resolved.conf.d
-sudo cp `dirname $0`/etc/systemd/resolved.conf.d/dns.conf /etc/systemd/resolved.conf.d
+sudo cp "${BASH_SOURCE%/*}"/etc/systemd/resolved.conf.d/dns.conf /etc/systemd/resolved.conf.d
 
 [[ -d /etc/NetworkManager/conf.d ]] || sudo mkdir /etc/NetworkManager/conf.d
-sudo cp `dirname $0`/etc/NetworkManager/conf.d/dns.conf /etc/NetworkManager/conf.d
+sudo cp "${BASH_SOURCE%/*}"/etc/NetworkManager/conf.d/dns.conf /etc/NetworkManager/conf.d
 
 sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
@@ -50,17 +49,17 @@ sudo systemctl enable NetworkManager.service
 # firewall with iptables
 
 # sudo cp /etc/iptables/iptables.rules /etc/iptables/iptables.rules.backup
-# sudo cp `dirname $0`/etc/iptables/iptables.rules /etc/iptables
+# sudo cp "${BASH_SOURCE%/*}"/etc/iptables/iptables.rules /etc/iptables
 # sudo systemctl enable iptables.service
 
 # sudo cp /etc/iptables/ip6tables.rules /etc/iptables/ip6tables.rules.backup
-# sudo cp `dirname $0`/etc/iptables/ip6tables.rules /etc/iptables
+# sudo cp "${BASH_SOURCE%/*}"/etc/iptables/ip6tables.rules /etc/iptables
 # sudo systemctl enable ip6tables.service
 
 # firewall with nftables
 
 # sudo cp /etc/nftables.conf /etc/nftables.conf.backup
-# sudo cp `dirname $0`/etc/nftables.rules /etc
+# sudo cp "${BASH_SOURCE%/*}"/etc/nftables.rules /etc
 # sudo systemctl enable nftables.service
 
 # firewall with ufw
@@ -94,10 +93,10 @@ fi
 
 # amd gpu fan speed
 
-if [[ $HOST = 'sacrifice' ]]; then
+if [[ $HOST == 'sacrifice' ]]; then
 
   [[ -d /etc/amdfand ]] || sudo mkdir /etc/amdfand
-  sudo cp `dirname $0`/etc/amdfand/config.toml /etc/amdfand
+  sudo cp "${BASH_SOURCE%/*}"/etc/amdfand/config.toml /etc/amdfand
   sudo systemctl enable amdfand.service
 
 fi
@@ -114,7 +113,7 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   # nvidia overclocking
 
-  cp `dirname $0`/home/.config/systemd/user/nvidia.service $XDG_CONFIG_HOME/systemd/user
+  cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/nvidia.service "$XDG_CONFIG_HOME"/systemd/user
   systemctl --user enable nvidia.service
 
   sudo systemctl enable nvidia-persistenced.service
@@ -124,12 +123,12 @@ fi
 # audio
 
 [[ -d $XDG_CONFIG_HOME/pipewire/pipewire.conf.d ]] || mkdir -p $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
-cp `dirname $0`/home/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
+cp $(dirname $0)/home/.config/pipewire/pipewire.conf.d/10-clock-rate.conf $XDG_CONFIG_HOME/pipewire/pipewire.conf.d
 
-if [[ -f `dirname $0`/home/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]]; then
+if [[ -f $(dirname $0)/home/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]]; then
 
   [[ -d $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d ]] || mkdir -p $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d
-  cp `dirname $0`/home/.config/wireplumber/wireplumber.conf.d/$HOST.conf $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d/audio.conf
+  cp $(dirname $0)/home/.config/wireplumber/wireplumber.conf.d/$HOST.conf $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d/audio.conf
 
 fi
 
@@ -137,30 +136,30 @@ systemctl --user enable pipewire-pulse.service
 
 # performance optimization
 
-cp `dirname $0`/home/.config/systemd/user/perf.service $XDG_CONFIG_HOME/systemd/user
+cp $(dirname $0)/home/.config/systemd/user/perf.service $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable perf.service
 
 # sync
 
-cp `dirname $0`/home/.config/systemd/user/sync-* $XDG_CONFIG_HOME/systemd/user
+cp $(dirname $0)/home/.config/systemd/user/sync-* $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable sync-periodic.timer
 systemctl --user enable sync-session.service
 
 # fetch cache refresh
 
-cp `dirname $0`/home/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
+cp $(dirname $0)/home/.config/systemd/user/fetch.service $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable fetch.service
 
 # random wallpaper every hour
 
-cp `dirname $0`/home/.config/systemd/user/wall.* $XDG_CONFIG_HOME/systemd/user
+cp $(dirname $0)/home/.config/systemd/user/wall.* $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable wall.timer
 
 # do not disturb
 
 if [[ $XDG_CURRENT_DESKTOP == 'GNOME' ]]; then
 
-  cp `dirname $0`/home/.config/systemd/user/dnd.service $XDG_CONFIG_HOME/systemd/user
+  cp $(dirname $0)/home/.config/systemd/user/dnd.service $XDG_CONFIG_HOME/systemd/user
   systemctl --user enable dnd.service
 
 fi
@@ -168,7 +167,7 @@ fi
 # fonts
 
 [[ -d $XDG_CONFIG_HOME/fontconfig ]] || mkdir -p $XDG_CONFIG_HOME/fontconfig
-cp `dirname $0`/home/.config/fontconfig/fonts.conf $XDG_CONFIG_HOME/fontconfig
+cp $(dirname $0)/home/.config/fontconfig/fonts.conf $XDG_CONFIG_HOME/fontconfig
 fc-cache -f
 
 # group check
@@ -178,4 +177,3 @@ sudo grpck
 # time sync
 
 sudo timedatectl set-ntp true
-

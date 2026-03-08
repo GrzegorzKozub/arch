@@ -1,16 +1,15 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # bitlocker must be temporarily disabled
 
-[[ $(lsblk -o FSTYPE | grep BitLocker) ]] && exit 1
+lsblk -o FSTYPE | grep -q BitLocker && exit 1
 
 # secure boot must be disabled & in setup mode
 
 STATUS=$(sudo sbctl status --json)
-[[ $(echo $STATUS | jq .secure_boot) = 'true' ]] && exit 1
-[[ $(echo $STATUS | jq .setup_mode) = 'false' ]] && exit 1
+[[ $(echo "$STATUS" | jq .secure_boot) = 'true' ]] && exit 1
+[[ $(echo "$STATUS" | jq .setup_mode) = 'false' ]] && exit 1
 
 # create & enroll keys
 
@@ -39,8 +38,7 @@ for FILE in \
   vmlinuz-linux-lts \
   \
   archiso/vmlinuz-linux \
-  archiso/vmlinuz-linux-lts
-do
+  archiso/vmlinuz-linux-lts; do
   sudo test -f /boot/$FILE || continue
   sudo sbctl sign --save /boot/$FILE
 done
@@ -48,4 +46,3 @@ done
 # list enrolled efi binaries
 
 sudo sbctl list-files
-

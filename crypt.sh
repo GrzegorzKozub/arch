@@ -9,7 +9,7 @@ ARCH_PART="$(
 )"
 
 # disk unlock via tpm 2.0
-# enroll again after updating secure boot keys via secboot.zsh and after windows updates
+# enroll again after updating secure boot keys via secboot.sh and after windows updates
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 

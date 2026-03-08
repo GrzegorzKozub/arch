@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e -o verbose
+set -eo pipefail -ux
 
 SECRETS=/run/media/"$USER"/data/.secrets
 

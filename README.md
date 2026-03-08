@@ -26,9 +26,9 @@ Automated Arch Linux installation
 10. Once per machine, prepare secrets
 11. Run `~/code/arch/apps.zsh` and `~/code/arch/work.sh` on drifter and worker
 12. Reboot
-13. Once per machine, run `~/code/arch/secboot.zsh` (backup required after)
-14. Once per machine, run `~/code/arch/preloader.sh disable` (after `secboot.zsh`)
-15. Once per machine and after each `secboot.zsh` run, run `~/code/arch/crypt.sh`
+13. Once per machine, run `~/code/arch/secboot.sh` (backup required after)
+14. Once per machine, run `~/code/arch/preloader.sh disable` (after `secboot.sh`)
+15. Once per machine and after each `secboot.sh` run, run `~/code/arch/crypt.sh`
 16. If required, run `~/code/arch/intune.sh` and `~/code/arch/edge.sh` on drifter and worker
 17. Reboot & backup
 
