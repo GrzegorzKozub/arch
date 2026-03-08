@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e
+set -eo pipefail -ux
 
 DIR=/boot/EFI/limine
 [[ -d $DIR ]] || mkdir $DIR
@@ -12,7 +11,9 @@ cp /usr/share/limine/BOOTX64.EFI $DIR/liminex64.efi
 # update resource file checksums in the config file
 
 CFG=$DIR/limine.conf
+
 TMP=$(mktemp)
+trap 'rm -rf $TMP' EXIT
 
 cp $CFG $CFG.backup
 
@@ -35,7 +36,7 @@ while IFS= read -r line; do
 
 done < $CFG > "$TMP"
 
-mv "$TMP" $CFG
+cp "$TMP" $CFG
 # rm $CFG.backup
 
 # embded config file checksum in the executable

@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # reset
 
@@ -54,4 +53,3 @@ sudo nft add rule inet filter_table input_chain meta l4proto tcp reject with tcp
 # other connections
 
 sudo nft add rule inet filter_table input_chain counter reject with icmpx port-unreachable
-

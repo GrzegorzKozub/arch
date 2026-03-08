@@ -1,13 +1,13 @@
-#!/usr/bin/env zsh
-
-# set -e
+#!/usr/bin/env bash
+set -eo pipefail -u
 
 YT=/run/media/$USER/data/music/YouTube
-[[ -d $YT ]] || mkdir $YT
-rm -rf $YT/*
-pushd $YT
+[[ -d $YT ]] || mkdir "$YT"
+rm -rf "$YT"/*
+pushd "$YT"
 
 TMP="$(mktemp)"
+trap 'rm -rf $TMP' EXIT
 
 yt-dlp \
   --format bestaudio \
@@ -18,12 +18,12 @@ yt-dlp \
   --embed-metadata \
   --convert-thumbnail png --write-thumbnail \
   --no-write-playlist-metafiles \
-  --paths $YT --output '%(artist)s - %(title)s.%(ext)s' --windows-filenames \
-  --print-to-file filename $TMP \
+  --paths "$YT" --output '%(artist)s - %(title)s.%(ext)s' --windows-filenames \
+  --print-to-file filename "$TMP" \
   'https://music.youtube.com/browse/VLPLm6VwE4tgUkXEcczHuW9xiwGJwHvq69ri'
   # 'https://music.youtube.com/playlist?list=LM'
 
-sed -i -e "s#$YT/##" -e 's/\.webm//' $TMP
+sed -i -e "s#$YT/##" -e 's/\.webm//' "$TMP"
 
 while read -r title; do
 
@@ -42,9 +42,6 @@ while read -r title; do
 
   rm original.flac original.png square.png
 
-done < $TMP
-
-rm $TMP
+done < "$TMP"
 
 popd
-

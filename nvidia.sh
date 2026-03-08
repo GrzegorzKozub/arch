@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e
+set -eo pipefail -ux
 
 # https://forum.foldingathome.org/viewtopic.php?p=372040
 

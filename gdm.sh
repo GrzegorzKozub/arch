@@ -84,7 +84,9 @@ sudo glib-compile-schemas $SCHEMAS
 
 GS=/usr/share/gnome-shell
 GST=gnome-shell-theme.gresource
+
 TMP="$(mktemp -d)"
+trap 'rm -rf $TMP' EXIT
 
 mkdir -p "$TMP"/theme/icons/scalable/actions
 mkdir -p "$TMP"/theme/icons/scalable/status

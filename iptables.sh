@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # reset
 
@@ -109,5 +108,5 @@ sudo iptables -A INPUT -j REJECT --reject-with icmp-proto-unreachable
 
 # save
 
-sudo iptables-save -f `dirname $0`/etc/iptables/iptables.rules
+sudo iptables-save -f "${BASH_SOURCE%/*}"/etc/iptables/iptables.rules
 

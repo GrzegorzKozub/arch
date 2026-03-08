@@ -11,7 +11,7 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 
 # paru
 
-`dirname $0`/paru.zsh
+`dirname $0`/paru.sh
 
 # firmware
 

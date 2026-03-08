@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-set -e -o verbose
+#!/usr/bin/env bash
+set -eo pipefail -ux
 
 # reset
 
@@ -114,5 +113,4 @@ sudo ip6tables -A INPUT -j REJECT --reject-with icmp6-adm-prohibited
 
 # save
 
-sudo ip6tables-save -f `dirname $0`/etc/iptables/ip6tables.rules
-
+sudo ip6tables-save -f "${BASH_SOURCE%/*}"/etc/iptables/ip6tables.rules
