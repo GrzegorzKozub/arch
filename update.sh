@@ -14,6 +14,7 @@ paru --aur --noconfirm -Syu
 set +e
 
 paru -S --aur --noconfirm \
+  neovim-nightly-bin \
   yazi-nightly-bin
 
 set -e
