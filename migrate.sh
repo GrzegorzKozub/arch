@@ -18,6 +18,14 @@ sudo pacman -S --noconfirm duckdb
 [[ $(pacman -Q papirus-icon-theme-git) ]] && paru -Rs --noconfirm papirus-icon-theme-git
 [[ $(pacman -Q papirus-icon-theme) ]] || sudo pacman -S --noconfirm papirus-icon-theme
 
+# tidal
+
+uv tool uninstall tidal-dl-ng || true
+uv tool install tidal-dl-ng-for-dj
+
+rm -rf ~/.config/tidal_dl_ng
+~/code/dot/links.sh
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
