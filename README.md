@@ -90,7 +90,7 @@ Automated Arch Linux installation
 8. Postman (work)
   - Sign in
   - Change font family to `Cascadia Code`
-  - Change font size to `16`
+  - Change font size to `14`
   - Change indentation count to `2`
   - Don't send anonymous usage data
   - Disable AI
@@ -193,7 +193,8 @@ The aim is to standardize on the font size of `1em` or `12pt` or `16px` ([conver
 Current settings
 
 - Ghostty & Kitty: `12pt` (or `1em` or `16px`)
-- Brave, Code, Obsidian, Postman, Zed: `16px` (or `1em` or `12pt`)
+- Brave, Code, Obsidian, Zed: `16px` (or `1em` or `12pt`)
+- Postman: `14px` (or `0.88em` or `11pt`)
 
 ## GNOME Shell extensions
 
