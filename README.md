@@ -93,6 +93,8 @@ Automated Arch Linux installation
   - Change font size to `16`
   - Change indentation count to `2`
   - Don't send anonymous usage data
+  - Disable AI
+  - Only show collections and environments in workspace
 9. Teams (work)
   - Follow operating system theme
   - Switch to compact chat message density
