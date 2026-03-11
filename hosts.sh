@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# hosts
-
 LIST=(
   8favxfpaq6.execute-api.eu-west-1.amazonaws.com
   ANUNLB-LB-VC5YGOQNTGG4-7707d28b7ca45024.elb.eu-west-1.amazonaws.com

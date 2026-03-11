@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# hidden links
-
 for APP in \
   avahi-discover \
   bssh \

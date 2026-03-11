@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# player
-
 export MY_DISK=/dev/nvme0n1
 
 export MY_EFI_PART=/dev/nvme0n1p1

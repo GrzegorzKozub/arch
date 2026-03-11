@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# mysql
-
 NAME=mysql
 
 if [[ $(docker ps --all --filter name=$NAME --quiet) ]]; then
@@ -19,4 +17,3 @@ else
     mysql
 
 fi
-
