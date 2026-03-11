@@ -92,6 +92,7 @@ sudo pacman -S --noconfirm \
   trash-cli \
   wget \
   wl-clipboard \
+  worktree \
   xclip \
   xcolor \
   xh \
