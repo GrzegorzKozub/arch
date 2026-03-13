@@ -33,5 +33,6 @@ if [[ ${1:-} == 'zoom-in' ]]; then
 fi
 
 if [[ -z ${1:-} || ${1:-} == 'preview' ]]; then
-  ffplay -input_format mjpeg -video_size "$RES" -framerate 30 "$CAM" &> /dev/null
+  printf '\e[33m󰖠 \e[37mpreviewing webcam\e[0m\n'
+  ffplay -input_format mjpeg -video_size "$RES" -framerate 30 "$CAM" &>/dev/null
 fi
