@@ -59,3 +59,5 @@ volume() {
     printf '\e[33m󰖁 \e[37maudio \e[0mmuted\n' ||
     printf '\e[33m󰕾 \e[37maudio \e[0munmuted\n'
 }
+
+exit 0
