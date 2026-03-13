@@ -7,39 +7,44 @@ volume() {
 
 [[ ${1:-} == 'down' ]] && {
   pactl set-sink-volume @DEFAULT_SINK@ -5%
-  volume
+  printf '\e[33m󰝞 \e[37maudio volume \e[0m%s\n' "$(volume)"
 }
 
 [[ ${1:-} == 'up' ]] && {
   VOL=$(volume)
   ((DELTA = VOL <= 95 ? 5 : 100 - VOL))
   pactl set-sink-volume @DEFAULT_SINK@ +$DELTA%
-  volume
+  printf '\e[33m󰝝 \e[37maudio volume \e[0m%s\n' "$(volume)"
 }
 
-[[ ${1:-} =~ ^(sink|source)$ ]] && {
-  [[ $1 == 'sink' ]] && SINK=1
-  [[ $1 == 'source' ]] && SOURCE=1
+[[ ${1:-} =~ ^(input|output)$ ]] && {
+  [[ $1 == 'input' ]] && SOURCE=1
+  [[ $1 == 'output' ]] && SINK=1
 
-  [[ ${SINK:-} ]] && ALL=$(pactl list short sinks | cut -f2) && DEFAULT='Default Sink'
   [[ ${SOURCE:-} ]] && ALL=$(pactl list short sources | cut -f2) && DEFAULT='Default Source'
+  [[ ${SINK:-} ]] && ALL=$(pactl list short sinks | cut -f2) && DEFAULT='Default Sink'
 
   default() {
     pactl info | grep "$DEFAULT" | cut -d' ' -f3
   }
 
   show() {
-    pactl list "$1" | grep --context=1 "$2" | grep 'Description' | sed -e 's/.*Description: //'
+    DEVICE=$(pactl list "$1" | grep --context=1 "$2" | grep 'Description' | sed -e 's/.*Description: //')
+    if [[ $1 == 'sources' ]]; then
+      printf '\e[33m \e[37maudio input \e[0m%s\n' "$DEVICE"
+    elif [[ $1 == 'sinks' ]]; then
+      printf '\e[33m󰓃 \e[37maudio output \e[0m%s\n' "$DEVICE"
+    fi
   }
 
   while true; do
     while IFS= read -r current; do
       if [[ ${SWITCH:-} ]]; then
-        [[ ${SINK:-} ]] && pactl set-default-sink "$current"
         [[ ${SOURCE:-} ]] && pactl set-default-source "$current"
+        [[ ${SINK:-} ]] && pactl set-default-sink "$current"
         if [[ $(default) == "$current" ]]; then
-          [[ ${SINK:-} ]] && show 'sinks' "$current"
           [[ ${SOURCE:-} ]] && show 'sources' "$current"
+          [[ ${SINK:-} ]] && show 'sinks' "$current"
           exit
         fi
       fi
@@ -50,5 +55,7 @@ volume() {
 
 [[ -z ${1:-} || ${1:-} == 'mute' ]] && {
   pactl set-sink-mute @DEFAULT_SINK@ toggle
-  pactl get-sink-mute @DEFAULT_SINK@ | sed -e 's/Mute: //'
+  [[ $(pactl get-sink-mute @DEFAULT_SINK@ | sed -e 's/Mute: //') == 'yes' ]] &&
+    printf '\e[33m󰖁 \e[37maudio \e[0mmuted\n' ||
+    printf '\e[33m󰕾 \e[37maudio \e[0munmuted\n'
 }

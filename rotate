@@ -8,7 +8,7 @@ grep '^\[' "$AWS_SHARED_CREDENTIALS_FILE" | sed 's/[][]//g' | while read -r PROF
   ID=$(aws configure get aws_access_key_id --profile "$PROFILE")
   [[ -z ${ID-} ]] && continue
 
-  printf "\e[37m  rotate \e[0m%s\n" "$PROFILE"
+  printf "\e[33m  \e[37mrotating \e[0m%s\n" "$PROFILE"
 
   NAME=$(aws sts get-caller-identity \
     --profile "$PROFILE" \

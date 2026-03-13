@@ -283,8 +283,8 @@ add_shortcut() {
 }
 
 add_shortcut 0 'Print' 'screenshot' "/home/$USER/code/arch/screenshot.sh"
-add_shortcut 1 '<Control><Super>a' 'audio output' "/home/$USER/code/arch/audio.sh sink"
-add_shortcut 2 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio.sh source"
+add_shortcut 1 '<Control><Super>a' 'audio output' "/home/$USER/code/arch/audio output"
+add_shortcut 2 '<Control><Super>m' 'audio input' "/home/$USER/code/arch/audio input"
 
 gsettings set \
   org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
