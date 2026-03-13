@@ -22,12 +22,14 @@ if [[ ${1:-} == 'zoom-out' ]]; then
   ZOOM=$(get-zoom)
   ((ZOOM = ZOOM > 100 ? ZOOM - 10 : ZOOM))
   set-zoom $ZOOM
+  printf '\e[33m󰖠 \e[37mwebcam zoom \e[0m%s\n' "$ZOOM"
 fi
 
 if [[ ${1:-} == 'zoom-in' ]]; then
   ZOOM=$(get-zoom)
   ((ZOOM = ZOOM < 180 ? ZOOM + 10 : ZOOM))
   set-zoom $ZOOM
+  printf '\e[33m󰖠 \e[37mwebcam zoom \e[0m%s\n' "$ZOOM"
 fi
 
 if [[ -z ${1:-} || ${1:-} == 'preview' ]]; then
