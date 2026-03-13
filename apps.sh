@@ -64,6 +64,7 @@ sudo pacman -S --noconfirm \
   cava \
   cpupower \
   direnv \
+  docx2txt \
   duckdb \
   eza \
   fastfetch \
