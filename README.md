@@ -1,6 +1,6 @@
 # Arch
 
-Automated Arch Linux installation
+Automated Arch Linux installation. See [ISSUES.md](ISSUES.md) for known issues.
 
 ## Archiso
 
@@ -211,10 +211,6 @@ Based on [Intune for Arch Linux](https://git.recolic.net/root/microsoft-intune-a
 
 - [microsoft-identity-broker-bin](https://aur.archlinux.org/packages/microsoft-identity-broker-bin) ([sources](https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/microsoft-identity-broker/))
 - [intune-portal-bin](https://aur.archlinux.org/packages/intune-portal-bin) ([sources](https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/i/intune-portal/))
-
-Known issues
-
-- [libgobject-2.0.so.0 coredump](https://git.recolic.net/root/microsoft-intune-archlinux/-/issues/3)
 
 Use Entra SSO with Brave via [linux-entra-sso](https://github.com/siemens/linux-entra-sso)
 
