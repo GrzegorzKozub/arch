@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eo pipefail -ux
+set -eo pipefail -u
 
 if [[ $HOST == 'drifter' ]]; then
   DISK=/dev/sda1
@@ -18,7 +18,7 @@ mount | grep -q "$DISK on $MOUNT" || sudo mount "$DISK" $MOUNT
 [[ -d $TARGET ]] || mkdir $TARGET
 
 FREE=$(df --human-readable "$DISK" --output=avail | grep -v Avail | sed -E 's/ |G//g')
-[[ $FREE -lt 64 ]] && echo "only ${FREE}G free on $DISK"
+[[ $FREE -lt 1164 ]] && echo "only ${FREE}G free on $DISK"
 
 rclone sync \
   --exclude '.cache/**' \

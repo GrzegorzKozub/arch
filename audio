@@ -7,14 +7,14 @@ volume() {
 
 if [[ ${1:-} == 'down' ]]; then
   pactl set-sink-volume @DEFAULT_SINK@ -5%
-  printf '\e[33m󰝞 \e[37maudio volume \e[0m%s\n' "$(volume)"
+  volume
 fi
 
 if [[ ${1:-} == 'up' ]]; then
   VOL=$(volume)
   ((DELTA = VOL <= 95 ? 5 : 100 - VOL))
   pactl set-sink-volume @DEFAULT_SINK@ +$DELTA%
-  printf '\e[33m󰝝 \e[37maudio volume \e[0m%s\n' "$(volume)"
+  volume
 fi
 
 if [[ ${1:-} =~ ^(input|output)$ ]]; then
@@ -29,12 +29,7 @@ if [[ ${1:-} =~ ^(input|output)$ ]]; then
   }
 
   show() {
-    DEVICE=$(pactl list "$1" | grep --context=1 "$2" | grep 'Description' | sed -e 's/.*Description: //')
-    if [[ $1 == 'sources' ]]; then
-      printf '\e[33m \e[37maudio input \e[0m%s\n' "$DEVICE"
-    elif [[ $1 == 'sinks' ]]; then
-      printf '\e[33m󰓃 \e[37maudio output \e[0m%s\n' "$DEVICE"
-    fi
+    pactl list "$1" | grep --context=1 "$2" | grep 'Description' | sed -e 's/.*Description: //'
   }
 
   while true; do
@@ -56,6 +51,5 @@ fi
 if [[ -z ${1:-} || ${1:-} == 'mute' ]]; then
   pactl set-sink-mute @DEFAULT_SINK@ toggle
   [[ $(pactl get-sink-mute @DEFAULT_SINK@ | sed -e 's/Mute: //') == 'yes' ]] &&
-    printf '\e[33m󰖁 \e[37maudio \e[0mmuted\n' ||
-    printf '\e[33m󰕾 \e[37maudio \e[0munmuted\n'
+    echo mute || echo unmute
 fi
