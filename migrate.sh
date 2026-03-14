@@ -5,9 +5,9 @@ set -eo pipefail -ux
 
 sudo pacman -S --noconfirm docx2txt
 
-# worktree
+# worktrunk
 
-sudo pacman -S --noconfirm worktree
+sudo pacman -S --noconfirm worktrunk
 
 # cleanup
 
