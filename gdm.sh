@@ -142,6 +142,7 @@ sudo cp "$TMP"/theme/"$GST" "$GS"/"$GST"
 
 # workaround https://gitlab.gnome.org/GNOME/gdm/-/issues/1029 (was 'suspend')
 
-[[ $HOST =~ ^(drifter|worker)$ ]] &&
+if [[ $HOST =~ ^(drifter|worker)$ ]]; then
   sudo -u gdm dbus-launch \
     gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+fi
