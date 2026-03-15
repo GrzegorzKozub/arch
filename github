@@ -6,6 +6,7 @@ import subprocess
 import tarfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
+from getpass import getpass
 from pathlib import Path
 from typing import Any
 
@@ -65,7 +66,7 @@ def clone_repo(repo: dict[str, Any], dir: Path) -> str:
 
 
 def clone_repos(repos: list[dict[str, Any]], dir: Path) -> None:
-    print("\033[33m \033[37mcloning \033[0m", end="", flush=True)
+    print("\033[33m \033[37mclone \033[0m", end="", flush=True)
     with ThreadPoolExecutor(max_workers=min(8, len(repos))) as exec:
         for future in as_completed(
             {exec.submit(clone_repo, repo, dir): repo["name"] for repo in repos}
@@ -74,21 +75,45 @@ def clone_repos(repos: list[dict[str, Any]], dir: Path) -> None:
     print()
 
 
-def compress(dir: Path) -> None:
+def compress(dir: Path) -> Path:
     file = dir.with_suffix(".tar.gz")
-    print(f"\033[33m \033[37mcreating \033[36m{file} \033[0m")
+    print(f"\033[33m \033[37mcompress \033[36m{file} \033[0m")
     if file.exists():
         file.unlink()
     with tarfile.open(file, "w:gz") as tar:
         tar.add(dir, arcname=dir.name)
     shutil.rmtree(dir)
+    return file
+
+
+def encrypt(file: Path) -> None:
+    print(
+        f"\033[33m \033[37mencrypt \033[36m{file.with_suffix(file.suffix + '.gpg')} \033[0m"
+    )
+    passphrase = getpass(prompt="\033[33m \033[37mpassphrase: \033[0m", echo_char="*")
+    confirm = getpass(prompt="\033[33m \033[37mconfirm: \033[0m", echo_char="*")
+    if passphrase == "" or passphrase != confirm:
+        raise SystemExit(1)
+    subprocess.run(
+        [
+            "gpg",
+            "--passphrase",
+            passphrase,
+            "--pinentry-mode",
+            "loopback",
+            "--symmetric",
+            str(file),
+        ],
+        check=True,
+    )
+    file.unlink()
 
 
 def main() -> None:
     env()
     dir = make_backup_dir()
     clone_repos(list_repos(), dir)
-    compress(dir)
+    encrypt(compress(dir))
 
 
 if __name__ == "__main__":
