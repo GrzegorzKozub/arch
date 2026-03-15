@@ -4,6 +4,7 @@ import os
 import shutil
 import subprocess
 import tarfile
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -27,7 +28,7 @@ def env() -> None:
             os.environ[key] = value.strip().strip('"').strip("'")
 
 
-def fetch() -> list[dict[str, Any]]:
+def list_repos() -> list[dict[str, Any]]:
     url = "https://api.github.com/user/repos?per_page=100&page=1"
     headers = {"Authorization": f"Bearer {os.environ.get('GITHUB_PAT')}"}
     repos: list[dict[str, Any]] = []
@@ -40,7 +41,7 @@ def fetch() -> list[dict[str, Any]]:
     return repos
 
 
-def mkdir() -> Path:
+def make_backup_dir() -> Path:
     dir = Path(DIR) / datetime.now().strftime("%Y%m%d%H%M")
     if dir.exists():
         shutil.rmtree(dir)
@@ -48,38 +49,45 @@ def mkdir() -> Path:
     return dir
 
 
-def clone(repos: list[dict[str, Any]], dir: Path) -> None:
+def clone_repo(repo: dict[str, Any], dir: Path) -> str:
+    subprocess.run(
+        [
+            "git",
+            "clone",
+            "--mirror",
+            "--quiet",
+            repo["ssh_url"],
+            str(dir / f"{repo['name']}.git"),
+        ],
+        check=True,
+    )
+    return str(repo["name"])
+
+
+def clone_repos(repos: list[dict[str, Any]], dir: Path) -> None:
     print("\033[33m \033[37mcloning \033[0m", end="", flush=True)
-    for repo in repos:
-        print(f"\033[36m{repo['name']} \033[0m", end="", flush=True)
-        subprocess.run(
-            [
-                "git",
-                "clone",
-                "--mirror",
-                "--quiet",
-                repo["ssh_url"],
-                str(dir / f"{repo['name']}.git"),
-            ],
-            check=True,
-        )
+    with ThreadPoolExecutor(max_workers=min(8, len(repos))) as exec:
+        for future in as_completed(
+            {exec.submit(clone_repo, repo, dir): repo["name"] for repo in repos}
+        ):
+            print(f"\033[36m{future.result()} \033[0m", end="", flush=True)
     print()
 
 
 def compress(dir: Path) -> None:
     file = dir.with_suffix(".tar.gz")
+    print(f"\033[33m \033[37mcreating \033[36m{file} \033[0m")
     if file.exists():
         file.unlink()
     with tarfile.open(file, "w:gz") as tar:
         tar.add(dir, arcname=dir.name)
     shutil.rmtree(dir)
-    print(f"\033[33m \033[37mbackup file \033[36m{file} \033[37mcreated\033[0m")
 
 
 def main() -> None:
     env()
-    dir = mkdir()
-    clone(fetch(), dir)
+    dir = make_backup_dir()
+    clone_repos(list_repos(), dir)
     compress(dir)
 
 
