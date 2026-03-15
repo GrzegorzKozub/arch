@@ -13,9 +13,13 @@ lnk() {
 
 lnk "$SECRETS"/.zshenv ~/code/dot/zsh/zsh/.zshenv
 
-# fetch env: GITHUB_PAT_EFFICY, GITHUB_PAT_GREG
+# fetch.py env: GITHUB_PAT_EFFICY, GITHUB_PAT_GREG
 
 lnk "$SECRETS"/fetch.env ~/code/arch/fetch.env
+
+# github.py env: GITHUB_PAT
+
+lnk "$SECRETS"/github.env ~/code/arch/github.env
 
 # ansible
 

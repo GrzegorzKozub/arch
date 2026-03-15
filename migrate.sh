@@ -5,6 +5,11 @@ set -eo pipefail -ux
 
 sudo pacman -S --noconfirm docx2txt
 
+# github
+
+"${BASH_SOURCE%/*}"/data.sh
+"${BASH_SOURCE%/*}"/secrets.sh
+
 # worktrunk
 
 sudo pacman -S --noconfirm worktrunk

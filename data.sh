@@ -15,5 +15,6 @@ create '.cache'
 create '.data'
 create '.secrets'
 
+create 'github'
 create 'music'
 create 'vm'
