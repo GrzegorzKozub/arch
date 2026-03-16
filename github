@@ -71,7 +71,7 @@ def clone_repos(repos: list[dict[str, Any]], dir: Path) -> None:
         for future in as_completed(
             {exec.submit(clone_repo, repo, dir): repo["name"] for repo in repos}
         ):
-            print(f"\033[36m{future.result()} \033[0m", end="", flush=True)
+            print(f"\033[0m{future.result()} \033[0m", end="", flush=True)
     print()
 
 

@@ -3,12 +3,14 @@ set -eo pipefail -u
 
 [[ $HOST == 'worker' ]] || exit 1
 
+printf "\e[33m  \e[37mrotate \e[0m"
+
 grep '^\[' "$AWS_SHARED_CREDENTIALS_FILE" | sed 's/[][]//g' | while read -r PROFILE; do
 
   ID=$(aws configure get aws_access_key_id --profile "$PROFILE")
   [[ -z ${ID-} ]] && continue
 
-  printf "\e[33m  \e[37mrotate \e[0m%s\n" "$PROFILE"
+  printf "\e[0m%s \e[0m" "$PROFILE"
 
   NAME=$(aws sts get-caller-identity \
     --profile "$PROFILE" \
@@ -38,3 +40,5 @@ grep '^\[' "$AWS_SHARED_CREDENTIALS_FILE" | sed 's/[][]//g' | while read -r PROF
   aws configure set aws_secret_access_key "$NEW_KEY" --profile "$PROFILE"
 
 done
+
+printf '\n'
