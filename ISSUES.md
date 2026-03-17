@@ -16,12 +16,6 @@ Suspends right after waking up from suspending via GNOME
 - https://discourse.gnome.org/t/gnome-suspends-a-few-seconds-after-waking/31678/17
 - https://bbs.archlinux.org/viewtopic.php?id=127740
 
-Workaround
-
-```bash
-sudo -u gdm dbus-launch gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
-```
-
 The settings from `monitors.xml` are not applied
 
 - https://bbs.archlinux.org/viewtopic.php?id=308479
