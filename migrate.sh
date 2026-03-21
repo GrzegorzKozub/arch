@@ -16,10 +16,6 @@ pushd ~/code/dot
 git update-index --assume-unchanged tidal-hifi/tidal-hifi/config.json
 popd
 
-# worktrunk
-
-sudo pacman -S --noconfirm worktrunk
-
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
