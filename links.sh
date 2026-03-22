@@ -8,6 +8,7 @@ if [[ $HOST == 'drifter' ]]; then
   cp /usr/share/applications/com.mitchellh.ghostty.desktop "$XDG_DATA_HOME"/applications
   sed -i \
     -e "s/^Exec=\/usr\/bin\/ghostty/Exec=\/usr\/bin\/ghostty --window-height=30 --window-width=120/" \
+    -e "s/^DBusActivatable=true/DBusActivatable=false/" \
     "$XDG_DATA_HOME"/applications/com.mitchellh.ghostty.desktop
 
 fi
