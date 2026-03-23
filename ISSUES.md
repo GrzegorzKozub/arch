@@ -45,15 +45,3 @@ Workaround
 sudo rm -rf /var/cache/pacman/pkg/download-*
 ```
 
-## Teams
-
-Crash when joining a meeting with camera
-
-- https://github.com/IsmaelMartinez/teams-for-linux/issues/2169
-
-Workaround
-
-```bash
-rm -rf ~/.config/teams-for-linux/Partitions/teams-4-linux/Local\ Storage
-```
-
