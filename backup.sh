@@ -26,6 +26,7 @@ rclone sync \
   --exclude '.secrets/**' \
   --exclude ".Trash-$(id -u)/**" \
   --exclude 'boot/**' \
+  --exclude 'katie/**' \
   --exclude 'lost+found/**' \
   --modify-window 100ns \
   --progress \
