@@ -60,7 +60,11 @@ export default class Windows extends Extension {
       { class: /^com.github.wwmm.easyeffects$/ },
       { class: /^com.github.johnfactotum.Foliate$/ },
       { title: /^Welcome to IntelliJ IDEA$/, auto: true },
-      { title: /.?KeePassXC$/, auto: true },
+      {
+        class: /.?org.keepassxc.KeePassXC.desktop$/,
+        exceptTitle: /^Unlock Database - KeePassXC$/,
+        auto: true,
+      },
       { class: /^io.github.ilya_zlobintsev.LACT$/, auto: true },
       { title: /.?LibreOffice.?/, auto: true },
       { class: /^io.missioncenter.MissionCenter$/, auto: true },
@@ -69,7 +73,11 @@ export default class Windows extends Extension {
       { class: /^org.gnome.Papers$/ },
       { title: /.?Steam$/ },
       { class: /^teams-for-linux$/, auto: true },
-      { class: /^tidal-hifi$/, auto: true },
+      {
+        class: /^tidal-hifi$/,
+        exceptTitle: /^Tidal Hi-Fi settings$/,
+        auto: true,
+      },
     ];
     const small = [
       // { title: /^Open/ }, // file pickers
