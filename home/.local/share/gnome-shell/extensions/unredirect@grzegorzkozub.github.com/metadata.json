@@ -1,0 +1,6 @@
+{
+  "name": "unredirect",
+  "description": "unredirect",
+  "uuid": "unredirect@grzegorzkozub.github.com",
+  "shell-version": ["49", "50"]
+}

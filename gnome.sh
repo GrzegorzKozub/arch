@@ -83,26 +83,29 @@ gsettings set org.gnome.shell disable-extension-version-validation true
 DIR=$XDG_DATA_HOME/gnome-shell/extensions
 [[ -d $DIR ]] || mkdir -p "$DIR"
 
-cp -r "${BASH_SOURCE%/*}"/home/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com "$DIR"
-
-pushd "$DIR"/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
-
-FRESH=0
-
-for NAME in 'appindicatorsupport@rgcjonas.gmail.com' 'blur-my-shell@aunetx' 'rounded-window-corners@fxgn' 'windows@grzegorzkozub.github.com'; do
-  gnome-extensions enable $NAME || FRESH=1
-done
-
+EXTENSIONS=(
+  'appindicatorsupport@rgcjonas.gmail.com'
+  'blur-my-shell@aunetx'
+  'rounded-window-corners@fxgn'
+  'windows@grzegorzkozub.github.com'
+)
   # 'appindicatorsupport@rgcjonas.gmail.com',
   # 'user-theme@gnome-shell-extensions.gcampax.github.com',
 
+cp -r "${BASH_SOURCE%/*}"/home/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com "$DIR"
+pushd "$DIR"/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
+
+if [[ $HOST == 'worker' ]]; then
+
+  cp -r "${BASH_SOURCE%/*}"/home/.local/share/gnome-shell/extensions/unredirect@grzegorzkozub.github.com "$DIR"
+  EXTENSIONS+=('unredirect@grzegorzkozub.github.com')
+
+fi
+
+FRESH=0
+for NAME in "${EXTENSIONS[@]}"; do gnome-extensions enable "$NAME" || FRESH=1; done
 [[ $FRESH == 1 ]] &&
-  gsettings set org.gnome.shell enabled-extensions "[
-    'appindicatorsupport@rgcjonas.gmail.com',
-    'blur-my-shell@aunetx',
-    'rounded-window-corners@fxgn',
-    'windows@grzegorzkozub.github.com'
-  ]"
+  gsettings set org.gnome.shell enabled-extensions "[$(printf "'%s', " "${EXTENSIONS[@]}" | sed 's/, $//')]"
 
 gsettings set org.gnome.shell.extensions.appindicator legacy-tray-enabled false
 

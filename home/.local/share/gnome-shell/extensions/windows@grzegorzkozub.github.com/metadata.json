@@ -2,5 +2,5 @@
   "name": "windows",
   "description": "windows",
   "uuid": "windows@grzegorzkozub.github.com",
-  "shell-version": ["48", "49"]
+  "shell-version": ["49", "50"]
 }
