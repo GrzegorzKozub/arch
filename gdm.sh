@@ -73,6 +73,19 @@ sudo dconf update
 #   sudo cp "$SOURCE" $TARGET &&
 #   sudo sed -i '/ratemode/d' $TARGET
 
+# CLAUDE
+# GDM's Mutter silently rejects monitors.xml when <ratemode> is present (it's the VRR flag
+# and GDM doesn't support VRR). Strip it while keeping the high refresh rate — fixed modes
+# like 240Hz/144Hz are real DRM modes that GDM can enumerate. Deployed to /etc/gdm/monitors.xml
+# and applied on every boot via gdm-monitors.service (since /var/lib/gdm/ is volatile runtime state).
+# if [[ $HOST =~ ^(player|worker)$ ]]; then
+#   TARGET=/var/lib/gdm/seat0/config/monitors.xml
+#   sudo install -D -o gdm -g gdm "${BASH_SOURCE%/*}"/home/.config/monitors.$HOST.xml $TARGET
+#   sudo sed -i '/ratemode/d' $TARGET
+# fi
+#s (239.990Hz, 143.999Hz)
+# CLAUDE
+
 # display scale factor
 
 SCHEMAS=/usr/share/glib-2.0/schemas
