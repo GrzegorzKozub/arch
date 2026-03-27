@@ -13,8 +13,10 @@ Sandbox is broken
 Suspends right after waking up from suspending via GNOME
 
 - https://gitlab.gnome.org/GNOME/gdm/-/issues/1029
-- https://discourse.gnome.org/t/gnome-suspends-a-few-seconds-after-waking/31678/17
-- https://bbs.archlinux.org/viewtopic.php?id=127740
+
+Workaround
+
+Set `sleep-inactive-ac-type` & `sleep-inactive-battery-type` to `nothing` inside GDM dconf
 
 The settings from `monitors.xml` are not applied
 

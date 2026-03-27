@@ -8,6 +8,9 @@ sudo pacman -S --noconfirm \
 
 # dconf
 
+  # workaround https://gitlab.gnome.org/GNOME/gdm/-/issues/1029
+  # by setting sleep-inactive-ac-type & sleep-inactive-battery-type to nothing
+
 cat << EOF | sudo tee /etc/dconf/profile/gdm
 user-db:user
 system-db:gdm
@@ -25,7 +28,9 @@ night-light-schedule-automatic=true
 [org/gnome/settings-daemon/plugins/power]
 power-button-action='interactive'
 sleep-inactive-ac-timeout=3600
+sleep-inactive-ac-type='nothing'
 sleep-inactive-battery-timeout=600
+sleep-inactive-battery-type='nothing'
 
 [org/gnome/desktop/sound]
 event-sounds=false
@@ -139,10 +144,3 @@ glib-compile-resources $GST.xml
 popd
 
 sudo cp "$TMP"/theme/"$GST" "$GS"/"$GST"
-
-# (not woring) workaround https://gitlab.gnome.org/GNOME/gdm/-/issues/1029 (was 'suspend')
-
-# if [[ $HOST =~ ^(drifter|worker)$ ]]; then
-#   sudo -u gdm dbus-launch \
-#     gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
-# fi
