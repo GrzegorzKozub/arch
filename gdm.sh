@@ -86,6 +86,14 @@ sudo dconf update
 #s (239.990Hz, 143.999Hz)
 # CLAUDE
 
+# https://wiki.archlinux.org/title/GDM#Setup_default_monitor_settings
+ # - /var/lib/gdm/seat0/config/monitors.xml — GDM's XDG_CONFIG_HOME. Higher priority, writable. GDM-only (user sessions use ~/.config/).
+ #  - /etc/xdg/monitors.xml — system-wide fallback via XDG_CONFIG_DIRS. Lower priority, read-only. Applies to all sessions (GDM + every user), but overridden by any
+ #   per-user ~/.config/monitors.xml.
+ #
+ #  So /etc/xdg/ would bleed into user sessions (harmlessly, since your ~/.config/monitors.xml wins), but /var/lib/gdm/seat0/config/ is the correct GDM-only path —
+ #  which is what the current gdm.sh targets. No reason to change it.
+
 # display scale factor
 
 SCHEMAS=/usr/share/glib-2.0/schemas
