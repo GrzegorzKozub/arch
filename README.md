@@ -35,7 +35,7 @@ Automated Arch Linux installation. See [ISSUES.md](ISSUES.md) for known issues.
 ### Manual config
 
 1. GNOME
-  - Set variable display refresh rate: player 240 Hz, worker 144 & 60 Hz
+  - Set display refresh rate: player 240 Hz variable, worker 144 Hz variable & 60 Hz fixed
   - Set display scale: drifter 300%, player & worker 200%
   - Remove all folders from dash
 2. KeePassXC

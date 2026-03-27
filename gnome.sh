@@ -95,12 +95,12 @@ EXTENSIONS=(
 cp -r "${BASH_SOURCE%/*}"/home/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com "$DIR"
 pushd "$DIR"/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd
 
-if [[ $HOST == 'worker' ]]; then
-
-  cp -r "${BASH_SOURCE%/*}"/home/.local/share/gnome-shell/extensions/unredirect@grzegorzkozub.github.com "$DIR"
-  EXTENSIONS+=('unredirect@grzegorzkozub.github.com')
-
-fi
+# if [[ $HOST == 'worker' ]]; then
+#
+#   cp -r "${BASH_SOURCE%/*}"/home/.local/share/gnome-shell/extensions/unredirect@grzegorzkozub.github.com "$DIR"
+#   EXTENSIONS+=('unredirect@grzegorzkozub.github.com')
+#
+# fi
 
 FRESH=0
 for NAME in "${EXTENSIONS[@]}"; do gnome-extensions enable "$NAME" || FRESH=1; done
