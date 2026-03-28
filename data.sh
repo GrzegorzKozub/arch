@@ -12,6 +12,7 @@ create() {
 create ".Trash-$(id -u)"
 
 create '.cache'
+create '.config'
 create '.data'
 create '.secrets'
 
