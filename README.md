@@ -233,7 +233,7 @@ To reduce the image size after freeing up space on guest, first defragment the d
 3. Once per machine, start and configure Steam
   - Don't sign in to Friends when Steam starts
   - Never show notification toasts
-  - Enable 24-hour clock, enable Beta, set start up location to Library, don't run Steam on startup and disable update notifications
+  - Enable 24-hour clock, enable Beta, set start up location to Library, don't run Steam on startup, enable GPU accelerated rendering and hardware video decoding, disable update notifications and enable SteamRT3
   - Leave only Store, Library, Settings and Exit Steam in taskbar preferences
   - Disable community content, hide game icons and show Steam Deck compatibility in Library
   - Disable shader pre-caching
