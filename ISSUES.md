@@ -18,11 +18,6 @@ Workaround
 
 Set `sleep-inactive-ac-type` & `sleep-inactive-battery-type` to `nothing` inside GDM dconf
 
-The settings from `monitors.xml` are not applied
-
-- https://bbs.archlinux.org/viewtopic.php?id=308479
-- https://github.com/gdm-settings/gdm-settings/issues/285
-
 ## Intune
 
 Intune `libgobject-2.0.so.0` coredump

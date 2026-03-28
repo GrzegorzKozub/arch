@@ -11,6 +11,8 @@ sudo pacman -S --noconfirm \
   # workaround https://gitlab.gnome.org/GNOME/gdm/-/issues/1029
   # by setting sleep-inactive-ac-type & sleep-inactive-battery-type to nothing
 
+  # enabling vrr is required for monitors.xml to apply
+
 cat << EOF | sudo tee /etc/dconf/profile/gdm
 user-db:user
 system-db:gdm
@@ -57,42 +59,17 @@ idle-delay=600
 
 [org/gnome/desktop/peripherals/mouse]
 speed=-0.75
+
+[org/gnome/mutter]
+experimental-features=['variable-refresh-rate']
 EOF
 
 sudo dconf update
 
 # displays
 
-# https://bbs.archlinux.org/viewtopic.php?id=308479
-# https://github.com/gdm-settings/gdm-settings/issues/285
-
-# SOURCE="${BASH_SOURCE%/*}"/home/.config/monitors.$HOST.xml
-# TARGET=/var/lib/gdm/seat0/config/monitors.xml
-#
-# [[ -f $SOURCE ]] &&
-#   sudo cp "$SOURCE" $TARGET &&
-#   sudo sed -i '/ratemode/d' $TARGET
-
-# CLAUDE
-# GDM's Mutter silently rejects monitors.xml when <ratemode> is present (it's the VRR flag
-# and GDM doesn't support VRR). Strip it while keeping the high refresh rate — fixed modes
-# like 240Hz/144Hz are real DRM modes that GDM can enumerate. Deployed to /etc/gdm/monitors.xml
-# and applied on every boot via gdm-monitors.service (since /var/lib/gdm/ is volatile runtime state).
-# if [[ $HOST =~ ^(player|worker)$ ]]; then
-#   TARGET=/var/lib/gdm/seat0/config/monitors.xml
-#   sudo install -D -o gdm -g gdm "${BASH_SOURCE%/*}"/home/.config/monitors.$HOST.xml $TARGET
-#   sudo sed -i '/ratemode/d' $TARGET
-# fi
-#s (239.990Hz, 143.999Hz)
-# CLAUDE
-
-# https://wiki.archlinux.org/title/GDM#Setup_default_monitor_settings
- # - /var/lib/gdm/seat0/config/monitors.xml — GDM's XDG_CONFIG_HOME. Higher priority, writable. GDM-only (user sessions use ~/.config/).
- #  - /etc/xdg/monitors.xml — system-wide fallback via XDG_CONFIG_DIRS. Lower priority, read-only. Applies to all sessions (GDM + every user), but overridden by any
- #   per-user ~/.config/monitors.xml.
- #
- #  So /etc/xdg/ would bleed into user sessions (harmlessly, since your ~/.config/monitors.xml wins), but /var/lib/gdm/seat0/config/ is the correct GDM-only path —
- #  which is what the current gdm.sh targets. No reason to change it.
+[[ $HOST == 'player' ]] &&
+  sudo cp "${BASH_SOURCE%/*}"/home/.config/monitors."$HOST".xml /etc/xdg/monitors.xml
 
 # display scale factor
 
