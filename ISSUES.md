@@ -41,11 +41,11 @@ Workaround
 
 Extension `unredirect` prevents mutter from trigerring unredirection but that's a global change. Instead, VRR is disabled on LG 27UL850-W via `monitors.xml`.
 
-## Paru
+## Pacman
 
-Leaves `/var/cache/pacman/pkg/download-*` files behind
+Pacman 7.0 introduced sandboxed downloading where temporary `download-*` dirs are owned by `alpm:alpm`. Pacman 7.1 worsened it — a fix for an edge case broke cleanup in normal successful transactions. This results in leaving `/var/cache/pacman/pkg/download-*` files behind.
 
-- https://forum.endeavouros.com/t/solved-latest-pacman-update-breaks-aur-and-yay/76959
+- https://gitlab.archlinux.org/pacman/pacman/-/work_items/297
 
 Workaround
 

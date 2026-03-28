@@ -6,7 +6,7 @@ set -o pipefail -ux
 # shellcheck disable=SC2046
 sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
 
-# workaround https://forum.endeavouros.com/t/solved-latest-pacman-update-breaks-aur-and-yay/76959
+# workaround https://gitlab.archlinux.org/pacman/pacman/-/work_items/297
 
 sudo rm -rf /var/cache/pacman/pkg/download-*
 
