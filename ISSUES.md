@@ -30,6 +30,12 @@ No Bitlocker support
 
 - https://codeberg.org/Limine/Limine/issues/12
 
+## Lua
+
+When `lua-luarocks` installs, its post-install script runs `make_manifest` for all Lua version trees, including `rocks-5.5/`. The `lua54-filesystem` package only populates `rocks-5.4/`. When another package like `lua-luacheck` exists in `rocks-5.5/` and declares  `luafilesystem` as a dependency, the manifest generator can't find the corresponding  `rock_manifest` there — hence the error. The install itself still succeeds — this is a non-fatal post-install hook failure. To fix this, install the Lua 5.5 variant of `lua-filesystem` with `sudo pacman -S lua-filesystem`. This populates `rocks-5.5/luafilesystem/` so the manifest can be generated correctly on future upgrades.
+
+- https://bbs.archlinux.org/viewtopic.php?pid=2292385
+
 ## Mutter
 
 When maximizing a window, mutter triggers unredirection (direct scanout that bypasses the compositor and writes directly to the display. On NVIDIA and Wayland, this simultaneously triggers a VRR mode transition on the LG 27UL850-W, which the driver can't handle cleanly on that monitor resulting in a blank screen. This happens due to a narrow VRR range of 40–61Hz on that monitor.
