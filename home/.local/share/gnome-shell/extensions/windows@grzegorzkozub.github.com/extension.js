@@ -61,7 +61,7 @@ export default class Windows extends Extension {
       { class: /^com.github.johnfactotum.Foliate$/ },
       { title: /^Welcome to IntelliJ IDEA$/, auto: true },
       {
-        class: /.?org.keepassxc.KeePassXC.desktop$/,
+        class: /.?org.keepassxc.KeePassXC$/,
         exceptTitle: /^Unlock Database - KeePassXC$/,
         auto: true,
       },
