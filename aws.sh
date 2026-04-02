@@ -16,3 +16,7 @@ paru -S --aur --noconfirm \
 # dotfiles
 
 ~/code/dot/aws.sh
+
+# keys
+
+~/code/keys/aws.sh

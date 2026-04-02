@@ -27,7 +27,7 @@ lnk "$SECRETS"/ansible.secret ~/code/dot/ansible/ansible/ansible.secret
 
 # aws
 
-lnk "$SECRETS"/credentials ~/code/dot/aws/aws/credentials
+lnk "$SECRETS"/credentials ~/code/keys/aws/.aws/credentials
 
 # docker: $SECRETS/docker.secret
 

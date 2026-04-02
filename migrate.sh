@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# aws
+
+if [[ $HOST == 'worker' ]]; then
+
+  rm -rf ~/.config/aws
+  ~/code/keys/aws.sh
+
+fi
+
 # claude
 
 "${BASH_SOURCE%/*}"/data.sh
