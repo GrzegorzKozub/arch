@@ -14,7 +14,9 @@ MOUNT=/mnt
 SOURCE=/run/media/$USER/data/
 TARGET=$MOUNT/arch
 
-mount | grep -q "$DISK on $MOUNT" || sudo mount "$DISK" $MOUNT
+mount | grep -q "$DISK on $MOUNT" ||
+  sudo mount -o uid="$(id -u)",gid="$(id -g)" "$DISK" $MOUNT
+
 [[ -d $TARGET ]] || mkdir $TARGET
 
 FREE=$(df --human-readable "$DISK" --output=avail | grep -v Avail | sed -E 's/ |G//g')
