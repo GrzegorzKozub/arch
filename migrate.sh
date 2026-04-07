@@ -6,6 +6,10 @@ set -eo pipefail -ux
 sudo pacman -S --noconfirm tree-sitter-cli
 ~/code/dot/reset.sh nvim
 
+# wget
+
+rm -rf ~/.cache/wget-hsts
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
