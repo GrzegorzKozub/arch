@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# harper-ls
+# nvim
 
+sudo pacman -S --noconfirm tree-sitter-cli
 ~/code/dot/reset.sh nvim
 
 # cleanup
