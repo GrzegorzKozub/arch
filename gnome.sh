@@ -16,10 +16,7 @@ if [[ $XDG_SESSION_TYPE == 'wayland' ]]; then
   # xwayland-native-scaling - https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3567
 
   [[ $HOST == 'drifter' ]] &&
-    gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer', 'variable-refresh-rate']"
-
-  [[ $HOST =~ ^(player|worker)$ ]] &&
-    gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"
+    gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 
 fi
 
