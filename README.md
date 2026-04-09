@@ -47,7 +47,7 @@ Automated Arch Linux installation. See [ISSUES.md](ISSUES.md) for known issues.
   - Setup your profiles
   - Set as default browser
   - Disable everything except background images on the dashboard
-  - Hide all buttons except Forward in toolbar customization
+  - Hide all buttons except Forward and Install app in toolbar customization
   - Don't show tab groups in bookmarks
   - Don't allow suggestions Leo AI Assistant
   - Use wide address bar
