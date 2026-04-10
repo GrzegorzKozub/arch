@@ -280,8 +280,13 @@ export default class Windows extends Extension {
   }
 
   onUhd(win) {
-    const monitor = this.getMonitor(win);
-    return monitor.width === 3840 && monitor.height === 2160;
+    const monitor = win.get_monitor();
+    const { width, height } = global.display.get_monitor_geometry(monitor);
+    const scale = global.display.get_monitor_scale(monitor);
+    return (
+      (width === 3840 && height === 2160) ||
+      (width * scale === 3840 && height * scale === 2160)
+    );
   }
 
   adjust(win, width, height) {
@@ -538,7 +543,6 @@ export default class Windows extends Extension {
   getWindow = () => global.display.get_focus_window();
   getDesktop = (win) =>
     Main.layoutManager.getWorkAreaForMonitor(win.get_monitor());
-  getMonitor = (win) => global.display.get_monitor_geometry(win.get_monitor());
 }
 
 class Tile {
