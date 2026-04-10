@@ -1,14 +1,24 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# nvim
+if [[ $HOST == 'worker' ]]; then
 
-sudo pacman -S --noconfirm tree-sitter-cli
-~/code/dot/reset.sh nvim
+  # nvim
 
-# wget
+  sudo pacman -S --noconfirm tree-sitter-cli
+  ~/code/dot/reset.sh nvim
 
-rm -rf ~/.cache/wget-hsts
+  # wget
+
+  rm -rf ~/.cache/wget-hsts
+
+fi
+
+# gnome
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  gnome-shell --version | grep -q 50 &&
+  gsettings reset org.gnome.mutter experimental-features
 
 # cleanup
 
