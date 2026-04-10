@@ -61,8 +61,8 @@ idle-delay=600
 speed=-0.75
 
 [org/gnome/mutter]
-experimental-features=['variable-refresh-rate']
 EOF
+# experimental-features=['variable-refresh-rate']
 
 sudo dconf update
 
