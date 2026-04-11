@@ -6,6 +6,13 @@ set -eo pipefail -ux
 paru -S --aur --noconfirm \
   lmstudio-bin
 
+# links
+
+cp /usr/share/applications/lmstudio.desktop "$XDG_DATA_HOME"/applications
+sed -i \
+  -e 's/^StartupWMClass=.*$/StartupWMClass=LM-Studio/' \
+  "$XDG_DATA_HOME"/applications/lmstudio.desktop
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
