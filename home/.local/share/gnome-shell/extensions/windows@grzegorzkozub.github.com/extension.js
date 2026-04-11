@@ -17,28 +17,28 @@ export default class Windows extends Extension {
       {
         class: /^brave-browser$/,
         auto: true,
-        host: 'drifter', // with fractional scaling
-        largerThan: { width: 800, height: 600 },
+        host: 'drifter',
+        largerThan: { width: 2400, height: 1800 },
       },
       {
         class: /^brave-browser$/,
         auto: true,
         host: ['player', 'worker'],
-        largerThan: { width: 960, height: 540 },
+        largerThan: { width: 1920, height: 1080 },
       },
       { title: /^DBeaver.?/, auto: true },
       { class: /^draw.io$/ },
       {
         class: /^microsoft-edge$/,
         auto: true,
-        host: 'drifter', // with fractional scaling
-        largerThan: { width: 800, height: 600 },
+        host: 'drifter',
+        largerThan: { width: 2400, height: 1800 },
       },
       {
         class: /^microsoft-edge$/,
         auto: true,
         host: ['player', 'worker'],
-        largerThan: { width: 960, height: 540 },
+        largerThan: { width: 1920, height: 1080 },
       },
       { title: /.?GIMP$/ },
       { title: /^GNU Image Manipulation Program$/ },
@@ -229,9 +229,10 @@ export default class Windows extends Extension {
       return true;
     }
     const { width, height } = win.get_frame_rect();
+    const scale = global.display.get_monitor_scale(win.get_monitor());
     return (
-      (!cfg.largerThan.width || cfg.largerThan.width < width) &&
-      (!cfg.largerThan.height || cfg.largerThan.height < height)
+      (!cfg.largerThan.width || cfg.largerThan.width < width * scale) &&
+      (!cfg.largerThan.height || cfg.largerThan.height < height * scale)
     );
   };
 
@@ -283,10 +284,7 @@ export default class Windows extends Extension {
     const monitor = win.get_monitor();
     const { width, height } = global.display.get_monitor_geometry(monitor);
     const scale = global.display.get_monitor_scale(monitor);
-    return (
-      (width === 3840 && height === 2160) ||
-      (width * scale === 3840 && height * scale === 2160)
-    );
+    return width * scale === 3840 && height * scale === 2160;
   }
 
   adjust(win, width, height) {
