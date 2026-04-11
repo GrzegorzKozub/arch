@@ -23,6 +23,9 @@ if gnome-shell --version | grep -q 50; then
 
 fi
 
+pacman -Q gnome-browser-connector-git &> /dev/null && sudo pacman -Rs --noconfirm gnome-browser-connector-git || true
+sudo pacman -S --noconfirm gnome-browser-connector
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
