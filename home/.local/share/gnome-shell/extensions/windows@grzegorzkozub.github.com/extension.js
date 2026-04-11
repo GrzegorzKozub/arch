@@ -145,9 +145,10 @@ export default class Windows extends Extension {
   }
 
   addKeybinding(name, handler) {
+    const settings = this.getSettings('org.gnome.shell.extensions.windows');
     Main.wm.addKeybinding(
       name,
-      this.getSettings('org.gnome.shell.extensions.windows'),
+      settings,
       Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
       Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
       handler.bind(this),
@@ -207,14 +208,16 @@ export default class Windows extends Extension {
     this.initial[win.wm_class] = win.get_frame_rect();
   }
 
-  findConfig = (config, win) =>
-    config.find(
+  findConfig = (config, win) => {
+    const scale = global.display.get_monitor_scale(win.get_monitor());
+    return config.find(
       (cfg) =>
         (this.matchTitle(cfg, win) || this.matchClass(cfg, win)) &&
         this.matchRole(cfg, win) &&
-        this.matchSize(cfg, win) &&
+        this.matchSize(cfg, win, scale) &&
         this.matchHost(cfg),
     );
+  };
 
   matchTitle = (cfg, win) => cfg.title && cfg.title.test(win.title);
   matchClass = (cfg, win) =>
@@ -224,12 +227,11 @@ export default class Windows extends Extension {
   matchRole = (cfg, win) =>
     !cfg.exceptRole || cfg.exceptRole !== win.get_role();
 
-  matchSize = (cfg, win) => {
+  matchSize = (cfg, win, scale) => {
     if (!cfg.largerThan) {
       return true;
     }
     const { width, height } = win.get_frame_rect();
-    const scale = global.display.get_monitor_scale(win.get_monitor());
     return (
       (!cfg.largerThan.width || cfg.largerThan.width < width * scale) &&
       (!cfg.largerThan.height || cfg.largerThan.height < height * scale)
