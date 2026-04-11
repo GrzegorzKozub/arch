@@ -9,6 +9,8 @@ export default class Windows extends Extension {
   host = null;
   windowCreatedHandler;
   config = [];
+  configAuto = [];
+  configInitial = [];
   initial = {};
 
   constructor(metadata) {
@@ -105,6 +107,8 @@ export default class Windows extends Extension {
     addConfig(small, this.small.bind(this));
     addConfig(center, this.center.bind(this));
     addConfig(initial, this.restore.bind(this));
+    this.configAuto = this.config.filter((cfg) => cfg.auto);
+    this.configInitial = this.config.filter((cfg) => cfg.initial);
   }
 
   enable() {
@@ -167,14 +171,9 @@ export default class Windows extends Extension {
   fixAuto(win) {
     // first app window doesn't auto-fix with shorter wait
     GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
-      this.fix(
-        this.config.filter((cfg) => cfg.auto),
-        win,
-      );
-      this.save(
-        this.config.filter((cfg) => cfg.initial),
-        win,
-      );
+      if (!win.get_compositor_private()) return GLib.SOURCE_REMOVE;
+      this.fix(this.configAuto, win);
+      this.save(this.configInitial, win);
       return GLib.SOURCE_REMOVE;
     });
   }
@@ -473,6 +472,7 @@ export default class Windows extends Extension {
 
   getTilingSetup() {
     const win = this.getWindow();
+    if (!win) return;
     return [win, this.getTiles(win), win.get_frame_rect()];
   }
 
