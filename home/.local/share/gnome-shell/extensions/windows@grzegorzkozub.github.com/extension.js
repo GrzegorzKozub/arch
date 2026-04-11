@@ -514,6 +514,17 @@ export default class Windows extends Extension {
     } else {
       win.move_frame(false, tile.x, tile.y);
     }
+    this.ensureAnimationComplete(win);
+  }
+
+  ensureAnimationComplete(win) {
+    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
+      const actor = win.get_compositor_private();
+      if (actor) {
+        Main.wm._sizeChangeWindowDone(global.window_manager, actor);
+      }
+      return GLib.SOURCE_REMOVE;
+    });
   }
 
   unmax = (win) =>
