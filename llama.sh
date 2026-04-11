@@ -13,9 +13,4 @@ llama-server \
   --mlock \
   --n-cpu-moe 0 \
   --n-gpu-layers all \
-  --hf-repo unsloth/GLM-4.7-Flash-GGUF:Q4_K_M
-
-  # --hf-repo Qwen/Qwen3-8B-GGUF:Q4_K_M
-  # --hf-repo ggml-org/gpt-oss-20b-GGUF
-  # --hf-repo unsloth/GLM-4.7-Flash-GGUF:Q4_K_M
-  # --hf-repo unsloth/Qwen3-Coder-Next-GGUF:Q4_K_M
+  --hf-repo unsloth/gemma-4-31B-it-GGUF:UD-Q4_K_XL
