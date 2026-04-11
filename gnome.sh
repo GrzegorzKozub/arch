@@ -10,17 +10,7 @@ gsettings set org.gnome.system.location enabled true
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true # depends on colord.service
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
-if [[ $XDG_SESSION_TYPE == 'wayland' ]]; then
-
-  # scale-monitor-framebuffer - fractional scaling
-  # xwayland-native-scaling - https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3567
-
-  [[ $HOST == 'drifter' ]] &&
-    gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
-
-fi
-
-SOURCE=$(dirname "${BASH_SOURCE[0]}")/home/.config/monitors.$HOST.xml
+SOURCE="${BASH_SOURCE%/*}"/home/.config/monitors.$HOST.xml
 TARGET=$XDG_CONFIG_HOME/monitors.xml
 
 [[ -f $SOURCE ]] && cp "$SOURCE" "$TARGET"
@@ -83,7 +73,7 @@ DIR=$XDG_DATA_HOME/gnome-shell/extensions
 EXTENSIONS=(
   'appindicatorsupport@rgcjonas.gmail.com'
   'blur-my-shell@aunetx'
-  'rounded-window-corners@fxgn'
+  # 'rounded-window-corners@fxgn'
   'windows@grzegorzkozub.github.com'
 )
   # 'appindicatorsupport@rgcjonas.gmail.com',

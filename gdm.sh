@@ -11,8 +11,6 @@ sudo pacman -S --noconfirm \
   # workaround https://gitlab.gnome.org/GNOME/gdm/-/issues/1029
   # by setting sleep-inactive-ac-type & sleep-inactive-battery-type to nothing
 
-  # enabling vrr is required for monitors.xml to apply
-
 cat << EOF | sudo tee /etc/dconf/profile/gdm
 user-db:user
 system-db:gdm
@@ -59,10 +57,15 @@ idle-delay=600
 
 [org/gnome/desktop/peripherals/mouse]
 speed=-0.75
-
-[org/gnome/mutter]
 EOF
+
+# enable vrr for monitors.xml to apply (no need since gnome 50)
+#
+# [[ $HOST == 'player' ]] && cat << EOF | sudo tee --append $DIR/10-gdm
+#
+# [org/gnome/mutter]
 # experimental-features=['variable-refresh-rate']
+# EOF
 
 sudo dconf update
 

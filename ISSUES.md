@@ -8,6 +8,12 @@ Sandbox is broken
 
 - https://github.com/anthropics/claude-code/issues/17087
 
+## dbus
+
+Multiple errors like `dbus-broker-launch[1170]: Ignoring duplicate name 'ca.desrt.dconf' in service file '/usr/share//dbus-1/services/ca.desrt.dconf.service'` in journal
+
+- https://bbs.archlinux.org/viewtopic.php?pid=2294025
+
 ## GDM
 
 Suspends right after waking up from suspending via GNOME
