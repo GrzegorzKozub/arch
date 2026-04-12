@@ -73,7 +73,7 @@ DIR=$XDG_DATA_HOME/gnome-shell/extensions
 EXTENSIONS=(
   'appindicatorsupport@rgcjonas.gmail.com'
   'blur-my-shell@aunetx'
-  # 'rounded-window-corners@fxgn'
+  'rounded-window-corners@fxgn'
   'windows@grzegorzkozub.github.com'
 )
   # 'appindicatorsupport@rgcjonas.gmail.com',
@@ -98,11 +98,10 @@ gsettings set org.gnome.shell.extensions.appindicator legacy-tray-enabled false
 
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
 
-[[ $XDG_SESSION_TYPE == 'wayland' ]] && RADIUS=12 || RADIUS=16
 gsettings set org.gnome.shell.extensions.rounded-window-corners-reborn global-rounded-corner-settings \
   "{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>,
     'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>,
-    'borderRadius': <uint32 $RADIUS>,
+    'borderRadius': <uint32 6>,
     'smoothing': <0.0>,
     'borderColor': <(0.5, 0.5, 0.5, 1.0)>,
     'enabled': <true>}"
