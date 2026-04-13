@@ -5,8 +5,8 @@ set -eo pipefail -ux
 
 [[ ${1:-} == 'update' ]] && {
   claude --update
-  find "$XDG_DATA_HOME"/claude/versions -mindepth 1 |
-    sort --numeric-sort --reverse |
+  find "$XDG_DATA_HOME"/claude/versions -mindepth 1 -maxdepth 1 |
+    sort --reverse --version-sort |
     tail --lines=+2 |
     xargs --no-run-if-empty rm
   exit
