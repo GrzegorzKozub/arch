@@ -10,7 +10,7 @@ paru -S --aur --noconfirm \
 
 DIR=microsoft-edge/Default
 [[ -d $XDG_CONFIG_HOME/$DIR ]] || mkdir -p "$XDG_CONFIG_HOME"/$DIR
-cp "${BASH_SOURCE%/*}"/home/"$USER"/.config/$DIR/HubApps "$XDG_CONFIG_HOME"/$DIR/
+cp "${BASH_SOURCE%/*}"/home/.config/$DIR/HubApps "$XDG_CONFIG_HOME"/$DIR/
 
 # links
 
