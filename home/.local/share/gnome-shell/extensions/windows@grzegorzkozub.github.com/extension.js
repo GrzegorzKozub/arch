@@ -64,7 +64,7 @@ export default class Windows extends Extension {
       { title: /^Welcome to IntelliJ IDEA$/, auto: true },
       {
         class: /.?org.keepassxc.KeePassXC$/,
-        exceptTitle: /^Unlock Database - KeePassXC$/,
+        exceptTitle: /^(Generate Password|Unlock Database)/,
         auto: true,
       },
       { class: /^io.github.ilya_zlobintsev.LACT$/, auto: true },
@@ -477,7 +477,7 @@ export default class Windows extends Extension {
   }
 
   getTiles(win) {
-    const gap = 25;
+    const gap = 16;
     const step = 2;
     const master = 1;
     const desktop = this.getDesktop(win);
