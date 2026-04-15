@@ -3,8 +3,8 @@ set -eo pipefail -ux
 
 # default apps
 
-xdg-mime default nvim.desktop application/x-zerosize
-xdg-mime default nvim.desktop text/plain
+xdg-mime default org.neovim.nvim.desktop application/x-zerosize
+xdg-mime default org.neovim.nvim.desktop text/plain
 
 xdg-mime default mpv.desktop audio/mpeg
 xdg-mime default mpv.desktop audio/ogg

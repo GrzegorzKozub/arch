@@ -36,12 +36,12 @@ fi
 
 # nvim
 
-cp /usr/share/applications/nvim.desktop "$XDG_DATA_HOME"/applications
+cp /usr/share/applications/org.neovim.nvim.desktop "$XDG_DATA_HOME"/applications
 sed -i \
   -e "s/^Exec=nvim %F$/Exec=kitty nvim %F/" \
   -e 's/^Terminal=true$/Terminal=false/' \
-  "$XDG_DATA_HOME"/applications/nvim.desktop
-sed -i '2iNoDisplay=true' "$XDG_DATA_HOME"/applications/nvim.desktop
+  "$XDG_DATA_HOME"/applications/org.neovim.nvim.desktop
+sed -i '2iNoDisplay=true' "$XDG_DATA_HOME"/applications/org.neovim.nvim.desktop
 
 # tweaks
 
