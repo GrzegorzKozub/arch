@@ -9,6 +9,8 @@ export default class Windows extends Extension {
   host = null;
   windowCreatedHandler;
   windowEnteredMonitorHandler;
+  grabOpEndHandler;
+  pendingFix = null;
   config = [];
   configAuto = [];
   configInitial = [];
@@ -129,6 +131,13 @@ export default class Windows extends Extension {
       'window-entered-monitor',
       this.windowEnteredMonitor.bind(this),
     );
+    this.grabOpEndHandler = global.display.connect('grab-op-end', () => {
+      if (this.pendingFix) {
+        const win = this.pendingFix;
+        this.pendingFix = null;
+        this.fixMonitor(win);
+      }
+    });
     this.addKeybinding('fix-all', this.fixAllHotkeyPressed);
     this.addKeybinding('fix-active', this.fixActiveHotkeyPressed);
     this.addKeybinding('tile-full', this.tileFullHotkeyPressed);
@@ -141,6 +150,8 @@ export default class Windows extends Extension {
   disable() {
     global.display.disconnect(this.windowCreatedHandler);
     global.display.disconnect(this.windowEnteredMonitorHandler);
+    global.display.disconnect(this.grabOpEndHandler);
+    this.pendingFix = null;
     for (const key of [
       'fix-all',
       'fix-active',
@@ -187,6 +198,10 @@ export default class Windows extends Extension {
   }
 
   fixMonitor(win) {
+    if (global.display.get_grab_op() === Meta.GrabOp.MOVING) {
+      this.pendingFix = win;
+      return;
+    }
     const cfg = this.findConfig(this.config, win);
     if (!cfg) {
       return;
