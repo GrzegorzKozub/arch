@@ -8,6 +8,7 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 export default class Windows extends Extension {
   host = null;
   windowCreatedHandler;
+  windowEnteredMonitorHandler;
   config = [];
   configAuto = [];
   configInitial = [];
@@ -96,7 +97,7 @@ export default class Windows extends Extension {
     const center = [{ class: /^com.mitchellh.ghostty$/, auto: true }];
     const initial = [
       // { class: /^com.mitchellh.ghostty$/, initial: true },
-      { class: /^kitty$/, initial: true },
+      { class: /^kitty$/, initial: true, full: true },
       { class: /^org.gnome.Nautilus$/, initial: true },
     ];
     const addConfig = (config, fix) => {
@@ -124,6 +125,10 @@ export default class Windows extends Extension {
       'window-created',
       this.windowCreated.bind(this),
     );
+    this.windowEnteredMonitorHandler = global.display.connect(
+      'window-entered-monitor',
+      this.windowEnteredMonitor.bind(this),
+    );
     this.addKeybinding('fix-all', this.fixAllHotkeyPressed);
     this.addKeybinding('fix-active', this.fixActiveHotkeyPressed);
     this.addKeybinding('tile-full', this.tileFullHotkeyPressed);
@@ -135,6 +140,7 @@ export default class Windows extends Extension {
 
   disable() {
     global.display.disconnect(this.windowCreatedHandler);
+    global.display.disconnect(this.windowEnteredMonitorHandler);
     for (const key of [
       'fix-all',
       'fix-active',
@@ -160,6 +166,8 @@ export default class Windows extends Extension {
   }
 
   windowCreated = (_, win) => this.fixAuto(win);
+  windowEnteredMonitor = (_, __, win) => this.fixMonitor(win);
+
   fixAllHotkeyPressed = () => this.fixAll();
   fixActiveHotkeyPressed = () => this.fixActive();
   tileFullHotkeyPressed = () => this.tileFull();
@@ -176,6 +184,18 @@ export default class Windows extends Extension {
       this.save(this.configInitial, win);
       return GLib.SOURCE_REMOVE;
     });
+  }
+
+  fixMonitor(win) {
+    const cfg = this.findConfig(this.config, win);
+    if (!cfg) {
+      return;
+    }
+    if (cfg.full) {
+      this.full(win);
+    } else {
+      cfg.fix(win);
+    }
   }
 
   fixAll() {
@@ -334,12 +354,19 @@ export default class Windows extends Extension {
     this.move(win, initial);
   }
 
-  tileFull() {
-    const [win, tiles, now] = this.getTilingSetup();
-    if (tiles.full.equal(now)) {
+  full(win) {
+    const tiles = this.getTiles(win);
+    if (tiles.full.equal(win.get_frame_rect())) {
       return;
     }
     this.move(win, tiles.full);
+  }
+
+  tileFull() {
+    const win = this.getWindow();
+    if (win) {
+      this.full(win);
+    }
   }
 
   tileLeft() {
