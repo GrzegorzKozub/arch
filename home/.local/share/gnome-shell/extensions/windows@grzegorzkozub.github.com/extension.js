@@ -9,7 +9,9 @@ export default class Windows extends Extension {
   host = null;
   windowCreatedHandler;
   windowEnteredMonitorHandler;
+  grabOpBeginHandler;
   grabOpEndHandler;
+  grabbing = false;
   pendingFix = null;
   config = [];
   configAuto = [];
@@ -58,7 +60,11 @@ export default class Windows extends Extension {
       { class: /^com.github.PintaProject.Pinta$/ },
       { class: /^Postman$/, auto: true },
       { title: /.?Visual Studio Code$/, auto: true },
-      { class: /^dev.zed.Zed$/, auto: true },
+      {
+        class: /^dev.zed.Zed$/,
+        exceptTitle: /^(About Zed|Zed — Settings)$/,
+        auto: true,
+      },
     ];
     const medium = [
       // { title: /^DevTools.?/ },
@@ -131,7 +137,11 @@ export default class Windows extends Extension {
       'window-entered-monitor',
       this.windowEnteredMonitor.bind(this),
     );
+    this.grabOpBeginHandler = global.display.connect('grab-op-begin', () => {
+      this.grabbing = true;
+    });
     this.grabOpEndHandler = global.display.connect('grab-op-end', () => {
+      this.grabbing = false;
       if (this.pendingFix) {
         const win = this.pendingFix;
         this.pendingFix = null;
@@ -150,7 +160,9 @@ export default class Windows extends Extension {
   disable() {
     global.display.disconnect(this.windowCreatedHandler);
     global.display.disconnect(this.windowEnteredMonitorHandler);
+    global.display.disconnect(this.grabOpBeginHandler);
     global.display.disconnect(this.grabOpEndHandler);
+    this.grabbing = false;
     this.pendingFix = null;
     for (const key of [
       'fix-all',
@@ -198,7 +210,7 @@ export default class Windows extends Extension {
   }
 
   fixMonitor(win) {
-    if (global.display.get_grab_op() === Meta.GrabOp.MOVING) {
+    if (this.grabbing) {
       this.pendingFix = win;
       return;
     }
