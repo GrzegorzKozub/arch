@@ -531,7 +531,8 @@ export default class Windows extends Extension {
   }
 
   getTiles(win) {
-    const gap = 16;
+    const gap =
+      global.display.get_monitor_scale(win.get_monitor()) >= 3 ? 12 : 16;
     const step = 2;
     const master = 1;
     const desktop = this.getDesktop(win);
