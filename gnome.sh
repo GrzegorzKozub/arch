@@ -98,10 +98,11 @@ gsettings set org.gnome.shell.extensions.appindicator legacy-tray-enabled false
 
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
 
+[[ $HOST == 'drifter' ]] && RADIUS=4 || RADIUS=6
 gsettings set org.gnome.shell.extensions.rounded-window-corners-reborn global-rounded-corner-settings \
   "{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>,
     'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>,
-    'borderRadius': <uint32 6>,
+    'borderRadius': <uint32 $RADIUS>,
     'smoothing': <0.0>,
     'borderColor': <(0.5, 0.5, 0.5, 1.0)>,
     'enabled': <true>}"
