@@ -7,15 +7,19 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 export default class Windows extends Extension {
   host = null;
+
   windowCreatedHandler;
   windowEnteredMonitorHandler;
+
   grabOpBeginHandler;
   grabOpEndHandler;
   grabbing = false;
   pendingFix = null;
+
   config = [];
   configAuto = [];
   configInitial = [];
+
   initial = {};
 
   constructor(metadata) {
@@ -214,13 +218,17 @@ export default class Windows extends Extension {
       this.pendingFix = win;
       return;
     }
+    const initial = this.initial[win.wm_class];
+    if (initial && initial.equal(win.get_frame_rect())) {
+      return;
+    }
     const cfg = this.findConfig(this.config, win);
     if (!cfg) {
       return;
     }
     if (cfg.full) {
       this.full(win);
-    } else {
+    } else if (!cfg.initial) {
       cfg.fix(win);
     }
   }
