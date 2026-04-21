@@ -14,13 +14,14 @@ export default class Windows extends Extension {
   grabOpBeginHandler;
   grabOpEndHandler;
   grabbing = false;
-  pendingFix = null;
+  pending = null;
 
   config = [];
   configAuto = [];
   configInitial = [];
 
   initial = {};
+  last = new Map();
 
   constructor(metadata) {
     super(metadata);
@@ -109,7 +110,7 @@ export default class Windows extends Extension {
     const center = [{ class: /^com.mitchellh.ghostty$/, auto: true }];
     const initial = [
       // { class: /^com.mitchellh.ghostty$/, initial: true },
-      { class: /^kitty$/, initial: true, full: true },
+      { class: /^kitty$/, initial: true },
       { class: /^org.gnome.Nautilus$/, initial: true },
     ];
     const addConfig = (config, fix) => {
@@ -146,9 +147,9 @@ export default class Windows extends Extension {
     });
     this.grabOpEndHandler = global.display.connect('grab-op-end', () => {
       this.grabbing = false;
-      if (this.pendingFix) {
-        const win = this.pendingFix;
-        this.pendingFix = null;
+      if (this.pending) {
+        const win = this.pending;
+        this.pending = null;
         this.fixMonitor(win);
       }
     });
@@ -167,7 +168,8 @@ export default class Windows extends Extension {
     global.display.disconnect(this.grabOpBeginHandler);
     global.display.disconnect(this.grabOpEndHandler);
     this.grabbing = false;
-    this.pendingFix = null;
+    this.pending = null;
+    this.last.clear();
     for (const key of [
       'fix-all',
       'fix-active',
@@ -215,22 +217,19 @@ export default class Windows extends Extension {
 
   fixMonitor(win) {
     if (this.grabbing) {
-      this.pendingFix = win;
+      this.pending = win;
       return;
     }
-    const initial = this.initial[win.wm_class];
-    if (initial && initial.equal(win.get_frame_rect())) {
+    const name = this.last.get(win.get_id());
+    if (name) {
+      this.place(win, name);
       return;
     }
     const cfg = this.findConfig(this.config, win);
-    if (!cfg) {
+    if (!cfg || cfg.initial) {
       return;
     }
-    if (cfg.full) {
-      this.full(win);
-    } else if (!cfg.initial) {
-      cfg.fix(win);
-    }
+    cfg.fix(win);
   }
 
   fixAll() {
@@ -251,6 +250,7 @@ export default class Windows extends Extension {
     if (!cfg) {
       return;
     }
+    this.last.delete(win.get_id());
     cfg.fix(win);
   }
 
@@ -389,153 +389,69 @@ export default class Windows extends Extension {
     this.move(win, initial);
   }
 
-  full(win) {
-    const tiles = this.getTiles(win);
-    if (tiles.full.equal(win.get_frame_rect())) {
-      return;
-    }
-    this.move(win, tiles.full);
-  }
+  tileFull = () => this.place(this.getWindow(), 'full');
+  tileLeft = () => this.place(this.getWindow(), this.leftTarget);
+  tileRight = () => this.place(this.getWindow(), this.rightTarget);
+  tileDown = () => this.place(this.getWindow(), this.downTarget);
+  tileUp = () => this.place(this.getWindow(), this.upTarget);
 
-  tileFull() {
-    const win = this.getWindow();
-    if (win) {
-      this.full(win);
-    }
-  }
-
-  tileLeft() {
-    const [win, tiles, now] = this.getTilingSetup();
-    if (
-      tiles.left.equal(now) ||
-      tiles.leftDown.equal(now) ||
-      tiles.leftUp.equal(now)
-    ) {
-      return;
-    }
-    if (tiles.down.equal(now)) {
-      this.move(win, tiles.leftDown);
-      return;
-    }
-    if (tiles.up.equal(now)) {
-      this.move(win, tiles.leftUp);
-      return;
-    }
-    if (tiles.right.equal(now)) {
-      this.move(win, tiles.full);
-      return;
-    }
-    if (tiles.rightDown.equal(now)) {
-      this.move(win, tiles.down);
-      return;
-    }
-    if (tiles.rightUp.equal(now)) {
-      this.move(win, tiles.up);
-      return;
-    }
-    this.move(win, tiles.left);
-  }
-
-  tileRight() {
-    const [win, tiles, now] = this.getTilingSetup();
-    if (
-      tiles.right.equal(now) ||
-      tiles.rightDown.equal(now) ||
-      tiles.rightUp.equal(now)
-    ) {
-      return;
-    }
-    if (tiles.down.equal(now)) {
-      this.move(win, tiles.rightDown);
-      return;
-    }
-    if (tiles.up.equal(now)) {
-      this.move(win, tiles.rightUp);
-      return;
-    }
-    if (tiles.left.equal(now)) {
-      this.move(win, tiles.full);
-      return;
-    }
-    if (tiles.leftDown.equal(now)) {
-      this.move(win, tiles.down);
-      return;
-    }
-    if (tiles.leftUp.equal(now)) {
-      this.move(win, tiles.up);
-      return;
-    }
-    this.move(win, tiles.right);
-  }
-
-  tileDown() {
-    const [win, tiles, now] = this.getTilingSetup();
-    if (
-      tiles.down.equal(now) ||
-      tiles.leftDown.equal(now) ||
-      tiles.rightDown.equal(now)
-    ) {
-      return;
-    }
-    if (tiles.up.equal(now)) {
-      this.move(win, tiles.full);
-      return;
-    }
-    if (tiles.left.equal(now)) {
-      this.move(win, tiles.leftDown);
-      return;
-    }
-    if (tiles.right.equal(now)) {
-      this.move(win, tiles.rightDown);
-      return;
-    }
-    if (tiles.leftUp.equal(now)) {
-      this.move(win, tiles.left);
-      return;
-    }
-    if (tiles.rightUp.equal(now)) {
-      this.move(win, tiles.right);
-      return;
-    }
-    this.move(win, tiles.down);
-  }
-
-  tileUp() {
-    const [win, tiles, now] = this.getTilingSetup();
-    if (
-      tiles.up.equal(now) ||
-      tiles.leftUp.equal(now) ||
-      tiles.rightUp.equal(now)
-    ) {
-      return;
-    }
-    if (tiles.down.equal(now)) {
-      this.move(win, tiles.full);
-      return;
-    }
-    if (tiles.left.equal(now)) {
-      this.move(win, tiles.leftUp);
-      return;
-    }
-    if (tiles.right.equal(now)) {
-      this.move(win, tiles.rightUp);
-      return;
-    }
-    if (tiles.leftDown.equal(now)) {
-      this.move(win, tiles.left);
-      return;
-    }
-    if (tiles.rightDown.equal(now)) {
-      this.move(win, tiles.right);
-      return;
-    }
-    this.move(win, tiles.up);
-  }
-
-  getTilingSetup() {
-    const win = this.getWindow();
+  place(win, target) {
     if (!win) return;
-    return [win, this.getTiles(win), win.get_frame_rect()];
+    const tiles = this.getTiles(win);
+    const now = win.get_frame_rect();
+    const name = typeof target === 'function' ? target(tiles, now) : target;
+    this.last.set(win.get_id(), name);
+    if (!tiles[name].equal(now)) {
+      this.move(win, tiles[name]);
+    }
+  }
+
+  leftTarget(tiles, now) {
+    if (tiles.left.equal(now)) return 'left';
+    if (tiles.leftDown.equal(now)) return 'leftDown';
+    if (tiles.leftUp.equal(now)) return 'leftUp';
+    if (tiles.down.equal(now)) return 'leftDown';
+    if (tiles.up.equal(now)) return 'leftUp';
+    if (tiles.right.equal(now)) return 'full';
+    if (tiles.rightDown.equal(now)) return 'down';
+    if (tiles.rightUp.equal(now)) return 'up';
+    return 'left';
+  }
+
+  rightTarget(tiles, now) {
+    if (tiles.right.equal(now)) return 'right';
+    if (tiles.rightDown.equal(now)) return 'rightDown';
+    if (tiles.rightUp.equal(now)) return 'rightUp';
+    if (tiles.down.equal(now)) return 'rightDown';
+    if (tiles.up.equal(now)) return 'rightUp';
+    if (tiles.left.equal(now)) return 'full';
+    if (tiles.leftDown.equal(now)) return 'down';
+    if (tiles.leftUp.equal(now)) return 'up';
+    return 'right';
+  }
+
+  downTarget(tiles, now) {
+    if (tiles.down.equal(now)) return 'down';
+    if (tiles.leftDown.equal(now)) return 'leftDown';
+    if (tiles.rightDown.equal(now)) return 'rightDown';
+    if (tiles.up.equal(now)) return 'full';
+    if (tiles.left.equal(now)) return 'leftDown';
+    if (tiles.right.equal(now)) return 'rightDown';
+    if (tiles.leftUp.equal(now)) return 'left';
+    if (tiles.rightUp.equal(now)) return 'right';
+    return 'down';
+  }
+
+  upTarget(tiles, now) {
+    if (tiles.up.equal(now)) return 'up';
+    if (tiles.leftUp.equal(now)) return 'leftUp';
+    if (tiles.rightUp.equal(now)) return 'rightUp';
+    if (tiles.down.equal(now)) return 'full';
+    if (tiles.left.equal(now)) return 'leftUp';
+    if (tiles.right.equal(now)) return 'rightUp';
+    if (tiles.leftDown.equal(now)) return 'left';
+    if (tiles.rightDown.equal(now)) return 'right';
+    return 'up';
   }
 
   getTiles(win) {
