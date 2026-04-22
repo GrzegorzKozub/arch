@@ -259,7 +259,10 @@ export default class Windows extends Extension {
     if (!cfg) {
       return;
     }
-    this.initial[win.wm_class] = win.get_frame_rect();
+    this.initial[win.wm_class] = {
+      monitor: win.get_monitor(),
+      rect: win.get_frame_rect(),
+    };
   }
 
   findConfig = (config, win) => {
@@ -383,10 +386,16 @@ export default class Windows extends Extension {
 
   restore(win) {
     const initial = this.initial[win.wm_class];
-    if (!initial || initial.equal(win.get_frame_rect())) {
+    if (!initial) {
       return;
     }
-    this.move(win, initial);
+    if (
+      initial.monitor === win.get_monitor() &&
+      initial.rect.equal(win.get_frame_rect())
+    ) {
+      return;
+    }
+    this.move(win, initial.rect);
   }
 
   tileFull = () => this.place(this.getWindow(), 'full');
