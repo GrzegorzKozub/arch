@@ -87,7 +87,6 @@ Automated Arch Linux installation. See [ISSUES.md](ISSUES.md) for known issues.
   - Configure edit predictions
 7. Claude Code (work)
   - Sign in
-  - Set editor mode to `vim` and teammate mode to `tmux`
 8. Postman (work)
   - Sign in
   - Change font family to `Cascadia Code`
