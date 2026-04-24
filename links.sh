@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# brave origin beta
+# brave origin
 
 for APP in \
   brave-origin-beta \
@@ -10,7 +10,7 @@ for APP in \
     cp /usr/share/applications/$APP.desktop "$XDG_DATA_HOME"/applications
     sed -i \
       -e 's/^Icon=brave-origin-beta$/Icon=brave-desktop/' \
-      -e 's/^Name=.*$/Name=Brave Origin Beta/' \
+      -e 's/^Name=.*$/Name=Brave Origin/' \
       "$XDG_DATA_HOME"/applications/$APP.desktop
   fi
 done
