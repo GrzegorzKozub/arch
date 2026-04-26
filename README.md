@@ -51,6 +51,7 @@ Automated Arch Linux installation. See [ISSUES.md](ISSUES.md) for known issues.
   - Don't show tab groups in bookmarks
   - Don't allow suggestions Leo AI Assistant
   - Use wide address bar
+  - Show rounded corners on main content areas
   - Set fixed-width font to Cascadia Code (on Windows)
   - Cycle through the most recently used tabs with Ctrl-Tab
   - Don't show Wayback Machine prompts on 404 pages
