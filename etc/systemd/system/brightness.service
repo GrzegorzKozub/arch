@@ -1,0 +1,11 @@
+[Unit]
+Description=brightness
+Before=display-manager.service
+After=systemd-backlight.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/brightnessctl set 25%
+
+[Install]
+WantedBy=display-manager.service

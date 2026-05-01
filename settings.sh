@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# brightness
-
-[[ $HOST == 'drifter' ]] && brightnessctl set 25%
-
 # color
 
 add_color_profile() {
