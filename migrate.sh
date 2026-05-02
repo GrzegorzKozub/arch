@@ -17,6 +17,11 @@ fi
 
 [[ $HOST == 'worker' ]] && sudo sed -i -e "/.*integrations-stage.apsis.cloud.*/d" /etc/hosts
 
+# mime
+
+sed -ie '/Postman/d' ~/.config/mimeapps.list
+rm -rf ~/.config/mimeapps.liste
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
