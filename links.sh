@@ -4,12 +4,12 @@ set -eo pipefail -ux
 # brave origin
 
 for APP in \
-  brave-origin-beta \
-  com.brave.Origin.beta; do
+  brave-origin-nightly \
+  com.brave.Origin.nightly; do
   if [[ -f /usr/share/applications/$APP.desktop ]]; then
     cp /usr/share/applications/$APP.desktop "$XDG_DATA_HOME"/applications
     sed -i \
-      -e 's/^Icon=brave-origin-beta$/Icon=brave-desktop/' \
+      -e 's/^Icon=.*$/Icon=brave-desktop/' \
       -e 's/^Name=.*$/Name=Brave Origin/' \
       "$XDG_DATA_HOME"/applications/$APP.desktop
   fi
