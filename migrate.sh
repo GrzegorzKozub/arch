@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# hosts
+
+[[ $HOST == 'worker' ]] && sudo sed -i -e "/.*integrations-stage.apsis.cloud.*/d" /etc/hosts
+
 # laptop screen brightness
 
 if [[ $HOST == 'drifter' ]]; then
@@ -13,14 +17,19 @@ if [[ $HOST == 'drifter' ]]; then
 
 fi
 
-# hosts
-
-[[ $HOST == 'worker' ]] && sudo sed -i -e "/.*integrations-stage.apsis.cloud.*/d" /etc/hosts
-
 # mime
 
 sed -ie '/Postman/d' ~/.config/mimeapps.list
 rm -rf ~/.config/mimeapps.liste
+
+#❗vscode --extensions-dir & --shared-data-dir
+
+mkdir -p "$XDG_DATA_HOME"/Code
+[[ -d ~/.vscode/extensions ]] &&
+  mv ~/.vscode/extensions "$XDG_DATA_HOME"/Code/extensions ||
+  true
+rm -rf ~/.vscode
+rm -rf ~/.vscode-shared
 
 # cleanup
 
