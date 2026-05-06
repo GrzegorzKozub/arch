@@ -22,14 +22,28 @@ fi
 sed -ie '/Postman/d' ~/.config/mimeapps.list
 rm -rf ~/.config/mimeapps.liste
 
-#❗vscode --extensions-dir & --shared-data-dir
+# vscode
 
-mkdir -p "$XDG_DATA_HOME"/Code
+mkdir -p "$XDG_CONFIG_HOME"/vscode
+
 [[ -d ~/.vscode/extensions ]] &&
-  mv ~/.vscode/extensions "$XDG_DATA_HOME"/Code/extensions ||
+  mv ~/.vscode/extensions "$XDG_CONFIG_HOME"/vscode/extensions ||
   true
+
+if [[ -d ~/code/dot/vscode/Code ]]; then
+  mv ~/code/dot/vscode/Code ~/code/dot/vscode/user-data
+  pushd ~/code/dot/vscode/user-data
+  git clean -dfx
+  popd
+fi
+
+~/code/dot/links.sh
+
 rm -rf ~/.vscode
 rm -rf ~/.vscode-shared
+
+rm -rf "$XDG_CONFIG_HOME"/code-flags.conf
+rm -rf "$XDG_CONFIG_HOME"/Code
 
 # cleanup
 
