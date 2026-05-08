@@ -237,7 +237,8 @@ To reduce the image size after freeing up space on guest, first defragment the d
   - Leave only Store, Library, Settings and Exit Steam in taskbar preferences
   - Disable community content, hide game icons and show Steam Deck compatibility in Library
   - Disable shader pre-caching
-  - Disable Steam overlay, remove overlay shortcut key, set performance monitor key to `F9` and remove screenshot key
+  - Disable Steam overlay, remove overlay shortcut key and remove screenshot key
+  - Show performance monitor on top-left, toggle with `F8`, show only FPS details without avg/min graph, set text size scaling to 3, set text saturation and background opacity to 0
   - Set default compatibility tool to Proton-CachyOS or Proton-GE
   - Disable Remote Play
 4. Once per machine, move Steam to games disk with
