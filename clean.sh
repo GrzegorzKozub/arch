@@ -34,6 +34,10 @@ rm -f ~/.nvidia-settings-rc
 
 rm -rf ~/.nv
 
+# qt
+
+rm -rf ~/.config/QtProject.conf
+
 # vim
 
 rm -f ~/.viminfo
