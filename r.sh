@@ -8,9 +8,11 @@ BACKUP=/mnt/backup
 
 backups() { find "$BACKUP" -maxdepth 1 -name '[0-9]*' -type d; }
 
-[[ $1 && -d $1 ]] &&
-  DIR=$1 ||
+if [[ -d ${1:-} ]]; then
+  DIR=$1
+else
   DIR=$(backups | sort | tail -n1)
+fi
 
 echo "restoring from $DIR"
 
