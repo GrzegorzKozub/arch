@@ -113,18 +113,20 @@ Automated Arch Linux installation. See [ISSUES.md](ISSUES.md) for known issues.
   - Block notifications
   - Disable everything under Search and connected experiences
   - Switch search engine used in address bar to Google
+  - Disable everything under Copilot and AI
   - Hide favorites on toolbar
   - Don't show mini menu when selecting text
+  - Don't show quick actions when hovering on videos
   - Disable visual search
   - Set fixed-width font to Cascadia Code (on Windows)
-  - Disable everything under Copilot and sidebar
-  - Don't show tab actions menu
+  - Don't allow sidebar apps to show notifications
+  - Don't show tab search
   - Don't show tab preview on hover
   - Open tabs from the previous session on startup
   - Add Polish
   - Don't offer to translate pages that aren't in a language I read
   - Don't offer to translate videos on supported sites
-  - Don't use Copilot for writing on the web
+  - Don't use 'Help me write' writing assistant on the web
   - Don't use text prediction
   - Switch to Microsoft Editor under Writing assistance
   - Disable startup boost
