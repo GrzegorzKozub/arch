@@ -10,6 +10,10 @@ popd
 
 rm -rf ~/.config/tidal_dl_ng-dev
 
+# yazi
+
+ya pkg add yazi-rs/plugins:toggle-pane
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
