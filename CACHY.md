@@ -1,5 +1,11 @@
 # Migrating to CachyOS
 
+## TODO
+
+- Rebuild AUR packages with optimized makepkg.conf flags: `paru -S --rebuild --noconfirm $(paru -Qm | awk '{print $1}' | grep -v '^llama-cpp-vulkan$')`
+
+- Enable `PrettyProgressBar` and `ILoveCandy` in `/etc/pacman.conf` (both commented out in the pacnew from CachyOS pacman 7.0; `ILoveCandy` is the old name, `PrettyProgressBar` is the new canonical name for the same feature)
+
 ## Background: What CachyOS Migration Actually Does
 
 Adding CachyOS repos to an existing Arch system:
