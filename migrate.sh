@@ -19,6 +19,12 @@ rm -rf ~/.config/tidal_dl_ng-dev
 
 ya pkg add yazi-rs/plugins:toggle-pane
 
+# zed
+
+pacman -Q gnu-netcat &> /dev/null &&
+  sudo pacman -R --noconfirm gnu-netcat &&
+  sudo pacman -S --noconfirm openbsd-netcat || true
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh

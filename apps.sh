@@ -185,7 +185,7 @@ sudo pacman -S --noconfirm \
   obsidian \
   pavucontrol \
   satty \
-  zed
+  openbsd-netcat zed
 
 paru -S --aur --noconfirm \
   brave-bin \
