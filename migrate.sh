@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# paru
+
+"${BASH_SOURCE%/*}"/paru.sh
+sudo pacman -Rs --noconfirm paru-git-debug
+
 # tiddl
 
 pushd ~/code/dot
