@@ -3,8 +3,9 @@ set -eo pipefail -ux
 
 # paru
 
-"${BASH_SOURCE%/*}"/paru.sh
-sudo pacman -Rs --noconfirm paru-git-debug
+# "${BASH_SOURCE%/*}"/paru.sh
+pacman -Q paru-git-debug &> /dev/null &&
+  sudo pacman -Rs --noconfirm paru-git-debug
 
 # tiddl
 
@@ -17,7 +18,7 @@ rm -rf ~/.config/tidal_dl_ng-dev
 
 # yazi
 
-ya pkg add yazi-rs/plugins:toggle-pane
+ya pkg add yazi-rs/plugins:toggle-pane || true
 
 # zed
 
