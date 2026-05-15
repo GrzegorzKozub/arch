@@ -14,4 +14,7 @@ yes | sudo ./cachyos-repo.sh
 
 popd
 
-pacman -Syu --noconfirm
+# cachyos-rate-mirrors - https://wiki.cachyos.org/cachyos_basic/why_cachyos/#cachyos-custom-applications
+
+sudo pacman -S --noconfirm cachyos-rate-mirrors
+sudo cachyos-rate-mirrors
