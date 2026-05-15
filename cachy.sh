@@ -10,7 +10,7 @@ pushd "$TMP"
 curl https://mirror.cachyos.org/cachyos-repo.tar.xz -o cachyos-repo.tar.xz
 tar xvf cachyos-repo.tar.xz
 cd cachyos-repo
-yes | sudo ./cachyos-repo.sh
+yes | sudo ./cachyos-repo.sh || true # ignore 404s and pacman -Syu later, after cachyos-rate-mirrors
 
 popd
 
@@ -18,3 +18,4 @@ popd
 
 sudo pacman -S --noconfirm cachyos-rate-mirrors
 sudo cachyos-rate-mirrors
+sudo pacman -Syu --noconfirm
