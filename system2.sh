@@ -185,16 +185,16 @@ sed -Ei 's/^\--sort.+$/--sort rate/' /etc/xdg/reflector/reflector.conf
 
 reflector --save /etc/pacman.d/mirrorlist --protocol https --country Poland,Germany --latest 10 --sort rate
 
+# cachyos-rate-mirrors
+
+cachyos-rate-mirrors
+
 # pacman
 
 sed -i 's/#Color/Color/' /etc/pacman.conf
 
 sed -i 's/^OPTIONS=\(.*\) debug\(.*\)$/OPTIONS=\1 !debug\2/' /etc/makepkg.conf
 sed -i "s/^PKGEXT='.pkg.tar.zst'\$/PKGEXT='.pkg.tar'/" /etc/makepkg.conf
-
-# cachyos
-
-"${BASH_SOURCE%/*}"/cachy.sh
 
 # continue as regular user
 

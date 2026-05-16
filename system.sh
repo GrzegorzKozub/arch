@@ -47,10 +47,16 @@ for FILE in \
   [[ -f $FILE ]] && rm /mnt/boot/$FILE
 done
 
+# cachyos
+
+"${BASH_SOURCE%/*}"/cachy.sh
+
 # operating system
 
-pacstrap /mnt \
+pacstrap -K /mnt \
   base base-devel \
+  cachyos-keyring cachyos-mirrorlist cachyos-v3-mirrorlist cachyos-v4-mirrorlist \
+  reflector cachyos-rate-mirrors \
   linux linux-lts linux-firmware \
   power-profiles-daemon \
   lm_sensors \
@@ -67,13 +73,17 @@ pacstrap /mnt \
   xdg-desktop-portal xdg-utils \
   qt5-wayland qt6-wayland \
   pacman-contrib flatpak \
-  git go pkgfile reflector sudo zsh \
+  git go pkgfile sudo zsh \
   man-db man-pages \
   xorg-server \
   gdm glib2-devel \
   argyllcms
 
   # apparmor gufw nftables nss-mdns plymouth (splash) zram-generator
+
+# pacman.conf including cachyos repos
+
+cp /etc/pacman.conf /mnt/etc/pacman.conf
 
 # fstab
 

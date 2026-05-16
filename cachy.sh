@@ -44,6 +44,8 @@ if ! grep -q '\[cachyos\]' /etc/pacman.conf; then
 
   sudo cp /etc/pacman.conf /etc/pacman.conf.bak
 
+  sudo pacman -S --noconfirm --needed gcc
+
   MARCH=$(gcc -march=native -Q --help=target 2>&1)
 
   if echo "$MARCH" | grep -qE 'march.*znver[45]'; then
@@ -119,7 +121,3 @@ sudo pacman -Sy
 
 sudo pacman -S --noconfirm --needed cachyos-rate-mirrors
 sudo cachyos-rate-mirrors
-
-# full system upgrade
-
-sudo pacman -Syu --noconfirm
