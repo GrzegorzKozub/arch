@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# cachyos
+
+# "${BASH_SOURCE%/*}"/cachy.sh
+# sudo pacman -Syu --noconfirm
+
 # paru
 
 if pacman -Q paru-git-debug &> /dev/null; then

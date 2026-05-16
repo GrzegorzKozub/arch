@@ -49,14 +49,28 @@ done
 
 # cachyos
 
-"${BASH_SOURCE%/*}"/cachy.sh
+if [[ ${MY_CACHY:-} ]]; then
+
+  "${BASH_SOURCE%/*}"/cachy.sh
+
+  CACHY_PACKAGES=(
+    cachyos-keyring
+    cachyos-mirrorlist
+    cachyos-v3-mirrorlist
+    cachyos-v4-mirrorlist
+    cachyos-rate-mirrors
+  )
+
+else
+  CACHY_PACKAGES=()
+fi
 
 # operating system
 
 pacstrap -K /mnt \
   base base-devel \
-  cachyos-keyring cachyos-mirrorlist cachyos-v3-mirrorlist cachyos-v4-mirrorlist \
-  reflector cachyos-rate-mirrors \
+  reflector \
+  "${CACHY_PACKAGES[@]+"${CACHY_PACKAGES[@]}"}" \
   linux linux-lts linux-firmware \
   power-profiles-daemon \
   lm_sensors \
@@ -83,7 +97,7 @@ pacstrap -K /mnt \
 
 # pacman.conf including cachyos repos
 
-cp /etc/pacman.conf /mnt/etc/pacman.conf
+[[ ${MY_CACHY:-} ]] && cp /etc/pacman.conf /mnt/etc/pacman.conf
 
 # fstab
 

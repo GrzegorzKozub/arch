@@ -9,4 +9,6 @@ export MY_ARCH_PART=/dev/nvme0n1p4
 
 export MY_HOSTNAME=drifter
 
+export MY_CACHY=1
+
 export MY_DESKTOP=GNOME

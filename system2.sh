@@ -187,7 +187,7 @@ reflector --save /etc/pacman.d/mirrorlist --protocol https --country Poland,Germ
 
 # cachyos-rate-mirrors
 
-cachyos-rate-mirrors
+[[ ${MY_CACHY:-} ]] && cachyos-rate-mirrors
 
 # pacman
 
