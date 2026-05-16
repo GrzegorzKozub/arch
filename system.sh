@@ -44,7 +44,7 @@ for FILE in \
   intel-ucode.img \
   vmlinuz-linux \
   vmlinuz-linux-lts; do
-  [[ -f $FILE ]] && rm /mnt/boot/$FILE
+  rm -f /mnt/boot/$FILE
 done
 
 # cachyos
@@ -93,7 +93,7 @@ sed -i \
   -e "s/ext4[[:space:]]\+rw,relatime/ext4 rw,noatime/" \
   -e "s/fmask=0022/fmask=0077/" \
   -e "s/dmask=0022/dmask=0077/" \
-  /etc/fstab
+  /mnt/etc/fstab
 
 # continue as root
 
