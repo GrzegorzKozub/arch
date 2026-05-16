@@ -192,7 +192,7 @@ sed -i 's/#Color/Color/' /etc/pacman.conf
 sed -i 's/^OPTIONS=\(.*\) debug\(.*\)$/OPTIONS=\1 !debug\2/' /etc/makepkg.conf
 sed -i "s/^PKGEXT='.pkg.tar.zst'\$/PKGEXT='.pkg.tar'/" /etc/makepkg.conf
 
-# cachyos repos - https://wiki.cachyos.org/features/optimized_repos/#adding-our-repositories-to-an-existing-arch-linux-install
+# cachyos
 
 "${BASH_SOURCE%/*}"/cachy.sh
 

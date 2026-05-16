@@ -1,78 +1,125 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# cachyos repos - https://wiki.cachyos.org/features/optimized_repos/#adding-our-repositories-to-an-existing-arch-linux-install
+# https://wiki.cachyos.org/features/optimized_repos/#adding-our-repositories-to-an-existing-arch-linux-install
+# https://raw.githubusercontent.com/CachyOS/cachyos-repo-add-script/master/cachyos-repo.sh
 
-REPO_URL="https://mirror.cachyos.org/repo/x86_64/cachyos"
-
-# gpg key
+# keyring
 
 sudo pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key F3B607488DB35A47
 
-# bootstrap packages - resolve current filenames from package db
+# packages
 
 TMP="$(mktemp -d)"
 trap 'rm -rf $TMP' EXIT
+pushd "$TMP"
 
-curl -s "$REPO_URL/cachyos.db.tar.gz" | tar -xzf - -C "$TMP"
+MIRROR=https://mirror.cachyos.org/repo/x86_64/cachyos
+curl -s "$MIRROR"/cachyos.db | tar --zstd -xf - -C "$TMP"
 
-get_pkg_file() {
+package() {
   local dir
   dir=$(find "$TMP" -maxdepth 1 -name "$1-*" -type d | head -1)
-  awk '/%FILENAME%/{getline; print}' "$dir/desc"
+  awk '/%FILENAME%/{getline; print}' "$dir"/desc
 }
 
-sudo pacman -U --noconfirm \
-  "$REPO_URL/$(get_pkg_file cachyos-keyring)" \
-  "$REPO_URL/$(get_pkg_file cachyos-mirrorlist)" \
-  "$REPO_URL/$(get_pkg_file cachyos-v3-mirrorlist)" \
-  "$REPO_URL/$(get_pkg_file cachyos-v4-mirrorlist)" \
-  "$REPO_URL/$(get_pkg_file pacman)"
+PKGS=()
+for PKG in \
+  cachyos-keyring \
+  cachyos-mirrorlist \
+  cachyos-v3-mirrorlist \
+  cachyos-v4-mirrorlist \
+  pacman; do
+  pacman -Qq "$PKG" &> /dev/null || PKGS+=("$MIRROR/$(package "$PKG")")
+done
 
-# detect cpu tier
+[[ ${#PKGS[@]} -gt 0 ]] && sudo pacman -U --noconfirm "${PKGS[@]}"
 
-if gcc -march=native -Q --help=target 2>&1 | grep -qE 'march.*znver[45]'; then
-  TIER=znver4
-elif /lib/ld-linux-x86-64.so.2 --help | grep -q 'x86-64-v4 (supported, searched)'; then
-  TIER=v4
-else
-  TIER=v3
-fi
+popd
 
-# update pacman.conf
-
-sudo cp /etc/pacman.conf /etc/pacman.conf.bak
-
-sudo sed -i 's/^Architecture = x86_64$/Architecture = auto/' /etc/pacman.conf
+# pacman.conf update
 
 if ! grep -q '\[cachyos\]' /etc/pacman.conf; then
 
-  if [[ $TIER == znver4 ]]; then
-    REPOS="[cachyos-znver4]\nInclude = /etc/pacman.d/cachyos-znver4-mirrorlist\n\n[cachyos-core-znver4]\nInclude = /etc/pacman.d/cachyos-znver4-mirrorlist\n\n[cachyos-extra-znver4]\nInclude = /etc/pacman.d/cachyos-znver4-mirrorlist\n\n[cachyos]\nInclude = /etc/pacman.d/cachyos-mirrorlist\n"
-  elif [[ $TIER == v4 ]]; then
-    REPOS="[cachyos-v4]\nInclude = /etc/pacman.d/cachyos-v4-mirrorlist\n\n[cachyos-core-v4]\nInclude = /etc/pacman.d/cachyos-v4-mirrorlist\n\n[cachyos-extra-v4]\nInclude = /etc/pacman.d/cachyos-v4-mirrorlist\n\n[cachyos]\nInclude = /etc/pacman.d/cachyos-mirrorlist\n"
+  sudo cp /etc/pacman.conf /etc/pacman.conf.bak
+
+  MARCH=$(gcc -march=native -Q --help=target 2>&1)
+
+  if echo "$MARCH" | grep -qE 'march.*znver[45]'; then
+    CPU=znver4
+  elif /lib/ld-linux-x86-64.so.2 --help | grep -q 'x86-64-v4 (supported, searched)'; then
+    CPU=v4
   else
-    REPOS="[cachyos-v3]\nInclude = /etc/pacman.d/cachyos-v3-mirrorlist\n\n[cachyos-core-v3]\nInclude = /etc/pacman.d/cachyos-v3-mirrorlist\n\n[cachyos-extra-v3]\nInclude = /etc/pacman.d/cachyos-v3-mirrorlist\n\n[cachyos]\nInclude = /etc/pacman.d/cachyos-mirrorlist\n"
+    CPU=v3
+  fi
+
+  if [[ $CPU == znver4 ]]; then
+    REPOS=$(
+            cat << 'EOF'
+[cachyos-znver4]
+Include = /etc/pacman.d/cachyos-znver4-mirrorlist
+
+[cachyos-core-znver4]
+Include = /etc/pacman.d/cachyos-znver4-mirrorlist
+
+[cachyos-extra-znver4]
+Include = /etc/pacman.d/cachyos-znver4-mirrorlist
+
+[cachyos]
+Include = /etc/pacman.d/cachyos-mirrorlist
+EOF
+    )
+  elif [[ $CPU == v4 ]]; then
+    REPOS=$(
+            cat << 'EOF'
+[cachyos-v4]
+Include = /etc/pacman.d/cachyos-v4-mirrorlist
+
+[cachyos-core-v4]
+Include = /etc/pacman.d/cachyos-v4-mirrorlist
+
+[cachyos-extra-v4]
+Include = /etc/pacman.d/cachyos-v4-mirrorlist
+
+[cachyos]
+Include = /etc/pacman.d/cachyos-mirrorlist
+EOF
+    )
+  else
+    REPOS=$(
+            cat << 'EOF'
+[cachyos-v3]
+Include = /etc/pacman.d/cachyos-v3-mirrorlist
+
+[cachyos-core-v3]
+Include = /etc/pacman.d/cachyos-v3-mirrorlist
+
+[cachyos-extra-v3]
+Include = /etc/pacman.d/cachyos-v3-mirrorlist
+
+[cachyos]
+Include = /etc/pacman.d/cachyos-mirrorlist
+EOF
+    )
   fi
 
   sudo awk -v repos="$REPOS" '
-    /^\[core\]/ && !done { printf "%s\n", repos; done=1 }
+    /^\[core\]/ && !done { printf "%s\n\n", repos; done=1 }
     { print }
   ' /etc/pacman.conf.bak | sudo tee /etc/pacman.conf > /dev/null
 
 fi
 
-# sync databases
+# pacman db sync
 
 sudo pacman -Sy
 
-# rate mirrors before full upgrade to avoid 404s
-# https://wiki.cachyos.org/cachyos_basic/why_cachyos/#cachyos-custom-applications
+# install & run cachyos-rate-mirrors to avoid 404s (reason for not using automatic script)
 
-sudo pacman -S --noconfirm cachyos-rate-mirrors
+sudo pacman -S --noconfirm --needed cachyos-rate-mirrors
 sudo cachyos-rate-mirrors
 
-# full upgrade
+# full system upgrade
 
 sudo pacman -Syu --noconfirm
