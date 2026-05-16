@@ -3,9 +3,10 @@ set -eo pipefail -ux
 
 # paru
 
-# "${BASH_SOURCE%/*}"/paru.sh
-pacman -Q paru-git-debug &> /dev/null &&
+if pacman -Q paru-git-debug &> /dev/null; then
   sudo pacman -Rs --noconfirm paru-git-debug
+  "${BASH_SOURCE%/*}"/paru.sh
+fi
 
 # tiddl
 
