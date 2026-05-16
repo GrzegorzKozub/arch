@@ -30,7 +30,6 @@ for PKG in \
   cachyos-mirrorlist \
   cachyos-v3-mirrorlist \
   cachyos-v4-mirrorlist \
-  cachyos-znver4-mirrorlist \
   pacman; do
   pacman -Qq "$PKG" &> /dev/null || PKGS+=("$MIRROR/$(package "$PKG")")
 done
@@ -44,6 +43,7 @@ popd
 if ! grep -q '\[cachyos\]' /etc/pacman.conf; then
 
   sudo cp /etc/pacman.conf /etc/pacman.conf.bak
+  trap 'sudo cp /etc/pacman.conf.bak /etc/pacman.conf' ERR
 
   sudo pacman -S --noconfirm --needed gcc
 
@@ -61,13 +61,13 @@ if ! grep -q '\[cachyos\]' /etc/pacman.conf; then
     REPOS=$(
             cat << 'EOF'
 [cachyos-znver4]
-Include = /etc/pacman.d/cachyos-znver4-mirrorlist
+Include = /etc/pacman.d/cachyos-v4-mirrorlist
 
 [cachyos-core-znver4]
-Include = /etc/pacman.d/cachyos-znver4-mirrorlist
+Include = /etc/pacman.d/cachyos-v4-mirrorlist
 
 [cachyos-extra-znver4]
-Include = /etc/pacman.d/cachyos-znver4-mirrorlist
+Include = /etc/pacman.d/cachyos-v4-mirrorlist
 
 [cachyos]
 Include = /etc/pacman.d/cachyos-mirrorlist
@@ -112,11 +112,17 @@ EOF
     { print }
   ' /etc/pacman.conf.bak | sudo tee /etc/pacman.conf > /dev/null
 
+  trap - ERR
+
 fi
 
 # pacman db sync
 
 sudo pacman -Sy
+
+# install cachyos pacman fork (standard lacks x86_64_v4 architecture support)
+
+sudo pacman -S --noconfirm pacman
 
 # install & run cachyos-rate-mirrors to avoid 404s (reason for not using automatic script)
 

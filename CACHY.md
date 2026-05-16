@@ -10,6 +10,8 @@
 
 - Script the CachyOS kernel install, boot entries, and Secure Boot signing (Steps 4–7 below)
 
+- Follow up on https://allthingsopen.org/articles/install-cachyos-manually-arch-linux-lvm-encryption for any remaining steps not yet covered by scripts
+
 ## Background: What CachyOS Migration Actually Does
 
 Adding CachyOS repos to an existing Arch system:
