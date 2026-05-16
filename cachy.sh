@@ -30,6 +30,7 @@ for PKG in \
   cachyos-mirrorlist \
   cachyos-v3-mirrorlist \
   cachyos-v4-mirrorlist \
+  cachyos-znver4-mirrorlist \
   pacman; do
   pacman -Qq "$PKG" &> /dev/null || PKGS+=("$MIRROR/$(package "$PKG")")
 done

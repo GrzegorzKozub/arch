@@ -58,6 +58,7 @@ if [[ ${MY_CACHY:-} ]]; then
     cachyos-mirrorlist
     cachyos-v3-mirrorlist
     cachyos-v4-mirrorlist
+    cachyos-znver4-mirrorlist
     cachyos-rate-mirrors
   )
 
