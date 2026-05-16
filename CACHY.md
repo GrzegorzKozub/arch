@@ -8,6 +8,8 @@
 
 - Enable `PrettyProgressBar` and `ILoveCandy` in `/etc/pacman.conf` (both commented out in the pacnew from CachyOS pacman 7.0; `ILoveCandy` is the old name, `PrettyProgressBar` is the new canonical name for the same feature)
 
+- Script the CachyOS kernel install, boot entries, and Secure Boot signing (Steps 4–7 below)
+
 ## Background: What CachyOS Migration Actually Does
 
 Adding CachyOS repos to an existing Arch system:
@@ -19,83 +21,32 @@ You do **not** reinstall the OS. Package replacement happens automatically via `
 
 ---
 
-## Part 1: In-Place Migration (Existing Machines)
+## Scripts
 
-### Step 1 — Backup
+CachyOS support is gated on `MY_CACHY=1` in the machine config (`drifter.sh`, `player.sh`, `worker.sh`).
 
-```bash
-sudo cp /etc/pacman.conf /etc/pacman.conf.bak
-```
+**`cachy.sh`** — adds CachyOS repos to the running system. Idempotent. Used by both fresh install and migration flows:
+- Imports GPG key
+- Installs keyring, mirrorlist, and forked pacman packages (resolved from live DB, no hardcoded versions)
+- Detects CPU tier (znver4/v4/v3) via gcc, falls back to ld
+- Updates `/etc/pacman.conf` (backs up original before first modification)
+- Syncs DB and runs `cachyos-rate-mirrors`
+- Does **not** run `pacman -Syu` — callers decide when to upgrade
 
-> On ext4 (no Btrfs snapshots). Have your LUKS recovery key accessible (saved during `systemd-cryptenroll`). Keep a live Arch ISO nearby.
+**Fresh install** (`system.sh` → `system2.sh`):
+- `cachy.sh` runs on the live ISO before pacstrap, configuring repos and mirrors
+- pacstrap uses the live ISO's CachyOS-configured pacman — installs optimized packages directly
+- `/etc/pacman.conf` is copied into the chroot after pacstrap
+- `cachyos-rate-mirrors` re-runs inside the chroot (gated on `MY_CACHY`)
 
----
-
-### Step 2 — Check Your CPU Architecture
-
-```bash
-/lib/ld-linux-x86-64.so.2 --help | grep -E 'supported|x86-64'
-```
-
-- **drifter** (Intel laptop): likely **x86-64-v3**
-- **player/worker** (AMD): Zen 3 = v3, Zen 4/5 = v4/znver4
-
-The automated script handles this detection, but it's good to know in advance.
+**Migration** (`migrate.sh`):
+- Calls `cachy.sh` then `pacman -Syu --noconfirm` (gated on `MY_CACHY`)
 
 ---
 
-### Step 3 — Add CachyOS Repositories
+## After Running the Scripts: Manual Steps
 
-```bash
-curl -O https://mirror.cachyos.org/cachyos-repo.tar.xz
-tar xvf cachyos-repo.tar.xz
-cd cachyos-repo
-yes | sudo ./cachyos-repo.sh
-```
-
-The script detects your CPU tier, backs up `pacman.conf`, imports GPG keys, and installs `cachyos-keyring`, `cachyos-mirrorlist`, and a customized pacman.
-
-**What it installs to `pacman.conf`** (example for v3 CPU, placed *above* `[core]`):
-
-```ini
-[cachyos-v3]
-Include = /etc/pacman.d/cachyos-v3-mirrorlist
-
-[cachyos-core-v3]
-Include = /etc/pacman.d/cachyos-v3-mirrorlist
-
-[cachyos-extra-v3]
-Include = /etc/pacman.d/cachyos-v3-mirrorlist
-
-[cachyos]
-Include = /etc/pacman.d/cachyos-mirrorlist
-```
-
-> **Pacman fork note:** The `[cachyos]` repo replaces pacman with a CachyOS fork. It adds an architecture check that will warn when upgrading if the installed package was built for a different arch tier. This is benign.
-
----
-
-### Step 4 — Refresh Mirrors and Upgrade All Packages
-
-If you hit 404 errors during the upgrade, refresh mirrors first:
-
-```bash
-sudo cachyos-rate-mirrors
-# check for permissions bug
-ls -la /etc/pacman.d/cachyos-*mirrorlist
-sudo chmod 644 /etc/pacman.d/cachyos-*mirrorlist
-```
-
-Then upgrade:
-
-```bash
-sudo rm -f /var/lib/pacman/db.lck
-sudo pacman -Syu
-```
-
----
-
-### Step 5 — Choose and Install a CachyOS Kernel
+### Step 1 — Choose and Install a CachyOS Kernel
 
 | Variant | Scheduler | Best for |
 |---|---|---|
@@ -126,7 +77,7 @@ mkinitcpio runs automatically via the `.preset` file the package provides.
 
 ---
 
-### Step 6 — Add Boot Entries
+### Step 2 — Add Boot Entries
 
 #### Limine — edit `/boot/EFI/limine/limine.conf`
 
@@ -152,20 +103,9 @@ For **drifter** (Intel, standard kernel):
   cmdline: root=/dev/mapper/vg1-root resume=/dev/mapper/vg1-swap rw rcutree.enable_rcu_lazy=1 quiet loglevel=3 rd.udev.log_level=3
 ```
 
-#### systemd-boot — create `/boot/loader/entries/cachyos.conf`
-
-```
-title    CachyOS BORE
-sort-key 01
-linux    /vmlinuz-linux-cachyos-bore
-initrd   /amd-ucode.img
-initrd   /initramfs-linux-cachyos-bore.img
-options  root=/dev/mapper/vg1-root resume=/dev/mapper/vg1-swap rw amd_pstate=active nvidia-drm.modeset=1 quiet loglevel=3 rd.udev.log_level=3
-```
-
 ---
 
-### Step 7 — Sign the New Kernel for Secure Boot
+### Step 3 — Sign the New Kernel for Secure Boot
 
 ```bash
 sudo sbctl sign --save /boot/vmlinuz-linux-cachyos        # or vmlinuz-linux-cachyos-bore
@@ -177,7 +117,7 @@ sudo sbctl verify
 
 ---
 
-### Step 8 — Test Boot
+### Step 4 — Test Boot
 
 ```bash
 sudo reboot
@@ -189,56 +129,21 @@ sbctl verify      # all signed files pass
 
 ---
 
-### Step 9 — Remove Old Kernels (Once Stable)
+### Step 5 — Remove Old Kernels (Once Stable)
 
 ```bash
 sudo pacman -R linux linux-headers linux-lts linux-lts-headers
-# remove corresponding Limine and systemd-boot entries
+# remove corresponding Limine entries
 ```
 
 ---
 
-### Step 10 — Optional: CachyOS-Specific Tools
+### Step 6 — Optional: CachyOS-Specific Tools
 
 ```bash
 sudo pacman -S cachyos-kernel-manager   # GUI: switch schedulers, configure sched-ext
 sudo pacman -S scx-scheds               # runtime sched-ext schedulers
 sudo systemctl enable --now scx
-```
-
----
-
-## Part 2: Repo Script Changes (Fresh Installs)
-
-### `system2.sh`
-
-The `cachyos.sh` call already adds repos. After that, also install the CachyOS kernel:
-
-```bash
-[[ $MY_HOSTNAME == 'player' ]] && pacman -S --noconfirm linux-cachyos-bore linux-cachyos-bore-headers linux-cachyos-bore-nvidia-open
-[[ $MY_HOSTNAME != 'player' ]] && pacman -S --noconfirm linux-cachyos linux-cachyos-headers
-
-pacman -R --noconfirm linux linux-headers linux-lts linux-lts-headers 2>/dev/null || true
-```
-
-Update the mkinitcpio calls:
-
-```bash
-[[ $MY_HOSTNAME == 'player' ]] && mkinitcpio -p linux-cachyos-bore
-[[ $MY_HOSTNAME != 'player' ]] && mkinitcpio -p linux-cachyos
-```
-
-### `boot2.sh` / `limine.conf` / boot entries
-
-Add CachyOS entries using the same `<ucode>` and `<params>` template pattern.
-
-### `secboot.sh`
-
-Add to the signing loop:
-
-```
-vmlinuz-linux-cachyos \
-vmlinuz-linux-cachyos-bore \
 ```
 
 ---
@@ -256,3 +161,5 @@ vmlinuz-linux-cachyos-bore \
 **Version warnings on upgrade:** Warnings like `local (x) is newer than cachyos (y)` are harmless — pacman won't downgrade unless forced. Notable: limine 12.2.0 local vs 11.4.1 in CachyOS repos — leave it on the Arch version.
 
 **Mirror 404s:** If `pacman -Syu` hits 404s, run `sudo cachyos-rate-mirrors`, check file permissions (`chmod 644 /etc/pacman.d/cachyos-*mirrorlist`), then retry.
+
+**cachy.sh uses upstream script as reference only:** We don't call the official `cachyos-repo.sh` because it runs `pacman -Syu` without first running `cachyos-rate-mirrors`, causing 404s. Our implementation adds the mirror refresh step before the upgrade.
