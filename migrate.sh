@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# cachyos
+# cachy
 
 # "${BASH_SOURCE%/*}"/cachy.sh
-# sudo pacman -Syu --noconfirm
+# "${BASH_SOURCE%/*}"/update.sh
+
+# evolution-data-server (required by gnome-shell-calendar-server since gnome-shell 1:50.1)
+
+pacman -Q evolution-data-server &> /dev/null ||
+  sudo pacman -S --noconfirm evolution-data-server
 
 # paru
 

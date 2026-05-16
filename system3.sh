@@ -100,6 +100,7 @@ sudo pacman -S --noconfirm \
 if [[ $MY_DESKTOP == 'GNOME' ]]; then
 
   sudo pacman -S --noconfirm \
+    evolution-data-server \
     gnome-menus gnome-shell gnome-shell-extensions gnome-keyring \
     gvfs gvfs-smb \
     xdg-user-dirs-gtk \
@@ -107,6 +108,8 @@ if [[ $MY_DESKTOP == 'GNOME' ]]; then
     gnome-calculator gnome-characters gnome-control-center gnome-font-viewer gnome-remote-desktop gnome-system-monitor gnome-tweaks gnome-weather loupe nautilus papers seahorse \
     gnome-shell-extension-appindicator \
     malcontent
+
+  # evolution-data-server required by gnome-shell-calendar-server since gnome-shell 1:50.1
 
   paru -S --aur --noconfirm \
     gnome-browser-connector \
