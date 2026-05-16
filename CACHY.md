@@ -8,6 +8,8 @@
 
 - Enable `PrettyProgressBar` and `ILoveCandy` in `/etc/pacman.conf` (both commented out in the pacnew from CachyOS pacman 7.0; `ILoveCandy` is the old name, `PrettyProgressBar` is the new canonical name for the same feature)
 
+- Ensure `makepkg.conf` changes survive the migration
+
 - Script the CachyOS kernel install, boot entries, and Secure Boot signing (Steps 4–7 below)
 
 - Follow up on https://allthingsopen.org/articles/install-cachyos-manually-arch-linux-lvm-encryption for any remaining steps not yet covered by scripts
