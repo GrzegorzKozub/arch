@@ -238,6 +238,13 @@ sed -i \
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
+if [[ ${MY_CACHY:-} ]]; then
+
+  mkinitcpio -p linux-cachyos
+  mkinitcpio -p linux-cachyos-lts
+
+fi
+
 # scripts
 
 su greg --command 'mkdir ~/code; git clone https://github.com/GrzegorzKozub/arch.git ~/code/arch'

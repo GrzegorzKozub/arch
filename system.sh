@@ -40,10 +40,16 @@ for FILE in \
   initramfs-linux-fallback.img \
   initramfs-linux-lts.img \
   initramfs-linux-lts-fallback.img \
+  initramfs-linux-cachyos.img \
+  initramfs-linux-cachyos-fallback.img \
+  initramfs-linux-cachyos-lts.img \
+  initramfs-linux-cachyos-lts-fallback.img \
   amd-ucode.img \
   intel-ucode.img \
   vmlinuz-linux \
-  vmlinuz-linux-lts; do
+  vmlinuz-linux-lts \
+  vmlinuz-linux-cachyos \
+  vmlinuz-linux-cachyos-lts; do
   rm -f /mnt/boot/$FILE
 done
 
@@ -59,6 +65,8 @@ if [[ ${MY_CACHY:-} ]]; then
     cachyos-v3-mirrorlist
     cachyos-v4-mirrorlist
     cachyos-rate-mirrors
+    linux-cachyos
+    linux-cachyos-lts
   )
 
 else

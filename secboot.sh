@@ -37,6 +37,9 @@ for FILE in \
   vmlinuz-linux \
   vmlinuz-linux-lts \
   \
+  vmlinuz-linux-cachyos \
+  vmlinuz-linux-cachyos-lts \
+  \
   archiso/vmlinuz-linux \
   archiso/vmlinuz-linux-lts; do
   sudo test -f /boot/$FILE || continue

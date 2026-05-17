@@ -3,10 +3,61 @@ set -eo pipefail -ux
 
 # cachy
 
-# "${BASH_SOURCE%/*}"/cachy.sh
-# "${BASH_SOURCE%/*}"/update.sh
+"${BASH_SOURCE%/*}"/cachy.sh
 
-# evolution-data-server (required by gnome-shell-calendar-server since gnome-shell 1:50.1)
+sudo pacman --noconfirm -Syu
+sudo DIFFPROG='nvim -d' pacdiff
+
+"${BASH_SOURCE%/*}"/settings.sh
+"${BASH_SOURCE%/*}"/links.sh
+"${BASH_SOURCE%/*}"/gdm.sh
+[[ $XDG_CURRENT_DESKTOP == 'GNOME' ]] && "${BASH_SOURCE%/*}"/gnome.sh
+"${BASH_SOURCE%/*}"/mime.sh
+"${BASH_SOURCE%/*}"/secrets.sh
+
+sudo pacman -S --noconfirm \
+  linux-cachyos \
+  linux-cachyos-lts
+
+sudo cp "${BASH_SOURCE%/*}"/boot/loader/entries/*.conf /boot/loader/entries
+# sudo cp "${BASH_SOURCE%/*}"/boot/EFI/limine/limine.conf /boot/EFI/limine
+
+# sudo bash -c "sed -i "s/<host>/$HOST/g" /boot/EFI/limine/limine.conf"
+
+# [[ $HOST == 'drifter' ]] && {
+#   sudo bash -c "sed -i '/^interface_resolution.*/d' /boot/EFI/limine/limine.conf"
+#   sudo bash -c "sed -i 's/<font>/3x3/g' /boot/EFI/limine/limine.conf"
+# }
+
+# [[ $HOST == 'player' ]] && {
+#   sudo bash -c "sed -i '/^interface_resolution.*/d' /boot/EFI/limine/limine.conf"
+#   sudo bash -c "sed -i 's/<font>/2x2/g' /boot/EFI/limine/limine.conf"
+# }
+
+# [[ $HOST == 'worker' ]] && {
+#   sudo bash -c "sed -i 's/<res>/1280x720/g' /boot/EFI/limine/limine.conf"
+#   sudo bash -c "sed -i '^term_font_scale.*/d' /boot/EFI/limine/limine.conf"
+# }
+
+[[ $HOST == 'drifter' ]] &&
+  sudo bash -c "sed -i 's/<ucode>/intel-ucode/g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo bash -c "sed -i 's/<ucode>/amd-ucode/g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo bash -c "sed -i 's/<params>/amd_pstate=active <params>/g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo bash -c "sed -i 's/<params>/nvidia-drm.modeset=1 <params>/g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
+
+[[ $HOST == 'drifter' ]] &&
+  sudo bash -c "sed -i 's/<params>/rcutree.enable_rcu_lazy=1 <params>/g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
+
+sudo bash -c "sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
+sudo bash -c "sed -i 's/ <params>//g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
+
+# evolution-data-server
 
 pacman -Q evolution-data-server &> /dev/null ||
   sudo pacman -S --noconfirm evolution-data-server
