@@ -10,8 +10,6 @@
 
 - Ensure `makepkg.conf` changes survive the migration
 
-- Script the CachyOS kernel install, boot entries, and Secure Boot signing (Steps 4–7 below)
-
 - Follow up on https://allthingsopen.org/articles/install-cachyos-manually-arch-linux-lvm-encryption for any remaining steps not yet covered by scripts
 
 ## Background: What CachyOS Migration Actually Does
@@ -50,69 +48,13 @@ CachyOS support is gated on `MY_CACHY=1` in the machine config (`drifter.sh`, `p
 
 ## After Running the Scripts: Manual Steps
 
-### Step 1 — Choose and Install a CachyOS Kernel
+`migrate.sh` handles kernel install (`linux-cachyos` + `linux-cachyos-lts`), boot entries (systemd-boot and Limine), and placeholder substitution. Run it first, then continue with the steps below.
 
-| Variant | Scheduler | Best for |
-|---|---|---|
-| `linux-cachyos` | EEVDF (tuned) | General use, laptop (drifter) |
-| `linux-cachyos-bore` | BORE | Gaming, interactive desktop (player) |
-| `linux-cachyos-lto` | EEVDF | Max optimization, workstation (worker) |
-| `linux-cachyos-lts` | EEVDF | Stability fallback |
-
-**Recommended per machine:**
-- **drifter** (laptop): `linux-cachyos`
-- **player** (gaming PC): `linux-cachyos-bore`
-- **worker** (workstation): `linux-cachyos` or `linux-cachyos-lto`
+### Step 1 — Sign the New Kernel for Secure Boot
 
 ```bash
-# player
-sudo pacman -S linux-cachyos-bore linux-cachyos-bore-headers linux-cachyos-bore-nvidia-open
-
-# drifter / worker
-sudo pacman -S linux-cachyos linux-cachyos-headers
-```
-
-Kernel files land at:
-- `/boot/vmlinuz-linux-cachyos` (or `vmlinuz-linux-cachyos-bore`)
-- `/boot/initramfs-linux-cachyos.img`
-- `/boot/initramfs-linux-cachyos-fallback.img`
-
-mkinitcpio runs automatically via the `.preset` file the package provides.
-
----
-
-### Step 2 — Add Boot Entries
-
-#### Limine — edit `/boot/EFI/limine/limine.conf`
-
-For **player** (AMD, BORE kernel):
-
-```
-/CachyOS BORE
-  protocol: linux
-  path: boot():/vmlinuz-linux-cachyos-bore
-  module_path: boot():/amd-ucode.img
-  module_path: boot():/initramfs-linux-cachyos-bore.img
-  cmdline: root=/dev/mapper/vg1-root resume=/dev/mapper/vg1-swap rw amd_pstate=active nvidia-drm.modeset=1 quiet loglevel=3 rd.udev.log_level=3
-```
-
-For **drifter** (Intel, standard kernel):
-
-```
-/CachyOS
-  protocol: linux
-  path: boot():/vmlinuz-linux-cachyos
-  module_path: boot():/intel-ucode.img
-  module_path: boot():/initramfs-linux-cachyos.img
-  cmdline: root=/dev/mapper/vg1-root resume=/dev/mapper/vg1-swap rw rcutree.enable_rcu_lazy=1 quiet loglevel=3 rd.udev.log_level=3
-```
-
----
-
-### Step 3 — Sign the New Kernel for Secure Boot
-
-```bash
-sudo sbctl sign --save /boot/vmlinuz-linux-cachyos        # or vmlinuz-linux-cachyos-bore
+sudo sbctl sign --save /boot/vmlinuz-linux-cachyos
+sudo sbctl sign --save /boot/vmlinuz-linux-cachyos-lts
 sudo sbctl list-files
 sudo sbctl verify
 ```
@@ -121,7 +63,7 @@ sudo sbctl verify
 
 ---
 
-### Step 4 — Test Boot
+### Step 2 — Test Boot
 
 ```bash
 sudo reboot
@@ -133,7 +75,7 @@ sbctl verify      # all signed files pass
 
 ---
 
-### Step 5 — Remove Old Kernels (Once Stable)
+### Step 3 — Remove Old Kernels (Once Stable)
 
 ```bash
 sudo pacman -R linux linux-headers linux-lts linux-lts-headers
@@ -142,7 +84,7 @@ sudo pacman -R linux linux-headers linux-lts linux-lts-headers
 
 ---
 
-### Step 6 — Optional: CachyOS-Specific Tools
+### Step 4 — Optional: CachyOS-Specific Tools
 
 ```bash
 sudo pacman -S cachyos-kernel-manager   # GUI: switch schedulers, configure sched-ext
@@ -155,8 +97,6 @@ sudo systemctl enable --now scx
 ## Key Gotchas
 
 **Limine 11.2+ BLAKE2B:** Newer Limine enforces config checksums when Secure Boot is active. If you hit a "Limine panic" on first boot after adding the CachyOS entry, you need to embed the config hash into the EFI binary (`limine-enroll-config`). Your local Limine is 12.2.0 (ahead of CachyOS repos at 11.4.1) — check the [CachyOS Secure Boot wiki](https://wiki.cachyos.org/configuration/secure_boot_setup/).
-
-**NVIDIA open modules:** `linux-cachyos-bore-nvidia-open` ships prebuilt open kernel modules — no more building via dkms on every kernel update.
 
 **AMD `amd_pstate=active`:** Keep this kernel param on player/worker. The CachyOS kernel has patches that work well with the EPP driver.
 
