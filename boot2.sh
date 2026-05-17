@@ -31,7 +31,7 @@ sed -i "s/<host>/$MY_HOSTNAME/g" /boot/EFI/limine/limine.conf
 
 [[ $MY_HOSTNAME == 'worker' ]] && {
   sed -i 's/<res>/1280x720/g' /boot/EFI/limine/limine.conf
-  sed -i '^term_font_scale.*/d' /boot/EFI/limine/limine.conf
+  sed -i '/^term_font_scale.*/d' /boot/EFI/limine/limine.conf
 }
 
 # bitlocker

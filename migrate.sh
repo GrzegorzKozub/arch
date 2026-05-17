@@ -19,43 +19,45 @@ sudo pacman -S --noconfirm \
   linux-cachyos \
   linux-cachyos-lts
 
-sudo cp "${BASH_SOURCE%/*}"/boot/loader/entries/*.conf /boot/loader/entries
-# sudo cp "${BASH_SOURCE%/*}"/boot/EFI/limine/limine.conf /boot/EFI/limine
+sudo cp "${BASH_SOURCE%/*}"/boot/loader/entries/cachy*.conf /boot/loader/entries
+sudo cp "${BASH_SOURCE%/*}"/boot/EFI/limine/limine.conf /boot/EFI/limine
 
-# sudo bash -c "sed -i "s/<host>/$HOST/g" /boot/EFI/limine/limine.conf"
+sudo bash -c "sed -i 's/<host>/$HOST/g' /boot/EFI/limine/limine.conf"
 
-# [[ $HOST == 'drifter' ]] && {
-#   sudo bash -c "sed -i '/^interface_resolution.*/d' /boot/EFI/limine/limine.conf"
-#   sudo bash -c "sed -i 's/<font>/3x3/g' /boot/EFI/limine/limine.conf"
-# }
+[[ $HOST == 'drifter' ]] && {
+  sudo bash -c "sed -i '/^interface_resolution.*/d' /boot/EFI/limine/limine.conf"
+  sudo bash -c "sed -i 's/<font>/3x3/g' /boot/EFI/limine/limine.conf"
+}
 
-# [[ $HOST == 'player' ]] && {
-#   sudo bash -c "sed -i '/^interface_resolution.*/d' /boot/EFI/limine/limine.conf"
-#   sudo bash -c "sed -i 's/<font>/2x2/g' /boot/EFI/limine/limine.conf"
-# }
+[[ $HOST == 'player' ]] && {
+  sudo bash -c "sed -i '/^interface_resolution.*/d' /boot/EFI/limine/limine.conf"
+  sudo bash -c "sed -i 's/<font>/2x2/g' /boot/EFI/limine/limine.conf"
+}
 
-# [[ $HOST == 'worker' ]] && {
-#   sudo bash -c "sed -i 's/<res>/1280x720/g' /boot/EFI/limine/limine.conf"
-#   sudo bash -c "sed -i '^term_font_scale.*/d' /boot/EFI/limine/limine.conf"
-# }
-
-[[ $HOST == 'drifter' ]] &&
-  sudo bash -c "sed -i 's/<ucode>/intel-ucode/g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
-
-[[ $HOST =~ ^(player|worker)$ ]] &&
-  sudo bash -c "sed -i 's/<ucode>/amd-ucode/g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
-
-[[ $HOST =~ ^(player|worker)$ ]] &&
-  sudo bash -c "sed -i 's/<params>/amd_pstate=active <params>/g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
-
-[[ $HOST =~ ^(player|worker)$ ]] &&
-  sudo bash -c "sed -i 's/<params>/nvidia-drm.modeset=1 <params>/g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
+[[ $HOST == 'worker' ]] && {
+  sudo bash -c "sed -i 's/<res>/1280x720/g' /boot/EFI/limine/limine.conf"
+  sudo bash -c "sed -i '/^term_font_scale.*/d' /boot/EFI/limine/limine.conf"
+}
 
 [[ $HOST == 'drifter' ]] &&
-  sudo bash -c "sed -i 's/<params>/rcutree.enable_rcu_lazy=1 <params>/g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
+  sudo bash -c "sed -i 's/<ucode>/intel-ucode/g' /boot/loader/entries/cachy*.conf /boot/EFI/limine/limine.conf"
 
-sudo bash -c "sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
-sudo bash -c "sed -i 's/ <params>//g' /boot/loader/entries/*.conf # /boot/EFI/limine/limine.conf"
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo bash -c "sed -i 's/<ucode>/amd-ucode/g' /boot/loader/entries/cachy*.conf /boot/EFI/limine/limine.conf"
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo bash -c "sed -i 's/<params>/amd_pstate=active <params>/g' /boot/loader/entries/cachy*.conf /boot/EFI/limine/limine.conf"
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo bash -c "sed -i 's/<params>/nvidia-drm.modeset=1 <params>/g' /boot/loader/entries/cachy*.conf /boot/EFI/limine/limine.conf"
+
+[[ $HOST == 'drifter' ]] &&
+  sudo bash -c "sed -i 's/<params>/rcutree.enable_rcu_lazy=1 <params>/g' /boot/loader/entries/cachy*.conf /boot/EFI/limine/limine.conf"
+
+sudo bash -c "sed -i 's/<params>/quiet loglevel=3 rd.udev.log_level=3 <params>/g' /boot/loader/entries/cachy*.conf /boot/EFI/limine/limine.conf"
+sudo bash -c "sed -i 's/ <params>//g' /boot/loader/entries/cachy*.conf /boot/EFI/limine/limine.conf"
+
+sudo "${BASH_SOURCE%/*}"/limine.sh
 
 # evolution-data-server
 
