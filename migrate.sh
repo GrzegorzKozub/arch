@@ -59,12 +59,14 @@ sudo bash -c "sed -i 's/ <params>//g' /boot/loader/entries/cachy*.conf /boot/EFI
 
 sudo "${BASH_SOURCE%/*}"/limine.sh
 
-sudo sed -i 's/#PrettyProgressBar/PrettyProgressBar/' /etc/pacman.conf
-
 # evolution-data-server
 
 pacman -Q evolution-data-server &> /dev/null ||
   sudo pacman -S --noconfirm evolution-data-server
+
+# pacman
+
+sudo sed -i 's/#ILoveCandy/ILoveCandy/' /etc/pacman.conf
 
 # paru
 
