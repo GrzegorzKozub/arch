@@ -62,6 +62,8 @@ sudo bash -c "sed -i 's/ <params>//g' /boot/loader/entries/*.conf /boot/EFI/limi
 
 sudo "${BASH_SOURCE%/*}"/limine.sh
 
+paru -S --rebuild --noconfirm tmux-git fswatch
+
 # evolution-data-server
 
 pacman -Q evolution-data-server &> /dev/null ||
