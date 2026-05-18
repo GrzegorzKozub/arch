@@ -19,6 +19,9 @@ sudo pacman -S --noconfirm \
   linux-cachyos \
   linux-cachyos-lts
 
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo pacman -S --noconfirm linux-cachyos-nvidia-open
+
 sudo cp "${BASH_SOURCE%/*}"/boot/loader/entries/*.conf /boot/loader/entries
 sudo cp "${BASH_SOURCE%/*}"/boot/EFI/limine/limine.conf /boot/EFI/limine
 

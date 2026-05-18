@@ -60,6 +60,10 @@ if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
     libva-nvidia-driver \
     lact
 
+  [[ ${MY_CACHY:-} ]] &&
+    sudo pacman -S --noconfirm \
+      linux-cachyos-nvidia-open
+
 fi
 
 if [[ $MY_HOSTNAME == 'sacrifice' ]]; then
