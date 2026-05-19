@@ -1,3 +1,4 @@
 # https://wiki.archlinux.org/title/Improving_performance#Changing_I/O_scheduler
+# https://github.com/CachyOS/CachyOS-Settings/pull/220
 
-ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
+ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
