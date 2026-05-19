@@ -2,12 +2,6 @@
 
 Known issues and workarounds
 
-## Claude Code
-
-Sandbox is broken
-
-- https://github.com/anthropics/claude-code/issues/17087
-
 ## dbus
 
 Multiple errors like `dbus-broker-launch[1170]: Ignoring duplicate name 'ca.desrt.dconf' in service file '/usr/share//dbus-1/services/ca.desrt.dconf.service'` in journal

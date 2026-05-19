@@ -1,6 +1,6 @@
 # Arch
 
-Automated Arch Linux installation. See [ISSUES.md](ISSUES.md) for known issues.
+Automated Arch Linux installation. See [TODO.md](TODO.md) for remaining work and [ISSUES.md](ISSUES.md) for known issues.
 
 ## Archiso
 
