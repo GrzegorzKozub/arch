@@ -74,6 +74,10 @@ paru -S --rebuild --noconfirm tmux-git fswatch
 pacman -Q evolution-data-server &> /dev/null ||
   sudo pacman -S --noconfirm evolution-data-server
 
+# kyber
+
+sudo cp "${BASH_SOURCE%/*}"/etc/udev/rules.d/60-ioschedulers.rules /etc/udev/rules.d/
+
 # pacman
 
 sudo sed -i 's/#ILoveCandy/ILoveCandy/' /etc/pacman.conf
