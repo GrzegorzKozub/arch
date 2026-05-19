@@ -148,6 +148,8 @@ systemctl --user enable pipewire-pulse.service
 
 # performance optimization
 
+sudo systemctl enable ananicy-cpp.service
+
 cp $(dirname $0)/home/.config/systemd/user/perf.service $XDG_CONFIG_HOME/systemd/user
 systemctl --user enable perf.service
 

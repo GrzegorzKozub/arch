@@ -77,9 +77,10 @@ fi
 
 pacstrap -K /mnt \
   base base-devel \
-  reflector \
-  "${CACHY_PACKAGES[@]+"${CACHY_PACKAGES[@]}"}" \
   linux linux-lts linux-firmware \
+  "${CACHY_PACKAGES[@]+"${CACHY_PACKAGES[@]}"}" \
+  reflector \
+  ananicy-cpp cachyos-ananicy-rules \
   power-profiles-daemon \
   lm_sensors \
   terminus-font \
@@ -100,6 +101,8 @@ pacstrap -K /mnt \
   xorg-server \
   gdm glib2-devel \
   argyllcms
+
+# performance
 
   # apparmor gufw nftables nss-mdns plymouth (splash) zram-generator
 

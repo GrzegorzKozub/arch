@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# ananicy-cpp
+
+sudo pacman -S --noconfirm ananicy-cpp cachyos-ananicy-rules
+sudo systemctl enable --now ananicy-cpp.service
+
 # cachy
 
 "${BASH_SOURCE%/*}"/cachy.sh
