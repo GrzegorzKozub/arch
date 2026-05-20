@@ -6,28 +6,31 @@ set -eo pipefail -ux
 [[ $HOST == 'player' ]] && export VKD3D_FRAME_RATE=120
 [[ $HOST == 'worker' ]] && export VKD3D_FRAME_RATE=60
 
-export PROTON_DLSS_UPGRADE=1
 export PROTON_DLSS_INDICATOR=0
+export PROTON_DLSS_UPGRADE=1
+export PROTON_FSR4_UPGRADE=1
+
+export DXVK_HDR=1
+export PROTON_ENABLE_HDR=1
+export PROTON_ENABLE_WAYLAND=0 # required for HDR without gamescope but causes stuttering with VRR
 
 export PROTON_NVIDIA_LIBS_NO_32BIT=1
 
-# required for HDR without gamescope but causes stuttering with VRR
-export PROTON_ENABLE_WAYLAND=0
-
-export PROTON_NO_WM_DECORATION=1
-export PROTON_ENABLE_HDR=1
-
 export PROTON_USE_NTSYNC=1
 
-export PROTON_LOCAL_SHADER_CACHE=1
+export PROTON_NO_WM_DECORATION=1
 
-export PROTON_PREFER_SDL=1
 export PROTON_NO_STEAMINPUT=1
+export PROTON_PREFER_SDL=1
+
+export PROTON_LOCAL_SHADER_CACHE=1
 
 # https://wiki.cachyos.org/configuration/general_system_tweaks/#amd-3d-v-cache-optimizer
 # https://www.phoronix.com/review/amd-3d-vcache-optimizer-9950x3d
 X3D=/sys/bus/platform/drivers/amd_x3d_vcache/AMDI0101:00/amd_x3d_mode
 [[ $HOST == 'player' ]] && echo cache | sudo tee $X3D
+
+sudo systemctl stop ananicy-cpp.service # conflicts with gamemode
 
 powerprofilesctl launch --profile performance -- \
   mangohud gamemoderun "$@"
@@ -38,5 +41,7 @@ powerprofilesctl launch --profile performance -- \
 #   -W 3840 -H 2160 -r 239.99 \
 #   --hdr-enabled --mangoapp --adaptive-sync --fullscreen --force-grab-cursor -- \
 #   "$@"
+
+sudo systemctl start ananicy-cpp.service
 
 [[ $HOST == 'player' ]] && echo frequency | sudo tee $X3D
