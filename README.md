@@ -11,6 +11,7 @@ Related repos
 
 ## To do
 
+- [ ] Test if MangoHud frame limit still doesn't work over 100 and update `game.sh` & `MangoHud.conf` ([source](https://docs.bazzite.gg/Gaming/launch-options-env-variables/#frame-rate-limiting-issues-and-inconsistency))
 - [ ] Migrate to `btrfs` following Arch & CachyOS guides
 - [ ] Switch the IO scheduler from `kyber` to [ADIOS](https://wiki.cachyos.org/configuration/general_system_tweaks/#how-to-enable-adios) when it's stable
 
