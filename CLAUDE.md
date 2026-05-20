@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Related Repos
+
+- [dot](https://github.com/GrzegorzKozub/dot) — dotfiles, managed via GNU Stow, lives at `~/code/dot`
+- [hist](https://github.com/GrzegorzKozub/hist) — shell history
+- [toys](https://github.com/GrzegorzKozub/toys) — hardware spec & config; monitor calibration docs
+- [walls](https://github.com/GrzegorzKozub/walls) — curated wallpapers
+
 ## Overview
 
 Automated Arch Linux installation and configuration framework. Scripts are run interactively during system setup — they are not unit-tested or CI'd. Known bugs and workarounds are in [README.md](README.md) under the **Issues** section.

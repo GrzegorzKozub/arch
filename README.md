@@ -1,6 +1,13 @@
 # Arch
 
-My automated Arch Linux installation with CachyOS optimizations. See [toys](https://github.com/GrzegorzKozub/toys) for hardware spec.
+My automated Arch Linux installation with CachyOS optimizations
+
+Related repos
+
+- [dot](https://github.com/GrzegorzKozub/dot) - dotfiles
+- [hist](https://github.com/GrzegorzKozub/hist) - shell history
+- [toys](https://github.com/GrzegorzKozub/toys) - hardware spec & config
+- [walls](https://github.com/GrzegorzKozub/walls) - curated wallpapers
 
 ## To do
 
