@@ -104,6 +104,17 @@ sudo systemctl enable ananicy-cpp.service
 [[ $HOST == 'drifter' ]] &&
   sudo systemctl enable thermald.service
 
+# sched-ext ($MY_CACHY)
+
+if [[ $HOST =~ ^(player|worker)$ && -f /usr/lib/systemd/system/scx_loader.service ]]; then
+
+    sudo mkdir -p /etc/scx_loader
+    sudo cp "${BASH_SOURCE%/*}"/etc/scx_loader/config."$MY_HOSTNAME".toml /etc/scx_loader/config.toml
+
+    sudo systemctl enable scx_loader.service
+
+fi
+
 # lact
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then

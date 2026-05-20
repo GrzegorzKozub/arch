@@ -89,6 +89,19 @@ if pacman -Q paru-git-debug &> /dev/null; then
   "${BASH_SOURCE%/*}"/paru.sh
 fi
 
+# sched-ext
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  sudo pacman -S --noconfirm scx-scheds scx-tools
+
+  sudo mkdir -p /etc/scx_loader
+  sudo cp "${BASH_SOURCE%/*}"/etc/scx_loader/config."$HOST".toml /etc/scx_loader/config.toml
+
+  sudo systemctl enable scx_loader.service
+
+fi
+
 # thermald
 
 [[ $HOST == 'drifter' ]] && {

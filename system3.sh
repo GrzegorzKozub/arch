@@ -65,6 +65,13 @@ if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
     sudo pacman -S --noconfirm \
       linux-cachyos-nvidia-open
 
+  # sched-ext
+
+  [[ ${MY_CACHY:-} ]] &&
+    sudo pacman -S --noconfirm \
+      scx-scheds \
+      scx-tools
+
 fi
 
 if [[ $MY_HOSTNAME == 'sacrifice' ]]; then
