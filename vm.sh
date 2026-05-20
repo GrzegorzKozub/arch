@@ -36,18 +36,22 @@ mount | grep -q "vg1-data on $MOUNT" || sudo mount /dev/mapper/vg1-data "$MOUNT"
 
 [[ ! -f $DIR/$DISK ]] && qemu-img create -f qcow2 "$DIR/$DISK" 96G
 
-# options
+# general
 
 OPTS+=('-name' "$NAME")
+OPTS+=('-boot' 'menu=on')
+OPTS+=('-monitor' 'stdio')
 
-OPTS+=('-machine' 'q35,smm=on')
+# hardware virtualization via the kvm kernel module
 
 OPTS+=('-enable-kvm')
 
-OPTS+=('-cpu' 'host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,topoext')
+# cpu
+
+OPTS+=('-cpu' 'host,hv_frequencies,hv_ipi,hv_reenlightenment,hv_relaxed,hv_runtime,hv_spinlocks=0x1fff,hv_stimer,hv_stimer_direct,hv_synic,hv_time,hv_tlbflush,hv_tlbflush_ext,hv_vapic,hv_vpindex,hv_xmm_input,topoext')
 OPTS+=('-smp' '4,sockets=1,cores=2,threads=2')
 
-OPTS+=('-m' '4G')
+# gpu
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 
@@ -60,16 +64,36 @@ else
 
 fi
 
+# memory
+
+OPTS+=('-object' 'memory-backend-memfd,id=mem1,size=4G')
+OPTS+=('-machine' 'q35,smm=on,memory-backend=mem1')
+
+# audio
+
+OPTS+=('-audiodev' 'pipewire,id=snd0')
 OPTS+=('-device' 'ich9-intel-hda')
-OPTS+=('-device' 'hda-output')
+OPTS+=('-device' 'hda-duplex,audiodev=snd0')
+
+# drives
+
+OPTS+=('-object' 'iothread,id=io1')
+OPTS+=('-drive' "file=$DIR/$DISK,if=none,id=drive0,aio=io_uring,cache.direct=on")
+OPTS+=('-device' 'virtio-blk-pci,drive=drive0,iothread=io1')
+
+[[ -f $DIR/$OS ]] && OPTS+=('-drive' "file=$DIR/$OS,media=cdrom")
+[[ -f $DIR/$DRIVERS ]] && OPTS+=('-drive' "file=$DIR/$DRIVERS,media=cdrom")
+
+# network
 
 OPTS+=('-nic' "user,model=virtio-net-pci,smb=$SHARE")
 
-OPTS+=('-usbdevice' 'tablet')
+# input
 
-OPTS+=('-drive' "file=$DIR/$DISK,if=virtio,aio=native,cache.direct=on")
-[[ -f $DIR/$OS ]] && OPTS+=('-drive' "file=$DIR/$OS,media=cdrom")
-[[ -f $DIR/$DRIVERS ]] && OPTS+=('-drive' "file=$DIR/$DRIVERS,media=cdrom")
+OPTS+=('-device' 'qemu-xhci')
+OPTS+=('-device' 'usb-tablet')
+
+# uefi
 
 if [[ $UEFI == 1 ]]; then
 
@@ -95,6 +119,8 @@ if [[ $UEFI == 1 ]]; then
 
 fi
 
+# spice
+
 if [[ $SPICE == 1 ]]; then
 
   [[ $(pacman -Qqs virt-viewer) ]] || {
@@ -117,18 +143,15 @@ if [[ $SPICE == 1 ]]; then
 
   # clipboard sharing
 
-  OPTS+=('-chardev spicevmc,name=vdagent,id=chardev1')
-  OPTS+=('-device virtserialport,name=com.redhat.spice.0,chardev=chardev1')
+  OPTS+=('-chardev' 'spicevmc,name=vdagent,id=chardev1')
+  OPTS+=('-device' 'virtserialport,name=com.redhat.spice.0,chardev=chardev1')
 
   # folder sharing
 
-  OPTS+=('-chardev spiceport,name=org.spice-space.webdav.0,id=chardev2')
-  OPTS+=('-device virtserialport,name=org.spice-space.webdav.0,chardev=chardev2')
+  OPTS+=('-chardev' 'spiceport,name=org.spice-space.webdav.0,id=chardev2')
+  OPTS+=('-device' 'virtserialport,name=org.spice-space.webdav.0,chardev=chardev2')
 
 fi
-
-OPTS+=('-boot' 'menu=on')
-OPTS+=('-monitor' 'stdio')
 
 # start
 
