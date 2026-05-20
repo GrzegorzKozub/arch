@@ -32,6 +32,8 @@ X3D=/sys/bus/platform/drivers/amd_x3d_vcache/AMDI0101:00/amd_x3d_mode
 
 sudo systemctl stop ananicy-cpp.service # conflicts with gamemode
 
+# scx_loader switches scx_bpfland to Gaming mode on performance power profile
+# https://wiki.cachyos.org/configuration/sched-ext/#scx_loader-power-profile-switching
 powerprofilesctl launch --profile performance -- \
   mangohud gamemoderun "$@"
 
