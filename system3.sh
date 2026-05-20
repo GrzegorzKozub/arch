@@ -25,15 +25,11 @@ paru -S --aur --noconfirm \
 
 if [[ $MY_HOSTNAME == 'drifter' ]]; then
 
-  # ucode
+  # intel cpu
 
   sudo pacman -S --noconfirm \
-    intel-ucode
-
-  # firmware
-
-  sudo pacman -S --noconfirm \
-    alsa-firmware sof-firmware
+    intel-ucode \
+    thermald
 
   # intel gpu
 
@@ -42,11 +38,16 @@ if [[ $MY_HOSTNAME == 'drifter' ]]; then
     intel-media-driver \
     vulkan-intel
 
+  # firmware
+
+  sudo pacman -S --noconfirm \
+    alsa-firmware sof-firmware
+
 fi
 
 if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
 
-  # ucode
+  # amd cpu
 
   sudo pacman -S --noconfirm \
     amd-ucode

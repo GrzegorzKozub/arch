@@ -89,6 +89,13 @@ if pacman -Q paru-git-debug &> /dev/null; then
   "${BASH_SOURCE%/*}"/paru.sh
 fi
 
+# thermald
+
+[[ $HOST == 'drifter' ]] && {
+  sudo pacman -S --noconfirm thermald
+  sudo systemctl enable --now thermald.service
+}
+
 # tiddl
 
 pushd ~/code/dot
