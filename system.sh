@@ -67,6 +67,8 @@ if [[ ${MY_CACHY:-} ]]; then
     cachyos-rate-mirrors
     linux-cachyos
     linux-cachyos-lts
+    scx-scheds
+    scx-tools
   )
 
 else

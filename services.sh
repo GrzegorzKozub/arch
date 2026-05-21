@@ -106,7 +106,7 @@ sudo systemctl enable ananicy-cpp.service
 
 # sched-ext ($MY_CACHY)
 
-if [[ $HOST =~ ^(player|worker)$ && -f /usr/lib/systemd/system/scx_loader.service ]]; then
+if [[ -f /usr/lib/systemd/system/scx_loader.service ]]; then
 
     sudo mkdir -p /etc/scx_loader
     sudo cp "${BASH_SOURCE%/*}"/etc/scx_loader/config.toml /etc/scx_loader

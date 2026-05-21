@@ -91,16 +91,12 @@ fi
 
 # sched-ext
 
-if [[ $HOST =~ ^(player|worker)$ ]]; then
+sudo pacman -S --noconfirm scx-scheds scx-tools
 
-  sudo pacman -S --noconfirm scx-scheds scx-tools
+sudo mkdir -p /etc/scx_loader
+sudo cp "${BASH_SOURCE%/*}"/etc/scx_loader/config.toml /etc/scx_loader
 
-  sudo mkdir -p /etc/scx_loader
-  sudo cp "${BASH_SOURCE%/*}"/etc/scx_loader/config.toml /etc/scx_loader
-
-  sudo systemctl enable scx_loader.service
-
-fi
+sudo systemctl enable scx_loader.service
 
 # thermald
 
