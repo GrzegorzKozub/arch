@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-if [[ $XDG_CURRENT_DESKTOP == 'GNOME' ]]; then
+if [[ ${XDG_CURRENT_DESKTOP:-} == 'GNOME' ]]; then
 
   FILE="file://$XDG_DATA_HOME/backgrounds/$(~/code/walls/random.sh)"
 
