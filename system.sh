@@ -65,6 +65,7 @@ if [[ ${MY_CACHY:-} ]]; then
     cachyos-v3-mirrorlist
     cachyos-v4-mirrorlist
     cachyos-rate-mirrors
+    cachyos-ananicy-rules
     linux-cachyos
     linux-cachyos-lts
     scx-scheds
@@ -80,9 +81,9 @@ fi
 pacstrap -K /mnt \
   base base-devel \
   linux linux-lts linux-firmware \
-  "${CACHY_PACKAGES[@]+"${CACHY_PACKAGES[@]}"}" \
+  ananicy-cpp \
   reflector \
-  ananicy-cpp cachyos-ananicy-rules \
+  "${CACHY_PACKAGES[@]+"${CACHY_PACKAGES[@]}"}" \
   power-profiles-daemon \
   lm_sensors \
   terminus-font \
