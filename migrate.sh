@@ -123,9 +123,7 @@ ya pkg add yazi-rs/plugins:toggle-pane || true
 
 # zed
 
-pacman -Q gnu-netcat &> /dev/null &&
-  sudo pacman -R --noconfirm gnu-netcat &&
-  sudo pacman -S --noconfirm openbsd-netcat || true
+sudo pacman -S openbsd-netcat
 
 # cleanup
 
