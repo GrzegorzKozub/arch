@@ -6,11 +6,7 @@ set -eo pipefail -ux
 bootctl --path=/boot install
 
 cp "${BASH_SOURCE%/*}"/boot/loader/loader.conf /boot/loader
-
-cp "${BASH_SOURCE%/*}"/boot/loader/entries/arch*.conf /boot/loader/entries
-cp "${BASH_SOURCE%/*}"/boot/loader/entries/archiso*.conf /boot/loader/entries
-
-[[ ${MY_CACHY:-} ]] && cp "${BASH_SOURCE%/*}"/boot/loader/entries/cachy*.conf /boot/loader/entries
+cp "${BASH_SOURCE%/*}"/boot/loader/entries/*.conf /boot/loader/entries
 
 # limine on esp
 
@@ -18,8 +14,6 @@ cp "${BASH_SOURCE%/*}"/boot/loader/entries/archiso*.conf /boot/loader/entries
 cp /usr/share/limine/BOOTX64.EFI /boot/EFI/limine/liminex64.efi
 
 cp "${BASH_SOURCE%/*}"/boot/EFI/limine/limine.conf /boot/EFI/limine
-
-[[ ${MY_CACHY:-} ]] || sed -i '/^\/Cachy/,/^$/d' /boot/EFI/limine/limine.conf
 
 wget -O /boot/EFI/limine/wall.jpg 'https://github.com/GrzegorzKozub/walls/blob/master/women.jpg?raw=true'
 

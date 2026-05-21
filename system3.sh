@@ -60,11 +60,8 @@ if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
     nvidia-utils \
     nvidia-settings \
     libva-nvidia-driver \
+    linux-cachyos-nvidia-open \
     lact
-
-  [[ ${MY_CACHY:-} ]] &&
-    sudo pacman -S --noconfirm \
-      linux-cachyos-nvidia-open
 
 fi
 

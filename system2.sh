@@ -187,13 +187,13 @@ reflector --save /etc/pacman.d/mirrorlist --protocol https --country Poland,Germ
 
 # cachyos-rate-mirrors
 
-[[ ${MY_CACHY:-} ]] && cachyos-rate-mirrors
+cachyos-rate-mirrors
 
 # pacman
 
 sed -i 's/#Color/Color/' /etc/pacman.conf
 sed -i 's/#ILoveCandy/ILoveCandy/' /etc/pacman.conf
-# [[ ${MY_CACHY:-} ]] && sed -i 's/#PrettyProgressBar/PrettyProgressBar/' /etc/pacman.conf
+# sed -i 's/#PrettyProgressBar/PrettyProgressBar/' /etc/pacman.conf
 
 sed -i 's/^OPTIONS=\(.*\) debug\(.*\)$/OPTIONS=\1 !debug\2/' /etc/makepkg.conf
 sed -i "s/^PKGEXT='.pkg.tar.zst'\$/PKGEXT='.pkg.tar'/" /etc/makepkg.conf
@@ -240,12 +240,8 @@ sed -i \
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
-if [[ ${MY_CACHY:-} ]]; then
-
-  mkinitcpio -p linux-cachyos
-  mkinitcpio -p linux-cachyos-lts
-
-fi
+mkinitcpio -p linux-cachyos
+mkinitcpio -p linux-cachyos-lts
 
 # scripts
 

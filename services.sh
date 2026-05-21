@@ -104,16 +104,12 @@ sudo systemctl enable ananicy-cpp.service
 [[ $HOST == 'drifter' ]] &&
   sudo systemctl enable thermald.service
 
-# sched-ext ($MY_CACHY)
+# sched-ext
 
-if [[ -f /usr/lib/systemd/system/scx_loader.service ]]; then
+sudo mkdir -p /etc/scx_loader
+sudo cp "${BASH_SOURCE%/*}"/etc/scx_loader/config.toml /etc/scx_loader
 
-    sudo mkdir -p /etc/scx_loader
-    sudo cp "${BASH_SOURCE%/*}"/etc/scx_loader/config.toml /etc/scx_loader
-
-    sudo systemctl enable scx_loader.service
-
-fi
+sudo systemctl enable scx_loader.service
 
 # lact
 
