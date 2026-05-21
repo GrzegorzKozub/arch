@@ -36,6 +36,7 @@ if [[ $MY_HOSTNAME == 'drifter' ]]; then
   sudo pacman -S --noconfirm \
     intel-gpu-tools \
     intel-media-driver \
+    vpl-gpu-rt \
     vulkan-intel
 
   # firmware

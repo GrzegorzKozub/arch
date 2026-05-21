@@ -118,6 +118,11 @@ popd
 
 rm -rf ~/.config/tidal_dl_ng-dev
 
+# vpl-gpu-rt
+
+[[ $HOST == 'drifter' ]] &&
+  sudo pacman -S --noconfirm vpl-gpu-rt
+
 # yazi
 
 ya pkg add yazi-rs/plugins:toggle-pane || true
