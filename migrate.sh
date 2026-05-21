@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# ananicy-cpp
-
-sudo pacman -S --noconfirm ananicy-cpp cachyos-ananicy-rules
-sudo systemctl enable --now ananicy-cpp.service
-
 # cachy
 
 "${BASH_SOURCE%/*}"/cachy.sh
@@ -68,6 +63,9 @@ sudo bash -c "sed -i 's/ <params>//g' /boot/loader/entries/*.conf /boot/EFI/limi
 sudo "${BASH_SOURCE%/*}"/limine.sh
 
 paru -S --rebuild --noconfirm tmux-git fswatch
+
+sudo pacman -S --noconfirm ananicy-cpp cachyos-ananicy-rules
+sudo systemctl enable --now ananicy-cpp.service
 
 # evolution-data-server
 
