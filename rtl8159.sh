@@ -5,7 +5,8 @@ set -eo pipefail -ux
 # https://aur.archlinux.org/packages/r8152-dkms
 
 sudo pacman -S --noconfirm \
-  linux-headers
+  linux-headers \
+  linux-cachyos-headers
 
 paru -S --aur --noconfirm \
   r8152-dkms
