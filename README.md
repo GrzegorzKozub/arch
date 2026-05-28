@@ -181,8 +181,7 @@ To enable Wayland on NVIDIA
 XDP implementations conflict each other so only one should be installed at the same time
 
 - GNOME - `xdg-desktop-portal-gnome` and `xdg-desktop-portal-gtk`
-- KDE - `xdg-desktop-portal-kde`
-- Hyprland - `xdg-desktop-portal-hyprland`
+- Niri - `xdg-desktop-portal-gnome` and `xdg-desktop-portal-gtk`
 
 ## Colors
 
