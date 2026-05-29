@@ -5,6 +5,7 @@ set -eo pipefail -ux
 
 sudo pacman -S --noconfirm \
   xdg-desktop-portal-gnome xdg-desktop-portal-gtk \
+  gnome-keyring \
   niri
 
 # packages - noctalia
