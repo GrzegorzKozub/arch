@@ -128,7 +128,9 @@ export default class Windows extends Extension {
   enable() {
     const getHost = () => {
       try {
-        return GLib.file_get_contents('/etc/hostname')[1].toString().trim();
+        return new TextDecoder()
+          .decode(GLib.file_get_contents('/etc/hostname')[1])
+          .trim();
       } catch {
         return null;
       }
