@@ -12,7 +12,8 @@ sudo pacman -S --noconfirm \
 
 sudo pacman -S --noconfirm \
   qt6-multimedia-ffmpeg \
-  noctalia-shell
+  noctalia-shell \
+  wlsunset
 
 # dotfiles
 
