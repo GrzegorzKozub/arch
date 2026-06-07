@@ -83,6 +83,7 @@ sudo pacman -S --noconfirm \
   nushell \
   nvtop \
   pastel \
+  playerctl \
   rclone \
   restic \
   ripgrep ripgrep-all \

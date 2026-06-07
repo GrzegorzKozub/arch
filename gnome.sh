@@ -246,7 +246,7 @@ gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
 
 # keyboard > keyboard shortcuts > system
 
-gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>w']"
+gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>o']"
 
 # keyboard > keyboard shortcuts > typing
 
