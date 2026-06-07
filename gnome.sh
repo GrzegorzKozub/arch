@@ -222,11 +222,11 @@ dconf write $DIR/switch-windows-backward "['<Shift><Alt>Tab']"
 dconf write $DIR/cycle-windows "['<Super>Tab']"
 dconf write $DIR/cycle-windows-backward "['<Shift><Super>Tab']"
 
-dconf write $DIR/cycle-group "['<Super>grave']"
-dconf write $DIR/cycle-group-backward "['<Shift><Super>grave']"
+dconf write $DIR/cycle-group "['<Super>Grave']"
+dconf write $DIR/cycle-group-backward "['<Shift><Super>Grave']"
 
-dconf write $DIR/switch-group "['<Alt>grave']"
-dconf write $DIR/switch-group-backward "['<Shift><Alt>grave']"
+dconf write $DIR/switch-group "['<Alt>Grave']"
+dconf write $DIR/switch-group-backward "['<Shift><Alt>Grave']"
 
 dconf write $DIR/switch-to-workspace-1 "['<Control><Super>Home']"
 dconf write $DIR/switch-to-workspace-left "['<Control><Super>Left']"
@@ -238,7 +238,7 @@ dconf write $DIR/move-to-workspace-left "['<Shift><Control><Super>Left']"
 dconf write $DIR/move-to-workspace-right "['<Shift><Control><Super>Right']"
 dconf write $DIR/move-to-workspace-last "['<Shift><Control><Super>End']"
 
-dconf write $DIR/always-on-top "['<Super>T']"
+dconf write $DIR/always-on-top "['<Super>t']"
 
 # keyboard > keyboard shortcuts > screenshots
 
@@ -255,7 +255,7 @@ dconf write $DIR/switch-input-source-backward '@as []'
 
 # keyboard > keyboard shortcuts > windows
 
-dconf write $DIR/move-to-center "['<Super><Control>C']"
+dconf write $DIR/move-to-center "['<Super><Control>c']"
 
 # keyboard > keyboard shortcuts > custom shortcuts
 
