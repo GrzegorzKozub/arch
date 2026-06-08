@@ -83,6 +83,7 @@ Related repos
   - Don't ask where to save downloaded files
   - Don't continue running background apps when Brave is closed
   - Don't warn me before closing window with multiple tabs
+  - Don't show full screen reminder to press Esc on exit
   - Enable Memory Saver
   - Disable Brave VPN (on Windows)
   - Import KeePassXC extension settings from `~/code/dot/keepassxc-browser.json`
