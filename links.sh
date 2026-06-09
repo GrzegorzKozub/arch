@@ -1,19 +1,13 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# brave origin
+# brave
 
-for APP in \
-  brave-origin-nightly \
-  com.brave.Origin.nightly; do
-  if [[ -f /usr/share/applications/$APP.desktop ]]; then
-    cp /usr/share/applications/$APP.desktop "$XDG_DATA_HOME"/applications
-    sed -i \
-      -e 's/^Icon=.*$/Icon=brave-desktop/' \
-      -e 's/^Name=.*$/Name=Brave Origin/' \
-      "$XDG_DATA_HOME"/applications/$APP.desktop
-  fi
-done
+cp /usr/share/applications/brave-origin.desktop "$XDG_DATA_HOME"/applications
+sed -i \
+  -e 's/^Icon=.*$/Icon=brave-desktop/' \
+  -e 's/^Name=.*$/Name=Brave/' \
+  "$XDG_DATA_HOME"/applications/brave-origin.desktop
 
 # ghostty
 

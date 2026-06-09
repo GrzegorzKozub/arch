@@ -27,13 +27,13 @@ export default class Windows extends Extension {
     super(metadata);
     const big = [
       {
-        class: /^brave-browser$/,
+        class: /^brave-(browser|origin)$/,
         auto: true,
         host: 'drifter',
         largerThan: { width: 2400, height: 1800 },
       },
       {
-        class: /^brave-browser$/,
+        class: /^brave-(browser|origin)$/,
         auto: true,
         host: ['player', 'worker'],
         largerThan: { width: 1920, height: 1080 },
@@ -78,7 +78,8 @@ export default class Windows extends Extension {
       { title: /^Welcome to IntelliJ IDEA$/, auto: true },
       {
         class: /.?org.keepassxc.KeePassXC$/,
-        exceptTitle: /^(Generate Password|Unlock Database)/,
+        exceptTitle:
+          /(Generate Password|New key association request|Unlock Database)/,
         auto: true,
       },
       { class: /^io.github.ilya_zlobintsev.LACT$/, auto: true },

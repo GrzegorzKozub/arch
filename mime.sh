@@ -13,8 +13,8 @@ xdg-mime default mpv.desktop video/mp4
 xdg-mime default mpv.desktop video/webm
 xdg-mime default mpv.desktop video/x-matroska
 
-xdg-mime default brave-browser.desktop x-scheme-handler/mailto
-xdg-mime default brave-browser.desktop text/calendar
+xdg-mime default brave-origin.desktop x-scheme-handler/mailto # or brave-borwser.desktop
+xdg-mime default brave-origin.desktop text/calendar
 
 # mime dbs update
 

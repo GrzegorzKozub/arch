@@ -189,9 +189,11 @@ sudo pacman -S --noconfirm \
   openbsd-netcat zed
 
 paru -S --aur --noconfirm \
-  brave-bin \
+  brave-origin-bin \
   tidal-hifi-bin \
   visual-studio-code-bin
+
+  # or brave-bin
 
 # settings
 

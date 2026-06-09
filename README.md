@@ -55,6 +55,9 @@ Related repos
   - Open your databases
   - Only show title and username columns, also in search
   - Fit to window, also in search
+  - Setup browser integration
+    - For Brave, enable browser integration. This creates `$XDG_CONFIG_HOME/BraveSoftware/Brave-Browser/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json`.
+    - For Brave Origin, set a custom Chromium browser configuration location at `~/.config/BraveSoftware/Brave-Origin/NativeMessagingHosts`. This creates `org.keepassxc.keepassxc_browser.json` in that dir.
 3. Brave
   - Join the Sync Chain and sync everything
   - Setup your profiles
@@ -87,7 +90,7 @@ Related repos
   - Enable Memory Saver
   - Disable Brave VPN (on Windows)
   - Import KeePassXC extension settings from `~/code/dot/keepassxc-browser.json`
-  - Connect KeePassXC databases
+  - Connect KeePassXC databases (use `apsis|greg-linux|windows-drifter|player|worker` naming scheme for the identifier)
   - Sign in into your sites and setup passkeys
 4. Tidal
   - Sign in
@@ -276,6 +279,13 @@ To reduce the image size after freeing up space on guest, first defragment the d
 ## Issues
 
 Known issues and workarounds
+
+### Brave Origin
+
+KeePassXC browser integration does not support Brave Origin out of the box
+
+- https://github.com/keepassxreboot/keepassxc/issues/13263
+- https://www.reddit.com/r/KeePass/comments/1tfxulw/keepassxc_plugin_not_connecting_on_brave/
 
 ### dbus
 

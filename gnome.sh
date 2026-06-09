@@ -60,8 +60,10 @@ gsettings set io.bassi.Amberol background-play false
 
 # apps > brave
 
-dconf write /org/gnome/settings-daemon/global-shortcuts/brave-browser/shortcuts \
-  "[('choose_credential_fields', {'description': <'Choose Custom Login Fields'>}), ('fill_password', {'description': <'Fill Password Only'>}), ('fill_totp', {'description': <'Fill TOTP'>}), ('fill_username_password', {'description': <'Fill Username and Password'>}), ('redetect_fields', {'description': <'Redetect login fields'>}), ('reload_extension', {'description': <'Reload'>}), ('request_autotype', {'description': <'Request Global Auto-Type'>}), ('retrive_credentials_forced', {'description': <'Reopen database'>}), ('save_credentials', {'description': <'Save Credentials'>}), ('show_password_generator', {'description': <'Show Password Generator'>})]"
+# dconf write /org/gnome/settings-daemon/global-shortcuts/brave-origin/shortcuts \
+#   "[('choose_credential_fields', {'description': <'Choose Custom Login Fields'>}), ('fill_password', {'description': <'Fill Password Only'>}), ('fill_totp', {'description': <'Fill TOTP'>}), ('fill_username_password', {'description': <'Fill Username and Password'>}), ('redetect_fields', {'description': <'Redetect login fields'>}), ('reload_extension', {'description': <'Reload'>}), ('request_autotype', {'description': <'Request Global Auto-Type'>}), ('retrive_credentials_forced', {'description': <'Reopen database'>}), ('save_credentials', {'description': <'Save Credentials'>}), ('show_password_generator', {'description': <'Show Password Generator'>})]"
+
+  # or brave-browser
 
 # apps > extensions
 
@@ -312,12 +314,14 @@ gsettings set org.gnome.shell favorite-apps "[
   'com.mitchellh.ghostty.desktop',
   'code.desktop',
   'dev.zed.Zed.desktop',
-  'brave-browser.desktop',
+  'brave-origin.desktop',
   $([[ $(sudo pacman -Qq teams-for-linux 2> /dev/null) ]] && echo "'teams-for-linux.desktop',")
   'org.keepassxc.KeePassXC.desktop',
   'tidal-hifi.desktop'
   $([[ $(sudo pacman -Qq steam 2> /dev/null) ]] && echo ",'steam.desktop'")
 ]"
+
+  # or brave-browser.desktop
 
 set -e
 
