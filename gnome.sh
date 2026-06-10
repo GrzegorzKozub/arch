@@ -58,13 +58,6 @@ gsettings set org.gnome.desktop.screensaver picture-uri "$FILE"
 
 gsettings set io.bassi.Amberol background-play false
 
-# apps > brave
-
-# dconf write /org/gnome/settings-daemon/global-shortcuts/brave-origin/shortcuts \
-#   "[('choose_credential_fields', {'description': <'Choose Custom Login Fields'>}), ('fill_password', {'description': <'Fill Password Only'>}), ('fill_totp', {'description': <'Fill TOTP'>}), ('fill_username_password', {'description': <'Fill Username and Password'>}), ('redetect_fields', {'description': <'Redetect login fields'>}), ('reload_extension', {'description': <'Reload'>}), ('request_autotype', {'description': <'Request Global Auto-Type'>}), ('retrive_credentials_forced', {'description': <'Reopen database'>}), ('save_credentials', {'description': <'Save Credentials'>}), ('show_password_generator', {'description': <'Show Password Generator'>})]"
-
-  # or brave-browser
-
 # apps > extensions
 
 gsettings set org.gnome.shell disable-extension-version-validation true
