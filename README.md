@@ -90,7 +90,7 @@ Related repos
   - Enable Memory Saver
   - Disable Brave VPN (on Windows)
   - Import KeePassXC extension settings from `~/code/dot/keepassxc-browser.json`
-  - Connect KeePassXC databases (use `apsis|greg-linux|windows-drifter|player|worker` naming scheme for the identifier)
+  - Connect KeePassXC databases using `apsis|greg-linux|windows-drifter|player|worker` naming scheme for the identifiers
   - Sign in into your sites and setup passkeys
 4. Tidal
   - Sign in

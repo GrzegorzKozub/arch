@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# default terminal (xdg-terminal-exec)
+
+for FILE in gnome-xdg-terminals.list xdg-terminals.list; do
+  echo 'kitty.desktop' > "$XDG_CONFIG_HOME"/$FILE
+done
+
 # default apps
 
 xdg-mime default org.neovim.nvim.desktop application/x-zerosize
