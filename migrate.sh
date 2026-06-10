@@ -18,6 +18,10 @@ dconf reset /org/gnome/settings-daemon/global-shortcuts/applications
 
 paru -S --aur --noconfirm brave-origin-bin
 
+# openssl
+
+sudo chmod 700 /etc/ssl/private/
+
 # playerctl
 
 sudo pacman -S --noconfirm playerctl
