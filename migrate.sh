@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# pacman
+
+sudo sed -i 's/#Color/Color/' /etc/pacman.conf
+
 # brave
 # manual: cache, config, apsis|greg-linux-drifter|player|worker
 
