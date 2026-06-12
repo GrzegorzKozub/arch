@@ -24,5 +24,5 @@ xdg-mime default brave-origin.desktop text/calendar
 
 # mime dbs update
 
-sudo update-mime-database -V /usr/share/mime
-update-desktop-database -v "$XDG_DATA_HOME"/applications
+sudo update-mime-database /usr/share/mime
+update-desktop-database "$XDG_DATA_HOME"/applications

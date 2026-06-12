@@ -7,9 +7,17 @@ pushd "${BASH_SOURCE%/*}" && git pull && popd
 
 # update all packages
 
+GNOME_SHELL_VERSION=$(pacman -Q gnome-shell | awk '{print $2}')
+
 # sudo pacman --noconfirm -Sy archlinux-keyring
 sudo pacman --noconfirm -Syu
 paru --aur --noconfirm -Syu
+
+if [[ $(pacman -Q gnome-shell | awk '{print $2}') != "$GNOME_SHELL_VERSION" ]]; then
+  export GNOME_SHELL_UPGRADED=1
+else
+  export GNOME_SHELL_UPGRADED=0
+fi
 
 set +e
 

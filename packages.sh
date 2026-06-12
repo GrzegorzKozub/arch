@@ -4,7 +4,7 @@ set -o pipefail -ux
 # remove unused packages
 
 # shellcheck disable=SC2046
-sudo pacman --noconfirm -Rsn $(pacman -Qdtq)
+ORPHANS=$(pacman -Qdtq) && sudo pacman --noconfirm -Rsn "$ORPHANS" || true
 
 # workaround https://gitlab.archlinux.org/pacman/pacman/-/work_items/297
 

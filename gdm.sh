@@ -3,8 +3,7 @@ set -eo pipefail -ux
 
 # reset
 
-sudo pacman -S --noconfirm \
-  gnome-shell
+[[ ${GNOME_SHELL_UPGRADED:-1} == 1 ]] && sudo pacman -S --noconfirm gnome-shell
 
 # dconf
 
@@ -87,6 +86,8 @@ echo "scaling-factor=$FACTOR" | sudo tee --append $SCHEMAS/$OVERRIDE > /dev/null
 sudo glib-compile-schemas $SCHEMAS
 
 # wallpaper
+
+[[ ${GNOME_SHELL_UPGRADED:-1} == 0 ]] && exit 0
 
 GS=/usr/share/gnome-shell
 GST=gnome-shell-theme.gresource
