@@ -13,6 +13,6 @@ sudo rm -rf /var/cache/pacman/pkg/download-*
 # clean package caches
 
 sudo pacman --noconfirm -Sc
-yes | paru --aur -Sccd
+# yes | paru --aur -Sccd
 
 true
