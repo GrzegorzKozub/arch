@@ -18,7 +18,7 @@ efi-boot-menu() {
 
 if [[ $1 == 'enable' ]]; then
 
-  paru -S --aur --noconfirm \
+  paru -S --aur \
     preloader-signed
 
   sudo cp /usr/share/preloader-signed/{HashTool,PreLoader}.efi /boot/EFI/systemd/

@@ -6,7 +6,7 @@ set -eo pipefail -ux
 sudo pacman -S --noconfirm \
   aws-cli-v2
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   aws-sam-cli-bin
 
 # cleanup

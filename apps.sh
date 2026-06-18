@@ -43,7 +43,7 @@ sudo pacman -S --noconfirm \
   ttf-liberation \
   ttf-nerd-fonts-symbols
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   ttf-victor-mono
 
 # themes
@@ -51,7 +51,7 @@ paru -S --aur --noconfirm \
 sudo pacman -S --noconfirm \
   papirus-icon-theme
 
-# paru -S --aur --noconfirm \
+# paru -S --aur \
 #   papirus-icon-theme-git
 
 # common
@@ -106,7 +106,7 @@ sudo pacman -S --noconfirm \
 
   # tmux zellij
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   tmux-git
 
 if [[ $HOST == 'drifter' ]]; then
@@ -133,7 +133,7 @@ sudo pacman -S --noconfirm \
 
   # poppler - pdf
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   yazi-nightly-bin
 
 # neovim
@@ -141,7 +141,7 @@ paru -S --aur --noconfirm \
 # sudo pacman -S --noconfirm \
 #   neovim
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   fswatch \
   neovim-nightly-bin \
   vivify-bin
@@ -167,7 +167,7 @@ sudo pacman -S --noconfirm \
   # python-requests for fetch.py
   # elixir ruby rust
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   golangci-lint-bin \
   fnm-bin \
   shellcheck-bin
@@ -188,7 +188,7 @@ sudo pacman -S --noconfirm \
   satty \
   openbsd-netcat zed
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   brave-origin-bin \
   tidal-hifi-bin \
   visual-studio-code-bin

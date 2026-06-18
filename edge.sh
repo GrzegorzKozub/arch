@@ -3,7 +3,7 @@ set -eo pipefail -ux
 
 # packages
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   microsoft-edge-stable-bin
 
 # https://github.com/MicrosoftEdge/DevTools/issues/278

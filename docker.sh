@@ -8,13 +8,13 @@ sudo pacman -S --noconfirm \
   docker-buildx \
   docker-compose
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   docker-credential-pass-bin \
   docker-scout
 
 # rootless
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   docker-rootless-extras
 
 sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$USER"

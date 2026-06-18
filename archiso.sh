@@ -6,7 +6,7 @@ set -eo pipefail -ux
 sudo pacman -S --noconfirm \
   archiso
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   preloader-signed
 
 # config

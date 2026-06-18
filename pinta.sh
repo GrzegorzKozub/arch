@@ -3,7 +3,7 @@ set -eo pipefail -ux
 
 # packages
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   pinta
 
 # cleanup

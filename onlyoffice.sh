@@ -3,7 +3,7 @@ set -eo pipefail -ux
 
 # packages
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   onlyoffice-bin
 
 # flatpak --assumeyes install flathub com.github.tchx84.Flatseal

@@ -17,7 +17,7 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 sudo pacman -S --noconfirm \
   linux-firmware-qlogic
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   aic94xx-firmware \
   ast-firmware \
   wd719x-firmware \
@@ -84,7 +84,7 @@ if [[ $MY_HOSTNAME == 'sacrifice' ]]; then
     vulkan-radeon \
     libva-mesa-driver mesa-vdpau
 
-  paru -S --aur --noconfirm \
+  paru -S --aur \
     amdfand-bin
 
   # getting 'amdgpu 0000:03:00.0: amdgpu: Failed to set manual fan control mode'
@@ -114,7 +114,7 @@ if [[ $MY_DESKTOP == 'GNOME' ]]; then
 
   # evolution-data-server required by gnome-shell-calendar-server since gnome-shell 1:50.1
 
-  paru -S --aur --noconfirm \
+  paru -S --aur \
     gnome-browser-connector \
     gnome-shell-extension-blur-my-shell \
     gnome-shell-extension-rounded-window-corners-reborn \

@@ -3,7 +3,7 @@ set -eo pipefail -ux
 
 # packages
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   voxtype-bin
 
 # type mode
@@ -12,7 +12,7 @@ sudo usermod -aG input "$USER"
 
 cargo install eitype # https://github.com/Adam-D-Lewis/eitype
 
-# paru -S --aur --noconfirm \
+# paru -S --aur \
 #   dotool
 #
 # sudo cp "${BASH_SOURCE%/*}"/etc/modules-load.d/uinput.conf /etc/modules-load.d

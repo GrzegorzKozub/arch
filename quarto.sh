@@ -9,7 +9,7 @@ sudo pacman -S --noconfirm \
 pip install --user --break-system-packages \
   jjava
 
-paru -S --aur --noconfirm \
+paru -S --aur \
   quarto-cli-bin
 
 # links
@@ -23,8 +23,8 @@ done
 
 # cleanup
 
-$(dirname $0)/packages.sh
+"${BASH_SOURCE%/*}"/packages.sh
 
 # dotfiles
 
-[[ -d $XDG_CONFIG_HOME/ipython ]] || mkdir $XDG_CONFIG_HOME/ipython
+[[ -d $XDG_CONFIG_HOME/ipython ]] || mkdir "$XDG_CONFIG_HOME"/ipython
