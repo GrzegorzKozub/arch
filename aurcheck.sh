@@ -6,4 +6,8 @@ trap 'rm -rf "$TMP"' EXIT
 
 git clone --depth=1 https://github.com/lenucksi/aur-malware-check.git "$TMP"
 
-"$TMP/aur_check-v2.sh" --full --refresh --log-file=/dev/null "$@"
+pushd "$TMP"
+
+python -m aur_check --full --refresh
+
+popd
