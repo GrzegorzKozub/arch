@@ -78,15 +78,18 @@ cp /usr/share/fonts/OTF/CascadiaCode-Regular.otf "$XDG_DATA_HOME"/mangohud
 
 # proton
 
-paru -S --aur \
-  proton-cachyos-slr \
+# aur not needed on cachy
+sudo pacman -S --noconfirm \
+  proton-cachyos-slr
+
+yay --aur --noconfirm --answerdiff=None -S \
   proton-ge-custom-bin
 
 sudo cp "${BASH_SOURCE%/*}"/etc/modules-load.d/ntsync.conf /etc/modules-load.d
 
 # gamescope
 
-# paru -S --aur \
+# yay --aur --noconfirm --answerdiff=None -S \
 #   gamescope-git
 #
 # sudo pacman -Rs --noconfirm \

@@ -3,7 +3,7 @@ set -eo pipefail -ux
 
 # packages
 
-paru -S --aur \
+yay --aur --noconfirm --answerdiff=None -S \
   ledger-live-bin
 
 # https://support.ledger.com/hc/en-us/articles/115005165269-Fix-connection-issues

@@ -3,7 +3,7 @@ set -eo pipefail -ux
 
 # packages
 
-paru -S --aur \
+yay --aur --noconfirm --answerdiff=None -S \
   postman-bin
 
 # links

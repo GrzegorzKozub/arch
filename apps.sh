@@ -43,7 +43,7 @@ sudo pacman -S --noconfirm \
   ttf-liberation \
   ttf-nerd-fonts-symbols
 
-paru -S --aur \
+yay --aur --noconfirm --answerdiff=None -S \
   ttf-victor-mono
 
 # themes
@@ -51,7 +51,7 @@ paru -S --aur \
 sudo pacman -S --noconfirm \
   papirus-icon-theme
 
-# paru -S --aur \
+# yay --aur --noconfirm --answerdiff=None -S \
 #   papirus-icon-theme-git
 
 # common
@@ -106,7 +106,7 @@ sudo pacman -S --noconfirm \
 
   # tmux zellij
 
-paru -S --aur \
+yay --aur --noconfirm --answerdiff=None -S \
   tmux-git
 
 if [[ $HOST == 'drifter' ]]; then
@@ -133,17 +133,17 @@ sudo pacman -S --noconfirm \
 
   # poppler - pdf
 
-paru -S --aur \
+yay --aur --noconfirm --answerdiff=None -S \
   yazi-nightly-bin
 
 # neovim
 
-# sudo pacman -S --noconfirm \
-#   neovim
+# aur not needed on cachy
+sudo pacman -S --noconfirm \
+  neovim-nightly-bin
 
-paru -S --aur \
+yay --aur --noconfirm --answerdiff=None -S \
   fswatch \
-  neovim-nightly-bin \
   vivify-bin
 
 # containers
@@ -167,7 +167,7 @@ sudo pacman -S --noconfirm \
   # python-requests for fetch.py
   # elixir ruby rust
 
-paru -S --aur \
+yay --aur --noconfirm --answerdiff=None -S \
   golangci-lint-bin \
   fnm-bin \
   shellcheck-bin
@@ -188,8 +188,11 @@ sudo pacman -S --noconfirm \
   satty \
   openbsd-netcat zed
 
-paru -S --aur \
-  brave-origin-bin \
+# aur not needed on cachy
+sudo pacman -S --noconfirm \
+  brave-origin-bin
+
+yay --aur --noconfirm --answerdiff=None -S \
   tidal-hifi-bin \
   visual-studio-code-bin
 

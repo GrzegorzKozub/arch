@@ -18,13 +18,13 @@ efi-boot-menu() {
 
 if [[ $1 == 'enable' ]]; then
 
-  paru -S --aur \
+  yay --aur --noconfirm --removemake --cleanmenu=false --answerdiff=None -S \
     preloader-signed
 
   sudo cp /usr/share/preloader-signed/{HashTool,PreLoader}.efi /boot/EFI/systemd/
   sudo cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
 
-  paru -Rs --aur --noconfirm \
+  yay --aur --noconfirm -Rs \
     preloader-signed
 
   efi-boot-menu 'PreLoader'

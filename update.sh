@@ -11,20 +11,13 @@ GNOME_SHELL_VERSION=$(pacman -Q gnome-shell | awk '{print $2}')
 
 # sudo pacman --noconfirm -Sy archlinux-keyring
 sudo pacman --noconfirm -Syu
-paru --aur -Syu
+yay --aur --noconfirm --answerdiff=None -Syu
 
 if [[ $(pacman -Q gnome-shell | awk '{print $2}') != "$GNOME_SHELL_VERSION" ]]; then
   export GNOME_SHELL_UPGRADED=1
 else
   export GNOME_SHELL_UPGRADED=0
 fi
-
-set +e
-
-paru -S --aur \
-  yazi-nightly-bin
-
-set -e
 
 [[ $HOST =~ ^(player|worker)$ ]] && "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan.sh
 [[ $HOST == 'worker' ]] && "${BASH_SOURCE%/*}"/claude.sh update

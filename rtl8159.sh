@@ -8,5 +8,5 @@ sudo pacman -S --noconfirm \
   linux-headers \
   linux-cachyos-headers
 
-paru -S --aur \
+yay --aur --noconfirm --answerdiff=None -S \
   r8152-dkms

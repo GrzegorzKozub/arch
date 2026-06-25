@@ -6,7 +6,7 @@ set -eo pipefail -ux
 sudo pacman -S --noconfirm \
   archiso
 
-paru -S --aur \
+yay --aur --noconfirm --answerdiff=None -S \
   preloader-signed
 
 # config
@@ -165,5 +165,5 @@ fi
 sudo pacman -Rs --noconfirm \
   archiso
 
-paru -Rs --aur --noconfirm \
+yay --aur --noconfirm -Rs \
   preloader-signed

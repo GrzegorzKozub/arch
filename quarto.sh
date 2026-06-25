@@ -9,7 +9,7 @@ sudo pacman -S --noconfirm \
 pip install --user --break-system-packages \
   jjava
 
-paru -S --aur \
+yay --aur --noconfirm --answerdiff=None -S \
   quarto-cli-bin
 
 # links

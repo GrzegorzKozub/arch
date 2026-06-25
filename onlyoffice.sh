@@ -3,7 +3,8 @@ set -eo pipefail -ux
 
 # packages
 
-paru -S --aur \
+# aur not needed on cachy
+sudo pacman -S --noconfirm \
   onlyoffice-bin
 
 # flatpak --assumeyes install flathub com.github.tchx84.Flatseal
