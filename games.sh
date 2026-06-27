@@ -89,11 +89,9 @@ sudo cp "${BASH_SOURCE%/*}"/etc/modules-load.d/ntsync.conf /etc/modules-load.d
 
 # gamescope
 
-# yay --aur --noconfirm --answerdiff=None -S \
-#   gamescope-git
-#
-# sudo pacman -Rs --noconfirm \
-#   cmake
+# aur not needed on cachy
+sudo pacman -S --noconfirm \
+  gamescope
 
 # cleanup
 

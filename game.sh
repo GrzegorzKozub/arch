@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
+# shellcheck shell=bash disable=SC2154
 set -eo pipefail -ux
 
-# mangohud frame limit doesn't work over 100 fps
 [[ $HOST == 'player' ]] && export VKD3D_FRAME_RATE=120
 [[ $HOST == 'worker' ]] && export VKD3D_FRAME_RATE=60
+
+# crimson desert
+[[ $HOST == 'player' && $SteamAppId == '3321460' ]] && export VKD3D_FRAME_RATE=90
 
 export PROTON_DLSS_INDICATOR=0
 export PROTON_DLSS_UPGRADE=1
@@ -11,7 +14,7 @@ export PROTON_FSR4_UPGRADE=1
 
 export DXVK_HDR=1
 export PROTON_ENABLE_HDR=1
-export PROTON_ENABLE_WAYLAND=0 # required for HDR without gamescope but causes stuttering with VRR
+export PROTON_ENABLE_WAYLAND=1 # required for HDR without gamescope
 
 export PROTON_NVIDIA_LIBS_NO_32BIT=1
 
