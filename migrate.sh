@@ -3,8 +3,12 @@ set -eo pipefail -ux
 
 # pacman -> yay
 
+pushd ~/code/dot
+git pull && git submodule foreach --recursive git pull
+./links.sh
+popd
+
 "${BASH_SOURCE%/*}"/yay.sh
-pushd ~/code/dot && ./links.sh && popd
 
 yay --aur --noconfirm -Rs paru || true
 rm -rf ~/.cache/paru
