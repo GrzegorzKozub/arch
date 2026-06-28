@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# locale
+
+sudo locale-gen
+
 # pacman -> yay
 
 pushd ~/code/dot
