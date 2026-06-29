@@ -6,6 +6,13 @@ set -eo pipefail -ux
 rfkill unblock all
 "${BASH_SOURCE%/*}"/settings.sh
 
+# gnome
+
+sudo pacman -Rs --noconfirm gnome-system-monitor
+
+# dconf dump /org/gnome/
+dconf reset -f /org/gnome/gnome-system-monitor/
+
 # locale
 
 sudo locale-gen
