@@ -8,7 +8,7 @@ rfkill unblock all
 
 # gnome
 
-sudo pacman -Rs --noconfirm gnome-system-monitor
+sudo pacman -Rs --noconfirm gnome-system-monitor || true
 
 # dconf dump /org/gnome/
 dconf reset -f /org/gnome/gnome-system-monitor/
@@ -31,6 +31,11 @@ rm -rf ~/.cache/paru
 rm -rf ~/.local/state/paru
 
 yay --aur --noconfirm --answerdiff=None -S tmux-git
+
+# systemd
+
+sudo mkdir -p /etc/systemd/user.conf.d
+sudo cp "${BASH_SOURCE%/*}"/etc/systemd/user.conf.d/00-timeout.conf /etc/systemd/user.conf.d
 
 # cleanup
 

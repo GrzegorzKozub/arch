@@ -27,6 +27,8 @@ export PROTON_PREFER_SDL=1
 
 export PROTON_LOCAL_SHADER_CACHE=1
 
+export PROTON_DXVK_LOWLATENCY=1 # anti-cheat incompatible
+
 # https://wiki.cachyos.org/configuration/general_system_tweaks/#amd-3d-v-cache-optimizer
 # https://www.phoronix.com/review/amd-3d-vcache-optimizer-9950x3d
 X3D=/sys/bus/platform/drivers/amd_x3d_vcache/AMDI0101:00/amd_x3d_mode

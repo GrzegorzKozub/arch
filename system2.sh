@@ -76,10 +76,13 @@ chown greg:users /home/greg/.zshrc
 
 cp "${BASH_SOURCE%/*}"/etc/tmpfiles.d/rtc.conf /etc/tmpfiles.d
 
-# change systemd start & stop timeouts from 90 to 15 seconds
+# shorten systemd start & stop timeouts from 90 seconds
 
 [[ -d /etc/systemd/system.conf.d ]] || mkdir /etc/systemd/system.conf.d
 cp "${BASH_SOURCE%/*}"/etc/systemd/system.conf.d/00-timeout.conf /etc/systemd/system.conf.d
+
+[[ -d /etc/systemd/user.conf.d ]] || mkdir /etc/systemd/user.conf.d
+cp "${BASH_SOURCE%/*}"/etc/systemd/user.conf.d/00-timeout.conf /etc/systemd/user.conf.d
 
 # ntp
 
