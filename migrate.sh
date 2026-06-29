@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# airplane mode
+
+rfkill unblock all
+"${BASH_SOURCE%/*}"/settings.sh
+
 # locale
 
 sudo locale-gen

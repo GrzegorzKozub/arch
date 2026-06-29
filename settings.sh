@@ -86,7 +86,7 @@ done < <(nmcli --terse --fields NAME,TYPE connection show | awk -F: '$2 ~ /ether
 
 # bluetooth
 
-rfkill block bluetooth # causes 'bluetoothd[...]: Failed to set mode: Failed (0x03)' which is fine
+bluetoothctl power off
 
 # power
 
