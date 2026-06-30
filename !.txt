@@ -1,0 +1,39 @@
+dconf reset -f /org/gnome/desktop/app-folders/
+dconf reset -f /org/gnome/desktop/notifications/
+dconf reset -f /io/missioncenter/MissionCenter/
+dconf reset -f /apps/seahorse/windows/key-manager/
+dconf reset -f /org/gnome/control-center/
+dconf reset -f /org/gnome/Extensions/
+dconf reset -f /org/gnome/papers/
+
+dconf reset -f /org/gnome/shell/command-history
+dconf reset -f /org/gtk/settings/file-chooser/
+dconf reset -f /org/gtk/gtk4/settings/file-chooser/
+
+while IFS= read -r dir; do
+  dconf reset -f "/org/gnome/portal/filechooser/$dir"
+done < <(dconf list /org/gnome/portal/filechooser/)
+
+[apps/seahorse/windows/key-manager]
+height=608
+width=720
+
+[io/missioncenter/MissionCenter]
+window-height=786
+window-width=1080
+
+[org/gnome/Extensions]
+window-height=655
+window-width=720
+
+[org/gnome/control-center]
+window-state=(720, 655, false)
+
+[org/gnome/Weather]
+window-height=655
+window-width=720
+
+[org/gnome/papers/default]
+window-height=786
+window-width=1080
+

@@ -10,8 +10,10 @@ rfkill unblock all
 
 sudo pacman -Rs --noconfirm gnome-system-monitor || true
 
-# dconf dump /org/gnome/
+dconf reset -f /org/gnome/eog/
+dconf reset -f /org/gnome/evince/
 dconf reset -f /org/gnome/gnome-system-monitor/
+dconf reset -f /org/gnome/shell/extensions/rounded-window-corners/
 
 # locale
 

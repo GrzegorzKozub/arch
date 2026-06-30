@@ -109,6 +109,20 @@ gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 dconf write /org/gtk/settings/file-chooser/show-hidden true
 dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 
+if [[ $HOST == 'drifter' ]]; then
+
+  dconf write /org/gnome/nautilus/window-state/initial-size-file-chooser '(800, 504)'
+  dconf write /org/gtk/settings/file-chooser/window-size '(800, 457)'
+
+fi
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  dconf write /org/gnome/nautilus/window-state/initial-size-file-chooser '(720, 655)'
+  dconf write /org/gtk/settings/file-chooser/window-size '(720, 608)'
+
+fi
+
 xdg-mime default org.gnome.Nautilus.desktop inode/directory
 
 # apps > image viewer
@@ -317,19 +331,3 @@ gsettings set org.gnome.shell favorite-apps "[
   # or brave-browser.desktop
 
 set -e
-
-# file pickers
-
-if [[ $HOST == 'drifter' ]]; then
-
-  dconf write /org/gnome/nautilus/window-state/initial-size-file-chooser '(800, 504)'
-  dconf write /org/gtk/settings/file-chooser/window-size '(800, 457)'
-
-fi
-
-if [[ $HOST =~ ^(player|worker)$ ]]; then
-
-  dconf write /org/gnome/nautilus/window-state/initial-size-file-chooser '(720, 655)'
-  dconf write /org/gtk/settings/file-chooser/window-size '(720, 608)'
-
-fi
