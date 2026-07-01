@@ -414,7 +414,9 @@ FILE=$XDG_DATA_HOME/recently-used.xbel
 
 # system > region & language
 
-# dconf reset -f /org/gnome/desktop/app-folders/
+dconf reset -f /org/gnome/desktop/app-folders/
+
+gsettings set org.gnome.desktop.app-folders folder-children '[]'
 
 gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
 

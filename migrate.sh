@@ -15,6 +15,8 @@ dconf reset -f /org/gnome/evince/
 dconf reset -f /org/gnome/gnome-system-monitor/
 dconf reset -f /org/gnome/shell/extensions/rounded-window-corners/
 
+rm -f "$XDG_DATA_HOME"/applications/org.gnome.tweaks.desktop
+
 # locale
 
 sudo locale-gen

@@ -51,14 +51,6 @@ sed -i \
   "$XDG_DATA_HOME"/applications/org.neovim.nvim.desktop
 sed -i '2iNoDisplay=true' "$XDG_DATA_HOME"/applications/org.neovim.nvim.desktop
 
-# tweaks
-
-cp /usr/share/applications/org.gnome.tweaks.desktop "$XDG_DATA_HOME"/applications
-sed -i \
-  -e '/^Categories=/s/Utility;//' \
-  -e '/^Categories=/s/X-GNOME-Utilities;//' \
-  "$XDG_DATA_HOME"/applications/org.gnome.tweaks.desktop
-
 # tidal
 
 cp /usr/share/applications/tidal-hifi.desktop "$XDG_DATA_HOME"/applications
