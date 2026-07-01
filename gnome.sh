@@ -56,9 +56,26 @@ gsettings set org.gnome.desktop.screensaver picture-uri "$FILE"
 
 # apps > amberol
 
+dconf reset -f /io/bassi/Amberol/
+
 gsettings set io.bassi.Amberol background-play false
 
+# apps > calculator
+
+dconf reset -f /org/gnome/calculator/
+
 # apps > extensions
+
+dconf reset -f /org/gnome/Extensions/
+
+# TODO drifter
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  gsettings set org.gnome.Extensions window-height 655
+  gsettings set org.gnome.Extensions window-width 720
+
+fi
 
 gsettings set org.gnome.shell disable-extension-version-validation true
 
@@ -89,9 +106,21 @@ for NAME in "${EXTENSIONS[@]}"; do gnome-extensions enable "$NAME" || FRESH=1; d
 [[ $FRESH == 1 ]] &&
   gsettings set org.gnome.shell enabled-extensions "[$(printf "'%s', " "${EXTENSIONS[@]}" | sed 's/, $//')]"
 
+# apps > extensions > appindicator and kstatusnotifieritem support
+
+dconf reset -f /org/gnome/shell/extensions/appindicator/
+
 gsettings set org.gnome.shell.extensions.appindicator legacy-tray-enabled false
 
+# apps > extensions > blur my shell
+
+dconf reset -f /org/gnome/shell/extensions/blur-my-shell/
+
 gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
+
+# apps > extensions > rounded window corners reborn
+
+dconf reset -f /org/gnome/shell/extensions/rounded-window-corners-reborn/
 
 [[ $HOST == 'drifter' ]] && RADIUS=4 || RADIUS=6
 gsettings set org.gnome.shell.extensions.rounded-window-corners-reborn global-rounded-corner-settings \
@@ -104,7 +133,16 @@ gsettings set org.gnome.shell.extensions.rounded-window-corners-reborn global-ro
 
 # apps > files
 
+dconf reset -f /org/gnome/nautilus/
+
 gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
+
+dconf reset -f /org/gtk/settings/file-chooser/
+dconf reset -f /org/gtk/gtk4/settings/file-chooser/
+
+while IFS= read -r DIR; do
+  dconf reset -f "/org/gnome/portal/filechooser/$DIR"
+done < <(dconf list /org/gnome/portal/filechooser/)
 
 dconf write /org/gtk/settings/file-chooser/show-hidden true
 dconf write /org/gtk/settings/file-chooser/sort-directories-first true
@@ -112,6 +150,7 @@ dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 if [[ $HOST == 'drifter' ]]; then
 
   dconf write /org/gnome/nautilus/window-state/initial-size-file-chooser '(800, 504)'
+  # TODO drifter
   dconf write /org/gtk/settings/file-chooser/window-size '(800, 457)'
 
 fi
@@ -119,6 +158,7 @@ fi
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 
   dconf write /org/gnome/nautilus/window-state/initial-size-file-chooser '(720, 655)'
+  dconf write /org/gtk/settings/file-chooser/window-position '(26, 23)'
   dconf write /org/gtk/settings/file-chooser/window-size '(720, 608)'
 
 fi
@@ -130,13 +170,69 @@ xdg-mime default org.gnome.Nautilus.desktop inode/directory
 xdg-mime default org.gnome.Loupe.desktop image/jpeg
 xdg-mime default org.gnome.Loupe.desktop image/png
 
+# apps > mission center
+
+dconf reset -f /io/missioncenter/MissionCenter/
+
+# TODO drifter
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  gsettings set io.missioncenter.MissionCenter window-height 786
+  gsettings set io.missioncenter.MissionCenter window-width 1080
+
+fi
+
 # apps > papers
+
+dconf reset -f /org/gnome/papers/
+
+# TODO drifter
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  gsettings set org.gnome.Papers.Default window-height 786
+  gsettings set org.gnome.Papers.Default window-width 1080
+
+fi
 
 gsettings set org.gnome.Papers.Default show-sidebar false
 
 xdg-mime default org.gnome.Papers.desktop application/pdf
 
+# apps > passwords and keys
+
+dconf reset -f /apps/seahorse/
+
+# TODO drifter
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  dconf write /apps/seahorse/windows/key-manager/height 608
+  dconf write /apps/seahorse/windows/key-manager/width 720
+
+fi
+
+# TODO drifter
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  dconf write /apps/seahorse/windows/key-manager/height 608
+  dconf write /apps/seahorse/windows/key-manager/width 720
+
+fi
+
+# apps > settings
+
+dconf reset -f /org/gnome/control-center/
+
+# TODO drifter
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  gsettings set org.gnome.Settings window-state '(720, 655, false)'
+
 # apps > tweaks
+
+dconf reset -f /org/gnome/tweaks/
 
 gsettings set org.gnome.tweaks show-extensions-notice false
 
@@ -160,6 +256,17 @@ gsettings set org.gnome.mutter center-new-windows true
 
 # apps > weather
 
+dconf reset -f /org/gnome/Weather/
+
+# TODO drifter
+
+if [[ $HOST =~ ^(player|worker)$ ]]; then
+
+  gsettings set org.gnome.Weather window-height 655
+  gsettings set org.gnome.Weather window-width 720
+
+fi
+
 LOC="[<(uint32 2, <('Warsaw', 'EPWA', true, [(0.91048009894147275, 0.36593737231924195)], [(0.91193453416703718, 0.36651914291880922)])>)>]"
 
 gsettings set org.gnome.Weather locations "$LOC"
@@ -168,6 +275,8 @@ gsettings set org.gnome.shell.weather locations "$LOC"
 gsettings set org.gnome.shell.weather automatic-location true
 
 # notifications
+
+dconf reset -f /org/gnome/desktop/notifications/
 
 gsettings set org.gnome.desktop.notifications show-banners false
 gsettings set org.gnome.desktop.notifications show-in-lock-screen false
@@ -305,6 +414,8 @@ FILE=$XDG_DATA_HOME/recently-used.xbel
 
 # system > region & language
 
+# dconf reset -f /org/gnome/desktop/app-folders/
+
 gsettings set org.gnome.system.locale region 'pl_PL.UTF-8'
 
 # app picker
@@ -331,3 +442,7 @@ gsettings set org.gnome.shell favorite-apps "[
   # or brave-browser.desktop
 
 set -e
+
+# looking glass
+
+dconf reset -f /org/gnome/shell/command-history/
