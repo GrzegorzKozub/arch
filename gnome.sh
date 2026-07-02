@@ -122,6 +122,8 @@ gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background
 
 dconf reset -f /org/gnome/shell/extensions/rounded-window-corners-reborn/
 
+gsettings set org.gnome.shell.extensions.rounded-window-corners-reborn settings-version 9 # prevent settings reset by the extension
+
 [[ $HOST == 'drifter' ]] && RADIUS=4 || RADIUS=6
 gsettings set org.gnome.shell.extensions.rounded-window-corners-reborn global-rounded-corner-settings \
   "{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>,
