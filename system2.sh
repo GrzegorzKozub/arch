@@ -133,7 +133,7 @@ if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
   cp "${BASH_SOURCE%/*}"/etc/X11/xorg.conf.d/20-nvidia.conf /etc/X11/xorg.conf.d
 
   # disable rootless xorg to allow nvidia overclocking
-  # cp `dirname $0`/etc/X11/Xwrapper.config /etc/X11
+  # cp "${BASH_SOURCE%/*}"/etc/X11/Xwrapper.config /etc/X11
 
 fi
 
