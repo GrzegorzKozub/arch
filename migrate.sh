@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# dot
+# ansible, cava, git, maven, nushell, obsidian, silicon, teams-for-linux, tidal-hifi, vscode, yazi, nvim
+
 # airplane mode
 
 rfkill unblock all
