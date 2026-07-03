@@ -32,7 +32,7 @@ rm -rf ~/.config/nushell
 # pacman -> yay
 
 pushd ~/code/dot
-git pull && git submodule foreach --recursive git pull
+git pull
 ./links.sh
 popd
 
