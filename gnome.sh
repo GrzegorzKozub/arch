@@ -68,7 +68,12 @@ dconf reset -f /org/gnome/calculator/
 
 dconf reset -f /org/gnome/Extensions/
 
-# TODO drifter
+if [[ $HOST == 'drifter' ]]; then
+
+  gsettings set org.gnome.Extensions window-height 504
+  gsettings set org.gnome.Extensions window-width 800
+
+fi
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 
@@ -152,7 +157,7 @@ dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 if [[ $HOST == 'drifter' ]]; then
 
   dconf write /org/gnome/nautilus/window-state/initial-size-file-chooser '(800, 504)'
-  # TODO drifter
+  dconf write /org/gtk/settings/file-chooser/window-position '(26, 23)'
   dconf write /org/gtk/settings/file-chooser/window-size '(800, 457)'
 
 fi
@@ -176,7 +181,12 @@ xdg-mime default org.gnome.Loupe.desktop image/png
 
 dconf reset -f /io/missioncenter/MissionCenter/
 
-# TODO drifter
+if [[ $HOST == 'drifter' ]]; then
+
+  gsettings set io.missioncenter.MissionCenter window-height 600
+  gsettings set io.missioncenter.MissionCenter window-width 960
+
+fi
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 
@@ -189,7 +199,12 @@ fi
 
 dconf reset -f /org/gnome/papers/
 
-# TODO drifter
+if [[ $HOST == 'drifter' ]]; then
+
+  gsettings set org.gnome.Papers.Default window-height 600
+  gsettings set org.gnome.Papers.Default window-width 960
+
+fi
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 
@@ -206,16 +221,12 @@ xdg-mime default org.gnome.Papers.desktop application/pdf
 
 dconf reset -f /apps/seahorse/
 
-# TODO drifter
+if [[ $HOST == 'drifter' ]]; then
 
-if [[ $HOST =~ ^(player|worker)$ ]]; then
-
-  dconf write /apps/seahorse/windows/key-manager/height 608
-  dconf write /apps/seahorse/windows/key-manager/width 720
+  dconf write /apps/seahorse/windows/key-manager/height 457
+  dconf write /apps/seahorse/windows/key-manager/width 800
 
 fi
-
-# TODO drifter
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 
@@ -228,7 +239,9 @@ fi
 
 dconf reset -f /org/gnome/control-center/
 
-# TODO drifter
+[[ $HOST == 'drifter' ]] &&
+  gsettings set org.gnome.Settings window-state '(800, 504, false)'
+
 [[ $HOST =~ ^(player|worker)$ ]] &&
   gsettings set org.gnome.Settings window-state '(720, 655, false)'
 
@@ -260,7 +273,12 @@ gsettings set org.gnome.mutter center-new-windows true
 
 dconf reset -f /org/gnome/Weather/
 
-# TODO drifter
+if [[ $HOST == 'drifter' ]]; then
+
+  gsettings set org.gnome.Weather window-height 504
+  gsettings set org.gnome.Weather window-width 800
+
+fi
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
 
