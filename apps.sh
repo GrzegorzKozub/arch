@@ -80,7 +80,6 @@ sudo pacman -S --noconfirm \
   jq \
   jwt-cli \
   libheif \
-  nushell \
   nvtop \
   pastel \
   playerctl \

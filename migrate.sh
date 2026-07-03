@@ -21,6 +21,11 @@ rm -f "$XDG_DATA_HOME"/applications/org.gnome.tweaks.desktop
 
 sudo locale-gen
 
+# nushell
+
+sudo pacman -Rs --noconfirm nushell || true
+rm -rf ~/.config/nushell
+
 # pacman -> yay
 
 pushd ~/code/dot
