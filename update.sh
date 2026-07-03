@@ -11,7 +11,8 @@ GNOME_SHELL_VERSION=$(pacman -Q gnome-shell | awk '{print $2}')
 
 # sudo pacman --noconfirm -Sy archlinux-keyring
 sudo pacman --noconfirm -Syu
-yay --aur --noconfirm --answerdiff=None -Syu
+# yay --aur --noconfirm --answerdiff=None -Syu
+paru --aur -Syu --noconfirm
 
 if [[ $(pacman -Q gnome-shell | awk '{print $2}') != "$GNOME_SHELL_VERSION" ]]; then
   export GNOME_SHELL_UPGRADED=1

@@ -13,6 +13,7 @@ sudo rm -rf /var/cache/pacman/pkg/download-*
 # clean package caches
 
 sudo pacman --noconfirm -Sc # -Scc also removes INSTALLED packages from /var/cache/pacman/pkg
-yay --aur --noconfirm -Sc # -Scc also removes INSTALLED package clones from ~/.cache/yay
+# yay --aur --noconfirm -Sc # -Scc also removes INSTALLED package clones from ~/.cache/yay
+yes | paru --aur -Sccd
 
 true
