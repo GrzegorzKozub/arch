@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# dirs
+
+[[ $HOST == 'worker' ]] && mkdir -p ~/code/apsis
+
 # dev
 
 if [[ $HOST == 'worker' ]]; then
