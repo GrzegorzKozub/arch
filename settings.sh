@@ -82,11 +82,11 @@ done < <(nmcli --terse --fields NAME,TYPE connection show | awk -F: '$2 ~ /ether
 
 # wifi
 
-[[ $HOST =~ ^(player|worker)$ ]] && nmcli radio wifi off
+[[ $HOST =~ ^(player|worker)$ ]] && rfkill block wifi # noctalia: nmcli radio wifi off
 
 # bluetooth
 
-bluetoothctl power off
+rfkill block bluetooth # noctalia: bluetoothctl power off
 
 # power
 
