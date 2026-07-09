@@ -173,7 +173,11 @@ yay --aur --noconfirm --answerdiff=None -S \
 
 # ai
 
-[[ $HOST =~ ^(player|worker)$ ]] && "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan.sh
+# [[ $HOST =~ ^(player|worker)$ ]] && "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan.sh
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo pacman -S --noconfirm \
+    llama-cpp
 
 # apps
 
