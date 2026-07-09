@@ -354,3 +354,13 @@ Workaround
 ```bash
 sudo rm -rf /var/cache/pacman/pkg/download-*
 ```
+
+### USBGuard
+
+Journal contains multiple `Failed to fetch USBGuard parameters: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name is not activatable`. `gnome-settings-daemon`'s USB protection plugin (`gsd-usb-protect`) always tries to talk to `usbguard-dbus.service` over D-Bus regardless of whether USBGuard is installed.
+
+- https://wiki.archlinux.org/title/USBGuard
+
+Workaround (not applied)
+
+Install `usbguard` and enable `usbguard-dbus.service`
