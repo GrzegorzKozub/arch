@@ -332,6 +332,17 @@ Workaround
 
 Extension `unredirect` prevents mutter from trigerring unredirection but that's a global change. Instead, VRR is disabled on LG 27UL850-W via `monitors.xml`.
 
+### NetworkManager
+
+Journal contains multiple `NetworkManager-initrd.service: Two services allocated for the same bus name org.freedesktop.NetworkManager, refusing operation.` on every boot. The `initrd`'s throwaway NetworkManager instance loses a D-Bus name race against the real NetworkManager service and gets logged as a conflict.
+
+- https://bbs.archlinux.org/viewtopic.php?id=308415
+- https://bbs.archlinux.org/viewtopic.php?id=307879
+
+Workaround
+
+Mask `NetworkManager-initrd.service` via `systemctl mask NetworkManager-initrd.service` before `mkinitcpio`
+
 ### Pacman
 
 Pacman 7.0 introduced sandboxed downloading where temporary `download-*` dirs are owned by `alpm:alpm`. Pacman 7.1 worsened it — a fix for an edge case broke cleanup in normal successful transactions. This results in leaving `/var/cache/pacman/pkg/download-*` files behind.

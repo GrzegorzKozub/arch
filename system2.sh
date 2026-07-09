@@ -238,6 +238,10 @@ sed -i \
   "s/<uuid>/$(blkid -s UUID -o value "$MY_ARCH_PART")/g" \
   /etc/crypttab.initramfs
 
+# workaround https://bbs.archlinux.org/viewtopic.php?id=307879 (before mkinitcpio)
+
+systemctl mask NetworkManager-initrd.service
+
 # initial ramdisk
 
 mkinitcpio -p linux
