@@ -103,6 +103,7 @@ Related repos
   - Configure edit predictions
 7. Claude Code (work)
   - Sign in
+  - Configure via `/config`: Dynamic workflow size - medium
 8. Postman (work)
   - Sign in
   - Change font family to `Cascadia Code`
