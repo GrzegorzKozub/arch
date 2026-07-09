@@ -251,14 +251,16 @@ To reduce the image size after freeing up space on guest, first defragment the d
 3. Once per machine, start and configure Steam
   - Don't sign in to Friends when Steam starts
   - Never show notification toasts
-  - Enable 24-hour clock, enable Beta, set start up location to Library, don't run Steam on startup, enable GPU accelerated rendering and hardware video decoding, disable update notifications and enable SteamRT3
+  - Enable 24-hour clock, enable Beta, set start up location to Library, don't run Steam on startup, disable update notifications, enable GPU accelerated rendering and hardware video decoding and enable SteamRT3
   - Leave only Store, Library, Settings and Exit Steam in taskbar preferences
   - Disable community content, hide game icons and show Steam Deck compatibility in Library
   - Disable shader pre-caching
+  - Add favorite library
   - Disable Steam overlay, remove overlay shortcut key and remove screenshot key
   - Show performance monitor on top-left, toggle with `F8`, show only FPS details without avg/min graph, set text size scaling to 3, set text saturation and background opacity to 0
   - Set default compatibility tool to Proton-CachyOS or Proton-GE
   - Disable Remote Play
+  - Sort by recent activity and show only ready to play games
 4. Once per machine, move Steam to games disk with
   ```bash
   mv $XDG_DATA_HOME/Steam /run/media/$USER/games/
