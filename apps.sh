@@ -177,7 +177,7 @@ yay --aur --noconfirm --answerdiff=None -S \
 
 [[ $HOST =~ ^(player|worker)$ ]] &&
   sudo pacman -S --noconfirm \
-    llama-cpp
+    llama-cpp-vulkan
 
 # apps
 

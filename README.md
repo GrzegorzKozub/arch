@@ -363,4 +363,4 @@ Journal contains multiple `Failed to fetch USBGuard parameters: GDBus.Error:org.
 
 Workaround (not applied)
 
-Install `usbguard` and enable `usbguard-dbus.service`
+Install `usbguard` and enable `usbguard-dbus.service`. Configure USBGuard before restarting or the USB devices like keyboard & mouse won't work.
