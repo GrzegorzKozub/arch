@@ -84,7 +84,7 @@ export default class Windows extends Extension {
       },
       { class: /^io.github.ilya_zlobintsev.LACT$/, auto: true },
       { title: /.?LibreOffice.?/, auto: true },
-      { class: /^io.missioncenter.MissionCenter$/ },
+      { class: /^io.missioncenter.MissionCenter$/, auto: true },
       { class: /^obsidian$/, auto: true },
       { class: /^ONLYOFFICE$/ },
       { class: /^org.gnome.Papers$/ },
