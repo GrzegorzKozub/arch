@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
-pkgname=llama-cpp-vulkan
-pkgver=b7981
+pkgname=llama-cpp-vulkan-bin
+pkgver=b9947
 pkgrel=1
 pkgdesc='LLM inference in C/C++'
 arch=(x86_64)

@@ -19,7 +19,7 @@ else
   export GNOME_SHELL_UPGRADED=0
 fi
 
-# [[ $HOST =~ ^(player|worker)$ ]] && "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan.sh
+[[ $HOST =~ ^(player|worker)$ ]] && "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan-bin.sh
 [[ $HOST == 'worker' ]] && "${BASH_SOURCE%/*}"/claude.sh update
 
 # merge *.pacnew and *.pacsave files

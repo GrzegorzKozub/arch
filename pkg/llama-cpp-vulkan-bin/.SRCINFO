@@ -1,4 +1,4 @@
-pkgbase = llama-cpp-vulkan
+pkgbase = llama-cpp-vulkan-bin
 	pkgdesc = LLM inference in C/C++
 	pkgver = b7981
 	pkgrel = 1
@@ -6,7 +6,7 @@ pkgbase = llama-cpp-vulkan
 	arch = x86_64
 	makedepends = curl
 	makedepends = jq
-	source = https://github.com/ggerganov/llama.cpp/releases/download/b8018/llama-b8018-bin-ubuntu-vulkan-x64.tar.gz
+	source = https://github.com/ggerganov/llama.cpp/releases/download/b9947/llama-b9947-bin-ubuntu-vulkan-x64.tar.gz
 	sha256sums = SKIP
 
-pkgname = llama-cpp-vulkan
+pkgname = llama-cpp-vulkan-bin
