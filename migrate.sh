@@ -9,6 +9,10 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
   "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan-bin.sh
 fi
 
+# nvim
+
+pushd ~/code/dot && ./reset.sh nvim && popd
+
 # nvidia
 
 if [[ $HOST =~ ^(player|worker)$ ]] &&
