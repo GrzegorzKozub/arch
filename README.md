@@ -313,7 +313,7 @@ Journal contains `Failed to create color profile from colord profile: Error open
 
 Cosmetic. Profile still applies correctly since GNOME itself reads the file as `greg`.
 
-### dbus
+### D-Bus
 
 Multiple errors like `dbus-broker-launch[1170]: Ignoring duplicate name 'ca.desrt.dconf' in service file '/usr/share//dbus-1/services/ca.desrt.dconf.service'` in journal
 
