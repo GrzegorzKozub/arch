@@ -28,6 +28,9 @@ fi
 [[ -d $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d ]] || mkdir -p "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d
 cp "${BASH_SOURCE%/*}"/home/.config/wireplumber/wireplumber.conf.d/disable-bluez-midi.conf "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d
 
+[[ -f "${BASH_SOURCE%/*}"/home/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]] &&
+  cp "${BASH_SOURCE%/*}"/home/.config/wireplumber/wireplumber.conf.d/"$HOST".conf "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d/audio.conf
+
 # workaround https://bbs.archlinux.org/viewtopic.php?id=307879
 
 if [[ $(systemctl is-enabled NetworkManager-initrd.service 2> /dev/null) != masked ]]; then

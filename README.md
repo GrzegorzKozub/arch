@@ -282,6 +282,16 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 Known issues and workarounds
 
+### alsa-lib
+
+WirePlumber crashes (`SIGSEGV` coredumps) on `player` and `worker`, tied to `snd_use_case_mgr_close` inside `libasound.so.2`, called via `libspa-alsa.so` → `pw_unload_spa_handle` when WirePlumber unloads the NVIDIA GPU's HDMI/DP audio device (`GB202`/`GA102 High Definition Audio Controller`, already disabled for audio via `device.disabled` in `player.conf`/`worker.conf`). Preceded by `spa.alsa: Error opening low-level control device 'hw:N': No such file or directory`.
+
+- https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/5256
+
+Workaround
+
+Set `api.alsa.use-ucm = false` on the device to bypass UCM entirely, alongside the existing `device.disabled = true` rule in `player.conf` and `worker.conf`
+
 ### asus_wmi
 
 Journal contains `asus_wmi: failed to register LPS0 sleep handler in asus-wmi` on every boot on `player`. Reproduces on stock Arch's `linux` kernel too, not just `linux-cachyos` — the driver unconditionally attempts LPS0 (`s2idle`) registration regardless of whether the board supports it, and just logs a warning on failure. Confirmed harmless by a CachyOS maintainer.
@@ -294,6 +304,14 @@ KeePassXC browser integration does not support Brave Origin out of the box
 
 - https://github.com/keepassxreboot/keepassxc/issues/13263
 - https://www.reddit.com/r/KeePass/comments/1tfxulw/keepassxc_plugin_not_connecting_on_brave/
+
+### colord
+
+Journal contains `Failed to create color profile from colord profile: Error opening file /home/greg/.local/share/icc/mpg321urx.icm: Permission denied`. `colord.service` runs as its own user with `ProtectHome=true`, so it can't traverse `/home/greg` (`700`) to re-read `temp`-scope profiles it discovers there.
+
+- https://github.com/hughsie/colord/issues/137
+
+Cosmetic. Profile still applies correctly since GNOME itself reads the file as `greg`.
 
 ### dbus
 
@@ -322,7 +340,7 @@ Journal contains multiple messages regarding GNOME Settings trying to interact w
 - `Failed to stop orca.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit orca.service not loaded.`
 - `Failed to stop rygel.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit rygel.service not loaded.`
 
-Cosmetic. No action needed.
+Cosmetic. The missing services functionality is not used.
 
 ### Intune
 
