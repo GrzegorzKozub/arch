@@ -9,6 +9,13 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
   "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan-bin.sh
 fi
 
+# nvidia
+
+if [[ $HOST =~ ^(player|worker)$ ]] && ! cmp -s "${BASH_SOURCE%/*}"/etc/modprobe.d/nvidia.conf /etc/modprobe.d/nvidia.conf; then
+  sudo cp "${BASH_SOURCE%/*}"/etc/modprobe.d/nvidia.conf /etc/modprobe.d
+  sudo mkinitcpio -P
+fi
+
 # vscode
 
 DIR=/usr/share/code/resources/app/extensions/copilot/node_modules/@github/copilot/sdk/prebuilds/linux-x64

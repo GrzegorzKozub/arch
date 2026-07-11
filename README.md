@@ -282,6 +282,12 @@ To reduce the image size after freeing up space on guest, first defragment the d
 
 Known issues and workarounds
 
+### asus_wmi
+
+Journal contains `asus_wmi: failed to register LPS0 sleep handler in asus-wmi` on every boot on `player`. Reproduces on stock Arch's `linux` kernel too, not just `linux-cachyos` — the driver unconditionally attempts LPS0 (`s2idle`) registration regardless of whether the board supports it, and just logs a warning on failure. Confirmed harmless by a CachyOS maintainer.
+
+- https://github.com/CachyOS/linux-cachyos/issues/587
+
 ### Brave Origin
 
 KeePassXC browser integration does not support Brave Origin out of the box
