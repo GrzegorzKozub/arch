@@ -16,6 +16,11 @@ if [[ -d $DIR ]]; then
   sudo chmod 775 "$DIR"
 fi
 
+# wireplumber
+
+[[ -d $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d ]] || mkdir -p "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d
+cp "${BASH_SOURCE%/*}"/home/.config/wireplumber/wireplumber.conf.d/disable-bluez-midi.conf "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d
+
 # workaround https://bbs.archlinux.org/viewtopic.php?id=307879
 
 if [[ $(systemctl is-enabled NetworkManager-initrd.service 2> /dev/null) != masked ]]; then

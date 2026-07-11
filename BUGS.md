@@ -27,16 +27,7 @@ Findings from reviewing the `player` host journal for 2026-06-19 through 2026-07
 
 ## Lower priority / mostly noise
 
-- Repeated DBus activation failures for services not installed/enabled: `GeoClue2`,
-  `nm_dispatcher`, `ColorManager`, `Avahi`, `bluez` GattManager, `homed`, `USBGuard`. GNOME
-  Settings/Shell probing for optional services that aren't present. Cosmetic — could mask the
-  relevant GNOME features to silence the spam.
-
-- `orca.service`, `rygel.service`, `gnome-user-share-webdav.service` — session manager repeatedly
-  tries to stop/disable units that don't exist (packages not installed). Harmless.
-
 - `sched_ext: Writing directly to p->scx.slice/dsq_vtime is deprecated` (35 occurrences) —
   kernel-level deprecation warning from the CachyOS scx scheduler. Not broken yet, but the
   direct-write API is slated for removal upstream; will need a scheduler update eventually.
 
-- UFW blocking mDNS/LLMNR/SSDP broadcast traffic — expected firewall behavior, not a bug.

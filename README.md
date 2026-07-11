@@ -305,6 +305,19 @@ Workaround
 
 Set `sleep-inactive-ac-type` & `sleep-inactive-battery-type` to `nothing` inside GDM dconf
 
+### GNOME Settings
+
+Journal contains multiple messages regarding GNOME Settings trying to interact with the services that were not installed
+
+- `couldn't list homed users: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer 'org.freedesktop.home1': activation request failed: unknown unit`
+- `Failed to disable orca.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit orca.service does not exist`
+- `Failed to fetch USBGuard parameters: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name is not activatable`
+- `Failed to stop gnome-user-share-webdav.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit gnome-user-share-webdav.service not loaded.`
+- `Failed to stop orca.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit orca.service not loaded.`
+- `Failed to stop rygel.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit rygel.service not loaded.`
+
+Cosmetic. No action needed.
+
 ### Intune
 
 Intune `libgobject-2.0.so.0` coredump
@@ -357,12 +370,11 @@ Workaround
 sudo rm -rf /var/cache/pacman/pkg/download-*
 ```
 
-### USBGuard
+### WirePlumber
 
-Journal contains multiple `Failed to fetch USBGuard parameters: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name is not activatable`. `gnome-settings-daemon`'s USB protection plugin (`gsd-usb-protect`) always tries to talk to `usbguard-dbus.service` over D-Bus regardless of whether USBGuard is installed.
+Journal contains multiple `spa.bluez5.midi: org.bluez.GattManager1.RegisterApplication() failed: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: Invalid method call` (and the same for `spa.bluez5.midi.server`), on every session start. WirePlumber's Bluetooth MIDI module always tries to register a GATT MIDI service with `bluez` on startup regardless of whether a BLE MIDI device is present, and this `bluez` version doesn't implement the method it calls.
 
-- https://wiki.archlinux.org/title/USBGuard
+Workaround
 
-Workaround (not applied)
+Disable the `monitor.bluez-midi` feature via `wireplumber.profiles.main` in `~/.config/wireplumber/wireplumber.conf.d/disable-bluez-midi.conf`
 
-Install `usbguard` and enable `usbguard-dbus.service`. Configure USBGuard before restarting or the USB devices like keyboard & mouse won't work.
