@@ -396,9 +396,9 @@ sudo rm -rf /var/cache/pacman/pkg/download-*
 
 ### WirePlumber
 
-Journal contains multiple `spa.bluez5.midi: org.bluez.GattManager1.RegisterApplication() failed: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: Invalid method call` (and the same for `spa.bluez5.midi.server`), on every session start. WirePlumber's Bluetooth MIDI module always tries to register a GATT MIDI service with `bluez` on startup regardless of whether a BLE MIDI device is present, and this `bluez` version doesn't implement the method it calls.
+Journal contains multiple `spa.bluez5.midi: org.bluez.GattManager1.RegisterApplication() failed: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: Invalid method call` (and the same for `spa.bluez5.midi.server`), on every session start — including GDM's own greeter session, which runs under a dynamic, ephemeral user with no access to `~/.config`. WirePlumber's Bluetooth MIDI module always tries to register a GATT MIDI service with `bluez` on startup regardless of whether a BLE MIDI device is present, and this `bluez` version doesn't implement the method it calls.
 
 Workaround
 
-Disable the `monitor.bluez-midi` feature via `wireplumber.profiles.main` in `~/.config/wireplumber/wireplumber.conf.d/disable-bluez-midi.conf`
+Disable the `monitor.bluez-midi` feature via `wireplumber.profiles.main` in `/etc/wireplumber/wireplumber.conf.d/bluez.conf`, applied system-wide so it also covers the greeter session
 

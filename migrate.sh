@@ -25,11 +25,15 @@ fi
 
 # wireplumber
 
-[[ -d $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d ]] || mkdir -p "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d
-cp "${BASH_SOURCE%/*}"/home/.config/wireplumber/wireplumber.conf.d/disable-bluez-midi.conf "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d
+[[ -d /etc/wireplumber/wireplumber.conf.d ]] || sudo mkdir -p /etc/wireplumber/wireplumber.conf.d
+sudo cp "${BASH_SOURCE%/*}"/etc/wireplumber/wireplumber.conf.d/bluez.conf /etc/wireplumber/wireplumber.conf.d
 
-[[ -f "${BASH_SOURCE%/*}"/home/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]] &&
+if [[ -f "${BASH_SOURCE%/*}"/home/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]]; then
+
+  [[ -d $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d ]] || mkdir -p "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d
   cp "${BASH_SOURCE%/*}"/home/.config/wireplumber/wireplumber.conf.d/"$HOST".conf "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d/audio.conf
+
+fi
 
 # workaround https://bbs.archlinux.org/viewtopic.php?id=307879
 

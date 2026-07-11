@@ -153,11 +153,15 @@ fi
 [[ -d $XDG_CONFIG_HOME/pipewire/pipewire.conf.d ]] || mkdir -p "$XDG_CONFIG_HOME"/pipewire/pipewire.conf.d
 cp "${BASH_SOURCE%/*}"/home/.config/pipewire/pipewire.conf.d/10-clock-rate.conf "$XDG_CONFIG_HOME"/pipewire/pipewire.conf.d
 
-[[ -d $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d ]] || mkdir -p "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d
-cp "${BASH_SOURCE%/*}"/home/.config/wireplumber/wireplumber.conf.d/disable-bluez-midi.conf "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d
+[[ -d /etc/wireplumber/wireplumber.conf.d ]] || sudo mkdir -p /etc/wireplumber/wireplumber.conf.d
+sudo cp "${BASH_SOURCE%/*}"/etc/wireplumber/wireplumber.conf.d/bluez.conf /etc/wireplumber/wireplumber.conf.d
 
-[[ -f "${BASH_SOURCE%/*}"/home/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]] &&
+if [[ -f "${BASH_SOURCE%/*}"/home/.config/wireplumber/wireplumber.conf.d/$HOST.conf ]]; then
+
+  [[ -d $XDG_CONFIG_HOME/wireplumber/wireplumber.conf.d ]] || mkdir -p "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d
   cp "${BASH_SOURCE%/*}"/home/.config/wireplumber/wireplumber.conf.d/"$HOST".conf "$XDG_CONFIG_HOME"/wireplumber/wireplumber.conf.d/audio.conf
+
+fi
 
 systemctl --user enable pipewire-pulse.service
 
