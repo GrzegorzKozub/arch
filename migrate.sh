@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# fnm -> mise
+
+yay --noconfirm -Rs fnm-bin || true
+
+rm -rf "$XDG_DATA_HOME"/fnm
+rm -rf "$XDG_CACHE_HOME"/npm
+
+sudo pacman -S --noconfirm mise usage
+pushd ~/code/dot && ./links.sh && popd
+eval "$(mise activate bash)"
+
+mise install
+
 # llama
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then

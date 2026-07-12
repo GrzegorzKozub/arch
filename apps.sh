@@ -155,6 +155,7 @@ yay --aur --noconfirm --answerdiff=None -S \
 sudo pacman -S --noconfirm \
   go \
   lua luacheck luarocks stylua \
+  mise usage \
   nodejs npm \
   perl \
   prettier \
@@ -168,7 +169,6 @@ sudo pacman -S --noconfirm \
 
 yay --aur --noconfirm --answerdiff=None -S \
   golangci-lint-bin \
-  fnm-bin \
   shellcheck-bin
 
 # ai
