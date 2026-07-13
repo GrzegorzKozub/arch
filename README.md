@@ -305,14 +305,6 @@ KeePassXC browser integration does not support Brave Origin out of the box
 - https://github.com/keepassxreboot/keepassxc/issues/13263
 - https://www.reddit.com/r/KeePass/comments/1tfxulw/keepassxc_plugin_not_connecting_on_brave/
 
-### colord
-
-Journal contains `Failed to create color profile from colord profile: Error opening file /home/greg/.local/share/icc/mpg321urx.icm: Permission denied`. `colord.service` runs as its own user with `ProtectHome=true`, so it can't traverse `/home/greg` (`700`) to re-read `temp`-scope profiles it discovers there.
-
-- https://github.com/hughsie/colord/issues/137
-
-Cosmetic. Profile still applies correctly since GNOME itself reads the file as `greg`.
-
 ### D-Bus
 
 Multiple errors like `dbus-broker-launch[1170]: Ignoring duplicate name 'ca.desrt.dconf' in service file '/usr/share//dbus-1/services/ca.desrt.dconf.service'` in journal
@@ -328,19 +320,6 @@ Suspends right after waking up from suspending via GNOME
 Workaround
 
 Set `sleep-inactive-ac-type` & `sleep-inactive-battery-type` to `nothing` inside GDM dconf
-
-### GNOME Settings
-
-Journal contains multiple messages regarding GNOME Settings trying to interact with the services that were not installed
-
-- `couldn't list homed users: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer 'org.freedesktop.home1': activation request failed: unknown unit`
-- `Failed to disable orca.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit orca.service does not exist`
-- `Failed to fetch USBGuard parameters: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name is not activatable`
-- `Failed to stop gnome-user-share-webdav.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit gnome-user-share-webdav.service not loaded.`
-- `Failed to stop orca.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit orca.service not loaded.`
-- `Failed to stop rygel.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit rygel.service not loaded.`
-
-Cosmetic. The missing services functionality is not used.
 
 ### Intune
 
@@ -401,4 +380,37 @@ Journal contains multiple `spa.bluez5.midi: org.bluez.GattManager1.RegisterAppli
 Workaround
 
 Disable the `monitor.bluez-midi` feature via `wireplumber.profiles.main` in `/etc/wireplumber/wireplumber.conf.d/bluez.conf`, applied system-wide so it also covers the greeter session
+
+## Cosmetic
+
+Harmless errors found in journal
+
+### Activation noise
+
+Journal contains multiple D-Bus/systemd activation messages - some for services that aren't installed at all (`orca`, `rygel`, `gnome-user-share-webdav`, `systemd-homed`), some for services that are installed but not meant to be D-Bus-activatable (`accounts-daemon`, `usbguard`), and some transient races at session start/login/shutdown against services that are installed and otherwise work fine (`geoclue`, `colord`, `nm-dispatcher`, `gnome-keyring`, `ibus`)
+
+- `Failed to disable orca.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit orca.service does not exist`
+- `Failed to fetch USBGuard parameters: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name is not activatable`
+- `Failed to stop gnome-user-share-webdav.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit gnome-user-share-webdav.service not loaded.`
+- `Failed to stop orca.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit orca.service not loaded.`
+- `Failed to stop rygel.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit rygel.service not loaded.`
+- `Gdm: Failed to list cached users: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer 'org.freedesktop.Accounts': activation request failed: unit is invalid`
+- `Gdm: Failed to list cached users: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name is not activatable`
+- `couldn't list homed users: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer 'org.freedesktop.home1': activation request failed: unknown unit`
+- `dbus-broker-launch: Activation request for 'org.freedesktop.Accounts' failed.`
+- `dbus-broker-launch: Activation request for 'org.freedesktop.ColorManager' failed.`
+- `dbus-broker-launch: Activation request for 'org.freedesktop.GeoClue2' failed.`
+- `dbus-broker-launch: Activation request for 'org.freedesktop.nm_dispatcher' failed.`
+- `gdm-password: gkr-pam: unable to locate daemon control file`
+- `org.freedesktop.IBus.session.generic.service: Two services allocated for the same bus name org.freedesktop.IBus, refusing operation.`
+
+### Bluetooth
+
+Journal contains `bluetoothd: Failed to set mode: Failed (0x03)`, `bluetoothd: Failed to set default system config for hci0`, `dbus-broker-launch: Activation request for 'org.bluez' failed.`, and `src/adv_monitor.c:btd_adv_monitor_power_down() Unexpected NULL btd_adv_monitor_manager object upon power down` caused by the `rfkill`-based bluetooth/wifi toggle in `settings.sh`. `bluetoothd` starts against a radio that `rfkill` has already blocked.
+
+### colord
+
+Journal contains `Failed to create color profile from colord profile: Error opening file /home/greg/.local/share/icc/mpg321urx.icm: Permission denied`. `colord.service` runs as its own user with `ProtectHome=true`, so it can't traverse `/home/greg` (`700`) to re-read `temp`-scope profiles it discovers there.
+
+- https://github.com/hughsie/colord/issues/137
 
