@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# btop
+
+pushd ~/code/dot
+git update-index --no-assume-unchanged btop/btop/btop.conf
+git checkout btop/btop/btop.conf
+git update-index --assume-unchanged btop/btop/btop.conf
+popd
+
 # dot
 
 rm -rf ~/.config/wgetrc
