@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# dot
+
+rm -rf ~/.config/wgetrc
+
 # fnm -> mise
 
 yay --noconfirm -Rs fnm-bin || true
