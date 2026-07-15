@@ -15,6 +15,12 @@ if [[ ${1:-} == 'apsis' ]]; then
     --name apsis \
     --persistent
 
+  sudo sed -i \
+    's#^Exec=/usr/lib/openvpn3-linux/openvpn3-service-netcfg --state-dir "/var/lib/openvpn3"$#Exec=/usr/lib/openvpn3-linux/openvpn3-service-netcfg --state-dir "/var/lib/openvpn3" --systemd-resolved#' \
+    /usr/share/dbus-1/system-services/net.openvpn.v3.netcfg.service
+
+  sudo systemctl reload dbus-broker.service
+
   # openvpn3 session-start --config apsis
   # openvpn3 session-manage --config apsis --disconnect
   # openvpn3 sessions-list
@@ -37,10 +43,10 @@ if [[ ${1:-} == 'audience' ]]; then
   DIR=~/code/keys/strongswan
 
   declare -A ENVS=(
-      [stage]='ec2-54-217-117-208.eu-west-1.compute.amazonaws.com 10.103.11.234'
-      [beta]='ec2-176-34-136-50.eu-west-1.compute.amazonaws.com 10.104.11.228'
-      [prod]='ec2-18-203-8-221.eu-west-1.compute.amazonaws.com 10.105.11.249'
-      [prod - apac]='ec2-52-221-141-135.ap-southeast-1.compute.amazonaws.com 10.107.11.60'
+    [stage]='ec2-54-217-117-208.eu-west-1.compute.amazonaws.com 10.103.11.234'
+    [beta]='ec2-176-34-136-50.eu-west-1.compute.amazonaws.com 10.104.11.228'
+    [prod]='ec2-18-203-8-221.eu-west-1.compute.amazonaws.com 10.105.11.249'
+    [prod - apac]='ec2-52-221-141-135.ap-southeast-1.compute.amazonaws.com 10.107.11.60'
   )
 
   for ENV in "${!ENVS[@]}"; do

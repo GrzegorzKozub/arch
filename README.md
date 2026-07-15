@@ -361,6 +361,14 @@ Workaround
 
 Mask `NetworkManager-initrd.service` via `systemctl mask NetworkManager-initrd.service` before `mkinitcpio`
 
+### openvpn3
+
+Connecting to a VPN via `openvpn3` silently fails to apply the server-pushed DNS servers/search domains. Journal contains `Network Configuration WARNING: No DNS resolver has been configured` and `Failed adding DNS server: No DNS resolver configured`. The D-Bus-activated `net.openvpn.v3.netcfg` service starts without a DNS backend flag, so it never applies the pushed DNS settings to `systemd-resolved`, even though `systemd-resolved` is active and `/etc/resolv.conf` is correctly symlinked.
+
+Workaround
+
+Add `--systemd-resolved` to the `Exec` line of `net.openvpn.v3.netcfg.service`, then reload `dbus-broker.service` via `vpn.sh`
+
 ### Pacman
 
 Pacman 7.0 introduced sandboxed downloading where temporary `download-*` dirs are owned by `alpm:alpm`. Pacman 7.1 worsened it — a fix for an edge case broke cleanup in normal successful transactions. This results in leaving `/var/cache/pacman/pkg/download-*` files behind.
