@@ -16,7 +16,7 @@ if [[ ${1:-} == 'apsis' ]]; then
     --persistent
 
   sudo sed -i \
-    's#^Exec=/usr/lib/openvpn3-linux/openvpn3-service-netcfg --state-dir "/var/lib/openvpn3"$#Exec=/usr/lib/openvpn3-linux/openvpn3-service-netcfg --state-dir "/var/lib/openvpn3" --systemd-resolved#' \
+    '/^Exec=/{/--systemd-resolved/!s/$/ --systemd-resolved/}' \
     /usr/share/dbus-1/system-services/net.openvpn.v3.netcfg.service
 
   sudo systemctl reload dbus-broker.service
