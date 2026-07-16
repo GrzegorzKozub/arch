@@ -129,7 +129,7 @@ dconf reset -f /org/gnome/shell/extensions/rounded-window-corners-reborn/
 
 gsettings set org.gnome.shell.extensions.rounded-window-corners-reborn settings-version 9 # prevent settings reset by the extension
 
-[[ $HOST == 'drifter' ]] && RADIUS=4 || RADIUS=6
+[[ $HOST == 'drifter' ]] && RADIUS=4 || RADIUS=8
 gsettings set org.gnome.shell.extensions.rounded-window-corners-reborn global-rounded-corner-settings \
   "{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>,
     'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>,
