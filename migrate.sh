@@ -26,6 +26,10 @@ eval "$(mise activate bash)"
 
 mise install
 
+# go
+
+pushd ~/code/dot && ./reset.sh go && popd
+
 # llama
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then
