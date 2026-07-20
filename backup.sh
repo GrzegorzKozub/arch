@@ -9,12 +9,12 @@ DISK="$(lsblk -lno PATH,UUID | grep -i "$UUID" | cut -d' ' -f1)"
 
 MOUNT=/mnt
 SOURCE=/run/media/$USER/data/
-TARGET=$MOUNT/arch
+TARGET=$MOUNT/Backup/arch
 
 mount | grep -q "$DISK on $MOUNT" ||
   sudo mount -o uid="$(id -u)",gid="$(id -g)" "$DISK" $MOUNT
 
-[[ -d $TARGET ]] || mkdir $TARGET
+[[ -d $TARGET ]] || mkdir -p $TARGET
 
 FREE=$(df --block-size=1G "$DISK" --output=avail | grep -v Avail | tr -dc '0-9')
 [[ $FREE -lt 64 ]] && echo "only ${FREE}G free on $DISK"
