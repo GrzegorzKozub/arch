@@ -11,9 +11,13 @@ sudo pacman -S --noconfirm \
 # packages - noctalia
 
 sudo pacman -S --noconfirm \
-  qt6-multimedia-ffmpeg \
-  noctalia-shell \
-  wlsunset
+  noctalia
+
+  # wlsunset
+
+# hidden links
+
+"${BASH_SOURCE%/*}"/nodisplay.sh
 
 # dotfiles
 

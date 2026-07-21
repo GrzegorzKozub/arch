@@ -7,6 +7,7 @@ for APP in \
   btop \
   bvnc \
   cmake-gui \
+  dev.noctalia.Noctalia \
   htop \
   java-java-openjdk \
   java-java21-openjdk \
