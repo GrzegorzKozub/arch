@@ -88,6 +88,7 @@ export default class Windows extends Extension {
       { class: /^obsidian$/, auto: true },
       { class: /^ONLYOFFICE$/ },
       { class: /^org.gnome.Papers$/ },
+      { class: /^signal$/, auto: true },
       { title: /.?Steam$/ },
       { class: /^teams-for-linux$/, auto: true },
       {
