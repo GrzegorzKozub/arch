@@ -15,6 +15,17 @@ sudo pacman -S --noconfirm \
 
   # wlsunset
 
+# packages - walker & elephant
+
+yay --aur --noconfirm --answerdiff=None -S \
+  elephant-bin elephant-providerlist-bin \
+  elephant-desktopapplications-bin \
+  elephant-files-bin \
+  elephant-runner-bin
+
+sudo pacman -S --noconfirm \
+  walker
+
 # hidden links
 
 "${BASH_SOURCE%/*}"/nodisplay.sh
@@ -22,3 +33,11 @@ sudo pacman -S --noconfirm \
 # dotfiles
 
 ~/code/dot/niri.sh
+
+# config
+
+elephant service enable
+
+# TODO
+# mkdir -p ~/.config/systemd/user/niri.service.wants
+# ln -s ~/.config/systemd/user/elephant.service ~/.config/systemd/user/niri.service.wants/elephant.service
