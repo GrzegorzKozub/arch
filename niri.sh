@@ -18,11 +18,9 @@ sudo pacman -S --noconfirm \
 # packages - walker & elephant
 
 yay --aur --noconfirm --answerdiff=None -S \
-  elephant-bin elephant-providerlist-bin \
-  elephant-calc-bin \
+  elephant-bin \
   elephant-desktopapplications-bin \
-  elephant-files-bin \
-  elephant-runner-bin \
+  elephant-providerlist-bin \
   elephant-symbols-bin \
   elephant-windows-bin
 

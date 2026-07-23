@@ -18,7 +18,9 @@ for APP in \
   lstopo \
   mpv \
   nvtop \
+  org.freedesktop.IBus.Setup \
   org.freedesktop.MalcontentControl \
+  org.gnome.ColorProfileViewer \
   qv4l2 \
   qvidcap \
   stoken-gui \
