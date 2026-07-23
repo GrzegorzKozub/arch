@@ -19,9 +19,12 @@ sudo pacman -S --noconfirm \
 
 yay --aur --noconfirm --answerdiff=None -S \
   elephant-bin elephant-providerlist-bin \
+  elephant-calc-bin \
   elephant-desktopapplications-bin \
   elephant-files-bin \
-  elephant-runner-bin
+  elephant-runner-bin \
+  elephant-symbols-bin \
+  elephant-windows-bin
 
 sudo pacman -S --noconfirm \
   walker
@@ -36,8 +39,7 @@ sudo pacman -S --noconfirm \
 
 # config
 
-elephant service enable
-
-# TODO
-# mkdir -p ~/.config/systemd/user/niri.service.wants
-# ln -s ~/.config/systemd/user/elephant.service ~/.config/systemd/user/niri.service.wants/elephant.service
+for SVC in elephant walker; do
+  cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/"$SVC".service "$XDG_CONFIG_HOME"/systemd/user
+  systemctl --user enable "$SVC".service
+done

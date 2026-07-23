@@ -1,0 +1,13 @@
+[Unit]
+Description=Elephant
+After=niri.service
+BindsTo=niri.service
+
+[Service]
+Type=simple
+ExecStart=elephant
+Restart=on-failure
+
+[Install]
+WantedBy=niri.service
+

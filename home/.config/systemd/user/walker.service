@@ -1,0 +1,13 @@
+[Unit]
+Description=Walker
+After=niri.service elephant.service
+BindsTo=niri.service
+
+[Service]
+Type=simple
+ExecStart=walker --gapplication-service
+Restart=on-failure
+
+[Install]
+WantedBy=niri.service
+
