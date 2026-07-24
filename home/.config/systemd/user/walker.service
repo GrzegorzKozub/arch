@@ -2,11 +2,14 @@
 Description=Walker
 After=niri.service elephant.service
 BindsTo=niri.service
+; StartLimitBurst=10
+; StartLimitIntervalSec=30
 
 [Service]
 Type=simple
 ExecStart=walker --gapplication-service
 Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=niri.service

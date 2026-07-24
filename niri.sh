@@ -21,7 +21,6 @@ yay --aur --noconfirm --answerdiff=None -S \
   elephant-bin \
   elephant-desktopapplications-bin \
   elephant-providerlist-bin \
-  elephant-symbols-bin \
   elephant-windows-bin
 
 sudo pacman -S --noconfirm \
