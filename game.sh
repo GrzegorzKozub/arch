@@ -14,7 +14,7 @@ export PROTON_FSR4_UPGRADE=1
 
 export DXVK_HDR=1
 export PROTON_ENABLE_HDR=1
-export PROTON_ENABLE_WAYLAND=1 # required for HDR without gamescope
+export PROTON_ENABLE_WAYLAND=1 # native wayland driver (skips xwayland): reduced latency, HDR
 
 export PROTON_NVIDIA_LIBS_NO_32BIT=1
 
