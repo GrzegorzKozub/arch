@@ -85,15 +85,15 @@ sudo systemctl enable gdm.service
 
 # laptop screen brightness
 
-if [[ $HOST == 'drifter' ]]; then
-
-  sudo cp "${BASH_SOURCE%/*}"/etc/systemd/system/brightness.service /etc/systemd/system/
-  sudo systemctl enable brightness.service
-
-  cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/brightness.service "$XDG_CONFIG_HOME"/systemd/user/
-  systemctl --user enable brightness.service
-
-fi
+# if [[ $HOST == 'drifter' ]]; then
+#
+#   sudo cp "${BASH_SOURCE%/*}"/etc/systemd/system/brightness.service /etc/systemd/system/
+#   sudo systemctl enable brightness.service
+#
+#   cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/brightness.service "$XDG_CONFIG_HOME"/systemd/user/
+#   systemctl --user enable brightness.service
+#
+# fi
 
 # process niceness
 
