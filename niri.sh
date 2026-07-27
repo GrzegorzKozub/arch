@@ -17,14 +17,14 @@ sudo pacman -S --noconfirm \
 
 # packages - walker & elephant
 
-yay --aur --noconfirm --answerdiff=None -S \
-  elephant-bin \
-  elephant-desktopapplications-bin \
-  elephant-providerlist-bin \
-  elephant-windows-bin
-
-sudo pacman -S --noconfirm \
-  walker
+# yay --aur --noconfirm --answerdiff=None -S \
+#   elephant-bin \
+#   elephant-desktopapplications-bin \
+#   elephant-providerlist-bin \
+#   elephant-windows-bin
+#
+# sudo pacman -S --noconfirm \
+#   walker
 
 # hidden links
 
@@ -36,7 +36,7 @@ sudo pacman -S --noconfirm \
 
 # config
 
-for SVC in elephant walker; do
-  cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/"$SVC".service "$XDG_CONFIG_HOME"/systemd/user
-  systemctl --user enable "$SVC".service
-done
+# for SVC in elephant walker; do
+#   cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/"$SVC".service "$XDG_CONFIG_HOME"/systemd/user
+#   systemctl --user enable "$SVC".service
+# done
