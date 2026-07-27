@@ -13,6 +13,11 @@ if [[ $HOST == 'drifter' ]]; then
 
 fi
 
+# gnome
+
+dconf reset -f /org/gnome/Characters/
+sudo pacman -Rs --noconfirm gnome-characters gnome-font-viewer
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
