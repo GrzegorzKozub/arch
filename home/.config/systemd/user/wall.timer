@@ -1,10 +1,11 @@
 [Unit]
 Description=wall
+BindsTo=gnome-session-manager.target
 
 [Timer]
 OnCalendar=00/1:00
 Persistent=true
 
 [Install]
-WantedBy=timers.target
+WantedBy=gnome-session-manager.target
 

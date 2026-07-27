@@ -192,12 +192,8 @@ systemctl --user enable wall.timer
 
 # do not disturb
 
-if [[ $XDG_CURRENT_DESKTOP == 'GNOME' ]]; then
-
-  cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/dnd.service "$XDG_CONFIG_HOME"/systemd/user
-  systemctl --user enable dnd.service
-
-fi
+cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/dnd.service "$XDG_CONFIG_HOME"/systemd/user
+systemctl --user enable dnd.service
 
 # fonts
 

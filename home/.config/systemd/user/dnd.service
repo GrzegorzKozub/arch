@@ -1,11 +1,12 @@
 [Unit]
 Description=dnd
-After=graphical-session.target
+After=gnome-session-manager.target
+BindsTo=gnome-session-manager.target
 
 [Service]
 Type=simple
 ExecStart=%h/code/arch/dnd.sh
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=gnome-session-manager.target
 
