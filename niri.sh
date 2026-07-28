@@ -6,7 +6,10 @@ set -eo pipefail -ux
 sudo pacman -S --noconfirm \
   xdg-desktop-portal-gnome xdg-desktop-portal-gtk \
   gnome-keyring \
+  xwayland-satellite \
   niri
+
+  # xwayland-satellite - for nvidia-settings in nvidia.sh
 
 # packages - noctalia
 
