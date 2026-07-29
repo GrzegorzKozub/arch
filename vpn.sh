@@ -46,7 +46,7 @@ if [[ ${1:-} == 'audience' ]]; then
     [stage]='ec2-54-217-117-208.eu-west-1.compute.amazonaws.com 10.103.11.234'
     [beta]='ec2-176-34-136-50.eu-west-1.compute.amazonaws.com 10.104.11.228'
     [prod]='ec2-18-203-8-221.eu-west-1.compute.amazonaws.com 10.105.11.249'
-    [prod - apac]='ec2-52-221-141-135.ap-southeast-1.compute.amazonaws.com 10.107.11.60'
+    [prod-apac]='ec2-52-221-141-135.ap-southeast-1.compute.amazonaws.com 10.107.11.60'
   )
 
   for ENV in "${!ENVS[@]}"; do
