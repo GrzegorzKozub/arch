@@ -7,35 +7,7 @@ set -eo pipefail -ux
 
 # color
 
-add_color_profile() {
-  set +e
-  DEVICE=$(colormgr find-device-by-property Model "$2")
-  echo "$DEVICE" | grep -q "$1" && return
-  DEVICE=$(echo "$DEVICE" | grep 'Device ID' | sed -e 's/Device ID:     //')
-  PROFILE=$(colormgr find-profile-by-filename "$1".icm |
-    grep 'Profile ID' | sed -e 's/Profile ID:    //')
-  if [[ -z $PROFILE ]]; then
-    (exit 1)
-    # shellcheck disable=SC2181
-    while [[ ! $? == 0 ]]; do
-      PROFILE=$(
-        colormgr import-profile "${BASH_SOURCE%/*}"/home/.local/share/icc/"$1".icm |
-          grep 'Profile ID' | sed -e 's/Profile ID:    //'
-      )
-    done
-  fi
-  colormgr device-add-profile "$DEVICE" "$PROFILE"
-  set -e
-}
-
-[[ $HOST == 'player' ]] && add_color_profile 'mpg321urx' 'MPG321UX OLED'
-
-if [[ $HOST == 'worker' ]]; then
-
-  add_color_profile '27gp950-b' 'LG ULTRAGEAR+'
-  add_color_profile '27ul850-w' 'LG HDR 4K'
-
-fi
+"${BASH_SOURCE%/*}"/icc.sh
 
 # sound
 
