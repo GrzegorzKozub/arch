@@ -1,65 +1,43 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-remove_color_profile() {
-  set +e
-  PROFILE=$(colormgr find-profile-by-filename "$1".icm |
-    grep 'Profile ID' | sed -e 's/Profile ID:    //')
-  [[ -n $PROFILE ]] && colormgr delete-profile "$PROFILE"
-  rm -f "$HOME"/.local/share/icc/"$1".icm
-  set -e
+profile_id() {
+  colormgr find-profile-by-filename "$1".icm |
+    grep 'Profile ID' | sed -e 's/Profile ID:    //'
 }
 
 add_color_profile() {
-  set +e
-  DEVICE=$(colormgr find-device-by-property Model "$2")
-  SOURCE_ICC="${BASH_SOURCE%/*}"/home/.local/share/icc/"$1".icm
-  DEST_ICC="$HOME"/.local/share/icc/"$1".icm
-  if echo "$DEVICE" | grep -q "$1" && cmp -s "$SOURCE_ICC" "$DEST_ICC"; then
-    set -e
+  DEVICE=$(colormgr find-device-by-property Model "$2" || true)
+  SRC="${BASH_SOURCE%/*}"/home/.local/share/icc/"$1".icm
+  DST="$XDG_DATA_HOME"/icc/"$1".icm
+
+  ASSIGNED=0
+  echo "$DEVICE" | grep -q "$1" && ASSIGNED=1
+
+  if ((ASSIGNED)) && cmp -s "$SRC" "$DST"; then
     return
-  elif echo "$DEVICE" | grep -q "$1"; then
-    PROFILE=$(colormgr find-profile-by-filename "$1".icm |
-      grep 'Profile ID' | sed -e 's/Profile ID:    //')
-    [[ -n $PROFILE ]] && colormgr delete-profile "$PROFILE"
-    rm -f "$DEST_ICC"
+  elif ((ASSIGNED)); then
+    PROFILE=$(profile_id "$1" || true)
+    [[ -n $PROFILE ]] && { colormgr delete-profile "$PROFILE" || true; }
+    rm -f "$DST"
   fi
+
   DEVICE=$(echo "$DEVICE" | grep 'Device ID' | sed -e 's/Device ID:     //')
-  PROFILE=$(colormgr find-profile-by-filename "$1".icm |
-    grep 'Profile ID' | sed -e 's/Profile ID:    //')
-  if [[ -z $PROFILE ]]; then
-    (exit 1)
-    # shellcheck disable=SC2181
-    while [[ ! $? == 0 ]]; do
-      PROFILE=$(
-        colormgr import-profile "${BASH_SOURCE%/*}"/home/.local/share/icc/"$1".icm |
-          grep 'Profile ID' | sed -e 's/Profile ID:    //'
-      )
-    done
-  fi
-  until ERROR=$(colormgr device-add-profile "$DEVICE" "$PROFILE" 2>&1); do
-    [[ $ERROR == *'already been added'* ]] && break
+  PROFILE=$(profile_id "$1" || true)
+  until [[ -n $PROFILE ]]; do
+    colormgr import-profile "$SRC" &>/dev/null || true
+    PROFILE=$(profile_id "$1" || true)
+  done
+
+  until ERR=$(colormgr device-add-profile "$DEVICE" "$PROFILE" 2>&1) ||
+    [[ $ERR == *'already been added'* ]]; do
     sleep 1
   done
-  set -e
 }
 
-if [[ ${1:-} == '--remove' ]]; then
+[[ $HOST == 'player' ]] && add_color_profile 'mpg321urx' 'MPG321UX OLED'
 
-  [[ $HOST == 'player' ]] && remove_color_profile 'mpg321urx'
-
-  if [[ $HOST == 'worker' ]]; then
-    remove_color_profile '27gp950-b'
-    remove_color_profile '27ul850-w'
-  fi
-
-else
-
-  [[ $HOST == 'player' ]] && add_color_profile 'mpg321urx' 'MPG321UX OLED'
-
-  if [[ $HOST == 'worker' ]]; then
-    add_color_profile '27gp950-b' 'LG ULTRAGEAR+'
-    add_color_profile '27ul850-w' 'LG HDR 4K'
-  fi
-
+if [[ $HOST == 'worker' ]]; then
+  add_color_profile '27gp950-b' 'LG ULTRAGEAR+'
+  add_color_profile '27ul850-w' 'LG HDR 4K'
 fi
