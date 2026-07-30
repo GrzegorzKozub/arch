@@ -6,6 +6,12 @@ profile_id() {
     grep 'Profile ID' | sed -e 's/Profile ID:    //'
 }
 
+remove_color_profile() {
+  PROFILE=$(profile_id "$1" || true)
+  [[ -n $PROFILE ]] && { colormgr delete-profile "$PROFILE" || true; }
+  rm -f "$XDG_DATA_HOME"/icc/"$1".icm
+}
+
 add_color_profile() {
   DEVICE=$(colormgr find-device-by-property Model "$2" || true)
   SRC="${BASH_SOURCE%/*}"/home/.local/share/icc/"$1".icm
@@ -35,9 +41,22 @@ add_color_profile() {
   done
 }
 
-[[ $HOST == 'player' ]] && add_color_profile 'mpg321urx' 'MPG321UX OLED'
+if [[ ${1:-} == '--remove' ]]; then
 
-if [[ $HOST == 'worker' ]]; then
-  add_color_profile '27gp950-b' 'LG ULTRAGEAR+'
-  add_color_profile '27ul850-w' 'LG HDR 4K'
+  [[ $HOST == 'player' ]] && remove_color_profile 'mpg321urx'
+
+  if [[ $HOST == 'worker' ]]; then
+    remove_color_profile '27gp950-b'
+    remove_color_profile '27ul850-w'
+  fi
+
+else
+
+  [[ $HOST == 'player' ]] && add_color_profile 'mpg321urx' 'MPG321UX OLED'
+
+  if [[ $HOST == 'worker' ]]; then
+    add_color_profile '27gp950-b' 'LG ULTRAGEAR+'
+    add_color_profile '27ul850-w' 'LG HDR 4K'
+  fi
+
 fi
