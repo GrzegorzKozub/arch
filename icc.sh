@@ -6,13 +6,7 @@ profile_id() {
     grep 'Profile ID' | sed -e 's/Profile ID:    //'
 }
 
-remove_color_profile() {
-  PROFILE=$(profile_id "$1" || true)
-  [[ -n $PROFILE ]] && { colormgr delete-profile "$PROFILE" || true; }
-  rm -f "$XDG_DATA_HOME"/icc/"$1".icm
-}
-
-add_color_profile() {
+add() {
   DEVICE=$(colormgr find-device-by-property Model "$2" || true)
   SRC="${BASH_SOURCE%/*}"/home/.local/share/icc/"$1".icm
   DST="$XDG_DATA_HOME"/icc/"$1".icm
@@ -28,35 +22,39 @@ add_color_profile() {
     rm -f "$DST"
   fi
 
-  DEVICE=$(echo "$DEVICE" | grep 'Device ID' | sed -e 's/Device ID:     //')
   PROFILE=$(profile_id "$1" || true)
   until [[ -n $PROFILE ]]; do
-    colormgr import-profile "$SRC" &>/dev/null || true
+    colormgr import-profile "$SRC" &> /dev/null || true
     PROFILE=$(profile_id "$1" || true)
   done
 
+  DEVICE=$(echo "$DEVICE" | grep 'Device ID' | sed -e 's/Device ID:     //')
   until ERR=$(colormgr device-add-profile "$DEVICE" "$PROFILE" 2>&1) ||
     [[ $ERR == *'already been added'* ]]; do
     sleep 1
   done
 }
 
-if [[ ${1:-} == '--remove' ]]; then
+remove() {
+  PROFILE=$(profile_id "$1" || true)
+  [[ -n $PROFILE ]] && { colormgr delete-profile "$PROFILE" || true; }
+  rm -f "$XDG_DATA_HOME"/icc/"$1".icm
+}
 
-  [[ $HOST == 'player' ]] && remove_color_profile 'mpg321urx'
-
+if [[ -z ${1:-} ]]; then
+  [[ $HOST == 'drifter' ]] && add 'xps13' '0x14fa'
+  [[ $HOST == 'player' ]] && add 'mpg321urx' 'MPG321UX OLED'
   if [[ $HOST == 'worker' ]]; then
-    remove_color_profile '27gp950-b'
-    remove_color_profile '27ul850-w'
+    add '27gp950-b' 'LG ULTRAGEAR+'
+    add '27ul850-w' 'LG HDR 4K'
   fi
+fi
 
-else
-
-  [[ $HOST == 'player' ]] && add_color_profile 'mpg321urx' 'MPG321UX OLED'
-
+if [[ ${1:-} == 'remove' ]]; then
+  [[ $HOST == 'drifter' ]] && remove 'xps13'
+  [[ $HOST == 'player' ]] && remove 'mpg321urx'
   if [[ $HOST == 'worker' ]]; then
-    add_color_profile '27gp950-b' 'LG ULTRAGEAR+'
-    add_color_profile '27ul850-w' 'LG HDR 4K'
+    remove '27gp950-b'
+    remove '27ul850-w'
   fi
-
 fi
