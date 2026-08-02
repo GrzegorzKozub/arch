@@ -63,7 +63,8 @@ Related repos
   - Set as default browser
   - Disable everything except background images on the dashboard
   - Hide all buttons except Forward and Install app in toolbar customization
-  - Don't show tab groups in bookmarks
+  - Don't show tab search button
+  - Don't show tab groups in bookmarks bar
   - Don't allow suggestions Leo AI Assistant
   - Use wide address bar
   - Show rounded corners on main content areas
