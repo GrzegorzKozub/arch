@@ -42,7 +42,7 @@ remove() {
 }
 
 if [[ -z ${1:-} ]]; then
-  [[ $HOST == 'drifter' ]] && add 'xps13' '0x14fa'
+  [[ $HOST == 'drifter' ]] && add 'shp14fa' '0x14fa'
   [[ $HOST == 'player' ]] && add 'mpg321urx' 'MPG321UX OLED'
   if [[ $HOST == 'worker' ]]; then
     add '27gp950-b' 'LG ULTRAGEAR+'
@@ -51,7 +51,7 @@ if [[ -z ${1:-} ]]; then
 fi
 
 if [[ ${1:-} == 'remove' ]]; then
-  [[ $HOST == 'drifter' ]] && remove 'xps13'
+  [[ $HOST == 'drifter' ]] && remove 'shp14fa'
   [[ $HOST == 'player' ]] && remove 'mpg321urx'
   if [[ $HOST == 'worker' ]]; then
     remove '27gp950-b'
