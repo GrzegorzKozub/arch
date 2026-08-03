@@ -25,7 +25,6 @@ systemctl --user disable dnd.service wall.timer
 cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/dnd.service "$XDG_CONFIG_HOME"/systemd/user
 cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/wall.timer "$XDG_CONFIG_HOME"/systemd/user
 
-systemctl --user daemon-reload
 systemctl --user enable dnd.service wall.timer
 
 # cleanup
