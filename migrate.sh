@@ -1,6 +1,21 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# hosts
+
+if [[ $HOST == 'worker' ]]; then
+
+  LIST=(
+    int.email-stage.apsis.cloud
+    int.folders-stage.apsis.cloud
+  )
+
+  for ITEM in "${LIST[@]}"; do
+    sudo sed -i -e "/.*$ITEM.*/d" /etc/hosts
+  done
+
+fi
+
 # brightness
 
 if [[ $HOST == 'drifter' ]]; then
