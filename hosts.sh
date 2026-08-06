@@ -6,13 +6,19 @@ LIST=(
   ANUNLB-LB-VC5YGOQNTGG4-7707d28b7ca45024.elb.eu-west-1.amazonaws.com
   WAWNLB2-LB-2KEW9GHX6ZHK-3cd7f3576423cce8.elb.eu-west-1.amazonaws.com
   WAWNLB2-LB-BFAMMO58AJC7-ac1f28233c0b6fc5.elb.eu-west-1.amazonaws.com
-  api.stage.ma
-  audienceproxy.ecs-stage.webscript
-  capturetool.ecs-stage.webscript
   dev.apsis
-  formtoolbackend.ecs-stage.webscript
   vpce-0d42f60518b6200ca-t05wvrwd.vpce-svc-0e2cc8023f4c8b06f.eu-west-1.vpce.amazonaws.com
 )
+
+  # via audience vpn
+  # api.stage.ma
+  # audienceproxy.ecs-stage.webscript
+  # capturetool.ecs-stage.webscript
+  # formtoolbackend.ecs-stage.webscript
+
+  # public
+  # int.email-stage.apsis.cloud
+  # int.folders-stage.apsis.cloud
 
 for ITEM in "${LIST[@]}"; do
   sudo sed -i -e "/.*$ITEM.*/d" /etc/hosts

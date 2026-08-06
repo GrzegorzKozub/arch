@@ -6,6 +6,10 @@ set -eo pipefail -ux
 if [[ $HOST == 'worker' ]]; then
 
   LIST=(
+    api.stage.ma
+    audienceproxy.ecs-stage.webscript
+    capturetool.ecs-stage.webscript
+    formtoolbackend.ecs-stage.webscript
     int.email-stage.apsis.cloud
     int.folders-stage.apsis.cloud
   )
