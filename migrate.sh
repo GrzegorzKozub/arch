@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# lsp
-
-sudo pacman -S --noconfirm lua-language-server
-mise install
-uv tool install pyright
-
 # hosts
 
 if [[ $HOST == 'worker' ]]; then
@@ -30,6 +24,17 @@ if [[ $HOST == 'worker' ]]; then
   done
 
 fi
+
+# lsp
+
+sudo pacman -S --noconfirm lua-language-server
+mise install
+uv tool install pyright
+
+# nvidia
+
+[[ $MY_HOSTNAME =~ ^(player|worker)$ ]] &&
+  sudo pacman -S --noconfirm nvidia-open linux-cachyos-lts-nvidia-open
 
 # cleanup
 

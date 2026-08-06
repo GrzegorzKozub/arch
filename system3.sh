@@ -61,7 +61,7 @@ if [[ $MY_HOSTNAME =~ ^(player|worker)$ ]]; then
     nvidia-utils \
     nvidia-settings \
     libva-nvidia-driver \
-    linux-cachyos-nvidia-open \
+    linux-cachyos-nvidia-open linux-cachyos-lts-nvidia-open \
     lact
 
 fi
