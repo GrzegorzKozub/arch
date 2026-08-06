@@ -10,16 +10,6 @@ LIST=(
   vpce-0d42f60518b6200ca-t05wvrwd.vpce-svc-0e2cc8023f4c8b06f.eu-west-1.vpce.amazonaws.com
 )
 
-  # via audience vpn
-  # api.stage.ma
-  # audienceproxy.ecs-stage.webscript
-  # capturetool.ecs-stage.webscript
-  # formtoolbackend.ecs-stage.webscript
-
-  # public
-  # int.email-stage.apsis.cloud
-  # int.folders-stage.apsis.cloud
-
 for ITEM in "${LIST[@]}"; do
   sudo sed -i -e "/.*$ITEM.*/d" /etc/hosts
 done
