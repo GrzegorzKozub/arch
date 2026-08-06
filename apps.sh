@@ -154,7 +154,7 @@ yay --aur --noconfirm --answerdiff=None -S \
 
 sudo pacman -S --noconfirm \
   go \
-  lua luacheck luarocks stylua \
+  lua lua-language-server luacheck luarocks stylua \
   mise usage \
   nodejs npm \
   perl \
