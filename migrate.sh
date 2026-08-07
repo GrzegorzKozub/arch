@@ -29,10 +29,16 @@ fi
 
 sudo pacman -S --noconfirm lua-language-server
 
-dotnet tool install --global csharp-ls
 mise install
 rustup component add rust-analyzer
 uv tool install basedpyright
+
+if [[ $HOST == 'worker' ]]; then
+
+  dotnet tool install --global csharp-ls
+  # TODO: jdtls
+
+fi
 
 # nvidia
 
