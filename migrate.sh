@@ -28,8 +28,11 @@ fi
 # lsp
 
 sudo pacman -S --noconfirm lua-language-server
+
+dotnet tool install --global csharp-ls
 mise install
-uv tool install pyright
+rustup component add rust-analyzer
+uv tool install basedpyright
 
 # nvidia
 
