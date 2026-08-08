@@ -42,8 +42,7 @@ fi
 
 # nvidia
 
-[[ $HOST =~ ^(player|worker)$ ]] &&
-  sudo pacman -S --noconfirm nvidia-open linux-cachyos-lts-nvidia-open
+[[ $HOST == 'worker' ]] && sudo pacman -S --noconfirm linux-cachyos-lts-nvidia-open
 
 # cleanup
 
