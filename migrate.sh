@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# fswatch
+
+sudo pacman -Rs --noconfirm fswatch
+sudo pacman -Sy --noconfirm fswatch
+
 # hosts
 
 if [[ $HOST == 'worker' ]]; then
@@ -27,18 +32,18 @@ fi
 
 # lsp
 
-# sudo pacman -S --noconfirm lua-language-server
-#
-# mise install
-# rustup component add rust-analyzer
-# uv tool install basedpyright
-#
-# if [[ $HOST == 'worker' ]]; then
-#
-#   dotnet tool install --global csharp-ls
-#   # TODO: jdtls
-#
-# fi
+sudo pacman -Sy --noconfirm lua-language-server
+
+mise install
+rustup component add rust-analyzer
+uv tool install basedpyright
+
+if [[ $HOST == 'worker' ]]; then
+
+  dotnet tool install --global csharp-ls
+  # TODO: jdtls
+
+fi
 
 # mcp
 

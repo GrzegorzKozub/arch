@@ -70,6 +70,7 @@ sudo pacman -S --noconfirm \
   fastfetch \
   fd \
   ffmpeg \
+  fswatch \
   fzf \
   git-delta \
   go-yq \
@@ -142,7 +143,6 @@ sudo pacman -S --noconfirm \
   neovim-nightly-bin
 
 yay --aur --noconfirm --answerdiff=None -S \
-  fswatch \
   vivify-bin
 
 # containers
