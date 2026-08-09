@@ -40,6 +40,10 @@ fi
 #
 # fi
 
+# mcp
+
+claude mcp remove github || true
+
 # nvidia
 
 [[ $HOST == 'worker' ]] && sudo pacman -S --noconfirm linux-cachyos-lts-nvidia-open
