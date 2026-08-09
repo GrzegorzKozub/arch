@@ -33,17 +33,10 @@ fi
 # lsp
 
 sudo pacman -Sy --noconfirm lua-language-server
-
 mise install
 rustup component add rust-analyzer
 uv tool install basedpyright
-
-if [[ $HOST == 'worker' ]]; then
-
-  dotnet tool install --global csharp-ls
-  # TODO: jdtls
-
-fi
+[[ $HOST == 'worker' ]] && dotnet tool install --global csharp-ls
 
 # mcp
 
