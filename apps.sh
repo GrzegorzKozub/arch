@@ -154,7 +154,7 @@ yay --aur --noconfirm --answerdiff=None -S \
 
 sudo pacman -S --noconfirm \
   go \
-  lua lua-language-server luacheck luarocks stylua \
+  lua luacheck luarocks stylua \
   mise usage \
   nodejs npm \
   perl \
@@ -164,6 +164,7 @@ sudo pacman -S --noconfirm \
   taplo \
   tree-sitter-cli
 
+  # lua-language-server for claude code
   # python-requests for fetch.py
   # elixir ruby rust
 

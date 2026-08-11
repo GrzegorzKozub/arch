@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# ...
+
+sudo pacman -Syy
+
 # fswatch
 
 sudo pacman -Rs --noconfirm fswatch
@@ -32,11 +36,17 @@ fi
 
 # lsp
 
-sudo pacman -Sy --noconfirm lua-language-server
-mise install
-rustup component add rust-analyzer
-uv tool install basedpyright
-[[ $HOST == 'worker' ]] && dotnet tool install --global csharp-ls
+if [[ $HOST == 'worker' ]]; then
+
+  sudo pacman -S --noconfirm lua-language-server
+  mise install \
+    npm:bash-language-server@latest \
+    npm:typescript-language-server@latest
+  uv tool install basedpyright
+  rustup component add rust-analyzer
+  dotnet tool install --global csharp-ls
+
+fi
 
 # mcp
 
@@ -44,7 +54,8 @@ claude mcp remove github || true
 
 # nvidia
 
-[[ $HOST == 'worker' ]] && sudo pacman -S --noconfirm linux-cachyos-lts-nvidia-open
+[[ $HOST == 'worker' ]] &&
+  sudo pacman -S --noconfirm linux-cachyos-lts-nvidia-open
 
 # cleanup
 
