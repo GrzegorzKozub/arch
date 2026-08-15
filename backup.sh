@@ -12,7 +12,7 @@ SOURCE=/run/media/$USER/data/
 TARGET=$MOUNT/Backup/arch
 
 mount | grep -q "$DISK on $MOUNT" ||
-  sudo mount -o uid="$(id -u)",gid="$(id -g)" "$DISK" $MOUNT
+  sudo mount -t ntfs-3g -o uid="$(id -u)",gid="$(id -g)" "$DISK" $MOUNT
 
 [[ -d $TARGET ]] || mkdir -p $TARGET
 
