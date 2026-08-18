@@ -72,7 +72,7 @@ Related repos
   - Cycle through the most recently used tabs with Ctrl-Tab
   - Don't show Wayback Machine prompts on 404 pages
   - Don't show the number of blocked items on the Shields icon
-  - Enable YouTube Playables blocker and YouTube Shorts blocker in content filtering
+  - Enable content filtering blockers: Cookie notice, Mobile app promo, YouTube Playables, YouTube Shorts
   - Don't allow sites to send notifications
   - Disable data collection
   - Don't show Leo icon in the sidebar
