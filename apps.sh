@@ -78,6 +78,7 @@ sudo pacman -S --noconfirm \
   hl \
   htop \
   hyperfine \
+  imv \
   jq \
   jwt-cli \
   libheif \

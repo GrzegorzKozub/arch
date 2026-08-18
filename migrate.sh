@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# imv
+
+sudo pacman -S --noconfirm imv
+
 # pending migrations
 
 if [[ $HOST =~ ^(drifter|player)$ ]]; then
