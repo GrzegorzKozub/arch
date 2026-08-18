@@ -1,23 +1,25 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# imv
-
-sudo pacman -S --noconfirm imv
-
 # pending migrations
 
-if [[ $HOST =~ ^(drifter|player)$ ]]; then
+if [[ $HOST == 'drifter' ]]; then
 
   # fswatch
+
   sudo pacman -Syy
   sudo pacman -Rs --noconfirm fswatch
   sudo pacman -Sy --noconfirm fswatch
 
   # mcp
+
   claude mcp remove github || true
 
 fi
+
+# imv
+
+[[ $HOST =~ ^(drifter|worker)$ ]] && sudo pacman -S --noconfirm imv
 
 # cleanup
 
