@@ -10,7 +10,7 @@ yay --aur --noconfirm --answerdiff=None -S \
 
 cp /usr/share/applications/postman.desktop "$XDG_DATA_HOME"/applications
 sed -i \
-  -e 's/\/opt\/postman\/Postman/\/opt\/postman\/Postman --ozone-platform-hint=auto/' \
+  -e 's/\/opt\/postman\/Postman/\/opt\/postman\/Postman --ozone-platform-hint=auto --disable-gpu-sandbox/' \
   "$XDG_DATA_HOME"/applications/postman.desktop
 
 # cleanup
