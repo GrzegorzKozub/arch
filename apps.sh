@@ -186,18 +186,20 @@ sudo pacman -S --noconfirm \
   mpv \
   obsidian \
   pavucontrol \
-  satty \
   openbsd-netcat zed
+
+  # satty
 
 # aur not needed on cachy
 sudo pacman -S --noconfirm \
   brave-origin-bin
 
+  # or brave-bin
+
 yay --aur --noconfirm --answerdiff=None -S \
   tidal-hifi-bin \
+  tensaku-bin \
   visual-studio-code-bin
-
-  # or brave-bin
 
 # settings
 

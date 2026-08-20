@@ -32,6 +32,12 @@ if [[ $HOST == 'worker' ]]; then
 
 fi
 
+# satty -> tensaku
+
+rm -rf ~/.config/satty
+sudo pacman -Rs --noconfirm satty || true
+yay --aur --noconfirm --answerdiff=None -S tensaku-bin
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
