@@ -15,17 +15,13 @@ if [[ $HOST == 'drifter' ]]; then
 
   sudo pacman -S --noconfirm imv
 
-  # mcp
-
-  claude mcp remove github || true
-
-fi
-
-if [[ $HOST =~ ^(drifter|player)$ ]]; then
-
   # linecast
 
   uv tool install linecast
+
+  # mcp
+
+  claude mcp remove github || true
 
   # satty -> tensaku
 
