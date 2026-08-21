@@ -31,6 +31,13 @@ if [[ $HOST == 'drifter' ]]; then
 
 fi
 
+# fsmonitor
+
+for DIR in ~/code/*/ ~/code/*/*/; do
+  [[ -d $DIR/.git ]] || continue
+  rm -rf "$DIR"/.git/fsmonitor--daemon "$DIR"/.git/fsmonitor--daemon.ipc
+done
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
