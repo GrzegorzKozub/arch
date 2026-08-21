@@ -384,9 +384,10 @@ sudo rm -rf /var/cache/pacman/pkg/download-*
 
 ### RTL8159
 
-USB 10G NIC (Realtek `0bda:815a`) is driven by the generic `cdc_ncm` class driver instead of a vendor driver, capping real-world throughput well below 10 Gbit/s (observed ~5 Gbit/s down, ~1 Gbit/s up). The dedicated `r8159` driver lands in Linux 7.2.
+USB 10G NIC (Realtek `0bda:815a`) is driven by the in-tree `r8152` driver (Linux 7.2+), but it caps at 5 Gbit/s because the PHY firmware patch it requests, `rtl_nic/rtl8159-1.fw`, isn't in `linux-firmware-realtek` yet (`unable to load firmware patch rtl_nic/rtl8159-1.fw (-2)` in dmesg). Fix: install `r8152-dkms` from the AUR (2.20.1+), which embeds the firmware itself instead of depending on `linux-firmware`.
 
 - https://www.phoronix.com/news/Realtek-RTL8159-Linux-7.2
+- https://aur.archlinux.org/packages/r8152-dkms
 
 ### Teams
 
