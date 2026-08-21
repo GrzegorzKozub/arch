@@ -31,6 +31,12 @@ if [[ $HOST == 'drifter' ]]; then
 
 fi
 
+# fonts
+
+[[ $HOST == 'player' ]] &&
+  sudo pacman -S --noconfirm noto-fonts-emoji &&
+  fc-cache -f
+
 # fsmonitor
 
 for DIR in ~/code/*/ ~/code/*/*/; do
