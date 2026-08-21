@@ -79,6 +79,11 @@ sed -i \
   -e '/beep on/d' \
   $PROFILE/efiboot/loader/loader.conf
 
+# systemctl mask bluetooth.service
+
+mkdir -p $PROFILE/airootfs/etc/systemd/system
+ln -sf /dev/null $PROFILE/airootfs/etc/systemd/system/bluetooth.service
+
 # console
 
 echo 'FONT=ter-232b' >> $PROFILE/airootfs/etc/vconsole.conf
