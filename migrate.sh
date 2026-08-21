@@ -21,6 +21,10 @@ fi
 
 [[ $HOST =~ ^(drifter|worker)$ ]] && sudo pacman -S --noconfirm imv
 
+# linecast
+
+uv tool install linecast
+
 # postman
 
 if [[ $HOST == 'worker' ]]; then
