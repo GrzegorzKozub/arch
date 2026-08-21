@@ -11,36 +11,29 @@ if [[ $HOST == 'drifter' ]]; then
   sudo pacman -Rs --noconfirm fswatch
   sudo pacman -Sy --noconfirm fswatch
 
+  # imv
+
+  sudo pacman -S --noconfirm imv
+
   # mcp
 
   claude mcp remove github || true
 
 fi
 
-# imv
+if [[ $HOST =~ ^(drifter|player)$ ]]; then
 
-[[ $HOST =~ ^(drifter|worker)$ ]] && sudo pacman -S --noconfirm imv
+  # linecast
 
-# linecast
+  uv tool install linecast
 
-uv tool install linecast
+  # satty -> tensaku
 
-# postman
-
-if [[ $HOST == 'worker' ]]; then
-
-  cp /usr/share/applications/postman.desktop "$XDG_DATA_HOME"/applications
-  sed -i \
-    -e 's/\/opt\/postman\/Postman/\/opt\/postman\/Postman --ozone-platform-hint=auto --disable-gpu-sandbox/' \
-    "$XDG_DATA_HOME"/applications/postman.desktop
+  rm -rf ~/.config/satty
+  sudo pacman -Rs --noconfirm satty || true
+  yay --aur --noconfirm --answerdiff=None -S tensaku-bin
 
 fi
-
-# satty -> tensaku
-
-rm -rf ~/.config/satty
-sudo pacman -Rs --noconfirm satty || true
-yay --aur --noconfirm --answerdiff=None -S tensaku-bin
 
 # cleanup
 
