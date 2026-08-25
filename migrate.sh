@@ -18,6 +18,13 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
 
 fi
 
+# tidal
+
+pushd ~/code/dot
+git update-index --no-assume-unchanged tidal-hifi/tidal-hifi/config.json
+git pull
+popd
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
