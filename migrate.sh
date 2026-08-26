@@ -1,6 +1,20 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
+# claude
+
+for DIR in \
+  ~/.claude \
+  ~/.cache/claude \
+  ~/.cache/claude-cli-nodejs \
+  ~/.local/bin/claude \
+  ~/.local/share/claude \
+  ~/.local/state/claude; do
+  rm -rf "$DIR"
+done
+
+pushd ~/code/dot && git pull && popd && mise install
+
 # fonts
 
 [[ $HOST == 'player' ]] &&
