@@ -165,7 +165,6 @@ sudo pacman -S --noconfirm \
   taplo \
   tree-sitter-cli
 
-  # lua-language-server for claude code
   # python-requests for fetch.py
   # elixir ruby rust
 

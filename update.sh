@@ -20,7 +20,7 @@ else
 fi
 
 [[ $HOST =~ ^(player|worker)$ ]] && "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan-bin.sh
-[[ $HOST == 'worker' ]] && "${BASH_SOURCE%/*}"/claude.sh update
+# [[ $HOST == 'worker' ]] && "${BASH_SOURCE%/*}"/claude.sh update
 
 # merge *.pacnew and *.pacsave files
 

@@ -11,9 +11,10 @@ if [[ $HOST == 'worker' ]]; then
 
   "${BASH_SOURCE%/*}"/ansible.sh
   "${BASH_SOURCE%/*}"/aws.sh
-  "${BASH_SOURCE%/*}"/claude.sh
   "${BASH_SOURCE%/*}"/dotnet.sh
   "${BASH_SOURCE%/*}"/java.sh
+
+  "${BASH_SOURCE%/*}"/claude.sh
 
 fi
 
