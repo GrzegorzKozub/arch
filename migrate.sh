@@ -1,9 +1,20 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# claude
+# mise: claude, go
+
+rm -rf "$XDG_CACHE_HOME"/{go,goimports,gopls}
+rm -rf "$XDG_CONFIG_HOME"/go
+go clean -modcache && rm -rf "$XDG_DATA_HOME"/go
+
+sudo pacman -Rs --noconfirm go
+
+pushd ~/code/dot && git pull && popd
+
+mise install
 
 if [[ $HOST == 'worker' ]]; then
+
   for DIR in \
     ~/.claude \
     ~/.cache/claude \
@@ -14,7 +25,6 @@ if [[ $HOST == 'worker' ]]; then
     rm -rf "$DIR"
   done
 
-  pushd ~/code/dot && git pull && popd
   "${BASH_SOURCE%/*}"/claude.sh
 
 fi

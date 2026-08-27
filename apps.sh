@@ -154,7 +154,6 @@ yay --aur --noconfirm --answerdiff=None -S \
 # dev
 
 sudo pacman -S --noconfirm \
-  go \
   lua luacheck luarocks stylua \
   mise usage \
   nodejs npm \
@@ -166,7 +165,7 @@ sudo pacman -S --noconfirm \
   tree-sitter-cli
 
   # python-requests for fetch.py
-  # elixir ruby rust
+  # elixir go ruby rust
 
 yay --aur --noconfirm --answerdiff=None -S \
   golangci-lint-bin \
