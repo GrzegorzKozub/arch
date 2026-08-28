@@ -173,7 +173,7 @@ yay --aur --noconfirm --answerdiff=None -S \
 
 # ai
 
-[[ $HOST =~ ^(player|worker)$ ]] && "${BASH_SOURCE%/*}"/pkg/llama-cpp-vulkan-bin.sh
+# [[ $HOST =~ ^(player|worker)$ ]] && "${BASH_SOURCE%/*}"/llama.sh
 
 # apps
 

@@ -46,6 +46,11 @@ if [[ $HOST =~ ^(player|worker)$ ]]; then
 
 fi
 
+# llama-cpp
+
+[[ $HOST =~ ^(player|worker)$ ]] &&
+  sudo pacman -Rs --noconfirm llama-cpp-vulkan-bin || true
+
 # tidal
 
 pushd ~/code/dot

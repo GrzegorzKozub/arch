@@ -5,14 +5,14 @@ pkgver=b9947
 pkgrel=1
 pkgdesc='LLM inference in C/C++'
 arch=(x86_64)
-url=https://github.com/ggerganov/llama.cpp
+url=https://github.com/ggml-org/llama.cpp
 depends=()
 makedepends=(curl jq)
 sha256sums=(SKIP)
 
 pkgver() {
-  curl -sL https://api.github.com/repos/ggerganov/llama.cpp/releases/latest |
-    jq -r '.tag_name'
+  curl -sL https://api.github.com/repos/ggml-org/llama.cpp/releases |
+    jq -r '[.[] | select(.tag_name | test("^b[0-9]+$"))][0].tag_name'
 }
 
 source=("$url"/releases/download/"$(pkgver)"/llama-"$(pkgver)"-bin-ubuntu-vulkan-x64.tar.gz)
