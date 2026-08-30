@@ -58,6 +58,13 @@ git update-index --no-assume-unchanged tidal-hifi/tidal-hifi/config.json
 git pull
 popd
 
+# zinit
+
+pushd ~/code/dot && git pull && ./links.sh && popd
+rm -rf ~/.cache/fsh/
+rm -rf ~/.config/fsh/
+zinit delete --yes zdharma-continuum/fast-syntax-highlighting
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh

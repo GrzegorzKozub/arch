@@ -14,6 +14,6 @@ done < $XDG_CACHE_HOME/fetch/repos
 
 _alternative "repos:repos:(($REPOS))"
 
-# https://github.com/zdharma-continuum/fast-syntax-highlighting/
-FAST_HIGHLIGHT+=(chroma-fetch →chroma/-subcommand.ch)
+# https://github.com/z-shell/F-Sy-H (undocumented, private, will break)
+_fsh_state[chroma-fetch]=_fsh_chroma_subcommand
 
