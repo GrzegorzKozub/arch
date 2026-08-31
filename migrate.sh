@@ -69,6 +69,8 @@ mkdir -p "$XDG_DATA_HOME"/zi
 
 git clone https://github.com/z-shell/zi.git "$XDG_DATA_HOME"/zi/bin
 
+script -c "env ZI_BOOTSTRAP=1 zsh -i" /dev/null
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
