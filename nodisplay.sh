@@ -8,6 +8,7 @@ for APP in \
   bvnc \
   cmake-gui \
   dev.noctalia.Noctalia \
+  dev.tensaku.Tensaku \
   htop \
   java-java-openjdk \
   java-java21-openjdk \

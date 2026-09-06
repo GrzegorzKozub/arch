@@ -180,6 +180,8 @@ xdg-mime default org.gnome.Loupe.desktop image/png
 
 dconf reset -f /io/missioncenter/MissionCenter/
 
+gsettings set io.missioncenter.MissionCenter first-time-running false
+
 if [[ $HOST == 'drifter' ]]; then
 
   gsettings set io.missioncenter.MissionCenter window-height 600
