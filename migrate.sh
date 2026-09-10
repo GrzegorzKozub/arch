@@ -14,6 +14,12 @@ if [[ $HOST == 'worker' ]]; then
   popd
 fi
 
+# zsh
+
+rm -rf ~/.cache/zsh/last-working-dir
+rm -rf ~/.local/share/zi/snippets/OMZ::plugins--dirhistory
+rm -rf ~/.local/share/zi/snippets/OMZ::plugins--last-working-dir
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
