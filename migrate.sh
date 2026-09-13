@@ -20,6 +20,10 @@ rm -rf ~/.cache/zsh/last-working-dir
 rm -rf ~/.local/share/zi/snippets/OMZ::plugins--dirhistory
 rm -rf ~/.local/share/zi/snippets/OMZ::plugins--last-working-dir
 
+# zsh-lint
+
+mise install
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
