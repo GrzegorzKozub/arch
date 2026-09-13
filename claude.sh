@@ -17,11 +17,6 @@ set -eo pipefail -ux
 # curl -fsSL https://claude.ai/install.sh | bash
 # rm -rf ~/.claude
 
-ln -sf "$XDG_CONFIG_HOME"/mise/conf.d/claude.env.toml \
-  "$XDG_CONFIG_HOME"/mise/conf.d/claude."$HOST".local.toml
-
-mise install
-
 # lsp
 
 sudo pacman -S --noconfirm lua-language-server
