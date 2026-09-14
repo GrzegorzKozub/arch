@@ -17,13 +17,25 @@ fi
 # dotnet
 
 if [[ $HOST == 'worker' ]]; then
-  sudo pacman -Rs --noconfirm dotnet-sdk aspnet-runtime
-  ln -sf "$XDG_CONFIG_HOME"/mise/conf.d/dotnet.env.toml \
-    "$XDG_CONFIG_HOME"/mise/conf.d/dotnet."$HOST".local.toml
-  ln -sf "$XDG_CONFIG_HOME"/mise/conf.d/csharp-ls.env.toml \
-    "$XDG_CONFIG_HOME"/mise/conf.d/csharp-ls."$HOST".local.toml
-  mise install
+
+  set e+
+
+  for EXTENSION in \
+    ms-dotnettools.csdevkit \
+    ms-dotnettools.csharp \
+    ms-dotnettools.vscode-dotnet-runtime; do
+    code --uninstall-extension $EXTENSION --force
+  done
+
+  set e-
+
+  dotnet tool uninstall --global csharp-ls || true
+  sudo pacman -Rs --noconfirm dotnet-sdk aspnet-runtime || true
+
 fi
+
+rm -rf "$XDG_CACHE_HOME"/{csdevkit,dotnet,Microsoft,Microsoft\ DevDiv}
+rm -rf "$XDG_DATA_HOME"/{dotnet,Microsoft,NuGet}
 
 # zsh
 
