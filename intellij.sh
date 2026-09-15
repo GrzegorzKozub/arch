@@ -8,8 +8,8 @@ yay --aur --noconfirm --answerdiff=None -S \
 
 # links
 
-cp /usr/share/applications/intellij-idea-community-edition.desktop "$XDG_DATA_HOME"/applications
-sed -i -e 's/^Name=.*/Name=IntelliJ/' "$XDG_DATA_HOME"/applications/intellij-idea-community-edition.desktop
+cp /usr/share/applications/intellij-idea-community.desktop "$XDG_DATA_HOME"/applications
+sed -i -e 's/^Name=.*/Name=IntelliJ/' "$XDG_DATA_HOME"/applications/intellij-idea-community.desktop
 
 # cleanup
 
