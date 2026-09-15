@@ -49,6 +49,8 @@ if [[ $HOST == 'worker' ]]; then
   done
   set e-
 
+  sudo pacman -Rs --noconfirm jdk-openjdk jdk21-openjdk maven || true
+
   rm -rf "$XDG_CACHE_HOME"/maven
   rm -rf "$XDG_CONFIG_HOME"/maven
 

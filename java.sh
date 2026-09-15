@@ -10,6 +10,10 @@ set -eo pipefail -ux
 
 # sudo archlinux-java set java-21-openjdk
 
+# secrets
+
+"${BASH_SOURCE%/*}"/secrets.sh maven
+
 # cleanup
 
 # "${BASH_SOURCE%/*}"/packages.sh
