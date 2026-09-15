@@ -14,8 +14,6 @@ if [[ $HOST == 'worker' ]]; then
     "$XDG_CONFIG_HOME"/claude/keybindings.json
   popd
 
-  rm -rf "$XDG_CACHE_HOME"/anthropic
-
 fi
 
 # dotnet
