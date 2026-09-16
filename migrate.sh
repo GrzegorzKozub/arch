@@ -26,6 +26,12 @@ if [[ $HOST == 'worker' ]]; then
     "$XDG_CONFIG_HOME"/claude/keybindings.json
   popd
 
+  npx --yes skills add mattpocock/skills \
+    --agent claude-code --copy --global --yes \
+    --skill grill-me \
+    --skill grilling \
+    --skill handoff
+
 fi
 
 # dotnet
