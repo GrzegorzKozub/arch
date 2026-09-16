@@ -11,6 +11,10 @@ sudo pacman -S --noconfirm \
 
 sudo chfn -f "$USER" "$USER" # gecos
 
+# secrets
+
+"${BASH_SOURCE%/*}"/secrets.sh ansible
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh

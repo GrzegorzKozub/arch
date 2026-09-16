@@ -5,6 +5,18 @@ set -eo pipefail -ux
 
 sudo pacman -Sy && pushd ~/code/dot && git pull && ./repos.sh && popd
 
+# ansible
+
+if [[ $HOST == 'worker' ]]; then
+
+  sudo pacman -Rs --noconfirm ansible-core ansible python-boto3 || true
+
+  rm -rf "$XDG_CONFIG_HOME"/ansible
+
+  rm -rf ~/code/dot/ansible/ansible/ansible.secret
+
+fi
+
 # claude
 
 if [[ $HOST == 'worker' ]]; then
@@ -25,7 +37,7 @@ if [[ $HOST == 'worker' ]]; then
     ms-dotnettools.csdevkit \
     ms-dotnettools.csharp \
     ms-dotnettools.vscode-dotnet-runtime; do
-    code --uninstall-extension $EXTENSION --force
+    code --uninstall-extension $EXTENSION --force || true
   done
   set e-
 
@@ -45,7 +57,7 @@ if [[ $HOST == 'worker' ]]; then
   for EXTENSION in \
     redhat.java \
     redhat.vscode-yaml; do
-    code --uninstall-extension $EXTENSION --force
+    code --uninstall-extension $EXTENSION --force || true
   done
   set e-
 

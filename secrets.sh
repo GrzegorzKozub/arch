@@ -23,7 +23,9 @@ lnk "$SECRETS"/github.env ~/code/arch/github.env
 
 # ansible
 
-lnk "$SECRETS"/ansible.secret ~/code/dot/ansible/ansible/ansible.secret
+if [[ ${1:-} == 'ansible' ]]; then
+  lnk "$SECRETS"/ansible.secret ~/code/dot/ansible/ansible/ansible.secret
+fi
 
 # aws
 
