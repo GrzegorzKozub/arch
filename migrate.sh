@@ -95,6 +95,7 @@ mise install
 rm -rf "$XDG_CACHE_HOME"/{appstream,cmp}/
 rm -rf "$XDG_CONFIG_HOME"/github-copilot/
 rm -rf "$XDG_DATA_HOME"/man/
+rm -rf "$XDG_STATE_HOME"/.copilot/
 
 # cleanup
 

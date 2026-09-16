@@ -39,8 +39,11 @@ rm -rf "$XDG_CONFIG_HOME"/{evolution,gnome-control-center,gnome-session,goa-1.0,
 
 rm -f "$XDG_CONFIG_HOME"/.gsd-keyboard.settings-ported
 
-rm -rf "$XDG_DATA_HOME"/sounds/
+rm -rf "$XDG_DATA_HOME"/{evolution,gnome-settings-daemon,gvfs-metadata,nautilus,sounds}/
+rm -f "$XDG_DATA_HOME"/gnome-shell/{application_state,session.gvdb,update-check-*}
 rm -f "$XDG_DATA_HOME"/recently-used.xbel
+
+rm -f "$XDG_STATE_HOME"/gnome-session@gnome.state
 
 # go
 
@@ -91,7 +94,7 @@ rm -rf "$XDG_DATA_HOME"/nvidia-settings/
 
 # nvim
 
-rm -rf "$XDG_CACHE_HOME"/{luarocks,nvim}/
+rm -rf "$XDG_CACHE_HOME"/{luarocks,nvim,tree-sitter}/
 
 # qt
 
@@ -109,10 +112,6 @@ rm -rf "$XDG_CONFIG_HOME"/pulse/
 
 rm -rf "$XDG_CACHE_HOME"/tensaku/
 
-# tree-sitter
-
-rm -rf "$XDG_CACHE_HOME"/tree-sitter/
-
 # vim
 
 rm -f ~/.viminfo
@@ -125,6 +124,10 @@ rm -rf "$XDG_CONFIG_HOME"/copilot/
 
 rm -f ~/.wget-hsts
 
+# wireplumber
+
+rm -rf "$XDG_STATE_HOME"/wireplumber/
+
 # xdg
 
 rm -rf "$XDG_CONFIG_HOME"/autostart/
@@ -136,7 +139,7 @@ rm -rf "$XDG_CACHE_HOME"/zed/
 # zsh
 
 rm -f ~/.zshrc
-rm -rf "$XDG_CONFIG_HOME"/fsh/
+rm -rf "$XDG_CACHE_HOME"/fsh/
 # rm -rf "$XDG_CACHE_HOME"/gitstatus/ # powerlevel10k
 
 # root
