@@ -30,6 +30,9 @@ rm -rf "$XDG_CACHE_HOME"/gh/
 
 # gnome
 
+# TODO recreated on login: all evolution, glycin, gstreamer-1.0, libgetweather, tracker3, goa-1.0, gsd-keyboard..., input-sources..., session.vdb, update-check-LATEST, gvfs-metadata, sounds (so leave autostart as well?), session in state dir
+# application_state to gnome.sh?
+
 rm -rf ~/.gnome/
 
 rm -rf "$XDG_CACHE_HOME"/{evolution,glycin,gnome-calculator,gnome-desktop-thumbnailer,libgweather,thumbnails,tracker3}/
@@ -55,7 +58,7 @@ rm -rf "$XDG_CACHE_HOME"/gopass/
 
 # gstreamer
 
-rm -rf "$XDG_CACHE_HOME"/gstreamer-1.0/
+# rm -rf "$XDG_CACHE_HOME"/gstreamer-1.0/
 
 # gtk
 
@@ -63,7 +66,7 @@ rm -rf "$XDG_CACHE_HOME"/gtk-4.0/
 
 # ime
 
-rm -rf "$XDG_CACHE_HOME"/ibus/
+# rm -rf "$XDG_CACHE_HOME"/ibus/
 
 # lact
 
@@ -72,10 +75,6 @@ rm -rf "$XDG_CONFIG_HOME"/lact/
 # linecast
 
 rm -rf "$XDG_CACHE_HOME"/linecast/
-
-# mime
-
-rm -f "$XDG_DATA_HOME"/mimeapps.list
 
 # node
 
@@ -100,21 +99,13 @@ rm -rf "$XDG_CACHE_HOME"/{luarocks,nvim,tree-sitter}/
 
 rm -rf "$XDG_CONFIG_HOME"/QtProject.conf/
 
-# ps & top
-
-rm -rf "$XDG_CONFIG_HOME"/procps/
-
 # pulseaudio
 
-rm -rf "$XDG_CONFIG_HOME"/pulse/
+# rm -rf "$XDG_CONFIG_HOME"/pulse/
 
 # tensaku
 
 rm -rf "$XDG_CACHE_HOME"/tensaku/
-
-# vim
-
-rm -f ~/.viminfo
 
 # vscode
 
@@ -139,7 +130,6 @@ rm -rf "$XDG_CACHE_HOME"/zed/
 # zsh
 
 rm -f ~/.zshrc
-rm -rf "$XDG_CACHE_HOME"/fsh/
 # rm -rf "$XDG_CACHE_HOME"/gitstatus/ # powerlevel10k
 
 # root
