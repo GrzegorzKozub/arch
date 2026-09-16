@@ -90,6 +90,12 @@ rm -rf "$XDG_DATA_HOME"/zi/snippets/OMZ::plugins--last-working-dir
 
 mise install
 
+# one time cleanup
+
+rm -rf "$XDG_CACHE_HOME"/{appstream,cmp}/
+rm -rf "$XDG_CONFIG_HOME"/github-copilot/
+rm -rf "$XDG_DATA_HOME"/man/
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
