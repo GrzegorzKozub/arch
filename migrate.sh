@@ -38,34 +38,34 @@ fi
 
 if [[ $HOST == 'worker' ]]; then
 
-  set e+
-  for EXTENSION in \
-    ms-dotnettools.csdevkit \
-    ms-dotnettools.csharp \
-    ms-dotnettools.vscode-dotnet-runtime; do
-    code --uninstall-extension $EXTENSION --force || true
-  done
-  set e-
+  # set e+
+  # for EXTENSION in \
+  #   ms-dotnettools.csdevkit \
+  #   ms-dotnettools.csharp \
+  #   ms-dotnettools.vscode-dotnet-runtime; do
+  #   code --uninstall-extension $EXTENSION --force || true
+  # done
+  # set e-
 
   dotnet tool uninstall --global csharp-ls || true
   sudo pacman -Rs --noconfirm dotnet-sdk aspnet-runtime || true
 
-fi
+  rm -rf "$XDG_CACHE_HOME"/{csdevkit,dotnet,Microsoft,Microsoft\ DevDiv}
+  rm -rf "$XDG_DATA_HOME"/{dotnet,Microsoft,NuGet}
 
-rm -rf "$XDG_CACHE_HOME"/{csdevkit,dotnet,Microsoft,Microsoft\ DevDiv}
-rm -rf "$XDG_DATA_HOME"/{dotnet,Microsoft,NuGet}
+fi
 
 # java
 
 if [[ $HOST == 'worker' ]]; then
 
-  set e+
-  for EXTENSION in \
-    redhat.java \
-    redhat.vscode-yaml; do
-    code --uninstall-extension $EXTENSION --force || true
-  done
-  set e-
+  # set e+
+  # for EXTENSION in \
+  #   redhat.java \
+  #   redhat.vscode-yaml; do
+  #   code --uninstall-extension $EXTENSION --force || true
+  # done
+  # set e-
 
   sudo pacman -Rs --noconfirm jdk-openjdk jdk21-openjdk maven || true
 
@@ -90,16 +90,14 @@ rm -rf "$XDG_DATA_HOME"/zi/snippets/OMZ::plugins--last-working-dir
 
 mise install
 
-# one time cleanup
+# one time deep cleanup
+
+"${BASH_SOURCE%/*}"/clean.sh deep
 
 rm -rf "$XDG_CACHE_HOME"/{appstream,cmp}/
-
 rm -rf "$XDG_CONFIG_HOME"/{fsh,github-copilot}/
-
 rm -rf "$XDG_DATA_HOME"/man/
-rm -f "$XDG_DATA_HOME"/mimeapps.list
-
-rm -rf "$XDG_STATE_HOME"/.copilot/
+rm -rf "$XDG_STATE_HOME"/{.copilot,pipewire}/
 
 # cleanup
 

@@ -431,9 +431,6 @@ gsettings set \
 
 # gsettings set org.gnome.desktop.privacy remember-recent-files false
 
-FILE=$XDG_DATA_HOME/recently-used.xbel
-[[ -f $FILE ]] && rm "$FILE"
-
 # system > region & language
 
 dconf reset -f /org/gnome/desktop/app-folders/
