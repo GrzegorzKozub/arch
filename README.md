@@ -96,11 +96,9 @@ Related repos
   - Sign in
 5. Visual Studio Code
   - Sign in: GitHub
-  - Pick LLM
   - Hide recommended extensions
 6. Zed
-  - Sign in: Zed, collab panel
-  - Configure LLM providers: Zed, Anthropic, GitHub Copilot Chat, Google AI, OpenAI
+  - Sign in: Zed
   - Configure edit predictions
 7. Claude Code (work)
   - Sign in
