@@ -80,6 +80,10 @@ fi
 
 rm -rf "$XDG_CACHE_HOME"/{huggingface,llama.cpp}
 
+# tmux
+
+rm -rf "$XDG_DATA_HOME"/tmux/plugins/tmux-fzf-links
+
 # zsh
 
 rm -rf "$XDG_CACHE_HOME"/zsh/last-working-dir
