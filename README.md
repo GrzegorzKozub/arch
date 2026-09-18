@@ -164,7 +164,7 @@ Existing backup can be used when changing disks or moving partitions
   arch-chroot /mnt
   ```
 6. Use `blkid` to get the partition UUIDs and update them in `/etc/fstab`
-7. Update Linux partition UUID in `/etc/crypttab.initramfs` and re-create initial ramdisk
+7. Update Linux partition UUID in `/etc/crypttab` and re-create initial ramdisk
   ```bash
   mkinitcpio -p linux && mkinitcpio -p linux-lts
   ```

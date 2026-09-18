@@ -233,10 +233,9 @@ cp "${BASH_SOURCE%/*}"/etc/pacman.d/hooks/91-limine.hook /etc/pacman.d/hooks/
 
 # dm-crypt with systemd based initial ramdisk (before mkinitcpio)
 
-cp "${BASH_SOURCE%/*}"/etc/crypttab.initramfs /etc
-sed -i \
+sed \
   "s/<uuid>/$(blkid -s UUID -o value "$MY_ARCH_PART")/g" \
-  /etc/crypttab.initramfs
+  "${BASH_SOURCE%/*}"/etc/crypttab >> /etc/crypttab
 
 # workaround https://bbs.archlinux.org/viewtopic.php?id=307879 (before mkinitcpio)
 
