@@ -11,6 +11,9 @@ set -eo pipefail -ux
 
 # sound
 
+DIR="$XDG_STATE_HOME"/wireplumber/
+rm -rf "$DIR" && mkdir -p "$DIR"
+
 pactl list short sinks | cut -f1 | while read -r ID; do
   pactl set-sink-volume "$ID" 50%
 done

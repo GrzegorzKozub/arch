@@ -17,17 +17,11 @@ rm -rf "$XDG_CACHE_HOME"/obexd/
 rm -rf "$XDG_CACHE_HOME"/electron/
 rm -rf "$XDG_CONFIG_HOME"/Electron/
 
-# fontconfig
-
-rm -rf "$XDG_CACHE_HOME"/fontconfig/
-rm -rf "$XDG_CONFIG_HOME"/fontconfig/
-
 # gnome
 
 rm -rf ~/.gnome/
 
 rm -rf "$XDG_CACHE_HOME"/{gnome-calculator,gnome-desktop-thumbnailer,thumbnails}/
-rm -f "$XDG_CACHE_HOME"/event-sound-cache*
 
 rm -rf "$XDG_CONFIG_HOME"/{gnome-control-center,gnome-session,nautilus}
 
@@ -38,6 +32,7 @@ rm -f "$XDG_DATA_HOME"/recently-used.xbel
 if [[ ${1:-} == 'deep' ]]; then
 
   rm -rf "$XDG_CACHE_HOME"/{evolution,glycin,gstreamer-1.0,libgetweather,tracker3}
+  rm -f "$XDG_CACHE_HOME"/event-sound-cache*
 
   rm -rf "$XDG_CONFIG_HOME"/{evolution,goa-1.0}
   rm -f "$XDG_CONFIG_HOME"/.gsd-keyboard.settings-ported
@@ -87,10 +82,6 @@ rm -rf "$XDG_CONFIG_HOME"/QtProject.conf/
 if [[ ${1:-} == 'deep' ]]; then
   rm -rf "$XDG_CONFIG_HOME"/pulse/
 fi
-
-# wireplumber
-
-rm -rf "$XDG_STATE_HOME"/wireplumber/ && mkdir -p "$XDG_STATE_HOME"/wireplumber/
 
 # xdg
 
