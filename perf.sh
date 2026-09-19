@@ -20,6 +20,6 @@ echo 409 | sudo tee /sys/kernel/mm/transparent_hugepage/khugepaged/max_ptes_none
 # https://wiki.archlinux.org/title/Gaming#Improve_PCI_Express_Latencies
 
 sudo setpci -v -s '*:*' latency_timer=20
-sudo setpci -v -s '0:0' latency_timer=0
+# sudo setpci -v -s '0:0' latency_timer=0 # causes `kernel: pci 0000:00:00.0: setpci: Unexpected write to kernel-exclusive config offset d`
 
 sudo setpci -v -d "*:*:04xx" latency_timer=80

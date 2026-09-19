@@ -429,3 +429,14 @@ Journal contains `Failed to create color profile from colord profile: Error open
 
 - https://github.com/hughsie/colord/issues/137
 
+### malcontent
+
+Screen time is not configured so `malcontent` daemon logs `malcontent-timerd[...]: mct_time_span_new: assertion 'start_time_secs < end_time_secs' failed` and
+`malcontent-timerd[...]: mct_time_span_free: assertion 'self != NULL' failed` in journal
+
+### Various
+
+- `gsd-power[...]: gsd_power_backlight_abs_to_percentage: assertion 'max > min' failed` - no backlight on external monitors
+- `kernel: ACPI Warning: SystemIO range 0x0000000000000B00-0x0000000000000B08 conflicts with OpRegion 0x0000000000000B00-0x0000000000000B0F (\GSA1.SMBI) (20260408/utaddress-204)` - `worker` motherboard ACPI table quirk
+- `kernel: ata5: failed to resume link (SControl 0)` - unpopulated SATA port on `worker`
+
