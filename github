@@ -50,7 +50,7 @@ def list_repos() -> list[dict[str, Any]]:
 
 
 def make_backup_dir() -> Path:
-    dir = Path(DIR) / datetime.now().strftime("%Y%m%d%H%M")
+    dir = Path(DIR) / datetime.now().astimezone().strftime("%Y%m%d%H%M")
     if dir.exists():
         shutil.rmtree(dir)
     dir.mkdir()
@@ -58,17 +58,18 @@ def make_backup_dir() -> Path:
 
 
 def clone_repo(repo: dict[str, Any], dir: Path) -> str:
+    target = dir / f"{repo['name']}.git"
     subprocess.run(
-        [
-            "git",
-            "clone",
-            "--mirror",
-            "--quiet",
-            repo["ssh_url"],
-            str(dir / f"{repo['name']}.git"),
-        ],
+        ["git", "clone", "--mirror", "--quiet", repo["ssh_url"], str(target)],
         check=True,
     )
+    # subprocess.run(
+    #     ["git", "lfs", "fetch", "--all"],
+    #     cwd=target,
+    #     check=True,
+    #     stdout=subprocess.DEVNULL,
+    #     stderr=subprocess.DEVNULL,
+    # )
     return str(repo["name"])
 
 
