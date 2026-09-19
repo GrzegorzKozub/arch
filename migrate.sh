@@ -5,6 +5,10 @@ set -eo pipefail -ux
 
 sudo pacman -Sy && pushd ~/code/dot && git pull && ./repos.sh && popd
 
+# cleanup
+
+[[ $HOST == 'worker' ]] && rm -rf "$XDG_CACHE_HOME"/fsh/
+
 # crypttab.initramfs deprecation
 
 # https://github.com/archlinux/mkinitcpio/blob/master/CHANGELOG
@@ -42,7 +46,7 @@ mise install
 
 "${BASH_SOURCE%/*}"/clean.sh deep
 
-rm -rf "$XDG_CACHE_HOME"/{appstream,cmp}/
+rm -rf "$XDG_CACHE_HOME"/{appstream,cmp,fsh}/
 rm -rf "$XDG_CONFIG_HOME"/{fsh,github-copilot}/
 rm -rf "$XDG_DATA_HOME"/man/
 rm -rf "$XDG_STATE_HOME"/{.copilot,pipewire}/
