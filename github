@@ -37,7 +37,14 @@ def list_repos() -> list[dict[str, Any]]:
         res = requests.get(url, headers=headers, timeout=15)
         repos += res.json()
         url = res.links["next"]["url"] if "next" in res.links else None
-    repos = list(filter(lambda repo: repo["owner"]["login"] == "GrzegorzKozub", repos))
+    repos = list(
+        filter(
+            lambda repo: (
+                repo["owner"]["login"] == "GrzegorzKozub" and not repo["archived"]
+            ),
+            repos,
+        )
+    )
     repos.sort(key=lambda repo: repo["name"].lower())
     return repos
 
