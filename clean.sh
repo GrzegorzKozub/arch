@@ -62,6 +62,10 @@ if [[ ${1:-} == 'deep' ]]; then
   rm -rf "$XDG_CONFIG_HOME"/lact/
 fi
 
+# mesa
+
+rm -rf "$XDG_CACHE_HOME"/{mesa_shader_cache,mesa_shader_cache_db}/
+
 # mime
 
 rm -f "$XDG_DATA_HOME"/mimeapps.list
@@ -70,7 +74,7 @@ rm -f "$XDG_DATA_HOME"/mimeapps.list
 
 rm -rf ~/.nv/
 rm -f ~/.nvidia-settings-rc
-rm -rf "$XDG_CACHE_HOME"/{mesa_shader_cache,mesa_shader_cache_db,nv,nvidia}/
+rm -rf "$XDG_CACHE_HOME"/{nv,nvidia}/
 rm -rf "$XDG_DATA_HOME"/nvidia-settings/
 
 # qt
