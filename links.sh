@@ -64,8 +64,8 @@ sed -i \
 # vscode
 
 for APP in \
-  code \
-  code-url-handler; do
+  com.microsoft.VSCode \
+  com.microsoft.VSCode.UrlHandler; do
   cp /usr/share/applications/$APP.desktop "$XDG_DATA_HOME"/applications
   sed -i -e 's/^Name=.*/Name=Code/' "$XDG_DATA_HOME"/applications/$APP.desktop
 done

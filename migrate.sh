@@ -24,6 +24,10 @@ sudo pacman -Sy && pushd ~/code/dot && git pull && ./repos.sh && popd
 #   sudo mkinitcpio -p linux-cachyos-lts
 # fi
 
+# vscode
+
+rm -rf "$XDG_DATA_HOME"/applications/{code,code-url-handler}.desktop
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh

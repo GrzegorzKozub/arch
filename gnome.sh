@@ -451,7 +451,7 @@ gsettings set org.gnome.shell favorite-apps "[
   'org.gnome.Nautilus.desktop',
   'kitty.desktop',
   'com.mitchellh.ghostty.desktop',
-  'code.desktop',
+  'com.microsoft.VSCode.desktop',
   'dev.zed.Zed.desktop',
   'brave-origin.desktop',
   $([[ $(sudo pacman -Qq teams-for-linux 2> /dev/null) ]] && echo "'teams-for-linux.desktop',")
