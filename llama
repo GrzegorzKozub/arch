@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# export LLAMA_ARG_CTX_SIZE=65536
+# context size & vram: 65536 @ 32gb, 32768 @ 10gb
+
+# export LLAMA_ARG_CTX_SIZE=32768
 # export LLAMA_ARG_FLASH_ATTN=on
-# export LLAMA_ARG_MLOCK=on
-# export LLAMA_ARG_N_CPU_MOE=0
+# export LLAMA_ARG_LOAD_MODE=mlock
 # export LLAMA_ARG_N_GPU_LAYERS=all
 
 llama-server \
-  --ctx-size 65536 \
+  --ctx-size 32768 \
   --flash-attn on \
-  --mlock \
-  --n-cpu-moe 0 \
+  --load-mode mlock \
   --n-gpu-layers all \
-  --hf-repo unsloth/gemma-4-31B-it-GGUF:UD-Q4_K_XL
+  --hf-repo unsloth/Qwen3.5-9B-GGUF:UD-Q4_K_XL
