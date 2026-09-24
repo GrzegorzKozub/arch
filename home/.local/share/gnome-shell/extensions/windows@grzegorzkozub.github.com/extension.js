@@ -64,7 +64,7 @@ export default class Windows extends Extension {
       { class: /^com.obsproject.Studio$/ },
       { class: /^com.github.PintaProject.Pinta$/ },
       { class: /^Postman$/, auto: true },
-      { class: /^code$/, auto: true },
+      { class: /^com.microsoft.VSCode$/, auto: true },
       {
         class: /^dev.zed.Zed$/,
         exceptTitle: /^(About Zed|Zed — Settings)$/,
