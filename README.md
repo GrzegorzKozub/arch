@@ -304,6 +304,16 @@ KeePassXC browser integration does not support Brave Origin out of the box
 - https://github.com/keepassxreboot/keepassxc/issues/13263
 - https://www.reddit.com/r/KeePass/comments/1tfxulw/keepassxc_plugin_not_connecting_on_brave/
 
+### Claude Code
+
+Sandbox issues prevent `excludedCmmands` like `aws` or `git` from escaping the sandbox
+
+- https://github.com/anthropics/claude-code/issues/95455
+- https://github.com/anthropics/claude-code/issues/95532
+- https://github.com/anthropics/claude-code/issues/95560
+- https://github.com/anthropics/claude-code/issues/97810
+- https://github.com/anthropics/claude-code/issues/97811
+
 ### D-Bus
 
 Multiple errors like `dbus-broker-launch[1170]: Ignoring duplicate name 'ca.desrt.dconf' in service file '/usr/share//dbus-1/services/ca.desrt.dconf.service'` in journal
