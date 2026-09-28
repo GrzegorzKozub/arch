@@ -5,10 +5,14 @@ while read -r name owner; do
 
   if [[ ${1:-} == "$name" ]]; then
 
+    FOUND=1
+
     if [[ ${2:-} != '' ]]; then
       DIR=~/code/$2
     elif [[ $name =~ ^(apsis)(-)(.*)$ ]]; then
       DIR=~/code/apsis/${BASH_REMATCH[3]}
+    elif [[ $name == efficy-* ]]; then
+      DIR=~/code/efficy/${name#efficy-}
     else
       DIR=~/code/$name
     fi
@@ -21,6 +25,7 @@ while read -r name owner; do
       git checkout --quiet "$BRANCH" && git pull --prune --quiet
       popd >/dev/null
     else
+      mkdir -p "${DIR%/*}"
       git clone --quiet "git@github.com:$owner/$name.git" "$DIR"
     fi
 
@@ -29,3 +34,8 @@ while read -r name owner; do
   fi
 
 done <"$XDG_CACHE_HOME/fetch/repos"
+
+[[ ${FOUND:-} ]] || {
+  printf '\e[33m \e[37mmunknown repo \e[36m%s\e[0m\n' "${1:-}" >&2
+  exit 1
+}
