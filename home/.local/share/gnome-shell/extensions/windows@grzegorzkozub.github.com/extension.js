@@ -79,7 +79,7 @@ export default class Windows extends Extension {
       {
         class: /.?org.keepassxc.KeePassXC$/,
         exceptTitle:
-          /(Generate Password|New key association request|Unlock Database)/,
+          /(About KeePassXC|Generate Password|New key association request|Unlock Database)/,
         auto: true,
       },
       { class: /^io.github.ilya_zlobintsev.LACT$/, auto: true },
