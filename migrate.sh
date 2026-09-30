@@ -28,6 +28,10 @@ sudo pacman -Sy && pushd ~/code/dot && git pull && ./repos.sh && popd
 
 rm -rf "$XDG_DATA_HOME"/applications/{code,code-url-handler}.desktop
 
+# worktrunk
+
+yay --aur --noconfirm --answerdiff=None -S worktrunk-bin
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh

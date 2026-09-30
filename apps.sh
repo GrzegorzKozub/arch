@@ -169,7 +169,8 @@ sudo pacman -S --noconfirm \
 
 yay --aur --noconfirm --answerdiff=None -S \
   golangci-lint-bin \
-  shellcheck-bin
+  shellcheck-bin \
+  worktrunk-bin
 
 # ai
 
