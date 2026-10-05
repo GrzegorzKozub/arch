@@ -5,38 +5,6 @@ set -eo pipefail -ux
 
 sudo pacman -Sy && pushd ~/code/dot && git pull && ./repos.sh && popd
 
-# claude
-
-if [[ $HOST == 'worker' ]]; then
-
-  rm -rf "$XDG_CONFIG_HOME"/claude/CLAUDE.md
-
-  pushd ~/code/dot
-
-  mkdir -p "$XDG_CONFIG_HOME"/claude/rules
-
-  ln -sf "$(dirname "$(realpath "$0")")"/claude/claude/rules/greg.md \
-    "$XDG_CONFIG_HOME"/claude/rules/greg.md
-
-  gh api repos/efficy-sa/apsis-shared-ai/contents/claude-code/CLAUDE.md \
-    --jq '.content' | base64 -d > "$XDG_CONFIG_HOME"/claude/rules/apsis.md
-
-  popd
-
-  npx --yes skills add mattpocock/skills \
-      --agent claude-code --copy --global --yes \
-      --skill \
-        codebase-design \
-        grill-me \
-        grilling \
-        handoff \
-        improve-codebase-architecture \
-        tdd \
-        to-spec \
-        to-tickets
-
-fi
-
 # cleanup
 
 [[ $HOST == 'worker' ]] && rm -rf "$XDG_CACHE_HOME"/fsh/
