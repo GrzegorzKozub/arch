@@ -130,7 +130,7 @@ Related repos
   - Disable everything under Search and connected experiences
   - Switch search engine used in address bar to Google
   - Disable everything under Copilot and AI
-  - Hide favorites on toolbar
+  - Hide favorites bar and button in toolbar
   - Don't show mini menu when selecting text
   - Don't show quick actions when hovering on videos
   - Disable visual search
@@ -142,7 +142,7 @@ Related repos
   - Add Polish
   - Don't offer to translate pages that aren't in a language I read
   - Don't offer to translate videos on supported sites
-  - Don't use 'Help me write' writing assistant on the web
+  - Don't use Writing Assistant on the web
   - Don't use text prediction
   - Switch to Microsoft Editor under Writing assistance
   - Disable startup boost
