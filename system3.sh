@@ -105,7 +105,7 @@ if [[ $MY_DESKTOP == 'GNOME' ]]; then
 
   sudo pacman -S --noconfirm \
     evolution-data-server \
-    gnome-menus gnome-shell gnome-shell-extensions gnome-keyring \
+    gnome-menus gnome-shell gnome-shell-extensions gnome-extensions-app gnome-keyring \
     gvfs gvfs-smb \
     xdg-user-dirs-gtk \
     xdg-desktop-portal-gnome xdg-desktop-portal-gtk \

@@ -79,7 +79,7 @@ pacstrap -K /mnt \
   usbutils bluez-utils v4l-utils \
   pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber \
   realtime-privileges \
-  gst-plugins-good \
+  gst-plugins-good gst-plugin-pipewire \
   xdg-desktop-portal xdg-utils \
   qt5-wayland qt6-wayland \
   pacman-contrib flatpak \

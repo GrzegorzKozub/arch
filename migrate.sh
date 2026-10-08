@@ -24,6 +24,10 @@ sudo pacman -Sy && pushd ~/code/dot && git pull && ./repos.sh && popd
 #   sudo mkinitcpio -p linux-cachyos-lts
 # fi
 
+# gnome 51
+
+sudo pacman -S --noconfirm gnome-extensions-app gst-plugin-pipewire power-profiles-daemon malcontent
+
 # vscode
 
 rm -rf "$XDG_DATA_HOME"/applications/{code,code-url-handler}.desktop
