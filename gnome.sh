@@ -89,12 +89,11 @@ DIR=$XDG_DATA_HOME/gnome-shell/extensions
 
 EXTENSIONS=(
   'appindicatorsupport@rgcjonas.gmail.com'
-  'blur-my-shell@aunetx'
   'rounded-window-corners@fxgn'
   'windows@grzegorzkozub.github.com'
 )
-  # 'appindicatorsupport@rgcjonas.gmail.com',
-  # 'user-theme@gnome-shell-extensions.gcampax.github.com',
+  # 'blur-my-shell@aunetx'
+  # 'user-theme@gnome-shell-extensions.gcampax.github.com'
 
 cp -r "${BASH_SOURCE%/*}"/home/.local/share/gnome-shell/extensions/windows@grzegorzkozub.github.com "$DIR"
 pushd "$DIR"/windows@grzegorzkozub.github.com && glib-compile-schemas schemas && popd

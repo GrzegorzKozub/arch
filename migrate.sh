@@ -14,19 +14,21 @@ sudo pacman -Sy && pushd ~/code/dot && git pull && ./repos.sh && popd
 # https://github.com/archlinux/mkinitcpio/blob/master/CHANGELOG
 # https://wiki.archlinux.org/title/Dm-crypt/System_configuration
 
-# if [[ -f /etc/crypttab.initramfs ]]; then
-#   sed 's/$/,x-initrd.attach/' /etc/crypttab.initramfs |
-#     sudo tee -a /etc/crypttab > /dev/null
-#   sudo rm /etc/crypttab.initramfs
-#   sudo mkinitcpio -p linux
-#   sudo mkinitcpio -p linux-lts
-#   sudo mkinitcpio -p linux-cachyos
-#   sudo mkinitcpio -p linux-cachyos-lts
-# fi
+if [[ -f /etc/crypttab.initramfs ]]; then
+  sed 's/$/,x-initrd.attach/' /etc/crypttab.initramfs |
+    sudo tee -a /etc/crypttab > /dev/null
+  sudo rm /etc/crypttab.initramfs
+  sudo mkinitcpio -p linux
+  sudo mkinitcpio -p linux-lts
+  sudo mkinitcpio -p linux-cachyos
+  sudo mkinitcpio -p linux-cachyos-lts
+fi
 
 # gnome 51
 
 sudo pacman -S --noconfirm gnome-extensions-app gst-plugin-pipewire power-profiles-daemon malcontent
+
+gnome-extensions disable 'blur-my-shell@aunetx'
 
 # vscode
 
