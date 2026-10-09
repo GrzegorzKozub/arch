@@ -24,10 +24,14 @@ if [[ -f /etc/crypttab.initramfs ]]; then
   sudo mkinitcpio -p linux-cachyos-lts
 fi
 
+# ghostty
+
+sudo pacman -Rs --noconfirm ghostty || true
+yay --aur --noconfirm --removemake --cleanmenu=false --answerdiff=None -S ghostty-nightly-bin
+
 # gnome 51
 
 sudo pacman -S --noconfirm gnome-extensions-app gst-plugin-pipewire power-profiles-daemon malcontent
-
 gnome-extensions disable 'blur-my-shell@aunetx'
 
 # vscode
@@ -36,7 +40,7 @@ rm -rf "$XDG_DATA_HOME"/applications/{code,code-url-handler}.desktop
 
 # worktrunk
 
-yay --aur --noconfirm --answerdiff=None -S worktrunk-bin
+yay --aur --noconfirm --removemake --cleanmenu=false --answerdiff=None -S worktrunk-bin
 
 # cleanup
 

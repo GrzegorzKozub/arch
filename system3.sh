@@ -96,8 +96,10 @@ fi
 # terminal
 
 sudo pacman -S --noconfirm \
-  ghostty \
   kitty
+
+yay --aur --noconfirm --removemake --cleanmenu=false --answerdiff=None -S \
+  ghostty-nightly-bin
 
 # desktop
 
