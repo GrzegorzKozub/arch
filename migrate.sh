@@ -31,6 +31,7 @@ yay --aur --noconfirm --removemake --cleanmenu=false --answerdiff=None -S ghostt
 
 # gnome 51
 
+sudo pacman -Syu --noconfirm
 sudo pacman -S --noconfirm gnome-extensions-app gst-plugin-pipewire power-profiles-daemon malcontent
 gnome-extensions disable 'blur-my-shell@aunetx'
 
