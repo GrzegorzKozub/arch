@@ -9,6 +9,7 @@ set -eo pipefail -ux
 
 if [[ $HOST == 'worker' ]]; then
 
+  "${BASH_SOURCE%/*}"/auth0.sh
   "${BASH_SOURCE%/*}"/aws.sh
   "${BASH_SOURCE%/*}"/claude.sh
 
