@@ -112,9 +112,13 @@ Related repos
   - Disable AI
   - Only show collections and environments in workspace
 9. Teams (work)
+  - Spellcheck English and Polish
   - Follow operating system theme
   - Switch to compact chat message density
-  - Disable notification display
+  - Hide Copilot
+  - Show recent activity at the bottom
+  - Mute and disable all notifications
+  - Configure privacy settings
   - Disable all apps
 10. Intune (work)
   - Sign in
