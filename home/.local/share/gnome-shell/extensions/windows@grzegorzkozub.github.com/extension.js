@@ -38,6 +38,7 @@ export default class Windows extends Extension {
         host: ['player', 'worker'],
         largerThan: { width: 1920, height: 1080 },
       },
+      { class: /^Chatgpt$/ },
       { title: /^DBeaver.?/, auto: true },
       { class: /^draw.io$/ },
       {
