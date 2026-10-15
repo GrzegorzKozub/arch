@@ -39,6 +39,7 @@ export default class Windows extends Extension {
         largerThan: { width: 1920, height: 1080 },
       },
       { class: /^Chatgpt$/ },
+      { class: /^com.anthropic.Claude$/ },
       { title: /^DBeaver.?/, auto: true },
       { class: /^draw.io$/ },
       {
