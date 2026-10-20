@@ -13,6 +13,7 @@ from typing import Any
 import requests
 
 DIR = "/run/media/greg/data/github"
+KEEP = 5
 
 
 def env() -> None:
@@ -117,11 +118,19 @@ def encrypt(file: Path) -> None:
     file.unlink()
 
 
+def prune() -> None:
+    backups = sorted(Path(DIR).glob("[0-9]*.tar.gz.gpg"))
+    for file in backups[:-KEEP]:
+        print(f"\033[33m \033[37mremove \033[36m{file} \033[0m")
+        file.unlink()
+
+
 def main() -> None:
     env()
     dir = make_backup_dir()
     clone_repos(list_repos(), dir)
     encrypt(compress(dir))
+    prune()
 
 
 if __name__ == "__main__":
