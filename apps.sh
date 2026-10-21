@@ -174,6 +174,7 @@ yay --aur --noconfirm --answerdiff=None -S \
 
 # ai
 
+"${BASH_SOURCE%/*}"/claude.sh
 # [[ $HOST =~ ^(player|worker)$ ]] && "${BASH_SOURCE%/*}"/llama.sh
 
 # apps

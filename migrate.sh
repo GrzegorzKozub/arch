@@ -9,6 +9,10 @@ sudo pacman -Sy && pushd ~/code/dot && git pull && ./repos.sh && popd
 
 [[ $HOST == 'worker' ]] && "${BASH_SOURCE%/*}"/auth0.sh
 
+# claude
+
+"${BASH_SOURCE%/*}"/claude.sh
+
 # snaps
 
 "${BASH_SOURCE%/*}"/data.sh
