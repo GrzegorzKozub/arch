@@ -87,6 +87,12 @@ if [[ ${1:-} == 'deep' ]]; then
   rm -rf "$XDG_CONFIG_HOME"/pulse/
 fi
 
+# restic
+
+if [[ ${1:-} == 'deep' ]]; then
+  rm -rf "$XDG_CACHE_HOME"/restic/
+fi
+
 # xdg
 
 rm -rf "$XDG_CONFIG_HOME"/autostart/
