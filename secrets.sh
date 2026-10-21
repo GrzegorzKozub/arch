@@ -9,7 +9,7 @@ lnk() {
   else rm -f "$2"; fi
 }
 
-# env: ANTHROPIC_API_KEY, GITHUB_TOKEN, OPENAI_API_KEY, RCLONE_DRIVE_CLIENT_SECRET, RESTIC_PASSWORD
+# env: GITHUB_TOKEN, RCLONE_DRIVE_CLIENT_SECRET, RESTIC_PASSWORD
 
 lnk "$SECRETS"/.zshenv ~/code/dot/zsh/zsh/.zshenv
 
@@ -20,6 +20,10 @@ lnk "$SECRETS"/fetch.env ~/code/arch/fetch.env
 # github env: GITHUB_PAT
 
 lnk "$SECRETS"/github.env ~/code/arch/github.env
+
+# snap.sh env: RESTIC_PASSWORD
+
+lnk "$SECRETS"/snap.env ~/code/arch/snap.env
 
 # ansible
 

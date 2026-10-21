@@ -1,0 +1,10 @@
+[Unit]
+Description=snap-periodic
+
+[Service]
+Type=oneshot
+RemainAfterExit=false
+EnvironmentFile=%h/code/arch/snap.env
+PassEnvironment=RESTIC_PASSWORD
+WorkingDirectory=%h/code/arch
+ExecStart=%h/code/arch/snap.sh

@@ -18,5 +18,5 @@ create '.secrets'
 
 create 'github'
 create 'music'
-create 'restic'
+create 'snaps'
 create 'vm'

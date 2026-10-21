@@ -20,10 +20,11 @@ FREE=$(df --block-size=1G "$DISK" --output=avail | grep -v Avail | tr -dc '0-9')
 [[ $FREE -lt 64 ]] && echo "only ${FREE}G free on $DISK"
 
 rclone sync \
+  --copy-links --create-empty-src-dirs --delete-excluded \
   --filter '+ /backup/**' \
   --filter '+ /github/**' \
   --filter '+ /music/**' \
-  --filter '+ /restic/**' \
+  --filter '+ /snaps/**' \
   --filter '+ /vm/**' \
   --filter '- *' \
   --modify-window 100ns \

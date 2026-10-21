@@ -1,0 +1,10 @@
+[Unit]
+Description=snap-periodic
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

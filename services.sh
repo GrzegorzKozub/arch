@@ -174,6 +174,11 @@ systemctl --user enable pipewire-pulse.service
 cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/perf.service "$XDG_CONFIG_HOME"/systemd/user
 systemctl --user enable perf.service
 
+# snap
+
+cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/snap-* "$XDG_CONFIG_HOME"/systemd/user
+systemctl --user enable snap-periodic.timer
+
 # sync
 
 cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/sync-* "$XDG_CONFIG_HOME"/systemd/user
