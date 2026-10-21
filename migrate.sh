@@ -18,8 +18,8 @@ sudo pacman -Sy && pushd ~/code/dot && git pull && ./repos.sh && popd
 "${BASH_SOURCE%/*}"/data.sh
 "${BASH_SOURCE%/*}"/secrets.sh
 
-cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/snap-* "$XDG_CONFIG_HOME"/systemd/user
-systemctl --user enable snap-periodic.timer
+cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/snap.* "$XDG_CONFIG_HOME"/systemd/user
+systemctl --user enable snap.timer
 
 # ssh
 

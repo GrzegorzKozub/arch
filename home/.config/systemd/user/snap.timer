@@ -1,5 +1,5 @@
 [Unit]
-Description=snap-periodic
+Description=snap
 
 [Timer]
 OnCalendar=daily
