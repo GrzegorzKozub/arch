@@ -21,6 +21,10 @@ sudo pacman -Sy && pushd ~/code/dot && git pull && ./repos.sh && popd
 cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/snap-* "$XDG_CONFIG_HOME"/systemd/user
 systemctl --user enable snap-periodic.timer
 
+# ssh
+
+rm -rf ~/.ssh/known_hosts.old
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
