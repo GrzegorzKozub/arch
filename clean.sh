@@ -81,6 +81,10 @@ rm -rf "$XDG_DATA_HOME"/nvidia-settings/
 
 rm -rf "$XDG_CONFIG_HOME"/QtProject.conf/
 
+# postman
+
+rm -rf ~/Postman/
+
 # pulseaudio
 
 if [[ ${1:-} == 'deep' ]]; then

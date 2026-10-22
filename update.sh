@@ -43,3 +43,5 @@ sudo journalctl --vacuum-time=1months
 
 "${BASH_SOURCE%/*}"/packages.sh
 "${BASH_SOURCE%/*}"/clean.sh
+
+"${BASH_SOURCE%/*}"/cache.sh
