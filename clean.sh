@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# TODO: these were last removed in september 2026; check if any reappeared
-
-# rm -rf "$XDG_CACHE_HOME"/{appstream,cmp,fsh}/
-# rm -rf "$XDG_CONFIG_HOME"/{fsh,github-copilot}/
-# rm -rf "$XDG_DATA_HOME"/man/
-# rm -rf "$XDG_STATE_HOME"/{.copilot,pipewire}/
-
 # bluetooth
 
 rm -rf "$XDG_CACHE_HOME"/obexd/
