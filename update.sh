@@ -20,7 +20,6 @@ else
 fi
 
 # [[ $HOST =~ ^(player|worker)$ ]] && "${BASH_SOURCE%/*}"/llama.sh update
-# [[ $HOST == 'worker' ]] && "${BASH_SOURCE%/*}"/claude.sh update
 
 # merge *.pacnew and *.pacsave files
 
