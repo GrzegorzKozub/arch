@@ -3,15 +3,15 @@ set -eo pipefail -ux
 
 # packages
 
-sudo pacman -S --noconfirm \
-  aws-cli-v2
+# sudo pacman -S --noconfirm \
+#   aws-cli-v2
 
-yay --aur --noconfirm --answerdiff=None -S \
-  aws-sam-cli-bin
+# yay --aur --noconfirm --answerdiff=None -S \
+#   aws-sam-cli-bin
 
 # cleanup
 
-"${BASH_SOURCE%/*}"/packages.sh
+# "${BASH_SOURCE%/*}"/packages.sh
 
 # dotfiles
 

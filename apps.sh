@@ -158,7 +158,6 @@ sudo pacman -S --noconfirm \
   mise usage \
   nodejs npm \
   perl \
-  prettier \
   python python-pip python-pynvim python-requests uv \
   shfmt \
   taplo \
