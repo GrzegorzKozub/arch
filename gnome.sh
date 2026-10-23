@@ -175,6 +175,11 @@ xdg-mime default org.gnome.Nautilus.desktop inode/directory
 xdg-mime default org.gnome.Loupe.desktop image/jpeg
 xdg-mime default org.gnome.Loupe.desktop image/png
 
+# apps > keepassxc
+
+dconf write /org/gnome/settings-daemon/global-shortcuts/org.keepassxc.KeePassXC/shortcuts \
+  "[('autotype', {'shortcuts': <['<Control><Alt>p']>, 'description': <'Trigger global Auto-Type'>})]"
+
 # apps > mission center
 
 dconf reset -f /io/missioncenter/MissionCenter/
