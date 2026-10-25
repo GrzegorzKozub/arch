@@ -1,0 +1,10 @@
+[Unit]
+Description=sync
+
+[Timer]
+OnCalendar=00/1:00
+; fires a catch-up run at login if a periodic run was missed
+; Persistent=true
+
+[Install]
+WantedBy=timers.target

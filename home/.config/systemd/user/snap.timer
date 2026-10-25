@@ -3,6 +3,7 @@ Description=snap
 
 [Timer]
 OnCalendar=daily
+; fires a catch-up run at login if a periodic run was missed
 Persistent=true
 
 [Install]

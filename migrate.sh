@@ -29,6 +29,19 @@ fi
 
 ~/code/dot/reset.sh mise
 
+# services
+
+sudo cp "${BASH_SOURCE%/*}"/etc/systemd/user.conf.d/00-timeout.conf /etc/systemd/user.conf.d
+
+cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/snap.{service,timer} "$XDG_CONFIG_HOME"/systemd/user
+cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/sync.{service,timer} "$XDG_CONFIG_HOME"/systemd/user
+cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/wall.{service,timer} "$XDG_CONFIG_HOME"/systemd/user
+
+systemctl --user disable --now sync-periodic.timer || true
+rm -f "$XDG_CONFIG_HOME"/systemd/user/sync-periodic.{service,timer}
+
+systemctl --user enable --now sync.timer
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh

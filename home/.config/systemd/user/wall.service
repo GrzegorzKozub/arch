@@ -3,6 +3,5 @@ Description=wall
 
 [Service]
 Type=oneshot
-RemainAfterExit=false
 WorkingDirectory=%h/code/arch
 ExecStart=%h/code/arch/wall.sh

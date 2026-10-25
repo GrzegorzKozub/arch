@@ -176,8 +176,8 @@ systemctl --user enable perf.service
 
 # sync
 
-cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/sync-* "$XDG_CONFIG_HOME"/systemd/user
-systemctl --user enable sync-periodic.timer
+cp "${BASH_SOURCE%/*}"/home/.config/systemd/user/sync* "$XDG_CONFIG_HOME"/systemd/user
+systemctl --user enable sync.timer
 systemctl --user enable sync-session.service
 
 # snapshots
