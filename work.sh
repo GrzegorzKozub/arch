@@ -16,8 +16,12 @@ fi
 
 # apps
 
-[[ $HOST == 'worker' ]] && "${BASH_SOURCE%/*}"/postman.sh
-[[ $HOST =~ ^(drifter|worker)$ ]] && "${BASH_SOURCE%/*}"/teams.sh
+if [[ $HOST == 'worker' ]]; then
+
+  "${BASH_SOURCE%/*}"/postman.sh
+  "${BASH_SOURCE%/*}"/teams.sh
+
+fi
 
 # hidden links
 

@@ -42,6 +42,21 @@ rm -f "$XDG_CONFIG_HOME"/systemd/user/sync-periodic.{service,timer}
 
 systemctl --user enable --now sync.timer
 
+# teams
+
+if [[ $HOST == 'drifter' ]]; then
+
+  yay --noconfirm -Rs teams-for-linux-bin
+
+  rm -rf "$XDG_DATA_HOME"/applications/teams-for-linux.desktop
+  rm -rf "$XDG_CONFIG_HOME"/teams-for-linux
+
+  pushd ~/code/dot
+  git clean -fdx -- teams-for-linux
+  popd
+
+fi
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
