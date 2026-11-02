@@ -105,7 +105,7 @@ sudo pacman -S --noconfirm \
   # libheif - for loupe & yazi to support heic images
   # xclip, wl-clipboard - for keepassxc, neovim & pass
 
-  # tmux zellij
+  # tmux
 
 yay --aur --noconfirm --answerdiff=None -S \
   tmux-git

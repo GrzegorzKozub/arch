@@ -36,8 +36,6 @@ for APP in \
   sed -i '2iNoDisplay=true' "$XDG_DATA_HOME"/applications/$APP.desktop
 done
 
-  # zellij
-
 rm -rf "$XDG_DATA_HOME"/applications/electron*.desktop || true
 
 for LINK in $(fd --glob 'electron*.desktop' /usr/share/applications --exec basename {}); do
