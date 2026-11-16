@@ -7,6 +7,21 @@ pushd "${BASH_SOURCE%/*}" && git pull && popd
 pushd ~/code/dot && git pull && ./repos.sh && popd
 sudo pacman -Sy
 
+# claude
+
+if [[ $HOST != 'worker' ]]; then
+
+  npx --yes skills add mattpocock/skills \
+    --agent claude-code --copy --global --yes \
+    --skill \
+    grill-me \
+    grilling \
+    handoff
+
+  rm -rf "$XDG_STATE_HOME"/skills/
+
+fi
+
 # vm
 
 [[ -d /run/media/$USER/data/vm ]] && find /run/media/"$USER"/data/vm -mindepth 1 -delete
