@@ -22,6 +22,10 @@ if [[ $HOST != 'worker' ]]; then
 
 fi
 
+# teams
+
+[[ $HOST == 'worker' ]] && rm -rf ~/.local/share/applications/teams-for-linux.desktop
+
 # vm
 
 [[ -d /run/media/$USER/data/vm ]] && find /run/media/"$USER"/data/vm -mindepth 1 -delete
