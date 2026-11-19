@@ -9,17 +9,6 @@ sed -i \
   -e 's/^Name=.*$/Name=Brave/' \
   "$XDG_DATA_HOME"/applications/brave-origin.desktop
 
-# ghostty
-
-if [[ $HOST == 'drifter' ]]; then
-
-  cp /usr/share/applications/com.mitchellh.ghostty.desktop "$XDG_DATA_HOME"/applications
-  sed -i \
-    -e "s/^Exec=ghostty/Exec=ghostty --window-padding-balance=false --window-height=30 --window-width=120/" \
-    "$XDG_DATA_HOME"/applications/com.mitchellh.ghostty.desktop
-
-fi
-
 # nvidia
 
 if [[ $HOST =~ ^(player|worker)$ ]]; then

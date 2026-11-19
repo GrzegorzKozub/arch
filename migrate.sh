@@ -22,6 +22,10 @@ if [[ $HOST != 'worker' ]]; then
 
 fi
 
+# ghostty
+
+[[ $HOST == 'drifter' ]] && rm -rf ~/.local/share/applications/com.mitchellh.ghostty.desktop
+
 # teams
 
 [[ $HOST == 'worker' ]] && rm -rf ~/.local/share/applications/teams-for-linux.desktop
