@@ -206,6 +206,10 @@ systemctl --user enable dnd.service
 cp "${BASH_SOURCE%/*}"/home/.config/fontconfig/fonts.conf "$XDG_CONFIG_HOME"/fontconfig
 fc-cache -f
 
+# ghostty
+
+# systemctl --user enable app-com.mitchellh.ghostty.service
+
 # group check
 
 sudo grpck
