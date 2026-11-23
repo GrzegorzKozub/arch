@@ -35,6 +35,26 @@ fi
 #
 # fi
 
+# postman
+
+if [[ $HOST == 'worker' ]]; then
+
+  sudo pacman -Rs --noconfirm postman-bin || true
+  rm -f ~/.local/share/applications/postman.desktop
+
+  rm -rf ~/.local/bin/lib/
+  rm -f ~/.local/bin/postman
+
+  rm -f ~/.local/share/man/man1/postman.1
+  [[ -d ~/.local/share/man ]] && find ~/.local/share/man -type d -empty -delete
+
+  rm -rf ~/{.postman,Postman}/
+
+  rm -f ~/.config/Postman
+  sed -i '/^x-scheme-handler\/postman=/d' ~/.config/mimeapps.list
+
+fi
+
 # teams
 
 [[ $HOST == 'worker' ]] && rm -rf ~/.local/share/applications/teams-for-linux.desktop

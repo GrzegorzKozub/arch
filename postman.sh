@@ -16,3 +16,9 @@ sed -i \
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
+
+rm -rf ~/Postman/
+
+# dotfiles
+
+~/code/dot/postman.sh

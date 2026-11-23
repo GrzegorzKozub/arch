@@ -18,7 +18,6 @@ fi
 
 if [[ $HOST == 'worker' ]]; then
 
-  "${BASH_SOURCE%/*}"/postman.sh
   "${BASH_SOURCE%/*}"/teams.sh
 
 fi

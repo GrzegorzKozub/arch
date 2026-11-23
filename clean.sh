@@ -76,7 +76,13 @@ rm -rf "$XDG_CONFIG_HOME"/QtProject.conf/
 
 # postman
 
-rm -rf ~/Postman/
+rm -rf ~/.local/bin/lib/
+rm -f ~/.local/bin/postman
+
+rm -f ~/.local/share/man/man1/postman.1
+[[ -d ~/.local/share/man ]] && find ~/.local/share/man -type d -empty -delete
+
+rm -rf ~/{.postman,Postman}/
 
 # pulseaudio
 
