@@ -26,6 +26,15 @@ fi
 
 [[ $HOST == 'drifter' ]] && rm -rf ~/.local/share/applications/com.mitchellh.ghostty.desktop
 
+# nvidia
+
+# if [[ $HOST =~ ^(player|worker)$ ]]; then
+#
+#   # cachyos-v3 ships stale nvidia-open 620.70.06-0 that requires missing nvidia-utils=620.70.06
+#   sudo pacman --noconfirm --needed -Su cachyos-extra-v3/nvidia-open
+#
+# fi
+
 # teams
 
 [[ $HOST == 'worker' ]] && rm -rf ~/.local/share/applications/teams-for-linux.desktop
