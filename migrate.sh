@@ -116,6 +116,20 @@ if [[ -L $XDG_CONFIG_HOME/tidal-hifi ]]; then
 
 fi
 
+# tiddl
+
+if [[ -L $XDG_CONFIG_HOME/tiddl ]]; then
+
+  rm "$XDG_CONFIG_HOME"/tiddl
+  cp -a ~/code/dot/tiddl/tiddl "$XDG_CONFIG_HOME"/tiddl
+
+  pushd ~/code/dot
+  git clean -fdx tiddl
+  stow --target="$XDG_CONFIG_HOME" --no-folding --adopt --stow tiddl
+  popd
+
+fi
+
 # vm
 
 [[ -d /run/media/$USER/data/vm ]] && find /run/media/"$USER"/data/vm -mindepth 1 -delete
