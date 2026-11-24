@@ -7,6 +7,13 @@ pushd "${BASH_SOURCE%/*}" && git pull && popd
 [[ ${PULLED:-} ]] || PULLED=1 exec "$BASH" "$0" "$@"
 unset PULLED
 
+# btop
+
+pushd ~/code/dot
+git update-index --no-assume-unchanged btop/btop/btop.conf
+git pull
+popd
+
 # prep
 
 pushd ~/code/dot && git pull && ./repos.sh && popd
