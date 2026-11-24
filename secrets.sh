@@ -28,7 +28,8 @@ lnk "$SECRETS"/snap.env ~/code/arch/snap.env
 # ansible
 
 if [[ ${1:-} == 'ansible' ]]; then
-  lnk "$SECRETS"/ansible.secret ~/code/dot/ansible/ansible/ansible.secret
+  mkdir -p "$XDG_CONFIG_HOME"/ansible
+  lnk "$SECRETS"/ansible.secret "$XDG_CONFIG_HOME"/ansible/ansible.secret
 fi
 
 # aws
