@@ -4,6 +4,8 @@ set -eo pipefail -ux
 # update self
 
 pushd "${BASH_SOURCE%/*}" && git pull && popd
+[[ ${PULLED:-} ]] || PULLED=1 exec "$BASH" "$0" "$@"
+unset PULLED
 
 # update all packages
 

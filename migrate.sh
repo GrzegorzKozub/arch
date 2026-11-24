@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 set -eo pipefail -ux
 
-# prep
+# update self
 
 pushd "${BASH_SOURCE%/*}" && git pull && popd
+[[ ${PULLED:-} ]] || PULLED=1 exec "$BASH" "$0" "$@"
+unset PULLED
+
+# prep
+
 pushd ~/code/dot && git pull && ./repos.sh && popd
 sudo pacman -Sy
 
