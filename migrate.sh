@@ -44,10 +44,6 @@ fi
 
 if [[ -L $XDG_CONFIG_HOME/obsidian ]]; then
 
-  while pgrep -f '^electron[0-9]* /usr/lib/obsidian/app.asar' > /dev/null; do
-    read -rp 'Close Obsidian and press Enter'
-  done
-
   rm "$XDG_CONFIG_HOME"/obsidian
   cp -a ~/code/dot/obsidian/obsidian "$XDG_CONFIG_HOME"/obsidian
 
@@ -84,10 +80,6 @@ fi
 
 if [[ -L $XDG_CONFIG_HOME/teams-for-linux ]]; then
 
-  while pgrep -x teams-for-linux > /dev/null; do
-    read -rp 'Close Teams and press Enter'
-  done
-
   rm "$XDG_CONFIG_HOME"/teams-for-linux
   cp -a ~/code/dot/teams-for-linux/teams-for-linux "$XDG_CONFIG_HOME"/teams-for-linux
 
@@ -102,30 +94,12 @@ fi
 
 if [[ -L $XDG_CONFIG_HOME/tidal-hifi ]]; then
 
-  while pgrep -x tidal-hifi > /dev/null; do
-    read -rp 'Close Tidal and press Enter'
-  done
-
   rm "$XDG_CONFIG_HOME"/tidal-hifi
   cp -a ~/code/dot/tidal-hifi/tidal-hifi "$XDG_CONFIG_HOME"/tidal-hifi
 
   pushd ~/code/dot
   git clean -fdx tidal-hifi
   stow --target="$XDG_CONFIG_HOME" --no-folding --adopt --stow tidal-hifi
-  popd
-
-fi
-
-# tiddl
-
-if [[ -L $XDG_CONFIG_HOME/tiddl ]]; then
-
-  rm "$XDG_CONFIG_HOME"/tiddl
-  cp -a ~/code/dot/tiddl/tiddl "$XDG_CONFIG_HOME"/tiddl
-
-  pushd ~/code/dot
-  git clean -fdx tiddl
-  stow --target="$XDG_CONFIG_HOME" --no-folding --adopt --stow tiddl
   popd
 
 fi
@@ -137,10 +111,6 @@ fi
 # vscode
 
 if [[ -L $XDG_CONFIG_HOME/vscode/user-data ]]; then
-
-  while pgrep -x code > /dev/null; do
-    read -rp 'Close VS Code and press Enter'
-  done
 
   rm "$XDG_CONFIG_HOME"/vscode/user-data
   cp -a ~/code/dot/vscode/user-data "$XDG_CONFIG_HOME"/vscode/user-data
