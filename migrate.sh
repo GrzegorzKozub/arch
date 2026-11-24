@@ -35,6 +35,24 @@ fi
 #
 # fi
 
+# obsidian
+
+if [[ -L $XDG_CONFIG_HOME/obsidian ]]; then
+
+  while pgrep -f '^electron[0-9]* /usr/lib/obsidian/app.asar' > /dev/null; do
+    read -rp 'Close Obsidian and press Enter'
+  done
+
+  rm "$XDG_CONFIG_HOME"/obsidian
+  cp -a ~/code/dot/obsidian/obsidian "$XDG_CONFIG_HOME"/obsidian
+
+  pushd ~/code/dot
+  git clean -fdx obsidian
+  stow --target="$XDG_CONFIG_HOME" --no-folding --adopt --stow obsidian
+  popd
+
+fi
+
 # postman
 
 if [[ $HOST == 'worker' ]]; then
@@ -59,9 +77,65 @@ fi
 
 [[ $HOST == 'worker' ]] && rm -rf ~/.local/share/applications/teams-for-linux.desktop
 
+if [[ -L $XDG_CONFIG_HOME/teams-for-linux ]]; then
+
+  while pgrep -x teams-for-linux > /dev/null; do
+    read -rp 'Close Teams and press Enter'
+  done
+
+  rm "$XDG_CONFIG_HOME"/teams-for-linux
+  cp -a ~/code/dot/teams-for-linux/teams-for-linux "$XDG_CONFIG_HOME"/teams-for-linux
+
+  pushd ~/code/dot
+  git clean -fdx teams-for-linux
+  stow --target="$XDG_CONFIG_HOME" --no-folding --adopt --stow teams-for-linux
+  popd
+
+fi
+
+# tidal
+
+if [[ -L $XDG_CONFIG_HOME/tidal-hifi ]]; then
+
+  while pgrep -x tidal-hifi > /dev/null; do
+    read -rp 'Close Tidal and press Enter'
+  done
+
+  rm "$XDG_CONFIG_HOME"/tidal-hifi
+  cp -a ~/code/dot/tidal-hifi/tidal-hifi "$XDG_CONFIG_HOME"/tidal-hifi
+
+  pushd ~/code/dot
+  git clean -fdx tidal-hifi
+  stow --target="$XDG_CONFIG_HOME" --no-folding --adopt --stow tidal-hifi
+  popd
+
+fi
+
 # vm
 
 [[ -d /run/media/$USER/data/vm ]] && find /run/media/"$USER"/data/vm -mindepth 1 -delete
+
+# vscode
+
+if [[ -L $XDG_CONFIG_HOME/vscode/user-data ]]; then
+
+  while pgrep -x code > /dev/null; do
+    read -rp 'Close VS Code and press Enter'
+  done
+
+  rm "$XDG_CONFIG_HOME"/vscode/user-data
+  cp -a ~/code/dot/vscode/user-data "$XDG_CONFIG_HOME"/vscode/user-data
+  rm -rf "$XDG_CONFIG_HOME"/vscode/user-data/{.editorconfig,.git,.gitattributes,.gitignore}
+
+  pushd ~/code/dot/vscode/user-data
+  git clean -fdx
+  popd
+
+  pushd ~/code/dot
+  stow --target="$XDG_CONFIG_HOME"/vscode --no-folding --adopt --stow vscode
+  popd
+
+fi
 
 # yazi
 

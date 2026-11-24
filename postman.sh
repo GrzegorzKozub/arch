@@ -17,8 +17,6 @@ sed -i \
 
 "${BASH_SOURCE%/*}"/packages.sh
 
-rm -rf ~/Postman/
-
 # dotfiles
 
 ~/code/dot/postman.sh
