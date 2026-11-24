@@ -41,7 +41,8 @@ lnk "$SECRETS"/credentials ~/code/keys/aws/.aws/credentials
 # maven
 
 if [[ ${1:-} == 'maven' ]]; then
-  lnk "$SECRETS"/settings.xml ~/code/dot/maven/maven/settings.xml
+  mkdir -p "$XDG_CONFIG_HOME"/maven
+  lnk "$SECRETS"/settings.xml "$XDG_CONFIG_HOME"/maven/settings.xml
 fi
 
 # ssh
