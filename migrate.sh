@@ -19,6 +19,10 @@ popd
 pushd ~/code/dot && git pull && ./repos.sh && popd
 sudo pacman -Sy
 
+# TODO: undo on player & worker
+# cachyos-v3 ships stale nvidia-open 620.70.06-0 that requires missing nvidia-utils 620.70.06
+# sudo pacman --noconfirm --needed -Su cachyos-extra-v3/nvidia-open
+
 # claude
 
 if [[ $HOST != 'worker' ]]; then
@@ -38,15 +42,6 @@ fi
 
 [[ $HOST == 'drifter' ]] && rm -rf ~/.local/share/applications/com.mitchellh.ghostty.desktop
 
-# nvidia
-
-# if [[ $HOST =~ ^(player|worker)$ ]]; then
-#
-#   # cachyos-v3 ships stale nvidia-open 620.70.06-0 that requires missing nvidia-utils=620.70.06
-#   sudo pacman --noconfirm --needed -Su cachyos-extra-v3/nvidia-open
-#
-# fi
-
 # obsidian
 
 if [[ -L $XDG_CONFIG_HOME/obsidian ]]; then
@@ -57,42 +52,6 @@ if [[ -L $XDG_CONFIG_HOME/obsidian ]]; then
   pushd ~/code/dot
   git clean -fdx obsidian
   stow --target="$XDG_CONFIG_HOME" --no-folding --adopt --stow obsidian
-  popd
-
-fi
-
-# postman
-
-if [[ $HOST == 'worker' ]]; then
-
-  sudo pacman -Rs --noconfirm postman-bin || true
-  rm -f ~/.local/share/applications/postman.desktop
-
-  rm -rf ~/.local/bin/lib/
-  rm -f ~/.local/bin/postman
-
-  rm -f ~/.local/share/man/man1/postman.1
-  [[ -d ~/.local/share/man ]] && find ~/.local/share/man -type d -empty -delete
-
-  rm -rf ~/{.postman,Postman}/
-
-  rm -f ~/.config/Postman
-  sed -i '/^x-scheme-handler\/postman=/d' ~/.config/mimeapps.list
-
-fi
-
-# teams
-
-[[ $HOST == 'worker' ]] && rm -rf ~/.local/share/applications/teams-for-linux.desktop
-
-if [[ -L $XDG_CONFIG_HOME/teams-for-linux ]]; then
-
-  rm "$XDG_CONFIG_HOME"/teams-for-linux
-  cp -a ~/code/dot/teams-for-linux/teams-for-linux "$XDG_CONFIG_HOME"/teams-for-linux
-
-  pushd ~/code/dot
-  git clean -fdx teams-for-linux
-  stow --target="$XDG_CONFIG_HOME" --no-folding --adopt --stow teams-for-linux
   popd
 
 fi
