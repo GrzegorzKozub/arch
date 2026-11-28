@@ -16,6 +16,10 @@ sudo pacman -Sy
 # cachyos-v3 ships stale nvidia-open 620.70.06-0 that requires missing nvidia-utils 620.70.06
 # sudo pacman --noconfirm --needed -Su cachyos-extra-v3/nvidia-open
 
+# tiddl
+
+uv tool install --force git+https://github.com/GrzegorzKozub/tiddl
+
 # cleanup
 
 "${BASH_SOURCE%/*}"/packages.sh
